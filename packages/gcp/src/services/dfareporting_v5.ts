@@ -7689,8 +7689,8 @@ export const batchinsertConversions: API.OperationMethod<
   BatchinsertConversionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BatchinsertConversionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ConversionsBatchInsertResponse>,
+  input: __S(7040, __c220, 0) as any as S.Schema<BatchinsertConversionsRequest>,
+  output: __S(7041, __c220, 1) as any as S.Schema<ConversionsBatchInsertResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7710,8 +7710,8 @@ export const batchupdateConversions: API.OperationMethod<
   BatchupdateConversionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BatchupdateConversionsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ConversionsBatchUpdateResponse>,
+  input: __S(7744, __c242, 0) as any as S.Schema<BatchupdateConversionsRequest>,
+  output: __S(7745, __c242, 1) as any as S.Schema<ConversionsBatchUpdateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7731,8 +7731,8 @@ export const deleteAdvertiserGroups: API.OperationMethod<
   DeleteAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteAdvertiserGroupsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteAdvertiserGroupsResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<DeleteAdvertiserGroupsRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<DeleteAdvertiserGroupsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7752,8 +7752,8 @@ export const deleteContentCategories: API.OperationMethod<
   DeleteContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteContentCategoriesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteContentCategoriesResponse>,
+  input: __S(8896, __c278, 0) as any as S.Schema<DeleteContentCategoriesRequest>,
+  output: __S(8897, __c278, 1) as any as S.Schema<DeleteContentCategoriesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7773,8 +7773,8 @@ export const deleteCreativeFields: API.OperationMethod<
   DeleteCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteCreativeFieldsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteCreativeFieldsResponse>,
+  input: __S(9280, __c290, 0) as any as S.Schema<DeleteCreativeFieldsRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<DeleteCreativeFieldsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7794,8 +7794,8 @@ export const deleteCreativeFieldValues: API.OperationMethod<
   DeleteCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteCreativeFieldValuesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteCreativeFieldValuesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteCreativeFieldValuesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCreativeFieldValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7815,8 +7815,8 @@ export const deleteDynamicTargetingKeys: API.OperationMethod<
   DeleteDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteDynamicTargetingKeysRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteDynamicTargetingKeysResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteDynamicTargetingKeysRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteDynamicTargetingKeysResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7836,8 +7836,8 @@ export const deleteEventTags: API.OperationMethod<
   DeleteEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteEventTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteEventTagsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteEventTagsRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<DeleteEventTagsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7857,8 +7857,8 @@ export const deleteFloodlightActivities: API.OperationMethod<
   DeleteFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteFloodlightActivitiesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteFloodlightActivitiesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteFloodlightActivitiesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteFloodlightActivitiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7878,8 +7878,8 @@ export const deletePlacementStrategies: API.OperationMethod<
   DeletePlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeletePlacementStrategiesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeletePlacementStrategiesResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeletePlacementStrategiesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeletePlacementStrategiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7899,8 +7899,8 @@ export const deleteReports: API.OperationMethod<
   DeleteReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteReportsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteReportsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteReportsRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<DeleteReportsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7920,8 +7920,8 @@ export const deleteUserRoles: API.OperationMethod<
   DeleteUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteUserRolesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteUserRolesResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteUserRolesRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<DeleteUserRolesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7939,8 +7939,8 @@ export const generateCodeDynamicProfiles: API.OperationMethod<
   GenerateCodeDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GenerateCodeDynamicProfilesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DynamicProfileGenerateCodeResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GenerateCodeDynamicProfilesRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<DynamicProfileGenerateCodeResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7960,8 +7960,8 @@ export const generatetagFloodlightActivities: API.OperationMethod<
   GeneratetagFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GeneratetagFloodlightActivitiesRequest>,
+  output: __S(2881, __c90, 1) as any as S.Schema<FloodlightActivitiesGenerateTagResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7981,8 +7981,8 @@ export const generatetagsPlacements: API.OperationMethod<
   GeneratetagsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GeneratetagsPlacementsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<PlacementsGenerateTagsResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GeneratetagsPlacementsRequest>,
+  output: __S(3237, __c101, 5) as any as S.Schema<PlacementsGenerateTagsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8000,8 +8000,8 @@ export const getAccountActiveAdSummaries: API.OperationMethod<
   GetAccountActiveAdSummariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetAccountActiveAdSummariesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<AccountActiveAdSummary>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetAccountActiveAdSummariesRequest>,
+  output: __S(3617, __c113, 1) as any as S.Schema<AccountActiveAdSummary>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8019,8 +8019,8 @@ export const getAccountPermissionGroups: API.OperationMethod<
   GetAccountPermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetAccountPermissionGroupsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<AccountPermissionGroup>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetAccountPermissionGroupsRequest>,
+  output: __S(4000, __c125, 0) as any as S.Schema<AccountPermissionGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8034,8 +8034,8 @@ export const getAccountPermissions: API.OperationMethod<
   GetAccountPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetAccountPermissionsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<AccountPermission>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetAccountPermissionsRequest>,
+  output: __S(4384, __c137, 0) as any as S.Schema<AccountPermission>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8049,8 +8049,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetAccountsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Account>,
+  input: __S(4512, __c141, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8064,8 +8064,8 @@ export const getAccountUserProfiles: API.OperationMethod<
   GetAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetAccountUserProfilesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountUserProfile>,
+  input: __S(4608, __c144, 0) as any as S.Schema<GetAccountUserProfilesRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<AccountUserProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8075,8 +8075,8 @@ export type GetAdsError = NotFound | Forbidden | InsufficientScopes | GcpOpError
 /** Gets one ad by ID. */
 export const getAds: API.OperationMethod<GetAdsRequest, Ad, GetAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(58, __c7, 2) as any as S.Schema<GetAdsRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<Ad>,
+    input: __S(4672, __c146, 0) as any as S.Schema<GetAdsRequest>,
+    output: __S(5486, __c171, 14) as any as S.Schema<Ad>,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8090,8 +8090,8 @@ export const getAdvertiserGroups: API.OperationMethod<
   GetAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetAdvertiserGroupsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<AdvertiserGroup>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetAdvertiserGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<AdvertiserGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8105,8 +8105,8 @@ export const getAdvertiserLandingPages: API.OperationMethod<
   GetAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetAdvertiserLandingPagesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<LandingPage>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetAdvertiserLandingPagesRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<LandingPage>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8120,8 +8120,8 @@ export const getAdvertisers: API.OperationMethod<
   GetAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetAdvertisersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Advertiser>,
+  input: __S(5664, __c177, 0) as any as S.Schema<GetAdvertisersRequest>,
+  output: __S(5697, __c178, 1) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8135,8 +8135,8 @@ export const getBillingProfiles: API.OperationMethod<
   GetBillingProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetBillingProfilesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<BillingProfile>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetBillingProfilesRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<BillingProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8150,8 +8150,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetCampaignsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Campaign>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetCampaignsRequest>,
+  output: __S(5834, __c182, 10) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8165,8 +8165,8 @@ export const getChangeLogs: API.OperationMethod<
   GetChangeLogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetChangeLogsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ChangeLog>,
+  input: __S(5856, __c183, 0) as any as S.Schema<GetChangeLogsRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<ChangeLog>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8180,8 +8180,8 @@ export const getConnectionTypes: API.OperationMethod<
   GetConnectionTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetConnectionTypesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ConnectionType>,
+  input: __S(5920, __c185, 0) as any as S.Schema<GetConnectionTypesRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ConnectionType>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8195,8 +8195,8 @@ export const getContentCategories: API.OperationMethod<
   GetContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetContentCategoriesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ContentCategory>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetContentCategoriesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<ContentCategory>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8210,8 +8210,8 @@ export const getCountries: API.OperationMethod<
   GetCountriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetCountriesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Country>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetCountriesRequest>,
+  output: __S(4832, __c151, 0) as any as S.Schema<Country>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8225,8 +8225,8 @@ export const getCreativeFields: API.OperationMethod<
   GetCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetCreativeFieldsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<CreativeField>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetCreativeFieldsRequest>,
+  output: __S(6080, __c190, 0) as any as S.Schema<CreativeField>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8240,8 +8240,8 @@ export const getCreativeFieldValues: API.OperationMethod<
   GetCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetCreativeFieldValuesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CreativeFieldValue>,
+  input: __S(6112, __c191, 0) as any as S.Schema<GetCreativeFieldValuesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<CreativeFieldValue>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8255,8 +8255,8 @@ export const getCreativeGroups: API.OperationMethod<
   GetCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetCreativeGroupsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<CreativeGroup>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetCreativeGroupsRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<CreativeGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8270,8 +8270,8 @@ export const getCreatives: API.OperationMethod<
   GetCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetCreativesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<Creative>,
+  input: __S(6240, __c195, 0) as any as S.Schema<GetCreativesRequest>,
+  output: __S(6377, __c199, 9) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8285,8 +8285,8 @@ export const getDirectorySites: API.OperationMethod<
   GetDirectorySitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetDirectorySitesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<DirectorySite>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetDirectorySitesRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<DirectorySite>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8300,8 +8300,8 @@ export const getDynamicFeeds: API.OperationMethod<
   GetDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetDynamicFeedsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DynamicFeed>,
+  input: __S(6464, __c202, 0) as any as S.Schema<GetDynamicFeedsRequest>,
+  output: __S(6508, __c203, 12) as any as S.Schema<DynamicFeed>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8315,8 +8315,8 @@ export const getDynamicProfiles: API.OperationMethod<
   GetDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<GetDynamicProfilesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<DynamicProfile>,
+  input: __S(6528, __c204, 0) as any as S.Schema<GetDynamicProfilesRequest>,
+  output: __S(6577, __c205, 17) as any as S.Schema<DynamicProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8330,8 +8330,8 @@ export const getEventTags: API.OperationMethod<
   GetEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetEventTagsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<EventTag>,
+  input: __S(6592, __c206, 0) as any as S.Schema<GetEventTagsRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<EventTag>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8341,8 +8341,8 @@ export type GetFilesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Retrieves a report file by its report ID and file ID. This method supports media download. */
 export const getFiles: API.OperationMethod<GetFilesRequest, File, GetFilesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(211, __c26, 3) as any as S.Schema<GetFilesRequest>,
-    output: __S(214, __c26, 6) as any as S.Schema<File>,
+    input: __S(6656, __c208, 0) as any as S.Schema<GetFilesRequest>,
+    output: __S(6721, __c210, 1) as any as S.Schema<File>,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8356,8 +8356,8 @@ export const getFloodlightActivities: API.OperationMethod<
   GetFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetFloodlightActivitiesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<FloodlightActivity>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetFloodlightActivitiesRequest>,
+  output: __S(6788, __c212, 4) as any as S.Schema<FloodlightActivity>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8375,8 +8375,8 @@ export const getFloodlightActivityGroups: API.OperationMethod<
   GetFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetFloodlightActivityGroupsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<FloodlightActivityGroup>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetFloodlightActivityGroupsRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<FloodlightActivityGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8394,8 +8394,8 @@ export const getFloodlightConfigurations: API.OperationMethod<
   GetFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetFloodlightConfigurationsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<FloodlightConfiguration>,
+  input: __S(6880, __c215, 0) as any as S.Schema<GetFloodlightConfigurationsRequest>,
+  output: __S(6920, __c216, 8) as any as S.Schema<FloodlightConfiguration>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8409,8 +8409,8 @@ export const getMobileApps: API.OperationMethod<
   GetMobileAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetMobileAppsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<MobileApp>,
+  input: __S(6944, __c217, 0) as any as S.Schema<GetMobileAppsRequest>,
+  output: __S(5600, __c175, 0) as any as S.Schema<MobileApp>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8424,8 +8424,8 @@ export const getMobileCarriers: API.OperationMethod<
   GetMobileCarriersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetMobileCarriersRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<MobileCarrier>,
+  input: __S(6976, __c218, 0) as any as S.Schema<GetMobileCarriersRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<MobileCarrier>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8439,8 +8439,8 @@ export const getOperatingSystems: API.OperationMethod<
   GetOperatingSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetOperatingSystemsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<OperatingSystem>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetOperatingSystemsRequest>,
+  output: __S(4960, __c155, 0) as any as S.Schema<OperatingSystem>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8458,8 +8458,8 @@ export const getOperatingSystemVersions: API.OperationMethod<
   GetOperatingSystemVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetOperatingSystemVersionsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<OperatingSystemVersion>,
+  input: __S(7136, __c223, 0) as any as S.Schema<GetOperatingSystemVersionsRequest>,
+  output: __S(4992, __c156, 0) as any as S.Schema<OperatingSystemVersion>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8473,8 +8473,8 @@ export const getPlacementGroups: API.OperationMethod<
   GetPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetPlacementGroupsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<PlacementGroup>,
+  input: __S(7168, __c224, 0) as any as S.Schema<GetPlacementGroupsRequest>,
+  output: __S(7232, __c226, 0) as any as S.Schema<PlacementGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8488,8 +8488,8 @@ export const getPlacements: API.OperationMethod<
   GetPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetPlacementsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Placement>,
+  input: __S(7264, __c227, 0) as any as S.Schema<GetPlacementsRequest>,
+  output: __S(7336, __c229, 8) as any as S.Schema<Placement>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8503,8 +8503,8 @@ export const getPlacementStrategies: API.OperationMethod<
   GetPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<GetPlacementStrategiesRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<PlacementStrategy>,
+  input: __S(7360, __c230, 0) as any as S.Schema<GetPlacementStrategiesRequest>,
+  output: __S(7392, __c231, 0) as any as S.Schema<PlacementStrategy>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8518,8 +8518,8 @@ export const getPlatformTypes: API.OperationMethod<
   GetPlatformTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetPlatformTypesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PlatformType>,
+  input: __S(7424, __c232, 0) as any as S.Schema<GetPlatformTypesRequest>,
+  output: __S(4000, __c125, 0) as any as S.Schema<PlatformType>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8533,8 +8533,8 @@ export const getPostalCodes: API.OperationMethod<
   GetPostalCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<GetPostalCodesRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<PostalCode>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetPostalCodesRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<PostalCode>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8548,8 +8548,8 @@ export const getRemarketingLists: API.OperationMethod<
   GetRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<GetRemarketingListsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<RemarketingList>,
+  input: __S(7488, __c234, 0) as any as S.Schema<GetRemarketingListsRequest>,
+  output: __S(7525, __c235, 5) as any as S.Schema<RemarketingList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8563,8 +8563,8 @@ export const getRemarketingListShares: API.OperationMethod<
   GetRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetRemarketingListSharesRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<RemarketingListShare>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetRemarketingListSharesRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<RemarketingListShare>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8578,8 +8578,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<GetReportsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<Report>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetReportsRequest>,
+  output: __S(7695, __c240, 15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8593,8 +8593,8 @@ export const getReportsFiles: API.OperationMethod<
   GetReportsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetReportsFilesRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<File>,
+  input: __S(7712, __c241, 0) as any as S.Schema<GetReportsFilesRequest>,
+  output: __S(6721, __c210, 1) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8604,8 +8604,8 @@ export type GetSitesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Gets one site by ID. */
 export const getSites: API.OperationMethod<GetSitesRequest, Site, GetSitesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(286, __c35, 6) as any as S.Schema<GetSitesRequest>,
-    output: __S(293, __c36, 5) as any as S.Schema<Site>,
+    input: __S(7776, __c243, 0) as any as S.Schema<GetSitesRequest>,
+    output: __S(7814, __c244, 6) as any as S.Schema<Site>,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8615,8 +8615,8 @@ export type GetSizesError = NotFound | Forbidden | InsufficientScopes | GcpOpErr
 /** Gets one size by ID. */
 export const getSizes: API.OperationMethod<GetSizesRequest, Size, GetSizesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(294, __c36, 6) as any as S.Schema<GetSizesRequest>,
-    output: __S(61, __c7, 5) as any as S.Schema<Size>,
+    input: __S(7840, __c245, 0) as any as S.Schema<GetSizesRequest>,
+    output: __S(4864, __c152, 0) as any as S.Schema<Size>,
     errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8630,8 +8630,8 @@ export const getStudioCreatives: API.OperationMethod<
   GetStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetStudioCreativesRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<StudioCreative>,
+  input: __S(7872, __c246, 0) as any as S.Schema<GetStudioCreativesRequest>,
+  output: __S(7905, __c247, 1) as any as S.Schema<StudioCreative>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8645,8 +8645,8 @@ export const getSubaccounts: API.OperationMethod<
   GetSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetSubaccountsRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<Subaccount>,
+  input: __S(7936, __c248, 0) as any as S.Schema<GetSubaccountsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<Subaccount>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8664,8 +8664,8 @@ export const getTargetableRemarketingLists: API.OperationMethod<
   GetTargetableRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetTargetableRemarketingListsRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<TargetableRemarketingList>,
+  input: __S(8000, __c250, 0) as any as S.Schema<GetTargetableRemarketingListsRequest>,
+  output: __S(8032, __c251, 0) as any as S.Schema<TargetableRemarketingList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8679,8 +8679,8 @@ export const getTargetingTemplates: API.OperationMethod<
   GetTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetTargetingTemplatesRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<TargetingTemplate>,
+  input: __S(8064, __c252, 0) as any as S.Schema<GetTargetingTemplatesRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<TargetingTemplate>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8694,8 +8694,8 @@ export const getTvCampaignDetails: API.OperationMethod<
   GetTvCampaignDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetTvCampaignDetailsRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<TvCampaignDetail>,
+  input: __S(8128, __c254, 0) as any as S.Schema<GetTvCampaignDetailsRequest>,
+  output: __S(8131, __c254, 3) as any as S.Schema<TvCampaignDetail>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8709,8 +8709,8 @@ export const getUserProfiles: API.OperationMethod<
   GetUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetUserProfilesRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<UserProfile>,
+  input: __S(8160, __c255, 0) as any as S.Schema<GetUserProfilesRequest>,
+  output: __S(8192, __c256, 0) as any as S.Schema<UserProfile>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8728,8 +8728,8 @@ export const getUserRolePermissionGroups: API.OperationMethod<
   GetUserRolePermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetUserRolePermissionGroupsRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<UserRolePermissionGroup>,
+  input: __S(8224, __c257, 0) as any as S.Schema<GetUserRolePermissionGroupsRequest>,
+  output: __S(8256, __c258, 0) as any as S.Schema<UserRolePermissionGroup>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8743,8 +8743,8 @@ export const getUserRolePermissions: API.OperationMethod<
   GetUserRolePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetUserRolePermissionsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<UserRolePermission>,
+  input: __S(8288, __c259, 0) as any as S.Schema<GetUserRolePermissionsRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<UserRolePermission>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8758,8 +8758,8 @@ export const getUserRoles: API.OperationMethod<
   GetUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetUserRolesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<UserRole>,
+  input: __S(8416, __c263, 0) as any as S.Schema<GetUserRolesRequest>,
+  output: __S(8480, __c265, 0) as any as S.Schema<UserRole>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8773,8 +8773,8 @@ export const getVideoFormats: API.OperationMethod<
   GetVideoFormatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetVideoFormatsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<VideoFormat>,
+  input: __S(8512, __c266, 0) as any as S.Schema<GetVideoFormatsRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<VideoFormat>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8794,8 +8794,8 @@ export const insertAccountUserProfiles: API.OperationMethod<
   InsertAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<InsertAccountUserProfilesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountUserProfile>,
+  input: __S(8576, __c268, 0) as any as S.Schema<InsertAccountUserProfilesRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<AccountUserProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8811,8 +8811,8 @@ export type InsertAdsError =
 /** Inserts a new ad. */
 export const insertAds: API.OperationMethod<InsertAdsRequest, Ad, InsertAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(320, __c40, 0) as any as S.Schema<InsertAdsRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<Ad>,
+    input: __S(8608, __c269, 0) as any as S.Schema<InsertAdsRequest>,
+    output: __S(5486, __c171, 14) as any as S.Schema<Ad>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8832,8 +8832,8 @@ export const insertAdvertiserGroups: API.OperationMethod<
   InsertAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<InsertAdvertiserGroupsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<AdvertiserGroup>,
+  input: __S(8640, __c270, 0) as any as S.Schema<InsertAdvertiserGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<AdvertiserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8853,8 +8853,8 @@ export const insertAdvertiserLandingPages: API.OperationMethod<
   InsertAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<InsertAdvertiserLandingPagesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<LandingPage>,
+  input: __S(8672, __c271, 0) as any as S.Schema<InsertAdvertiserLandingPagesRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<LandingPage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8874,8 +8874,8 @@ export const insertAdvertisers: API.OperationMethod<
   InsertAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<InsertAdvertisersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Advertiser>,
+  input: __S(8704, __c272, 0) as any as S.Schema<InsertAdvertisersRequest>,
+  output: __S(5697, __c178, 1) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8895,8 +8895,8 @@ export const insertBillingAssignments: API.OperationMethod<
   InsertBillingAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<InsertBillingAssignmentsRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<BillingAssignment>,
+  input: __S(8736, __c273, 0) as any as S.Schema<InsertBillingAssignmentsRequest>,
+  output: __S(8768, __c274, 0) as any as S.Schema<BillingAssignment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8916,8 +8916,8 @@ export const insertCampaignCreativeAssociations: API.OperationMethod<
   InsertCampaignCreativeAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<CampaignCreativeAssociation>,
+  input: __S(8800, __c275, 0) as any as S.Schema<InsertCampaignCreativeAssociationsRequest>,
+  output: __S(8832, __c276, 0) as any as S.Schema<CampaignCreativeAssociation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8937,8 +8937,8 @@ export const insertCampaigns: API.OperationMethod<
   InsertCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<InsertCampaignsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Campaign>,
+  input: __S(8864, __c277, 0) as any as S.Schema<InsertCampaignsRequest>,
+  output: __S(5834, __c182, 10) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8958,8 +8958,8 @@ export const insertContentCategories: API.OperationMethod<
   InsertContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<InsertContentCategoriesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ContentCategory>,
+  input: __S(8928, __c279, 0) as any as S.Schema<InsertContentCategoriesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<ContentCategory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8979,8 +8979,8 @@ export const insertCreativeAssets: API.OperationMethod<
   InsertCreativeAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<InsertCreativeAssetsRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<CreativeAssetMetadata>,
+  input: __S(8961, __c280, 1) as any as S.Schema<InsertCreativeAssetsRequest>,
+  output: __S(8960, __c280, 0) as any as S.Schema<CreativeAssetMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9000,8 +9000,8 @@ export const insertCreativeFields: API.OperationMethod<
   InsertCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<InsertCreativeFieldsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<CreativeField>,
+  input: __S(8992, __c281, 0) as any as S.Schema<InsertCreativeFieldsRequest>,
+  output: __S(6080, __c190, 0) as any as S.Schema<CreativeField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9021,8 +9021,8 @@ export const insertCreativeFieldValues: API.OperationMethod<
   InsertCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<InsertCreativeFieldValuesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CreativeFieldValue>,
+  input: __S(9024, __c282, 0) as any as S.Schema<InsertCreativeFieldValuesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<CreativeFieldValue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9042,8 +9042,8 @@ export const insertCreativeGroups: API.OperationMethod<
   InsertCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<InsertCreativeGroupsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<CreativeGroup>,
+  input: __S(9056, __c283, 0) as any as S.Schema<InsertCreativeGroupsRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<CreativeGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9063,8 +9063,8 @@ export const insertCreatives: API.OperationMethod<
   InsertCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<InsertCreativesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<Creative>,
+  input: __S(9088, __c284, 0) as any as S.Schema<InsertCreativesRequest>,
+  output: __S(6377, __c199, 9) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9084,8 +9084,8 @@ export const insertDirectorySites: API.OperationMethod<
   InsertDirectorySitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<InsertDirectorySitesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<DirectorySite>,
+  input: __S(9120, __c285, 0) as any as S.Schema<InsertDirectorySitesRequest>,
+  output: __S(6434, __c201, 2) as any as S.Schema<DirectorySite>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9105,8 +9105,8 @@ export const insertDynamicFeeds: API.OperationMethod<
   InsertDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<InsertDynamicFeedsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DynamicFeed>,
+  input: __S(9153, __c286, 1) as any as S.Schema<InsertDynamicFeedsRequest>,
+  output: __S(6508, __c203, 12) as any as S.Schema<DynamicFeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9126,8 +9126,8 @@ export const insertDynamicProfiles: API.OperationMethod<
   InsertDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<InsertDynamicProfilesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<DynamicProfile>,
+  input: __S(9184, __c287, 0) as any as S.Schema<InsertDynamicProfilesRequest>,
+  output: __S(6577, __c205, 17) as any as S.Schema<DynamicProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9147,8 +9147,8 @@ export const insertDynamicTargetingKeys: API.OperationMethod<
   InsertDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<InsertDynamicTargetingKeysRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<DynamicTargetingKey>,
+  input: __S(9216, __c288, 0) as any as S.Schema<InsertDynamicTargetingKeysRequest>,
+  output: __S(9248, __c289, 0) as any as S.Schema<DynamicTargetingKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9168,8 +9168,8 @@ export const insertEventTags: API.OperationMethod<
   InsertEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<InsertEventTagsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<EventTag>,
+  input: __S(9312, __c291, 0) as any as S.Schema<InsertEventTagsRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<EventTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9189,8 +9189,8 @@ export const insertFloodlightActivities: API.OperationMethod<
   InsertFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<InsertFloodlightActivitiesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<FloodlightActivity>,
+  input: __S(9344, __c292, 0) as any as S.Schema<InsertFloodlightActivitiesRequest>,
+  output: __S(6788, __c212, 4) as any as S.Schema<FloodlightActivity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9210,8 +9210,8 @@ export const insertFloodlightActivityGroups: API.OperationMethod<
   InsertFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<InsertFloodlightActivityGroupsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<FloodlightActivityGroup>,
+  input: __S(9376, __c293, 0) as any as S.Schema<InsertFloodlightActivityGroupsRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<FloodlightActivityGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9231,8 +9231,8 @@ export const insertPlacementGroups: API.OperationMethod<
   InsertPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<InsertPlacementGroupsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<PlacementGroup>,
+  input: __S(9408, __c294, 0) as any as S.Schema<InsertPlacementGroupsRequest>,
+  output: __S(7232, __c226, 0) as any as S.Schema<PlacementGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9252,8 +9252,8 @@ export const insertPlacements: API.OperationMethod<
   InsertPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<InsertPlacementsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Placement>,
+  input: __S(9440, __c295, 0) as any as S.Schema<InsertPlacementsRequest>,
+  output: __S(7336, __c229, 8) as any as S.Schema<Placement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9273,8 +9273,8 @@ export const insertPlacementStrategies: API.OperationMethod<
   InsertPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<InsertPlacementStrategiesRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<PlacementStrategy>,
+  input: __S(9472, __c296, 0) as any as S.Schema<InsertPlacementStrategiesRequest>,
+  output: __S(7392, __c231, 0) as any as S.Schema<PlacementStrategy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9294,8 +9294,8 @@ export const insertRemarketingLists: API.OperationMethod<
   InsertRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<InsertRemarketingListsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<RemarketingList>,
+  input: __S(9504, __c297, 0) as any as S.Schema<InsertRemarketingListsRequest>,
+  output: __S(7525, __c235, 5) as any as S.Schema<RemarketingList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9315,8 +9315,8 @@ export const insertReports: API.OperationMethod<
   InsertReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<InsertReportsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<Report>,
+  input: __S(9536, __c298, 0) as any as S.Schema<InsertReportsRequest>,
+  output: __S(7695, __c240, 15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9336,8 +9336,8 @@ export const insertSites: API.OperationMethod<
   InsertSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<InsertSitesRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<Site>,
+  input: __S(9568, __c299, 0) as any as S.Schema<InsertSitesRequest>,
+  output: __S(7814, __c244, 6) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9357,8 +9357,8 @@ export const insertSizes: API.OperationMethod<
   InsertSizesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<InsertSizesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<Size>,
+  input: __S(9600, __c300, 0) as any as S.Schema<InsertSizesRequest>,
+  output: __S(4864, __c152, 0) as any as S.Schema<Size>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9378,8 +9378,8 @@ export const insertStudioCreativeAssets: API.OperationMethod<
   InsertStudioCreativeAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<InsertStudioCreativeAssetsRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<StudioCreativeAssetsResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<InsertStudioCreativeAssetsRequest>,
+  output: __S(69, __c2, 5) as any as S.Schema<StudioCreativeAssetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9399,8 +9399,8 @@ export const insertStudioCreatives: API.OperationMethod<
   InsertStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<InsertStudioCreativesRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<StudioCreative>,
+  input: __S(96, __c3, 0) as any as S.Schema<InsertStudioCreativesRequest>,
+  output: __S(7905, __c247, 1) as any as S.Schema<StudioCreative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9420,8 +9420,8 @@ export const insertSubaccounts: API.OperationMethod<
   InsertSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<InsertSubaccountsRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<Subaccount>,
+  input: __S(128, __c4, 0) as any as S.Schema<InsertSubaccountsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<Subaccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9441,8 +9441,8 @@ export const insertTargetingTemplates: API.OperationMethod<
   InsertTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<InsertTargetingTemplatesRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<TargetingTemplate>,
+  input: __S(160, __c5, 0) as any as S.Schema<InsertTargetingTemplatesRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<TargetingTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9462,8 +9462,8 @@ export const insertUserRoles: API.OperationMethod<
   InsertUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<InsertUserRolesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<UserRole>,
+  input: __S(192, __c6, 0) as any as S.Schema<InsertUserRolesRequest>,
+  output: __S(8480, __c265, 0) as any as S.Schema<UserRole>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9481,8 +9481,8 @@ export const listAccountPermissionGroups: API.OperationMethod<
   ListAccountPermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListAccountPermissionGroupsRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<AccountPermissionGroupsListResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListAccountPermissionGroupsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<AccountPermissionGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9496,8 +9496,8 @@ export const listAccountPermissions: API.OperationMethod<
   ListAccountPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<ListAccountPermissionsRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<AccountPermissionsListResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListAccountPermissionsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<AccountPermissionsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9512,8 +9512,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<ListAccountsRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<AccountsListResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<AccountsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9529,8 +9529,8 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountUserProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListAccountUserProfilesRequest>,
-  output: __S(372, __c46, 4) as any as S.Schema<AccountUserProfilesListResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListAccountUserProfilesRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<AccountUserProfilesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9546,8 +9546,8 @@ export const listAds: API.PaginatedOperationMethod<
   GcpOpContext,
   AdsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<ListAdsRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<AdsListResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListAdsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<AdsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9563,8 +9563,8 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListAdvertiserGroupsRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<AdvertiserGroupsListResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAdvertiserGroupsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<AdvertiserGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9580,8 +9580,8 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserInvoicesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<ListAdvertiserInvoicesRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<AdvertiserInvoicesListResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListAdvertiserInvoicesRequest>,
+  output: __S(453, __c14, 5) as any as S.Schema<AdvertiserInvoicesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9601,8 +9601,8 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertiserLandingPagesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListAdvertiserLandingPagesRequest>,
-  output: __S(387, __c48, 3) as any as S.Schema<AdvertiserLandingPagesListResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListAdvertiserLandingPagesRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<AdvertiserLandingPagesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9618,8 +9618,8 @@ export const listAdvertisers: API.PaginatedOperationMethod<
   GcpOpContext,
   AdvertisersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ListAdvertisersRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<AdvertisersListResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListAdvertisersRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<AdvertisersListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9634,8 +9634,8 @@ export const listBillingAssignments: API.OperationMethod<
   ListBillingAssignmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListBillingAssignmentsRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<BillingAssignmentsListResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListBillingAssignmentsRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<BillingAssignmentsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9650,8 +9650,8 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   BillingProfilesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListBillingProfilesRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<BillingProfilesListResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListBillingProfilesRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<BillingProfilesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9666,8 +9666,8 @@ export const listBillingRates: API.OperationMethod<
   ListBillingRatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ListBillingRatesRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<BillingRatesListResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListBillingRatesRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<BillingRatesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9681,8 +9681,8 @@ export const listBrowsers: API.OperationMethod<
   ListBrowsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ListBrowsersRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<BrowsersListResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListBrowsersRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<BrowsersListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9701,8 +9701,8 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
   GcpOpContext,
   CampaignCreativeAssociationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ListCampaignCreativeAssociationsRequest>,
-  output: __S(407, __c50, 7) as any as S.Schema<CampaignCreativeAssociationsListResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListCampaignCreativeAssociationsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<CampaignCreativeAssociationsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9718,8 +9718,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   GcpOpContext,
   CampaignsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<ListCampaignsRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<CampaignsListResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<CampaignsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9735,8 +9735,8 @@ export const listChangeLogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ChangeLogsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ListChangeLogsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<ChangeLogsListResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListChangeLogsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ChangeLogsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9751,8 +9751,8 @@ export const listCities: API.OperationMethod<
   ListCitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<ListCitiesRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<CitiesListResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListCitiesRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CitiesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9766,8 +9766,8 @@ export const listConnectionTypes: API.OperationMethod<
   ListConnectionTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListConnectionTypesRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<ConnectionTypesListResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListConnectionTypesRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ConnectionTypesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9782,8 +9782,8 @@ export const listContentCategories: API.PaginatedOperationMethod<
   GcpOpContext,
   ContentCategoriesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<ListContentCategoriesRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<ContentCategoriesListResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListContentCategoriesRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ContentCategoriesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9798,8 +9798,8 @@ export const listCountries: API.OperationMethod<
   ListCountriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<ListCountriesRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<CountriesListResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListCountriesRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<CountriesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9814,8 +9814,8 @@ export const listCreativeFields: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeFieldsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<ListCreativeFieldsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<CreativeFieldsListResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListCreativeFieldsRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<CreativeFieldsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9831,8 +9831,8 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeFieldValuesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<ListCreativeFieldValuesRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<CreativeFieldValuesListResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListCreativeFieldValuesRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<CreativeFieldValuesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9848,8 +9848,8 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativeGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<ListCreativeGroupsRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<CreativeGroupsListResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListCreativeGroupsRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<CreativeGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9865,8 +9865,8 @@ export const listCreatives: API.PaginatedOperationMethod<
   GcpOpContext,
   CreativesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<ListCreativesRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<CreativesListResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListCreativesRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<CreativesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9882,8 +9882,8 @@ export const listDirectorySites: API.PaginatedOperationMethod<
   GcpOpContext,
   DirectorySitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ListDirectorySitesRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<DirectorySitesListResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListDirectorySitesRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<DirectorySitesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9898,8 +9898,8 @@ export const listDynamicTargetingKeys: API.OperationMethod<
   ListDynamicTargetingKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ListDynamicTargetingKeysRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<DynamicTargetingKeysListResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListDynamicTargetingKeysRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<DynamicTargetingKeysListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9913,8 +9913,8 @@ export const listEventTags: API.OperationMethod<
   ListEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<ListEventTagsRequest>,
-  output: __S(443, __c55, 3) as any as S.Schema<EventTagsListResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListEventTagsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<EventTagsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9929,8 +9929,8 @@ export const listFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   File
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<ListFilesRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<FileList>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<FileList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9946,8 +9946,8 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
   GcpOpContext,
   FloodlightActivitiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<ListFloodlightActivitiesRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<FloodlightActivitiesListResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListFloodlightActivitiesRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<FloodlightActivitiesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9967,8 +9967,8 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   FloodlightActivityGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<ListFloodlightActivityGroupsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<FloodlightActivityGroupsListResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListFloodlightActivityGroupsRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<FloodlightActivityGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9987,8 +9987,8 @@ export const listFloodlightConfigurations: API.OperationMethod<
   ListFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<ListFloodlightConfigurationsRequest>,
-  output: __S(455, __c56, 7) as any as S.Schema<FloodlightConfigurationsListResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListFloodlightConfigurationsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<FloodlightConfigurationsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10002,8 +10002,8 @@ export const listLanguages: API.OperationMethod<
   ListLanguagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<ListLanguagesRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<LanguagesListResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListLanguagesRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<LanguagesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10017,8 +10017,8 @@ export const listMetros: API.OperationMethod<
   ListMetrosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<ListMetrosRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<MetrosListResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListMetrosRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<MetrosListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10033,8 +10033,8 @@ export const listMobileApps: API.PaginatedOperationMethod<
   GcpOpContext,
   MobileAppsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<ListMobileAppsRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<MobileAppsListResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListMobileAppsRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<MobileAppsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10049,8 +10049,8 @@ export const listMobileCarriers: API.OperationMethod<
   ListMobileCarriersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<ListMobileCarriersRequest>,
-  output: __S(464, __c58, 0) as any as S.Schema<MobileCarriersListResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListMobileCarriersRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<MobileCarriersListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10064,8 +10064,8 @@ export const listOperatingSystems: API.OperationMethod<
   ListOperatingSystemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<ListOperatingSystemsRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<OperatingSystemsListResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListOperatingSystemsRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<OperatingSystemsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10083,8 +10083,8 @@ export const listOperatingSystemVersions: API.OperationMethod<
   ListOperatingSystemVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListOperatingSystemVersionsRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<OperatingSystemVersionsListResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListOperatingSystemVersionsRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<OperatingSystemVersionsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10099,8 +10099,8 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementGroupsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<ListPlacementGroupsRequest>,
-  output: __S(471, __c58, 7) as any as S.Schema<PlacementGroupsListResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListPlacementGroupsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<PlacementGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10116,8 +10116,8 @@ export const listPlacements: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<ListPlacementsRequest>,
-  output: __S(474, __c59, 2) as any as S.Schema<PlacementsListResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListPlacementsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<PlacementsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10133,8 +10133,8 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
   GcpOpContext,
   PlacementStrategiesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<ListPlacementStrategiesRequest>,
-  output: __S(477, __c59, 5) as any as S.Schema<PlacementStrategiesListResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListPlacementStrategiesRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<PlacementStrategiesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10149,8 +10149,8 @@ export const listPlatformTypes: API.OperationMethod<
   ListPlatformTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<ListPlatformTypesRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<PlatformTypesListResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListPlatformTypesRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<PlatformTypesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10164,8 +10164,8 @@ export const listPostalCodes: API.OperationMethod<
   ListPostalCodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListPostalCodesRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<PostalCodesListResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListPostalCodesRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<PostalCodesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10179,8 +10179,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<ListRegionsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<RegionsListResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<RegionsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10195,8 +10195,8 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
   GcpOpContext,
   RemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListRemarketingListsRequest>,
-  output: __S(486, __c60, 6) as any as S.Schema<RemarketingListsListResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListRemarketingListsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<RemarketingListsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10212,8 +10212,8 @@ export const listReports: API.PaginatedOperationMethod<
   GcpOpContext,
   Report
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<ListReportsRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<ReportList>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListReportsRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ReportList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10229,8 +10229,8 @@ export const listReportsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   File
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<ListReportsFilesRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<FileList>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListReportsFilesRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<FileList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10246,8 +10246,8 @@ export const listSites: API.PaginatedOperationMethod<
   GcpOpContext,
   SitesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<ListSitesRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<SitesListResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListSitesRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<SitesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10262,8 +10262,8 @@ export const listSizes: API.OperationMethod<
   ListSizesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ListSizesRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<SizesListResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListSizesRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<SizesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10278,8 +10278,8 @@ export const listSubaccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   SubaccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ListSubaccountsRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<SubaccountsListResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListSubaccountsRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<SubaccountsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10299,8 +10299,8 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
   GcpOpContext,
   TargetableRemarketingListsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<ListTargetableRemarketingListsRequest>,
-  output: __S(501, __c62, 5) as any as S.Schema<TargetableRemarketingListsListResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListTargetableRemarketingListsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<TargetableRemarketingListsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10316,8 +10316,8 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   TargetingTemplatesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<ListTargetingTemplatesRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<TargetingTemplatesListResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListTargetingTemplatesRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<TargetingTemplatesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10332,8 +10332,8 @@ export const listTvCampaignSummaries: API.OperationMethod<
   ListTvCampaignSummariesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<ListTvCampaignSummariesRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<TvCampaignSummariesListResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListTvCampaignSummariesRequest>,
+  output: __S(2051, __c64, 3) as any as S.Schema<TvCampaignSummariesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10347,8 +10347,8 @@ export const listUserProfiles: API.OperationMethod<
   ListUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<ListUserProfilesRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<UserProfileList>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListUserProfilesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<UserProfileList>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10366,8 +10366,8 @@ export const listUserRolePermissionGroups: API.OperationMethod<
   ListUserRolePermissionGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListUserRolePermissionGroupsRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<UserRolePermissionGroupsListResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListUserRolePermissionGroupsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<UserRolePermissionGroupsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10381,8 +10381,8 @@ export const listUserRolePermissions: API.OperationMethod<
   ListUserRolePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<ListUserRolePermissionsRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<UserRolePermissionsListResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListUserRolePermissionsRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<UserRolePermissionsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10397,8 +10397,8 @@ export const listUserRoles: API.PaginatedOperationMethod<
   GcpOpContext,
   UserRolesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<ListUserRolesRequest>,
-  output: __S(519, __c64, 7) as any as S.Schema<UserRolesListResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListUserRolesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<UserRolesListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10413,8 +10413,8 @@ export const listVideoFormats: API.OperationMethod<
   ListVideoFormatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<ListVideoFormatsRequest>,
-  output: __S(522, __c65, 2) as any as S.Schema<VideoFormatsListResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListVideoFormatsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<VideoFormatsListResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10434,8 +10434,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Account>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PatchAccountsRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10455,8 +10455,8 @@ export const patchAccountUserProfiles: API.OperationMethod<
   PatchAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<PatchAccountUserProfilesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountUserProfile>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PatchAccountUserProfilesRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<AccountUserProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10472,8 +10472,8 @@ export type PatchAdsError =
 /** Updates an existing ad. This method supports patch semantics. */
 export const patchAds: API.OperationMethod<PatchAdsRequest, Ad, PatchAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(525, __c65, 5) as any as S.Schema<PatchAdsRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<Ad>,
+    input: __S(2336, __c73, 0) as any as S.Schema<PatchAdsRequest>,
+    output: __S(5486, __c171, 14) as any as S.Schema<Ad>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -10493,8 +10493,8 @@ export const patchAdvertiserGroups: API.OperationMethod<
   PatchAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<PatchAdvertiserGroupsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<AdvertiserGroup>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PatchAdvertiserGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<AdvertiserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10514,8 +10514,8 @@ export const patchAdvertiserLandingPages: API.OperationMethod<
   PatchAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<PatchAdvertiserLandingPagesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<LandingPage>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchAdvertiserLandingPagesRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<LandingPage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10535,8 +10535,8 @@ export const patchAdvertisers: API.OperationMethod<
   PatchAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<PatchAdvertisersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Advertiser>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchAdvertisersRequest>,
+  output: __S(5697, __c178, 1) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10556,8 +10556,8 @@ export const patchCampaigns: API.OperationMethod<
   PatchCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<PatchCampaignsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Campaign>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchCampaignsRequest>,
+  output: __S(5834, __c182, 10) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10577,8 +10577,8 @@ export const patchContentCategories: API.OperationMethod<
   PatchContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<PatchContentCategoriesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ContentCategory>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PatchContentCategoriesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<ContentCategory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10598,8 +10598,8 @@ export const patchCreativeFields: API.OperationMethod<
   PatchCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<PatchCreativeFieldsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<CreativeField>,
+  input: __S(2560, __c80, 0) as any as S.Schema<PatchCreativeFieldsRequest>,
+  output: __S(6080, __c190, 0) as any as S.Schema<CreativeField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10619,8 +10619,8 @@ export const patchCreativeFieldValues: API.OperationMethod<
   PatchCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<PatchCreativeFieldValuesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CreativeFieldValue>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchCreativeFieldValuesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<CreativeFieldValue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10640,8 +10640,8 @@ export const patchCreativeGroups: API.OperationMethod<
   PatchCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<PatchCreativeGroupsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<CreativeGroup>,
+  input: __S(2624, __c82, 0) as any as S.Schema<PatchCreativeGroupsRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<CreativeGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10661,8 +10661,8 @@ export const patchCreatives: API.OperationMethod<
   PatchCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(534, __c66, 6) as any as S.Schema<PatchCreativesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<Creative>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PatchCreativesRequest>,
+  output: __S(6377, __c199, 9) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10682,8 +10682,8 @@ export const patchEventTags: API.OperationMethod<
   PatchEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<PatchEventTagsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<EventTag>,
+  input: __S(2688, __c84, 0) as any as S.Schema<PatchEventTagsRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<EventTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10703,8 +10703,8 @@ export const patchFloodlightActivities: API.OperationMethod<
   PatchFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<PatchFloodlightActivitiesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<FloodlightActivity>,
+  input: __S(2720, __c85, 0) as any as S.Schema<PatchFloodlightActivitiesRequest>,
+  output: __S(6788, __c212, 4) as any as S.Schema<FloodlightActivity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10724,8 +10724,8 @@ export const patchFloodlightActivityGroups: API.OperationMethod<
   PatchFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<PatchFloodlightActivityGroupsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<FloodlightActivityGroup>,
+  input: __S(2752, __c86, 0) as any as S.Schema<PatchFloodlightActivityGroupsRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<FloodlightActivityGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10745,8 +10745,8 @@ export const patchFloodlightConfigurations: API.OperationMethod<
   PatchFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<PatchFloodlightConfigurationsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<FloodlightConfiguration>,
+  input: __S(2784, __c87, 0) as any as S.Schema<PatchFloodlightConfigurationsRequest>,
+  output: __S(6920, __c216, 8) as any as S.Schema<FloodlightConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10766,8 +10766,8 @@ export const patchPlacementGroups: API.OperationMethod<
   PatchPlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<PatchPlacementGroupsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<PlacementGroup>,
+  input: __S(2816, __c88, 0) as any as S.Schema<PatchPlacementGroupsRequest>,
+  output: __S(7232, __c226, 0) as any as S.Schema<PlacementGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10787,8 +10787,8 @@ export const patchPlacements: API.OperationMethod<
   PatchPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<PatchPlacementsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Placement>,
+  input: __S(2848, __c89, 0) as any as S.Schema<PatchPlacementsRequest>,
+  output: __S(7336, __c229, 8) as any as S.Schema<Placement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10808,8 +10808,8 @@ export const patchPlacementStrategies: API.OperationMethod<
   PatchPlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<PatchPlacementStrategiesRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<PlacementStrategy>,
+  input: __S(2912, __c91, 0) as any as S.Schema<PatchPlacementStrategiesRequest>,
+  output: __S(7392, __c231, 0) as any as S.Schema<PlacementStrategy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10829,8 +10829,8 @@ export const patchRemarketingLists: API.OperationMethod<
   PatchRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<PatchRemarketingListsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<RemarketingList>,
+  input: __S(2944, __c92, 0) as any as S.Schema<PatchRemarketingListsRequest>,
+  output: __S(7525, __c235, 5) as any as S.Schema<RemarketingList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10850,8 +10850,8 @@ export const patchRemarketingListShares: API.OperationMethod<
   PatchRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<PatchRemarketingListSharesRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<RemarketingListShare>,
+  input: __S(2976, __c93, 0) as any as S.Schema<PatchRemarketingListSharesRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<RemarketingListShare>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10871,8 +10871,8 @@ export const patchSites: API.OperationMethod<
   PatchSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<PatchSitesRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<Site>,
+  input: __S(3008, __c94, 0) as any as S.Schema<PatchSitesRequest>,
+  output: __S(7814, __c244, 6) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10892,8 +10892,8 @@ export const patchSubaccounts: API.OperationMethod<
   PatchSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<PatchSubaccountsRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<Subaccount>,
+  input: __S(3040, __c95, 0) as any as S.Schema<PatchSubaccountsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<Subaccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10913,8 +10913,8 @@ export const patchTargetingTemplates: API.OperationMethod<
   PatchTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<PatchTargetingTemplatesRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<TargetingTemplate>,
+  input: __S(3072, __c96, 0) as any as S.Schema<PatchTargetingTemplatesRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<TargetingTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10934,8 +10934,8 @@ export const patchUserRoles: API.OperationMethod<
   PatchUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<PatchUserRolesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<UserRole>,
+  input: __S(3104, __c97, 0) as any as S.Schema<PatchUserRolesRequest>,
+  output: __S(8480, __c265, 0) as any as S.Schema<UserRole>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10955,8 +10955,8 @@ export const publishDynamicProfiles: API.OperationMethod<
   PublishDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<PublishDynamicProfilesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PublishDynamicProfilesResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<PublishDynamicProfilesRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<PublishDynamicProfilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10976,8 +10976,8 @@ export const publishStudioCreatives: API.OperationMethod<
   PublishStudioCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<PublishStudioCreativesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PublishStudioCreativesResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<PublishStudioCreativesRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<PublishStudioCreativesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10998,8 +10998,8 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
   GcpOpContext,
   DimensionValue
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<QueryDimensionValuesRequest>,
-  output: __S(554, __c69, 2) as any as S.Schema<DimensionValueList>,
+  input: __S(3203, __c100, 3) as any as S.Schema<QueryDimensionValuesRequest>,
+  output: __S(3204, __c100, 4) as any as S.Schema<DimensionValueList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11020,8 +11020,8 @@ export const queryReportData: API.OperationMethod<
   QueryReportDataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<QueryReportDataRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<ReportDataResponse>,
+  input: __S(3299, __c103, 3) as any as S.Schema<QueryReportDataRequest>,
+  output: __S(3304, __c103, 8) as any as S.Schema<ReportDataResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11041,8 +11041,8 @@ export const queryReportsCompatibleFields: API.OperationMethod<
   QueryReportsCompatibleFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<QueryReportsCompatibleFieldsRequest>,
-  output: __S(573, __c71, 5) as any as S.Schema<CompatibleFields>,
+  input: __S(3328, __c104, 0) as any as S.Schema<QueryReportsCompatibleFieldsRequest>,
+  output: __S(3337, __c104, 9) as any as S.Schema<CompatibleFields>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11062,8 +11062,8 @@ export const retransformDynamicFeeds: API.OperationMethod<
   RetransformDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<RetransformDynamicFeedsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DynamicFeed>,
+  input: __S(3360, __c105, 0) as any as S.Schema<RetransformDynamicFeedsRequest>,
+  output: __S(6508, __c203, 12) as any as S.Schema<DynamicFeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11083,8 +11083,8 @@ export const runReports: API.OperationMethod<
   RunReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<RunReportsRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<File>,
+  input: __S(3392, __c106, 0) as any as S.Schema<RunReportsRequest>,
+  output: __S(6721, __c210, 1) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11104,8 +11104,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<UpdateAccountsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Account>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UpdateAccountsRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11125,8 +11125,8 @@ export const updateAccountUserProfiles: API.OperationMethod<
   UpdateAccountUserProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<UpdateAccountUserProfilesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<AccountUserProfile>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UpdateAccountUserProfilesRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<AccountUserProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11142,8 +11142,8 @@ export type UpdateAdsError =
 /** Updates an existing ad. */
 export const updateAds: API.OperationMethod<UpdateAdsRequest, Ad, UpdateAdsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(578, __c72, 2) as any as S.Schema<UpdateAdsRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<Ad>,
+    input: __S(3488, __c109, 0) as any as S.Schema<UpdateAdsRequest>,
+    output: __S(5486, __c171, 14) as any as S.Schema<Ad>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -11163,8 +11163,8 @@ export const updateAdvertiserGroups: API.OperationMethod<
   UpdateAdvertiserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<UpdateAdvertiserGroupsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<AdvertiserGroup>,
+  input: __S(3520, __c110, 0) as any as S.Schema<UpdateAdvertiserGroupsRequest>,
+  output: __S(5536, __c173, 0) as any as S.Schema<AdvertiserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11184,8 +11184,8 @@ export const updateAdvertiserLandingPages: API.OperationMethod<
   UpdateAdvertiserLandingPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<LandingPage>,
+  input: __S(3552, __c111, 0) as any as S.Schema<UpdateAdvertiserLandingPagesRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<LandingPage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11205,8 +11205,8 @@ export const updateAdvertisers: API.OperationMethod<
   UpdateAdvertisersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<UpdateAdvertisersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Advertiser>,
+  input: __S(3584, __c112, 0) as any as S.Schema<UpdateAdvertisersRequest>,
+  output: __S(5697, __c178, 1) as any as S.Schema<Advertiser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11226,8 +11226,8 @@ export const updateBillingProfiles: API.OperationMethod<
   UpdateBillingProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<UpdateBillingProfilesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<BillingProfile>,
+  input: __S(3648, __c114, 0) as any as S.Schema<UpdateBillingProfilesRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<BillingProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11247,8 +11247,8 @@ export const updateCampaigns: API.OperationMethod<
   UpdateCampaignsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<UpdateCampaignsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Campaign>,
+  input: __S(3680, __c115, 0) as any as S.Schema<UpdateCampaignsRequest>,
+  output: __S(5834, __c182, 10) as any as S.Schema<Campaign>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11268,8 +11268,8 @@ export const updateContentCategories: API.OperationMethod<
   UpdateContentCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<UpdateContentCategoriesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ContentCategory>,
+  input: __S(3712, __c116, 0) as any as S.Schema<UpdateContentCategoriesRequest>,
+  output: __S(5984, __c187, 0) as any as S.Schema<ContentCategory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11289,8 +11289,8 @@ export const updateCreativeFields: API.OperationMethod<
   UpdateCreativeFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<UpdateCreativeFieldsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<CreativeField>,
+  input: __S(3744, __c117, 0) as any as S.Schema<UpdateCreativeFieldsRequest>,
+  output: __S(6080, __c190, 0) as any as S.Schema<CreativeField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11310,8 +11310,8 @@ export const updateCreativeFieldValues: API.OperationMethod<
   UpdateCreativeFieldValuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<UpdateCreativeFieldValuesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<CreativeFieldValue>,
+  input: __S(3776, __c118, 0) as any as S.Schema<UpdateCreativeFieldValuesRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<CreativeFieldValue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11331,8 +11331,8 @@ export const updateCreativeGroups: API.OperationMethod<
   UpdateCreativeGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<UpdateCreativeGroupsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<CreativeGroup>,
+  input: __S(3808, __c119, 0) as any as S.Schema<UpdateCreativeGroupsRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<CreativeGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11352,8 +11352,8 @@ export const updateCreatives: API.OperationMethod<
   UpdateCreativesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(588, __c73, 4) as any as S.Schema<UpdateCreativesRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<Creative>,
+  input: __S(3840, __c120, 0) as any as S.Schema<UpdateCreativesRequest>,
+  output: __S(6377, __c199, 9) as any as S.Schema<Creative>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11373,8 +11373,8 @@ export const updateDynamicFeeds: API.OperationMethod<
   UpdateDynamicFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<UpdateDynamicFeedsRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DynamicFeed>,
+  input: __S(3872, __c121, 0) as any as S.Schema<UpdateDynamicFeedsRequest>,
+  output: __S(6508, __c203, 12) as any as S.Schema<DynamicFeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11394,8 +11394,8 @@ export const updateDynamicProfiles: API.OperationMethod<
   UpdateDynamicProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<UpdateDynamicProfilesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<DynamicProfile>,
+  input: __S(3904, __c122, 0) as any as S.Schema<UpdateDynamicProfilesRequest>,
+  output: __S(6577, __c205, 17) as any as S.Schema<DynamicProfile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11415,8 +11415,8 @@ export const updateEventTags: API.OperationMethod<
   UpdateEventTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<UpdateEventTagsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<EventTag>,
+  input: __S(3936, __c123, 0) as any as S.Schema<UpdateEventTagsRequest>,
+  output: __S(6624, __c207, 0) as any as S.Schema<EventTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11436,8 +11436,8 @@ export const updateFloodlightActivities: API.OperationMethod<
   UpdateFloodlightActivitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<UpdateFloodlightActivitiesRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<FloodlightActivity>,
+  input: __S(4032, __c126, 0) as any as S.Schema<UpdateFloodlightActivitiesRequest>,
+  output: __S(6788, __c212, 4) as any as S.Schema<FloodlightActivity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11457,8 +11457,8 @@ export const updateFloodlightActivityGroups: API.OperationMethod<
   UpdateFloodlightActivityGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<FloodlightActivityGroup>,
+  input: __S(4064, __c127, 0) as any as S.Schema<UpdateFloodlightActivityGroupsRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<FloodlightActivityGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11478,8 +11478,8 @@ export const updateFloodlightConfigurations: API.OperationMethod<
   UpdateFloodlightConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<UpdateFloodlightConfigurationsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<FloodlightConfiguration>,
+  input: __S(4096, __c128, 0) as any as S.Schema<UpdateFloodlightConfigurationsRequest>,
+  output: __S(6920, __c216, 8) as any as S.Schema<FloodlightConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11499,8 +11499,8 @@ export const updatePlacementGroups: API.OperationMethod<
   UpdatePlacementGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<UpdatePlacementGroupsRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<PlacementGroup>,
+  input: __S(4128, __c129, 0) as any as S.Schema<UpdatePlacementGroupsRequest>,
+  output: __S(7232, __c226, 0) as any as S.Schema<PlacementGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11520,8 +11520,8 @@ export const updatePlacements: API.OperationMethod<
   UpdatePlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<UpdatePlacementsRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<Placement>,
+  input: __S(4160, __c130, 0) as any as S.Schema<UpdatePlacementsRequest>,
+  output: __S(7336, __c229, 8) as any as S.Schema<Placement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11541,8 +11541,8 @@ export const updatePlacementStrategies: API.OperationMethod<
   UpdatePlacementStrategiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<UpdatePlacementStrategiesRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<PlacementStrategy>,
+  input: __S(4192, __c131, 0) as any as S.Schema<UpdatePlacementStrategiesRequest>,
+  output: __S(7392, __c231, 0) as any as S.Schema<PlacementStrategy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11562,8 +11562,8 @@ export const updateRemarketingLists: API.OperationMethod<
   UpdateRemarketingListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<UpdateRemarketingListsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<RemarketingList>,
+  input: __S(4224, __c132, 0) as any as S.Schema<UpdateRemarketingListsRequest>,
+  output: __S(7525, __c235, 5) as any as S.Schema<RemarketingList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11583,8 +11583,8 @@ export const updateRemarketingListShares: API.OperationMethod<
   UpdateRemarketingListSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<UpdateRemarketingListSharesRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<RemarketingListShare>,
+  input: __S(4256, __c133, 0) as any as S.Schema<UpdateRemarketingListSharesRequest>,
+  output: __S(7584, __c237, 0) as any as S.Schema<RemarketingListShare>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11604,8 +11604,8 @@ export const updateReports: API.OperationMethod<
   UpdateReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<UpdateReportsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<Report>,
+  input: __S(4288, __c134, 0) as any as S.Schema<UpdateReportsRequest>,
+  output: __S(7695, __c240, 15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11625,8 +11625,8 @@ export const updateSites: API.OperationMethod<
   UpdateSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<UpdateSitesRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<Site>,
+  input: __S(4320, __c135, 0) as any as S.Schema<UpdateSitesRequest>,
+  output: __S(7814, __c244, 6) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11646,8 +11646,8 @@ export const updateSubaccounts: API.OperationMethod<
   UpdateSubaccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<UpdateSubaccountsRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<Subaccount>,
+  input: __S(4416, __c138, 0) as any as S.Schema<UpdateSubaccountsRequest>,
+  output: __S(7968, __c249, 0) as any as S.Schema<Subaccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11667,8 +11667,8 @@ export const updateTargetingTemplates: API.OperationMethod<
   UpdateTargetingTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<UpdateTargetingTemplatesRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<TargetingTemplate>,
+  input: __S(4448, __c139, 0) as any as S.Schema<UpdateTargetingTemplatesRequest>,
+  output: __S(8096, __c253, 0) as any as S.Schema<TargetingTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11688,8 +11688,8 @@ export const updateUserRoles: API.OperationMethod<
   UpdateUserRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<UpdateUserRolesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<UserRole>,
+  input: __S(4480, __c140, 0) as any as S.Schema<UpdateUserRolesRequest>,
+  output: __S(8480, __c265, 0) as any as S.Schema<UserRole>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11699,243 +11699,6 @@ export const updateUserRoles: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          itemId: S.optional(S.String),
-          unitPrice: S.optional(S.Number),
-          quantity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CartDataItem" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          merchantFeedLabel: S.optional(S.String),
-          merchantId: S.optional(S.String),
-          merchantFeedLanguage: S.optional(S.String),
-          items: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "CartData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          hashedFirstName: S.optional(S.String),
-          hashedLastName: S.optional(S.String),
-          state: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          hashedStreetAddress: S.optional(S.String),
-          countryCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfflineUserAddressInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          addressInfo: S.optional(__S(4, __c0, 4)),
-          hashedPhoneNumber: S.optional(S.String),
-          hashedEmail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserIdentifier" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomFloodlightVariable" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          limitAdTracking: S.optional(S.Boolean),
-          floodlightActivityId: S.optional(S.String),
-          encryptedUserIdCandidates: S.optional(__S(0, __c0, 0)),
-          ordinal: S.optional(S.String),
-          floodlightConfigurationId: S.optional(S.String),
-          cartData: S.optional(__S(3, __c0, 3)),
-          encryptedUserId: S.optional(S.String),
-          sessionAttributesEncoded: S.optional(S.String),
-          dclid: S.optional(S.String),
-          quantity: S.optional(S.String),
-          userIdentifiers: S.optional(__S(6, __c0, 6)),
-          gclid: S.optional(S.String),
-          treatmentForUnderage: S.optional(S.Boolean),
-          kind: S.optional(S.String),
-          nonPersonalizedAd: S.optional(S.Boolean),
-          customVariables: S.optional(__S(8, __c1, 0)),
-          mobileDeviceId: S.optional(S.String),
-          adUserDataConsent: S.optional(S.String),
-          value: S.optional(S.Number),
-          childDirectedTreatment: S.optional(S.Boolean),
-          matchId: S.optional(S.String),
-          timestampMicros: S.optional(S.String),
-          impressionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Conversion" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          encryptionEntityId: S.optional(S.String),
-          encryptionSource: S.optional(S.String),
-          encryptionEntityType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conversions: S.optional(__S(10, __c1, 2)),
-          kind: S.optional(S.String),
-          encryptionInfo: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ConversionsBatchInsertRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/conversions/batchinsert",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchinsertConversionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConversionError" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conversion: S.optional(__S(9, __c1, 1)),
-          kind: S.optional(S.String),
-          errors: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ConversionStatus" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          hasFailures: S.optional(S.Boolean),
-          status: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "ConversionsBatchInsertResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/conversions/batchupdate",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchupdateConversionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hasFailures: S.optional(S.Boolean),
-          status: S.optional(__S(17, __c2, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConversionsBatchUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "userprofiles/{+profileId}/advertiserGroups/{+id}",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvertiserGroupsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAdvertiserGroupsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "userprofiles/{+profileId}/contentCategories/{+id}",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContentCategoriesRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteContentCategoriesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "userprofiles/{+profileId}/creativeFields/{+id}",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCreativeFieldsRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -11951,11 +11714,327 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteCreativeFieldValuesRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCreativeFieldValuesResponse",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          studioAccountId: S.optional(S.String),
+          studioAdvertiserId: S.optional(S.String),
+          studioCreativeId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DfareportingStudioCreativeAssetsInsertRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "studio/creativeAssets",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertStudioCreativeAssetsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorReason: S.optional(S.String),
+          processingState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoProcessingData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          filesize: S.optional(S.String),
+          createInfo: S.optional(__S(4736, __c148, 0)),
+          studioAdvertiserId: S.optional(S.String),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
+          filename: S.optional(S.String),
+          id: S.optional(S.String),
+          studioCreativeId: S.optional(S.String),
+          videoProcessingData: S.optional(__S(66, __c2, 2)),
+          studioAccountId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StudioCreativeAsset" });
     case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(68, __c2, 4)),
+        }),
+      ).annotate({
+        identifier: "StudioCreativeAssetsResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(7905, __c247, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "studio/creatives",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertStudioCreativesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7968, __c249, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{+profileId}/subaccounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertSubaccountsRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8096, __c253, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{+profileId}/targetingTemplates",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertTargetingTemplatesRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8480, __c265, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{+profileId}/userRoles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertUserRolesRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/accountPermissionGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountPermissionGroupsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountPermissionGroups: S.optional(__S(5056, __c158, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountPermissionGroupsListResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/accountPermissions",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountPermissionsRequest",
+      });
+    case 1:
+      return S.Array(__S(4384, __c137, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          accountPermissions: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "AccountPermissionsListResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/accounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccountsRequest" });
+    case 1:
+      return S.Array(__S(4545, __c142, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accounts: S.optional(__S(289, __c9, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountsListResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          userRoleId: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/accountUserProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountUserProfilesRequest",
+      });
+    case 1:
+      return S.Array(__S(4641, __c145, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          accountUserProfiles: S.optional(__S(321, __c10, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountUserProfilesListResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          landingPageIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sslCompliant: S.optional(S.Boolean.pipe(T.Query())),
+          remarketingListIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          dynamicClickTracker: S.optional(S.Boolean.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          audienceSegmentIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          creativeOptimizationConfigurationIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          compatibility: S.optional(S.String.pipe(T.Query())),
+          placementIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sizeIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          campaignIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          sslRequired: S.optional(S.Boolean.pipe(T.Query())),
+          creativeIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          archived: S.optional(S.Boolean.pipe(T.Query())),
+          overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/ads",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAdsRequest" });
+    case 1:
+      return S.Array(__S(5486, __c171, 14));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          ads: S.optional(__S(353, __c11, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdsListResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectType: S.String.pipe(T.Query()),
@@ -11972,7 +12051,411 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteDynamicTargetingKeysRequest",
       });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/advertiserGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAdvertiserGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(5536, __c173, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserGroups: S.optional(__S(417, __c13, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdvertiserGroupsListResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          advertiserId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          issueMonth: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAdvertiserInvoicesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taxAmountMicros: S.optional(S.String),
+          billingInvoiceCode: S.optional(S.String),
+          preTaxAmountMicros: S.optional(S.String),
+          totalAmountMicros: S.optional(S.String),
+          campaignId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignSummary" });
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          paymentsProfileId: S.optional(S.String),
+          dueDate: S.optional(S.String),
+          totalTaxAmountMicros: S.optional(S.String),
+          paymentsAccountId: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          correctedInvoiceId: S.optional(S.String),
+          subtotalAmountMicros: S.optional(S.String),
+          campaign_summaries: S.optional(__S(450, __c14, 2)),
+          issueDate: S.optional(S.String),
+          totalAmountMicros: S.optional(S.String),
+          replacedInvoiceIds: S.optional(__S(7104, __c222, 0)),
+          pdfUrl: S.optional(S.String),
+          purchaseOrderNumber: S.optional(S.String),
+          invoiceType: S.optional(S.String),
+          serviceEndDate: S.optional(S.String),
+          serviceStartDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Invoice" });
+    case 4:
+      return S.Array(__S(451, __c14, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          invoices: S.optional(__S(452, __c14, 4)),
+        }),
+      ).annotate({
+        identifier: "AdvertiserInvoicesListResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          archived: S.optional(S.Boolean.pipe(T.Query())),
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          campaignIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/advertiserLandingPages",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAdvertiserLandingPagesRequest",
+      });
+    case 1:
+      return S.Array(__S(5634, __c176, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          landingPages: S.optional(__S(481, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "AdvertiserLandingPagesListResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+          advertiserGroupIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          includeAdvertisersWithoutGroupsOnly: S.optional(S.Boolean.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          onlyParent: S.optional(S.Boolean.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          floodlightConfigurationIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/advertisers",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAdvertisersRequest" });
+    case 1:
+      return S.Array(__S(5697, __c178, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          advertisers: S.optional(__S(513, __c16, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdvertisersListResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          billingProfileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAssignmentsRequest",
+      });
+    case 1:
+      return S.Array(__S(8768, __c274, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          billingAssignments: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({
+        identifier: "BillingAssignmentsListResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          currency_code: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          subaccountIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          onlySuggestion: S.optional(S.Boolean.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/billingProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingProfilesRequest",
+      });
+    case 1:
+      return S.Array(__S(5760, __c180, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          billingProfiles: S.optional(__S(577, __c18, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BillingProfilesListResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          billingProfileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListBillingRatesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          highValue: S.optional(S.String),
+          rateInMicros: S.optional(S.String),
+          lowValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingRateTieredRate" });
+    case 2:
+      return S.Array(__S(609, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tieredRates: S.optional(__S(610, __c19, 2)),
+          endDate: S.optional(S.String),
+          rateInMicros: S.optional(S.String),
+          unitOfMeasure: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          startDate: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingRate" });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          billingRates: S.optional(__S(612, __c19, 4)),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingRatesListResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/browsers",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListBrowsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          browsers: S.optional(__S(5089, __c159, 1)),
+        }),
+      ).annotate({ identifier: "BrowsersListResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          campaignId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCampaignCreativeAssociationsRequest",
+      });
+    case 1:
+      return S.Array(__S(8832, __c276, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          campaignCreativeAssociations: S.optional(__S(673, __c21, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CampaignCreativeAssociationsListResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          atLeastOneOptimizationActivity: S.optional(S.Boolean.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          archived: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          excludedIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          advertiserGroupIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/campaigns",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListCampaignsRequest" });
+    case 1:
+      return S.Array(__S(5834, __c182, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          campaigns: S.optional(__S(705, __c22, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignsListResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -11985,7 +12468,355 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEventTagsRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minChangeTime: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          userProfileIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          objectType: S.optional(S.String.pipe(T.Query())),
+          objectIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          maxChangeTime: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/changeLogs",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListChangeLogsRequest" });
+    case 1:
+      return S.Array(__S(5888, __c184, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          changeLogs: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({ identifier: "ChangeLogsListResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regionDartIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          countryDartIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          namePrefix: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          dartIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/cities",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListCitiesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cities: S.optional(__S(5121, __c160, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CitiesListResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/connectionTypes",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectionTypesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connectionTypes: S.optional(__S(5152, __c161, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConnectionTypesListResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/contentCategories",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContentCategoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(5984, __c187, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          contentCategories: S.optional(__S(865, __c27, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContentCategoriesListResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/countries",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListCountriesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          countries: S.optional(__S(5184, __c162, 0)),
+        }),
+      ).annotate({ identifier: "CountriesListResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/creativeFields",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCreativeFieldsRequest",
+      });
+    case 1:
+      return S.Array(__S(6080, __c190, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          creativeFields: S.optional(__S(929, __c29, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreativeFieldsListResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          creativeFieldId: S.String.pipe(T.Label()),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCreativeFieldValuesRequest",
+      });
+    case 1:
+      return S.Array(__S(6144, __c192, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          creativeFieldValues: S.optional(__S(961, __c30, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreativeFieldValuesListResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          groupNumber: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/creativeGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCreativeGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(6208, __c194, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          creativeGroups: S.optional(__S(993, __c31, 1)),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreativeGroupsListResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          studioCreativeId: S.optional(S.String.pipe(T.Query())),
+          sizeIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          renderingIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          companionCreativeIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          campaignId: S.optional(S.String.pipe(T.Query())),
+          creativeFieldIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          types: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          archived: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/creatives",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListCreativesRequest" });
+    case 1:
+      return S.Array(__S(6377, __c199, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          creatives: S.optional(__S(1025, __c32, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativesListResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          dfpNetworkCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/directorySites",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDirectorySitesRequest",
+      });
+    case 1:
+      return S.Array(__S(6434, __c201, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          directorySites: S.optional(__S(1057, __c33, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DirectorySitesListResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12000,7 +12831,331 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteFloodlightActivitiesRequest",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String.pipe(T.Query())),
+          objectType: S.optional(S.String.pipe(T.Query())),
+          names: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/dynamicTargetingKeys",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDynamicTargetingKeysRequest",
+      });
+    case 1:
+      return S.Array(__S(9248, __c289, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          dynamicTargetingKeys: S.optional(__S(1121, __c35, 1)),
+        }),
+      ).annotate({
+        identifier: "DynamicTargetingKeysListResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          definitionsOnly: S.optional(S.Boolean.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          adId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          eventTagTypes: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          campaignId: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          enabled: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/eventTags",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListEventTagsRequest" });
+    case 1:
+      return S.Array(__S(6624, __c207, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          eventTags: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({ identifier: "EventTagsListResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{profileId}/files",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListFilesRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6721, __c210, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1216, __c38, 0),
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileList" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortField: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          floodlightActivityGroupName: S.optional(S.String.pipe(T.Query())),
+          tagString: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          floodlightActivityGroupIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          floodlightActivityGroupType: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          floodlightActivityGroupTagString: S.optional(S.String.pipe(T.Query())),
+          floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/floodlightActivities",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFloodlightActivitiesRequest",
+      });
+    case 1:
+      return S.Array(__S(6788, __c212, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          floodlightActivities: S.optional(__S(1249, __c39, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FloodlightActivitiesListResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFloodlightActivityGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(6848, __c214, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          floodlightActivityGroups: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({
+        identifier: "FloodlightActivityGroupsListResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/floodlightConfigurations",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFloodlightConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(6920, __c216, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          floodlightConfigurations: S.optional(__S(1313, __c41, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FloodlightConfigurationsListResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/languages",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListLanguagesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          languages: S.optional(__S(5217, __c163, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LanguagesListResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/metros",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListMetrosRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metros: S.optional(__S(5249, __c164, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetrosListResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directories: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/mobileApps",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListMobileAppsRequest" });
+    case 1:
+      return S.Array(__S(5600, __c175, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          mobileApps: S.optional(__S(1409, __c44, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobileAppsListResponse" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/mobileCarriers",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMobileCarriersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          mobileCarriers: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "MobileCarriersListResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12017,7 +13172,335 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/operatingSystems",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOperatingSystemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          operatingSystems: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({
+        identifier: "OperatingSystemsListResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/operatingSystemVersions",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOperatingSystemVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          operatingSystemVersions: S.optional(__S(5344, __c167, 0)),
+        }),
+      ).annotate({
+        identifier: "OperatingSystemVersionsListResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          activeStatus: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          maxStartDate: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          minStartDate: S.optional(S.String.pipe(T.Query())),
+          siteIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxEndDate: S.optional(S.String.pipe(T.Query())),
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          minEndDate: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          directorySiteIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          placementGroupType: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          campaignIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          contentCategoryIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          placementStrategyIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pricingTypes: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/placementGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPlacementGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(7232, __c226, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          placementGroups: S.optional(__S(1569, __c49, 1)),
+        }),
+      ).annotate({
+        identifier: "PlacementGroupsListResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortField: S.optional(S.String.pipe(T.Query())),
+          campaignIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          siteIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          groupIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          minStartDate: S.optional(S.String.pipe(T.Query())),
+          advertiserIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sizeIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxEndDate: S.optional(S.String.pipe(T.Query())),
+          paymentSource: S.optional(S.String.pipe(T.Query())),
+          activeStatus: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          minEndDate: S.optional(S.String.pipe(T.Query())),
+          maxStartDate: S.optional(S.String.pipe(T.Query())),
+          pricingTypes: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          placementStrategyIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          compatibilities: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
+          directorySiteIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          contentCategoryIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/placements",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPlacementsRequest" });
+    case 1:
+      return S.Array(__S(7336, __c229, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+          placements: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({ identifier: "PlacementsListResponse" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/placementStrategies",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPlacementStrategiesRequest",
+      });
+    case 1:
+      return S.Array(__S(7392, __c231, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          placementStrategies: S.optional(__S(1633, __c51, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlacementStrategiesListResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/platformTypes",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPlatformTypesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          platformTypes: S.optional(__S(5056, __c158, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PlatformTypesListResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/postalCodes",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListPostalCodesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          postalCodes: S.optional(__S(5376, __c168, 0)),
+        }),
+      ).annotate({ identifier: "PostalCodesListResponse" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/regions",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListRegionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          regions: S.optional(__S(5409, __c169, 1)),
+        }),
+      ).annotate({ identifier: "RegionsListResponse" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          advertiserId: S.String.pipe(T.Query()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          floodlightActivityId: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/remarketingLists",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRemarketingListsRequest",
+      });
+    case 1:
+      return S.Array(__S(7525, __c235, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          remarketingLists: S.optional(__S(1761, __c55, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RemarketingListsListResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{profileId}/reports",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListReportsRequest" });
+    case 1:
+      return S.Array(__S(7695, __c240, 15));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          items: __S(1793, __c56, 1),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportList" });
+  }
+}
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12032,7 +13515,334 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteReportsRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          reportId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{profileId}/reports/{reportId}/files",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListReportsFilesRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+          approved: S.optional(S.Boolean.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          unmappedSite: S.optional(S.Boolean.pipe(T.Query())),
+          directorySiteIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          adWordsSite: S.optional(S.Boolean.pipe(T.Query())),
+          campaignIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/sites",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSitesRequest" });
     case 1:
+      return S.Array(__S(7814, __c244, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          sites: S.optional(__S(1889, __c59, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SitesListResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          height: S.optional(S.Number.pipe(T.Query())),
+          width: S.optional(S.Number.pipe(T.Query())),
+          iabStandard: S.optional(S.Boolean.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/sizes",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSizesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          sizes: S.optional(__S(6272, __c196, 0)),
+        }),
+      ).annotate({ identifier: "SizesListResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          searchString: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/subaccounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSubaccountsRequest" });
+    case 1:
+      return S.Array(__S(7968, __c249, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subaccounts: S.optional(__S(1953, __c61, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubaccountsListResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/targetableRemarketingLists",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTargetableRemarketingListsRequest",
+      });
+    case 1:
+      return S.Array(__S(8032, __c251, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetableRemarketingLists: S.optional(__S(1985, __c62, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TargetableRemarketingListsListResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sortField: S.optional(S.String.pipe(T.Query())),
+          advertiserId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/targetingTemplates",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTargetingTemplatesRequest",
+      });
+    case 1:
+      return S.Array(__S(8096, __c253, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetingTemplates: S.optional(__S(2017, __c63, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TargetingTemplatesListResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          countryDartId: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          name: S.optional(S.String.pipe(T.Query())),
+          accountId: S.optional(S.String.pipe(T.Query())),
+          tvDataProvider: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/tvCampaignSummaries",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTvCampaignSummariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          grp: S.optional(S.String),
+          endDate: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          impressions: S.optional(S.String),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          startDate: S.optional(S.String),
+          spend: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TvCampaignSummary" });
+    case 2:
+      return S.Array(__S(2049, __c64, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tvCampaignSummaries: S.optional(__S(2050, __c64, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TvCampaignSummariesListResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListUserProfilesRequest" });
+    case 1:
+      return S.Array(__S(8192, __c256, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(2081, __c65, 1)),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserProfileList" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/userRolePermissionGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUserRolePermissionGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(8256, __c258, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userRolePermissionGroups: S.optional(__S(2113, __c66, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserRolePermissionGroupsListResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/userRolePermissions",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUserRolePermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          userRolePermissions: S.optional(__S(8448, __c264, 0)),
+        }),
+      ).annotate({
+        identifier: "UserRolePermissionsListResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12045,7 +13855,222 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUserRolesRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subaccountId: S.optional(S.String.pipe(T.Query())),
+          sortField: S.optional(S.String.pipe(T.Query())),
+          searchString: S.optional(S.String.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          accountUserRoleOnly: S.optional(S.Boolean.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/userRoles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListUserRolesRequest" });
+    case 1:
+      return S.Array(__S(8480, __c265, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          userRoles: S.optional(__S(2209, __c69, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserRolesListResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "userprofiles/{+profileId}/videoFormats",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "ListVideoFormatsRequest" });
+    case 1:
+      return S.Array(__S(8544, __c267, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          videoFormats: S.optional(__S(2241, __c70, 1)),
+        }),
+      ).annotate({ identifier: "VideoFormatsListResponse" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(4545, __c142, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/accounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchAccountsRequest" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(4641, __c145, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/accountUserProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAccountUserProfilesRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5486, __c171, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/ads",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchAdsRequest" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(5536, __c173, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/advertiserGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAdvertiserGroupsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(5634, __c176, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/advertiserLandingPages",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAdvertiserLandingPagesRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5697, __c178, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/advertisers",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchAdvertisersRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(5834, __c182, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/campaigns",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchCampaignsRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5984, __c187, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/contentCategories",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchContentCategoriesRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.String.pipe(T.Label()),
@@ -12059,7 +14084,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateCodeDynamicProfilesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -12067,7 +14092,206 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DynamicProfileGenerateCodeResponse",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6080, __c190, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/creativeFields",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchCreativeFieldsRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creativeFieldId: S.String.pipe(T.Label()),
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6144, __c192, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchCreativeFieldValuesRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6208, __c194, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/creativeGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchCreativeGroupsRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6377, __c199, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/creatives",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchCreativesRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/eventTags",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchEventTagsRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6788, __c212, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/floodlightActivities",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchFloodlightActivitiesRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(6848, __c214, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchFloodlightActivityGroupsRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6920, __c216, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/floodlightConfigurations",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchFloodlightConfigurationsRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(7232, __c226, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/placementGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPlacementGroupsRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7336, __c229, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/placements",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchPlacementsRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12082,7 +14306,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GeneratetagFloodlightActivitiesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -12092,15 +14316,237 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FloodlightActivitiesGenerateTagResponse",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tagFormats: S.optional(__S(38, __c4, 6).pipe(T.Query())),
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7392, __c231, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/placementStrategies",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchPlacementStrategiesRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(7525, __c235, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/remarketingLists",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchRemarketingListsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7584, __c237, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/remarketingListShares",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchRemarketingListSharesRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(7814, __c244, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/sites",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchSitesRequest" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Query()),
+          body: S.optional(__S(7968, __c249, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/subaccounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchSubaccountsRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8096, __c253, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/targetingTemplates",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchTargetingTemplatesRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Query()),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8480, __c265, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "userprofiles/{+profileId}/userRoles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchUserRolesRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dynamicProfileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "studio/dynamicProfiles/{+dynamicProfileId}/publish",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublishDynamicProfilesRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          studioCreativeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "studio/creatives/{+studioCreativeId}/publish",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublishStudioCreativesRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionName: S.optional(S.String),
+          value: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionFilter" });
+    case 1:
+      return S.Array(__S(3200, __c100, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          startDate: S.optional(S.String),
+          dimensionName: S.optional(S.String),
+          filters: S.optional(__S(3201, __c100, 1)),
+          endDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionValueRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3202, __c100, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/dimensionvalues/query",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryDimensionValuesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          kind: S.optional(S.String),
+          items: __S(7648, __c239, 0),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionValueList" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tagFormats: S.optional(__S(3264, __c102, 0).pipe(T.Query())),
           "tagProperties.tcfGdprMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
           campaignId: S.optional(S.String.pipe(T.Query())),
-          placementIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          placementIds: S.optional(__S(7104, __c222, 0).pipe(T.Query())),
           "tagProperties.dcDbmMacroIncluded": S.optional(S.Boolean.pipe(T.Query())),
           profileId: S.String.pipe(T.Label()),
           "tagProperties.gppMacrosIncluded": S.optional(S.Boolean.pipe(T.Query())),
@@ -12114,11 +14560,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GeneratetagsPlacementsRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clickTag: S.optional(S.String),
@@ -12128,27 +14570,354 @@ function __c5(j: number): any {
           adId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagData" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
+      return S.Array(__S(3233, __c101, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           placementId: S.optional(S.String),
-          tagDatas: S.optional(__S(41, __c5, 1)),
+          tagDatas: S.optional(__S(3234, __c101, 2)),
         }),
       ).annotate({ identifier: "PlacementTag" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
     case 4:
+      return S.Array(__S(3235, __c101, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          placementTags: S.optional(__S(43, __c5, 3)),
+          placementTags: S.optional(__S(3236, __c101, 4)),
         }),
       ).annotate({
         identifier: "PlacementsGenerateTagsResponse",
       });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          sortOrder: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SortBy" });
+    case 1:
+      return S.Array(__S(3296, __c103, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionFilters: S.optional(__S(7648, __c239, 0)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
+          sortBys: S.optional(__S(3297, __c103, 1)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          dimensionNames: S.optional(__S(7104, __c222, 0)),
+          pageToken: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReportDataQueryRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3298, __c103, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/reportdata/query",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "QueryReportDataRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ColumnHeader" });
     case 5:
+      return S.Array(__S(3300, __c103, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(7104, __c222, 0)),
+        }),
+      ).annotate({ identifier: "ReportDataRow" });
+    case 7:
+      return S.Array(__S(3302, __c103, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          columnHeaders: S.optional(__S(3301, __c103, 5)),
+          nextPageToken: S.optional(S.String),
+          rows: S.optional(__S(3303, __c103, 7)),
+          totalRow: S.optional(__S(3302, __c103, 6)),
+        }),
+      ).annotate({ identifier: "ReportDataResponse" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7695, __c240, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/reports/compatiblefields/query",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryReportsCompatibleFieldsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 2:
+      return S.Array(__S(3329, __c104, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(3330, __c104, 2)),
+          dimensionFilters: S.optional(__S(3330, __c104, 2)),
+          pivotedActivityMetrics: S.optional(__S(3330, __c104, 2)),
+          metrics: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+          reachByFrequencyMetrics: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({
+        identifier: "ReachReportCompatibleFields",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+          breakdown: S.optional(__S(3330, __c104, 2)),
+          dimensionFilters: S.optional(__S(3330, __c104, 2)),
+          overlapMetrics: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({
+        identifier: "CrossDimensionReachReportCompatibleFields",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          perInteractionDimensions: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+          customFloodlightVariables: S.optional(__S(3330, __c104, 2)),
+          metrics: S.optional(__S(3330, __c104, 2)),
+          conversionDimensions: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({
+        identifier: "PathToConversionReportCompatibleFields",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionFilters: S.optional(__S(3330, __c104, 2)),
+          metrics: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+          dimensions: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({
+        identifier: "CrossMediaReachReportCompatibleFields",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(3330, __c104, 2)),
+          metrics: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+          dimensionFilters: S.optional(__S(3330, __c104, 2)),
+        }),
+      ).annotate({
+        identifier: "FloodlightReportCompatibleFields",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionFilters: S.optional(__S(3330, __c104, 2)),
+          metrics: S.optional(__S(3330, __c104, 2)),
+          dimensions: S.optional(__S(3330, __c104, 2)),
+          pivotedActivityMetrics: S.optional(__S(3330, __c104, 2)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReportCompatibleFields" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          reachReportCompatibleFields: S.optional(__S(3331, __c104, 3)),
+          crossDimensionReachReportCompatibleFields: S.optional(__S(3332, __c104, 4)),
+          pathToConversionReportCompatibleFields: S.optional(__S(3333, __c104, 5)),
+          crossMediaReachReportCompatibleFields: S.optional(__S(3334, __c104, 6)),
+          floodlightReportCompatibleFields: S.optional(__S(3335, __c104, 7)),
+          reportCompatibleFields: S.optional(__S(3336, __c104, 8)),
+        }),
+      ).annotate({ identifier: "CompatibleFields" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dynamicFeedId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "studio/dynamicFeeds/{+dynamicFeedId}/retransform",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RetransformDynamicFeedsRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          synchronous: S.optional(S.Boolean.pipe(T.Query())),
+          reportId: S.String.pipe(T.Label()),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/reports/{reportId}/run",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "RunReportsRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4545, __c142, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/accounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccountsRequest" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(4641, __c145, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/accountUserProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAccountUserProfilesRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5486, __c171, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/ads",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAdsRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5536, __c173, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/advertiserGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAdvertiserGroupsRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5634, __c176, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/advertiserLandingPages",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAdvertiserLandingPagesRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5697, __c178, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/advertisers",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAdvertisersRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12163,7 +14932,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetAccountActiveAdSummariesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -12173,7 +14942,194 @@ function __c5(j: number): any {
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountActiveAdSummary" });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5760, __c180, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/billingProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBillingProfilesRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5834, __c182, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/campaigns",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCampaignsRequest" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(5984, __c187, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/contentCategories",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContentCategoriesRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6080, __c190, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/creativeFields",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCreativeFieldsRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          creativeFieldId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6144, __c192, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCreativeFieldValuesRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6208, __c194, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/creativeGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCreativeGroupsRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6377, __c199, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/creatives",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCreativesRequest" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(6508, __c203, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "studio/dynamicFeeds",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDynamicFeedsRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(6577, __c205, 17).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "studio/dynamicProfiles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDynamicProfilesRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/eventTags",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateEventTagsRequest" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12190,7 +15146,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12200,7 +15156,196 @@ function __c6(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountPermissionGroup" });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6788, __c212, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/floodlightActivities",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFloodlightActivitiesRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6848, __c214, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFloodlightActivityGroupsRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(6920, __c216, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/floodlightConfigurations",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFloodlightConfigurationsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7232, __c226, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/placementGroups",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePlacementGroupsRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7336, __c229, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/placements",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdatePlacementsRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7392, __c231, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/placementStrategies",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePlacementStrategiesRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7525, __c235, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/remarketingLists",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRemarketingListsRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7584, __c237, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/remarketingListShares",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRemarketingListSharesRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          reportId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7695, __c240, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{profileId}/reports/{reportId}",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateReportsRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7814, __c244, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/sites",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateSitesRequest" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12215,18 +15360,79 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAccountPermissionsRequest",
       });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           level: S.optional(S.String),
           permissionGroupId: S.optional(S.String),
           name: S.optional(S.String),
-          accountProfiles: S.optional(__S(38, __c4, 6)),
+          accountProfiles: S.optional(__S(3264, __c102, 0)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountPermission" });
-    case 3:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7968, __c249, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/subaccounts",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateSubaccountsRequest" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8096, __c253, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/targetingTemplates",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTargetingTemplatesRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(8480, __c265, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "userprofiles/{+profileId}/userRoles",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateUserRolesRequest" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12239,34 +15445,31 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountsRequest" });
-    case 4:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clickDuration: S.optional(S.Number),
-          postImpressionActivitiesDuration: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LookbackConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lookbackConfiguration: S.optional(__S(52, __c6, 4)),
+          lookbackConfiguration: S.optional(__S(4576, __c143, 0)),
           reportGenerationTimeZoneId: S.optional(S.String),
           exposureToConversionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReportsConfiguration" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maximumImageSize: S.optional(S.String),
           kind: S.optional(S.String),
-          accountPermissionIds: S.optional(__S(0, __c0, 0)),
+          accountPermissionIds: S.optional(__S(7104, __c222, 0)),
           currencyId: S.optional(S.String),
           activeAdsLimitTier: S.optional(S.String),
           activeViewOptOut: S.optional(S.Boolean),
           locale: S.optional(S.String),
-          reportsConfiguration: S.optional(__S(53, __c6, 5)),
+          reportsConfiguration: S.optional(__S(4544, __c142, 0)),
           active: S.optional(S.Boolean),
-          availablePermissionIds: S.optional(__S(0, __c0, 0)),
+          availablePermissionIds: S.optional(__S(7104, __c222, 0)),
           teaserSizeLimit: S.optional(S.String),
           id: S.optional(S.String),
           accountProfile: S.optional(S.String),
@@ -12278,7 +15481,22 @@ function __c6(j: number): any {
           shareReportsWithTwitter: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Account" });
-    case 7:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clickDuration: S.optional(S.Number),
+          postImpressionActivitiesDuration: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LookbackConfiguration" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12295,38 +15513,42 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          objectIds: S.optional(__S(0, __c0, 0)),
+          objectIds: S.optional(__S(7104, __c222, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObjectFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          siteFilter: S.optional(__S(56, __c7, 0)),
+          siteFilter: S.optional(__S(4640, __c145, 0)),
           email: S.optional(S.String),
           comments: S.optional(S.String),
           name: S.optional(S.String),
           locale: S.optional(S.String),
-          advertiserFilter: S.optional(__S(56, __c7, 0)),
+          advertiserFilter: S.optional(__S(4640, __c145, 0)),
           active: S.optional(S.Boolean),
           traffickerType: S.optional(S.String),
           id: S.optional(S.String),
           kind: S.optional(S.String),
-          campaignFilter: S.optional(__S(56, __c7, 0)),
+          campaignFilter: S.optional(__S(4640, __c145, 0)),
           subaccountId: S.optional(S.String),
           userRoleId: S.optional(S.String),
-          userRoleFilter: S.optional(__S(56, __c7, 0)),
+          userRoleFilter: S.optional(__S(4640, __c145, 0)),
           userAccessType: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountUserProfile" });
-    case 2:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12339,48 +15561,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAdsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          creativeGroupNumber: S.optional(S.String),
-          creativeGroupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeGroupAssignment" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.Number),
-          iab: S.optional(S.Boolean),
-          height: S.optional(S.Number),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Size" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clickThroughUrlSuffix: S.optional(S.String),
-          overrideInheritedSuffix: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ClickThroughUrlSuffixProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EventTagOverride" });
   }
 }
-function __c8(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           dimensionName: S.optional(S.String),
@@ -12391,7 +15576,99 @@ function __c8(j: number): any {
           matchType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DimensionValue" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LastModifiedInfo" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clickThroughUrlSuffix: S.optional(S.String),
+          overrideInheritedSuffix: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ClickThroughUrlSuffixProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EventTagOverride" });
     case 2:
+      return S.Array(__S(4769, __c149, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          overrideInheritedEventTag: S.optional(S.Boolean),
+          defaultClickThroughEventTagId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultClickThroughEventTagProperties",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionType" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          sslEnabled: S.optional(S.Boolean),
+          dartId: S.optional(S.String),
+          tvDataProviders: S.optional(__S(3264, __c102, 0)),
+          countryCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Country" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.Number),
+          iab: S.optional(S.Boolean),
+          height: S.optional(S.Number),
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Size" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           countryDartId: S.optional(S.String),
@@ -12401,21 +15678,60 @@ function __c8(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileCarrier" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.Array(__S(48, __c6, 0));
-    case 5:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
           kind: S.optional(S.String),
-          id: S.optional(S.String),
+          name: S.optional(S.String),
+          mobile: S.optional(S.Boolean),
+          desktop: S.optional(S.Boolean),
+          dartId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ConnectionType" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+      ).annotate({ identifier: "OperatingSystem" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          operatingSystem: S.optional(__S(4960, __c155, 0)),
+          name: S.optional(S.String),
+          minorVersion: S.optional(S.String),
+          id: S.optional(S.String),
+          majorVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperatingSystemVersion" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          code: S.optional(S.String),
+          id: S.optional(S.String),
+          countryDartId: S.optional(S.String),
+          countryCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostalCode" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4000, __c125, 0));
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           browserVersionId: S.optional(S.String),
@@ -12426,219 +15742,13 @@ function __c8(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Browser" });
+    case 1:
+      return S.Array(__S(5088, __c159, 0));
   }
 }
-function __c9(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          mobile: S.optional(S.Boolean),
-          desktop: S.optional(S.Boolean),
-          dartId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperatingSystem" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          operatingSystem: S.optional(__S(73, __c9, 1)),
-          name: S.optional(S.String),
-          minorVersion: S.optional(S.String),
-          id: S.optional(S.String),
-          majorVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperatingSystemVersion" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.Array(__S(73, __c9, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mobileCarriers: S.optional(__S(67, __c8, 3)),
-          platformTypes: S.optional(__S(68, __c8, 4)),
-          connectionTypes: S.optional(__S(70, __c8, 6)),
-          browsers: S.optional(__S(72, __c9, 0)),
-          operatingSystemVersions: S.optional(__S(75, __c9, 3)),
-          operatingSystems: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "TechnologyTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          kind: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Language" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          languages: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "LanguageTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          computedClickThroughUrl: S.optional(S.String),
-          landingPageId: S.optional(S.String),
-          customClickThroughUrl: S.optional(S.String),
-          defaultLandingPage: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ClickThroughUrl" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          exitId: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "RichMediaExitOverride" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          creativeId: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "CompanionClickThroughOverride",
-      });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applyEventTags: S.optional(S.Boolean),
-          richMediaExitOverrides: S.optional(__S(83, __c10, 3)),
-          creativeGroupAssignments: S.optional(__S(60, __c7, 4)),
-          weight: S.optional(S.Number),
-          creativeIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          sequence: S.optional(S.Number),
-          active: S.optional(S.Boolean),
-          clickThroughUrl: S.optional(__S(81, __c10, 1)),
-          endTime: S.optional(S.String),
-          sslCompliant: S.optional(S.Boolean),
-          companionCreativeOverrides: S.optional(__S(85, __c10, 5)),
-          startTime: S.optional(S.String),
-          creativeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeAssignment" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          creativeOptimizationConfigurationId: S.optional(S.String),
-          weightCalculationStrategy: S.optional(S.String),
-          creativeAssignments: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "CreativeRotation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LastModifiedInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          impressions: S.optional(S.String),
-          duration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FrequencyCap" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          frequencyCap: S.optional(__S(90, __c11, 2)),
-          hardCutoff: S.optional(S.Boolean),
-          impressionRatio: S.optional(S.String),
-          priority: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeliverySchedule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          overrideInheritedEventTag: S.optional(S.Boolean),
-          defaultClickThroughEventTagId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultClickThroughEventTagProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          keyword: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContextualKeyword" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keywords: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "ContextualKeywordTargeting",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          daysOfWeek: S.optional(__S(38, __c4, 6)),
-          hoursOfDay: S.optional(__S(96, __c12, 0)),
-          userLocalTime: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DayPartTargeting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListTargetingExpression" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          placementId: S.optional(S.String),
-          active: S.optional(S.Boolean),
-          sslRequired: S.optional(S.Boolean),
-          placementIdDimensionValue: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "PlacementAssignment" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KeyValueTargetingExpression",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           countryCode: S.optional(S.String),
@@ -12652,11 +15762,38 @@ function __c12(j: number): any {
           countryDartId: S.optional(S.String),
         }),
       ).annotate({ identifier: "City" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
+    case 1:
+      return S.Array(__S(5120, __c160, 0));
   }
 }
-function __c13(j: number): any {
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4800, __c150, 0));
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4832, __c151, 0));
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          kind: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Language" });
+    case 1:
+      return S.Array(__S(5216, __c163, 0));
+  }
+}
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12671,33 +15808,36 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "Metro" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          sslEnabled: S.optional(S.Boolean),
-          dartId: S.optional(S.String),
-          tvDataProviders: S.optional(__S(38, __c4, 6)),
-          countryCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Country" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          code: S.optional(S.String),
-          id: S.optional(S.String),
-          countryDartId: S.optional(S.String),
-          countryCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostalCode" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+      return S.Array(__S(5248, __c164, 0));
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4928, __c154, 0));
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4960, __c155, 0));
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4992, __c156, 0));
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5024, __c157, 0));
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dartId: S.optional(S.String),
@@ -12708,69 +15848,227 @@ function __c13(j: number): any {
           countryCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Region" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
+    case 1:
+      return S.Array(__S(5408, __c169, 0));
   }
 }
-function __c14(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cities: S.optional(__S(103, __c12, 7)),
-          metros: S.optional(__S(105, __c13, 1)),
-          countries: S.optional(__S(107, __c13, 3)),
-          postalCodes: S.optional(__S(109, __c13, 5)),
+          mobileCarriers: S.optional(__S(5280, __c165, 0)),
+          platformTypes: S.optional(__S(5056, __c158, 0)),
+          connectionTypes: S.optional(__S(5152, __c161, 0)),
+          browsers: S.optional(__S(5089, __c159, 1)),
+          operatingSystemVersions: S.optional(__S(5344, __c167, 0)),
+          operatingSystems: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({ identifier: "TechnologyTargeting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          languages: S.optional(__S(5217, __c163, 1)),
+        }),
+      ).annotate({ identifier: "LanguageTargeting" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyword: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContextualKeyword" });
+    case 3:
+      return S.Array(__S(5442, __c170, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keywords: S.optional(__S(5443, __c170, 3)),
+        }),
+      ).annotate({
+        identifier: "ContextualKeywordTargeting",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          daysOfWeek: S.optional(__S(3264, __c102, 0)),
+          hoursOfDay: S.optional(__S(4896, __c153, 0)),
+          userLocalTime: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DayPartTargeting" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTargetingExpression" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KeyValueTargetingExpression",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          cities: S.optional(__S(5121, __c160, 1)),
+          metros: S.optional(__S(5249, __c164, 1)),
+          countries: S.optional(__S(5184, __c162, 0)),
+          postalCodes: S.optional(__S(5376, __c168, 0)),
           excludeCountries: S.optional(S.Boolean),
-          regions: S.optional(__S(111, __c13, 7)),
+          regions: S.optional(__S(5409, __c169, 1)),
         }),
       ).annotate({ identifier: "GeoTargeting" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creativeGroupNumber: S.optional(S.String),
+          creativeGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeGroupAssignment" });
     case 1:
+      return S.Array(__S(5472, __c171, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          computedClickThroughUrl: S.optional(S.String),
+          landingPageId: S.optional(S.String),
+          customClickThroughUrl: S.optional(S.String),
+          defaultLandingPage: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ClickThroughUrl" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          exitId: S.optional(S.String),
+          clickThroughUrl: S.optional(__S(5474, __c171, 2)),
+        }),
+      ).annotate({ identifier: "RichMediaExitOverride" });
+    case 4:
+      return S.Array(__S(5475, __c171, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          creativeId: S.optional(S.String),
+          clickThroughUrl: S.optional(__S(5474, __c171, 2)),
+        }),
+      ).annotate({
+        identifier: "CompanionClickThroughOverride",
+      });
+    case 6:
+      return S.Array(__S(5477, __c171, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          applyEventTags: S.optional(S.Boolean),
+          richMediaExitOverrides: S.optional(__S(5476, __c171, 4)),
+          creativeGroupAssignments: S.optional(__S(5473, __c171, 1)),
+          weight: S.optional(S.Number),
+          creativeIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          sequence: S.optional(S.Number),
+          active: S.optional(S.Boolean),
+          clickThroughUrl: S.optional(__S(5474, __c171, 2)),
+          endTime: S.optional(S.String),
+          sslCompliant: S.optional(S.Boolean),
+          companionCreativeOverrides: S.optional(__S(5478, __c171, 6)),
+          startTime: S.optional(S.String),
+          creativeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeAssignment" });
+    case 8:
+      return S.Array(__S(5479, __c171, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          creativeOptimizationConfigurationId: S.optional(S.String),
+          weightCalculationStrategy: S.optional(S.String),
+          creativeAssignments: S.optional(__S(5480, __c171, 8)),
+        }),
+      ).annotate({ identifier: "CreativeRotation" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          impressions: S.optional(S.String),
+          duration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FrequencyCap" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          frequencyCap: S.optional(__S(5482, __c171, 10)),
+          hardCutoff: S.optional(S.Boolean),
+          impressionRatio: S.optional(S.String),
+          priority: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeliverySchedule" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          placementId: S.optional(S.String),
+          active: S.optional(S.Boolean),
+          sslRequired: S.optional(S.Boolean),
+          placementIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+        }),
+      ).annotate({ identifier: "PlacementAssignment" });
+    case 13:
+      return S.Array(__S(5484, __c171, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           compatibility: S.optional(S.String),
           type: S.optional(S.String),
           subaccountId: S.optional(S.String),
-          creativeGroupAssignments: S.optional(__S(60, __c7, 4)),
-          size: S.optional(__S(61, __c7, 5)),
+          creativeGroupAssignments: S.optional(__S(5473, __c171, 1)),
+          size: S.optional(__S(4864, __c152, 0)),
           audienceSegmentId: S.optional(S.String),
-          clickThroughUrlSuffixProperties: S.optional(__S(62, __c7, 6)),
-          eventTagOverrides: S.optional(__S(64, __c8, 0)),
+          clickThroughUrlSuffixProperties: S.optional(__S(4768, __c149, 0)),
+          eventTagOverrides: S.optional(__S(4770, __c149, 2)),
           campaignId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           sslRequired: S.optional(S.Boolean),
           id: S.optional(S.String),
-          technologyTargeting: S.optional(__S(77, __c9, 5)),
+          technologyTargeting: S.optional(__S(5440, __c170, 0)),
           accountId: S.optional(S.String),
-          languageTargeting: S.optional(__S(80, __c10, 0)),
-          creativeRotation: S.optional(__S(88, __c11, 0)),
+          languageTargeting: S.optional(__S(5441, __c170, 1)),
+          creativeRotation: S.optional(__S(5481, __c171, 9)),
           endTime: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
-          deliverySchedule: S.optional(__S(91, __c11, 3)),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          defaultClickThroughEventTagProperties: S.optional(__S(92, __c11, 4)),
-          clickThroughUrl: S.optional(__S(81, __c10, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
+          deliverySchedule: S.optional(__S(5483, __c171, 11)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          defaultClickThroughEventTagProperties: S.optional(__S(4771, __c149, 3)),
+          clickThroughUrl: S.optional(__S(5474, __c171, 2)),
           name: S.optional(S.String),
-          contextualKeywordTargeting: S.optional(__S(95, __c11, 7)),
-          dayPartTargeting: S.optional(__S(97, __c12, 1)),
+          contextualKeywordTargeting: S.optional(__S(5444, __c170, 4)),
+          dayPartTargeting: S.optional(__S(5445, __c170, 5)),
           dynamicClickTracker: S.optional(S.Boolean),
-          remarketingListExpression: S.optional(__S(98, __c12, 2)),
-          placementAssignments: S.optional(__S(100, __c12, 4)),
+          remarketingListExpression: S.optional(__S(5446, __c170, 6)),
+          placementAssignments: S.optional(__S(5485, __c171, 13)),
           targetingTemplateId: S.optional(S.String),
           startTime: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
           comments: S.optional(S.String),
-          keyValueTargetingExpression: S.optional(__S(101, __c12, 5)),
-          campaignIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          keyValueTargetingExpression: S.optional(__S(5447, __c170, 7)),
+          campaignIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           archived: S.optional(S.Boolean),
-          geoTargeting: S.optional(__S(112, __c14, 0)),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          geoTargeting: S.optional(__S(5448, __c170, 8)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           kind: S.optional(S.String),
           advertiserId: S.optional(S.String),
           active: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Ad" });
-    case 2:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12785,7 +16083,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetAdvertiserGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -12794,7 +16096,11 @@ function __c14(j: number): any {
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdvertiserGroup" });
-    case 4:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12809,7 +16115,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetAdvertiserLandingPagesRequest",
       });
-    case 5:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -12819,23 +16129,23 @@ function __c14(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileApp" });
-    case 6:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appUrl: S.optional(S.String),
-          mobileApp: S.optional(__S(117, __c14, 5)),
-          remarketingListIds: S.optional(__S(0, __c0, 0)),
+          mobileApp: S.optional(__S(5600, __c175, 0)),
+          remarketingListIds: S.optional(__S(7104, __c222, 0)),
           kind: S.optional(S.String),
           fallbackUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeepLink" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -12843,11 +16153,15 @@ function __c15(j: number): any {
           archived: S.optional(S.Boolean),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          deepLinks: S.optional(__S(119, __c14, 7)),
+          deepLinks: S.optional(__S(5633, __c176, 1)),
           advertiserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LandingPage" });
-    case 1:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12860,7 +16174,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAdvertisersRequest" });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partnerAdvertiserId: S.optional(S.String),
@@ -12870,29 +16188,33 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "MeasurementPartnerAdvertiserLink",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           suspended: S.optional(S.Boolean),
           accountId: S.optional(S.String),
           name: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           id: S.optional(S.String),
           status: S.optional(S.String),
           floodlightConfigurationId: S.optional(S.String),
           clickThroughUrlSuffix: S.optional(S.String),
           euPoliticalAdsDeclaration: S.optional(S.String),
           kind: S.optional(S.String),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          floodlightConfigurationIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           advertiserGroupId: S.optional(S.String),
           defaultClickThroughEventTagId: S.optional(S.String),
           defaultEmail: S.optional(S.String),
           originalFloodlightConfigurationId: S.optional(S.String),
           subaccountId: S.optional(S.String),
-          measurementPartnerLink: S.optional(__S(122, __c15, 2)),
+          measurementPartnerLink: S.optional(__S(5696, __c178, 0)),
         }),
       ).annotate({ identifier: "Advertiser" });
-    case 4:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -12907,7 +16229,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetBillingProfilesRequest",
       });
-    case 5:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paymentsCustomerId: S.optional(S.String),
@@ -12925,7 +16251,11 @@ function __c15(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingProfile" });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -12938,34 +16268,34 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCampaignsRequest" });
-    case 7:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           floodlightActivityId: S.optional(S.String),
-          floodlightActivityIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          floodlightActivityIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OptimizationActivity" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
     case 1:
+      return S.Array(__S(5824, __c182, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           optimizationModel: S.optional(S.String),
-          optimizationActivitys: S.optional(__S(128, __c16, 0)),
+          optimizationActivitys: S.optional(__S(5825, __c182, 1)),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreativeOptimizationConfiguration",
       });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
     case 3:
+      return S.Array(__S(5826, __c182, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -12973,19 +16303,19 @@ function __c16(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudienceSegment" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
     case 5:
+      return S.Array(__S(5828, __c182, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          audienceSegments: S.optional(__S(132, __c16, 4)),
+          audienceSegments: S.optional(__S(5829, __c182, 5)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudienceSegmentGroup" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
     case 7:
+      return S.Array(__S(5830, __c182, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           measurementPartner: S.optional(S.String),
@@ -12995,42 +16325,38 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "MeasurementPartnerCampaignLink",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AdBlockingConfiguration" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           accountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           subaccountId: S.optional(S.String),
-          clickThroughUrlSuffixProperties: S.optional(__S(62, __c7, 6)),
+          clickThroughUrlSuffixProperties: S.optional(__S(4768, __c149, 0)),
           comment: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           endDate: S.optional(S.String),
           billingInvoiceCode: S.optional(S.String),
-          additionalCreativeOptimizationConfigurations: S.optional(__S(130, __c16, 2)),
-          defaultClickThroughEventTagProperties: S.optional(__S(92, __c11, 4)),
+          additionalCreativeOptimizationConfigurations: S.optional(__S(5827, __c182, 3)),
+          defaultClickThroughEventTagProperties: S.optional(__S(4771, __c149, 3)),
           euPoliticalAdsDeclaration: S.optional(S.String),
-          audienceSegmentGroups: S.optional(__S(134, __c16, 6)),
-          creativeGroupIds: S.optional(__S(0, __c0, 0)),
-          measurementPartnerLink: S.optional(__S(135, __c16, 7)),
+          audienceSegmentGroups: S.optional(__S(5831, __c182, 7)),
+          creativeGroupIds: S.optional(__S(7104, __c222, 0)),
+          measurementPartnerLink: S.optional(__S(5832, __c182, 8)),
           externalId: S.optional(S.String),
-          eventTagOverrides: S.optional(__S(64, __c8, 0)),
+          eventTagOverrides: S.optional(__S(4770, __c149, 2)),
           name: S.optional(S.String),
-          creativeOptimizationConfiguration: S.optional(__S(129, __c16, 1)),
+          creativeOptimizationConfiguration: S.optional(__S(5826, __c182, 2)),
           id: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          adBlockingConfiguration: S.optional(__S(136, __c17, 0)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          adBlockingConfiguration: S.optional(__S(5833, __c182, 9)),
           advertiserId: S.optional(S.String),
           kind: S.optional(S.String),
           advertiserGroupId: S.optional(S.String),
@@ -13038,7 +16364,11 @@ function __c17(j: number): any {
           archived: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Campaign" });
-    case 2:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -13051,7 +16381,11 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetChangeLogsRequest" });
-    case 3:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userProfileId: S.optional(S.String),
@@ -13070,7 +16404,11 @@ function __c17(j: number): any {
           newValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeLog" });
-    case 4:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -13085,7 +16423,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetConnectionTypesRequest",
       });
-    case 5:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -13100,7 +16442,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetContentCategoriesRequest",
       });
-    case 6:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -13109,7 +16455,11 @@ function __c17(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentCategory" });
-    case 7:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dartId: S.String.pipe(T.Label()),
@@ -13124,7 +16474,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetCountriesRequest" });
   }
 }
-function __c18(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13139,10 +16489,14 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCreativeFieldsRequest" });
-    case 1:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           id: S.optional(S.String),
           subaccountId: S.optional(S.String),
           advertiserId: S.optional(S.String),
@@ -13151,7 +16505,11 @@ function __c18(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeField" });
-    case 2:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13167,7 +16525,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetCreativeFieldValuesRequest",
       });
-    case 3:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -13175,7 +16537,11 @@ function __c18(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeFieldValue" });
-    case 4:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13188,12 +16554,16 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCreativeGroupsRequest" });
-    case 5:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String),
           groupNumber: S.optional(S.Number),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -13201,7 +16571,11 @@ function __c18(j: number): any {
           subaccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeGroup" });
-    case 6:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13214,16 +16588,106 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCreativesRequest" });
-    case 7:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4864, __c152, 0));
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offsetPercentage: S.optional(S.Number),
           offsetSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VideoOffset" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          xPosition: S.optional(S.String),
+          iconViewTrackingUrl: S.optional(S.String),
+          yPosition: S.optional(S.String),
+          iconClickThroughUrl: S.optional(S.String),
+          size: S.optional(__S(4864, __c152, 0)),
+          resourceUrl: S.optional(S.String),
+          program: S.optional(S.String),
+          iconClickTrackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObaIcon" });
   }
 }
-function __c19(j: number): any {
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customClickThroughUrl: S.optional(S.String),
+          landingPageId: S.optional(S.String),
+          computedClickThroughUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeClickThroughUrl" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          left: S.optional(S.Number),
+          top: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OffsetPosition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          showAddressBar: S.optional(S.Boolean),
+          dimension: S.optional(__S(4864, __c152, 0)),
+          showMenuBar: S.optional(S.Boolean),
+          showScrollBar: S.optional(S.Boolean),
+          positionType: S.optional(S.String),
+          showToolBar: S.optional(S.Boolean),
+          title: S.optional(S.String),
+          offset: S.optional(__S(6337, __c198, 1)),
+          showStatusBar: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PopupWindowProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          artworkLabel: S.optional(S.String),
+          exitClickThroughUrl: S.optional(__S(6336, __c198, 0)),
+          advertiserCustomEventType: S.optional(S.String),
+          advertiserCustomEventName: S.optional(S.String),
+          artworkType: S.optional(S.String),
+          popupWindowProperties: S.optional(__S(6338, __c198, 2)),
+          advertiserCustomEventId: S.optional(S.String),
+          videoReportingId: S.optional(S.String),
+          targetType: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeCustomEvent" });
+    case 4:
+      return S.Array(__S(6339, __c198, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          eventName: S.optional(S.String),
+          clickThroughUrl: S.optional(__S(6336, __c198, 0)),
+        }),
+      ).annotate({ identifier: "ClickTag" });
+    case 6:
+      return S.Array(__S(6341, __c198, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeAssetId" });
+  }
+}
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13233,7 +16697,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ThirdPartyTrackingUrl" });
     case 1:
-      return S.Array(__S(152, __c19, 0));
+      return S.Array(__S(6368, __c199, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13244,95 +16708,20 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customClickThroughUrl: S.optional(S.String),
-          landingPageId: S.optional(S.String),
-          computedClickThroughUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeClickThroughUrl" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          left: S.optional(S.Number),
-          top: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OffsetPosition" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          showAddressBar: S.optional(S.Boolean),
-          dimension: S.optional(__S(61, __c7, 5)),
-          showMenuBar: S.optional(S.Boolean),
-          showScrollBar: S.optional(S.Boolean),
-          positionType: S.optional(S.String),
-          showToolBar: S.optional(S.Boolean),
-          title: S.optional(S.String),
-          offset: S.optional(__S(156, __c19, 4)),
-          showStatusBar: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PopupWindowProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          artworkLabel: S.optional(S.String),
-          exitClickThroughUrl: S.optional(__S(155, __c19, 3)),
-          advertiserCustomEventType: S.optional(S.String),
-          advertiserCustomEventName: S.optional(S.String),
-          artworkType: S.optional(S.String),
-          popupWindowProperties: S.optional(__S(157, __c19, 5)),
-          advertiserCustomEventId: S.optional(S.String),
-          videoReportingId: S.optional(S.String),
-          targetType: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeCustomEvent" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          eventName: S.optional(S.String),
-          clickThroughUrl: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "ClickTag" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           creativeFieldValueId: S.optional(S.String),
           creativeFieldId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeFieldAssignment" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
     case 4:
+      return S.Array(__S(6371, __c199, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           targetWindowOption: S.optional(S.String),
           customHtml: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetWindow" });
-    case 5:
-      return S.Array(__S(61, __c7, 5));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          xPosition: S.optional(S.String),
-          iconViewTrackingUrl: S.optional(S.String),
-          yPosition: S.optional(S.String),
-          iconClickThroughUrl: S.optional(S.String),
-          size: S.optional(__S(61, __c7, 5)),
-          resourceUrl: S.optional(S.String),
-          program: S.optional(S.String),
-          iconClickTrackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObaIcon" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           top: S.optional(S.Number),
@@ -13342,18 +16731,7 @@ function __c20(j: number): any {
           windowHeight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FsCommand" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeAssetId" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           horizontallyLocked: S.optional(S.Boolean),
@@ -13368,118 +16746,122 @@ function __c21(j: number): any {
           zIndex: S.optional(S.Number),
           windowMode: S.optional(S.String),
           audioSampleRate: S.optional(S.Number),
-          size: S.optional(__S(61, __c7, 5)),
+          size: S.optional(__S(4864, __c152, 0)),
           flashVersion: S.optional(S.Number),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          position: S.optional(__S(156, __c19, 4)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          position: S.optional(__S(6337, __c198, 1)),
           bitRate: S.optional(S.Number),
           frameRate: S.optional(S.Number),
           verticallyLocked: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
-          backupImageExit: S.optional(__S(158, __c19, 6)),
+          backupImageExit: S.optional(__S(6339, __c198, 3)),
           childAssetType: S.optional(S.String),
           positionTopUnit: S.optional(S.String),
           fileSize: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          assetIdentifier: S.optional(__S(168, __c21, 0)),
+          assetIdentifier: S.optional(__S(6343, __c198, 7)),
           audioBitRate: S.optional(S.Number),
-          companionCreativeIds: S.optional(__S(0, __c0, 0)),
+          companionCreativeIds: S.optional(__S(7104, __c222, 0)),
           id: S.optional(S.String),
           mediaDuration: S.optional(S.Number),
           mimeType: S.optional(S.String),
-          detectedFeatures: S.optional(__S(38, __c4, 6)),
+          detectedFeatures: S.optional(__S(3264, __c102, 0)),
           displayType: S.optional(S.String),
-          offset: S.optional(__S(156, __c19, 4)),
+          offset: S.optional(__S(6337, __c198, 1)),
           customStartTimeValue: S.optional(S.Number),
           streamingServingUrl: S.optional(S.String),
           zipFilename: S.optional(S.String),
           progressiveServingUrl: S.optional(S.String),
-          expandedDimension: S.optional(__S(61, __c7, 5)),
+          expandedDimension: S.optional(__S(4864, __c152, 0)),
           artworkType: S.optional(S.String),
           startTimeType: S.optional(S.String),
           role: S.optional(S.String),
           positionLeftUnit: S.optional(S.String),
           pushdownDuration: S.optional(S.Number),
           politeLoad: S.optional(S.Boolean),
-          additionalSizes: S.optional(__S(165, __c20, 5)),
+          additionalSizes: S.optional(__S(6272, __c196, 0)),
           hideSelectionBoxes: S.optional(S.Boolean),
           transparency: S.optional(S.Boolean),
           durationType: S.optional(S.String),
-          collapsedSize: S.optional(__S(61, __c7, 5)),
+          collapsedSize: S.optional(__S(4864, __c152, 0)),
         }),
       ).annotate({ identifier: "CreativeAsset" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(6375, __c199, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           subaccountId: S.optional(S.String),
-          progressOffset: S.optional(__S(151, __c18, 7)),
-          compatibility: S.optional(__S(38, __c4, 6)),
+          progressOffset: S.optional(__S(6304, __c197, 0)),
+          compatibility: S.optional(__S(3264, __c102, 0)),
           commercialId: S.optional(S.String),
           renderingId: S.optional(S.String),
           archived: S.optional(S.Boolean),
           backgroundColor: S.optional(S.String),
           autoAdvanceImages: S.optional(S.Boolean),
           skippable: S.optional(S.Boolean),
-          thirdPartyUrls: S.optional(__S(153, __c19, 1)),
+          thirdPartyUrls: S.optional(__S(6369, __c199, 1)),
           sslOverride: S.optional(S.Boolean),
-          universalAdId: S.optional(__S(154, __c19, 2)),
+          universalAdId: S.optional(__S(6370, __c199, 2)),
           id: S.optional(S.String),
-          size: S.optional(__S(61, __c7, 5)),
-          timerCustomEvents: S.optional(__S(159, __c19, 7)),
+          size: S.optional(__S(4864, __c152, 0)),
+          timerCustomEvents: S.optional(__S(6340, __c198, 4)),
           adParameters: S.optional(S.String),
           artworkType: S.optional(S.String),
-          clickTags: S.optional(__S(161, __c20, 1)),
+          clickTags: S.optional(__S(6342, __c198, 6)),
           syntheticContentAttestationStatus: S.optional(S.String),
           studioCreativeId: S.optional(S.String),
           thirdPartyBackupImageImpressionsUrl: S.optional(S.String),
           redirectUrl: S.optional(S.String),
-          customKeyValues: S.optional(__S(0, __c0, 0)),
+          customKeyValues: S.optional(__S(7104, __c222, 0)),
           name: S.optional(S.String),
           version: S.optional(S.Number),
           thirdPartyRichMediaImpressionsUrl: S.optional(S.String),
           latestTraffickedCreativeId: S.optional(S.String),
-          creativeFieldAssignments: S.optional(__S(163, __c20, 3)),
+          creativeFieldAssignments: S.optional(__S(6372, __c199, 4)),
           requiredFlashPluginVersion: S.optional(S.String),
-          renderingIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          renderingIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           htmlCode: S.optional(S.String),
           active: S.optional(S.Boolean),
-          backupImageFeatures: S.optional(__S(38, __c4, 6)),
+          backupImageFeatures: S.optional(__S(3264, __c102, 0)),
           overrideCss: S.optional(S.String),
-          backupImageTargetWindow: S.optional(__S(164, __c20, 4)),
-          additionalSizes: S.optional(__S(165, __c20, 5)),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          companionCreatives: S.optional(__S(0, __c0, 0)),
+          backupImageTargetWindow: S.optional(__S(6373, __c199, 5)),
+          additionalSizes: S.optional(__S(6272, __c196, 0)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          companionCreatives: S.optional(__S(7104, __c222, 0)),
           mediaDescription: S.optional(S.String),
-          obaIcon: S.optional(__S(166, __c20, 6)),
+          obaIcon: S.optional(__S(6305, __c197, 1)),
           type: S.optional(S.String),
           authoringSource: S.optional(S.String),
           authoringTool: S.optional(S.String),
-          adTagKeys: S.optional(__S(0, __c0, 0)),
-          backupImageClickThroughUrl: S.optional(__S(155, __c19, 3)),
+          adTagKeys: S.optional(__S(7104, __c222, 0)),
+          backupImageClickThroughUrl: S.optional(__S(6336, __c198, 0)),
           totalFileSize: S.optional(S.String),
-          fsCommand: S.optional(__S(167, __c20, 7)),
+          fsCommand: S.optional(__S(6374, __c199, 6)),
           studioAdvertiserId: S.optional(S.String),
           studioTraffickedCreativeId: S.optional(S.String),
           htmlCodeLocked: S.optional(S.Boolean),
-          skipOffset: S.optional(__S(151, __c18, 7)),
+          skipOffset: S.optional(__S(6304, __c197, 0)),
           backupImageReportingLabel: S.optional(S.String),
           mediaDuration: S.optional(S.Number),
           kind: S.optional(S.String),
-          creativeAssets: S.optional(__S(170, __c21, 2)),
-          exitCustomEvents: S.optional(__S(159, __c19, 7)),
+          creativeAssets: S.optional(__S(6376, __c199, 8)),
+          exitCustomEvents: S.optional(__S(6340, __c198, 4)),
           sslCompliant: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           requiredFlashVersion: S.optional(S.Number),
-          counterCustomEvents: S.optional(__S(159, __c19, 7)),
+          counterCustomEvents: S.optional(__S(6340, __c198, 4)),
           allowScriptAccess: S.optional(S.Boolean),
           convertFlashToHtml5: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Creative" });
-    case 4:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13492,7 +16874,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDirectorySitesRequest" });
-    case 5:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           programmaticPlacementAccepted: S.optional(S.Boolean),
@@ -13502,32 +16888,32 @@ function __c21(j: number): any {
           pubPaidPlacementAccepted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DfpSettings" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dfpSettings: S.optional(__S(173, __c21, 5)),
+          dfpSettings: S.optional(__S(6432, __c201, 0)),
           interstitialPlacementAccepted: S.optional(S.Boolean),
           instreamVideoPlacementAccepted: S.optional(S.Boolean),
           activeViewOptOut: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DirectorySiteSettings" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           url: S.optional(S.String),
-          settings: S.optional(__S(174, __c21, 6)),
+          settings: S.optional(__S(6433, __c201, 1)),
           kind: S.optional(S.String),
-          inpageTagFormats: S.optional(__S(38, __c4, 6)),
+          inpageTagFormats: S.optional(__S(3264, __c102, 0)),
           publisherSpecificationId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          interstitialTagFormats: S.optional(__S(38, __c4, 6)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          interstitialTagFormats: S.optional(__S(3264, __c102, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectorySite" });
   }
 }
-function __c22(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13541,48 +16927,52 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDynamicFeedsRequest" });
-    case 1:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rowNumber: S.optional(S.Number),
-          fieldNames: S.optional(__S(0, __c0, 0)),
+          fieldNames: S.optional(__S(7104, __c222, 0)),
           separator: S.optional(S.String),
           charset: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentSourceMetaData" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metaData: S.optional(__S(177, __c22, 1)),
+          metaData: S.optional(__S(6496, __c203, 0)),
           resourceLink: S.optional(S.String),
           contentSourceName: S.optional(S.String),
           resourceType: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
         }),
       ).annotate({ identifier: "ContentSource" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.Number),
           ingestionError: S.optional(S.String),
-          fieldValues: S.optional(__S(0, __c0, 0)),
+          fieldValues: S.optional(__S(7104, __c222, 0)),
           isError: S.optional(S.Boolean),
           fieldName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldError" });
+    case 3:
+      return S.Array(__S(6498, __c203, 2));
     case 4:
-      return S.Array(__S(179, __c22, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(180, __c22, 4)),
+          errors: S.optional(__S(6499, __c203, 3)),
           recordId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionErrorRecord" });
+    case 5:
+      return S.Array(__S(6500, __c203, 4));
     case 6:
-      return S.Array(__S(181, __c22, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           numActiveRows: S.optional(S.String),
@@ -13592,19 +16982,15 @@ function __c22(j: number): any {
           numWarningsTotal: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestionStatus" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          ingestionErrorRecords: S.optional(__S(182, __c22, 6)),
+          ingestionErrorRecords: S.optional(__S(6501, __c203, 5)),
           state: S.optional(S.String),
-          ingestionStatus: S.optional(__S(183, __c22, 7)),
+          ingestionStatus: S.optional(__S(6502, __c203, 6)),
         }),
       ).annotate({ identifier: "FeedIngestionStatus" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           renderable: S.optional(S.Boolean),
@@ -13616,26 +17002,26 @@ function __c23(j: number): any {
           required: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FeedField" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(6504, __c203, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           externalIdFieldId: S.optional(S.Number),
           elementName: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           endTimestampFieldId: S.optional(S.Number),
           reportingLabelFieldId: S.optional(S.Number),
-          feedFields: S.optional(__S(186, __c23, 2)),
+          feedFields: S.optional(__S(6505, __c203, 9)),
           startTimestampFieldId: S.optional(S.Number),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           activeFieldId: S.optional(S.Number),
           proximityTargetingFieldId: S.optional(S.Number),
           isLocalTimestamp: S.optional(S.Boolean),
           defaultFieldId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Element" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           startHour: S.optional(S.String),
@@ -13645,23 +17031,27 @@ function __c23(j: number): any {
           scheduleEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FeedSchedule" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          contentSource: S.optional(__S(178, __c22, 2)),
-          feedIngestionStatus: S.optional(__S(184, __c23, 0)),
+          contentSource: S.optional(__S(6497, __c203, 1)),
+          feedIngestionStatus: S.optional(__S(6503, __c203, 7)),
           hasPublished: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           dynamicFeedId: S.optional(S.String),
           studioAdvertiserId: S.optional(S.String),
           dynamicFeedName: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           status: S.optional(S.String),
-          element: S.optional(__S(187, __c23, 3)),
-          feedSchedule: S.optional(__S(188, __c23, 4)),
+          element: S.optional(__S(6506, __c203, 10)),
+          feedSchedule: S.optional(__S(6507, __c203, 11)),
         }),
       ).annotate({ identifier: "DynamicFeed" });
-    case 6:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.String.pipe(T.Label()),
@@ -13675,7 +17065,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetDynamicProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           radiusValue: S.optional(S.Number),
@@ -13684,31 +17078,27 @@ function __c23(j: number): any {
           radiusBucketType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProximityFilter" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.Number),
           requestKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomValueField" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
     case 2:
+      return S.Array(__S(6561, __c205, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.Number),
-          userAttributeIds: S.optional(__S(0, __c0, 0)),
+          userAttributeIds: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({
         identifier: "RemarketingValueAttribute",
       });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
     case 4:
+      return S.Array(__S(6563, __c205, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           elementId: S.optional(S.String),
@@ -13716,103 +17106,99 @@ function __c24(j: number): any {
           dynamicFeedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DependentFieldValue" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          userAttributeIds: S.optional(__S(0, __c0, 0)),
-          excludeFromUserAttributeIds: S.optional(__S(0, __c0, 0)),
+          userAttributeIds: S.optional(__S(7104, __c222, 0)),
+          excludeFromUserAttributeIds: S.optional(__S(7104, __c222, 0)),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestValue" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           boolValue: S.optional(S.Boolean),
           fieldId: S.optional(S.Number),
-          dependentFieldValue: S.optional(__S(196, __c24, 4)),
+          dependentFieldValue: S.optional(__S(6565, __c205, 5)),
           matchType: S.optional(S.String),
           stringValue: S.optional(S.String),
           valueType: S.optional(S.String),
-          requestValue: S.optional(__S(197, __c24, 5)),
+          requestValue: S.optional(__S(6566, __c205, 6)),
         }),
       ).annotate({ identifier: "FieldFilter" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(6567, __c205, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          fieldFilter: S.optional(__S(199, __c24, 7)),
+          fieldFilter: S.optional(__S(6568, __c205, 8)),
         }),
       ).annotate({ identifier: "RuleBlock" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(6569, __c205, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.Number),
-          ruleBlocks: S.optional(__S(201, __c25, 1)),
+          ruleBlocks: S.optional(__S(6570, __c205, 10)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomRule" });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(6571, __c205, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          proximityFilter: S.optional(__S(191, __c23, 7)),
-          customValueFields: S.optional(__S(193, __c24, 1)),
-          autoTargetedFieldIds: S.optional(__S(96, __c12, 0)),
+          proximityFilter: S.optional(__S(6560, __c205, 0)),
+          customValueFields: S.optional(__S(6562, __c205, 2)),
+          autoTargetedFieldIds: S.optional(__S(4896, __c153, 0)),
           ruleType: S.optional(S.String),
-          remarketingValueAttributes: S.optional(__S(195, __c24, 3)),
-          customRules: S.optional(__S(203, __c25, 3)),
+          remarketingValueAttributes: S.optional(__S(6564, __c205, 4)),
+          customRules: S.optional(__S(6572, __c205, 12)),
           rotationType: S.optional(S.String),
           weightFieldId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DynamicRules" });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          dynamicRules: S.optional(__S(204, __c25, 4)),
+          dynamicRules: S.optional(__S(6573, __c205, 13)),
           quantity: S.optional(S.Number),
           dynamicFeedId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DynamicProfileFeedSettings",
       });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
+    case 15:
+      return S.Array(__S(6574, __c205, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          dynamicProfileFeedSettings: S.optional(__S(206, __c25, 6)),
+          dynamicProfileFeedSettings: S.optional(__S(6575, __c205, 15)),
           versionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicProfileVersion" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.optional(S.String),
           archiveStatus: S.optional(S.String),
           name: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           description: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           kind: S.optional(S.String),
           status: S.optional(S.String),
-          active: S.optional(__S(207, __c25, 7)),
+          active: S.optional(__S(6576, __c205, 16)),
           studioAdvertiserId: S.optional(S.String),
-          draft: S.optional(__S(207, __c25, 7)),
+          draft: S.optional(__S(6576, __c205, 16)),
         }),
       ).annotate({ identifier: "DynamicProfile" });
-    case 1:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -13825,18 +17211,22 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEventTagsRequest" });
-    case 2:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           excludeFromAdxRequests: S.optional(S.Boolean),
           url: S.optional(S.String),
           advertiserId: S.optional(S.String),
           sslCompliant: S.optional(S.Boolean),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           kind: S.optional(S.String),
           accountId: S.optional(S.String),
-          siteIds: S.optional(__S(0, __c0, 0)),
-          campaignIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          siteIds: S.optional(__S(7104, __c222, 0)),
+          campaignIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
@@ -13848,7 +17238,11 @@ function __c26(j: number): any {
           enabledByDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventTag" });
-    case 3:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportId: S.String.pipe(T.Label()),
@@ -13861,14 +17255,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFilesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          browserUrl: S.optional(S.String),
-          apiUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileUrls" });
-    case 5:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
@@ -13877,7 +17268,18 @@ function __c26(j: number): any {
           endDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateRange" });
-    case 6:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          browserUrl: S.optional(S.String),
+          apiUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileUrls" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
@@ -13886,13 +17288,17 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           fileName: S.optional(S.String),
-          urls: S.optional(__S(212, __c26, 4)),
-          dateRange: S.optional(__S(213, __c26, 5)),
+          urls: S.optional(__S(6720, __c210, 0)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
           reportId: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
-    case 7:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13909,7 +17315,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13922,13 +17328,13 @@ function __c27(j: number): any {
         identifier: "FloodlightActivityDynamicTag",
       });
     case 1:
-      return S.Array(__S(216, __c27, 0));
+      return S.Array(__S(6784, __c212, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           clickThrough: S.optional(S.Boolean),
-          siteIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          dynamicTag: S.optional(__S(216, __c27, 0)),
+          siteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          dynamicTag: S.optional(__S(6784, __c212, 0)),
           viewThrough: S.optional(S.Boolean),
           siteId: S.optional(S.String),
           directorySiteId: S.optional(S.String),
@@ -13937,26 +17343,26 @@ function __c27(j: number): any {
         identifier: "FloodlightActivityPublisherDynamicTag",
       });
     case 3:
-      return S.Array(__S(218, __c27, 2));
+      return S.Array(__S(6786, __c212, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
           floodlightActivityGroupId: S.optional(S.String),
           tagFormat: S.optional(S.String),
-          defaultTags: S.optional(__S(217, __c27, 1)),
+          defaultTags: S.optional(__S(6785, __c212, 1)),
           floodlightConfigurationId: S.optional(S.String),
           conversionCategory: S.optional(S.String),
           tagString: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          publisherTags: S.optional(__S(219, __c27, 3)),
-          userDefinedVariableTypes: S.optional(__S(38, __c4, 6)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          publisherTags: S.optional(__S(6787, __c212, 3)),
+          userDefinedVariableTypes: S.optional(__S(3264, __c102, 0)),
           kind: S.optional(S.String),
           notes: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           cacheBustingType: S.optional(S.String),
           sslRequired: S.optional(S.Boolean),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          floodlightConfigurationIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           name: S.optional(S.String),
           status: S.optional(S.String),
           subaccountId: S.optional(S.String),
@@ -13973,7 +17379,11 @@ function __c27(j: number): any {
           expectedUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "FloodlightActivity" });
-    case 5:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -13988,24 +17398,32 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetFloodlightActivityGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           advertiserId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           tagString: S.optional(S.String),
           name: S.optional(S.String),
           floodlightConfigurationId: S.optional(S.String),
           type: S.optional(S.String),
-          floodlightConfigurationIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          floodlightConfigurationIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           accountId: S.optional(S.String),
           kind: S.optional(S.String),
           id: S.optional(S.String),
           subaccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FloodlightActivityGroup" });
-    case 7:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14022,7 +17440,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c216(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14034,7 +17452,7 @@ function __c28(j: number): any {
         identifier: "ThirdPartyAuthenticationToken",
       });
     case 1:
-      return S.Array(__S(224, __c28, 0));
+      return S.Array(__S(6912, __c216, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14050,7 +17468,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          configuration: S.optional(__S(226, __c28, 2)),
+          configuration: S.optional(__S(6914, __c216, 2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomViewabilityMetric" });
@@ -14072,7 +17490,7 @@ function __c28(j: number): any {
         identifier: "UserDefinedVariableConfiguration",
       });
     case 6:
-      return S.Array(__S(229, __c28, 5));
+      return S.Array(__S(6917, __c216, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -14080,34 +17498,34 @@ function __c28(j: number): any {
           omnitureCostDataEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OmnitureSettings" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           firstDayOfWeek: S.optional(S.String),
           accountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           subaccountId: S.optional(S.String),
-          thirdPartyAuthenticationTokens: S.optional(__S(225, __c28, 1)),
+          thirdPartyAuthenticationTokens: S.optional(__S(6913, __c216, 1)),
           naturalSearchConversionAttributionOption: S.optional(S.String),
-          customViewabilityMetric: S.optional(__S(227, __c28, 3)),
+          customViewabilityMetric: S.optional(__S(6915, __c216, 3)),
           exposureToConversionEnabled: S.optional(S.Boolean),
-          tagSettings: S.optional(__S(228, __c28, 4)),
+          tagSettings: S.optional(__S(6916, __c216, 4)),
           kind: S.optional(S.String),
-          userDefinedVariableConfigurations: S.optional(__S(230, __c28, 6)),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          omnitureSettings: S.optional(__S(231, __c28, 7)),
+          userDefinedVariableConfigurations: S.optional(__S(6918, __c216, 6)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          omnitureSettings: S.optional(__S(6919, __c216, 7)),
           inAppAttributionTrackingEnabled: S.optional(S.Boolean),
           advertiserId: S.optional(S.String),
           id: S.optional(S.String),
           analyticsDataSharingEnabled: S.optional(S.Boolean),
-          lookbackConfiguration: S.optional(__S(52, __c6, 4)),
+          lookbackConfiguration: S.optional(__S(4576, __c143, 0)),
         }),
       ).annotate({ identifier: "FloodlightConfiguration" });
-    case 1:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14120,7 +17538,11 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMobileAppsRequest" });
-    case 2:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14133,7 +17555,11 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMobileCarriersRequest" });
-    case 3:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dartId: S.String.pipe(T.Label()),
@@ -14148,7 +17574,170 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetOperatingSystemsRequest",
       });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7083, __c221, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/conversions/batchinsert",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchinsertConversionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          hasFailures: S.optional(S.Boolean),
+          status: S.optional(__S(7087, __c221, 15)),
+        }),
+      ).annotate({
+        identifier: "ConversionsBatchInsertResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          itemId: S.optional(S.String),
+          unitPrice: S.optional(S.Number),
+          quantity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CartDataItem" });
+    case 1:
+      return S.Array(__S(7072, __c221, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          merchantFeedLabel: S.optional(S.String),
+          merchantId: S.optional(S.String),
+          merchantFeedLanguage: S.optional(S.String),
+          items: S.optional(__S(7073, __c221, 1)),
+        }),
+      ).annotate({ identifier: "CartData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          hashedFirstName: S.optional(S.String),
+          hashedLastName: S.optional(S.String),
+          state: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          hashedStreetAddress: S.optional(S.String),
+          countryCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfflineUserAddressInfo" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          addressInfo: S.optional(__S(7075, __c221, 3)),
+          hashedPhoneNumber: S.optional(S.String),
+          hashedEmail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserIdentifier" });
+    case 5:
+      return S.Array(__S(7076, __c221, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomFloodlightVariable" });
+    case 7:
+      return S.Array(__S(7078, __c221, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          limitAdTracking: S.optional(S.Boolean),
+          floodlightActivityId: S.optional(S.String),
+          encryptedUserIdCandidates: S.optional(__S(7104, __c222, 0)),
+          ordinal: S.optional(S.String),
+          floodlightConfigurationId: S.optional(S.String),
+          cartData: S.optional(__S(7074, __c221, 2)),
+          encryptedUserId: S.optional(S.String),
+          sessionAttributesEncoded: S.optional(S.String),
+          dclid: S.optional(S.String),
+          quantity: S.optional(S.String),
+          userIdentifiers: S.optional(__S(7077, __c221, 5)),
+          gclid: S.optional(S.String),
+          treatmentForUnderage: S.optional(S.Boolean),
+          kind: S.optional(S.String),
+          nonPersonalizedAd: S.optional(S.Boolean),
+          customVariables: S.optional(__S(7079, __c221, 7)),
+          mobileDeviceId: S.optional(S.String),
+          adUserDataConsent: S.optional(S.String),
+          value: S.optional(S.Number),
+          childDirectedTreatment: S.optional(S.Boolean),
+          matchId: S.optional(S.String),
+          timestampMicros: S.optional(S.String),
+          impressionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Conversion" });
+    case 9:
+      return S.Array(__S(7080, __c221, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          encryptionEntityId: S.optional(S.String),
+          encryptionSource: S.optional(S.String),
+          encryptionEntityType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionInfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          conversions: S.optional(__S(7081, __c221, 9)),
+          kind: S.optional(S.String),
+          encryptionInfo: S.optional(__S(7082, __c221, 10)),
+        }),
+      ).annotate({
+        identifier: "ConversionsBatchInsertRequest",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConversionError" });
+    case 13:
+      return S.Array(__S(7084, __c221, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          conversion: S.optional(__S(7080, __c221, 8)),
+          kind: S.optional(S.String),
+          errors: S.optional(__S(7085, __c221, 13)),
+        }),
+      ).annotate({ identifier: "ConversionStatus" });
+    case 15:
+      return S.Array(__S(7086, __c221, 14));
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14163,7 +17752,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetOperatingSystemVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14178,7 +17771,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetPlacementGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           rateOrCostNanos: S.optional(S.String),
@@ -14190,18 +17787,14 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "PricingSchedulePricingPeriod",
       });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(7200, __c225, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           startDate: S.optional(S.String),
           pricingType: S.optional(S.String),
-          pricingPeriods: S.optional(__S(239, __c29, 7)),
+          pricingPeriods: S.optional(__S(7201, __c225, 1)),
           floodlightActivityId: S.optional(S.String),
           flighted: S.optional(S.Boolean),
           testingStartDate: S.optional(S.String),
@@ -14209,38 +17802,46 @@ function __c30(j: number): any {
           capCostOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingSchedule" });
-    case 1:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          campaignIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          primaryPlacementIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          campaignIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          primaryPlacementIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           accountId: S.optional(S.String),
           placementStrategyId: S.optional(S.String),
-          directorySiteIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          directorySiteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           campaignId: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           name: S.optional(S.String),
           comment: S.optional(S.String),
           placementGroupType: S.optional(S.String),
-          siteIdDimensionValue: S.optional(__S(65, __c8, 1)),
-          childPlacementIds: S.optional(__S(0, __c0, 0)),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          siteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
+          childPlacementIds: S.optional(__S(7104, __c222, 0)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           siteId: S.optional(S.String),
           id: S.optional(S.String),
           subaccountId: S.optional(S.String),
           primaryPlacementId: S.optional(S.String),
-          pricingSchedule: S.optional(__S(240, __c30, 0)),
+          pricingSchedule: S.optional(__S(7202, __c225, 2)),
           contentCategoryId: S.optional(S.String),
           directorySiteId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           externalId: S.optional(S.String),
           activeStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementGroup" });
-    case 2:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14253,7 +17854,32 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPlacementsRequest" });
-    case 3:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeUnescapedlpurlMacro: S.optional(S.Boolean),
+          includeClickTracking: S.optional(S.Boolean),
+          keywordOption: S.optional(S.String),
+          additionalKeyValues: S.optional(S.String),
+          includeClickThroughUrls: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TagSetting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabledVideoFormats: S.optional(__S(4896, __c153, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TranscodeSetting" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tagWrappingMode: S.optional(S.String),
@@ -14264,46 +17890,25 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "MeasurementPartnerWrappingData",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          includeUnescapedlpurlMacro: S.optional(S.Boolean),
-          includeClickTracking: S.optional(S.Boolean),
-          keywordOption: S.optional(S.String),
-          additionalKeyValues: S.optional(S.String),
-          includeClickThroughUrls: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TagSetting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabledSizes: S.optional(__S(165, __c20, 5)),
+          enabledSizes: S.optional(__S(6272, __c196, 0)),
           companionsDisabled: S.optional(S.Boolean),
           kind: S.optional(S.String),
           imageOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CompanionSetting" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          enabledVideoFormats: S.optional(__S(96, __c12, 0)),
+          skipOffset: S.optional(__S(6304, __c197, 0)),
           kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TranscodeSetting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          skipOffset: S.optional(__S(151, __c18, 7)),
-          kind: S.optional(S.String),
-          progressOffset: S.optional(__S(151, __c18, 7)),
+          progressOffset: S.optional(__S(6304, __c197, 0)),
           skippable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SkippableSetting" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           obaEnabled: S.optional(S.Boolean),
@@ -14311,13 +17916,13 @@ function __c31(j: number): any {
           kind: S.optional(S.String),
           publisherSpecificationId: S.optional(S.String),
           durationSeconds: S.optional(S.Number),
-          companionSettings: S.optional(__S(245, __c30, 5)),
-          transcodeSettings: S.optional(__S(246, __c30, 6)),
-          skippableSettings: S.optional(__S(247, __c30, 7)),
-          obaSettings: S.optional(__S(166, __c20, 6)),
+          companionSettings: S.optional(__S(7329, __c229, 1)),
+          transcodeSettings: S.optional(__S(7297, __c228, 1)),
+          skippableSettings: S.optional(__S(7330, __c229, 2)),
+          obaSettings: S.optional(__S(6305, __c197, 1)),
         }),
       ).annotate({ identifier: "VideoSettings" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           conversionDomainId: S.optional(S.String),
@@ -14326,65 +17931,65 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PlacementSingleConversionDomain",
       });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(7332, __c229, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          conversionDomains: S.optional(__S(250, __c31, 2)),
+          conversionDomains: S.optional(__S(7333, __c229, 5)),
         }),
       ).annotate({
         identifier: "PlacementConversionDomainOverride",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          longHeadlines: S.optional(__S(0, __c0, 0)),
-          descriptions: S.optional(__S(0, __c0, 0)),
-          callToActions: S.optional(__S(38, __c4, 6)),
-          headlines: S.optional(__S(0, __c0, 0)),
+          longHeadlines: S.optional(__S(7104, __c222, 0)),
+          descriptions: S.optional(__S(7104, __c222, 0)),
+          callToActions: S.optional(__S(3264, __c102, 0)),
+          headlines: S.optional(__S(7104, __c222, 0)),
           businessName: S.optional(S.String),
-          businessLogoCreativeIds: S.optional(__S(0, __c0, 0)),
+          businessLogoCreativeIds: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({ identifier: "YoutubeSettings" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
-          publisherUpdateInfo: S.optional(__S(89, __c11, 1)),
+          publisherUpdateInfo: S.optional(__S(4736, __c148, 0)),
           status: S.optional(S.String),
           placementStrategyId: S.optional(S.String),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           vpaidAdapterChoice: S.optional(S.String),
           subaccountId: S.optional(S.String),
           paymentSource: S.optional(S.String),
-          partnerWrappingData: S.optional(__S(243, __c30, 3)),
+          partnerWrappingData: S.optional(__S(7328, __c229, 0)),
           directorySiteId: S.optional(S.String),
           externalId: S.optional(S.String),
           name: S.optional(S.String),
-          tagSetting: S.optional(__S(244, __c30, 4)),
+          tagSetting: S.optional(__S(7296, __c228, 0)),
           sslRequired: S.optional(S.Boolean),
           videoActiveViewOptOut: S.optional(S.Boolean),
           compatibility: S.optional(S.String),
-          placementGroupIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          placementGroupIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           adBlockingOptOut: S.optional(S.Boolean),
-          directorySiteIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          directorySiteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           kind: S.optional(S.String),
-          pricingSchedule: S.optional(__S(240, __c30, 0)),
+          pricingSchedule: S.optional(__S(7202, __c225, 2)),
           activeStatus: S.optional(S.String),
-          lookbackConfiguration: S.optional(__S(52, __c6, 4)),
-          campaignIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          lookbackConfiguration: S.optional(__S(4576, __c143, 0)),
+          campaignIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           keyName: S.optional(S.String),
-          additionalSizes: S.optional(__S(165, __c20, 5)),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          additionalSizes: S.optional(__S(6272, __c196, 0)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           accountId: S.optional(S.String),
-          videoSettings: S.optional(__S(248, __c31, 0)),
+          videoSettings: S.optional(__S(7331, __c229, 3)),
           contentCategoryId: S.optional(S.String),
           siteId: S.optional(S.String),
-          tagFormats: S.optional(__S(38, __c4, 6)),
-          conversionDomainOverride: S.optional(__S(251, __c31, 3)),
+          tagFormats: S.optional(__S(3264, __c102, 0)),
+          conversionDomainOverride: S.optional(__S(7334, __c229, 6)),
           campaignId: S.optional(S.String),
-          size: S.optional(__S(61, __c7, 5)),
+          size: S.optional(__S(4864, __c152, 0)),
           wrappingOptOut: S.optional(S.Boolean),
           primary: S.optional(S.Boolean),
           allowOnYoutube: S.optional(S.Boolean),
@@ -14392,15 +17997,19 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           adServingPlatformId: S.optional(S.String),
           paymentApproved: S.optional(S.Boolean),
-          createInfo: S.optional(__S(89, __c11, 1)),
+          createInfo: S.optional(__S(4736, __c148, 0)),
           placementGroupId: S.optional(S.String),
-          youtubeSettings: S.optional(__S(252, __c31, 4)),
-          siteIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          youtubeSettings: S.optional(__S(7335, __c229, 7)),
+          siteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           siteServed: S.optional(S.Boolean),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
         }),
       ).annotate({ identifier: "Placement" });
-    case 6:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14415,7 +18024,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetPlacementStrategiesRequest",
       });
-    case 7:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -14426,7 +18039,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "PlacementStrategy" });
   }
 }
-function __c32(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14441,7 +18054,11 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPlatformTypesRequest" });
-    case 1:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14454,7 +18071,11 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPostalCodesRequest" });
-    case 2:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14469,7 +18090,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetRemarketingListsRequest",
       });
-    case 3:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           variableFriendlyName: S.optional(S.String),
@@ -14482,29 +18107,25 @@ function __c32(j: number): any {
           negation: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListPopulationTerm" });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(7520, __c235, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          terms: S.optional(__S(260, __c32, 4)),
+          terms: S.optional(__S(7521, __c235, 1)),
         }),
       ).annotate({ identifier: "ListPopulationClause" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(7522, __c235, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          listPopulationClauses: S.optional(__S(262, __c32, 6)),
+          listPopulationClauses: S.optional(__S(7523, __c235, 3)),
           floodlightActivityId: S.optional(S.String),
           floodlightActivityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPopulationRule" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -14515,14 +18136,18 @@ function __c33(j: number): any {
           lifeSpan: S.optional(S.String),
           listSource: S.optional(S.String),
           id: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           accountId: S.optional(S.String),
           subaccountId: S.optional(S.String),
           name: S.optional(S.String),
-          listPopulationRule: S.optional(__S(263, __c32, 7)),
+          listPopulationRule: S.optional(__S(7524, __c235, 4)),
         }),
       ).annotate({ identifier: "RemarketingList" });
-    case 1:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14537,16 +18162,24 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetRemarketingListSharesRequest",
       });
-    case 2:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           remarketingListId: S.optional(S.String),
-          sharedAdvertiserIds: S.optional(__S(0, __c0, 0)),
-          sharedAccountIds: S.optional(__S(0, __c0, 0)),
+          sharedAdvertiserIds: S.optional(__S(7104, __c222, 0)),
+          sharedAccountIds: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({ identifier: "RemarketingListShare" });
-    case 3:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportId: S.String.pipe(T.Label()),
@@ -14559,9 +18192,17 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReportsRequest" });
-    case 4:
-      return S.Array(__S(65, __c8, 1));
-    case 5:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4704, __c147, 0));
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -14569,9 +18210,9 @@ function __c33(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SortedDimension" });
-    case 6:
-      return S.Array(__S(269, __c33, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(7680, __c240, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           includeAttributedIPConversions: S.optional(S.Boolean),
@@ -14587,31 +18228,27 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ReportPathToConversionCriteriaReportProperties",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          activityFilters: S.optional(__S(268, __c33, 4)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          floodlightConfigId: S.optional(__S(65, __c8, 1)),
-          conversionDimensions: S.optional(__S(270, __c33, 6)),
-          reportProperties: S.optional(__S(271, __c33, 7)),
-          customFloodlightVariables: S.optional(__S(270, __c33, 6)),
-          perInteractionDimensions: S.optional(__S(270, __c33, 6)),
-          customRichMediaEvents: S.optional(__S(268, __c33, 4)),
-          dateRange: S.optional(__S(213, __c26, 5)),
+          activityFilters: S.optional(__S(7648, __c239, 0)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          floodlightConfigId: S.optional(__S(4704, __c147, 0)),
+          conversionDimensions: S.optional(__S(7681, __c240, 1)),
+          reportProperties: S.optional(__S(7682, __c240, 2)),
+          customFloodlightVariables: S.optional(__S(7681, __c240, 1)),
+          perInteractionDimensions: S.optional(__S(7681, __c240, 1)),
+          customRichMediaEvents: S.optional(__S(7648, __c239, 0)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
         }),
       ).annotate({
         identifier: "ReportPathToConversionCriteria",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           timezone: S.optional(S.String),
-          repeatsOnWeekDays: S.optional(__S(38, __c4, 6)),
+          repeatsOnWeekDays: S.optional(__S(3264, __c102, 0)),
           active: S.optional(S.Boolean),
           expirationDate: S.optional(S.String),
           every: S.optional(S.Number),
@@ -14620,56 +18257,56 @@ function __c34(j: number): any {
           startDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportSchedule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metricNames: S.optional(__S(0, __c0, 0)),
-          filters: S.optional(__S(268, __c33, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Activities" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          filteredEventIds: S.optional(__S(268, __c33, 4)),
-        }),
-      ).annotate({ identifier: "CustomRichMediaEvents" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activities: S.optional(__S(274, __c34, 2)),
-          customRichMediaEvents: S.optional(__S(275, __c34, 3)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          dateRange: S.optional(__S(213, __c26, 5)),
-          dimensionFilters: S.optional(__S(268, __c33, 4)),
-          dimensions: S.optional(__S(270, __c33, 6)),
-        }),
-      ).annotate({ identifier: "ReportCriteria" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dateRange: S.optional(__S(213, __c26, 5)),
-          dimensionFilters: S.optional(__S(268, __c33, 4)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          dimensions: S.optional(__S(270, __c33, 6)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          filters: S.optional(__S(7648, __c239, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Activities" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          filteredEventIds: S.optional(__S(7648, __c239, 0)),
+        }),
+      ).annotate({ identifier: "CustomRichMediaEvents" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          activities: S.optional(__S(7685, __c240, 5)),
+          customRichMediaEvents: S.optional(__S(7686, __c240, 6)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
+          dimensionFilters: S.optional(__S(7648, __c239, 0)),
+          dimensions: S.optional(__S(7681, __c240, 1)),
+        }),
+      ).annotate({ identifier: "ReportCriteria" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(6688, __c209, 0)),
+          dimensionFilters: S.optional(__S(7648, __c239, 0)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          dimensions: S.optional(__S(7681, __c240, 1)),
         }),
       ).annotate({
         identifier: "ReportCrossMediaReachCriteria",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(270, __c33, 6)),
-          dateRange: S.optional(__S(213, __c26, 5)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          customRichMediaEvents: S.optional(__S(275, __c34, 3)),
-          activities: S.optional(__S(274, __c34, 2)),
-          dimensionFilters: S.optional(__S(268, __c33, 4)),
-          reachByFrequencyMetricNames: S.optional(__S(0, __c0, 0)),
+          dimensions: S.optional(__S(7681, __c240, 1)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          customRichMediaEvents: S.optional(__S(7686, __c240, 6)),
+          activities: S.optional(__S(7685, __c240, 5)),
+          dimensionFilters: S.optional(__S(7648, __c239, 0)),
+          reachByFrequencyMetricNames: S.optional(__S(7104, __c222, 0)),
         }),
       ).annotate({ identifier: "ReportReachCriteria" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -14677,22 +18314,18 @@ function __c34(j: number): any {
           deliveryType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Recipient" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(7690, __c240, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           emailOwner: S.optional(S.Boolean),
           message: S.optional(S.String),
-          recipients: S.optional(__S(280, __c35, 0)),
+          recipients: S.optional(__S(7691, __c240, 11)),
           emailOwnerDeliveryType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportDelivery" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           includeAttributedIPConversions: S.optional(S.Boolean),
@@ -14702,42 +18335,46 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ReportFloodlightCriteriaReportProperties",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(270, __c33, 6)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          reportProperties: S.optional(__S(282, __c35, 2)),
-          floodlightConfigId: S.optional(__S(65, __c8, 1)),
-          dimensionFilters: S.optional(__S(268, __c33, 4)),
-          customRichMediaEvents: S.optional(__S(268, __c33, 4)),
-          dateRange: S.optional(__S(213, __c26, 5)),
+          dimensions: S.optional(__S(7681, __c240, 1)),
+          metricNames: S.optional(__S(7104, __c222, 0)),
+          reportProperties: S.optional(__S(7693, __c240, 13)),
+          floodlightConfigId: S.optional(__S(4704, __c147, 0)),
+          dimensionFilters: S.optional(__S(7648, __c239, 0)),
+          customRichMediaEvents: S.optional(__S(7648, __c239, 0)),
+          dateRange: S.optional(__S(6688, __c209, 0)),
         }),
       ).annotate({ identifier: "ReportFloodlightCriteria" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          pathToConversionCriteria: S.optional(__S(272, __c34, 0)),
-          schedule: S.optional(__S(273, __c34, 1)),
+          pathToConversionCriteria: S.optional(__S(7683, __c240, 3)),
+          schedule: S.optional(__S(7684, __c240, 4)),
           lastModifiedTime: S.optional(S.String),
-          criteria: S.optional(__S(276, __c34, 4)),
+          criteria: S.optional(__S(7687, __c240, 7)),
           fileName: S.optional(S.String),
           id: S.optional(S.String),
-          crossMediaReachCriteria: S.optional(__S(277, __c34, 5)),
+          crossMediaReachCriteria: S.optional(__S(7688, __c240, 8)),
           accountId: S.optional(S.String),
           subAccountId: S.optional(S.String),
           type: S.optional(S.String),
           format: S.optional(S.String),
           name: S.optional(S.String),
-          reachCriteria: S.optional(__S(278, __c34, 6)),
-          delivery: S.optional(__S(281, __c35, 1)),
-          floodlightCriteria: S.optional(__S(283, __c35, 3)),
+          reachCriteria: S.optional(__S(7689, __c240, 9)),
+          delivery: S.optional(__S(7692, __c240, 12)),
+          floodlightCriteria: S.optional(__S(7694, __c240, 14)),
           etag: S.optional(S.String),
           ownerProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Report" });
-    case 5:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14751,7 +18388,40 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReportsFilesRequest" });
-    case 6:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          body: S.optional(__S(7083, __c221, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "userprofiles/{profileId}/conversions/batchupdate",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchupdateConversionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hasFailures: S.optional(S.Boolean),
+          status: S.optional(__S(7087, __c221, 15)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConversionsBatchUpdateResponse",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14764,10 +18434,14 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesRequest" });
-    case 7:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tagSetting: S.optional(__S(244, __c30, 4)),
+          tagSetting: S.optional(__S(7296, __c228, 0)),
           vpaidAdapterChoiceTemplate: S.optional(S.String),
           videoActiveViewOptOutTemplate: S.optional(S.Boolean),
           adBlockingOptOut: S.optional(S.Boolean),
@@ -14775,42 +18449,38 @@ function __c35(j: number): any {
           activeViewOptOut: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SiteSettings" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           skippable: S.optional(S.Boolean),
-          skipOffset: S.optional(__S(151, __c18, 7)),
-          progressOffset: S.optional(__S(151, __c18, 7)),
+          skipOffset: S.optional(__S(6304, __c197, 0)),
+          progressOffset: S.optional(__S(6304, __c197, 0)),
         }),
       ).annotate({ identifier: "SiteSkippableSetting" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           imageOnly: S.optional(S.Boolean),
           companionsDisabled: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          enabledSizes: S.optional(__S(165, __c20, 5)),
+          enabledSizes: S.optional(__S(6272, __c196, 0)),
         }),
       ).annotate({ identifier: "SiteCompanionSetting" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           obaEnabled: S.optional(S.Boolean),
           orientation: S.optional(S.String),
-          obaSettings: S.optional(__S(166, __c20, 6)),
-          skippableSettings: S.optional(__S(288, __c36, 0)),
-          companionSettings: S.optional(__S(289, __c36, 1)),
+          obaSettings: S.optional(__S(6305, __c197, 1)),
+          skippableSettings: S.optional(__S(7809, __c244, 1)),
+          companionSettings: S.optional(__S(7810, __c244, 2)),
           publisherSpecificationId: S.optional(S.String),
           kind: S.optional(S.String),
-          transcodeSettings: S.optional(__S(246, __c30, 6)),
+          transcodeSettings: S.optional(__S(7297, __c228, 1)),
         }),
       ).annotate({ identifier: "SiteVideoSettings" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
@@ -14823,28 +18493,32 @@ function __c36(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteContact" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
     case 5:
+      return S.Array(__S(7812, __c244, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           directorySiteId: S.optional(S.String),
-          siteSettings: S.optional(__S(287, __c35, 7)),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
+          siteSettings: S.optional(__S(7808, __c244, 0)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
           name: S.optional(S.String),
           id: S.optional(S.String),
           adServingPlatformId: S.optional(S.String),
-          videoSettings: S.optional(__S(290, __c36, 2)),
+          videoSettings: S.optional(__S(7811, __c244, 3)),
           subaccountId: S.optional(S.String),
-          siteContacts: S.optional(__S(292, __c36, 4)),
-          directorySiteIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          siteContacts: S.optional(__S(7813, __c244, 5)),
+          directorySiteIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           keyName: S.optional(S.String),
           approved: S.optional(S.Boolean),
           kind: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Site" });
-    case 6:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -14857,7 +18531,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSizesRequest" });
-    case 7:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           studioCreativeId: S.String.pipe(T.Label()),
@@ -14873,7 +18551,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14886,13 +18564,13 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          dimension: S.optional(__S(296, __c37, 0)),
-          assetIds: S.optional(__S(0, __c0, 0)),
+          dimension: S.optional(__S(7904, __c247, 0)),
+          assetIds: S.optional(__S(7104, __c222, 0)),
           studioAdvertiserId: S.optional(S.String),
           studioAccountId: S.optional(S.String),
           studioCampaignId: S.optional(S.String),
-          createdInfo: S.optional(__S(89, __c11, 1)),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
+          createdInfo: S.optional(__S(4736, __c148, 0)),
+          lastModifiedInfo: S.optional(__S(4736, __c148, 0)),
           dynamicProfileId: S.optional(S.String),
           format: S.optional(S.String),
           id: S.optional(S.String),
@@ -14900,7 +18578,11 @@ function __c37(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "StudioCreative" });
-    case 2:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14913,17 +18595,25 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSubaccountsRequest" });
-    case 3:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           kind: S.optional(S.String),
-          availablePermissionIds: S.optional(__S(0, __c0, 0)),
+          availablePermissionIds: S.optional(__S(7104, __c222, 0)),
           accountId: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subaccount" });
-    case 4:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14938,7 +18628,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetTargetableRemarketingListsRequest",
       });
-    case 5:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -14947,7 +18641,7 @@ function __c37(j: number): any {
           description: S.optional(S.String),
           advertiserId: S.optional(S.String),
           lifeSpan: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           subaccountId: S.optional(S.String),
           accountId: S.optional(S.String),
           kind: S.optional(S.String),
@@ -14957,7 +18651,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TargetableRemarketingList",
       });
-    case 6:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -14972,28 +18670,32 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetTargetingTemplatesRequest",
       });
-    case 7:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          geoTargeting: S.optional(__S(112, __c14, 0)),
-          dayPartTargeting: S.optional(__S(97, __c12, 1)),
+          geoTargeting: S.optional(__S(5448, __c170, 8)),
+          dayPartTargeting: S.optional(__S(5445, __c170, 5)),
           kind: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          contextualKeywordTargeting: S.optional(__S(95, __c11, 7)),
+          contextualKeywordTargeting: S.optional(__S(5444, __c170, 4)),
           subaccountId: S.optional(S.String),
-          advertiserIdDimensionValue: S.optional(__S(65, __c8, 1)),
+          advertiserIdDimensionValue: S.optional(__S(4704, __c147, 0)),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          technologyTargeting: S.optional(__S(77, __c9, 5)),
-          languageTargeting: S.optional(__S(80, __c10, 0)),
-          keyValueTargetingExpression: S.optional(__S(101, __c12, 5)),
-          listTargetingExpression: S.optional(__S(98, __c12, 2)),
+          technologyTargeting: S.optional(__S(5440, __c170, 0)),
+          languageTargeting: S.optional(__S(5441, __c170, 1)),
+          keyValueTargetingExpression: S.optional(__S(5447, __c170, 7)),
+          listTargetingExpression: S.optional(__S(5446, __c170, 6)),
         }),
       ).annotate({ identifier: "TargetingTemplate" });
   }
 }
-function __c38(j: number): any {
+function __c254(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15022,16 +18724,20 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "TvCampaignTimepoint" });
     case 2:
-      return S.Array(__S(305, __c38, 1));
+      return S.Array(__S(8129, __c254, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          timepoints: S.optional(__S(306, __c38, 2)),
+          timepoints: S.optional(__S(8130, __c254, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TvCampaignDetail" });
-    case 4:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -15043,7 +18749,11 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserProfilesRequest" });
-    case 5:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -15056,7 +18766,11 @@ function __c38(j: number): any {
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserProfile" });
-    case 6:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -15071,7 +18785,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetUserRolePermissionGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -15081,7 +18799,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "UserRolePermissionGroup" });
   }
 }
-function __c39(j: number): any {
+function __c259(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15098,7 +18816,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetUserRolePermissionsRequest",
       });
-    case 1:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -15108,7 +18830,38 @@ function __c39(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserRolePermission" });
-    case 2:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "userprofiles/{+profileId}/advertiserGroups/{+id}",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvertiserGroupsRequest",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAdvertiserGroupsResponse",
+      });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
@@ -15121,22 +18874,34 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserRolesRequest" });
-    case 3:
-      return S.Array(__S(313, __c39, 1));
-    case 4:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8320, __c260, 0));
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           defaultUserRole: S.optional(S.Boolean),
           name: S.optional(S.String),
           kind: S.optional(S.String),
           subaccountId: S.optional(S.String),
-          permissions: S.optional(__S(315, __c39, 3)),
+          permissions: S.optional(__S(8448, __c264, 0)),
           parentUserRoleId: S.optional(S.String),
           id: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserRole" });
-    case 5:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -15149,21 +18914,29 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVideoFormatsRequest" });
-    case 6:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           targetBitRate: S.optional(S.Number),
           fileType: S.optional(S.String),
           kind: S.optional(S.String),
-          resolution: S.optional(__S(61, __c7, 5)),
+          resolution: S.optional(__S(4864, __c152, 0)),
         }),
       ).annotate({ identifier: "VideoFormat" });
-    case 7:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4641, __c145, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15176,13 +18949,13 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5486, __c171, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15191,11 +18964,15 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertAdsRequest" });
-    case 1:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(5536, __c173, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15206,11 +18983,15 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "InsertAdvertiserGroupsRequest",
       });
-    case 2:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(5634, __c176, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15221,11 +19002,15 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "InsertAdvertiserLandingPagesRequest",
       });
-    case 3:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(5697, __c178, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15234,22 +19019,16 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertAdvertisersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subaccountId: S.optional(S.String),
-          kind: S.optional(S.String),
-          accountId: S.optional(S.String),
-          campaignId: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingAssignment" });
-    case 5:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           billingProfileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(324, __c40, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(8768, __c274, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15260,21 +19039,30 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "InsertBillingAssignmentsRequest",
       });
-    case 6:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
+          subaccountId: S.optional(S.String),
           kind: S.optional(S.String),
-          creativeId: S.optional(S.String),
+          accountId: S.optional(S.String),
+          campaignId: S.optional(S.String),
+          advertiserId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "CampaignCreativeAssociation",
-      });
-    case 7:
+      ).annotate({ identifier: "BillingAssignment" });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           campaignId: S.String.pipe(T.Label()),
-          body: S.optional(__S(326, __c40, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(8832, __c276, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15287,13 +19075,26 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          creativeId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CampaignCreativeAssociation",
+      });
+  }
+}
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5834, __c182, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15302,11 +19103,38 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertCampaignsRequest" });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "userprofiles/{+profileId}/contentCategories/{+id}",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContentCategoriesRequest",
+      });
     case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteContentCategoriesResponse",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142, __c17, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(5984, __c187, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15317,28 +19145,32 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertContentCategoriesRequest",
       });
-    case 2:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          assetIdentifier: S.optional(__S(168, __c21, 0)),
-          exitCustomEvents: S.optional(__S(159, __c19, 7)),
-          detectedFeatures: S.optional(__S(38, __c4, 6)),
-          timerCustomEvents: S.optional(__S(159, __c19, 7)),
-          counterCustomEvents: S.optional(__S(159, __c19, 7)),
-          idDimensionValue: S.optional(__S(65, __c8, 1)),
-          clickTags: S.optional(__S(161, __c20, 1)),
+          assetIdentifier: S.optional(__S(6343, __c198, 7)),
+          exitCustomEvents: S.optional(__S(6340, __c198, 4)),
+          detectedFeatures: S.optional(__S(3264, __c102, 0)),
+          timerCustomEvents: S.optional(__S(6340, __c198, 4)),
+          counterCustomEvents: S.optional(__S(6340, __c198, 4)),
+          idDimensionValue: S.optional(__S(4704, __c147, 0)),
+          clickTags: S.optional(__S(6342, __c198, 6)),
           richMedia: S.optional(S.Boolean),
-          warnedValidationRules: S.optional(__S(38, __c4, 6)),
+          warnedValidationRules: S.optional(__S(3264, __c102, 0)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreativeAssetMetadata" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.String.pipe(T.Label()),
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(330, __c41, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8960, __c280, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15349,11 +19181,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertCreativeAssetsRequest",
       });
-    case 4:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145, __c18, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(6080, __c190, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15364,12 +19200,16 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertCreativeFieldsRequest",
       });
-    case 5:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
           creativeFieldId: S.String.pipe(T.Label()),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6144, __c192, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15380,11 +19220,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertCreativeFieldValuesRequest",
       });
-    case 6:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(149, __c18, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(6208, __c194, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15395,11 +19239,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "InsertCreativeGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6377, __c199, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15410,13 +19258,13 @@ function __c41(j: number): any {
       ).annotate({ identifier: "InsertCreativesRequest" });
   }
 }
-function __c42(j: number): any {
+function __c285(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(175, __c21, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(6434, __c201, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15427,19 +19275,23 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "InsertDirectorySitesRequest",
       });
-    case 1:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dynamicProfileId: S.optional(S.String),
-          dynamicFeed: S.optional(__S(189, __c23, 5)),
+          dynamicFeed: S.optional(__S(6508, __c203, 12)),
         }),
       ).annotate({
         identifier: "DynamicFeedsInsertRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(9152, __c286, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15450,10 +19302,14 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "InsertDynamicFeedsRequest",
       });
-    case 3:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(6577, __c205, 17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15464,20 +19320,15 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "InsertDynamicProfilesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.String),
-          objectType: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicTargetingKey" });
-    case 5:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(340, __c42, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(9248, __c289, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15488,11 +19339,47 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "InsertDynamicTargetingKeysRequest",
       });
-    case 6:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String),
+          objectType: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DynamicTargetingKey" });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          profileId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "userprofiles/{+profileId}/creativeFields/{+id}",
+            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCreativeFieldsRequest",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15501,11 +19388,15 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertEventTagsRequest" });
-    case 7:
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(6788, __c212, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15518,13 +19409,13 @@ function __c42(j: number): any {
       });
   }
 }
-function __c43(j: number): any {
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(222, __c27, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(6848, __c214, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15535,11 +19426,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "InsertFloodlightActivityGroupsRequest",
       });
-    case 1:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(7232, __c226, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15550,11 +19445,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "InsertPlacementGroupsRequest",
       });
-    case 2:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7336, __c229, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15563,11 +19462,15 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertPlacementsRequest" });
-    case 3:
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(7392, __c231, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15578,11 +19481,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "InsertPlacementStrategiesRequest",
       });
-    case 4:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(7525, __c235, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15593,11 +19500,15 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "InsertRemarketingListsRequest",
       });
-    case 5:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284, __c35, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(7695, __c240, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15606,11 +19517,15 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertReportsRequest" });
-    case 6:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(293, __c36, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7814, __c244, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15619,11 +19534,15 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertSitesRequest" });
-    case 7:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4864, __c152, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15634,3026 +19553,6 @@ function __c43(j: number): any {
       ).annotate({ identifier: "InsertSizesRequest" });
   }
 }
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          studioAccountId: S.optional(S.String),
-          studioAdvertiserId: S.optional(S.String),
-          studioCreativeId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DfareportingStudioCreativeAssetsInsertRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(352, __c44, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "studio/creativeAssets",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertStudioCreativeAssetsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorReason: S.optional(S.String),
-          processingState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoProcessingData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          filesize: S.optional(S.String),
-          createInfo: S.optional(__S(89, __c11, 1)),
-          studioAdvertiserId: S.optional(S.String),
-          lastModifiedInfo: S.optional(__S(89, __c11, 1)),
-          filename: S.optional(S.String),
-          id: S.optional(S.String),
-          studioCreativeId: S.optional(S.String),
-          videoProcessingData: S.optional(__S(354, __c44, 2)),
-          studioAccountId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StudioCreativeAsset" });
-    case 4:
-      return S.Array(__S(355, __c44, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(356, __c44, 4)),
-        }),
-      ).annotate({
-        identifier: "StudioCreativeAssetsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "studio/creatives",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertStudioCreativesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(299, __c37, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{+profileId}/subaccounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertSubaccountsRequest" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303, __c37, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{+profileId}/targetingTemplates",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertTargetingTemplatesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{+profileId}/userRoles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertUserRolesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/accountPermissionGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountPermissionGroupsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountPermissionGroups: S.optional(__S(68, __c8, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountPermissionGroupsListResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/accountPermissions",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountPermissionsRequest",
-      });
-    case 5:
-      return S.Array(__S(50, __c6, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          accountPermissions: S.optional(__S(365, __c45, 5)),
-        }),
-      ).annotate({
-        identifier: "AccountPermissionsListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/accounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccountsRequest" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(54, __c6, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accounts: S.optional(__S(368, __c46, 0)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountsListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          userRoleId: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/accountUserProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountUserProfilesRequest",
-      });
-    case 3:
-      return S.Array(__S(57, __c7, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          accountUserProfiles: S.optional(__S(371, __c46, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountUserProfilesListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          landingPageIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sslCompliant: S.optional(S.Boolean.pipe(T.Query())),
-          remarketingListIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          dynamicClickTracker: S.optional(S.Boolean.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          audienceSegmentIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          creativeOptimizationConfigurationIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          compatibility: S.optional(S.String.pipe(T.Query())),
-          placementIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sizeIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          campaignIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sslRequired: S.optional(S.Boolean.pipe(T.Query())),
-          creativeIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          archived: S.optional(S.Boolean.pipe(T.Query())),
-          overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/ads",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAdsRequest" });
-    case 6:
-      return S.Array(__S(113, __c14, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          ads: S.optional(__S(374, __c46, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdsListResponse" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/advertiserGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAdvertiserGroupsRequest",
-      });
-    case 1:
-      return S.Array(__S(115, __c14, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserGroups: S.optional(__S(377, __c47, 1)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdvertiserGroupsListResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          advertiserId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          issueMonth: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAdvertiserInvoicesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          taxAmountMicros: S.optional(S.String),
-          billingInvoiceCode: S.optional(S.String),
-          preTaxAmountMicros: S.optional(S.String),
-          totalAmountMicros: S.optional(S.String),
-          campaignId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignSummary" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paymentsProfileId: S.optional(S.String),
-          dueDate: S.optional(S.String),
-          totalTaxAmountMicros: S.optional(S.String),
-          paymentsAccountId: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          correctedInvoiceId: S.optional(S.String),
-          subtotalAmountMicros: S.optional(S.String),
-          campaign_summaries: S.optional(__S(381, __c47, 5)),
-          issueDate: S.optional(S.String),
-          totalAmountMicros: S.optional(S.String),
-          replacedInvoiceIds: S.optional(__S(0, __c0, 0)),
-          pdfUrl: S.optional(S.String),
-          purchaseOrderNumber: S.optional(S.String),
-          invoiceType: S.optional(S.String),
-          serviceEndDate: S.optional(S.String),
-          serviceStartDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Invoice" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          invoices: S.optional(__S(383, __c47, 7)),
-        }),
-      ).annotate({
-        identifier: "AdvertiserInvoicesListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          archived: S.optional(S.Boolean.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/advertiserLandingPages",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAdvertiserLandingPagesRequest",
-      });
-    case 2:
-      return S.Array(__S(120, __c15, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          landingPages: S.optional(__S(386, __c48, 2)),
-        }),
-      ).annotate({
-        identifier: "AdvertiserLandingPagesListResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-          advertiserGroupIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          includeAdvertisersWithoutGroupsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          onlyParent: S.optional(S.Boolean.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          floodlightConfigurationIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/advertisers",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAdvertisersRequest" });
-    case 5:
-      return S.Array(__S(123, __c15, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          advertisers: S.optional(__S(389, __c48, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdvertisersListResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          billingProfileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAssignmentsRequest",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(324, __c40, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          billingAssignments: S.optional(__S(392, __c49, 0)),
-        }),
-      ).annotate({
-        identifier: "BillingAssignmentsListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          currency_code: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          subaccountIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          onlySuggestion: S.optional(S.Boolean.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/billingProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingProfilesRequest",
-      });
-    case 3:
-      return S.Array(__S(125, __c15, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          billingProfiles: S.optional(__S(395, __c49, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BillingProfilesListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          billingProfileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListBillingRatesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          highValue: S.optional(S.String),
-          rateInMicros: S.optional(S.String),
-          lowValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingRateTieredRate" });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tieredRates: S.optional(__S(399, __c49, 7)),
-          endDate: S.optional(S.String),
-          rateInMicros: S.optional(S.String),
-          unitOfMeasure: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          startDate: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingRate" });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billingRates: S.optional(__S(401, __c50, 1)),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingRatesListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/browsers",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListBrowsersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          browsers: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "BrowsersListResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          campaignId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCampaignCreativeAssociationsRequest",
-      });
-    case 6:
-      return S.Array(__S(326, __c40, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          campaignCreativeAssociations: S.optional(__S(406, __c50, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CampaignCreativeAssociationsListResponse",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          atLeastOneOptimizationActivity: S.optional(S.Boolean.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          archived: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          excludedIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          advertiserGroupIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          overriddenEventTagId: S.optional(S.String.pipe(T.Query())),
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/campaigns",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListCampaignsRequest" });
-    case 1:
-      return S.Array(__S(137, __c17, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          campaigns: S.optional(__S(409, __c51, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignsListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          minChangeTime: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          userProfileIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          objectType: S.optional(S.String.pipe(T.Query())),
-          objectIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
-          maxChangeTime: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/changeLogs",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListChangeLogsRequest" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          changeLogs: S.optional(__S(412, __c51, 4)),
-        }),
-      ).annotate({ identifier: "ChangeLogsListResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          regionDartIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          countryDartIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          namePrefix: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          dartIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/cities",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListCitiesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cities: S.optional(__S(103, __c12, 7)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CitiesListResponse" });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/connectionTypes",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectionTypesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connectionTypes: S.optional(__S(70, __c8, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConnectionTypesListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/contentCategories",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContentCategoriesRequest",
-      });
-    case 3:
-      return S.Array(__S(142, __c17, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          contentCategories: S.optional(__S(419, __c52, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContentCategoriesListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/countries",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListCountriesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          countries: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({ identifier: "CountriesListResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/creativeFields",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCreativeFieldsRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(145, __c18, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          creativeFields: S.optional(__S(424, __c53, 0)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreativeFieldsListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          creativeFieldId: S.String.pipe(T.Label()),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCreativeFieldValuesRequest",
-      });
-    case 3:
-      return S.Array(__S(147, __c18, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          creativeFieldValues: S.optional(__S(427, __c53, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreativeFieldValuesListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          groupNumber: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/creativeGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCreativeGroupsRequest",
-      });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          creativeGroups: S.optional(__S(430, __c53, 6)),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreativeGroupsListResponse",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          studioCreativeId: S.optional(S.String.pipe(T.Query())),
-          sizeIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          renderingIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          companionCreativeIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          campaignId: S.optional(S.String.pipe(T.Query())),
-          creativeFieldIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          types: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          archived: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/creatives",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListCreativesRequest" });
-    case 1:
-      return S.Array(__S(171, __c21, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          creatives: S.optional(__S(433, __c54, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativesListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          dfpNetworkCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/directorySites",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDirectorySitesRequest",
-      });
-    case 4:
-      return S.Array(__S(175, __c21, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          directorySites: S.optional(__S(436, __c54, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DirectorySitesListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.String.pipe(T.Query())),
-          objectType: S.optional(S.String.pipe(T.Query())),
-          names: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/dynamicTargetingKeys",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDynamicTargetingKeysRequest",
-      });
-    case 7:
-      return S.Array(__S(340, __c42, 4));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          dynamicTargetingKeys: S.optional(__S(439, __c54, 7)),
-        }),
-      ).annotate({
-        identifier: "DynamicTargetingKeysListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          definitionsOnly: S.optional(S.Boolean.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          adId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          eventTagTypes: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          campaignId: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          enabled: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/eventTags",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListEventTagsRequest" });
-    case 2:
-      return S.Array(__S(210, __c26, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          eventTags: S.optional(__S(442, __c55, 2)),
-        }),
-      ).annotate({ identifier: "EventTagsListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{profileId}/files",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListFilesRequest" });
-    case 5:
-      return S.Array(__S(214, __c26, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(445, __c55, 5),
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          floodlightActivityGroupName: S.optional(S.String.pipe(T.Query())),
-          tagString: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          floodlightActivityGroupIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          floodlightActivityGroupType: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          floodlightActivityGroupTagString: S.optional(S.String.pipe(T.Query())),
-          floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/floodlightActivities",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFloodlightActivitiesRequest",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(220, __c27, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          floodlightActivities: S.optional(__S(448, __c56, 0)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FloodlightActivitiesListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          floodlightConfigurationId: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFloodlightActivityGroupsRequest",
-      });
-    case 3:
-      return S.Array(__S(222, __c27, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          floodlightActivityGroups: S.optional(__S(451, __c56, 3)),
-        }),
-      ).annotate({
-        identifier: "FloodlightActivityGroupsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/floodlightConfigurations",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFloodlightConfigurationsRequest",
-      });
-    case 6:
-      return S.Array(__S(232, __c29, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          floodlightConfigurations: S.optional(__S(454, __c56, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FloodlightConfigurationsListResponse",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/languages",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListLanguagesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          languages: S.optional(__S(79, __c9, 7)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LanguagesListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/metros",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListMetrosRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metros: S.optional(__S(105, __c13, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetrosListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          directories: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/mobileApps",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListMobileAppsRequest" });
-    case 5:
-      return S.Array(__S(117, __c14, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          mobileApps: S.optional(__S(461, __c57, 5)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobileAppsListResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/mobileCarriers",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMobileCarriersRequest",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          mobileCarriers: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "MobileCarriersListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/operatingSystems",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOperatingSystemsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          operatingSystems: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "OperatingSystemsListResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/operatingSystemVersions",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOperatingSystemVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          operatingSystemVersions: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "OperatingSystemVersionsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          activeStatus: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          maxStartDate: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          minStartDate: S.optional(S.String.pipe(T.Query())),
-          siteIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxEndDate: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          minEndDate: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          placementGroupType: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          contentCategoryIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          placementStrategyIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pricingTypes: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/placementGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPlacementGroupsRequest",
-      });
-    case 6:
-      return S.Array(__S(241, __c30, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          placementGroups: S.optional(__S(470, __c58, 6)),
-        }),
-      ).annotate({
-        identifier: "PlacementGroupsListResponse",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
-          campaignIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          siteIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          groupIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          minStartDate: S.optional(S.String.pipe(T.Query())),
-          advertiserIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sizeIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxEndDate: S.optional(S.String.pipe(T.Query())),
-          paymentSource: S.optional(S.String.pipe(T.Query())),
-          activeStatus: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          minEndDate: S.optional(S.String.pipe(T.Query())),
-          maxStartDate: S.optional(S.String.pipe(T.Query())),
-          pricingTypes: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          placementStrategyIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          compatibilities: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          contentCategoryIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/placements",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPlacementsRequest" });
-    case 1:
-      return S.Array(__S(253, __c31, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-          placements: S.optional(__S(473, __c59, 1)),
-        }),
-      ).annotate({ identifier: "PlacementsListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/placementStrategies",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPlacementStrategiesRequest",
-      });
-    case 4:
-      return S.Array(__S(255, __c31, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          placementStrategies: S.optional(__S(476, __c59, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlacementStrategiesListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/platformTypes",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPlatformTypesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          platformTypes: S.optional(__S(68, __c8, 4)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PlatformTypesListResponse",
-      });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/postalCodes",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListPostalCodesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          postalCodes: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "PostalCodesListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/regions",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListRegionsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          regions: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "RegionsListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advertiserId: S.String.pipe(T.Query()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          floodlightActivityId: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/remarketingLists",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRemarketingListsRequest",
-      });
-    case 5:
-      return S.Array(__S(264, __c33, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          remarketingLists: S.optional(__S(485, __c60, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RemarketingListsListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{profileId}/reports",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListReportsRequest" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(284, __c35, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          items: __S(488, __c61, 0),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          reportId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{profileId}/reports/{reportId}/files",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListReportsFilesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          acceptsPublisherPaidPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          acceptsInStreamVideoPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-          approved: S.optional(S.Boolean.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          acceptsInterstitialPlacements: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          unmappedSite: S.optional(S.Boolean.pipe(T.Query())),
-          directorySiteIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          adWordsSite: S.optional(S.Boolean.pipe(T.Query())),
-          campaignIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/sites",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSitesRequest" });
-    case 4:
-      return S.Array(__S(293, __c36, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          sites: S.optional(__S(492, __c61, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SitesListResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          height: S.optional(S.Number.pipe(T.Query())),
-          width: S.optional(S.Number.pipe(T.Query())),
-          iabStandard: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/sizes",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSizesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          sizes: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({ identifier: "SizesListResponse" });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          searchString: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/subaccounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSubaccountsRequest" });
-    case 1:
-      return S.Array(__S(299, __c37, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subaccounts: S.optional(__S(497, __c62, 1)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubaccountsListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/targetableRemarketingLists",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTargetableRemarketingListsRequest",
-      });
-    case 4:
-      return S.Array(__S(301, __c37, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetableRemarketingLists: S.optional(__S(500, __c62, 4)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TargetableRemarketingListsListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sortField: S.optional(S.String.pipe(T.Query())),
-          advertiserId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/targetingTemplates",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTargetingTemplatesRequest",
-      });
-    case 7:
-      return S.Array(__S(303, __c37, 7));
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          targetingTemplates: S.optional(__S(503, __c62, 7)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TargetingTemplatesListResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          countryDartId: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          name: S.optional(S.String.pipe(T.Query())),
-          accountId: S.optional(S.String.pipe(T.Query())),
-          tvDataProvider: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/tvCampaignSummaries",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTvCampaignSummariesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          grp: S.optional(S.String),
-          endDate: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          impressions: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          startDate: S.optional(S.String),
-          spend: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TvCampaignSummary" });
-    case 3:
-      return S.Array(__S(506, __c63, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tvCampaignSummaries: S.optional(__S(507, __c63, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TvCampaignSummariesListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListUserProfilesRequest" });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(510, __c63, 6)),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserProfileList" });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/userRolePermissionGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUserRolePermissionGroupsRequest",
-      });
-    case 1:
-      return S.Array(__S(311, __c38, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userRolePermissionGroups: S.optional(__S(513, __c64, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UserRolePermissionGroupsListResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/userRolePermissions",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUserRolePermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          userRolePermissions: S.optional(__S(315, __c39, 3)),
-        }),
-      ).annotate({
-        identifier: "UserRolePermissionsListResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subaccountId: S.optional(S.String.pipe(T.Query())),
-          sortField: S.optional(S.String.pipe(T.Query())),
-          searchString: S.optional(S.String.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          accountUserRoleOnly: S.optional(S.Boolean.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          ids: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/userRoles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListUserRolesRequest" });
-    case 6:
-      return S.Array(__S(316, __c39, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          userRoles: S.optional(__S(518, __c64, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserRolesListResponse" });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "userprofiles/{+profileId}/videoFormats",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "ListVideoFormatsRequest" });
-    case 1:
-      return S.Array(__S(318, __c39, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          videoFormats: S.optional(__S(521, __c65, 1)),
-        }),
-      ).annotate({ identifier: "VideoFormatsListResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/accounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchAccountsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/accountUserProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountUserProfilesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/ads",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchAdsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/advertiserGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAdvertiserGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/advertiserLandingPages",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAdvertiserLandingPagesRequest",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/advertisers",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchAdvertisersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/campaigns",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchCampaignsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142, __c17, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/contentCategories",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchContentCategoriesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145, __c18, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/creativeFields",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchCreativeFieldsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          creativeFieldId: S.String.pipe(T.Label()),
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchCreativeFieldValuesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(149, __c18, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/creativeGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchCreativeGroupsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/creatives",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchCreativesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/eventTags",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchEventTagsRequest" });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/floodlightActivities",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchFloodlightActivitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(222, __c27, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchFloodlightActivityGroupsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/floodlightConfigurations",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchFloodlightConfigurationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/placementGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPlacementGroupsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/placements",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchPlacementsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/placementStrategies",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchPlacementStrategiesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/remarketingLists",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchRemarketingListsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/remarketingListShares",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchRemarketingListSharesRequest",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(293, __c36, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/sites",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchSitesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Query()),
-          body: S.optional(__S(299, __c37, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/subaccounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchSubaccountsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303, __c37, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/targetingTemplates",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchTargetingTemplatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Query()),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "userprofiles/{+profileId}/userRoles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchUserRolesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dynamicProfileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "studio/dynamicProfiles/{+dynamicProfileId}/publish",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublishDynamicProfilesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          studioCreativeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "studio/creatives/{+studioCreativeId}/publish",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublishStudioCreativesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionName: S.optional(S.String),
-          value: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionFilter" });
-    case 7:
-      return S.Array(__S(550, __c68, 6));
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          startDate: S.optional(S.String),
-          dimensionName: S.optional(S.String),
-          filters: S.optional(__S(551, __c68, 7)),
-          endDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionValueRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(552, __c69, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/dimensionvalues/query",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryDimensionValuesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          kind: S.optional(S.String),
-          items: __S(268, __c33, 4),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionValueList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          sortOrder: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SortBy" });
-    case 4:
-      return S.Array(__S(555, __c69, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionFilters: S.optional(__S(268, __c33, 4)),
-          dateRange: S.optional(__S(213, __c26, 5)),
-          sortBys: S.optional(__S(556, __c69, 4)),
-          metricNames: S.optional(__S(0, __c0, 0)),
-          dimensionNames: S.optional(__S(0, __c0, 0)),
-          pageToken: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReportDataQueryRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(557, __c69, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/reportdata/query",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "QueryReportDataRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ColumnHeader" });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(559, __c69, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ReportDataRow" });
-    case 2:
-      return S.Array(__S(561, __c70, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columnHeaders: S.optional(__S(560, __c70, 0)),
-          nextPageToken: S.optional(S.String),
-          rows: S.optional(__S(562, __c70, 2)),
-          totalRow: S.optional(__S(561, __c70, 1)),
-        }),
-      ).annotate({ identifier: "ReportDataResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284, __c35, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/reports/compatiblefields/query",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryReportsCompatibleFieldsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Dimension" });
-    case 6:
-      return S.Array(__S(565, __c70, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(566, __c70, 6)),
-          dimensionFilters: S.optional(__S(566, __c70, 6)),
-          pivotedActivityMetrics: S.optional(__S(566, __c70, 6)),
-          metrics: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-          reachByFrequencyMetrics: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "ReachReportCompatibleFields",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-          breakdown: S.optional(__S(566, __c70, 6)),
-          dimensionFilters: S.optional(__S(566, __c70, 6)),
-          overlapMetrics: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "CrossDimensionReachReportCompatibleFields",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          perInteractionDimensions: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-          customFloodlightVariables: S.optional(__S(566, __c70, 6)),
-          metrics: S.optional(__S(566, __c70, 6)),
-          conversionDimensions: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "PathToConversionReportCompatibleFields",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionFilters: S.optional(__S(566, __c70, 6)),
-          metrics: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-          dimensions: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "CrossMediaReachReportCompatibleFields",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(566, __c70, 6)),
-          metrics: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-          dimensionFilters: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "FloodlightReportCompatibleFields",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionFilters: S.optional(__S(566, __c70, 6)),
-          metrics: S.optional(__S(566, __c70, 6)),
-          dimensions: S.optional(__S(566, __c70, 6)),
-          pivotedActivityMetrics: S.optional(__S(566, __c70, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReportCompatibleFields" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          reachReportCompatibleFields: S.optional(__S(567, __c70, 7)),
-          crossDimensionReachReportCompatibleFields: S.optional(__S(568, __c71, 0)),
-          pathToConversionReportCompatibleFields: S.optional(__S(569, __c71, 1)),
-          crossMediaReachReportCompatibleFields: S.optional(__S(570, __c71, 2)),
-          floodlightReportCompatibleFields: S.optional(__S(571, __c71, 3)),
-          reportCompatibleFields: S.optional(__S(572, __c71, 4)),
-        }),
-      ).annotate({ identifier: "CompatibleFields" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dynamicFeedId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "studio/dynamicFeeds/{+dynamicFeedId}/retransform",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RetransformDynamicFeedsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          synchronous: S.optional(S.Boolean.pipe(T.Query())),
-          reportId: S.String.pipe(T.Label()),
-          profileId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "userprofiles/{profileId}/reports/{reportId}/run",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "RunReportsRequest" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/accounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccountsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/accountUserProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAccountUserProfilesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/ads",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAdsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/advertiserGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAdvertiserGroupsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/advertiserLandingPages",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAdvertiserLandingPagesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/advertisers",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAdvertisersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(125, __c15, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/billingProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBillingProfilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/campaigns",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCampaignsRequest" });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(142, __c17, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/contentCategories",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContentCategoriesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(145, __c18, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/creativeFields",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCreativeFieldsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          creativeFieldId: S.String.pipe(T.Label()),
-          body: S.optional(__S(147, __c18, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCreativeFieldValuesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(149, __c18, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/creativeGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCreativeGroupsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(171, __c21, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/creatives",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCreativesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "studio/dynamicFeeds",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDynamicFeedsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "studio/dynamicProfiles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDynamicProfilesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/eventTags",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateEventTagsRequest" });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/floodlightActivities",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFloodlightActivitiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(222, __c27, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/floodlightActivityGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFloodlightActivityGroupsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/floodlightConfigurations",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFloodlightConfigurationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(241, __c30, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/placementGroups",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePlacementGroupsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(253, __c31, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/placements",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdatePlacementsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(255, __c31, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/placementStrategies",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePlacementStrategiesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/remarketingLists",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRemarketingListsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/remarketingListShares",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRemarketingListSharesRequest",
-      });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          reportId: S.String.pipe(T.Label()),
-          body: S.optional(__S(284, __c35, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{profileId}/reports/{reportId}",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateReportsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(293, __c36, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/sites",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateSitesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(299, __c37, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/subaccounts",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateSubaccountsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(303, __c37, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/targetingTemplates",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTargetingTemplatesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.Label()),
-          body: S.optional(__S(316, __c39, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "userprofiles/{+profileId}/userRoles",
-            baseUrl: "https://dfareporting.googleapis.com/dfareporting/v5/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateUserRolesRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

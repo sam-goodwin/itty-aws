@@ -1501,8 +1501,8 @@ export const acceptEnvironmentAccountConnection: API.OperationMethod<
   AcceptEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>,
+  input: __S(768, __c96, 0) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>,
+  output: __S(784, __c98, 0) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1537,8 +1537,8 @@ export const cancelComponentDeployment: API.OperationMethod<
   CancelComponentDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelComponentDeploymentInput>,
-  output: __S(5, __c0, 5) as any as S.Schema<CancelComponentDeploymentOutput>,
+  input: __S(880, __c110, 0) as any as S.Schema<CancelComponentDeploymentInput>,
+  output: __S(881, __c110, 1) as any as S.Schema<CancelComponentDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1580,8 +1580,8 @@ export const cancelEnvironmentDeployment: API.OperationMethod<
   CancelEnvironmentDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CancelEnvironmentDeploymentInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<CancelEnvironmentDeploymentOutput>,
+  input: __S(976, __c122, 0) as any as S.Schema<CancelEnvironmentDeploymentInput>,
+  output: __S(977, __c122, 1) as any as S.Schema<CancelEnvironmentDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1626,8 +1626,8 @@ export const cancelServiceInstanceDeployment: API.OperationMethod<
   CancelServiceInstanceDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelServiceInstanceDeploymentInput>,
-  output: __S(12, __c1, 4) as any as S.Schema<CancelServiceInstanceDeploymentOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelServiceInstanceDeploymentInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CancelServiceInstanceDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1672,8 +1672,8 @@ export const cancelServicePipelineDeployment: API.OperationMethod<
   CancelServicePipelineDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CancelServicePipelineDeploymentInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<CancelServicePipelineDeploymentOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<CancelServicePipelineDeploymentInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<CancelServicePipelineDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1709,8 +1709,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateComponentInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateComponentOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateComponentInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1754,8 +1754,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateEnvironmentInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateEnvironmentOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateEnvironmentInput>,
+  output: __S(80, __c10, 0) as any as S.Schema<CreateEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1792,8 +1792,8 @@ export const createEnvironmentAccountConnection: API.OperationMethod<
   CreateEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateEnvironmentAccountConnectionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateEnvironmentAccountConnectionOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateEnvironmentAccountConnectionInput>,
+  output: __S(784, __c98, 0) as any as S.Schema<CreateEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1835,8 +1835,8 @@ export const createEnvironmentTemplate: API.OperationMethod<
   CreateEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateEnvironmentTemplateInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreateEnvironmentTemplateOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateEnvironmentTemplateInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<CreateEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1870,8 +1870,8 @@ export const createEnvironmentTemplateVersion: API.OperationMethod<
   CreateEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateEnvironmentTemplateVersionInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateEnvironmentTemplateVersionInput>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1909,8 +1909,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateRepositoryInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateRepositoryOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateRepositoryInput>,
+  output: __S(176, __c22, 0) as any as S.Schema<CreateRepositoryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1945,8 +1945,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateServiceInput>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateServiceOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateServiceInput>,
+  output: __S(200, __c25, 0) as any as S.Schema<CreateServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1978,8 +1978,8 @@ export const createServiceInstance: API.OperationMethod<
   CreateServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateServiceInstanceInput>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateServiceInstanceOutput>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateServiceInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2010,8 +2010,8 @@ export const createServiceSyncConfig: API.OperationMethod<
   CreateServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateServiceSyncConfigInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateServiceSyncConfigOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateServiceSyncConfigInput>,
+  output: __S(225, __c28, 1) as any as S.Schema<CreateServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2047,8 +2047,8 @@ export const createServiceTemplate: API.OperationMethod<
   CreateServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateServiceTemplateInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateServiceTemplateOutput>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateServiceTemplateInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<CreateServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2082,8 +2082,8 @@ export const createServiceTemplateVersion: API.OperationMethod<
   CreateServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateServiceTemplateVersionInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<CreateServiceTemplateVersionOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateServiceTemplateVersionInput>,
+  output: __S(288, __c36, 0) as any as S.Schema<CreateServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2120,8 +2120,8 @@ export const createTemplateSyncConfig: API.OperationMethod<
   CreateTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateTemplateSyncConfigInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateTemplateSyncConfigOutput>,
+  input: __S(296, __c37, 0) as any as S.Schema<CreateTemplateSyncConfigInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<CreateTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2156,8 +2156,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteComponentInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteComponentOutput>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeleteComponentInput>,
+  output: __S(320, __c40, 0) as any as S.Schema<DeleteComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2187,8 +2187,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteDeploymentInput>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteDeploymentOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteDeploymentInput>,
+  output: __S(341, __c42, 5) as any as S.Schema<DeleteDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2218,8 +2218,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteEnvironmentInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteEnvironmentOutput>,
+  input: __S(344, __c43, 0) as any as S.Schema<DeleteEnvironmentInput>,
+  output: __S(345, __c43, 1) as any as S.Schema<DeleteEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2257,8 +2257,8 @@ export const deleteEnvironmentAccountConnection: API.OperationMethod<
   DeleteEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>,
-  output: __S(66, __c8, 2) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>,
+  input: __S(352, __c44, 0) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>,
+  output: __S(353, __c44, 1) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2289,8 +2289,8 @@ export const deleteEnvironmentTemplate: API.OperationMethod<
   DeleteEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteEnvironmentTemplateInput>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteEnvironmentTemplateOutput>,
+  input: __S(360, __c45, 0) as any as S.Schema<DeleteEnvironmentTemplateInput>,
+  output: __S(361, __c45, 1) as any as S.Schema<DeleteEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2327,8 +2327,8 @@ export const deleteEnvironmentTemplateVersion: API.OperationMethod<
   DeleteEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>,
+  input: __S(368, __c46, 0) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>,
+  output: __S(369, __c46, 1) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2359,8 +2359,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteRepositoryInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<DeleteRepositoryOutput>,
+  input: __S(376, __c47, 0) as any as S.Schema<DeleteRepositoryInput>,
+  output: __S(377, __c47, 1) as any as S.Schema<DeleteRepositoryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2398,8 +2398,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteServiceInput>,
-  output: __S(74, __c9, 2) as any as S.Schema<DeleteServiceOutput>,
+  input: __S(384, __c48, 0) as any as S.Schema<DeleteServiceInput>,
+  output: __S(392, __c49, 0) as any as S.Schema<DeleteServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2430,8 +2430,8 @@ export const deleteServiceSyncConfig: API.OperationMethod<
   DeleteServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteServiceSyncConfigInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteServiceSyncConfigOutput>,
+  input: __S(400, __c50, 0) as any as S.Schema<DeleteServiceSyncConfigInput>,
+  output: __S(225, __c28, 1) as any as S.Schema<DeleteServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2463,8 +2463,8 @@ export const deleteServiceTemplate: API.OperationMethod<
   DeleteServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteServiceTemplateInput>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteServiceTemplateOutput>,
+  input: __S(408, __c51, 0) as any as S.Schema<DeleteServiceTemplateInput>,
+  output: __S(409, __c51, 1) as any as S.Schema<DeleteServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2504,8 +2504,8 @@ export const deleteServiceTemplateVersion: API.OperationMethod<
   DeleteServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteServiceTemplateVersionInput>,
-  output: __S(79, __c9, 7) as any as S.Schema<DeleteServiceTemplateVersionOutput>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeleteServiceTemplateVersionInput>,
+  output: __S(417, __c52, 1) as any as S.Schema<DeleteServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2536,8 +2536,8 @@ export const deleteTemplateSyncConfig: API.OperationMethod<
   DeleteTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteTemplateSyncConfigInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<DeleteTemplateSyncConfigOutput>,
+  input: __S(424, __c53, 0) as any as S.Schema<DeleteTemplateSyncConfigInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<DeleteTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2567,8 +2567,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetAccountSettingsInput>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetAccountSettingsOutput>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetAccountSettingsInput>,
+  output: __S(433, __c54, 1) as any as S.Schema<GetAccountSettingsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2601,8 +2601,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetComponentInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetComponentOutput>,
+  input: __S(448, __c56, 0) as any as S.Schema<GetComponentInput>,
+  output: __S(320, __c40, 0) as any as S.Schema<GetComponentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2631,8 +2631,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetDeploymentInput>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetDeploymentOutput>,
+  input: __S(456, __c57, 0) as any as S.Schema<GetDeploymentInput>,
+  output: __S(341, __c42, 5) as any as S.Schema<GetDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2661,8 +2661,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetEnvironmentInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetEnvironmentOutput>,
+  input: __S(464, __c58, 0) as any as S.Schema<GetEnvironmentInput>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2694,8 +2694,8 @@ export const getEnvironmentAccountConnection: API.OperationMethod<
   GetEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetEnvironmentAccountConnectionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetEnvironmentAccountConnectionOutput>,
+  input: __S(472, __c59, 0) as any as S.Schema<GetEnvironmentAccountConnectionInput>,
+  output: __S(784, __c98, 0) as any as S.Schema<GetEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2724,8 +2724,8 @@ export const getEnvironmentTemplate: API.OperationMethod<
   GetEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetEnvironmentTemplateInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetEnvironmentTemplateOutput>,
+  input: __S(480, __c60, 0) as any as S.Schema<GetEnvironmentTemplateInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2754,8 +2754,8 @@ export const getEnvironmentTemplateVersion: API.OperationMethod<
   GetEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetEnvironmentTemplateVersionInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetEnvironmentTemplateVersionOutput>,
+  input: __S(488, __c61, 0) as any as S.Schema<GetEnvironmentTemplateVersionInput>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2784,8 +2784,8 @@ export const getRepository: API.OperationMethod<
   GetRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetRepositoryInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetRepositoryOutput>,
+  input: __S(496, __c62, 0) as any as S.Schema<GetRepositoryInput>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetRepositoryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2821,8 +2821,8 @@ export const getRepositorySyncStatus: API.OperationMethod<
   GetRepositorySyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetRepositorySyncStatusInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<GetRepositorySyncStatusOutput>,
+  input: __S(504, __c63, 0) as any as S.Schema<GetRepositorySyncStatusInput>,
+  output: __S(506, __c63, 2) as any as S.Schema<GetRepositorySyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2863,8 +2863,8 @@ export const getResourcesSummary: API.OperationMethod<
   GetResourcesSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetResourcesSummaryInput>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetResourcesSummaryOutput>,
+  input: __S(520, __c65, 0) as any as S.Schema<GetResourcesSummaryInput>,
+  output: __S(523, __c65, 3) as any as S.Schema<GetResourcesSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2892,8 +2892,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetServiceInput>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetServiceOutput>,
+  input: __S(528, __c66, 0) as any as S.Schema<GetServiceInput>,
+  output: __S(392, __c49, 0) as any as S.Schema<GetServiceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2923,8 +2923,8 @@ export const getServiceInstance: API.OperationMethod<
   GetServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetServiceInstanceInput>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetServiceInstanceOutput>,
+  input: __S(536, __c67, 0) as any as S.Schema<GetServiceInstanceInput>,
+  output: __S(537, __c67, 1) as any as S.Schema<GetServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2953,8 +2953,8 @@ export const getServiceInstanceSyncStatus: API.OperationMethod<
   GetServiceInstanceSyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetServiceInstanceSyncStatusInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetServiceInstanceSyncStatusOutput>,
+  input: __S(544, __c68, 0) as any as S.Schema<GetServiceInstanceSyncStatusInput>,
+  output: __S(554, __c69, 2) as any as S.Schema<GetServiceInstanceSyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2983,8 +2983,8 @@ export const getServiceSyncBlockerSummary: API.OperationMethod<
   GetServiceSyncBlockerSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetServiceSyncBlockerSummaryInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>,
+  input: __S(560, __c70, 0) as any as S.Schema<GetServiceSyncBlockerSummaryInput>,
+  output: __S(563, __c70, 3) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3013,8 +3013,8 @@ export const getServiceSyncConfig: API.OperationMethod<
   GetServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetServiceSyncConfigInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetServiceSyncConfigOutput>,
+  input: __S(576, __c72, 0) as any as S.Schema<GetServiceSyncConfigInput>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3043,8 +3043,8 @@ export const getServiceTemplate: API.OperationMethod<
   GetServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetServiceTemplateInput>,
-  output: __S(114, __c14, 2) as any as S.Schema<GetServiceTemplateOutput>,
+  input: __S(584, __c73, 0) as any as S.Schema<GetServiceTemplateInput>,
+  output: __S(585, __c73, 1) as any as S.Schema<GetServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3073,8 +3073,8 @@ export const getServiceTemplateVersion: API.OperationMethod<
   GetServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetServiceTemplateVersionInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetServiceTemplateVersionOutput>,
+  input: __S(592, __c74, 0) as any as S.Schema<GetServiceTemplateVersionInput>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3103,8 +3103,8 @@ export const getTemplateSyncConfig: API.OperationMethod<
   GetTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetTemplateSyncConfigInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetTemplateSyncConfigOutput>,
+  input: __S(600, __c75, 0) as any as S.Schema<GetTemplateSyncConfigInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<GetTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3133,8 +3133,8 @@ export const getTemplateSyncStatus: API.OperationMethod<
   GetTemplateSyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetTemplateSyncStatusInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetTemplateSyncStatusOutput>,
+  input: __S(608, __c76, 0) as any as S.Schema<GetTemplateSyncStatusInput>,
+  output: __S(554, __c69, 2) as any as S.Schema<GetTemplateSyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3168,8 +3168,8 @@ export const listComponentOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListComponentOutputsInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListComponentOutputsOutput>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListComponentOutputsInput>,
+  output: __S(624, __c78, 0) as any as S.Schema<ListComponentOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3204,8 +3204,8 @@ export const listComponentProvisionedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListComponentProvisionedResourcesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListComponentProvisionedResourcesOutput>,
+  input: __S(640, __c80, 0) as any as S.Schema<ListComponentProvisionedResourcesInput>,
+  output: __S(650, __c81, 2) as any as S.Schema<ListComponentProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3243,8 +3243,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListComponentsInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<ListComponentsOutput>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListComponentsInput>,
+  output: __S(659, __c82, 3) as any as S.Schema<ListComponentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3279,8 +3279,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListDeploymentsInput>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListDeploymentsOutput>,
+  input: __S(664, __c83, 0) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(667, __c83, 3) as any as S.Schema<ListDeploymentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3318,8 +3318,8 @@ export const listEnvironmentAccountConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentAccountConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListEnvironmentAccountConnectionsInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>,
+  input: __S(672, __c84, 0) as any as S.Schema<ListEnvironmentAccountConnectionsInput>,
+  output: __S(675, __c84, 3) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3354,8 +3354,8 @@ export const listEnvironmentOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListEnvironmentOutputsInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListEnvironmentOutputsOutput>,
+  input: __S(680, __c85, 0) as any as S.Schema<ListEnvironmentOutputsInput>,
+  output: __S(624, __c78, 0) as any as S.Schema<ListEnvironmentOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3386,8 +3386,8 @@ export const listEnvironmentProvisionedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListEnvironmentProvisionedResourcesOutput>,
+  input: __S(688, __c86, 0) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>,
+  output: __S(650, __c81, 2) as any as S.Schema<ListEnvironmentProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3422,8 +3422,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListEnvironmentsInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListEnvironmentsOutput>,
+  input: __S(697, __c87, 1) as any as S.Schema<ListEnvironmentsInput>,
+  output: __S(700, __c87, 4) as any as S.Schema<ListEnvironmentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3458,8 +3458,8 @@ export const listEnvironmentTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListEnvironmentTemplatesInput>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListEnvironmentTemplatesOutput>,
+  input: __S(704, __c88, 0) as any as S.Schema<ListEnvironmentTemplatesInput>,
+  output: __S(707, __c88, 3) as any as S.Schema<ListEnvironmentTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3494,8 +3494,8 @@ export const listEnvironmentTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListEnvironmentTemplateVersionsInput>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>,
+  input: __S(712, __c89, 0) as any as S.Schema<ListEnvironmentTemplateVersionsInput>,
+  output: __S(722, __c90, 2) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3531,8 +3531,8 @@ export const listRepositories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListRepositoriesInput>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListRepositoriesOutput>,
+  input: __S(728, __c91, 0) as any as S.Schema<ListRepositoriesInput>,
+  output: __S(731, __c91, 3) as any as S.Schema<ListRepositoriesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3567,8 +3567,8 @@ export const listRepositorySyncDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySyncDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListRepositorySyncDefinitionsInput>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListRepositorySyncDefinitionsOutput>,
+  input: __S(736, __c92, 0) as any as S.Schema<ListRepositorySyncDefinitionsInput>,
+  output: __S(739, __c92, 3) as any as S.Schema<ListRepositorySyncDefinitionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3602,8 +3602,8 @@ export const listServiceInstanceOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListServiceInstanceOutputsInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListServiceInstanceOutputsOutput>,
+  input: __S(744, __c93, 0) as any as S.Schema<ListServiceInstanceOutputsInput>,
+  output: __S(624, __c78, 0) as any as S.Schema<ListServiceInstanceOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3634,8 +3634,8 @@ export const listServiceInstanceProvisionedResources: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListServiceInstanceProvisionedResourcesOutput>,
+  input: __S(752, __c94, 0) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>,
+  output: __S(650, __c81, 2) as any as S.Schema<ListServiceInstanceProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3671,8 +3671,8 @@ export const listServiceInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceInstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListServiceInstancesInput>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListServiceInstancesOutput>,
+  input: __S(762, __c95, 2) as any as S.Schema<ListServiceInstancesInput>,
+  output: __S(765, __c95, 5) as any as S.Schema<ListServiceInstancesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3708,8 +3708,8 @@ export const listServicePipelineOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListServicePipelineOutputsInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListServicePipelineOutputsOutput>,
+  input: __S(792, __c99, 0) as any as S.Schema<ListServicePipelineOutputsInput>,
+  output: __S(624, __c78, 0) as any as S.Schema<ListServicePipelineOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3740,8 +3740,8 @@ export const listServicePipelineProvisionedResources: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListServicePipelineProvisionedResourcesOutput>,
+  input: __S(800, __c100, 0) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>,
+  output: __S(650, __c81, 2) as any as S.Schema<ListServicePipelineProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3775,8 +3775,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListServicesInput>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListServicesOutput>,
+  input: __S(808, __c101, 0) as any as S.Schema<ListServicesInput>,
+  output: __S(811, __c101, 3) as any as S.Schema<ListServicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3810,8 +3810,8 @@ export const listServiceTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListServiceTemplatesInput>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListServiceTemplatesOutput>,
+  input: __S(816, __c102, 0) as any as S.Schema<ListServiceTemplatesInput>,
+  output: __S(819, __c102, 3) as any as S.Schema<ListServiceTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3846,8 +3846,8 @@ export const listServiceTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListServiceTemplateVersionsInput>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListServiceTemplateVersionsOutput>,
+  input: __S(824, __c103, 0) as any as S.Schema<ListServiceTemplateVersionsInput>,
+  output: __S(722, __c90, 2) as any as S.Schema<ListServiceTemplateVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3884,8 +3884,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(181, __c22, 5) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(832, __c104, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(833, __c104, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3924,8 +3924,8 @@ export const notifyResourceDeploymentStatusChange: API.OperationMethod<
   NotifyResourceDeploymentStatusChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>,
-  output: __S(183, __c22, 7) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>,
+  input: __S(840, __c105, 0) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>,
+  output: __S(841, __c105, 1) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3965,8 +3965,8 @@ export const rejectEnvironmentAccountConnection: API.OperationMethod<
   RejectEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<RejectEnvironmentAccountConnectionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<RejectEnvironmentAccountConnectionOutput>,
+  input: __S(848, __c106, 0) as any as S.Schema<RejectEnvironmentAccountConnectionInput>,
+  output: __S(784, __c98, 0) as any as S.Schema<RejectEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4000,8 +4000,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(186, __c23, 2) as any as S.Schema<TagResourceOutput>,
+  input: __S(856, __c107, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(864, __c108, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4035,8 +4035,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UntagResourceInput>,
-  output: __S(186, __c23, 2) as any as S.Schema<UntagResourceOutput>,
+  input: __S(872, __c109, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(864, __c108, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4066,8 +4066,8 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateAccountSettingsInput>,
-  output: __S(189, __c23, 5) as any as S.Schema<UpdateAccountSettingsOutput>,
+  input: __S(896, __c112, 0) as any as S.Schema<UpdateAccountSettingsInput>,
+  output: __S(897, __c112, 1) as any as S.Schema<UpdateAccountSettingsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4107,8 +4107,8 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateComponentInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateComponentOutput>,
+  input: __S(904, __c113, 0) as any as S.Schema<UpdateComponentInput>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4182,8 +4182,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<UpdateEnvironmentInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateEnvironmentOutput>,
+  input: __S(912, __c114, 0) as any as S.Schema<UpdateEnvironmentInput>,
+  output: __S(80, __c10, 0) as any as S.Schema<UpdateEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4217,8 +4217,8 @@ export const updateEnvironmentAccountConnection: API.OperationMethod<
   UpdateEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateEnvironmentAccountConnectionOutput>,
+  input: __S(920, __c115, 0) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>,
+  output: __S(784, __c98, 0) as any as S.Schema<UpdateEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4249,8 +4249,8 @@ export const updateEnvironmentTemplate: API.OperationMethod<
   UpdateEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UpdateEnvironmentTemplateInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateEnvironmentTemplateOutput>,
+  input: __S(928, __c116, 0) as any as S.Schema<UpdateEnvironmentTemplateInput>,
+  output: __S(120, __c15, 0) as any as S.Schema<UpdateEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4281,8 +4281,8 @@ export const updateEnvironmentTemplateVersion: API.OperationMethod<
   UpdateEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateEnvironmentTemplateVersionOutput>,
+  input: __S(936, __c117, 0) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4328,8 +4328,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateServiceInput>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateServiceOutput>,
+  input: __S(944, __c118, 0) as any as S.Schema<UpdateServiceInput>,
+  output: __S(200, __c25, 0) as any as S.Schema<UpdateServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4371,8 +4371,8 @@ export const updateServiceInstance: API.OperationMethod<
   UpdateServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateServiceInstanceInput>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateServiceInstanceOutput>,
+  input: __S(952, __c119, 0) as any as S.Schema<UpdateServiceInstanceInput>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4430,8 +4430,8 @@ export const updateServicePipeline: API.OperationMethod<
   UpdateServicePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<UpdateServicePipelineInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateServicePipelineOutput>,
+  input: __S(960, __c120, 0) as any as S.Schema<UpdateServicePipelineInput>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateServicePipelineOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4462,8 +4462,8 @@ export const updateServiceSyncBlocker: API.OperationMethod<
   UpdateServiceSyncBlockerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<UpdateServiceSyncBlockerInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<UpdateServiceSyncBlockerOutput>,
+  input: __S(968, __c121, 0) as any as S.Schema<UpdateServiceSyncBlockerInput>,
+  output: __S(969, __c121, 1) as any as S.Schema<UpdateServiceSyncBlockerOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4494,8 +4494,8 @@ export const updateServiceSyncConfig: API.OperationMethod<
   UpdateServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<UpdateServiceSyncConfigInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateServiceSyncConfigOutput>,
+  input: __S(1000, __c125, 0) as any as S.Schema<UpdateServiceSyncConfigInput>,
+  output: __S(225, __c28, 1) as any as S.Schema<UpdateServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4526,8 +4526,8 @@ export const updateServiceTemplate: API.OperationMethod<
   UpdateServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateServiceTemplateInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateServiceTemplateOutput>,
+  input: __S(1008, __c126, 0) as any as S.Schema<UpdateServiceTemplateInput>,
+  output: __S(248, __c31, 0) as any as S.Schema<UpdateServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4558,8 +4558,8 @@ export const updateServiceTemplateVersion: API.OperationMethod<
   UpdateServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateServiceTemplateVersionInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdateServiceTemplateVersionOutput>,
+  input: __S(1016, __c127, 0) as any as S.Schema<UpdateServiceTemplateVersionInput>,
+  output: __S(288, __c36, 0) as any as S.Schema<UpdateServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4592,8 +4592,8 @@ export const updateTemplateSyncConfig: API.OperationMethod<
   UpdateTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdateTemplateSyncConfigInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateTemplateSyncConfigOutput>,
+  input: __S(1024, __c128, 0) as any as S.Schema<UpdateTemplateSyncConfigInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<UpdateTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4612,122 +4612,17 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ id: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AcceptEnvironmentAccountConnectionInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          arn: S.String,
-          managementAccountId: S.String,
-          environmentAccountId: S.String,
-          roleArn: S.String,
-          environmentName: S.String,
-          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: S.String,
-          componentRoleArn: S.optional(S.String),
-          codebuildRoleArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnvironmentAccountConnection",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ environmentAccountConnection: __S(1, __c0, 1) })).annotate({
-        identifier: "AcceptEnvironmentAccountConnectionOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ componentName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CancelComponentDeploymentInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(SensitiveString),
-          arn: S.String,
-          environmentName: S.String,
-          serviceName: S.optional(S.String),
-          serviceInstanceName: S.optional(S.String),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          deploymentStatus: S.String,
-          deploymentStatusMessage: S.optional(SensitiveString),
-          serviceSpec: S.optional(SensitiveString),
-          lastClientRequestToken: S.optional(S.String),
-          lastAttemptedDeploymentId: S.optional(S.String),
-          lastSucceededDeploymentId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Component" });
-    case 5:
-      return S.suspend(() => S.Struct({ component: __S(4, __c0, 4) })).annotate({
-        identifier: "CancelComponentDeploymentOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ environmentName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CancelEnvironmentDeploymentInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String, provider: S.String, name: S.String, branch: S.String }),
-      ).annotate({ identifier: "RepositoryBranch" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(SensitiveString),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          arn: S.String,
-          templateName: S.String,
-          templateMajorVersion: S.String,
-          templateMinorVersion: S.String,
-          deploymentStatus: S.String,
-          deploymentStatusMessage: S.optional(SensitiveString),
-          protonServiceRoleArn: S.optional(S.String),
-          environmentAccountConnectionId: S.optional(S.String),
-          environmentAccountId: S.optional(S.String),
-          spec: S.optional(SensitiveString),
-          provisioning: S.optional(S.String),
-          provisioningRepository: S.optional(__S(7, __c0, 7)),
-          componentRoleArn: S.optional(S.String),
-          codebuildRoleArn: S.optional(S.String),
-          lastAttemptedDeploymentId: S.optional(S.String),
-          lastSucceededDeploymentId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Environment" });
-    case 1:
-      return S.suspend(() => S.Struct({ environment: __S(8, __c1, 0) })).annotate({
-        identifier: "CancelEnvironmentDeploymentOutput",
-      });
-    case 2:
-      return S.suspend(() =>
         S.Struct({ serviceInstanceName: S.String, serviceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "CancelServiceInstanceDeploymentInput",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4748,11 +4643,19 @@ function __c1(j: number): any {
           lastSucceededDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceInstance" });
-    case 4:
-      return S.suspend(() => S.Struct({ serviceInstance: __S(11, __c1, 3) })).annotate({
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ serviceInstance: __S(8, __c1, 0) })).annotate({
         identifier: "CancelServiceInstanceDeploymentOutput",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4760,7 +4663,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelServicePipelineDeploymentInput",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -4777,21 +4684,19 @@ function __c1(j: number): any {
           lastSucceededDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicePipeline" });
-    case 7:
-      return S.suspend(() => S.Struct({ pipeline: __S(14, __c1, 6) })).annotate({
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ pipeline: __S(32, __c4, 0) })).annotate({
         identifier: "CancelServicePipelineDeploymentOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4802,19 +4707,33 @@ function __c2(j: number): any {
           templateFile: SensitiveString,
           manifest: SensitiveString,
           serviceSpec: S.optional(SensitiveString),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateComponentInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ component: __S(4, __c0, 4) })).annotate({
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ component: __S(888, __c111, 0) })).annotate({
         identifier: "CreateComponentOutput",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ provider: S.String, name: S.String, branch: S.String }),
-      ).annotate({ identifier: "RepositoryBranchInput" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4825,24 +4744,40 @@ function __c2(j: number): any {
           spec: SensitiveString,
           protonServiceRoleArn: S.optional(S.String),
           environmentAccountConnectionId: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
-          provisioningRepository: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(57, __c7, 1)),
+          provisioningRepository: S.optional(__S(88, __c11, 0)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEnvironmentInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ environment: __S(8, __c1, 0) })).annotate({
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environment: __S(992, __c124, 0) })).annotate({
         identifier: "CreateEnvironmentOutput",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ provider: S.String, name: S.String, branch: S.String }),
+      ).annotate({ identifier: "RepositoryBranchInput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           managementAccountId: S.String,
           roleArn: S.optional(S.String),
           environmentName: S.String,
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4851,7 +4786,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4861,12 +4796,16 @@ function __c3(j: number): any {
           description: S.optional(SensitiveString),
           encryptionKey: S.optional(S.String),
           provisioning: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEnvironmentTemplateInput",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4880,30 +4819,46 @@ function __c3(j: number): any {
           provisioning: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentTemplate" });
-    case 2:
-      return S.suspend(() => S.Struct({ environmentTemplate: __S(25, __c3, 1) })).annotate({
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environmentTemplate: __S(112, __c14, 0) })).annotate({
         identifier: "CreateEnvironmentTemplateOutput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
-        identifier: "S3ObjectSource",
-      });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(27, __c3, 3) })]);
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           templateName: S.String,
           description: S.optional(SensitiveString),
           majorVersion: S.optional(S.String),
-          source: __S(28, __c3, 4),
-          tags: S.optional(__S(17, __c2, 1)),
+          source: __S(137, __c17, 1),
+          tags: S.optional(__S(57, __c7, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEnvironmentTemplateVersionInput",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
+        identifier: "S3ObjectSource",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(136, __c17, 0) })]);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -4921,13 +4876,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EnvironmentTemplateVersion",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ environmentTemplateVersion: __S(30, __c3, 6) })).annotate({
-        identifier: "CreateEnvironmentTemplateVersionOutput",
-      });
   }
 }
-function __c4(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environmentTemplateVersion: __S(144, __c18, 0) })).annotate(
+        {
+          identifier: "CreateEnvironmentTemplateVersionOutput",
+        },
+      );
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4936,10 +4897,14 @@ function __c4(j: number): any {
           name: S.String,
           connectionArn: S.String,
           encryptionKey: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRepositoryInput" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -4949,11 +4914,19 @@ function __c4(j: number): any {
           encryptionKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repository" });
-    case 2:
-      return S.suspend(() => S.Struct({ repository: __S(33, __c4, 1) })).annotate({
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repository: __S(168, __c21, 0) })).annotate({
         identifier: "CreateRepositoryOutput",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4965,10 +4938,14 @@ function __c4(j: number): any {
           repositoryConnectionArn: S.optional(S.String),
           repositoryId: S.optional(S.String),
           branchName: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateServiceInput" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4980,17 +4957,25 @@ function __c4(j: number): any {
           status: S.String,
           statusMessage: S.optional(SensitiveString),
           spec: SensitiveString,
-          pipeline: S.optional(__S(14, __c1, 6)),
+          pipeline: S.optional(__S(32, __c4, 0)),
           repositoryConnectionArn: S.optional(S.String),
           repositoryId: S.optional(S.String),
           branchName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Service" });
-    case 5:
-      return S.suspend(() => S.Struct({ service: __S(36, __c4, 4) })).annotate({
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ service: __S(192, __c24, 0) })).annotate({
         identifier: "CreateServiceOutput",
       });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4998,13 +4983,17 @@ function __c4(j: number): any {
           spec: SensitiveString,
           templateMajorVersion: S.optional(S.String),
           templateMinorVersion: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateServiceInstanceInput",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
@@ -5018,7 +5007,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5032,11 +5021,15 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ServiceSyncConfig" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ serviceSyncConfig: S.optional(__S(40, __c5, 0)) }),
+        S.Struct({ serviceSyncConfig: S.optional(__S(224, __c28, 0)) }),
       ).annotate({
         identifier: "CreateServiceSyncConfigOutput",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5044,12 +5037,16 @@ function __c5(j: number): any {
           description: S.optional(SensitiveString),
           encryptionKey: S.optional(S.String),
           pipelineProvisioning: S.optional(S.String),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(57, __c7, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateServiceTemplateInput",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5063,23 +5060,17 @@ function __c5(j: number): any {
           pipelineProvisioning: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceTemplate" });
-    case 4:
-      return S.suspend(() => S.Struct({ serviceTemplate: __S(43, __c5, 3) })).annotate({
-        identifier: "CreateServiceTemplateOutput",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ templateName: S.String, majorVersion: S.String })).annotate(
-        {
-          identifier: "CompatibleEnvironmentTemplateInput",
-        },
-      );
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c6(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ serviceTemplate: __S(240, __c30, 0) })).annotate({
+        identifier: "CreateServiceTemplateOutput",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5088,14 +5079,36 @@ function __c6(j: number): any {
           templateName: S.String,
           description: S.optional(SensitiveString),
           majorVersion: S.optional(S.String),
-          source: __S(28, __c3, 4),
-          compatibleEnvironmentTemplates: __S(46, __c5, 6),
-          tags: S.optional(__S(17, __c2, 1)),
-          supportedComponentSources: S.optional(__S(47, __c5, 7)),
+          source: __S(137, __c17, 1),
+          compatibleEnvironmentTemplates: __S(280, __c35, 0),
+          tags: S.optional(__S(57, __c7, 1)),
+          supportedComponentSources: S.optional(__S(264, __c33, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateServiceTemplateVersionInput",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ templateName: S.String, majorVersion: S.String })).annotate(
+        {
+          identifier: "CompatibleEnvironmentTemplateInput",
+        },
+      );
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c34, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5109,16 +5122,24 @@ function __c6(j: number): any {
           arn: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          compatibleEnvironmentTemplates: __S(46, __c5, 6),
+          compatibleEnvironmentTemplates: __S(280, __c35, 0),
           schema: S.optional(SensitiveString),
-          supportedComponentSources: S.optional(__S(47, __c5, 7)),
+          supportedComponentSources: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "ServiceTemplateVersion" });
-    case 2:
-      return S.suspend(() => S.Struct({ serviceTemplateVersion: __S(49, __c6, 1) })).annotate({
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ serviceTemplateVersion: __S(281, __c35, 1) })).annotate({
         identifier: "CreateServiceTemplateVersionOutput",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -5131,7 +5152,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateTemplateSyncConfigInput",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -5142,25 +5167,33 @@ function __c6(j: number): any {
           subdirectory: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateSyncConfig" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ templateSyncConfig: S.optional(__S(52, __c6, 4)) }),
+        S.Struct({ templateSyncConfig: S.optional(__S(304, __c38, 0)) }),
       ).annotate({
         identifier: "CreateTemplateSyncConfigOutput",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteComponentInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ component: S.optional(__S(4, __c0, 4)) })).annotate({
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ component: S.optional(__S(888, __c111, 0)) })).annotate({
         identifier: "DeleteComponentOutput",
       });
   }
 }
-function __c7(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5168,19 +5201,23 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDeploymentInput" });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spec: SensitiveString,
           templateName: S.String,
           templateMajorVersion: S.String,
           templateMinorVersion: S.String,
-          lastSuccessfulComponentDeploymentIds: S.optional(__S(47, __c5, 7)),
+          lastSuccessfulComponentDeploymentIds: S.optional(__S(264, __c33, 0)),
           lastSuccessfulEnvironmentDeploymentId: S.optional(S.String),
           lastSuccessfulServicePipelineDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceInstanceState" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           spec: S.optional(SensitiveString),
@@ -5189,7 +5226,7 @@ function __c7(j: number): any {
           templateMinorVersion: S.String,
         }),
       ).annotate({ identifier: "EnvironmentState" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
@@ -5198,14 +5235,14 @@ function __c7(j: number): any {
           templateFile: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ComponentState" });
-    case 4:
+    case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ serviceInstance: __S(57, __c7, 1) }),
-        /*@__PURE__*/ S.Struct({ environment: __S(58, __c7, 2) }),
-        /*@__PURE__*/ S.Struct({ servicePipeline: __S(58, __c7, 2) }),
-        /*@__PURE__*/ S.Struct({ component: __S(59, __c7, 3) }),
+        /*@__PURE__*/ S.Struct({ serviceInstance: __S(336, __c42, 0) }),
+        /*@__PURE__*/ S.Struct({ environment: __S(337, __c42, 1) }),
+        /*@__PURE__*/ S.Struct({ servicePipeline: __S(337, __c42, 1) }),
+        /*@__PURE__*/ S.Struct({ component: __S(338, __c42, 2) }),
       ]);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5224,29 +5261,33 @@ function __c7(j: number): any {
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastAttemptedDeploymentId: S.optional(S.String),
           lastSucceededDeploymentId: S.optional(S.String),
-          initialState: S.optional(__S(60, __c7, 4)),
-          targetState: S.optional(__S(60, __c7, 4)),
+          initialState: S.optional(__S(339, __c42, 3)),
+          targetState: S.optional(__S(339, __c42, 3)),
         }),
       ).annotate({ identifier: "Deployment" });
-    case 6:
-      return S.suspend(() => S.Struct({ deployment: S.optional(__S(61, __c7, 5)) })).annotate({
+    case 5:
+      return S.suspend(() => S.Struct({ deployment: S.optional(__S(340, __c42, 4)) })).annotate({
         identifier: "DeleteDeploymentOutput",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteEnvironmentInput" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(8, __c1, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(992, __c124, 0)) })).annotate({
         identifier: "DeleteEnvironmentOutput",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5254,13 +5295,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteEnvironmentAccountConnectionInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ environmentAccountConnection: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ environmentAccountConnection: S.optional(__S(776, __c97, 0)) }),
       ).annotate({
         identifier: "DeleteEnvironmentAccountConnectionOutput",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5268,13 +5313,17 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteEnvironmentTemplateInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ environmentTemplate: S.optional(__S(25, __c3, 1)) }),
+        S.Struct({ environmentTemplate: S.optional(__S(112, __c14, 0)) }),
       ).annotate({
         identifier: "DeleteEnvironmentTemplateOutput",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5282,37 +5331,49 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteEnvironmentTemplateVersionInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ environmentTemplateVersion: S.optional(__S(30, __c3, 6)) }),
+        S.Struct({ environmentTemplateVersion: S.optional(__S(144, __c18, 0)) }),
       ).annotate({
         identifier: "DeleteEnvironmentTemplateVersionOutput",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ provider: S.String, name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRepositoryInput" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ repository: S.optional(__S(33, __c4, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ repository: S.optional(__S(168, __c21, 0)) })).annotate({
         identifier: "DeleteRepositoryOutput",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteServiceInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ service: S.optional(__S(36, __c4, 4)) })).annotate({
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ service: S.optional(__S(192, __c24, 0)) })).annotate({
         identifier: "DeleteServiceOutput",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5320,7 +5381,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteServiceSyncConfigInput",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5328,11 +5393,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteServiceTemplateInput",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ serviceTemplate: S.optional(__S(43, __c5, 3)) })).annotate({
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ serviceTemplate: S.optional(__S(240, __c30, 0)) }),
+      ).annotate({
         identifier: "DeleteServiceTemplateOutput",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5340,15 +5411,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteServiceTemplateVersionInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ serviceTemplateVersion: S.optional(__S(49, __c6, 1)) }),
+        S.Struct({ serviceTemplateVersion: S.optional(__S(281, __c35, 1)) }),
       ).annotate({
         identifier: "DeleteServiceTemplateVersionOutput",
       });
   }
 }
-function __c10(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5358,33 +5429,47 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteTemplateSyncConfigInput",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccountSettingsInput" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ accountSettings: S.optional(__S(440, __c55, 0)) }),
+      ).annotate({ identifier: "GetAccountSettingsOutput" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pipelineServiceRoleArn: S.optional(S.String),
-          pipelineProvisioningRepository: S.optional(__S(7, __c0, 7)),
+          pipelineProvisioningRepository: S.optional(__S(984, __c123, 0)),
           pipelineCodebuildRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSettings" });
-    case 3:
-      return S.suspend(() => S.Struct({ accountSettings: S.optional(__S(82, __c10, 2)) })).annotate(
-        {
-          identifier: "GetAccountSettingsOutput",
-        },
-      );
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetComponentInput" });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5394,13 +5479,21 @@ function __c10(j: number): any {
           componentName: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetDeploymentInput" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetEnvironmentInput" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5410,7 +5503,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5420,7 +5513,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetEnvironmentTemplateInput",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5428,13 +5525,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetEnvironmentTemplateVersionInput",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ provider: S.String, name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetRepositoryInput" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repositoryName: S.String,
@@ -5445,7 +5550,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetRepositorySyncStatusInput",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          events: __S(513, __c64, 1),
+        }),
+      ).annotate({ identifier: "RepositorySyncAttempt" });
+    case 2:
+      return S.suspend(() => S.Struct({ latestSync: S.optional(__S(505, __c63, 1)) })).annotate({
+        identifier: "GetRepositorySyncStatusOutput",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -5454,23 +5575,11 @@ function __c11(j: number): any {
           event: S.String,
         }),
       ).annotate({ identifier: "RepositorySyncEvent" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: S.String,
-          events: __S(93, __c11, 5),
-        }),
-      ).annotate({ identifier: "RepositorySyncAttempt" });
-    case 7:
-      return S.suspend(() => S.Struct({ latestSync: S.optional(__S(94, __c11, 6)) })).annotate({
-        identifier: "GetRepositorySyncStatusOutput",
-      });
+    case 1:
+      return S.Array(__S(512, __c64, 0));
   }
 }
-function __c12(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5491,36 +5600,48 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          components: S.optional(__S(97, __c12, 1)),
-          environments: S.optional(__S(97, __c12, 1)),
-          environmentTemplates: S.optional(__S(97, __c12, 1)),
-          serviceInstances: S.optional(__S(97, __c12, 1)),
-          services: S.optional(__S(97, __c12, 1)),
-          serviceTemplates: S.optional(__S(97, __c12, 1)),
-          pipelines: S.optional(__S(97, __c12, 1)),
+          components: S.optional(__S(521, __c65, 1)),
+          environments: S.optional(__S(521, __c65, 1)),
+          environmentTemplates: S.optional(__S(521, __c65, 1)),
+          serviceInstances: S.optional(__S(521, __c65, 1)),
+          services: S.optional(__S(521, __c65, 1)),
+          serviceTemplates: S.optional(__S(521, __c65, 1)),
+          pipelines: S.optional(__S(521, __c65, 1)),
         }),
       ).annotate({ identifier: "CountsSummary" });
     case 3:
-      return S.suspend(() => S.Struct({ counts: __S(98, __c12, 2) })).annotate({
+      return S.suspend(() => S.Struct({ counts: __S(522, __c65, 2) })).annotate({
         identifier: "GetResourcesSummaryOutput",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetServiceInput" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String, serviceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetServiceInstanceInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ serviceInstance: __S(11, __c1, 3) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ serviceInstance: __S(8, __c1, 0) })).annotate({
         identifier: "GetServiceInstanceOutput",
       });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String, serviceInstanceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5530,7 +5651,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5545,25 +5666,29 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          initialRevision: __S(104, __c13, 0),
-          targetRevision: __S(104, __c13, 0),
+          initialRevision: __S(552, __c69, 0),
+          targetRevision: __S(552, __c69, 0),
           target: S.String,
           startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          events: __S(93, __c11, 5),
+          events: __S(513, __c64, 1),
         }),
       ).annotate({ identifier: "ResourceSyncAttempt" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          latestSync: S.optional(__S(105, __c13, 1)),
-          latestSuccessfulSync: S.optional(__S(105, __c13, 1)),
-          desiredState: S.optional(__S(104, __c13, 0)),
+          latestSync: S.optional(__S(553, __c69, 1)),
+          latestSuccessfulSync: S.optional(__S(553, __c69, 1)),
+          desiredState: S.optional(__S(552, __c69, 0)),
         }),
       ).annotate({
         identifier: "GetServiceInstanceSyncStatusOutput",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String, serviceInstanceName: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5571,7 +5696,29 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetServiceSyncBlockerSummaryInput",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(568, __c71, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String,
+          serviceInstanceName: S.optional(S.String),
+          latestBlockers: S.optional(__S(561, __c70, 1)),
+        }),
+      ).annotate({
+        identifier: "ServiceSyncBlockerSummary",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ serviceSyncBlockerSummary: S.optional(__S(562, __c70, 2)) }),
+      ).annotate({
+        identifier: "GetServiceSyncBlockerSummaryOutput",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5579,32 +5726,14 @@ function __c13(j: number): any {
           status: S.String,
           createdReason: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          contexts: S.optional(__S(17, __c2, 1)),
+          contexts: S.optional(__S(57, __c7, 1)),
           resolvedReason: S.optional(S.String),
           resolvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncBlocker" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String,
-          serviceInstanceName: S.optional(S.String),
-          latestBlockers: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "ServiceSyncBlockerSummary",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ serviceSyncBlockerSummary: S.optional(__S(110, __c13, 6)) }),
-      ).annotate({
-        identifier: "GetServiceSyncBlockerSummaryOutput",
-      });
   }
 }
-function __c14(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5614,17 +5743,25 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetServiceSyncConfigInput",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetServiceTemplateInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ serviceTemplate: __S(43, __c5, 3) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ serviceTemplate: __S(240, __c30, 0) })).annotate({
         identifier: "GetServiceTemplateOutput",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ templateName: S.String, majorVersion: S.String, minorVersion: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5632,7 +5769,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetServiceTemplateVersionInput",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ templateName: S.String, templateType: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5640,7 +5781,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetTemplateSyncConfigInput",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -5650,7 +5795,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetTemplateSyncStatusInput",
       });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           componentName: S.String,
@@ -5660,23 +5809,31 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListComponentOutputsInput",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), valueString: S.optional(S.String) }),
-      ).annotate({ identifier: "Output" });
   }
 }
-function __c15(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), outputs: __S(120, __c15, 0) }),
+        S.Struct({ nextToken: S.optional(S.String), outputs: __S(633, __c79, 1) }),
       ).annotate({
         identifier: "ListComponentOutputsOutput",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), valueString: S.optional(S.String) }),
+      ).annotate({ identifier: "Output" });
+    case 1:
+      return S.Array(__S(632, __c79, 0));
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ componentName: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5684,7 +5841,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListComponentProvisionedResourcesInput",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5692,18 +5853,19 @@ function __c15(j: number): any {
           provisioningEngine: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisionedResource" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(648, __c81, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          provisionedResources: __S(124, __c15, 4),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), provisionedResources: __S(649, __c81, 1) }),
       ).annotate({
         identifier: "ListComponentProvisionedResourcesOutput",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -5713,7 +5875,7 @@ function __c15(j: number): any {
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListComponentsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5731,17 +5893,17 @@ function __c15(j: number): any {
           lastSucceededDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentSummary" });
+    case 2:
+      return S.Array(__S(657, __c82, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), components: __S(658, __c82, 2) }),
+      ).annotate({ identifier: "ListComponentsOutput" });
   }
 }
-function __c16(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), components: __S(128, __c16, 0) }),
-      ).annotate({ identifier: "ListComponentsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -5752,7 +5914,7 @@ function __c16(j: number): any {
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDeploymentsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5772,25 +5934,29 @@ function __c16(j: number): any {
           deploymentStatus: S.String,
         }),
       ).annotate({ identifier: "DeploymentSummary" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(665, __c83, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), deployments: __S(132, __c16, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), deployments: __S(666, __c83, 2) }),
       ).annotate({ identifier: "ListDeploymentsOutput" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestedBy: S.String,
           environmentName: S.optional(S.String),
-          statuses: S.optional(__S(47, __c5, 7)),
+          statuses: S.optional(__S(264, __c33, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListEnvironmentAccountConnectionsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5807,22 +5973,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "EnvironmentAccountConnectionSummary",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(673, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          environmentAccountConnections: __S(136, __c17, 0),
+          environmentAccountConnections: __S(674, __c84, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEnvironmentAccountConnectionsOutput",
       });
-    case 2:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.String,
@@ -5832,7 +5998,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentOutputsInput",
       });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ environmentName: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5840,17 +6010,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentProvisionedResourcesInput",
       });
-    case 4:
-      return S.Array(__S(45, __c5, 5));
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c34, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          environmentTemplates: S.optional(__S(140, __c17, 4)),
+          environmentTemplates: S.optional(__S(696, __c87, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEnvironmentsInput" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5873,17 +6047,17 @@ function __c17(j: number): any {
           lastSucceededDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentSummary" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
+    case 3:
+      return S.Array(__S(698, __c87, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), environments: __S(699, __c87, 3) }),
+      ).annotate({ identifier: "ListEnvironmentsOutput" });
   }
 }
-function __c18(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), environments: __S(143, __c17, 7) }),
-      ).annotate({ identifier: "ListEnvironmentsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5891,7 +6065,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentTemplatesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5906,15 +6080,19 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EnvironmentTemplateSummary",
       });
+    case 2:
+      return S.Array(__S(705, __c88, 1));
     case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: __S(147, __c18, 3) }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(706, __c88, 2) }),
       ).annotate({
         identifier: "ListEnvironmentTemplatesOutput",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -5925,7 +6103,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentTemplateVersionsInput",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -5942,38 +6124,42 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EnvironmentTemplateVersionSummary",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(720, __c90, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          templateVersions: __S(151, __c18, 7),
+          templateVersions: __S(721, __c90, 1),
         }),
       ).annotate({
         identifier: "ListEnvironmentTemplateVersionsOutput",
       });
-    case 1:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListRepositoriesInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.String, provider: S.String, name: S.String, connectionArn: S.String }),
       ).annotate({ identifier: "RepositorySummary" });
+    case 2:
+      return S.Array(__S(729, __c91, 1));
     case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), repositories: __S(155, __c19, 3) }),
+        S.Struct({ nextToken: S.optional(S.String), repositories: __S(730, __c91, 2) }),
       ).annotate({ identifier: "ListRepositoriesOutput" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repositoryName: S.String,
@@ -5984,26 +6170,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListRepositorySyncDefinitionsInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ target: S.String, parent: S.String, branch: S.String, directory: S.String }),
       ).annotate({ identifier: "RepositorySyncDefinition" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(737, __c92, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          syncDefinitions: __S(159, __c19, 7),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), syncDefinitions: __S(738, __c92, 2) }),
       ).annotate({
         identifier: "ListRepositorySyncDefinitionsOutput",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceInstanceName: S.String,
@@ -6014,7 +6197,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListServiceInstanceOutputsInput",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
@@ -6024,28 +6211,32 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListServiceInstanceProvisionedResourcesInput",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({
         identifier: "ListServiceInstancesFilter",
       });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(760, __c95, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(164, __c20, 4)),
+          filters: S.optional(__S(761, __c95, 1)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListServiceInstancesInput",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6064,19 +6255,63 @@ function __c20(j: number): any {
           lastSucceededDeploymentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceInstanceSummary" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(763, __c95, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), serviceInstances: __S(167, __c20, 7) }),
+        S.Struct({ nextToken: S.optional(S.String), serviceInstances: __S(764, __c95, 4) }),
       ).annotate({
         identifier: "ListServiceInstancesOutput",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AcceptEnvironmentAccountConnectionInput",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          arn: S.String,
+          managementAccountId: S.String,
+          environmentAccountId: S.String,
+          roleArn: S.String,
+          environmentName: S.String,
+          requestedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          status: S.String,
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnvironmentAccountConnection",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentAccountConnection: __S(776, __c97, 0) }),
+      ).annotate({
+        identifier: "AcceptEnvironmentAccountConnectionOutput",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
@@ -6086,7 +6321,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListServicePipelineOutputsInput",
       });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ serviceName: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6094,13 +6333,17 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListServicePipelineProvisionedResourcesInput",
       });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListServicesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6113,13 +6356,17 @@ function __c21(j: number): any {
           statusMessage: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ServiceSummary" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(809, __c101, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), services: __S(173, __c21, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), services: __S(810, __c101, 2) }),
       ).annotate({ identifier: "ListServicesOutput" });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6127,11 +6374,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListServiceTemplatesInput",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6144,15 +6387,19 @@ function __c22(j: number): any {
           pipelineProvisioning: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceTemplateSummary" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
     case 2:
+      return S.Array(__S(817, __c102, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: __S(177, __c22, 1) }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(818, __c102, 2) }),
       ).annotate({
         identifier: "ListServiceTemplatesOutput",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -6163,7 +6410,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListServiceTemplateVersionsInput",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
@@ -6171,31 +6422,35 @@ function __c22(j: number): any {
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ tags: __S(17, __c2, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ tags: __S(57, __c7, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
           status: S.optional(S.String),
-          outputs: S.optional(__S(120, __c15, 0)),
+          outputs: S.optional(__S(633, __c79, 1)),
           deploymentId: S.optional(S.String),
           statusMessage: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "NotifyResourceDeploymentStatusChangeInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "NotifyResourceDeploymentStatusChangeOutput",
       });
   }
 }
-function __c23(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6205,40 +6460,101 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "RejectEnvironmentAccountConnectionInput",
       });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tags: __S(17, __c2, 1),
+          tags: __S(57, __c7, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceInput" });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceOutput",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(47, __c5, 7),
+          tagKeys: __S(264, __c33, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ componentName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelComponentDeploymentInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ component: __S(888, __c111, 0) })).annotate({
+        identifier: "CancelComponentDeploymentOutput",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          arn: S.String,
+          environmentName: S.String,
+          serviceName: S.optional(S.String),
+          serviceInstanceName: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastDeploymentSucceededAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          serviceSpec: S.optional(SensitiveString),
+          lastClientRequestToken: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Component" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pipelineServiceRoleArn: S.optional(S.String),
-          pipelineProvisioningRepository: S.optional(__S(20, __c2, 4)),
+          pipelineProvisioningRepository: S.optional(__S(88, __c11, 0)),
           deletePipelineProvisioningRepository: S.optional(S.Boolean),
           pipelineCodebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateAccountSettingsInput",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ accountSettings: __S(82, __c10, 2) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ accountSettings: __S(440, __c55, 0) })).annotate({
         identifier: "UpdateAccountSettingsOutput",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6251,7 +6567,11 @@ function __c23(j: number): any {
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateComponentInput" });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6262,14 +6582,14 @@ function __c23(j: number): any {
           protonServiceRoleArn: S.optional(S.String),
           deploymentType: S.String,
           environmentAccountConnectionId: S.optional(S.String),
-          provisioningRepository: S.optional(__S(20, __c2, 4)),
+          provisioningRepository: S.optional(__S(88, __c11, 0)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateEnvironmentInput" });
   }
 }
-function __c24(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6282,7 +6602,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateEnvironmentAccountConnectionInput",
       });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6292,7 +6616,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateEnvironmentTemplateInput",
       });
-    case 2:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -6304,7 +6632,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateEnvironmentTemplateVersionInput",
       });
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6312,7 +6644,11 @@ function __c24(j: number): any {
           spec: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateServiceInput" });
-    case 4:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6326,7 +6662,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateServiceInstanceInput",
       });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
@@ -6338,7 +6678,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateServicePipelineInput",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String, resolvedReason: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6346,19 +6690,73 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateServiceSyncBlockerInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
           serviceInstanceName: S.optional(S.String),
-          serviceSyncBlocker: __S(108, __c13, 4),
+          serviceSyncBlocker: __S(568, __c71, 0),
         }),
       ).annotate({
         identifier: "UpdateServiceSyncBlockerOutput",
       });
   }
 }
-function __c25(j: number): any {
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ environmentName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CancelEnvironmentDeploymentInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ environment: __S(992, __c124, 0) })).annotate({
+        identifier: "CancelEnvironmentDeploymentOutput",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String, provider: S.String, name: S.String, branch: S.String }),
+      ).annotate({ identifier: "RepositoryBranch" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(SensitiveString),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentAttemptedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastDeploymentSucceededAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          arn: S.String,
+          templateName: S.String,
+          templateMajorVersion: S.String,
+          templateMinorVersion: S.String,
+          deploymentStatus: S.String,
+          deploymentStatusMessage: S.optional(SensitiveString),
+          protonServiceRoleArn: S.optional(S.String),
+          environmentAccountConnectionId: S.optional(S.String),
+          environmentAccountId: S.optional(S.String),
+          spec: S.optional(SensitiveString),
+          provisioning: S.optional(S.String),
+          provisioningRepository: S.optional(__S(984, __c123, 0)),
+          componentRoleArn: S.optional(S.String),
+          codebuildRoleArn: S.optional(S.String),
+          lastAttemptedDeploymentId: S.optional(S.String),
+          lastSucceededDeploymentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Environment" });
+  }
+}
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6372,7 +6770,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateServiceSyncConfigInput",
       });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6382,7 +6784,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateServiceTemplateInput",
       });
-    case 2:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -6390,13 +6796,17 @@ function __c25(j: number): any {
           minorVersion: S.String,
           description: S.optional(SensitiveString),
           status: S.optional(S.String),
-          compatibleEnvironmentTemplates: S.optional(__S(46, __c5, 6)),
-          supportedComponentSources: S.optional(__S(47, __c5, 7)),
+          compatibleEnvironmentTemplates: S.optional(__S(280, __c35, 0)),
+          supportedComponentSources: S.optional(__S(264, __c33, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateServiceTemplateVersionInput",
       });
-    case 3:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           templateName: S.String,
@@ -6411,7 +6821,6 @@ function __c25(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

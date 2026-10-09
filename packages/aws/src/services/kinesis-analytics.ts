@@ -129,10 +129,10 @@ export class UnableToDetectSchemaException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       RawInputRecords: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(36, __c4, 4)).annotate({ identifier: "RawInputRecords" }),
+        /*@__PURE__*/ S.suspend(() => __S(0, __c0, 0)).annotate({ identifier: "RawInputRecords" }),
       ),
       ProcessedInputRecords: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(36, __c4, 4)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(0, __c0, 0)).annotate({
           identifier: "ProcessedInputRecords",
         }),
       ),
@@ -612,8 +612,8 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
   AddApplicationCloudWatchLoggingOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddApplicationCloudWatchLoggingOptionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddApplicationCloudWatchLoggingOptionResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<AddApplicationCloudWatchLoggingOptionRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddApplicationCloudWatchLoggingOptionResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -658,8 +658,8 @@ export const addApplicationInput: API.OperationMethod<
   AddApplicationInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<AddApplicationInputRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddApplicationInputResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<AddApplicationInputRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddApplicationInputResponse>,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -693,8 +693,8 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
   AddApplicationInputProcessingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AddApplicationInputProcessingConfigurationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<AddApplicationInputProcessingConfigurationRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddApplicationInputProcessingConfigurationResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -746,8 +746,8 @@ export const addApplicationOutput: API.OperationMethod<
   AddApplicationOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AddApplicationOutputRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddApplicationOutputResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<AddApplicationOutputRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddApplicationOutputResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -787,8 +787,8 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
   AddApplicationReferenceDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<AddApplicationReferenceDataSourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddApplicationReferenceDataSourceResponse>,
+  input: __S(226, __c14, 2) as any as S.Schema<AddApplicationReferenceDataSourceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<AddApplicationReferenceDataSourceResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -840,8 +840,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(243, __c15, 3) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(244, __c15, 4) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -874,8 +874,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     ConcurrentModificationException,
     ResourceInUseException,
@@ -907,8 +907,8 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
   DeleteApplicationCloudWatchLoggingOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteApplicationCloudWatchLoggingOptionResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -939,8 +939,16 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
   DeleteApplicationInputProcessingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteApplicationInputProcessingConfigurationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>,
+  input: __S(
+    320,
+    __c20,
+    0,
+  ) as any as S.Schema<DeleteApplicationInputProcessingConfigurationRequest>,
+  output: __S(
+    32,
+    __c2,
+    0,
+  ) as any as S.Schema<DeleteApplicationInputProcessingConfigurationResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -974,8 +982,8 @@ export const deleteApplicationOutput: API.OperationMethod<
   DeleteApplicationOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteApplicationOutputRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteApplicationOutputResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteApplicationOutputRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteApplicationOutputResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1012,8 +1020,8 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
   DeleteApplicationReferenceDataSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteApplicationReferenceDataSourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteApplicationReferenceDataSourceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteApplicationReferenceDataSourceResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1048,8 +1056,8 @@ export const describeApplication: API.OperationMethod<
   DescribeApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DescribeApplicationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeApplicationResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DescribeApplicationRequest>,
+  output: __S(382, __c23, 14) as any as S.Schema<DescribeApplicationResponse>,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1082,8 +1090,8 @@ export const discoverInputSchema: API.OperationMethod<
   DiscoverInputSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DiscoverInputSchemaRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DiscoverInputSchemaResponse>,
+  input: __S(401, __c25, 1) as any as S.Schema<DiscoverInputSchemaRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<DiscoverInputSchemaResponse>,
   errors: [
     InvalidArgumentException,
     ResourceProvisionedThroughputExceededException,
@@ -1121,8 +1129,8 @@ export const listApplications: API.OperationMethod<
   ListApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(418, __c26, 2) as any as S.Schema<ListApplicationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1143,8 +1151,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ConcurrentModificationException, InvalidArgumentException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1180,8 +1188,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<StartApplicationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<StartApplicationResponse>,
+  input: __S(450, __c28, 2) as any as S.Schema<StartApplicationRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<StartApplicationResponse>,
   errors: [
     InvalidApplicationConfigurationException,
     InvalidArgumentException,
@@ -1218,8 +1226,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<StopApplicationRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<StopApplicationResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<StopApplicationRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<StopApplicationResponse>,
   errors: [ResourceInUseException, ResourceNotFoundException, UnsupportedOperationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1243,8 +1251,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1273,8 +1281,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InvalidArgumentException,
@@ -1314,8 +1322,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(559, __c34, 15) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     CodeValidationException,
     ConcurrentModificationException,
@@ -1333,43 +1341,7 @@ export const updateApplication: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ LogStreamARN: S.String, RoleARN: S.String })).annotate({
-        identifier: "CloudWatchLoggingOption",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationName: S.String,
-          CurrentApplicationVersionId: S.Number,
-          CloudWatchLoggingOption: __S(0, __c0, 0),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddApplicationCloudWatchLoggingOptionRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddApplicationCloudWatchLoggingOptionResponse",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ ResourceARN: S.String, RoleARN: S.String })).annotate({
-        identifier: "InputLambdaProcessor",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ InputLambdaProcessor: __S(3, __c0, 3) })).annotate({
-        identifier: "InputProcessingConfiguration",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Count: S.optional(S.Number) })).annotate({
-        identifier: "InputParallelism",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ RecordRowPath: S.String })).annotate({
-        identifier: "JSONMappingParameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ RecordRowDelimiter: S.String, RecordColumnDelimiter: S.String }),
-      ).annotate({ identifier: "CSVMappingParameters" });
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -1377,142 +1349,232 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          JSONMappingParameters: S.optional(__S(6, __c0, 6)),
-          CSVMappingParameters: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "MappingParameters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RecordFormatType: S.String,
-          MappingParameters: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "RecordFormat" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Mapping: S.optional(S.String), SqlType: S.String }),
-      ).annotate({ identifier: "RecordColumn" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RecordFormat: __S(9, __c1, 1),
-          RecordEncoding: S.optional(S.String),
-          RecordColumns: __S(11, __c1, 3),
-        }),
-      ).annotate({ identifier: "SourceSchema" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NamePrefix: S.String,
-          InputProcessingConfiguration: S.optional(__S(4, __c0, 4)),
-          KinesisStreamsInput: S.optional(__S(3, __c0, 3)),
-          KinesisFirehoseInput: S.optional(__S(3, __c0, 3)),
-          InputParallelism: S.optional(__S(5, __c0, 5)),
-          InputSchema: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "Input" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
-          Input: __S(13, __c1, 5),
+          CloudWatchLoggingOption: __S(48, __c3, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
-        identifier: "AddApplicationInputRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationName: S.String,
-          CurrentApplicationVersionId: S.Number,
-          InputId: S.String,
-          InputProcessingConfiguration: __S(4, __c0, 4),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddApplicationInputProcessingConfigurationRequest",
+        identifier: "AddApplicationCloudWatchLoggingOptionRequest",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ RecordFormatType: S.String })).annotate({
-        identifier: "DestinationSchema",
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddApplicationCloudWatchLoggingOptionResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          KinesisStreamsOutput: S.optional(__S(3, __c0, 3)),
-          KinesisFirehoseOutput: S.optional(__S(3, __c0, 3)),
-          LambdaOutput: S.optional(__S(3, __c0, 3)),
-          DestinationSchema: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "Output" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationName: S.String,
-          CurrentApplicationVersionId: S.Number,
-          Output: __S(17, __c2, 1),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddApplicationOutputRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ BucketARN: S.String, FileKey: S.String, ReferenceRoleARN: S.String }),
-      ).annotate({ identifier: "S3ReferenceDataSource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          TableName: S.String,
-          S3ReferenceDataSource: S.optional(__S(19, __c2, 3)),
-          ReferenceSchema: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "ReferenceDataSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationName: S.String,
-          CurrentApplicationVersionId: S.Number,
-          ReferenceDataSource: __S(20, __c2, 4),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddApplicationReferenceDataSourceRequest",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.Array(__S(17, __c2, 1));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(0, __c0, 0));
-    case 1:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "Tag",
+      return S.suspend(() => S.Struct({ LogStreamARN: S.String, RoleARN: S.String })).annotate({
+        identifier: "CloudWatchLoggingOption",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          CurrentApplicationVersionId: S.Number,
+          Input: __S(128, __c8, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddApplicationInputRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ResourceARN: S.String, RoleARN: S.String })).annotate({
+        identifier: "InputLambdaProcessor",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ InputLambdaProcessor: __S(80, __c5, 0) })).annotate({
+        identifier: "InputProcessingConfiguration",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RecordRowPath: S.String })).annotate({
+        identifier: "JSONMappingParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RecordRowDelimiter: S.String, RecordColumnDelimiter: S.String }),
+      ).annotate({ identifier: "CSVMappingParameters" });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.suspend(() =>
+        S.Struct({
+          JSONMappingParameters: S.optional(__S(112, __c7, 0)),
+          CSVMappingParameters: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "MappingParameters" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RecordFormatType: S.String,
+          MappingParameters: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "RecordFormat" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Mapping: S.optional(S.String), SqlType: S.String }),
+      ).annotate({ identifier: "RecordColumn" });
+    case 5:
+      return S.Array(__S(116, __c7, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          RecordFormat: __S(115, __c7, 3),
+          RecordEncoding: S.optional(S.String),
+          RecordColumns: __S(117, __c7, 5),
+        }),
+      ).annotate({ identifier: "SourceSchema" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NamePrefix: S.String,
+          InputProcessingConfiguration: S.optional(__S(96, __c6, 0)),
+          KinesisStreamsInput: S.optional(__S(80, __c5, 0)),
+          KinesisFirehoseInput: S.optional(__S(80, __c5, 0)),
+          InputParallelism: S.optional(__S(144, __c9, 0)),
+          InputSchema: __S(118, __c7, 6),
+        }),
+      ).annotate({ identifier: "Input" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Count: S.optional(S.Number) })).annotate({
+        identifier: "InputParallelism",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          CurrentApplicationVersionId: S.Number,
+          InputId: S.String,
+          InputProcessingConfiguration: __S(96, __c6, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddApplicationInputProcessingConfigurationRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          CurrentApplicationVersionId: S.Number,
+          Output: __S(192, __c12, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddApplicationOutputRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          KinesisStreamsOutput: S.optional(__S(80, __c5, 0)),
+          KinesisFirehoseOutput: S.optional(__S(80, __c5, 0)),
+          LambdaOutput: S.optional(__S(80, __c5, 0)),
+          DestinationSchema: __S(208, __c13, 0),
+        }),
+      ).annotate({ identifier: "Output" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RecordFormatType: S.String })).annotate({
+        identifier: "DestinationSchema",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BucketARN: S.String, FileKey: S.String, ReferenceRoleARN: S.String }),
+      ).annotate({ identifier: "S3ReferenceDataSource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TableName: S.String,
+          S3ReferenceDataSource: S.optional(__S(224, __c14, 0)),
+          ReferenceSchema: __S(118, __c7, 6),
+        }),
+      ).annotate({ identifier: "ReferenceDataSource" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationName: S.String,
+          CurrentApplicationVersionId: S.Number,
+          ReferenceDataSource: __S(225, __c14, 1),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddApplicationReferenceDataSourceRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c8, 0));
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.Array(__S(48, __c3, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           ApplicationDescription: S.optional(S.String),
-          Inputs: S.optional(__S(22, __c2, 6)),
-          Outputs: S.optional(__S(23, __c2, 7)),
-          CloudWatchLoggingOptions: S.optional(__S(24, __c3, 0)),
+          Inputs: S.optional(__S(240, __c15, 0)),
+          Outputs: S.optional(__S(241, __c15, 1)),
+          CloudWatchLoggingOptions: S.optional(__S(242, __c15, 2)),
           ApplicationCode: S.optional(S.String),
-          Tags: S.optional(__S(26, __c3, 2)),
+          Tags: S.optional(__S(273, __c17, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApplicationRequest" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({ ApplicationSummary: __S(256, __c16, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
@@ -1520,18 +1582,32 @@ function __c3(j: number): any {
           ApplicationStatus: S.String,
         }),
       ).annotate({ identifier: "ApplicationSummary" });
-    case 5:
-      return S.suspend(() => S.Struct({ ApplicationSummary: __S(28, __c3, 4) }).pipe(ns)).annotate({
-        identifier: "CreateApplicationResponse",
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
       });
-    case 6:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           CreateTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
@@ -1543,7 +1619,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1555,7 +1631,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationInputProcessingConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
@@ -1565,7 +1645,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationOutputRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
@@ -1575,7 +1659,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationReferenceDataSourceRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1583,85 +1671,71 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeApplicationRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
       ).annotate({
         identifier: "InputLambdaProcessorDescription",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ InputLambdaProcessorDescription: S.optional(__S(37, __c4, 5)) }),
+        S.Struct({ InputLambdaProcessorDescription: S.optional(__S(369, __c23, 1)) }),
       ).annotate({
         identifier: "InputProcessingConfigurationDescription",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ InputStartingPosition: S.optional(S.String) })).annotate({
-        identifier: "InputStartingPositionConfiguration",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           InputId: S.optional(S.String),
           NamePrefix: S.optional(S.String),
-          InAppStreamNames: S.optional(__S(36, __c4, 4)),
-          InputProcessingConfigurationDescription: S.optional(__S(38, __c4, 6)),
-          KinesisStreamsInputDescription: S.optional(__S(37, __c4, 5)),
-          KinesisFirehoseInputDescription: S.optional(__S(37, __c4, 5)),
-          InputSchema: S.optional(__S(12, __c1, 4)),
-          InputParallelism: S.optional(__S(5, __c0, 5)),
-          InputStartingPositionConfiguration: S.optional(__S(39, __c4, 7)),
+          InAppStreamNames: S.optional(__S(0, __c0, 0)),
+          InputProcessingConfigurationDescription: S.optional(__S(370, __c23, 2)),
+          KinesisStreamsInputDescription: S.optional(__S(369, __c23, 1)),
+          KinesisFirehoseInputDescription: S.optional(__S(369, __c23, 1)),
+          InputSchema: S.optional(__S(118, __c7, 6)),
+          InputParallelism: S.optional(__S(144, __c9, 0)),
+          InputStartingPositionConfiguration: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "InputDescription" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(371, __c23, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.optional(S.String), RoleARN: S.optional(S.String) }),
       ).annotate({ identifier: "LambdaOutputDescription" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           OutputId: S.optional(S.String),
           Name: S.optional(S.String),
-          KinesisStreamsOutputDescription: S.optional(__S(37, __c4, 5)),
-          KinesisFirehoseOutputDescription: S.optional(__S(37, __c4, 5)),
-          LambdaOutputDescription: S.optional(__S(42, __c5, 2)),
-          DestinationSchema: S.optional(__S(16, __c2, 0)),
+          KinesisStreamsOutputDescription: S.optional(__S(369, __c23, 1)),
+          KinesisFirehoseOutputDescription: S.optional(__S(369, __c23, 1)),
+          LambdaOutputDescription: S.optional(__S(373, __c23, 5)),
+          DestinationSchema: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "OutputDescription" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(374, __c23, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({ BucketARN: S.String, FileKey: S.String, ReferenceRoleARN: S.String }),
       ).annotate({
         identifier: "S3ReferenceDataSourceDescription",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           ReferenceId: S.String,
           TableName: S.String,
-          S3ReferenceDataSourceDescription: __S(45, __c5, 5),
-          ReferenceSchema: S.optional(__S(12, __c1, 4)),
+          S3ReferenceDataSourceDescription: __S(376, __c23, 8),
+          ReferenceSchema: S.optional(__S(118, __c7, 6)),
         }),
       ).annotate({
         identifier: "ReferenceDataSourceDescription",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(377, __c23, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           CloudWatchLoggingOptionId: S.optional(S.String),
@@ -1671,9 +1745,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CloudWatchLoggingOptionDescription",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(379, __c23, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
@@ -1682,50 +1756,64 @@ function __c6(j: number): any {
           ApplicationStatus: S.String,
           CreateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InputDescriptions: S.optional(__S(41, __c5, 1)),
-          OutputDescriptions: S.optional(__S(44, __c5, 4)),
-          ReferenceDataSourceDescriptions: S.optional(__S(47, __c5, 7)),
-          CloudWatchLoggingOptionDescriptions: S.optional(__S(49, __c6, 1)),
+          InputDescriptions: S.optional(__S(372, __c23, 4)),
+          OutputDescriptions: S.optional(__S(375, __c23, 7)),
+          ReferenceDataSourceDescriptions: S.optional(__S(378, __c23, 10)),
+          CloudWatchLoggingOptionDescriptions: S.optional(__S(380, __c23, 12)),
           ApplicationCode: S.optional(S.String),
           ApplicationVersionId: S.Number,
         }),
       ).annotate({ identifier: "ApplicationDetail" });
-    case 3:
-      return S.suspend(() => S.Struct({ ApplicationDetail: __S(50, __c6, 2) }).pipe(ns)).annotate({
+    case 14:
+      return S.suspend(() =>
+        S.Struct({ ApplicationDetail: __S(381, __c23, 13) }).pipe(ns),
+      ).annotate({
         identifier: "DescribeApplicationResponse",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ InputStartingPosition: S.optional(S.String) })).annotate({
+        identifier: "InputStartingPositionConfiguration",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RoleARN: S.String, BucketARN: S.String, FileKey: S.String }),
       ).annotate({ identifier: "S3Configuration" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.optional(S.String),
           RoleARN: S.optional(S.String),
-          InputStartingPositionConfiguration: S.optional(__S(39, __c4, 7)),
-          S3Configuration: S.optional(__S(52, __c6, 4)),
-          InputProcessingConfiguration: S.optional(__S(4, __c0, 4)),
+          InputStartingPositionConfiguration: S.optional(__S(384, __c24, 0)),
+          S3Configuration: S.optional(__S(400, __c25, 0)),
+          InputProcessingConfiguration: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DiscoverInputSchemaRequest",
       });
-    case 6:
-      return S.Array(__S(36, __c4, 4));
-    case 7:
+    case 2:
+      return S.Array(__S(0, __c0, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          InputSchema: S.optional(__S(12, __c1, 4)),
-          ParsedInputRecords: S.optional(__S(54, __c6, 6)),
-          ProcessedInputRecords: S.optional(__S(36, __c4, 4)),
-          RawInputRecords: S.optional(__S(36, __c4, 4)),
+          InputSchema: S.optional(__S(118, __c7, 6)),
+          ParsedInputRecords: S.optional(__S(402, __c25, 2)),
+          ProcessedInputRecords: S.optional(__S(0, __c0, 0)),
+          RawInputRecords: S.optional(__S(0, __c0, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "DiscoverInputSchemaResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1735,15 +1823,18 @@ function __c7(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 1:
-      return S.Array(__S(28, __c3, 4));
+      return S.Array(__S(256, __c16, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          ApplicationSummaries: __S(57, __c7, 1),
-          HasMoreApplications: S.Boolean,
-        }).pipe(ns),
+        S.Struct({ ApplicationSummaries: __S(417, __c26, 1), HasMoreApplications: S.Boolean }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "ListApplicationsResponse" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1751,113 +1842,135 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(26, __c3, 2)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(273, __c17, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
-          InputStartingPositionConfiguration: __S(39, __c4, 7),
+          InputStartingPositionConfiguration: __S(384, __c24, 0),
         }),
       ).annotate({ identifier: "InputConfiguration" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ ApplicationName: S.String, InputConfigurations: __S(62, __c7, 6) }).pipe(
+        S.Struct({ ApplicationName: S.String, InputConfigurations: __S(449, __c28, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartApplicationRequest" });
   }
 }
-function __c8(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "StartApplicationResponse",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopApplicationRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(26, __c3, 2) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(273, __c17, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(36, __c4, 4) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(0, __c0, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
       ).annotate({
         identifier: "InputLambdaProcessorUpdate",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ InputLambdaProcessorUpdate: __S(69, __c8, 5) })).annotate({
-        identifier: "InputProcessingConfigurationUpdate",
-      });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ InputLambdaProcessorUpdate: __S(544, __c34, 0) })).annotate(
+        {
+          identifier: "InputProcessingConfigurationUpdate",
+        },
+      );
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RecordFormatUpdate: S.optional(__S(9, __c1, 1)),
+          RecordFormatUpdate: S.optional(__S(115, __c7, 3)),
           RecordEncodingUpdate: S.optional(S.String),
-          RecordColumnUpdates: S.optional(__S(11, __c1, 3)),
+          RecordColumnUpdates: S.optional(__S(117, __c7, 5)),
         }),
       ).annotate({ identifier: "InputSchemaUpdate" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() => S.Struct({ CountUpdate: S.optional(S.Number) })).annotate({
         identifier: "InputParallelismUpdate",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           InputId: S.String,
           NamePrefixUpdate: S.optional(S.String),
-          InputProcessingConfigurationUpdate: S.optional(__S(70, __c8, 6)),
-          KinesisStreamsInputUpdate: S.optional(__S(69, __c8, 5)),
-          KinesisFirehoseInputUpdate: S.optional(__S(69, __c8, 5)),
-          InputSchemaUpdate: S.optional(__S(71, __c8, 7)),
-          InputParallelismUpdate: S.optional(__S(72, __c9, 0)),
+          InputProcessingConfigurationUpdate: S.optional(__S(545, __c34, 1)),
+          KinesisStreamsInputUpdate: S.optional(__S(544, __c34, 0)),
+          KinesisFirehoseInputUpdate: S.optional(__S(544, __c34, 0)),
+          InputSchemaUpdate: S.optional(__S(546, __c34, 2)),
+          InputParallelismUpdate: S.optional(__S(547, __c34, 3)),
         }),
       ).annotate({ identifier: "InputUpdate" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(548, __c34, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({ ResourceARNUpdate: S.optional(S.String), RoleARNUpdate: S.optional(S.String) }),
       ).annotate({ identifier: "LambdaOutputUpdate" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           OutputId: S.String,
           NameUpdate: S.optional(S.String),
-          KinesisStreamsOutputUpdate: S.optional(__S(69, __c8, 5)),
-          KinesisFirehoseOutputUpdate: S.optional(__S(69, __c8, 5)),
-          LambdaOutputUpdate: S.optional(__S(75, __c9, 3)),
-          DestinationSchemaUpdate: S.optional(__S(16, __c2, 0)),
+          KinesisStreamsOutputUpdate: S.optional(__S(544, __c34, 0)),
+          KinesisFirehoseOutputUpdate: S.optional(__S(544, __c34, 0)),
+          LambdaOutputUpdate: S.optional(__S(550, __c34, 6)),
+          DestinationSchemaUpdate: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "OutputUpdate" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(551, __c34, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           BucketARNUpdate: S.optional(S.String),
@@ -1867,24 +1980,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "S3ReferenceDataSourceUpdate",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           ReferenceId: S.String,
           TableNameUpdate: S.optional(S.String),
-          S3ReferenceDataSourceUpdate: S.optional(__S(78, __c9, 6)),
-          ReferenceSchemaUpdate: S.optional(__S(12, __c1, 4)),
+          S3ReferenceDataSourceUpdate: S.optional(__S(553, __c34, 9)),
+          ReferenceSchemaUpdate: S.optional(__S(118, __c7, 6)),
         }),
       ).annotate({
         identifier: "ReferenceDataSourceUpdate",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(554, __c34, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           CloudWatchLoggingOptionId: S.String,
@@ -1894,29 +2003,28 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CloudWatchLoggingOptionUpdate",
       });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(556, __c34, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          InputUpdates: S.optional(__S(74, __c9, 2)),
+          InputUpdates: S.optional(__S(549, __c34, 5)),
           ApplicationCodeUpdate: S.optional(S.String),
-          OutputUpdates: S.optional(__S(77, __c9, 5)),
-          ReferenceDataSourceUpdates: S.optional(__S(80, __c10, 0)),
-          CloudWatchLoggingOptionUpdates: S.optional(__S(82, __c10, 2)),
+          OutputUpdates: S.optional(__S(552, __c34, 8)),
+          ReferenceDataSourceUpdates: S.optional(__S(555, __c34, 11)),
+          CloudWatchLoggingOptionUpdates: S.optional(__S(557, __c34, 13)),
         }),
       ).annotate({ identifier: "ApplicationUpdate" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           ApplicationName: S.String,
           CurrentApplicationVersionId: S.Number,
-          ApplicationUpdate: __S(83, __c10, 3),
+          ApplicationUpdate: __S(558, __c34, 14),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateApplicationRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

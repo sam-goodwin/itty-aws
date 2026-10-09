@@ -265,8 +265,8 @@ export const createProjectsLocationsKeys: API.OperationMethod<
   CreateProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsLocationsKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateProjectsLocationsKeysRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const deleteProjectsLocationsKeys: API.OperationMethod<
   DeleteProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsLocationsKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteProjectsLocationsKeysRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
   GetKeyStringProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<V2GetKeyStringResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<V2GetKeyStringResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetOperationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const getProjectsLocationsKeys: API.OperationMethod<
   GetProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetProjectsLocationsKeysRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<V2Key>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsLocationsKeysRequest>,
+  output: __S(91, __c5, 11) as any as S.Schema<V2Key>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   V2ListKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsLocationsKeysRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<V2ListKeysResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProjectsLocationsKeysRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<V2ListKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -362,8 +362,8 @@ export const lookupKeyKeys: API.OperationMethod<
   LookupKeyKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<LookupKeyKeysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<V2LookupKeyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<LookupKeyKeysRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<V2LookupKeyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -382,8 +382,8 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
   PatchProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchProjectsLocationsKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(16, __c1, 0) as any as S.Schema<PatchProjectsLocationsKeysRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
   UndeleteProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(33, __c2, 1) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,87 +413,78 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.suspend(() =>
+        S.Struct({
+          keyString: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/keys:lookupKey",
+            baseUrl: "https://apikeys.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "LookupKeyKeysRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedIps: S.optional(__S(1, __c0, 1)),
+          name: S.optional(S.String),
+          parent: S.optional(S.String),
         }),
-      ).annotate({ identifier: "V2ServerKeyRestrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          methods: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "V2ApiTarget" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedReferrers: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "V2BrowserKeyRestrictions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedBundleIds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "V2IosKeyRestrictions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sha1Fingerprint: S.optional(S.String),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V2AndroidApplication" });
+      ).annotate({ identifier: "V2LookupKeyResponse" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          checkExistingUsage: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(91, __c5, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2/{+name}",
+            baseUrl: "https://apikeys.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsKeysRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "V2UndeleteKeyRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedApplications: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "V2AndroidKeyRestrictions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serverKeyRestrictions: S.optional(__S(2, __c0, 2)),
-          apiTargets: S.optional(__S(4, __c0, 4)),
-          browserKeyRestrictions: S.optional(__S(5, __c0, 5)),
-          iosKeyRestrictions: S.optional(__S(6, __c0, 6)),
-          androidKeyRestrictions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "V2Restrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deleteTime: S.optional(S.String),
-          keyString: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          annotations: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          serviceAccountEmail: S.optional(S.String),
-          uid: S.optional(S.String),
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          restrictions: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "V2Key" });
-    case 4:
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:undelete",
+            baseUrl: "https://apikeys.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UndeleteProjectsLocationsKeysRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           keyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(91, __c5, 11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -504,33 +495,113 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsKeysRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(14, __c1, 6)),
+          details: S.optional(__S(65, __c4, 1)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(15, __c1, 7)),
-          response: S.optional(__S(13, __c1, 5)),
-          metadata: S.optional(__S(13, __c1, 5)),
+          error: S.optional(__S(66, __c4, 2)),
+          response: S.optional(__S(64, __c4, 0)),
+          metadata: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "Operation" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedIps: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "V2ServerKeyRestrictions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          methods: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "V2ApiTarget" });
+    case 4:
+      return S.Array(__S(83, __c5, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          allowedReferrers: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "V2BrowserKeyRestrictions" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedBundleIds: S.optional(__S(81, __c5, 1)),
+        }),
+      ).annotate({ identifier: "V2IosKeyRestrictions" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sha1Fingerprint: S.optional(S.String),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V2AndroidApplication" });
+    case 8:
+      return S.Array(__S(87, __c5, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          allowedApplications: S.optional(__S(88, __c5, 8)),
+        }),
+      ).annotate({ identifier: "V2AndroidKeyRestrictions" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          serverKeyRestrictions: S.optional(__S(82, __c5, 2)),
+          apiTargets: S.optional(__S(84, __c5, 4)),
+          browserKeyRestrictions: S.optional(__S(85, __c5, 5)),
+          iosKeyRestrictions: S.optional(__S(86, __c5, 6)),
+          androidKeyRestrictions: S.optional(__S(89, __c5, 9)),
+        }),
+      ).annotate({ identifier: "V2Restrictions" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          deleteTime: S.optional(S.String),
+          keyString: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          annotations: S.optional(__S(80, __c5, 0)),
+          name: S.optional(S.String),
+          serviceAccountEmail: S.optional(S.String),
+          uid: S.optional(S.String),
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          restrictions: S.optional(__S(90, __c5, 10)),
+        }),
+      ).annotate({ identifier: "V2Key" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
@@ -546,7 +617,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsKeysRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -560,13 +635,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetKeyStringProjectsLocationsKeysRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           keyString: S.optional(S.String),
         }),
       ).annotate({ identifier: "V2GetKeyStringResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -574,7 +653,11 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://apikeys.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -584,7 +667,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsKeysRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -601,77 +688,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsKeysRequest",
       });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          keys: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "V2ListKeysResponse" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyString: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/keys:lookupKey",
-            baseUrl: "https://apikeys.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "LookupKeyKeysRequest" });
+      return S.Array(__S(91, __c5, 11));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          parent: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          keys: S.optional(__S(161, __c10, 1)),
         }),
-      ).annotate({ identifier: "V2LookupKeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          checkExistingUsage: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2/{+name}",
-            baseUrl: "https://apikeys.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsKeysRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "V2UndeleteKeyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:undelete",
-            baseUrl: "https://apikeys.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UndeleteProjectsLocationsKeysRequest",
-      });
+      ).annotate({ identifier: "V2ListKeysResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -997,8 +997,8 @@ export const createTasksRun: API.OperationMethod<
   CreateTasksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateTasksRunRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(246, __c30, 6) as any as S.Schema<CreateTasksRunRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1016,8 +1016,8 @@ export const createTasksRunsAnalysisActivity: API.OperationMethod<
   CreateTasksRunsAnalysisActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateTasksRunsAnalysisActivityRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<TaskRunAnalysisActivityResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateTasksRunsAnalysisActivityRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<TaskRunAnalysisActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1031,8 +1031,8 @@ export const createTasksRunsAnalyze: API.OperationMethod<
   CreateTasksRunsAnalyzeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateTasksRunsAnalyzeRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<TaskRunAnalyzeResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreateTasksRunsAnalyzeRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<TaskRunAnalyzeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1046,8 +1046,8 @@ export const createTasksRunsAppendLog: API.OperationMethod<
   CreateTasksRunsAppendLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateTasksRunsAppendLogRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(297, __c37, 1) as any as S.Schema<CreateTasksRunsAppendLogRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1061,8 +1061,8 @@ export const createTasksRunsArtifact: API.OperationMethod<
   CreateTasksRunsArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateTasksRunsArtifactRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<TaskRunArtifactsUploadResponse>,
+  input: __S(306, __c38, 2) as any as S.Schema<CreateTasksRunsArtifactRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<TaskRunArtifactsUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1076,8 +1076,8 @@ export const createTasksRunsArtifactsDismiss: API.OperationMethod<
   CreateTasksRunsArtifactsDismissError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateTasksRunsArtifactsDismissRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<TaskRunArtifactsDismissResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateTasksRunsArtifactsDismissRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<TaskRunArtifactsDismissResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1095,8 @@ export const createTasksRunsArtifactsPresign: API.OperationMethod<
   CreateTasksRunsArtifactsPresignError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateTasksRunsArtifactsPresignRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<TaskRunArtifactPresignResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateTasksRunsArtifactsPresignRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<TaskRunArtifactPresignResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const createTasksRunsArtifactsReference: API.OperationMethod<
   CreateTasksRunsArtifactsReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<TaskRunPostHogReferencesResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<TaskRunPostHogReferencesResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1125,8 +1125,8 @@ export const createTasksRunsClearConversation: API.OperationMethod<
   CreateTasksRunsClearConversationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateTasksRunsClearConversationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateTasksRunsClearConversationRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1145,8 +1145,8 @@ export const createTasksRunsCommand: API.OperationMethod<
   CreateTasksRunsCommandError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateTasksRunsCommandRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<TaskRunCommandResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateTasksRunsCommandRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<TaskRunCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1160,8 +1160,8 @@ export const createTasksRunsPeersMessage: API.OperationMethod<
   CreateTasksRunsPeersMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateTasksRunsPeersMessageRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<TaskRunPeerMessageResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateTasksRunsPeersMessageRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<TaskRunPeerMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1175,8 +1175,8 @@ export const createTasksRunsRelayMessage: API.OperationMethod<
   CreateTasksRunsRelayMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateTasksRunsRelayMessageRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<TaskRunRelayMessageResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateTasksRunsRelayMessageRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<TaskRunRelayMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1195,8 @@ export const createTasksRunsSubscriptionToken: API.OperationMethod<
   CreateTasksRunsSubscriptionTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateTasksRunsSubscriptionTokenRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<TaskRunSubscriptionTokenResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateTasksRunsSubscriptionTokenRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<TaskRunSubscriptionTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const createTasksRunsTaskSessionSync: API.OperationMethod<
   CreateTasksRunsTaskSessionSyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateTasksRunsTaskSessionSyncRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<TaskSessionSyncResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateTasksRunsTaskSessionSyncRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<TaskSessionSyncResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const getTasksRun: API.OperationMethod<
   GetTasksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetTasksRunRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetTasksRunRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const getTasksRunsConnectionToken: API.OperationMethod<
   GetTasksRunsConnectionTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetTasksRunsConnectionTokenRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ConnectionTokenResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetTasksRunsConnectionTokenRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ConnectionTokenResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const getTasksRunsLog: API.OperationMethod<
   GetTasksRunsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetTasksRunsLogRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetTasksRunsLogResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetTasksRunsLogRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetTasksRunsLogResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const getTasksRunsPeer: API.OperationMethod<
   GetTasksRunsPeerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetTasksRunsPeerRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<TaskRunPeersResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetTasksRunsPeerRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<TaskRunPeersResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const getTasksRunsPreview: API.OperationMethod<
   GetTasksRunsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetTasksRunsPreviewRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetTasksRunsPreviewResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetTasksRunsPreviewRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetTasksRunsPreviewResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const getTasksRunsSessionLog: API.OperationMethod<
   GetTasksRunsSessionLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetTasksRunsSessionLogRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetTasksRunsSessionLogResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetTasksRunsSessionLogRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetTasksRunsSessionLogResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const getTasksRunsStream: API.OperationMethod<
   GetTasksRunsStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetTasksRunsStreamRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetTasksRunsStreamResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetTasksRunsStreamRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetTasksRunsStreamResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const getTasksRunsStreamToken: API.OperationMethod<
   GetTasksRunsStreamTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetTasksRunsStreamTokenRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<StreamReadTokenResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetTasksRunsStreamTokenRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<StreamReadTokenResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const getTasksRunsTaskSession: API.OperationMethod<
   GetTasksRunsTaskSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetTasksRunsTaskSessionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<TaskSessionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetTasksRunsTaskSessionRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<TaskSessionResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const listTasksRuns: API.OperationMethod<
   ListTasksRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListTasksRunsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PaginatedTaskRunDetailDTOList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListTasksRunsRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<PaginatedTaskRunDetailDTOList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1384,8 @@ export const tasksRunsArtifactsDownloadCreate: API.OperationMethod<
   TasksRunsArtifactsDownloadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<TasksRunsArtifactsDownloadCreateRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<TasksRunsArtifactsDownloadCreateResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<TasksRunsArtifactsDownloadCreateRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TasksRunsArtifactsDownloadCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1399,8 @@ export const tasksRunsArtifactsDownloadRetrieve: API.OperationMethod<
   TasksRunsArtifactsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1418,8 @@ export const tasksRunsArtifactsFinalizeUploadCreate: API.OperationMethod<
   TasksRunsArtifactsFinalizeUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>,
+  input: __S(178, __c22, 2) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1437,8 +1437,8 @@ export const tasksRunsArtifactsPrepareUploadCreate: API.OperationMethod<
   TasksRunsArtifactsPrepareUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<TaskRunArtifactsPrepareUploadResponse>,
+  input: __S(186, __c23, 2) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequest>,
+  output: __S(191, __c23, 7) as any as S.Schema<TaskRunArtifactsPrepareUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1452,8 +1452,8 @@ export const tasksRunsCancelCreate: API.OperationMethod<
   TasksRunsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<TasksRunsCancelCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(192, __c24, 0) as any as S.Schema<TasksRunsCancelCreateRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1467,8 @@ export const tasksRunsResumeInCloudCreate: API.OperationMethod<
   TasksRunsResumeInCloudCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<TasksRunsResumeInCloudCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(200, __c25, 0) as any as S.Schema<TasksRunsResumeInCloudCreateRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1482,8 @@ export const tasksRunsStartCreate: API.OperationMethod<
   TasksRunsStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<TasksRunsStartCreateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<TaskDetailDTO>,
+  input: __S(208, __c26, 0) as any as S.Schema<TasksRunsStartCreateRequest>,
+  output: __S(212, __c26, 4) as any as S.Schema<TaskDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1497,8 +1497,8 @@ export const updateTasksRunsPartial: API.OperationMethod<
   UpdateTasksRunsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateTasksRunsPartialRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(216, __c27, 0) as any as S.Schema<UpdateTasksRunsPartialRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const updateTasksRunsSetOutputPartial: API.OperationMethod<
   UpdateTasksRunsSetOutputPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UpdateTasksRunsSetOutputPartialRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateTasksRunsSetOutputPartialRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const updateTasksRunsSetSummaryPartial: API.OperationMethod<
   UpdateTasksRunsSetSummaryPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TaskRunDetailDTO>,
+  input: __S(232, __c29, 0) as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<TaskRunDetailDTO>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1544,23 +1544,877 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          storage_path: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/presign/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsArtifactsPresignRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          expires_in: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TaskRunArtifactPresignResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          object_kind: S.String,
+          object_id: S.String,
+          source_message_id: S.String,
+        }),
+      ).annotate({ identifier: "TaskRunPostHogReference" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          references: __S(9, __c1, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/references/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsArtifactsReferenceRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/clear_conversation/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsClearConversationRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          jsonrpc: S.optional(S.String),
+          method: S.optional(S.String),
+          params: S.optional(__S(256, __c32, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/command/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsCommandRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jsonrpc: S.optional(S.String),
+          id: S.optional(S.Unknown),
+          result: S.optional(S.Unknown),
+          error: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({ identifier: "TaskRunCommandResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          target_run_id: S.String.pipe(T.Label()),
+          content: S.String,
+          artifact_ids: S.optional(__S(248, __c31, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/peers/{target_run_id}/message/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsPeersMessageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.String,
+          detail: S.String,
+          message_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "TaskRunPeerMessageResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          text: S.optional(S.String),
+          message_id: S.optional(S.NullOr(S.String)),
+          text_parts: S.optional(__S(248, __c31, 0)),
+          trace_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/relay_message/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsRelayMessageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          relay_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TaskRunRelayMessageResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          rejected_access_token_sha256: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/subscription_token/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsSubscriptionTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          account_id: S.String,
+          plan_type: S.NullOr(S.String),
+          expires_at: S.String,
+        }),
+      ).annotate({
+        identifier: "TaskRunSubscriptionTokenResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/task_session_sync/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksRunsTaskSessionSyncRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          content_sha256: S.String,
+        }),
+      ).annotate({ identifier: "TaskSessionSyncResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetTasksRunRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/connection_token/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsConnectionTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionTokenResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/logs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetTasksRunsLogRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetTasksRunsLogResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/peers/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetTasksRunsPeerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          run_id: S.String,
+          task_id: S.String,
+          task_title: S.String,
+          created_by_email: S.NullOr(S.String),
+          runtime: S.String,
+          model: S.NullOr(S.String),
+          repository: S.NullOr(S.String),
+          stage: S.NullOr(S.String),
+          status: S.String,
+          sendable: S.Boolean,
+          updated_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TaskRunPeer" });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          peers: __S(98, __c12, 2),
+        }),
+      ).annotate({ identifier: "TaskRunPeersResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/preview/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsPreviewRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          after: S.optional(S.String.pipe(T.Query())),
+          event_types: S.optional(S.String.pipe(T.Query())),
+          exclude_types: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/session_logs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsSessionLogRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          start: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsStreamRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          resync: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream_token/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsStreamTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+          stream_base_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "StreamReadTokenResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/task_session/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTasksRunsTaskSessionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          download_url: S.NullOr(S.String),
+          content_sha256: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TaskSessionResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListTasksRunsRequest" });
+    case 1:
+      return S.Array(__S(264, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(145, __c18, 1),
+        }),
+      ).annotate({
+        identifier: "PaginatedTaskRunDetailDTOList",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          storage_path: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/download/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsArtifactsDownloadCreateRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TasksRunsArtifactsDownloadCreateResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          artifact_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/{artifact_id}/download/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsArtifactsDownloadRetrieveRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          source: S.optional(S.String),
+          storage_path: S.optional(S.String),
+          content_type: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "TaskRunArtifactFinalizeUpload",
+      });
+    case 1:
+      return S.Array(__S(176, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          artifacts: S.optional(__S(177, __c22, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/finalize_upload/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsArtifactsFinalizeUploadCreateRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          source: S.optional(S.String),
+          size: S.optional(S.Number),
+          content_type: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "TaskRunArtifactPrepareUpload",
+      });
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          artifacts: S.optional(__S(185, __c23, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/prepare_upload/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsArtifactsPrepareUploadCreateRequest",
+      });
+    case 3:
+      return S.Record(S.String, S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          fields: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({ identifier: "S3PresignedPost" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          source: S.optional(S.String),
+          size: S.optional(S.Number),
+          content_type: S.optional(S.String),
+          metadata: S.optional(__S(320, __c40, 0)),
+          storage_path: S.optional(S.String),
+          expires_in: S.optional(S.Number),
+          presigned_post: S.optional(__S(188, __c23, 4)),
+        }),
+      ).annotate({
+        identifier: "TaskRunArtifactPrepareUploadResponse",
+      });
+    case 6:
+      return S.Array(__S(189, __c23, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          artifacts: S.optional(__S(190, __c23, 6)),
+        }),
+      ).annotate({
+        identifier: "TaskRunArtifactsPrepareUploadResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          reason: S.optional(S.NullOr(S.String)),
+          only_if_awaiting_first_message: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/cancel/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsCancelCreateRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/resume_in_cloud/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsResumeInCloudCreateRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          pending_user_message: S.optional(S.String),
+          pending_user_artifact_ids: S.optional(__S(248, __c31, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/start/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TasksRunsStartCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          uuid: S.String,
+          distinct_id: S.String,
+          first_name: S.String,
+          last_name: S.String,
+          email: S.String,
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(256, __c32, 0))),
+          role_at_organization: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TaskUserBasicInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          channel: S.String,
+          created_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SlackThreadReferenceDTO" });
+    case 3:
+      return S.Array(__S(210, __c26, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          task_number: S.NullOr(S.Number),
+          slug: S.String,
+          title: S.String,
+          title_manually_set: S.Boolean,
+          description: S.String,
+          origin_product: S.String,
+          runtime: S.String,
+          repository: S.NullOr(S.String),
+          repositories: __S(248, __c31, 0),
+          github_integration: S.NullOr(S.Number),
+          github_user_integration: S.NullOr(S.String),
+          signal_report: S.NullOr(S.String),
+          json_schema: S.NullOr(__S(256, __c32, 0)),
+          internal: S.Boolean,
+          archived: S.Boolean,
+          archived_at: S.NullOr(S.String),
+          latest_run: S.optional(S.NullOr(__S(264, __c33, 0))),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+          last_activity_at: S.optional(S.NullOr(S.String)),
+          created_by: S.optional(S.NullOr(__S(209, __c26, 1))),
+          ci_prompt: S.NullOr(S.String),
+          channel: S.optional(S.NullOr(S.String)),
+          slack_thread_references: __S(211, __c26, 3),
+          origin_key: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TaskDetailDTO" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          status: S.optional(S.String),
+          branch: S.optional(S.NullOr(S.String)),
+          stage: S.optional(S.NullOr(S.String)),
+          output: S.optional(S.Unknown),
+          state: S.optional(__S(256, __c32, 0)),
+          state_remove_keys: S.optional(__S(248, __c31, 0)),
+          state_append: S.optional(__S(256, __c32, 0)),
+          error_message: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTasksRunsPartialRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          output: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_output/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTasksRunsSetOutputPartialRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          task_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          summary: S.optional(S.String),
+          tags: S.optional(__S(248, __c31, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_summary/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTasksRunsSetSummaryPartialRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "ImportedMcpServerHeader" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(240, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           name: S.String,
           url: S.String,
-          headers: S.optional(__S(1, __c0, 1)),
+          headers: S.optional(__S(241, __c30, 1)),
         }),
       ).annotate({ identifier: "ImportedMcpServer" });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(242, __c30, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1568,14 +2422,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RelayedMcpServer" });
     case 5:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(244, __c30, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
-          imported_mcp_servers: S.optional(S.NullOr(__S(3, __c0, 3))),
-          relayed_mcp_servers: S.optional(S.NullOr(__S(5, __c0, 5))),
+          imported_mcp_servers: S.optional(S.NullOr(__S(243, __c30, 3))),
+          relayed_mcp_servers: S.optional(S.NullOr(__S(245, __c30, 5))),
           rtk_enabled: S.optional(S.NullOr(S.Boolean)),
           benjamin_enabled: S.optional(S.NullOr(S.Boolean)),
           claude_model_access: S.optional(S.NullOr(S.String)),
@@ -1604,27 +2458,54 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateTasksRunRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          skill_name: S.String,
-          skill_source: S.String,
-          content_sha256: S.String,
-          bundle_format: S.String,
-          schema_version: S.Number,
+          id: S.String,
+          task: S.String,
+          stage: S.NullOr(S.String),
+          branch: S.NullOr(S.String),
+          status: S.String,
+          environment: S.String,
+          runtime_adapter: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(S.String)),
+          model: S.optional(S.NullOr(S.String)),
+          reasoning_effort: S.optional(S.NullOr(S.String)),
+          log_url: S.optional(S.NullOr(S.String)),
+          error_message: S.NullOr(S.String),
+          output: S.NullOr(__S(256, __c32, 0)),
+          task_summary: S.NullOr(S.String),
+          task_tags: __S(248, __c31, 0),
+          state: __S(256, __c32, 0),
+          artifacts: __S(273, __c34, 1),
+          created_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+          completed_at: S.optional(S.NullOr(S.String)),
+          scheduled_at: S.optional(S.NullOr(S.String)),
+          preview_available: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "TaskRunSkillBundleMetadata",
-      });
-    case 2:
+      ).annotate({ identifier: "TaskRunDetailDTO" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1642,36 +2523,13 @@ function __c1(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskRunArtifactResponse" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          task: S.String,
-          stage: S.NullOr(S.String),
-          branch: S.NullOr(S.String),
-          status: S.String,
-          environment: S.String,
-          runtime_adapter: S.optional(S.NullOr(S.String)),
-          provider: S.optional(S.NullOr(S.String)),
-          model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(S.String)),
-          log_url: S.optional(S.NullOr(S.String)),
-          error_message: S.NullOr(S.String),
-          output: S.NullOr(__S(7, __c0, 7)),
-          task_summary: S.NullOr(S.String),
-          task_tags: __S(8, __c1, 0),
-          state: __S(7, __c0, 7),
-          artifacts: __S(11, __c1, 3),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-          completed_at: S.optional(S.NullOr(S.String)),
-          scheduled_at: S.optional(S.NullOr(S.String)),
-          preview_available: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TaskRunDetailDTO" });
-    case 5:
+    case 1:
+      return S.Array(__S(272, __c34, 0));
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1690,8 +2548,8 @@ function __c1(j: number): any {
           failed_calls: S.Number,
           seconds: S.Number,
           idle_seconds: S.Number,
-          commands: S.optional(__S(8, __c1, 0)),
-          guidance_read: S.optional(__S(8, __c1, 0)),
+          commands: S.optional(__S(248, __c31, 0)),
+          guidance_read: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1702,7 +2560,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateTasksRunsAnalysisActivityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activity_index: S.Number,
@@ -1710,7 +2568,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TaskRunAnalysisActivityResponse",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1726,26 +2588,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateTasksRunsAnalyzeRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analysis_task_id: S.String,
           created: S.Boolean,
         }),
       ).annotate({ identifier: "TaskRunAnalyzeResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c32, 0));
     case 1:
-      return S.Array(__S(7, __c0, 7));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          entries: S.optional(__S(17, __c2, 1)),
+          entries: S.optional(__S(296, __c37, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1756,7 +2618,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateTasksRunsAppendLogRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1765,18 +2631,18 @@ function __c2(j: number): any {
           content: S.optional(S.String),
           content_encoding: S.optional(S.String),
           content_type: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(320, __c40, 0)),
         }),
       ).annotate({ identifier: "TaskRunArtifactUpload" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(304, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(__S(20, __c2, 4)),
+          artifacts: S.optional(__S(305, __c38, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1787,21 +2653,45 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateTasksRunsArtifactRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(__S(11, __c1, 3)),
+          artifacts: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactsUploadResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skill_name: S.String,
+          skill_source: S.String,
+          content_sha256: S.String,
+          bundle_format: S.String,
+          schema_version: S.Number,
+        }),
+      ).annotate({
+        identifier: "TaskRunSkillBundleMetadata",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifact_ids: __S(8, __c1, 0),
+          artifact_ids: __S(248, __c31, 0),
           dismissed: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1815,781 +2705,18 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          artifacts: __S(11, __c1, 3),
+          artifacts: __S(273, __c34, 1),
         }),
       ).annotate({
         identifier: "TaskRunArtifactsDismissResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          storage_path: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/presign/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsArtifactsPresignRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          expires_in: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TaskRunArtifactPresignResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          object_kind: S.String,
-          object_id: S.String,
-          source_message_id: S.String,
-        }),
-      ).annotate({ identifier: "TaskRunPostHogReference" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          references: __S(28, __c3, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/references/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsArtifactsReferenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/clear_conversation/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsClearConversationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          jsonrpc: S.optional(S.String),
-          method: S.optional(S.String),
-          params: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/command/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsCommandRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jsonrpc: S.optional(S.String),
-          id: S.optional(S.Unknown),
-          result: S.optional(S.Unknown),
-          error: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "TaskRunCommandResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          target_run_id: S.String.pipe(T.Label()),
-          content: S.String,
-          artifact_ids: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/peers/{target_run_id}/message/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsPeersMessageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.String,
-          detail: S.String,
-          message_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "TaskRunPeerMessageResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          text: S.optional(S.String),
-          message_id: S.optional(S.NullOr(S.String)),
-          text_parts: S.optional(__S(8, __c1, 0)),
-          trace_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/relay_message/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsRelayMessageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          relay_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TaskRunRelayMessageResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          rejected_access_token_sha256: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/subscription_token/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsSubscriptionTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          account_id: S.String,
-          plan_type: S.NullOr(S.String),
-          expires_at: S.String,
-        }),
-      ).annotate({
-        identifier: "TaskRunSubscriptionTokenResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/task_session_sync/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksRunsTaskSessionSyncRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          content_sha256: S.String,
-        }),
-      ).annotate({ identifier: "TaskSessionSyncResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetTasksRunRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/connection_token/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsConnectionTokenRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionTokenResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/logs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetTasksRunsLogRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetTasksRunsLogResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/peers/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetTasksRunsPeerRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          run_id: S.String,
-          task_id: S.String,
-          task_title: S.String,
-          created_by_email: S.NullOr(S.String),
-          runtime: S.String,
-          model: S.NullOr(S.String),
-          repository: S.NullOr(S.String),
-          stage: S.NullOr(S.String),
-          status: S.String,
-          sendable: S.Boolean,
-          updated_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TaskRunPeer" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          peers: __S(48, __c6, 0),
-        }),
-      ).annotate({ identifier: "TaskRunPeersResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/preview/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsPreviewRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          after: S.optional(S.String.pipe(T.Query())),
-          event_types: S.optional(S.String.pipe(T.Query())),
-          exclude_types: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/session_logs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsSessionLogRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          start: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsStreamRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          resync: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/stream_token/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsStreamTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-          stream_base_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "StreamReadTokenResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/task_session/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTasksRunsTaskSessionRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          download_url: S.NullOr(S.String),
-          content_sha256: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TaskSessionResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListTasksRunsRequest" });
-    case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(58, __c7, 2),
-        }),
-      ).annotate({
-        identifier: "PaginatedTaskRunDetailDTOList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          storage_path: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/download/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsArtifactsDownloadCreateRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TasksRunsArtifactsDownloadCreateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          artifact_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/{artifact_id}/download/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsArtifactsDownloadRetrieveRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          source: S.optional(S.String),
-          storage_path: S.optional(S.String),
-          content_type: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "TaskRunArtifactFinalizeUpload",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          artifacts: S.optional(__S(64, __c8, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/finalize_upload/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsArtifactsFinalizeUploadCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          source: S.optional(S.String),
-          size: S.optional(S.Number),
-          content_type: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "TaskRunArtifactPrepareUpload",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          artifacts: S.optional(__S(67, __c8, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/artifacts/prepare_upload/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsArtifactsPrepareUploadCreateRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          fields: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "S3PresignedPost" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          source: S.optional(S.String),
-          size: S.optional(S.Number),
-          content_type: S.optional(S.String),
-          metadata: S.optional(__S(9, __c1, 1)),
-          storage_path: S.optional(S.String),
-          expires_in: S.optional(S.Number),
-          presigned_post: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "TaskRunArtifactPrepareUploadResponse",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          artifacts: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "TaskRunArtifactsPrepareUploadResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          reason: S.optional(S.NullOr(S.String)),
-          only_if_awaiting_first_message: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/cancel/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsCancelCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/resume_in_cloud/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsResumeInCloudCreateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          pending_user_message: S.optional(S.String),
-          pending_user_artifact_ids: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/start/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TasksRunsStartCreateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          uuid: S.String,
-          distinct_id: S.String,
-          first_name: S.String,
-          last_name: S.String,
-          email: S.String,
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(7, __c0, 7))),
-          role_at_organization: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TaskUserBasicInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          channel: S.String,
-          created_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "SlackThreadReferenceDTO" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          task_number: S.NullOr(S.Number),
-          slug: S.String,
-          title: S.String,
-          title_manually_set: S.Boolean,
-          description: S.String,
-          origin_product: S.String,
-          runtime: S.String,
-          repository: S.NullOr(S.String),
-          repositories: __S(8, __c1, 0),
-          github_integration: S.NullOr(S.Number),
-          github_user_integration: S.NullOr(S.String),
-          signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(__S(7, __c0, 7)),
-          internal: S.Boolean,
-          archived: S.Boolean,
-          archived_at: S.NullOr(S.String),
-          latest_run: S.optional(S.NullOr(__S(12, __c1, 4))),
-          created_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-          last_activity_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(77, __c9, 5))),
-          ci_prompt: S.NullOr(S.String),
-          channel: S.optional(S.NullOr(S.String)),
-          slack_thread_references: __S(79, __c9, 7),
-          origin_key: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TaskDetailDTO" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          status: S.optional(S.String),
-          branch: S.optional(S.NullOr(S.String)),
-          stage: S.optional(S.NullOr(S.String)),
-          output: S.optional(S.Unknown),
-          state: S.optional(__S(7, __c0, 7)),
-          state_remove_keys: S.optional(__S(8, __c1, 0)),
-          state_append: S.optional(__S(7, __c0, 7)),
-          error_message: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTasksRunsPartialRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          output: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_output/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTasksRunsSetOutputPartialRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          task_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          summary: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/tasks/{task_id}/runs/{id}/set_summary/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTasksRunsSetSummaryPartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

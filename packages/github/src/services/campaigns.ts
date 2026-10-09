@@ -269,8 +269,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateCampaignRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CampaignSummary>,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CampaignSummary>,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -284,8 +284,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteCampaignRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteCampaignResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteCampaignResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const getCampaignSummary: API.OperationMethod<
   GetCampaignSummaryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetCampaignSummaryRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CampaignSummary>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetCampaignSummaryRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CampaignSummary>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -314,8 +314,8 @@ export const listOrgCampaigns: API.OperationMethod<
   ListOrgCampaignsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListOrgCampaignsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListOrgCampaignsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListOrgCampaignsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListOrgCampaignsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -329,8 +329,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateCampaignRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CampaignSummary>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(15, __c1, 7) as any as S.Schema<CampaignSummary>,
   errors: [BadRequest, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -340,35 +340,37 @@ export const updateCampaign: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.Array(S.Number);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           repository_id: S.Number,
-          alert_numbers: __S(1, __c0, 1),
+          alert_numbers: __S(0, __c0, 0),
         }),
       ).annotate({
         identifier: "CreateCampaignRequestCodeScanningAlertsItem",
       });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
           description: S.String,
-          managers: S.optional(__S(0, __c0, 0)),
-          team_managers: S.optional(__S(0, __c0, 0)),
+          managers: S.optional(__S(16, __c2, 0)),
+          team_managers: S.optional(__S(16, __c2, 0)),
           ends_at: S.String,
           contact_link: S.optional(S.NullOr(S.String)),
-          code_scanning_alerts: S.optional(S.NullOr(__S(3, __c0, 3))),
+          code_scanning_alerts: S.optional(S.NullOr(__S(2, __c0, 2))),
           generate_issues: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/campaigns", code: 200 })),
       ).annotate({ identifier: "CreateCampaignRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -395,9 +397,9 @@ function __c0(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SimpleUser" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           pull: S.Boolean,
@@ -407,11 +409,7 @@ function __c0(j: number): any {
           admin: S.Boolean,
         }),
       ).annotate({ identifier: "TeamPermissions" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -432,7 +430,7 @@ function __c1(j: number): any {
           enterprise_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableTeamSimple" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -443,7 +441,7 @@ function __c1(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(__S(7, __c0, 7)),
+          permissions: S.optional(__S(10, __c1, 2)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
@@ -452,12 +450,12 @@ function __c1(j: number): any {
           access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(__S(8, __c1, 0)),
+          parent: S.NullOr(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "Team" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(12, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           open_count: S.Number,
@@ -467,7 +465,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CampaignSummaryAlertStats",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           number: S.Number,
@@ -475,17 +473,27 @@ function __c1(j: number): any {
           updated_at: S.String,
           name: S.optional(S.String),
           description: S.String,
-          managers: __S(6, __c0, 6),
-          team_managers: S.optional(__S(10, __c1, 2)),
+          managers: __S(9, __c1, 1),
+          team_managers: S.optional(__S(13, __c1, 5)),
           published_at: S.optional(S.String),
           ends_at: S.String,
           closed_at: S.optional(S.NullOr(S.String)),
           state: S.String,
           contact_link: S.NullOr(S.String),
-          alert_stats: S.optional(__S(11, __c1, 3)),
+          alert_stats: S.optional(__S(14, __c1, 6)),
         }),
       ).annotate({ identifier: "CampaignSummary" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -494,11 +502,15 @@ function __c1(j: number): any {
           T.Http({ method: "DELETE", uri: "/orgs/{org}/campaigns/{campaign_number}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteCampaignRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCampaignResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -511,7 +523,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -525,20 +537,24 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/campaigns", code: 200 })),
       ).annotate({ identifier: "ListOrgCampaignsRequest" });
     case 1:
-      return S.Array(__S(12, __c1, 4));
+      return S.Array(__S(15, __c1, 7));
     case 2:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(41, __c5, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgCampaignsResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           campaign_number: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          managers: S.optional(__S(0, __c0, 0)),
-          team_managers: S.optional(__S(0, __c0, 0)),
+          managers: S.optional(__S(16, __c2, 0)),
+          team_managers: S.optional(__S(16, __c2, 0)),
           ends_at: S.optional(S.String),
           contact_link: S.optional(S.NullOr(S.String)),
           state: S.optional(S.String),
@@ -548,7 +564,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateCampaignRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2065,8 +2065,8 @@ export const CreateCluster: API.OperationMethod<
   CreateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateClusterRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Cluster>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateClusterRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<Cluster>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2080,8 +2080,8 @@ export const CreateDatastore: API.OperationMethod<
   CreateDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateDatastoreRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Datastore>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateDatastoreRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<Datastore>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2095,8 +2095,8 @@ export const CreateHost: API.OperationMethod<
   CreateHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateHostRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Host>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateHostRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<Host>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2110,8 +2110,8 @@ export const CreateInventoryItem: API.OperationMethod<
   CreateInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateInventoryItemRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateInventoryItemResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<CreateInventoryItemRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<CreateInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2125,8 +2125,8 @@ export const CreateResourcePool: API.OperationMethod<
   CreateResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateResourcePoolRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ResourcePool>,
+  input: __S(848, __c53, 0) as any as S.Schema<CreateResourcePoolRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2140,8 +2140,8 @@ export const CreateVCenter: API.OperationMethod<
   CreateVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateVCenterRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<VCenter>,
+  input: __S(1105, __c69, 1) as any as S.Schema<CreateVCenterRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2155,8 @@ export const CreateVirtualMachineTemplate: API.OperationMethod<
   CreateVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateVirtualMachineTemplateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateVirtualMachineTemplateRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2170,8 +2170,8 @@ export const CreateVirtualNetwork: API.OperationMethod<
   CreateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateVirtualNetworkRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(1376, __c86, 0) as any as S.Schema<CreateVirtualNetworkRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2185,8 @@ export const CreateVMInstanceGuestAgent: API.OperationMethod<
   CreateVMInstanceGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateVMInstanceGuestAgentRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateVMInstanceGuestAgentResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<CreateVMInstanceGuestAgentRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<CreateVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2200,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2215,8 +2215,8 @@ export const DeleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteDatastoreResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteDatastoreRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2230,8 +2230,8 @@ export const DeleteHost: API.OperationMethod<
   DeleteHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteHostRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteHostResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteHostRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2245,8 +2245,8 @@ export const DeleteInventoryItem: API.OperationMethod<
   DeleteInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteInventoryItemRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteInventoryItemResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteInventoryItemRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2260,8 +2260,8 @@ export const DeleteResourcePool: API.OperationMethod<
   DeleteResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteResourcePoolRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteResourcePoolResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteResourcePoolRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteResourcePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2275,8 +2275,8 @@ export const DeleteVCenter: API.OperationMethod<
   DeleteVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteVCenterRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteVCenterResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteVCenterRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteVCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2290,8 +2290,8 @@ export const DeleteVirtualMachineInstance: API.OperationMethod<
   DeleteVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteVirtualMachineInstanceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteVirtualMachineInstanceResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteVirtualMachineInstanceRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2305,8 +2305,8 @@ export const DeleteVirtualMachineTemplate: API.OperationMethod<
   DeleteVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteVirtualMachineTemplateRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteVirtualMachineTemplateResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteVirtualMachineTemplateRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteVirtualMachineTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2320,8 +2320,8 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   DeleteVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteVirtualNetworkRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteVirtualNetworkResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteVirtualNetworkRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<DeleteVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2335,8 +2335,8 @@ export const DeleteVMInstanceGuestAgent: API.OperationMethod<
   DeleteVMInstanceGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteVMInstanceGuestAgentRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteVMInstanceGuestAgentResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteVMInstanceGuestAgentRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<DeleteVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2350,8 +2350,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetClusterRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Cluster>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<Cluster>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2365,8 +2365,8 @@ export const GetDatastore: API.OperationMethod<
   GetDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetDatastoreRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Datastore>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<Datastore>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2376,8 +2376,8 @@ export type GetHostError = AzureOpError;
 /** Gets a host. Implements host GET method. */
 export const GetHost: API.OperationMethod<GetHostRequest, Host, GetHostError, AzureOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(62, __c7, 6) as any as S.Schema<GetHostRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<Host>,
+    input: __S(384, __c24, 0) as any as S.Schema<GetHostRequest>,
+    output: __S(353, __c22, 1) as any as S.Schema<Host>,
     errors: [UnknownAzureError],
     protocol: AzureProtocol,
     retry: Retry.Retry,
@@ -2391,8 +2391,8 @@ export const GetInventoryItem: API.OperationMethod<
   GetInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetInventoryItemRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetInventoryItemResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetInventoryItemRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2406,8 +2406,8 @@ export const GetResourcePool: API.OperationMethod<
   GetResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetResourcePoolRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ResourcePool>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetResourcePoolRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2421,8 +2421,8 @@ export const GetVCenter: API.OperationMethod<
   GetVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetVCenterRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<VCenter>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetVCenterRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2436,8 +2436,8 @@ export const GetVirtualMachineInstance: API.OperationMethod<
   GetVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetVirtualMachineInstanceRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetVirtualMachineInstanceResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetVirtualMachineInstanceRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<GetVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2451,8 +2451,8 @@ export const GetVirtualMachineTemplate: API.OperationMethod<
   GetVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetVirtualMachineTemplateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetVirtualMachineTemplateRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2466,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2481,8 +2481,8 @@ export const GetVMInstanceGuestAgent: API.OperationMethod<
   GetVMInstanceGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetVMInstanceGuestAgentRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetVMInstanceGuestAgentResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetVMInstanceGuestAgentRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<GetVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2496,8 +2496,8 @@ export const GetVmInstanceHybridIdentityMetadata: API.OperationMethod<
   GetVmInstanceHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetVmInstanceHybridIdentityMetadataRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetVmInstanceHybridIdentityMetadataResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetVmInstanceHybridIdentityMetadataRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetVmInstanceHybridIdentityMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2511,8 +2511,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ClustersList>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<ClustersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2526,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListClustersRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ClustersList>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<ClustersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2541,8 +2541,8 @@ export const ListDatastoreByResourceGroup: API.OperationMethod<
   ListDatastoreByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListDatastoreByResourceGroupRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DatastoresList>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListDatastoreByResourceGroupRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<DatastoresList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2556,8 @@ export const ListDatastores: API.OperationMethod<
   ListDatastoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListDatastoresRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DatastoresList>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListDatastoresRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<DatastoresList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2571,8 +2571,8 @@ export const ListHostByResourceGroup: API.OperationMethod<
   ListHostByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListHostByResourceGroupRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<HostsList>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListHostByResourceGroupRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<HostsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2586,8 +2586,8 @@ export const ListHosts: API.OperationMethod<
   ListHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListHostsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<HostsList>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListHostsRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<HostsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2601,8 +2601,8 @@ export const ListInventoryItemByVCenter: API.OperationMethod<
   ListInventoryItemByVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListInventoryItemByVCenterRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<InventoryItemsList>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListInventoryItemByVCenterRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<InventoryItemsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2616,8 +2616,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<OperationsList>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2631,8 +2631,8 @@ export const ListResourcePoolByResourceGroup: API.OperationMethod<
   ListResourcePoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListResourcePoolByResourceGroupRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ResourcePoolsList>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListResourcePoolByResourceGroupRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<ResourcePoolsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2646,8 @@ export const ListResourcePools: API.OperationMethod<
   ListResourcePoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListResourcePoolsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ResourcePoolsList>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListResourcePoolsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<ResourcePoolsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2661,8 +2661,8 @@ export const ListVCenterByResourceGroup: API.OperationMethod<
   ListVCenterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListVCenterByResourceGroupRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<VCentersList>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListVCenterByResourceGroupRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<VCentersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2676,8 +2676,8 @@ export const ListVCenters: API.OperationMethod<
   ListVCentersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListVCentersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<VCentersList>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListVCentersRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<VCentersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2691,8 +2691,8 @@ export const ListVirtualMachineInstances: API.OperationMethod<
   ListVirtualMachineInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListVirtualMachineInstancesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<VirtualMachineInstancesList>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListVirtualMachineInstancesRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<VirtualMachineInstancesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2706,8 +2706,8 @@ export const ListVirtualMachineTemplateByResourceGroup: API.OperationMethod<
   ListVirtualMachineTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<VirtualMachineTemplatesList>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VirtualMachineTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2721,8 +2721,8 @@ export const ListVirtualMachineTemplates: API.OperationMethod<
   ListVirtualMachineTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<VirtualMachineTemplatesList>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VirtualMachineTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2736,8 +2736,8 @@ export const ListVirtualNetworkByResourceGroup: API.OperationMethod<
   ListVirtualNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<VirtualNetworksList>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<VirtualNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2751,8 +2751,8 @@ export const ListVirtualNetworks: API.OperationMethod<
   ListVirtualNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListVirtualNetworksRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<VirtualNetworksList>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListVirtualNetworksRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<VirtualNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2766,8 +2766,8 @@ export const ListVMInstanceGuestAgents: API.OperationMethod<
   ListVMInstanceGuestAgentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListVMInstanceGuestAgentsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GuestAgentList>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListVMInstanceGuestAgentsRequest>,
+  output: __S(1059, __c66, 3) as any as S.Schema<GuestAgentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2781,8 +2781,8 @@ export const ListVmInstanceHybridIdentityMetadata: API.OperationMethod<
   ListVmInstanceHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListVmInstanceHybridIdentityMetadataRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<VmInstanceHybridIdentityMetadataList>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListVmInstanceHybridIdentityMetadataRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<VmInstanceHybridIdentityMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2796,8 +2796,8 @@ export const RestartVirtualMachineInstance: API.OperationMethod<
   RestartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<RestartVirtualMachineInstanceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<RestartVirtualMachineInstanceResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<RestartVirtualMachineInstanceRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<RestartVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2811,8 +2811,8 @@ export const StartVirtualMachineInstance: API.OperationMethod<
   StartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<StartVirtualMachineInstanceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<StartVirtualMachineInstanceResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<StartVirtualMachineInstanceRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<StartVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2826,8 +2826,8 @@ export const StopVirtualMachineInstance: API.OperationMethod<
   StopVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<StopVirtualMachineInstanceRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<StopVirtualMachineInstanceResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<StopVirtualMachineInstanceRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<StopVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2841,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Cluster>,
+  input: __S(1168, __c73, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<Cluster>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2856,8 @@ export const UpdateDatastore: API.OperationMethod<
   UpdateDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdateDatastoreRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Datastore>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateDatastoreRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<Datastore>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2871,8 @@ export const UpdateHost: API.OperationMethod<
   UpdateHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<UpdateHostRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Host>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UpdateHostRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<Host>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2886,8 +2886,8 @@ export const UpdateResourcePool: API.OperationMethod<
   UpdateResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UpdateResourcePoolRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ResourcePool>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UpdateResourcePoolRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2901,8 +2901,8 @@ export const UpdateVCenter: API.OperationMethod<
   UpdateVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UpdateVCenterRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<VCenter>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateVCenterRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2916,8 +2916,8 @@ export const UpdateVirtualMachineInstance: API.OperationMethod<
   UpdateVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<UpdateVirtualMachineInstanceRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateVirtualMachineInstanceResponse>,
+  input: __S(1252, __c78, 4) as any as S.Schema<UpdateVirtualMachineInstanceRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<UpdateVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2931,8 +2931,8 @@ export const UpdateVirtualMachineTemplate: API.OperationMethod<
   UpdateVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<UpdateVirtualMachineTemplateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateVirtualMachineTemplateRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2946,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UpdateVirtualNetworkRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateVirtualNetworkRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2961,8 +2961,8 @@ export const VirtualMachineInstancesCreateOrUpdate: API.OperationMethod<
   VirtualMachineInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>,
+  input: __S(1367, __c85, 7) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2974,30 +2974,13 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterPropertiesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExtendedLocation" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: __S(0, __c0, 0),
+          properties: __S(16, __c1, 0),
           location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3008,43 +2991,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateClusterRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          status: S.optional(S.String),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-          severity: S.optional(S.String),
-          lastUpdatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceStatus" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-          moName: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
-          customResourceName: S.optional(S.String),
-          usedMemoryGB: S.optional(S.Number),
-          totalMemoryGB: S.optional(S.Number),
-          usedCpuMHz: S.optional(S.Number),
-          totalCpuMHz: S.optional(S.Number),
-          datastoreIds: S.optional(__S(6, __c0, 6)),
-          networkIds: S.optional(__S(6, __c0, 6)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterProperties" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterPropertiesInput" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3057,30 +3018,97 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterSystemData" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedLocation" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+          severity: S.optional(S.String),
+          lastUpdatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceStatus" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+          moName: S.optional(S.String),
+          statuses: S.optional(__S(81, __c5, 1)),
+          customResourceName: S.optional(S.String),
+          usedMemoryGB: S.optional(S.Number),
+          totalMemoryGB: S.optional(S.Number),
+          usedCpuMHz: S.optional(S.Number),
+          totalCpuMHz: S.optional(S.Number),
+          datastoreIds: S.optional(__S(112, __c7, 0)),
+          networkIds: S.optional(__S(112, __c7, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(7, __c0, 7),
+          properties: __S(96, __c6, 0),
           location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           name: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Cluster" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           datastoreName: S.String.pipe(T.Label()),
-          properties: __S(0, __c0, 0),
+          properties: __S(16, __c1, 0),
           location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3091,7 +3119,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDatastoreRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
@@ -3099,548 +3131,32 @@ function __c1(j: number): any {
           moRefId: S.optional(S.String),
           inventoryItemId: S.optional(S.String),
           moName: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
+          statuses: S.optional(__S(81, __c5, 1)),
           customResourceName: S.optional(S.String),
           capacityGB: S.optional(S.Number),
           freeSpaceGB: S.optional(S.Number),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatastoreProperties" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(11, __c1, 3),
+          properties: __S(144, __c9, 0),
           location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           name: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Datastore" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostName: S.String.pipe(T.Label()),
-          properties: __S(0, __c0, 0),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateHostRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-          moName: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
-          customResourceName: S.optional(S.String),
-          overallMemoryUsageGB: S.optional(S.Number),
-          memorySizeGB: S.optional(S.Number),
-          overallCpuUsageMHz: S.optional(S.Number),
-          cpuMhz: S.optional(S.Number),
-          datastoreIds: S.optional(__S(6, __c0, 6)),
-          networkIds: S.optional(__S(6, __c0, 6)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(14, __c1, 6),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Host" });
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inventoryType: S.String,
-          managedResourceId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          moName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventoryItemProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vcenterName: S.String.pipe(T.Label()),
-          inventoryItemName: S.String.pipe(T.Label()),
-          properties: __S(16, __c2, 0),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInventoryItemRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(16, __c2, 0),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateInventoryItemResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourcePoolPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourcePoolName: S.String.pipe(T.Label()),
-          properties: __S(19, __c2, 3),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateResourcePoolRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-          moName: S.optional(S.String),
-          cpuSharesLevel: S.optional(S.String),
-          cpuReservationMHz: S.optional(S.Number),
-          cpuLimitMHz: S.optional(S.Number),
-          memSharesLevel: S.optional(S.String),
-          memReservationMB: S.optional(S.Number),
-          memLimitMB: S.optional(S.Number),
-          memOverallUsageGB: S.optional(S.Number),
-          memCapacityGB: S.optional(S.Number),
-          cpuOverallUsageMHz: S.optional(S.Number),
-          cpuCapacityMHz: S.optional(S.Number),
-          customResourceName: S.optional(S.String),
-          datastoreIds: S.optional(__S(6, __c0, 6)),
-          networkIds: S.optional(__S(6, __c0, 6)),
-          statuses: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourcePoolProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(21, __c2, 5),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourcePool" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "VICredential" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fqdn: S.String,
-          port: S.optional(S.Number),
-          credentials: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "VCenterPropertiesInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vcenterName: S.String.pipe(T.Label()),
-          properties: __S(24, __c3, 0),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateVCenterRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          fqdn: S.String,
-          port: S.optional(S.Number),
-          version: S.optional(S.String),
-          instanceUuid: S.optional(S.String),
-          connectionStatus: S.optional(S.String),
-          customResourceName: S.optional(S.String),
-          credentials: S.optional(__S(23, __c2, 7)),
-          statuses: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VCenterProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(26, __c3, 2),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VCenter" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualMachineTemplateName: S.String.pipe(T.Label()),
-          properties: __S(19, __c2, 3),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVirtualMachineTemplateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allocationMethod: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NicIPAddressSettings" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allocationMethod: S.optional(S.String),
-          dnsServers: S.optional(__S(6, __c0, 6)),
-          gateway: S.optional(__S(6, __c0, 6)),
-          ipAddress: S.optional(S.String),
-          subnetMask: S.optional(S.String),
-          primaryWinsServer: S.optional(S.String),
-          secondaryWinsServer: S.optional(S.String),
-          ipAddressInfo: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "NicIPSettings" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          label: S.optional(S.String),
-          ipAddresses: S.optional(__S(6, __c0, 6)),
-          macAddress: S.optional(S.String),
-          networkId: S.optional(S.String),
-          nicType: S.optional(S.String),
-          powerOnBoot: S.optional(S.String),
-          networkMoRefId: S.optional(S.String),
-          networkMoName: S.optional(S.String),
-          deviceKey: S.optional(S.Number),
-          ipSettings: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          label: S.optional(S.String),
-          diskObjectId: S.optional(S.String),
-          diskSizeGB: S.optional(S.Number),
-          deviceKey: S.optional(S.Number),
-          diskMode: S.optional(S.String),
-          controllerKey: S.optional(S.Number),
-          unitNumber: S.optional(S.Number),
-          deviceName: S.optional(S.String),
-          diskType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualDisk" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-          moName: S.optional(S.String),
-          memorySizeMB: S.optional(S.Number),
-          numCPUs: S.optional(S.Number),
-          numCoresPerSocket: S.optional(S.Number),
-          osType: S.optional(S.String),
-          osName: S.optional(S.String),
-          folderPath: S.optional(S.String),
-          networkInterfaces: S.optional(__S(33, __c4, 1)),
-          disks: S.optional(__S(35, __c4, 3)),
-          customResourceName: S.optional(S.String),
-          toolsVersionStatus: S.optional(S.String),
-          toolsVersion: S.optional(S.String),
-          firmwareType: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineTemplateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineTemplateSystemData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(36, __c4, 4),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(37, __c4, 5)),
-          tags: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachineTemplate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualNetworkName: S.String.pipe(T.Label()),
-          properties: __S(19, __c2, 3),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVirtualNetworkRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          vCenterId: S.optional(S.String),
-          moRefId: S.optional(S.String),
-          inventoryItemId: S.optional(S.String),
-          moName: S.optional(S.String),
-          customResourceName: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetworkProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(40, __c5, 0),
-          location: S.String,
-          extendedLocation: S.optional(__S(1, __c0, 1)),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetwork" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "GuestCredential" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          httpsProxy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpProxyConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          credentials: S.optional(__S(42, __c5, 2)),
-          privateLinkScopeResourceId: S.optional(S.String),
-          httpProxyConfig: S.optional(__S(43, __c5, 3)),
-          provisioningAction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuestAgentPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          properties: __S(44, __c5, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVMInstanceGuestAgentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uuid: S.optional(S.String),
-          credentials: S.optional(__S(42, __c5, 2)),
-          privateLinkScopeResourceId: S.optional(S.String),
-          httpProxyConfig: S.optional(__S(43, __c5, 3)),
-          provisioningAction: S.optional(S.String),
-          status: S.optional(S.String),
-          customResourceName: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GuestAgentProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(46, __c5, 6),
-        }),
-      ).annotate({
-        identifier: "CreateVMInstanceGuestAgentResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteClusterRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteClusterResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3656,7 +3172,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDatastoreRequest" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3672,7 +3192,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteHostRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3690,7 +3214,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteInventoryItemRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3708,7 +3236,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePoolRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3724,7 +3256,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVCenterRequest" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -3743,13 +3279,17 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteVirtualMachineInstanceResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3767,7 +3307,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineTemplateRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3785,7 +3329,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualNetworkRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -3800,7 +3348,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteVMInstanceGuestAgentRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3815,7 +3367,72 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostName: S.String.pipe(T.Label()),
+          properties: __S(16, __c1, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateHostRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+          moName: S.optional(S.String),
+          statuses: S.optional(__S(81, __c5, 1)),
+          customResourceName: S.optional(S.String),
+          overallMemoryUsageGB: S.optional(S.Number),
+          memorySizeGB: S.optional(S.Number),
+          overallCpuUsageMHz: S.optional(S.Number),
+          cpuMhz: S.optional(S.Number),
+          datastoreIds: S.optional(__S(112, __c7, 0)),
+          networkIds: S.optional(__S(112, __c7, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(352, __c22, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Host" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3830,7 +3447,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDatastoreRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3845,7 +3466,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetHostRequest" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3863,7 +3488,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetInventoryItemRequest" });
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3871,12 +3496,16 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(16, __c2, 0),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(608, __c38, 0),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetInventoryItemResponse" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3891,7 +3520,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetResourcePoolRequest" });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3906,7 +3539,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVCenterRequest" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -3921,7 +3558,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineInstanceRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourcePoolId: S.optional(S.String),
@@ -3930,7 +3571,7 @@ function __c8(j: number): any {
           datastoreId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementProfile" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fullName: S.optional(S.String),
@@ -3943,10 +3584,10 @@ function __c8(j: number): any {
           autoLogon: S.optional(S.Boolean),
           autoLogonCount: S.optional(S.Number),
           timeZone: S.optional(S.String),
-          firstLogonCommands: S.optional(__S(6, __c0, 6)),
+          firstLogonCommands: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "WindowsConfiguration" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           computerName: S.optional(S.String),
@@ -3958,10 +3599,10 @@ function __c8(j: number): any {
           toolsRunningStatus: S.optional(S.String),
           toolsVersionStatus: S.optional(S.String),
           toolsVersion: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(69, __c8, 5)),
+          windowsConfiguration: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({ identifier: "OsProfileForVMInstance" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           memorySizeMB: S.optional(S.Number),
@@ -3972,17 +3613,13 @@ function __c8(j: number): any {
           memoryHotAddEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HardwareProfile" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(33, __c4, 1)),
+          networkInterfaces: S.optional(__S(1332, __c83, 4)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -3992,28 +3629,28 @@ function __c9(j: number): any {
           sharing: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualSCSIController" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(485, __c30, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(35, __c4, 3)),
-          scsiControllers: S.optional(__S(74, __c9, 2)),
+          disks: S.optional(__S(1334, __c83, 6)),
+          scsiControllers: S.optional(__S(486, __c30, 6)),
         }),
       ).annotate({ identifier: "StorageProfile" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           secureBootEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UefiSettings" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          uefiSettings: S.optional(__S(76, __c9, 4)),
+          uefiSettings: S.optional(__S(488, __c30, 8)),
         }),
       ).annotate({ identifier: "SecurityProfile" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           templateId: S.optional(S.String),
@@ -4028,18 +3665,18 @@ function __c9(j: number): any {
           customResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "InfrastructureProfile" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          placementProfile: S.optional(__S(68, __c8, 4)),
-          osProfile: S.optional(__S(70, __c8, 6)),
-          hardwareProfile: S.optional(__S(71, __c8, 7)),
-          networkProfile: S.optional(__S(72, __c9, 0)),
-          storageProfile: S.optional(__S(75, __c9, 3)),
-          securityProfile: S.optional(__S(77, __c9, 5)),
-          infrastructureProfile: S.optional(__S(78, __c9, 6)),
+          placementProfile: S.optional(__S(480, __c30, 0)),
+          osProfile: S.optional(__S(482, __c30, 2)),
+          hardwareProfile: S.optional(__S(483, __c30, 3)),
+          networkProfile: S.optional(__S(484, __c30, 4)),
+          storageProfile: S.optional(__S(487, __c30, 7)),
+          securityProfile: S.optional(__S(489, __c30, 9)),
+          infrastructureProfile: S.optional(__S(490, __c30, 10)),
           powerState: S.optional(S.String),
-          statuses: S.optional(__S(5, __c0, 5)),
+          statuses: S.optional(__S(81, __c5, 1)),
           provisioningState: S.optional(S.String),
           resourceUid: S.optional(S.String),
         }),
@@ -4048,7 +3685,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4056,14 +3693,18 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(79, __c9, 7),
-          extendedLocation: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(491, __c30, 11),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineInstanceResponse",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4080,7 +3721,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineTemplateRequest",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4095,7 +3740,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVirtualNetworkRequest" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4110,7 +3759,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetVMInstanceGuestAgentRequest",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4125,7 +3778,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetVmInstanceHybridIdentityMetadataRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUid: S.optional(S.String),
@@ -4135,19 +3792,74 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "VmInstanceHybridIdentityMetadataProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(85, __c10, 5),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(576, __c36, 0),
         }),
       ).annotate({
         identifier: "GetVmInstanceHybridIdentityMetadataResponse",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vcenterName: S.String.pipe(T.Label()),
+          inventoryItemName: S.String.pipe(T.Label()),
+          properties: __S(608, __c38, 0),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}/inventoryItems/{inventoryItemName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInventoryItemRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(608, __c38, 0),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateInventoryItemResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inventoryType: S.String,
+          managedResourceId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          moName: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InventoryItemProperties" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4165,18 +3877,22 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(97, __c6, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(88, __c11, 0),
+          value: __S(640, __c40, 0),
         }),
       ).annotate({ identifier: "ClustersList" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4189,7 +3905,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListClustersRequest" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4205,16 +3925,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListDatastoreByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(12, __c1, 4));
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(145, __c9, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(92, __c11, 4),
+          value: __S(688, __c43, 0),
         }),
       ).annotate({ identifier: "DatastoresList" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4227,7 +3955,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDatastoresRequest" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4245,18 +3977,22 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(353, __c22, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(96, __c12, 0),
+          value: __S(736, __c46, 0),
         }),
       ).annotate({ identifier: "HostsList" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4269,7 +4005,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListHostsRequest" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4286,16 +4026,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListInventoryItemByVCenterRequest",
       });
-    case 4:
-      return S.Array(__S(64, __c8, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(100, __c12, 4),
+          value: __S(769, __c48, 1),
         }),
       ).annotate({ identifier: "InventoryItemsList" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4306,7 +4050,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -4315,28 +4059,28 @@ function __c12(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(103, __c12, 7)),
+          display: S.optional(__S(785, __c49, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(786, __c49, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(105, __c13, 1),
+          value: __S(787, __c49, 3),
         }),
       ).annotate({ identifier: "OperationsList" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4352,16 +4096,24 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListResourcePoolByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(865, __c54, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(108, __c13, 4),
+          value: __S(816, __c51, 0),
         }),
       ).annotate({ identifier: "ResourcePoolsList" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4374,7 +4126,94 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListResourcePoolsRequest" });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourcePoolName: S.String.pipe(T.Label()),
+          properties: __S(880, __c55, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateResourcePoolRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+          moName: S.optional(S.String),
+          cpuSharesLevel: S.optional(S.String),
+          cpuReservationMHz: S.optional(S.Number),
+          cpuLimitMHz: S.optional(S.Number),
+          memSharesLevel: S.optional(S.String),
+          memReservationMB: S.optional(S.Number),
+          memLimitMB: S.optional(S.Number),
+          memOverallUsageGB: S.optional(S.Number),
+          memCapacityGB: S.optional(S.Number),
+          cpuOverallUsageMHz: S.optional(S.Number),
+          cpuCapacityMHz: S.optional(S.Number),
+          customResourceName: S.optional(S.String),
+          datastoreIds: S.optional(__S(112, __c7, 0)),
+          networkIds: S.optional(__S(112, __c7, 0)),
+          statuses: S.optional(__S(81, __c5, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcePoolProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(864, __c54, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcePool" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourcePoolPropertiesInput",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4392,18 +4231,22 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(1122, __c70, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(112, __c14, 0),
+          value: __S(912, __c57, 0),
         }),
       ).annotate({ identifier: "VCentersList" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4416,7 +4259,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVCentersRequest" });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4431,29 +4278,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListVirtualMachineInstancesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(79, __c9, 7),
-          extendedLocation: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(491, __c30, 11),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "VirtualMachineInstance" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(117, __c14, 5),
+          value: __S(946, __c59, 2),
         }),
       ).annotate({
         identifier: "VirtualMachineInstancesList",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4471,20 +4322,24 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(38, __c4, 6));
+      return S.Array(__S(1346, __c84, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(120, __c15, 0),
+          value: __S(976, __c61, 0),
         }),
       ).annotate({
         identifier: "VirtualMachineTemplatesList",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4499,7 +4354,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListVirtualMachineTemplatesRequest",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4515,16 +4374,24 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListVirtualNetworkByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(41, __c5, 1));
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1393, __c87, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(124, __c15, 4),
+          value: __S(1024, __c64, 0),
         }),
       ).annotate({ identifier: "VirtualNetworksList" });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4539,7 +4406,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListVirtualNetworksRequest",
       });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4554,30 +4425,30 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListVMInstanceGuestAgentsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(46, __c5, 6),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(1442, __c90, 2),
         }),
       ).annotate({ identifier: "GuestAgent" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
+      return S.Array(__S(1057, __c66, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(129, __c16, 1),
+          value: __S(1058, __c66, 2),
         }),
       ).annotate({ identifier: "GuestAgentList" });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4592,18 +4463,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListVmInstanceHybridIdentityMetadataRequest",
       });
-    case 4:
-      return S.Array(__S(86, __c10, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(577, __c36, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(132, __c16, 4),
+          value: __S(1073, __c67, 1),
         }),
       ).annotate({
         identifier: "VmInstanceHybridIdentityMetadataList",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4618,7 +4493,83 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RestartVirtualMachineInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fqdn: S.String,
+          port: S.optional(S.Number),
+          credentials: S.optional(__S(1120, __c70, 0)),
+        }),
+      ).annotate({ identifier: "VCenterPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vcenterName: S.String.pipe(T.Label()),
+          properties: __S(1104, __c69, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateVCenterRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "VICredential" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          fqdn: S.String,
+          port: S.optional(S.Number),
+          version: S.optional(S.String),
+          instanceUuid: S.optional(S.String),
+          connectionStatus: S.optional(S.String),
+          customResourceName: S.optional(S.String),
+          credentials: S.optional(__S(1120, __c70, 0)),
+          statuses: S.optional(__S(81, __c5, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VCenterProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(1121, __c70, 1),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VCenter" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -4635,7 +4586,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4653,13 +4604,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "StopVirtualMachineInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4669,13 +4624,17 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
-    case 2:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           datastoreName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4685,13 +4644,17 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDatastoreRequest" });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4701,13 +4664,17 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateHostRequest" });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourcePoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4719,13 +4686,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateResourcePoolRequest",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vcenterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4735,7 +4706,59 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateVCenterRequest" });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          networkId: S.optional(S.String),
+          nicType: S.optional(S.String),
+          powerOnBoot: S.optional(S.String),
+          deviceKey: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NetworkInterfaceUpdate" });
+    case 1:
+      return S.Array(__S(1248, __c78, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          networkInterfaces: S.optional(__S(1249, __c78, 1)),
+        }),
+      ).annotate({ identifier: "NetworkProfileUpdate" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          hardwareProfile: S.optional(__S(1264, __c79, 0)),
+          storageProfile: S.optional(__S(1267, __c79, 3)),
+          networkProfile: S.optional(__S(1250, __c78, 2)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineInstanceUpdatePropertiesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1251, __c78, 3)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/{resourceUri+}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineInstanceRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           memorySizeMB: S.optional(S.Number),
@@ -4743,7 +4766,7 @@ function __c17(j: number): any {
           numCoresPerSocket: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HardwareProfileInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4756,69 +4779,25 @@ function __c17(j: number): any {
           diskType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualDiskUpdate" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1265, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(144, __c18, 0)),
+          disks: S.optional(__S(1266, __c79, 2)),
         }),
       ).annotate({ identifier: "StorageProfileUpdate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          networkId: S.optional(S.String),
-          nicType: S.optional(S.String),
-          powerOnBoot: S.optional(S.String),
-          deviceKey: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NetworkInterfaceUpdate" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          networkInterfaces: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({ identifier: "NetworkProfileUpdate" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareProfile: S.optional(__S(142, __c17, 6)),
-          storageProfile: S.optional(__S(145, __c18, 1)),
-          networkProfile: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineInstanceUpdatePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(149, __c18, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/{resourceUri+}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
-            code: 200,
-            apiVersion: "2023-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineInstanceRequest",
-      });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4832,7 +4811,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4840,7 +4819,7 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualNetworkName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4852,7 +4831,156 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualNetworkRequest",
       });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualMachineTemplateName: S.String.pipe(T.Label()),
+          properties: __S(880, __c55, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVirtualMachineTemplateRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allocationMethod: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NicIPAddressSettings" });
     case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allocationMethod: S.optional(S.String),
+          dnsServers: S.optional(__S(112, __c7, 0)),
+          gateway: S.optional(__S(112, __c7, 0)),
+          ipAddress: S.optional(S.String),
+          subnetMask: S.optional(S.String),
+          primaryWinsServer: S.optional(S.String),
+          secondaryWinsServer: S.optional(S.String),
+          ipAddressInfo: S.optional(__S(1329, __c83, 1)),
+        }),
+      ).annotate({ identifier: "NicIPSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          label: S.optional(S.String),
+          ipAddresses: S.optional(__S(112, __c7, 0)),
+          macAddress: S.optional(S.String),
+          networkId: S.optional(S.String),
+          nicType: S.optional(S.String),
+          powerOnBoot: S.optional(S.String),
+          networkMoRefId: S.optional(S.String),
+          networkMoName: S.optional(S.String),
+          deviceKey: S.optional(S.Number),
+          ipSettings: S.optional(__S(1330, __c83, 2)),
+        }),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 4:
+      return S.Array(__S(1331, __c83, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          label: S.optional(S.String),
+          diskObjectId: S.optional(S.String),
+          diskSizeGB: S.optional(S.Number),
+          deviceKey: S.optional(S.Number),
+          diskMode: S.optional(S.String),
+          controllerKey: S.optional(S.Number),
+          unitNumber: S.optional(S.Number),
+          deviceName: S.optional(S.String),
+          diskType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualDisk" });
+    case 6:
+      return S.Array(__S(1333, __c83, 5));
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+          moName: S.optional(S.String),
+          memorySizeMB: S.optional(S.Number),
+          numCPUs: S.optional(S.Number),
+          numCoresPerSocket: S.optional(S.Number),
+          osType: S.optional(S.String),
+          osName: S.optional(S.String),
+          folderPath: S.optional(S.String),
+          networkInterfaces: S.optional(__S(1332, __c83, 4)),
+          disks: S.optional(__S(1334, __c83, 6)),
+          customResourceName: S.optional(S.String),
+          toolsVersionStatus: S.optional(S.String),
+          toolsVersion: S.optional(S.String),
+          firmwareType: S.optional(S.String),
+          statuses: S.optional(__S(81, __c5, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineTemplateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineTemplateSystemData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(1344, __c84, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(1345, __c84, 1)),
+          tags: S.optional(__S(64, __c4, 0)),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachineTemplate" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           computerName: S.optional(S.String),
@@ -4860,22 +4988,22 @@ function __c19(j: number): any {
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           guestId: S.optional(S.String),
           osType: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(69, __c8, 5)),
+          windowsConfiguration: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "OsProfileForVMInstanceInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allocationMethod: S.optional(S.String),
-          dnsServers: S.optional(__S(6, __c0, 6)),
-          gateway: S.optional(__S(6, __c0, 6)),
+          dnsServers: S.optional(__S(112, __c7, 0)),
+          gateway: S.optional(__S(112, __c7, 0)),
           ipAddress: S.optional(S.String),
           subnetMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "NicIPSettingsInput" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4883,18 +5011,18 @@ function __c19(j: number): any {
           nicType: S.optional(S.String),
           powerOnBoot: S.optional(S.String),
           deviceKey: S.optional(S.Number),
-          ipSettings: S.optional(__S(154, __c19, 2)),
+          ipSettings: S.optional(__S(1361, __c85, 1)),
         }),
       ).annotate({ identifier: "NetworkInterfaceInput" });
+    case 3:
+      return S.Array(__S(1362, __c85, 2));
     case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(156, __c19, 4)),
+          networkInterfaces: S.optional(__S(1363, __c85, 3)),
         }),
       ).annotate({ identifier: "NetworkProfileInput" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           templateId: S.optional(S.String),
@@ -4906,30 +5034,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "InfrastructureProfileInput",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          placementProfile: S.optional(__S(68, __c8, 4)),
-          osProfile: S.optional(__S(153, __c19, 1)),
-          hardwareProfile: S.optional(__S(142, __c17, 6)),
-          networkProfile: S.optional(__S(157, __c19, 5)),
-          storageProfile: S.optional(__S(145, __c18, 1)),
-          securityProfile: S.optional(__S(77, __c9, 5)),
-          infrastructureProfile: S.optional(__S(158, __c19, 6)),
+          placementProfile: S.optional(__S(480, __c30, 0)),
+          osProfile: S.optional(__S(1360, __c85, 0)),
+          hardwareProfile: S.optional(__S(1264, __c79, 0)),
+          networkProfile: S.optional(__S(1364, __c85, 4)),
+          storageProfile: S.optional(__S(1267, __c79, 3)),
+          securityProfile: S.optional(__S(489, __c30, 9)),
+          infrastructureProfile: S.optional(__S(1365, __c85, 5)),
         }),
       ).annotate({
         identifier: "VirtualMachineInstancePropertiesInput",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: __S(159, __c19, 7),
-          extendedLocation: S.optional(__S(1, __c0, 1)),
+          properties: __S(1366, __c85, 6),
+          extendedLocation: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4943,7 +5067,170 @@ function __c20(j: number): any {
       });
   }
 }
-
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualNetworkName: S.String.pipe(T.Label()),
+          properties: __S(880, __c55, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVirtualNetworkRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          vCenterId: S.optional(S.String),
+          moRefId: S.optional(S.String),
+          inventoryItemId: S.optional(S.String),
+          moName: S.optional(S.String),
+          customResourceName: S.optional(S.String),
+          statuses: S.optional(__S(81, __c5, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualNetworkProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(1392, __c87, 0),
+          location: S.String,
+          extendedLocation: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualNetwork" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          credentials: S.optional(__S(1440, __c90, 0)),
+          privateLinkScopeResourceId: S.optional(S.String),
+          httpProxyConfig: S.optional(__S(1441, __c90, 1)),
+          provisioningAction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuestAgentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          properties: __S(1408, __c88, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVMInstanceGuestAgentRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: __S(1442, __c90, 2),
+        }),
+      ).annotate({
+        identifier: "CreateVMInstanceGuestAgentResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "GuestCredential" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          httpsProxy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpProxyConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.optional(S.String),
+          credentials: S.optional(__S(1440, __c90, 0)),
+          privateLinkScopeResourceId: S.optional(S.String),
+          httpProxyConfig: S.optional(__S(1441, __c90, 1)),
+          provisioningAction: S.optional(S.String),
+          status: S.optional(S.String),
+          customResourceName: S.optional(S.String),
+          statuses: S.optional(__S(81, __c5, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GuestAgentProperties" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2023-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteClusterRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteClusterResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

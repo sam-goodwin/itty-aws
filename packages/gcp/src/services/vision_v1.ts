@@ -1222,8 +1222,8 @@ export const addProductProjectsLocationsProductSets: API.OperationMethod<
   AddProductProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(1280, __c40, 0) as any as S.Schema<AddProductProjectsLocationsProductSetsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1237,8 @@ export const annotateFiles: API.OperationMethod<
   AnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AnnotateFilesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<AnnotateFilesRequest>,
+  output: __S(1637, __c51, 5) as any as S.Schema<BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1252,8 +1252,8 @@ export const annotateImages: API.OperationMethod<
   AnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<AnnotateImagesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<AnnotateImagesRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1267,8 @@ export const annotateProjectsFiles: API.OperationMethod<
   AnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<AnnotateProjectsFilesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<AnnotateProjectsFilesRequest>,
+  output: __S(1637, __c51, 5) as any as S.Schema<BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1282,8 @@ export const annotateProjectsImages: API.OperationMethod<
   AnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<AnnotateProjectsImagesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<AnnotateProjectsImagesRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,8 +1302,8 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
   AnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<BatchAnnotateFilesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AnnotateProjectsLocationsFilesRequest>,
+  output: __S(1637, __c51, 5) as any as S.Schema<BatchAnnotateFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1322,8 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
   AnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<BatchAnnotateImagesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<AnnotateProjectsLocationsImagesRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<BatchAnnotateImagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1342,8 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
   AsyncBatchAnnotateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(64, __c2, 0) as any as S.Schema<AsyncBatchAnnotateFilesRequest_>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1362,8 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
   AsyncBatchAnnotateImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<AsyncBatchAnnotateImagesRequest_>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1382,8 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(256, __c8, 0) as any as S.Schema<AsyncBatchAnnotateProjectsFilesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1402,8 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(288, __c9, 0) as any as S.Schema<AsyncBatchAnnotateProjectsImagesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1422,8 +1422,8 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(320, __c10, 0) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsFilesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1442,8 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
   AsyncBatchAnnotateProjectsLocationsImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<AsyncBatchAnnotateProjectsLocationsImagesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1457,8 +1457,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(384, __c12, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const createProjectsLocationsProducts: API.OperationMethod<
   CreateProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateProjectsLocationsProductsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Product>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateProjectsLocationsProductsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1499,8 @@ export const createProjectsLocationsProductSets: API.OperationMethod<
   CreateProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ProductSet>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateProjectsLocationsProductSetsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1521,11 +1521,11 @@ export const createProjectsLocationsProductsReferenceImages: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ReferenceImage>,
+  output: __S(545, __c17, 1) as any as S.Schema<ReferenceImage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ProductSearchNotOnboarded, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1539,8 +1539,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1559,8 @@ export const deleteProjectsLocationsProducts: API.OperationMethod<
   DeleteProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteProjectsLocationsProductsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteProjectsLocationsProductsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1579,8 +1579,8 @@ export const deleteProjectsLocationsProductSets: API.OperationMethod<
   DeleteProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteProjectsLocationsProductSetsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1600,11 +1600,11 @@ export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    123,
-    __c15,
-    3,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1618,8 +1618,8 @@ export const getLocationsOperations: API.OperationMethod<
   GetLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetLocationsOperationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetLocationsOperationsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1633,8 +1633,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1648,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1663,8 @@ export const getProjectsLocationsProducts: API.OperationMethod<
   GetProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetProjectsLocationsProductsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Product>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetProjectsLocationsProductsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1678,8 @@ export const getProjectsLocationsProductSets: API.OperationMethod<
   GetProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetProjectsLocationsProductSetsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ProductSet>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetProjectsLocationsProductSetsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1693,8 @@ export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
   GetProjectsLocationsProductsReferenceImagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ReferenceImage>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetProjectsLocationsProductsReferenceImagesRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ReferenceImage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1708,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1728,8 @@ export const importProjectsLocationsProductSets: API.OperationMethod<
   ImportProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(931, __c29, 3) as any as S.Schema<ImportProjectsLocationsProductSetsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1744,8 +1744,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1761,8 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListProjectsLocationsProductsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListProductsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListProjectsLocationsProductsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<ListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1778,8 +1778,8 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListProjectsLocationsProductSetsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListProductSetsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListProjectsLocationsProductSetsRequest>,
+  output: __S(1058, __c33, 2) as any as S.Schema<ListProductSetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1795,8 +1795,8 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
   GcpOpContext,
   ListProductsInProductSetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListProductsInProductSetResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListProjectsLocationsProductSetsProductsRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<ListProductsInProductSetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1812,8 +1812,12 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
   GcpOpContext,
   ListReferenceImagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ListReferenceImagesResponse>,
+  input: __S(
+    1120,
+    __c35,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsProductsReferenceImagesRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<ListReferenceImagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1837,8 @@ export const patchProjectsLocationsProducts: API.OperationMethod<
   PatchProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PatchProjectsLocationsProductsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Product>,
+  input: __S(1152, __c36, 0) as any as S.Schema<PatchProjectsLocationsProductsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1853,8 +1857,8 @@ export const patchProjectsLocationsProductSets: API.OperationMethod<
   PatchProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ProductSet>,
+  input: __S(1184, __c37, 0) as any as S.Schema<PatchProjectsLocationsProductSetsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1877,8 @@ export const purgeProjectsLocationsProducts: API.OperationMethod<
   PurgeProjectsLocationsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PurgeProjectsLocationsProductsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Operation>,
+  input: __S(1218, __c38, 2) as any as S.Schema<PurgeProjectsLocationsProductsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1897,8 @@ export const removeProductProjectsLocationsProductSets: API.OperationMethod<
   RemoveProductProjectsLocationsProductSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(1248, __c39, 0) as any as S.Schema<RemoveProductProjectsLocationsProductSetsRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1906,700 +1910,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AddProductToProductSetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:addProduct",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddProductProjectsLocationsProductSetsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          maxResults: S.optional(S.Number),
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Feature" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aspectRatios: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "CropHintsParams" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NormalizedVertex" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Array(__S(8, __c1, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          normalizedVertices: S.optional(__S(9, __c1, 1)),
-          vertices: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "BoundingPoly" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-          filter: S.optional(S.String),
-          productSet: S.optional(S.String),
-          productCategories: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "ProductSearchParams" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minLatLng: S.optional(__S(14, __c1, 6)),
-          maxLatLng: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "LatLongRect" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          includeGeoResults: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WebDetectionParams" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          advancedOcrOptions: S.optional(__S(12, __c1, 4)),
-          enableTextDetectionConfidenceScore: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TextDetectionParams" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cropHintsParams: S.optional(__S(7, __c0, 7)),
-          productSearchParams: S.optional(__S(13, __c1, 5)),
-          latLongRect: S.optional(__S(15, __c1, 7)),
-          webDetectionParams: S.optional(__S(16, __c2, 0)),
-          languageHints: S.optional(__S(12, __c1, 4)),
-          textDetectionParams: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ImageContext" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GcsSource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          gcsSource: S.optional(__S(19, __c2, 3)),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InputConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pages: S.optional(__S(4, __c0, 4)),
-          features: S.optional(__S(6, __c0, 6)),
-          imageContext: S.optional(__S(18, __c2, 2)),
-          inputConfig: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AnnotateFileRequest" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          requests: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchAnnotateFilesRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/files:annotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AnnotateFilesRequest" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(26, __c3, 2)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blue: S.optional(S.Number),
-          green: S.optional(S.Number),
-          alpha: S.optional(S.Number),
-          red: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Color" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pixelFraction: S.optional(S.Number),
-          score: S.optional(S.Number),
-          color: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "ColorInfo" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          colors: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "DominantColorsAnnotation" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dominantColors: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "ImageProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          importanceFraction: S.optional(S.Number),
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CropHint" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cropHints: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "CropHintsAnnotation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          pageNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ImageAnnotationContext" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latLng: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "LocationInfo" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uint64Value: S.optional(S.String),
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Property" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          locations: S.optional(__S(38, __c4, 6)),
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-          description: S.optional(S.String),
-          locale: S.optional(S.String),
-          topicality: S.optional(S.Number),
-          properties: S.optional(__S(40, __c5, 0)),
-          score: S.optional(S.Number),
-          mid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EntityAnnotation" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DetectedLanguage" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          isPrefix: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DetectedBreak" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          detectedLanguages: S.optional(__S(44, __c5, 4)),
-          detectedBreak: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "TextProperty" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          property: S.optional(__S(46, __c5, 6)),
-          boundingBox: S.optional(__S(11, __c1, 3)),
-          confidence: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Vision_Symbol" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(11, __c1, 3)),
-          symbols: S.optional(__S(48, __c6, 0)),
-          confidence: S.optional(S.Number),
-          property: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "Word" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          words: S.optional(__S(50, __c6, 2)),
-          confidence: S.optional(S.Number),
-          boundingBox: S.optional(__S(11, __c1, 3)),
-          property: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "Paragraph" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          boundingBox: S.optional(__S(11, __c1, 3)),
-          confidence: S.optional(S.Number),
-          paragraphs: S.optional(__S(52, __c6, 4)),
-          blockType: S.optional(S.String),
-          property: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "Block" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          confidence: S.optional(S.Number),
-          width: S.optional(S.Number),
-          blocks: S.optional(__S(54, __c6, 6)),
-          property: S.optional(__S(46, __c5, 6)),
-          height: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Page" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pages: S.optional(__S(56, __c7, 0)),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextAnnotation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyValue" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          productCategory: S.optional(S.String),
-          productLabels: S.optional(__S(59, __c7, 3)),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          product: S.optional(__S(60, __c7, 4)),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Result" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          mid: S.optional(S.String),
-          score: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectAnnotation" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-          results: S.optional(__S(62, __c7, 6)),
-          objectAnnotations: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "GroupedResult" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(62, __c7, 6)),
-          productGroupedResults: S.optional(__S(66, __c8, 2)),
-          indexTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductSearchResults" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          mid: S.optional(S.String),
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-          score: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LocalizedObjectAnnotation",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-          z: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Position" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(__S(70, __c8, 6)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Landmark" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sorrowLikelihood: S.optional(S.String),
-          boundingPoly: S.optional(__S(11, __c1, 3)),
-          detectionConfidence: S.optional(S.Number),
-          blurredLikelihood: S.optional(S.String),
-          tiltAngle: S.optional(S.Number),
-          surpriseLikelihood: S.optional(S.String),
-          underExposedLikelihood: S.optional(S.String),
-          angerLikelihood: S.optional(S.String),
-          fdBoundingPoly: S.optional(__S(11, __c1, 3)),
-          landmarkingConfidence: S.optional(S.Number),
-          landmarks: S.optional(__S(72, __c9, 0)),
-          headwearLikelihood: S.optional(S.String),
-          rollAngle: S.optional(S.Number),
-          joyLikelihood: S.optional(S.String),
-          panAngle: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FaceAnnotation" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          spoof: S.optional(S.String),
-          violence: S.optional(S.String),
-          racy: S.optional(S.String),
-          adult: S.optional(S.String),
-          medical: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SafeSearchAnnotation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebLabel" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WebImage" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-          score: S.optional(S.Number),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebEntity" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partialMatchingImages: S.optional(__S(79, __c9, 7)),
-          pageTitle: S.optional(S.String),
-          fullMatchingImages: S.optional(__S(79, __c9, 7)),
-          score: S.optional(S.Number),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebPage" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bestGuessLabels: S.optional(__S(77, __c9, 5)),
-          fullMatchingImages: S.optional(__S(79, __c9, 7)),
-          webEntities: S.optional(__S(81, __c10, 1)),
-          visuallySimilarImages: S.optional(__S(79, __c9, 7)),
-          pagesWithMatchingImages: S.optional(__S(83, __c10, 3)),
-          partialMatchingImages: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "WebDetection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imagePropertiesAnnotation: S.optional(__S(32, __c4, 0)),
-          cropHintsAnnotation: S.optional(__S(35, __c4, 3)),
-          context: S.optional(__S(36, __c4, 4)),
-          textAnnotations: S.optional(__S(42, __c5, 2)),
-          fullTextAnnotation: S.optional(__S(57, __c7, 1)),
-          productSearchResults: S.optional(__S(67, __c8, 3)),
-          labelAnnotations: S.optional(__S(42, __c5, 2)),
-          localizedObjectAnnotations: S.optional(__S(69, __c8, 5)),
-          faceAnnotations: S.optional(__S(74, __c9, 2)),
-          landmarkAnnotations: S.optional(__S(42, __c5, 2)),
-          safeSearchAnnotation: S.optional(__S(75, __c9, 3)),
-          error: S.optional(__S(27, __c3, 3)),
-          webDetection: S.optional(__S(84, __c10, 4)),
-          logoAnnotations: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "AnnotateImageResponse" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(27, __c3, 3)),
-          responses: S.optional(__S(86, __c10, 6)),
-          inputConfig: S.optional(__S(20, __c2, 4)),
-          totalPages: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AnnotateFileResponse" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchAnnotateFilesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          imageUri: S.optional(S.String),
-          gcsImageUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageSource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(90, __c11, 2)),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          features: S.optional(__S(6, __c0, 6)),
-          image: S.optional(__S(91, __c11, 3)),
-          imageContext: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AnnotateImageRequest" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          requests: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchAnnotateImagesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/images:annotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AnnotateImagesRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchAnnotateImagesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/files:annotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnnotateProjectsFilesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/images:annotate",
-            baseUrl: "https://vision.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnnotateProjectsImagesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1634, __c51, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2610,11 +1922,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnnotateProjectsLocationsFilesRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2625,42 +1941,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnnotateProjectsLocationsImagesRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gcsDestination: S.optional(__S(19, __c2, 3)),
-          batchSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OutputConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          outputConfig: S.optional(__S(101, __c12, 5)),
-          features: S.optional(__S(6, __c0, 6)),
-          inputConfig: S.optional(__S(20, __c2, 4)),
-          imageContext: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AsyncAnnotateFileRequest" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parent: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          requests: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({
-        identifier: "AsyncBatchAnnotateFilesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(162, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2671,31 +1959,64 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AsyncBatchAnnotateFilesRequest_",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(25, __c3, 1)),
-          response: S.optional(__S(25, __c3, 1)),
-          error: S.optional(__S(27, __c3, 3)),
+          gcsDestination: S.optional(__S(1664, __c52, 0)),
+          batchSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OutputConfig" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1504, __c47, 0)),
+          response: S.optional(__S(1504, __c47, 0)),
+          error: S.optional(__S(1506, __c47, 2)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(93, __c11, 5)),
-          outputConfig: S.optional(__S(101, __c12, 5)),
+          outputConfig: S.optional(__S(96, __c3, 0)),
+          features: S.optional(__S(1475, __c46, 3)),
+          inputConfig: S.optional(__S(1696, __c53, 0)),
+          imageContext: S.optional(__S(1482, __c46, 10)),
+        }),
+      ).annotate({ identifier: "AsyncAnnotateFileRequest" });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(1472, __c46, 0)),
+          requests: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({
-        identifier: "AsyncBatchAnnotateImagesRequest",
+        identifier: "AsyncBatchAnnotateFilesRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2706,11 +2027,30 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AsyncBatchAnnotateImagesRequest_",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(1795, __c56, 3)),
+          outputConfig: S.optional(__S(96, __c3, 0)),
+          parent: S.optional(S.String),
+          labels: S.optional(__S(1472, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "AsyncBatchAnnotateImagesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(162, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2721,11 +2061,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AsyncBatchAnnotateProjectsFilesRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2736,11 +2080,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AsyncBatchAnnotateProjectsImagesRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(162, __c5, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2753,13 +2101,13 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2770,11 +2118,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "AsyncBatchAnnotateProjectsLocationsImagesRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1312, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2783,12 +2135,16 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelOperationsRequest" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           productId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1602, __c50, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2799,21 +2155,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          indexError: S.optional(__S(27, __c3, 3)),
-          indexTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductSet" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productSetId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2824,22 +2175,29 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductSetsRequest",
       });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          uri: S.optional(S.String),
-          boundingPolys: S.optional(__S(117, __c14, 5)),
           name: S.optional(S.String),
+          indexError: S.optional(__S(1506, __c47, 2)),
+          indexTime: S.optional(S.String),
+          displayName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ReferenceImage" });
-    case 7:
+      ).annotate({ identifier: "ProductSet" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           referenceImageId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(118, __c14, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(545, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2852,7 +2210,21 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1539, __c48, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          boundingPolys: S.optional(__S(544, __c17, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReferenceImage" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2866,7 +2238,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2880,7 +2256,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2894,7 +2274,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductSetsRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2908,7 +2292,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsReferenceImagesRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2918,7 +2306,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2926,7 +2318,11 @@ function __c15(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2936,7 +2332,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2948,7 +2348,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2960,7 +2360,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductSetsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2970,7 +2374,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsReferenceImagesRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2980,7 +2388,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetProjectsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           csvFileUri: S.optional(S.String),
@@ -2988,25 +2400,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ImportProductSetsGcsSource",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(131, __c16, 3)),
+          gcsSource: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({
         identifier: "ImportProductSetsInputConfig",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          inputConfig: S.optional(__S(132, __c16, 4)),
+          inputConfig: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({ identifier: "ImportProductSetsRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(133, __c16, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(930, __c29, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3017,7 +2429,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsProductSetsRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3029,21 +2445,21 @@ function __c16(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(106, __c13, 2));
     case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(136, __c17, 0)),
-          unreachable: S.optional(__S(12, __c1, 4)),
+          operations: S.optional(__S(961, __c30, 1)),
+          unreachable: S.optional(__S(1568, __c49, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3059,16 +2475,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsRequest",
       });
-    case 3:
-      return S.Array(__S(60, __c7, 4));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(139, __c17, 3)),
+          products: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1602, __c50, 2));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3084,18 +2508,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductSetsRequest",
       });
-    case 6:
-      return S.Array(__S(115, __c14, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          productSets: S.optional(__S(142, __c17, 6)),
+          productSets: S.optional(__S(1057, __c33, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductSetsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3117,12 +2541,16 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(139, __c17, 3)),
+          products: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({
         identifier: "ListProductsInProductSetResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3138,65 +2566,73 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsReferenceImagesRequest",
       });
-    case 3:
-      return S.Array(__S(118, __c14, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(545, __c17, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          referenceImages: S.optional(__S(147, __c18, 3)),
+          referenceImages: S.optional(__S(1121, __c35, 1)),
           pageSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListReferenceImagesResponse",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1602, __c50, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsProductsRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://vision.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsProductSetsRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductSetPurgeConfig" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deleteOrphanProducts: S.optional(S.Boolean),
-          productSetPurgeConfig: S.optional(__S(151, __c18, 7)),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PurgeProductsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          deleteOrphanProducts: S.optional(S.Boolean),
+          productSetPurgeConfig: S.optional(__S(1216, __c38, 0)),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PurgeProductsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1217, __c38, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3207,11 +2643,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsProductsRequest",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3224,7 +2664,726 @@ function __c19(j: number): any {
       });
   }
 }
-
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:addProduct",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddProductProjectsLocationsProductSetsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AddProductToProductSetRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1634, __c51, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/files:annotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AnnotateFilesRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blue: S.optional(S.Number),
+          green: S.optional(S.Number),
+          alpha: S.optional(S.Number),
+          red: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Color" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pixelFraction: S.optional(S.Number),
+          score: S.optional(S.Number),
+          color: S.optional(__S(1408, __c44, 0)),
+        }),
+      ).annotate({ identifier: "ColorInfo" });
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          colors: S.optional(__S(1410, __c44, 2)),
+        }),
+      ).annotate({ identifier: "DominantColorsAnnotation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dominantColors: S.optional(__S(1411, __c44, 3)),
+        }),
+      ).annotate({ identifier: "ImageProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          importanceFraction: S.optional(S.Number),
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+        }),
+      ).annotate({ identifier: "CropHint" });
+    case 6:
+      return S.Array(__S(1413, __c44, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          cropHints: S.optional(__S(1414, __c44, 6)),
+        }),
+      ).annotate({ identifier: "CropHintsAnnotation" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          pageNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ImageAnnotationContext" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          latLng: S.optional(__S(1478, __c46, 6)),
+        }),
+      ).annotate({ identifier: "LocationInfo" });
+    case 10:
+      return S.Array(__S(1417, __c44, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          uint64Value: S.optional(S.String),
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Property" });
+    case 12:
+      return S.Array(__S(1419, __c44, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          locations: S.optional(__S(1418, __c44, 10)),
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+          description: S.optional(S.String),
+          locale: S.optional(S.String),
+          topicality: S.optional(S.Number),
+          properties: S.optional(__S(1420, __c44, 12)),
+          score: S.optional(S.Number),
+          mid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EntityAnnotation" });
+    case 14:
+      return S.Array(__S(1421, __c44, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DetectedLanguage" });
+    case 16:
+      return S.Array(__S(1423, __c44, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          isPrefix: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DetectedBreak" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          detectedLanguages: S.optional(__S(1424, __c44, 16)),
+          detectedBreak: S.optional(__S(1425, __c44, 17)),
+        }),
+      ).annotate({ identifier: "TextProperty" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          property: S.optional(__S(1426, __c44, 18)),
+          boundingBox: S.optional(__S(1539, __c48, 3)),
+          confidence: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Vision_Symbol" });
+    case 20:
+      return S.Array(__S(1427, __c44, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(1539, __c48, 3)),
+          symbols: S.optional(__S(1428, __c44, 20)),
+          confidence: S.optional(S.Number),
+          property: S.optional(__S(1426, __c44, 18)),
+        }),
+      ).annotate({ identifier: "Word" });
+    case 22:
+      return S.Array(__S(1429, __c44, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          words: S.optional(__S(1430, __c44, 22)),
+          confidence: S.optional(S.Number),
+          boundingBox: S.optional(__S(1539, __c48, 3)),
+          property: S.optional(__S(1426, __c44, 18)),
+        }),
+      ).annotate({ identifier: "Paragraph" });
+    case 24:
+      return S.Array(__S(1431, __c44, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          boundingBox: S.optional(__S(1539, __c48, 3)),
+          confidence: S.optional(S.Number),
+          paragraphs: S.optional(__S(1432, __c44, 24)),
+          blockType: S.optional(S.String),
+          property: S.optional(__S(1426, __c44, 18)),
+        }),
+      ).annotate({ identifier: "Block" });
+    case 26:
+      return S.Array(__S(1433, __c44, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          confidence: S.optional(S.Number),
+          width: S.optional(S.Number),
+          blocks: S.optional(__S(1434, __c44, 26)),
+          property: S.optional(__S(1426, __c44, 18)),
+          height: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Page" });
+    case 28:
+      return S.Array(__S(1435, __c44, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          pages: S.optional(__S(1436, __c44, 28)),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextAnnotation" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          product: S.optional(__S(1602, __c50, 2)),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Result" });
+    case 31:
+      return S.Array(__S(1438, __c44, 30));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          mid: S.optional(S.String),
+          score: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectAnnotation" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+          results: S.optional(__S(1439, __c44, 31)),
+          objectAnnotations: S.optional(__S(1441, __c45, 1)),
+        }),
+      ).annotate({ identifier: "GroupedResult" });
+    case 3:
+      return S.Array(__S(1442, __c45, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(1439, __c44, 31)),
+          productGroupedResults: S.optional(__S(1443, __c45, 3)),
+          indexTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductSearchResults" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          mid: S.optional(S.String),
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+          score: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LocalizedObjectAnnotation",
+      });
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+          z: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Position" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(__S(1447, __c45, 7)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Landmark" });
+    case 9:
+      return S.Array(__S(1448, __c45, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          sorrowLikelihood: S.optional(S.String),
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+          detectionConfidence: S.optional(S.Number),
+          blurredLikelihood: S.optional(S.String),
+          tiltAngle: S.optional(S.Number),
+          surpriseLikelihood: S.optional(S.String),
+          underExposedLikelihood: S.optional(S.String),
+          angerLikelihood: S.optional(S.String),
+          fdBoundingPoly: S.optional(__S(1539, __c48, 3)),
+          landmarkingConfidence: S.optional(S.Number),
+          landmarks: S.optional(__S(1449, __c45, 9)),
+          headwearLikelihood: S.optional(S.String),
+          rollAngle: S.optional(S.Number),
+          joyLikelihood: S.optional(S.String),
+          panAngle: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FaceAnnotation" });
+    case 11:
+      return S.Array(__S(1450, __c45, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          spoof: S.optional(S.String),
+          violence: S.optional(S.String),
+          racy: S.optional(S.String),
+          adult: S.optional(S.String),
+          medical: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SafeSearchAnnotation" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebLabel" });
+    case 14:
+      return S.Array(__S(1453, __c45, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WebImage" });
+    case 16:
+      return S.Array(__S(1455, __c45, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          score: S.optional(S.Number),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebEntity" });
+    case 18:
+      return S.Array(__S(1457, __c45, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          partialMatchingImages: S.optional(__S(1456, __c45, 16)),
+          pageTitle: S.optional(S.String),
+          fullMatchingImages: S.optional(__S(1456, __c45, 16)),
+          score: S.optional(S.Number),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebPage" });
+    case 20:
+      return S.Array(__S(1459, __c45, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          bestGuessLabels: S.optional(__S(1454, __c45, 14)),
+          fullMatchingImages: S.optional(__S(1456, __c45, 16)),
+          webEntities: S.optional(__S(1458, __c45, 18)),
+          visuallySimilarImages: S.optional(__S(1456, __c45, 16)),
+          pagesWithMatchingImages: S.optional(__S(1460, __c45, 20)),
+          partialMatchingImages: S.optional(__S(1456, __c45, 16)),
+        }),
+      ).annotate({ identifier: "WebDetection" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          imagePropertiesAnnotation: S.optional(__S(1412, __c44, 4)),
+          cropHintsAnnotation: S.optional(__S(1415, __c44, 7)),
+          context: S.optional(__S(1416, __c44, 8)),
+          textAnnotations: S.optional(__S(1422, __c44, 14)),
+          fullTextAnnotation: S.optional(__S(1437, __c44, 29)),
+          productSearchResults: S.optional(__S(1444, __c45, 4)),
+          labelAnnotations: S.optional(__S(1422, __c44, 14)),
+          localizedObjectAnnotations: S.optional(__S(1446, __c45, 6)),
+          faceAnnotations: S.optional(__S(1451, __c45, 11)),
+          landmarkAnnotations: S.optional(__S(1422, __c44, 14)),
+          safeSearchAnnotation: S.optional(__S(1452, __c45, 12)),
+          error: S.optional(__S(1506, __c47, 2)),
+          webDetection: S.optional(__S(1461, __c45, 21)),
+          logoAnnotations: S.optional(__S(1422, __c44, 14)),
+        }),
+      ).annotate({ identifier: "AnnotateImageResponse" });
+    case 23:
+      return S.Array(__S(1462, __c45, 22));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          maxResults: S.optional(S.Number),
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Feature" });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          aspectRatios: S.optional(__S(1473, __c46, 1)),
+        }),
+      ).annotate({ identifier: "CropHintsParams" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          boundingPoly: S.optional(__S(1539, __c48, 3)),
+          filter: S.optional(S.String),
+          productSet: S.optional(S.String),
+          productCategories: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "ProductSearchParams" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          minLatLng: S.optional(__S(1478, __c46, 6)),
+          maxLatLng: S.optional(__S(1478, __c46, 6)),
+        }),
+      ).annotate({ identifier: "LatLongRect" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          includeGeoResults: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WebDetectionParams" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          advancedOcrOptions: S.optional(__S(1568, __c49, 0)),
+          enableTextDetectionConfidenceScore: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TextDetectionParams" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          cropHintsParams: S.optional(__S(1476, __c46, 4)),
+          productSearchParams: S.optional(__S(1477, __c46, 5)),
+          latLongRect: S.optional(__S(1479, __c46, 7)),
+          webDetectionParams: S.optional(__S(1480, __c46, 8)),
+          languageHints: S.optional(__S(1568, __c49, 0)),
+          textDetectionParams: S.optional(__S(1481, __c46, 9)),
+        }),
+      ).annotate({ identifier: "ImageContext" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1505, __c47, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NormalizedVertex" });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.Array(__S(1536, __c48, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          normalizedVertices: S.optional(__S(1537, __c48, 1)),
+          vertices: S.optional(__S(1538, __c48, 2)),
+        }),
+      ).annotate({ identifier: "BoundingPoly" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyValue" });
+    case 1:
+      return S.Array(__S(1600, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          productCategory: S.optional(S.String),
+          productLabels: S.optional(__S(1601, __c50, 1)),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Product" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pages: S.optional(__S(1473, __c46, 1)),
+          features: S.optional(__S(1475, __c46, 3)),
+          imageContext: S.optional(__S(1482, __c46, 10)),
+          inputConfig: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "AnnotateFileRequest" });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          labels: S.optional(__S(1472, __c46, 0)),
+          requests: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchAnnotateFilesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(1506, __c47, 2)),
+          responses: S.optional(__S(1463, __c45, 23)),
+          inputConfig: S.optional(__S(1696, __c53, 0)),
+          totalPages: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnnotateFileResponse" });
+    case 4:
+      return S.Array(__S(1635, __c51, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(1636, __c51, 4)),
+        }),
+      ).annotate({
+        identifier: "BatchAnnotateFilesResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GcsSource" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          gcsSource: S.optional(__S(1664, __c52, 0)),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InputConfig" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/images:annotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AnnotateImagesRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String),
+          labels: S.optional(__S(1472, __c46, 0)),
+          requests: S.optional(__S(1795, __c56, 3)),
+        }),
+      ).annotate({
+        identifier: "BatchAnnotateImagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(1463, __c45, 23)),
+        }),
+      ).annotate({
+        identifier: "BatchAnnotateImagesResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageUri: S.optional(S.String),
+          gcsImageUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageSource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(1792, __c56, 0)),
+          content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          features: S.optional(__S(1475, __c46, 3)),
+          image: S.optional(__S(1793, __c56, 1)),
+          imageContext: S.optional(__S(1482, __c46, 10)),
+        }),
+      ).annotate({ identifier: "AnnotateImageRequest" });
+    case 3:
+      return S.Array(__S(1794, __c56, 2));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1634, __c51, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/files:annotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnnotateProjectsFilesRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/images:annotate",
+            baseUrl: "https://vision.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnnotateProjectsImagesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

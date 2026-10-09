@@ -417,8 +417,8 @@ export const createOrganizationsAdminAccessBindings: API.OperationMethod<
   CreateOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOrganizationsAdminAccessBindingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateOrganizationsAdminAccessBindingsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -437,8 +437,8 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   CreateOrganizationsAnalyticsAccountLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AnalyticsAccountLink>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<AnalyticsAccountLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const createOrganizationsUserGroups: API.OperationMethod<
   CreateOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateOrganizationsUserGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
+  input: __S(168, __c21, 0) as any as S.Schema<CreateOrganizationsUserGroupsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,8 +477,8 @@ export const createOrganizationsUserGroupsMembers: API.OperationMethod<
   CreateOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateOrganizationsUserGroupsMembersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateOrganizationsUserGroupsMembersRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
   DeleteOrganizationsAnalyticsAccountLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -517,8 +517,8 @@ export const deleteOrganizationsUserGroups: API.OperationMethod<
   DeleteOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteOrganizationsUserGroupsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteOrganizationsUserGroupsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -537,8 +537,8 @@ export const deleteOrganizationsUserGroupsMembers: API.OperationMethod<
   DeleteOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteOrganizationsUserGroupsMembersRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOrganizationsUserGroupsMembersRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
   FindSalesPartnerManagedClientsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<FindSalesPartnerManagedClientsResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<FindSalesPartnerManagedClientsOrganizationsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<FindSalesPartnerManagedClientsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -572,7 +572,7 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetOrganizationsRequest>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetOrganizationsRequest>,
   output: __S(16, __c2, 0) as any as S.Schema<Organization>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -587,8 +587,8 @@ export const getOrganizationsAdminAccessBindings: API.OperationMethod<
   GetOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetOrganizationsAdminAccessBindingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetOrganizationsAdminAccessBindingsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const getOrganizationsUserGroups: API.OperationMethod<
   GetOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetOrganizationsUserGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetOrganizationsUserGroupsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const getOrganizationsUserGroupsMembers: API.OperationMethod<
   GetOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetOrganizationsUserGroupsMembersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetOrganizationsUserGroupsMembersRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOrganizationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ListOrganizationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -650,8 +650,8 @@ export const listOrganizationsAdminAccessBindings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAdminAccessBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListOrganizationsAdminAccessBindingsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListAdminAccessBindingsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListOrganizationsAdminAccessBindingsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListAdminAccessBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -667,8 +667,8 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
   GcpOpContext,
   ListAnalyticsAccountLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListAnalyticsAccountLinksResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<ListAnalyticsAccountLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -684,8 +684,8 @@ export const listOrganizationsUserGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListOrganizationsUserGroupsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListUserGroupsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListOrganizationsUserGroupsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListUserGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -701,8 +701,8 @@ export const listOrganizationsUserGroupsMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserGroupMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListOrganizationsUserGroupsMembersRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListUserGroupMembersResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListOrganizationsUserGroupsMembersRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListUserGroupMembersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -722,8 +722,8 @@ export const patchOrganizationsAdminAccessBindings: API.OperationMethod<
   PatchOrganizationsAdminAccessBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PatchOrganizationsAdminAccessBindingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AdminAccessBinding>,
+  input: __S(96, __c12, 0) as any as S.Schema<PatchOrganizationsAdminAccessBindingsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<AdminAccessBinding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -742,8 +742,8 @@ export const patchOrganizationsUserGroups: API.OperationMethod<
   PatchOrganizationsUserGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PatchOrganizationsUserGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UserGroup>,
+  input: __S(104, __c13, 0) as any as S.Schema<PatchOrganizationsUserGroupsRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UserGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const patchOrganizationsUserGroupsMembers: API.OperationMethod<
   PatchOrganizationsUserGroupsMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<PatchOrganizationsUserGroupsMembersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UserGroupMember>,
+  input: __S(112, __c14, 0) as any as S.Schema<PatchOrganizationsUserGroupsMembersRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<UserGroupMember>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -782,8 +782,8 @@ export const reportPropertyUsageOrganizations: API.OperationMethod<
   ReportPropertyUsageOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ReportPropertyUsageResponse>,
+  input: __S(121, __c15, 1) as any as S.Schema<ReportPropertyUsageOrganizationsRequest>,
+  output: __S(126, __c15, 6) as any as S.Schema<ReportPropertyUsageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -803,11 +803,11 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    129,
+    __c16,
+    1,
   ) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SetPropertyServiceLevelResponse>,
+  output: __S(130, __c16, 2) as any as S.Schema<SetPropertyServiceLevelResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,139 +817,6 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userGroup: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          organizationRoles: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdminAccessBinding" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/adminAccessBindings",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAdminAccessBindingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          linkVerificationState: S.optional(S.String),
-          name: S.optional(S.String),
-          analyticsAccount: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnalyticsAccountLink" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/analyticsAccountLinks",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsAnalyticsAccountLinksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserGroup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/userGroups",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsUserGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userEmail: S.optional(S.String),
-          userGroup: S.optional(S.String),
-          name: S.optional(S.String),
-          membershipRole: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserGroupMember" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/members",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsUserGroupsMembersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsAnalyticsAccountLinksRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://marketingplatformadmin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsUserGroupsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -963,7 +830,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsUserGroupsMembersRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isActive: S.optional(S.Boolean),
@@ -971,11 +842,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FindSalesPartnerManagedClientsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -986,7 +857,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FindSalesPartnerManagedClientsOrganizationsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           month: S.optional(S.Number),
@@ -995,6 +866,24 @@ function __c1(j: number): any {
         }),
       ).annotate({
         identifier: "Marketingplatformadmin_Date",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(__S(10, __c1, 2)),
+          organization: S.optional(__S(16, __c2, 0)),
+          startDate: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({ identifier: "ClientData" });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clientData: S.optional(__S(12, __c1, 4)),
+        }),
+      ).annotate({
+        identifier: "FindSalesPartnerManagedClientsResponse",
       });
   }
 }
@@ -1007,25 +896,11 @@ function __c2(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Organization" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(__S(15, __c1, 7)),
-          organization: S.optional(__S(16, __c2, 0)),
-          startDate: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ClientData" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientData: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "FindSalesPartnerManagedClientsResponse",
-      });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1037,7 +912,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrganizationsRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1051,7 +930,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsAdminAccessBindingsRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1065,7 +948,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsUserGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1081,7 +968,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1101,13 +988,17 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organizations: S.optional(__S(25, __c3, 1)),
+          organizations: S.optional(__S(57, __c7, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationsResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1123,18 +1014,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAdminAccessBindingsRequest",
       });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(145, __c18, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          adminAccessBindings: S.optional(__S(28, __c3, 4)),
+          adminAccessBindings: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({
         identifier: "ListAdminAccessBindingsResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1150,22 +1045,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsAnalyticsAccountLinksRequest",
       });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          analyticsAccountLinks: S.optional(__S(31, __c3, 7)),
+          analyticsAccountLinks: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "ListAnalyticsAccountLinksResponse",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1181,16 +1076,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsUserGroupsRequest",
       });
+    case 1:
+      return S.Array(__S(176, __c22, 0));
     case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          userGroups: S.optional(__S(34, __c4, 2)),
+          userGroups: S.optional(__S(81, __c10, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUserGroupsResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1206,23 +1105,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsUserGroupsMembersRequest",
       });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(192, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userGroupMembers: S.optional(__S(37, __c4, 5)),
+          userGroupMembers: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({
         identifier: "ListUserGroupMembersResponse",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(145, __c18, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1235,14 +1138,14 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1253,12 +1156,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsUserGroupsRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1269,7 +1176,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsUserGroupsMembersRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           month: S.optional(S.String),
@@ -1277,11 +1188,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReportPropertyUsageRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1292,7 +1203,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReportPropertyUsageOrganizationsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           totalEventCount: S.optional(S.String),
@@ -1304,9 +1215,9 @@ function __c5(j: number): any {
           property: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyUsage" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
@@ -1314,29 +1225,29 @@ function __c5(j: number): any {
           units: S.optional(S.String),
         }),
       ).annotate({ identifier: "Money" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          eventFee: S.optional(__S(46, __c5, 6)),
-          total: S.optional(__S(46, __c5, 6)),
-          priceProtectionCredit: S.optional(__S(46, __c5, 6)),
-          baseFee: S.optional(__S(46, __c5, 6)),
+          eventFee: S.optional(__S(124, __c15, 4)),
+          total: S.optional(__S(124, __c15, 4)),
+          priceProtectionCredit: S.optional(__S(124, __c15, 4)),
+          baseFee: S.optional(__S(124, __c15, 4)),
         }),
       ).annotate({ identifier: "BillInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          propertyUsages: S.optional(__S(45, __c5, 5)),
-          billInfo: S.optional(__S(47, __c5, 7)),
+          propertyUsages: S.optional(__S(123, __c15, 3)),
+          billInfo: S.optional(__S(125, __c15, 5)),
         }),
       ).annotate({
         identifier: "ReportPropertyUsageResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           analyticsProperty: S.optional(S.String),
@@ -1345,11 +1256,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SetPropertyServiceLevelRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           analyticsAccountLink: S.String.pipe(T.Label()),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1360,13 +1271,185 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SetPropertyServiceLevelResponse",
       });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(145, __c18, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/adminAccessBindings",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAdminAccessBindingsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userGroup: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          organizationRoles: S.optional(__S(144, __c18, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdminAccessBinding" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/analyticsAccountLinks",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsAnalyticsAccountLinksRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          linkVerificationState: S.optional(S.String),
+          name: S.optional(S.String),
+          analyticsAccount: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyticsAccountLink" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/userGroups",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsUserGroupsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserGroup" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c24, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/members",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsUserGroupsMembersRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userEmail: S.optional(S.String),
+          userGroup: S.optional(S.String),
+          name: S.optional(S.String),
+          membershipRole: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserGroupMember" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsAnalyticsAccountLinksRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://marketingplatformadmin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsUserGroupsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

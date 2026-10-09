@@ -1338,8 +1338,8 @@ export const AcknowledgePrivateStoreOfferNotification: API.OperationMethod<
   AcknowledgePrivateStoreOfferNotificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcknowledgePrivateStoreOfferNotificationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AcknowledgePrivateStoreOfferNotificationResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AcknowledgePrivateStoreOfferNotificationRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<AcknowledgePrivateStoreOfferNotificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1353,8 @@ export const ApprovePrivateStoreCollectionAllItems: API.OperationMethod<
   ApprovePrivateStoreCollectionAllItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApprovePrivateStoreCollectionAllItemsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ApprovePrivateStoreCollectionAllItemsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ApprovePrivateStoreCollectionAllItemsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<ApprovePrivateStoreCollectionAllItemsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1368,8 +1368,8 @@ export const BulkPrivateStoreCollectionsAction: API.OperationMethod<
   BulkPrivateStoreCollectionsActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BulkPrivateStoreCollectionsActionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BulkCollectionsResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<BulkPrivateStoreCollectionsActionRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<BulkCollectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1383,8 @@ export const CreatePrivateStoreApprovalRequest: API.OperationMethod<
   CreatePrivateStoreApprovalRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreatePrivateStoreApprovalRequestRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreatePrivateStoreApprovalRequestResponse>,
+  input: __S(291, __c36, 3) as any as S.Schema<CreatePrivateStoreApprovalRequestRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<CreatePrivateStoreApprovalRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,8 @@ export const DeletePrivateStore: API.OperationMethod<
   DeletePrivateStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeletePrivateStoreRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeletePrivateStoreResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeletePrivateStoreRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<DeletePrivateStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1413,8 +1413,8 @@ export const DeletePrivateStoreCollection: API.OperationMethod<
   DeletePrivateStoreCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeletePrivateStoreCollectionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePrivateStoreCollectionResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeletePrivateStoreCollectionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeletePrivateStoreCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1428,8 +1428,8 @@ export const DeletePrivateStoreCollectionOffer: API.OperationMethod<
   DeletePrivateStoreCollectionOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeletePrivateStoreCollectionOfferRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePrivateStoreCollectionOfferResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DeletePrivateStoreCollectionOfferRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeletePrivateStoreCollectionOfferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1443,8 @@ export const FetchPrivateStoreAllSubscriptionsInTenant: API.OperationMethod<
   FetchPrivateStoreAllSubscriptionsInTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<FetchPrivateStoreAllSubscriptionsInTenantRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<SubscriptionsResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<FetchPrivateStoreAllSubscriptionsInTenantRequest>,
+  output: __S(491, __c61, 3) as any as S.Schema<SubscriptionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1458,8 @@ export const GetPrivateStore: API.OperationMethod<
   GetPrivateStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetPrivateStoreRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetPrivateStoreResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<GetPrivateStoreRequest>,
+  output: __S(516, __c64, 4) as any as S.Schema<GetPrivateStoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const GetPrivateStoreAdminRequestApproval: API.OperationMethod<
   GetPrivateStoreAdminRequestApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPrivateStoreAdminRequestApprovalRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetPrivateStoreAdminRequestApprovalResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<GetPrivateStoreAdminRequestApprovalRequest>,
+  output: __S(533, __c66, 5) as any as S.Schema<GetPrivateStoreAdminRequestApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const GetPrivateStoreCollection: API.OperationMethod<
   GetPrivateStoreCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetPrivateStoreCollectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPrivateStoreCollectionResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetPrivateStoreCollectionRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetPrivateStoreCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const GetPrivateStoreCollectionOffer: API.OperationMethod<
   GetPrivateStoreCollectionOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetPrivateStoreCollectionOfferRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetPrivateStoreCollectionOfferResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetPrivateStoreCollectionOfferRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetPrivateStoreCollectionOfferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const GetPrivateStoreRequestApproval: API.OperationMethod<
   GetPrivateStoreRequestApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetPrivateStoreRequestApprovalRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetPrivateStoreRequestApprovalResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetPrivateStoreRequestApprovalRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<GetPrivateStoreRequestApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<OperationListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const ListPrivateStore: API.OperationMethod<
   ListPrivateStoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListPrivateStoreRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PrivateStoreList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListPrivateStoreRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<PrivateStoreList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const ListPrivateStoreAdminRequestApprovals: API.OperationMethod<
   ListPrivateStoreAdminRequestApprovalsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListPrivateStoreAdminRequestApprovalsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AdminRequestApprovalsList>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListPrivateStoreAdminRequestApprovalsRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<AdminRequestApprovalsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const ListPrivateStoreCollection: API.OperationMethod<
   ListPrivateStoreCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPrivateStoreCollectionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<CollectionsList>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListPrivateStoreCollectionRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<CollectionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1593,8 @@ export const ListPrivateStoreCollectionOffer: API.OperationMethod<
   ListPrivateStoreCollectionOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListPrivateStoreCollectionOfferRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<OfferListResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListPrivateStoreCollectionOfferRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<OfferListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const ListPrivateStoreCollectionOfferByContexts: API.OperationMethod<
   ListPrivateStoreCollectionOfferByContextsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListPrivateStoreCollectionOfferByContextsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<CollectionOffersByContextList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListPrivateStoreCollectionOfferByContextsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<CollectionOffersByContextList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1623,8 @@ export const ListPrivateStoreNewPlansNotifications: API.OperationMethod<
   ListPrivateStoreNewPlansNotificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListPrivateStoreNewPlansNotificationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<NewPlansNotificationsList>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListPrivateStoreNewPlansNotificationsRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<NewPlansNotificationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const ListPrivateStoreSubscriptionsContext: API.OperationMethod<
   ListPrivateStoreSubscriptionsContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListPrivateStoreSubscriptionsContextRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<SubscriptionsContextList>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListPrivateStoreSubscriptionsContextRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<SubscriptionsContextList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const PostPrivateStoreCollection: API.OperationMethod<
   PostPrivateStoreCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<PostPrivateStoreCollectionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PostPrivateStoreCollectionResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<PostPrivateStoreCollectionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PostPrivateStoreCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const PostPrivateStoreCollectionOffer: API.OperationMethod<
   PostPrivateStoreCollectionOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PostPrivateStoreCollectionOfferRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PostPrivateStoreCollectionOfferResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<PostPrivateStoreCollectionOfferRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PostPrivateStoreCollectionOfferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1683,12 @@ export const PrivateStoreAnyExistingOffersInTheCollections: API.OperationMethod<
   PrivateStoreAnyExistingOffersInTheCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<PrivateStoreAnyExistingOffersInTheCollectionsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AnyExistingOffersInTheCollectionsResponse>,
+  input: __S(
+    232,
+    __c29,
+    0,
+  ) as any as S.Schema<PrivateStoreAnyExistingOffersInTheCollectionsRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<AnyExistingOffersInTheCollectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1702,8 @@ export const PrivateStoreBillingAccounts: API.OperationMethod<
   PrivateStoreBillingAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PrivateStoreBillingAccountsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<BillingAccountsResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<PrivateStoreBillingAccountsRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<BillingAccountsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1717,8 @@ export const PrivateStoreCollectionCreateOrUpdate: API.OperationMethod<
   PrivateStoreCollectionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<PrivateStoreCollectionCreateOrUpdateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PrivateStoreCollectionCreateOrUpdateResponse>,
+  input: __S(249, __c31, 1) as any as S.Schema<PrivateStoreCollectionCreateOrUpdateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<PrivateStoreCollectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1732,8 @@ export const PrivateStoreCollectionDisableApproveAllItems: API.OperationMethod<
   PrivateStoreCollectionDisableApproveAllItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<PrivateStoreCollectionDisableApproveAllItemsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PrivateStoreCollectionDisableApproveAllItemsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<PrivateStoreCollectionDisableApproveAllItemsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<PrivateStoreCollectionDisableApproveAllItemsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1747,8 @@ export const PrivateStoreCollectionOfferContextsView: API.OperationMethod<
   PrivateStoreCollectionOfferContextsViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PrivateStoreCollectionOfferContextsViewRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<PrivateStoreCollectionOfferContextsViewResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<PrivateStoreCollectionOfferContextsViewRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PrivateStoreCollectionOfferContextsViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1762,8 @@ export const PrivateStoreCollectionOfferCreateOrUpdate: API.OperationMethod<
   PrivateStoreCollectionOfferCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<PrivateStoreCollectionOfferCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<PrivateStoreCollectionOfferCreateOrUpdateResponse>,
+  input: __S(275, __c34, 3) as any as S.Schema<PrivateStoreCollectionOfferCreateOrUpdateRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PrivateStoreCollectionOfferCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1774,11 +1778,11 @@ export const PrivateStoreCollectionsToSubscriptionsMapping: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    101,
-    __c12,
-    5,
+    280,
+    __c35,
+    0,
   ) as any as S.Schema<PrivateStoreCollectionsToSubscriptionsMappingRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<CollectionsToSubscriptionsMappingResponse>,
+  output: __S(283, __c35, 3) as any as S.Schema<CollectionsToSubscriptionsMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1792,8 +1796,8 @@ export const PrivateStoreCreateOrUpdate: API.OperationMethod<
   PrivateStoreCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<PrivateStoreCreateOrUpdateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PrivateStoreCreateOrUpdateResponse>,
+  input: __S(324, __c40, 4) as any as S.Schema<PrivateStoreCreateOrUpdateRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PrivateStoreCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1807,8 +1811,8 @@ export const PrivateStoreGetApprovalRequestsList: API.OperationMethod<
   PrivateStoreGetApprovalRequestsListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<PrivateStoreGetApprovalRequestsListRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<RequestApprovalsList>,
+  input: __S(328, __c41, 0) as any as S.Schema<PrivateStoreGetApprovalRequestsListRequest>,
+  output: __S(331, __c41, 3) as any as S.Schema<RequestApprovalsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1823,11 +1827,11 @@ export const PrivateStoreListStopSellOffersPlansNotifications: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    115,
-    __c14,
-    3,
+    337,
+    __c42,
+    1,
   ) as any as S.Schema<PrivateStoreListStopSellOffersPlansNotificationsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<StopSellOffersPlansNotificationsList>,
+  output: __S(340, __c42, 4) as any as S.Schema<StopSellOffersPlansNotificationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1845,8 @@ export const PrivateStoreQueryApprovedPlans: API.OperationMethod<
   PrivateStoreQueryApprovedPlansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<PrivateStoreQueryApprovedPlansRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<QueryApprovedPlansResponse>,
+  input: __S(345, __c43, 1) as any as S.Schema<PrivateStoreQueryApprovedPlansRequest>,
+  output: __S(348, __c43, 4) as any as S.Schema<QueryApprovedPlansResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1860,8 @@ export const PrivateStoreQueryNotificationsState: API.OperationMethod<
   PrivateStoreQueryNotificationsStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<PrivateStoreQueryNotificationsStateRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<PrivateStoreNotificationsState>,
+  input: __S(352, __c44, 0) as any as S.Schema<PrivateStoreQueryNotificationsStateRequest>,
+  output: __S(357, __c44, 5) as any as S.Schema<PrivateStoreNotificationsState>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1875,8 @@ export const PrivateStoreQueryOffers: API.OperationMethod<
   PrivateStoreQueryOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<PrivateStoreQueryOffersRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<QueryOffers>,
+  input: __S(360, __c45, 0) as any as S.Schema<PrivateStoreQueryOffersRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<QueryOffers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1890,8 @@ export const PrivateStoreQueryRequestApproval: API.OperationMethod<
   PrivateStoreQueryRequestApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<PrivateStoreQueryRequestApprovalRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<QueryRequestApproval>,
+  input: __S(377, __c47, 1) as any as S.Schema<PrivateStoreQueryRequestApprovalRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<QueryRequestApproval>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1905,8 @@ export const PrivateStoreQueryUserOffers: API.OperationMethod<
   PrivateStoreQueryUserOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<PrivateStoreQueryUserOffersRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<QueryOffers>,
+  input: __S(385, __c48, 1) as any as S.Schema<PrivateStoreQueryUserOffersRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<QueryOffers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1920,8 @@ export const PrivateStoreWithdrawPlan: API.OperationMethod<
   PrivateStoreWithdrawPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<PrivateStoreWithdrawPlanRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PrivateStoreWithdrawPlanResponse>,
+  input: __S(393, __c49, 1) as any as S.Schema<PrivateStoreWithdrawPlanRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PrivateStoreWithdrawPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1935,8 @@ export const QueryRules: API.OperationMethod<
   QueryRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<QueryRulesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<RuleListResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<QueryRulesRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<RuleListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1950,8 @@ export const QueryUserRules: API.OperationMethod<
   QueryUserRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<QueryUserRulesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<RuleListResponse>,
+  input: __S(433, __c54, 1) as any as S.Schema<QueryUserRulesRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<RuleListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1965,8 @@ export const SetCollectionRules: API.OperationMethod<
   SetCollectionRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<SetCollectionRulesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SetCollectionRulesResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<SetCollectionRulesRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<SetCollectionRulesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1980,8 @@ export const TransferPrivateStoreCollectionOffers: API.OperationMethod<
   TransferPrivateStoreCollectionOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<TransferPrivateStoreCollectionOffersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<TransferOffersResponse>,
+  input: __S(449, __c56, 1) as any as S.Schema<TransferPrivateStoreCollectionOffersRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<TransferOffersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,8 +1995,8 @@ export const UpdatePrivateStoreAdminRequestApproval: API.OperationMethod<
   UpdatePrivateStoreAdminRequestApprovalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdatePrivateStoreAdminRequestApprovalRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdatePrivateStoreAdminRequestApprovalResponse>,
+  input: __S(457, __c57, 1) as any as S.Schema<UpdatePrivateStoreAdminRequestApprovalRequest>,
+  output: __S(533, __c66, 5) as any as S.Schema<UpdatePrivateStoreAdminRequestApprovalResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2007,14 +2011,14 @@ export const UpsertPrivateStoreCollectionOfferOfferWithMultiContext: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    152,
-    __c19,
-    0,
+    467,
+    __c58,
+    3,
   ) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest>,
   output: __S(
-    153,
-    __c19,
-    1,
+    468,
+    __c58,
+    4,
   ) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2025,25 +2029,23 @@ export const UpsertPrivateStoreCollectionOfferOfferWithMultiContext: API.Operati
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           acknowledge: S.optional(S.Boolean),
           dismiss: S.optional(S.Boolean),
           removeOffer: S.optional(S.Boolean),
-          addPlans: S.optional(__S(0, __c0, 0)),
-          removePlans: S.optional(__S(0, __c0, 0)),
+          addPlans: S.optional(__S(8, __c1, 0)),
+          removePlans: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AcknowledgeOfferNotificationDetails",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           offerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2055,11 +2057,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcknowledgePrivateStoreOfferNotificationRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AcknowledgePrivateStoreOfferNotificationResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2075,7 +2091,61 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApprovePrivateStoreCollectionAllItemsRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionId: S.optional(S.String),
+          collectionName: S.optional(S.String),
+          claim: S.optional(S.String),
+          allSubscriptions: S.optional(S.Boolean),
+          approveAllItems: S.optional(S.Boolean),
+          approveAllItemsModifiedAt: S.optional(S.String),
+          subscriptionsList: S.optional(__S(8, __c1, 0)),
+          enabled: S.optional(S.Boolean),
+          numberOfOffers: S.optional(S.Number),
+          appliedRules: S.optional(__S(42, __c5, 2)),
+        }),
+      ).annotate({ identifier: "CollectionProperties" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({ identifier: "Rule" });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "ApprovePrivateStoreCollectionAllItemsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2086,393 +2156,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Rule" });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collectionId: S.optional(S.String),
-          collectionName: S.optional(S.String),
-          claim: S.optional(S.String),
-          allSubscriptions: S.optional(S.Boolean),
-          approveAllItems: S.optional(S.Boolean),
-          approveAllItemsModifiedAt: S.optional(S.String),
-          subscriptionsList: S.optional(__S(0, __c0, 0)),
-          enabled: S.optional(S.Boolean),
-          numberOfOffers: S.optional(S.Number),
-          appliedRules: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "CollectionProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ApprovePrivateStoreCollectionAllItemsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collectionIds: S.optional(__S(0, __c0, 0)),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkCollectionsDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkPrivateStoreCollectionsActionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collectionName: S.optional(S.String),
-          collectionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CollectionsDetails" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          succeeded: S.optional(__S(14, __c1, 6)),
-          failed: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "BulkCollectionsResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.String),
-          justification: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          subscriptionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanDetailsInput" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          offerId: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          plansDetails: S.optional(__S(17, __c2, 1)),
-          messageCode: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RequestApprovalPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-          requestApprovalId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePrivateStoreApprovalRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.String),
-          status: S.optional(S.String),
-          requestDate: S.optional(S.Unknown),
-          justification: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          subscriptionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanDetails" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          offerId: S.optional(S.String),
-          offerDisplayName: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          plansDetails: S.optional(__S(21, __c2, 5)),
-          isClosed: S.optional(S.Boolean),
-          messageCode: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RequestApprovalProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "CreatePrivateStoreApprovalRequestResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateStoreRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateStoreResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-          collectionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateStoreCollectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-          collectionId: S.String.pipe(T.Label()),
-          offerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateStoreCollectionOfferRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchPrivateStoreAllSubscriptionsInTenantRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(30, __c3, 6)),
-          skipToken: S.optional(S.String),
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SubscriptionsResponse" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPrivateStoreRequest" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          emailAddress: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Recipient" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recipients: S.optional(__S(35, __c4, 3)),
-          sendToAllMarketplaceAdmins: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "NotificationsSettingsProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(S.String),
-          privateStoreId: S.optional(S.String),
-          eTag: S.optional(S.String),
-          privateStoreName: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          isGov: S.optional(S.Boolean),
-          collectionIds: S.optional(__S(0, __c0, 0)),
-          branding: S.optional(__S(33, __c4, 1)),
-          notificationsSettings: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "PrivateStoreProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "GetPrivateStoreResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          privateStoreId: S.String.pipe(T.Label()),
-          adminRequestApprovalId: S.String.pipe(T.Label()),
-          publisherId: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateStoreAdminRequestApprovalRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(S.String),
-          date: S.optional(S.String),
-          justification: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          subscriptionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserRequestDetails" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          planId: S.optional(S.String),
-          planDisplayName: S.optional(S.String),
-          requesters: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "PlanRequesterDetails" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          offerId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          adminAction: S.optional(S.String),
-          approvedPlans: S.optional(__S(0, __c0, 0)),
-          comment: S.optional(S.String),
-          administrator: S.optional(S.String),
-          plans: S.optional(__S(43, __c5, 3)),
-          collectionIds: S.optional(__S(0, __c0, 0)),
-          icon: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdminRequestApprovalProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateStoreAdminRequestApprovalResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2488,7 +2176,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateStoreCollectionRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2507,7 +2199,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2522,7 +2214,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2533,26 +2225,34 @@ function __c6(j: number): any {
           privateStoreId: S.optional(S.String),
           createdAt: S.optional(S.String),
           modifiedAt: S.optional(S.String),
-          specificPlanIdsLimitation: S.optional(__S(0, __c0, 0)),
+          specificPlanIdsLimitation: S.optional(__S(8, __c1, 0)),
           updateSuppressedDueIdempotence: S.optional(S.Boolean),
-          iconFileUris: S.optional(__S(33, __c4, 1)),
+          iconFileUris: S.optional(__S(504, __c63, 0)),
           isStopSell: S.optional(S.Boolean),
-          plans: S.optional(__S(49, __c6, 1)),
+          plans: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "OfferProperties" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(50, __c6, 2)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "GetPrivateStoreCollectionOfferResponse",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2568,7 +2268,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetPrivateStoreRequestApprovalRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2579,7 +2283,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2588,31 +2292,31 @@ function __c6(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "SingleOperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(54, __c6, 6)),
+          display: S.optional(__S(105, __c13, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "SingleOperation" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(56, __c7, 0)),
+          value: S.optional(__S(107, __c13, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           use_cache: S.optional(S.String.pipe(T.Query("use-cache"))),
@@ -2625,16 +2329,20 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPrivateStoreRequest" });
-    case 3:
-      return S.Array(__S(38, __c4, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(516, __c64, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(59, __c7, 3),
+          value: __S(113, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateStoreList" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2649,12 +2357,12 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPrivateStoreAdminRequestApprovalsRequest",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(533, __c66, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(62, __c7, 6)),
+          value: S.optional(__S(121, __c15, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2662,7 +2370,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2685,20 +2393,24 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "Collection" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(129, __c16, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66, __c8, 2)),
+          value: S.optional(__S(130, __c16, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectionsList" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2714,43 +2426,35 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListPrivateStoreCollectionOfferRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(50, __c6, 2)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({ identifier: "Offer" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(70, __c8, 6),
+          value: __S(138, __c17, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferListResponse" });
   }
 }
-function __c9(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "CollectionOffersByAllContextsProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2762,37 +2466,57 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListPrivateStoreCollectionOfferByContextsRequest",
       });
-    case 2:
-      return S.Array(__S(50, __c6, 2));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
+          value: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({
         identifier: "CollectionOffersByContextOffers",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          offers: S.optional(__S(75, __c9, 3)),
+          offers: S.optional(__S(145, __c18, 1)),
         }),
       ).annotate({
         identifier: "CollectionOffersByContext",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(146, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(77, __c9, 5)),
+          value: S.optional(__S(147, __c18, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CollectionOffersByContextList",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "CollectionOffersByAllContextsProperties",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(82, __c10, 2));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2807,9 +2531,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListPrivateStoreNewPlansNotificationsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          newPlansNotifications: S.optional(__S(185, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "NewPlansNotificationsList",
+      });
   }
 }
-function __c10(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2819,8 +2551,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "PlanNotificationDetails" });
     case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+      return S.Array(__S(176, __c22, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
@@ -2828,20 +2564,63 @@ function __c10(j: number): any {
           isFuturePlansEnabled: S.optional(S.Boolean),
           messageCode: S.optional(S.Number),
           icon: S.optional(S.String),
-          plans: S.optional(__S(81, __c10, 1)),
+          plans: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "NewNotifications" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          newPlansNotifications: S.optional(__S(83, __c10, 3)),
+          collectionIds: S.optional(__S(8, __c1, 0)),
+          action: S.optional(S.String),
         }),
+      ).annotate({ identifier: "BulkCollectionsDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(192, __c24, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/bulkCollectionsAction",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
       ).annotate({
-        identifier: "NewPlansNotificationsList",
+        identifier: "BulkPrivateStoreCollectionsActionRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collectionName: S.optional(S.String),
+          collectionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CollectionsDetails" });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          succeeded: S.optional(__S(201, __c25, 1)),
+          failed: S.optional(__S(201, __c25, 1)),
+        }),
+      ).annotate({ identifier: "BulkCollectionsResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2856,13 +2635,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateStoreSubscriptionsContextRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionsIds: S.optional(__S(0, __c0, 0)),
+          subscriptionsIds: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "SubscriptionsContextList" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2881,7 +2664,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2901,7 +2684,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PostPrivateStoreCollectionOfferRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2916,7 +2703,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PrivateStoreAnyExistingOffersInTheCollectionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Boolean),
@@ -2924,7 +2711,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AnyExistingOffersInTheCollectionsResponse",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2939,30 +2730,34 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PrivateStoreBillingAccountsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          billingAccounts: S.optional(__S(0, __c0, 0)),
+          billingAccounts: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "BillingAccountsResponse" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.optional(S.String),
           claim: S.optional(S.String),
           allSubscriptions: S.optional(S.Boolean),
-          subscriptionsList: S.optional(__S(0, __c0, 0)),
+          subscriptionsList: S.optional(__S(8, __c1, 0)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "CollectionPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(93, __c11, 5)),
+          properties: S.optional(__S(248, __c31, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2974,7 +2769,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PrivateStoreCollectionCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -2992,7 +2791,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3000,7 +2799,7 @@ function __c12(j: number): any {
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
           offerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3012,31 +2811,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PrivateStoreCollectionOfferContextsViewRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlanInput" });
+    case 1:
+      return S.Array(__S(272, __c34, 0));
     case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           eTag: S.optional(S.String),
-          specificPlanIdsLimitation: S.optional(__S(0, __c0, 0)),
+          specificPlanIdsLimitation: S.optional(__S(8, __c1, 0)),
           updateSuppressedDueIdempotence: S.optional(S.Boolean),
-          iconFileUris: S.optional(__S(33, __c4, 1)),
-          plans: S.optional(__S(98, __c12, 2)),
+          iconFileUris: S.optional(__S(504, __c63, 0)),
+          plans: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "OfferPropertiesInput" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
           offerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(99, __c12, 3)),
+          properties: S.optional(__S(274, __c34, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3048,11 +2851,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PrivateStoreCollectionOfferCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3064,47 +2871,140 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PrivateStoreCollectionsToSubscriptionsMappingRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           collectionName: S.optional(S.String),
-          subscriptions: S.optional(__S(0, __c0, 0)),
+          subscriptions: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CollectionsSubscriptionsMappingDetails",
       });
-    case 7:
-      return S.Record(S.String, __S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Record(S.String, __S(281, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(103, __c12, 7)),
+          details: S.optional(__S(282, __c35, 2)),
         }),
       ).annotate({
         identifier: "CollectionsToSubscriptionsMappingResponse",
       });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.String),
+          justification: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          subscriptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlanDetailsInput" });
     case 1:
+      return S.Array(__S(288, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          offerId: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          plansDetails: S.optional(__S(289, __c36, 1)),
+          messageCode: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RequestApprovalPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          requestApprovalId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(290, __c36, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/requestApprovals/{requestApprovalId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePrivateStoreApprovalRequestRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(305, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "CreatePrivateStoreApprovalRequestResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(312, __c39, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          offerId: S.optional(S.String),
+          offerDisplayName: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          plansDetails: S.optional(__S(304, __c38, 0)),
+          isClosed: S.optional(S.Boolean),
+          messageCode: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RequestApprovalProperties",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.String),
+          status: S.optional(S.String),
+          requestDate: S.optional(S.Unknown),
+          justification: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          subscriptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlanDetails" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecipientInput" });
+    case 1:
+      return S.Array(__S(320, __c40, 0));
     case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          recipients: S.optional(__S(106, __c13, 2)),
+          recipients: S.optional(__S(321, __c40, 1)),
           sendToAllMarketplaceAdmins: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "NotificationsSettingsPropertiesInput",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           availability: S.optional(S.String),
@@ -3112,17 +3012,17 @@ function __c13(j: number): any {
           privateStoreName: S.optional(S.String),
           tenantId: S.optional(S.String),
           isGov: S.optional(S.Boolean),
-          branding: S.optional(__S(33, __c4, 1)),
-          notificationsSettings: S.optional(__S(107, __c13, 3)),
+          branding: S.optional(__S(504, __c63, 0)),
+          notificationsSettings: S.optional(__S(322, __c40, 2)),
         }),
       ).annotate({
         identifier: "PrivateStorePropertiesInput",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(108, __c13, 4)),
+          properties: S.optional(__S(323, __c40, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3134,7 +3034,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PrivateStoreCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -3149,36 +3053,36 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PrivateStoreGetApprovalRequestsListRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(305, __c38, 1)),
         }),
       ).annotate({ identifier: "RequestApprovalResource" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(112, __c14, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestApprovalsList" });
     case 2:
-      return S.Array(S.String);
+      return S.Array(__S(329, __c41, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          value: S.optional(__S(330, __c41, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestApprovalsList" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          subscriptions: S.optional(__S(114, __c14, 2)),
+          subscriptions: S.optional(__S(336, __c42, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3190,7 +3094,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PrivateStoreListStopSellOffersPlansNotificationsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
@@ -3198,40 +3102,40 @@ function __c14(j: number): any {
           isEntire: S.optional(S.Boolean),
           messageCode: S.optional(S.Number),
           icon: S.optional(S.String),
-          plans: S.optional(__S(81, __c10, 1)),
+          plans: S.optional(__S(177, __c22, 1)),
           publicContext: S.optional(S.Boolean),
-          subscriptionsIds: S.optional(__S(114, __c14, 2)),
+          subscriptionsIds: S.optional(__S(336, __c42, 0)),
         }),
       ).annotate({
         identifier: "StopSellOffersPlansNotificationsListProperties",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(338, __c42, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          stopSellNotifications: S.optional(__S(117, __c14, 5)),
+          stopSellNotifications: S.optional(__S(339, __c42, 3)),
         }),
       ).annotate({
         identifier: "StopSellOffersPlansNotificationsList",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          offerId: S.optional(S.String),
-          planIds: S.optional(__S(0, __c0, 0)),
-          subscriptionIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "QueryApprovedPlans" });
   }
 }
-function __c15(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          offerId: S.optional(S.String),
+          planIds: S.optional(__S(8, __c1, 0)),
+          subscriptionIds: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "QueryApprovedPlans" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(344, __c43, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3243,27 +3147,31 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PrivateStoreQueryApprovedPlansRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           planId: S.optional(S.String),
-          subscriptionIds: S.optional(__S(0, __c0, 0)),
+          subscriptionIds: S.optional(__S(8, __c1, 0)),
           allSubscriptions: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "QueryApprovedPlansDetails",
       });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
     case 3:
+      return S.Array(__S(346, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(122, __c15, 2)),
+          details: S.optional(__S(347, __c43, 3)),
         }),
       ).annotate({
         identifier: "QueryApprovedPlansResponse",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -3278,7 +3186,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PrivateStoreQueryNotificationsStateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
@@ -3286,12 +3194,12 @@ function __c15(j: number): any {
           isEntire: S.optional(S.Boolean),
           messageCode: S.optional(S.Number),
           icon: S.optional(S.String),
-          plans: S.optional(__S(81, __c10, 1)),
+          plans: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "StopSellNotifications" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(353, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
@@ -3299,26 +3207,26 @@ function __c15(j: number): any {
           publisherId: S.optional(S.String),
           messageCode: S.optional(S.Number),
           icon: S.optional(S.String),
-          plans: S.optional(__S(81, __c10, 1)),
+          plans: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "RequestApprovalsDetails" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(355, __c44, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          stopSellNotifications: S.optional(__S(126, __c15, 6)),
-          newNotifications: S.optional(__S(83, __c10, 3)),
-          approvalRequests: S.optional(__S(128, __c16, 0)),
+          stopSellNotifications: S.optional(__S(354, __c44, 2)),
+          newNotifications: S.optional(__S(185, __c23, 1)),
+          approvalRequests: S.optional(__S(356, __c44, 4)),
         }),
       ).annotate({
         identifier: "PrivateStoreNotificationsState",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -3333,27 +3241,35 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PrivateStoreQueryOffersRequest",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
+          value: S.optional(__S(160, __c20, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryOffers" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisherId: S.optional(S.String),
-          planIds: S.optional(__S(0, __c0, 0)),
+          planIds: S.optional(__S(8, __c1, 0)),
           subscriptionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestDetails" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           requestApprovalId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(132, __c16, 4)),
+          properties: S.optional(__S(376, __c47, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3365,33 +3281,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PrivateStoreQueryRequestApprovalRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(20, __c2, 4));
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(312, __c39, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           uniqueOfferId: S.optional(S.String),
-          plansDetails: S.optional(__S(134, __c16, 6)),
+          plansDetails: S.optional(__S(378, __c47, 2)),
           etag: S.optional(S.String),
           messageCode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryRequestApproval" });
   }
 }
-function __c17(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          offerIds: S.optional(__S(0, __c0, 0)),
-          subscriptionIds: S.optional(__S(0, __c0, 0)),
+          offerIds: S.optional(__S(8, __c1, 0)),
+          subscriptionIds: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "QueryUserOffersDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(384, __c48, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3403,19 +3319,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateStoreQueryUserOffersRequest",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planId: S.optional(S.String),
           publisherId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WithdrawDetails" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           requestApprovalId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(138, __c17, 2)),
+          properties: S.optional(__S(392, __c49, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3427,7 +3347,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PrivateStoreWithdrawPlanRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
@@ -3441,24 +3365,59 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryRulesRequest" });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(8, __c1, 0)),
+          value: S.optional(__S(42, __c5, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleListResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "QueryUserRulesDetails" });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(142, __c17, 6)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateStoreRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateStoreResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "QueryUserRulesDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(432, __c54, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3470,14 +3429,14 @@ function __c17(j: number): any {
       ).annotate({ identifier: "QueryUserRulesRequest" });
   }
 }
-function __c18(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
-          value: S.optional(__S(8, __c1, 0)),
+          value: S.optional(__S(42, __c5, 2)),
           nextLink: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3490,20 +3449,24 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SetCollectionRulesRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          targetCollections: S.optional(__S(0, __c0, 0)),
+          targetCollections: S.optional(__S(8, __c1, 0)),
           operation: S.optional(S.String),
-          offerIdsList: S.optional(__S(0, __c0, 0)),
+          offerIdsList: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "TransferOffersDetails" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(145, __c18, 1)),
+          properties: S.optional(__S(448, __c56, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3515,26 +3478,30 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "TransferPrivateStoreCollectionOffersRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
           publisherId: S.optional(S.String),
           adminAction: S.optional(S.String),
-          approvedPlans: S.optional(__S(0, __c0, 0)),
+          approvedPlans: S.optional(__S(8, __c1, 0)),
           comment: S.optional(S.String),
           administrator: S.optional(S.String),
-          collectionIds: S.optional(__S(0, __c0, 0)),
+          collectionIds: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "AdminRequestApprovalPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           adminRequestApprovalId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(147, __c18, 3)),
+          properties: S.optional(__S(456, __c57, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3546,36 +3513,36 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateStoreAdminRequestApprovalRequest",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          planIds: S.optional(__S(0, __c0, 0)),
+          planIds: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "ContextAndPlansDetails" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(464, __c58, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
           eTag: S.optional(S.String),
-          plansContext: S.optional(__S(150, __c18, 6)),
+          plansContext: S.optional(__S(465, __c58, 1)),
         }),
       ).annotate({
         identifier: "MultiContextAndPlansProperties",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           privateStoreId: S.String.pipe(T.Label()),
           collectionId: S.String.pipe(T.Label()),
           offerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(151, __c18, 7)),
+          properties: S.optional(__S(466, __c58, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3587,21 +3554,245 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(50, __c6, 2)),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse",
       });
   }
 }
-
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          collectionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateStoreCollectionRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          collectionId: S.String.pipe(T.Label()),
+          offerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateStoreCollectionOfferRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/fetchAllSubscriptionsInTenant",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchPrivateStoreAllSubscriptionsInTenantRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Subscription" });
+    case 2:
+      return S.Array(__S(489, __c61, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(490, __c61, 2)),
+          skipToken: S.optional(S.String),
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SubscriptionsResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPrivateStoreRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          emailAddress: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Recipient" });
+    case 1:
+      return S.Array(__S(512, __c64, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recipients: S.optional(__S(513, __c64, 1)),
+          sendToAllMarketplaceAdmins: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "NotificationsSettingsProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          privateStoreId: S.optional(S.String),
+          eTag: S.optional(S.String),
+          privateStoreName: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          isGov: S.optional(S.Boolean),
+          collectionIds: S.optional(__S(8, __c1, 0)),
+          branding: S.optional(__S(504, __c63, 0)),
+          notificationsSettings: S.optional(__S(514, __c64, 2)),
+        }),
+      ).annotate({ identifier: "PrivateStoreProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(515, __c64, 3)),
+        }),
+      ).annotate({ identifier: "GetPrivateStoreResponse" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateStoreId: S.String.pipe(T.Label()),
+          adminRequestApprovalId: S.String.pipe(T.Label()),
+          publisherId: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/adminRequestApprovals/{adminRequestApprovalId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateStoreAdminRequestApprovalRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(S.String),
+          date: S.optional(S.String),
+          justification: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          subscriptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserRequestDetails" });
+    case 1:
+      return S.Array(__S(528, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          planId: S.optional(S.String),
+          planDisplayName: S.optional(S.String),
+          requesters: S.optional(__S(529, __c66, 1)),
+        }),
+      ).annotate({ identifier: "PlanRequesterDetails" });
+    case 3:
+      return S.Array(__S(530, __c66, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          offerId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          adminAction: S.optional(S.String),
+          approvedPlans: S.optional(__S(8, __c1, 0)),
+          comment: S.optional(S.String),
+          administrator: S.optional(S.String),
+          plans: S.optional(__S(531, __c66, 3)),
+          collectionIds: S.optional(__S(8, __c1, 0)),
+          icon: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdminRequestApprovalProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(532, __c66, 4)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateStoreAdminRequestApprovalResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

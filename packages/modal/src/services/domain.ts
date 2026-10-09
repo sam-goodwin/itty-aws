@@ -57,7 +57,7 @@ export const createDomain: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateDomainResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateDomainResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -70,8 +70,8 @@ export const listDomain: API.OperationMethod<
   ListDomainError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListDomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListDomainResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListDomainRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListDomainResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -85,8 +85,8 @@ export const verifyDomainCertificate: API.OperationMethod<
   VerifyDomainCertificateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<VerifyDomainCertificateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<VerifyDomainCertificateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<VerifyDomainCertificateRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<VerifyDomainCertificateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -106,47 +106,59 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          domainId: S.optional(S.String),
+          dnsRecords: S.optional(__S(5, __c1, 1)),
+        }),
+      ).annotate({ identifier: "CreateDomainResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           type: S.optional(S.String),
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "DNSRecord" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.optional(S.String),
-          dnsRecords: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "CreateDomainResponse" });
-    case 4:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/DomainList", code: 200 }),
         ),
       ).annotate({ identifier: "ListDomainRequest" });
-    case 5:
+    case 1:
+      return S.Array(__S(12, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domains: S.optional(__S(9, __c2, 1)),
+        }),
+      ).annotate({ identifier: "ListDomainResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainId: S.optional(S.String),
           domainName: S.optional(S.String),
           createdAt: S.optional(S.Number),
           certificateStatus: S.optional(S.String),
-          dnsRecords: S.optional(__S(2, __c0, 2)),
+          dnsRecords: S.optional(__S(5, __c1, 1)),
         }),
       ).annotate({ identifier: "Domain" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domains: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ListDomainResponse" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -165,14 +177,13 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(__S(5, __c0, 5)),
+          domain: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({
         identifier: "VerifyDomainCertificateResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

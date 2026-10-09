@@ -723,7 +723,7 @@ export const createTaskInRepo: API.OperationMethod<
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateTaskInRepoRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateTaskInRepoResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateTaskInRepoResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -742,8 +742,8 @@ export const getTaskById: API.OperationMethod<
   GetTaskByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetTaskByIdRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetTaskByIdResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetTaskByIdRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetTaskByIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const getTaskByRepoAndId: API.OperationMethod<
   GetTaskByRepoAndIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetTaskByRepoAndIdRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetTaskByRepoAndIdResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetTaskByRepoAndIdRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetTaskByRepoAndIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -777,8 +777,8 @@ export const listTasks: API.OperationMethod<
   ListTasksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListTasksRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListTasksResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListTasksRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<ListTasksResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const listTasksForRepo: API.OperationMethod<
   ListTasksForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListTasksForRepoRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListTasksForRepoResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<ListTasksForRepoRequest>,
+  output: __S(54, __c6, 6) as any as S.Schema<ListTasksForRepoResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -823,16 +823,6 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateTaskInRepoResponseCreator",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           provider: S.String,
           type: S.String,
           data: S.Unknown,
@@ -840,9 +830,44 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateTaskInRepoResponseArtifactsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.optional(S.String),
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          creator: S.optional(__S(8, __c1, 0)),
+          creator_type: S.optional(S.String),
+          user_collaborators: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
+          state: S.String,
+          session_count: S.optional(S.Number),
+          artifacts: S.optional(__S(2, __c0, 2)),
+          archived_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          created_at: S.String,
+          custom_agent: S.optional(__S(10, __c1, 2)),
+        }),
+      ).annotate({ identifier: "CreateTaskInRepoResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateTaskInRepoResponseCreator",
+      });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -850,38 +875,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateTaskInRepoResponseCustomAgent",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.optional(S.String),
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          creator: S.optional(__S(1, __c0, 1)),
-          creator_type: S.optional(S.String),
-          user_collaborators: S.optional(__S(2, __c0, 2)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
-          state: S.String,
-          session_count: S.optional(S.Number),
-          artifacts: S.optional(__S(4, __c0, 4)),
-          archived_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          created_at: S.String,
-          custom_agent: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "CreateTaskInRepoResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           task_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/agents/tasks/{task_id}", code: 200 })),
       ).annotate({ identifier: "GetTaskByIdRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -891,9 +895,35 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetTaskByIdResponseArtifactsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.optional(S.String),
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          creator: S.optional(__S(8, __c1, 0)),
+          creator_type: S.optional(S.String),
+          user_collaborators: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
+          state: S.String,
+          session_count: S.optional(S.Number),
+          artifacts: S.optional(__S(18, __c2, 2)),
+          archived_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          created_at: S.String,
+          custom_agent: S.optional(__S(10, __c1, 2)),
+          sessions: S.optional(__S(27, __c3, 3)),
+        }),
+      ).annotate({ identifier: "GetTaskByIdResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -902,7 +932,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetTaskByIdResponseSessionsItemUsage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -910,14 +940,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetTaskByIdResponseSessionsItemError",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
-          user: S.optional(__S(1, __c0, 1)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
+          user: S.optional(__S(8, __c1, 0)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
           task_id: S.optional(S.String),
           state: S.String,
           created_at: S.String,
@@ -927,37 +957,19 @@ function __c1(j: number): any {
           head_ref: S.optional(S.String),
           base_ref: S.optional(S.String),
           model: S.optional(S.String),
-          usage: S.optional(__S(10, __c1, 2)),
-          error: S.optional(__S(11, __c1, 3)),
+          usage: S.optional(__S(24, __c3, 0)),
+          error: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "GetTaskByIdResponseSessionsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.optional(S.String),
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          creator: S.optional(__S(1, __c0, 1)),
-          creator_type: S.optional(S.String),
-          user_collaborators: S.optional(__S(2, __c0, 2)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
-          state: S.String,
-          session_count: S.optional(S.Number),
-          artifacts: S.optional(__S(9, __c1, 1)),
-          archived_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          created_at: S.String,
-          custom_agent: S.optional(__S(5, __c0, 5)),
-          sessions: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "GetTaskByIdResponse" });
-    case 7:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -969,11 +981,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetTaskByRepoAndIdRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -983,33 +991,37 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetTaskByRepoAndIdResponseArtifactsItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           name: S.optional(S.String),
-          creator: S.optional(__S(1, __c0, 1)),
+          creator: S.optional(__S(8, __c1, 0)),
           creator_type: S.optional(S.String),
-          user_collaborators: S.optional(__S(2, __c0, 2)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
+          user_collaborators: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
           state: S.String,
           session_count: S.optional(S.Number),
-          artifacts: S.optional(__S(17, __c2, 1)),
+          artifacts: S.optional(__S(34, __c4, 2)),
           archived_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
           created_at: S.String,
-          custom_agent: S.optional(__S(5, __c0, 5)),
-          sessions: S.optional(__S(13, __c1, 5)),
+          custom_agent: S.optional(__S(10, __c1, 2)),
+          sessions: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "GetTaskByRepoAndIdResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1021,7 +1033,7 @@ function __c2(j: number): any {
           since: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/agents/tasks", code: 200 })),
       ).annotate({ identifier: "ListTasksRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -1031,48 +1043,48 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListTasksResponseTasksItemArtifactsItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           name: S.optional(S.String),
-          creator: S.optional(__S(1, __c0, 1)),
+          creator: S.optional(__S(8, __c1, 0)),
           creator_type: S.optional(S.String),
-          user_collaborators: S.optional(__S(2, __c0, 2)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
+          user_collaborators: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
           state: S.String,
           session_count: S.optional(S.Number),
-          artifacts: S.optional(__S(21, __c2, 5)),
+          artifacts: S.optional(__S(42, __c5, 2)),
           archived_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
           created_at: S.String,
-          custom_agent: S.optional(__S(5, __c0, 5)),
+          custom_agent: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListTasksResponseTasksItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(43, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          tasks: __S(23, __c2, 7),
+          tasks: __S(44, __c5, 4),
           total_active_count: S.optional(S.Number),
           total_archived_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListTasksResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1084,10 +1096,10 @@ function __c3(j: number): any {
           state: S.optional(S.String.pipe(T.Query())),
           is_archived: S.optional(S.Boolean.pipe(T.Query())),
           since: S.optional(S.String.pipe(T.Query())),
-          creator_id: S.optional(__S(25, __c3, 1).pipe(T.Query())),
+          creator_id: S.optional(__S(48, __c6, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/agents/repos/{owner}/{repo}/tasks", code: 200 })),
       ).annotate({ identifier: "ListTasksForRepoRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -1097,44 +1109,43 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListTasksForRepoResponseTasksItemArtifactsItem",
       });
+    case 3:
+      return S.Array(__S(50, __c6, 2));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           name: S.optional(S.String),
-          creator: S.optional(__S(1, __c0, 1)),
+          creator: S.optional(__S(8, __c1, 0)),
           creator_type: S.optional(S.String),
-          user_collaborators: S.optional(__S(2, __c0, 2)),
-          owner: S.optional(__S(1, __c0, 1)),
-          repository: S.optional(__S(1, __c0, 1)),
+          user_collaborators: S.optional(__S(9, __c1, 1)),
+          owner: S.optional(__S(8, __c1, 0)),
+          repository: S.optional(__S(8, __c1, 0)),
           state: S.String,
           session_count: S.optional(S.Number),
-          artifacts: S.optional(__S(28, __c3, 4)),
+          artifacts: S.optional(__S(51, __c6, 3)),
           archived_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
           created_at: S.String,
-          custom_agent: S.optional(__S(5, __c0, 5)),
+          custom_agent: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListTasksForRepoResponseTasksItem",
       });
+    case 5:
+      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          tasks: __S(30, __c3, 6),
+          tasks: __S(53, __c6, 5),
           total_active_count: S.optional(S.Number),
           total_archived_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListTasksForRepoResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

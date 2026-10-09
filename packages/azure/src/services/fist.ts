@@ -1047,8 +1047,8 @@ export const CreateFirmware: API.OperationMethod<
   CreateFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateFirmwareRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateFirmwareResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFirmwareRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<CreateFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1062,8 @@ export const CreateWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateWorkspaceResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateWorkspaceRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<CreateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1077,8 +1077,8 @@ export const DeleteFirmware: API.OperationMethod<
   DeleteFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteFirmwareRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteFirmwareResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteFirmwareRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1092,8 +1092,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1107,8 +1107,8 @@ export const GetFirmware: API.OperationMethod<
   GetFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetFirmwareRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetFirmwareResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetFirmwareRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<GetFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1122,8 +1122,8 @@ export const GetSummary: API.OperationMethod<
   GetSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetSummaryRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetSummaryResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetSummaryRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetSummaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1137,8 +1137,8 @@ export const GetUsageMetrics: API.OperationMethod<
   GetUsageMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetUsageMetricsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetUsageMetricsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetUsageMetricsRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<GetUsageMetricsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1152,8 +1152,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1167,8 @@ export const ListBinaryHardeningByFirmware: API.OperationMethod<
   ListBinaryHardeningByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListBinaryHardeningByFirmwareRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<BinaryHardeningResourceListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListBinaryHardeningByFirmwareRequest>,
+  output: __S(469, __c29, 5) as any as S.Schema<BinaryHardeningResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1182,8 +1182,8 @@ export const ListCryptoCertificateByFirmware: API.OperationMethod<
   ListCryptoCertificateByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListCryptoCertificateByFirmwareRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CryptoCertificateResourceListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListCryptoCertificateByFirmwareRequest>,
+  output: __S(486, __c30, 6) as any as S.Schema<CryptoCertificateResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1197,8 @@ export const ListCryptoKeyByFirmware: API.OperationMethod<
   ListCryptoKeyByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListCryptoKeyByFirmwareRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CryptoKeyResourceListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListCryptoKeyByFirmwareRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<CryptoKeyResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1212,8 @@ export const ListCveByFirmware: API.OperationMethod<
   ListCveByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListCveByFirmwareRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CveResourceListResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListCveByFirmwareRequest>,
+  output: __S(137, __c8, 9) as any as S.Schema<CveResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1227,8 +1227,8 @@ export const ListFirmwareByWorkspace: API.OperationMethod<
   ListFirmwareByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListFirmwareByWorkspaceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<FirmwareListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListFirmwareByWorkspaceRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<FirmwareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1242,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1257,8 +1257,8 @@ export const ListPasswordHashByFirmware: API.OperationMethod<
   ListPasswordHashByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListPasswordHashByFirmwareRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<PasswordHashResourceListResult>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListPasswordHashByFirmwareRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<PasswordHashResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1272,8 +1272,8 @@ export const ListSbomComponentByFirmware: API.OperationMethod<
   ListSbomComponentByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListSbomComponentByFirmwareRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<SbomComponentResourceListResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListSbomComponentByFirmwareRequest>,
+  output: __S(196, __c12, 4) as any as S.Schema<SbomComponentResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1287,8 +1287,8 @@ export const ListSummaryByFirmware: API.OperationMethod<
   ListSummaryByFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListSummaryByFirmwareRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<SummaryResourceListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListSummaryByFirmwareRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<SummaryResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1302,8 +1302,8 @@ export const ListUsageMetricsByWorkspace: API.OperationMethod<
   ListUsageMetricsByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListUsageMetricsByWorkspaceRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UsageMetricListResult>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListUsageMetricsByWorkspaceRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<UsageMetricListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1317,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<WorkspaceListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1332,8 +1332,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<WorkspaceListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1347,8 +1347,8 @@ export const UpdateFirmware: API.OperationMethod<
   UpdateFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateFirmwareRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateFirmwareResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<UpdateFirmwareRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<UpdateFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1362,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1377,8 +1377,8 @@ export const WorkspacesGenerateUploadUrl: API.OperationMethod<
   WorkspacesGenerateUploadUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<WorkspacesGenerateUploadUrlRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<UrlToken>,
+  input: __S(336, __c21, 0) as any as S.Schema<WorkspacesGenerateUploadUrlRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<UrlToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1390,33 +1390,11 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorCode: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StatusMessage" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fileName: S.optional(S.String),
-          vendor: S.optional(S.String),
-          model: S.optional(S.String),
-          version: S.optional(S.String),
-          description: S.optional(S.String),
-          fileSize: S.optional(S.Number),
-          status: S.optional(S.String),
-          statusMessages: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "FirmwarePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           firmwareId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1426,7 +1404,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFirmwareRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1437,7 +1419,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
@@ -1447,30 +1433,83 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           fileSize: S.optional(S.Number),
           status: S.optional(S.String),
-          statusMessages: S.optional(__S(1, __c0, 1)),
+          statusMessages: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({ identifier: "FirmwarePropertiesInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StatusMessage" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fileName: S.optional(S.String),
+          vendor: S.optional(S.String),
+          model: S.optional(S.String),
+          version: S.optional(S.String),
+          description: S.optional(S.String),
+          fileSize: S.optional(S.Number),
+          status: S.optional(S.String),
+          statusMessages: S.optional(__S(49, __c3, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirmwareProperties" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "CreateFirmwareResponse" });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(80, __c5, 0)),
+          sku: S.optional(__S(97, __c6, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "CreateWorkspaceRequest" });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WorkspacePropertiesInput",
       });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1486,336 +1525,27 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(7, __c0, 7)),
-          location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
-          sku: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "CreateWorkspaceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(7, __c0, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          sku: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(98, __c6, 2)),
+          sku: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "CreateWorkspaceResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          firmwareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFirmwareRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          firmwareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "GetFirmwareRequest" });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          firmwareId: S.String.pipe(T.Label()),
-          summaryType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "GetSummaryRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summaryType: S.String,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SummaryResourceProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetSummaryResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "GetUsageMetricsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          monthlyFirmwareUploadCount: S.Number,
-          totalFirmwareCount: S.Number,
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsageMetricProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "GetUsageMetricsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          firmwareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/binaryHardeningResults",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBinaryHardeningByFirmwareRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          noExecute: S.optional(S.Boolean),
-          positionIndependentExecutable: S.optional(S.Boolean),
-          relocationReadOnly: S.optional(S.Boolean),
-          canary: S.optional(S.Boolean),
-          stripped: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BinaryHardeningFeatures" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          binaryHardeningId: S.optional(S.String),
-          securityHardeningFeatures: S.optional(__S(24, __c3, 0)),
-          executableArchitecture: S.optional(S.String),
-          filePath: S.optional(S.String),
-          executableClass: S.optional(S.String),
-          runpath: S.optional(S.String),
-          rpath: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BinaryHardeningResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "BinaryHardeningResource" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(27, __c3, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BinaryHardeningResourceListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          firmwareId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoCertificates",
-            code: 200,
-            apiVersion: "2025-08-02",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCryptoCertificateByFirmwareRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          commonName: S.optional(S.String),
-          organization: S.optional(S.String),
-          organizationalUnit: S.optional(S.String),
-          state: S.optional(S.String),
-          country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CryptoCertificateEntity" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pairedKeyId: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PairedKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cryptoCertId: S.optional(S.String),
-          certificateName: S.optional(S.String),
-          subject: S.optional(__S(30, __c3, 6)),
-          issuer: S.optional(__S(30, __c3, 6)),
-          issuedDate: S.optional(S.String),
-          expirationDate: S.optional(S.String),
-          certificateRole: S.optional(S.String),
-          signatureAlgorithm: S.optional(S.String),
-          certificateKeySize: S.optional(S.Number),
-          certificateKeyAlgorithm: S.optional(S.String),
-          encoding: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          certificateUsage: S.optional(__S(31, __c3, 7)),
-          filePaths: S.optional(__S(32, __c4, 0)),
-          pairedKey: S.optional(__S(33, __c4, 1)),
-          isExpired: S.optional(S.Boolean),
-          isSelfSigned: S.optional(S.Boolean),
-          isWeakSignature: S.optional(S.Boolean),
-          isShortKeySize: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CryptoCertificate" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "CryptoCertificateResource",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(36, __c4, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CryptoCertificateResourceListResult",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1833,46 +1563,46 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListCryptoKeyByFirmwareRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cryptoKeyId: S.optional(S.String),
           keyType: S.optional(S.String),
           cryptoKeySize: S.optional(S.Number),
           keyAlgorithm: S.optional(S.String),
-          usage: S.optional(__S(32, __c4, 0)),
-          filePaths: S.optional(__S(32, __c4, 0)),
-          pairedKey: S.optional(__S(33, __c4, 1)),
+          usage: S.optional(__S(512, __c32, 0)),
+          filePaths: S.optional(__S(512, __c32, 0)),
+          pairedKey: S.optional(__S(496, __c31, 0)),
           isShortKeySize: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CryptoKey" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({ identifier: "CryptoKeyResource" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41, __c5, 1),
+          value: __S(115, __c7, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CryptoKeyResourceListResult",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1888,7 +1618,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCveByFirmwareRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           componentId: S.optional(S.String),
@@ -1896,29 +1626,25 @@ function __c5(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "CveComponent" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           version: S.Number,
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CvssScore" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(130, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "CveLink" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(132, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           cveId: S.optional(S.String),
@@ -1927,39 +1653,43 @@ function __c6(j: number): any {
           componentVersion: S.optional(S.String),
           severity: S.optional(S.String),
           cveName: S.optional(S.String),
-          component: S.optional(__S(44, __c5, 4)),
+          component: S.optional(__S(129, __c8, 1)),
           cvssScore: S.optional(S.String),
           cvssV2Score: S.optional(S.String),
           cvssV3Score: S.optional(S.String),
           cvssVersion: S.optional(S.String),
           effectiveCvssScore: S.optional(S.Number),
           effectiveCvssVersion: S.optional(S.Number),
-          cvssScores: S.optional(__S(46, __c5, 6)),
-          links: S.optional(__S(48, __c6, 0)),
+          cvssScores: S.optional(__S(131, __c8, 3)),
+          links: S.optional(__S(133, __c8, 5)),
           description: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CveResult" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(49, __c6, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(134, __c8, 6)),
         }),
       ).annotate({ identifier: "CveResource" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(135, __c8, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: __S(51, __c6, 3),
+          value: __S(136, __c8, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CveResourceListResult" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1976,18 +1706,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFirmwareByWorkspaceRequest",
       });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(51, __c3, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(54, __c6, 6),
+          value: __S(145, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirmwareListResult" });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2014,21 +1744,25 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(57, __c7, 1)),
+          display: S.optional(__S(161, __c10, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(162, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(59, __c7, 3)),
+          value: S.optional(__S(163, __c10, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2046,7 +1780,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPasswordHashByFirmwareRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           passwordHashId: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -2059,32 +1793,32 @@ function __c7(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PasswordHash" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(62, __c7, 6)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "PasswordHashResource" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64, __c8, 0),
+          value: __S(179, __c11, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PasswordHashResourceListResult",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2102,39 +1836,43 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListSbomComponentByFirmwareRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           componentId: S.optional(S.String),
           componentName: S.optional(S.String),
           version: S.optional(S.String),
           license: S.optional(S.String),
-          filePaths: S.optional(__S(32, __c4, 0)),
+          filePaths: S.optional(__S(512, __c32, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SbomComponent" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(67, __c8, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(193, __c12, 1)),
         }),
       ).annotate({ identifier: "SbomComponentResource" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(194, __c12, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(69, __c8, 5),
+          value: __S(195, __c12, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SbomComponentResourceListResult",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2152,22 +1890,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListSummaryByFirmwareRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(18, __c2, 2));
     case 1:
+      return S.Array(__S(401, __c25, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(72, __c9, 0),
+          value: __S(209, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SummaryResourceListResult",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2184,16 +1922,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListUsageMetricsByWorkspaceRequest",
       });
-    case 3:
-      return S.Array(__S(21, __c2, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(433, __c27, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(75, __c9, 3),
+          value: __S(225, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageMetricListResult" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2209,18 +1951,22 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(12, __c1, 4));
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(99, __c6, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78, __c9, 6),
+          value: __S(256, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
   }
 }
-function __c10(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2237,14 +1983,38 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           firmwareId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFirmwareRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          firmwareId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2254,7 +2024,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFirmwareRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2266,14 +2040,14 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesSkuUpdate",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(82, __c10, 2)),
-          tags: S.optional(__S(7, __c0, 7)),
+          sku: S.optional(__S(320, __c20, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2283,7 +2057,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2301,7 +2079,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WorkspacesGenerateUploadUrlRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -2309,7 +2087,316 @@ function __c10(j: number): any {
       ).annotate({ identifier: "UrlToken" });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkspaceRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          firmwareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "GetFirmwareRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          firmwareId: S.String.pipe(T.Label()),
+          summaryType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryType}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "GetSummaryRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summaryType: S.String,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SummaryResourceProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(400, __c25, 0)),
+        }),
+      ).annotate({ identifier: "GetSummaryResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/usageMetrics/{name}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "GetUsageMetricsRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          monthlyFirmwareUploadCount: S.Number,
+          totalFirmwareCount: S.Number,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageMetricProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({ identifier: "GetUsageMetricsResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({ identifier: "GetWorkspaceRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          firmwareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/binaryHardeningResults",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBinaryHardeningByFirmwareRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          noExecute: S.optional(S.Boolean),
+          positionIndependentExecutable: S.optional(S.Boolean),
+          relocationReadOnly: S.optional(S.Boolean),
+          canary: S.optional(S.Boolean),
+          stripped: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BinaryHardeningFeatures" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          binaryHardeningId: S.optional(S.String),
+          securityHardeningFeatures: S.optional(__S(465, __c29, 1)),
+          executableArchitecture: S.optional(S.String),
+          filePath: S.optional(S.String),
+          executableClass: S.optional(S.String),
+          runpath: S.optional(S.String),
+          rpath: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BinaryHardeningResult" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(466, __c29, 2)),
+        }),
+      ).annotate({ identifier: "BinaryHardeningResource" });
+    case 4:
+      return S.Array(__S(467, __c29, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(468, __c29, 4),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BinaryHardeningResourceListResult",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          firmwareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/cryptoCertificates",
+            code: 200,
+            apiVersion: "2025-08-02",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCryptoCertificateByFirmwareRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commonName: S.optional(S.String),
+          organization: S.optional(S.String),
+          organizationalUnit: S.optional(S.String),
+          state: S.optional(S.String),
+          country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CryptoCertificateEntity" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cryptoCertId: S.optional(S.String),
+          certificateName: S.optional(S.String),
+          subject: S.optional(__S(481, __c30, 1)),
+          issuer: S.optional(__S(481, __c30, 1)),
+          issuedDate: S.optional(S.String),
+          expirationDate: S.optional(S.String),
+          certificateRole: S.optional(S.String),
+          signatureAlgorithm: S.optional(S.String),
+          certificateKeySize: S.optional(S.Number),
+          certificateKeyAlgorithm: S.optional(S.String),
+          encoding: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          certificateUsage: S.optional(__S(482, __c30, 2)),
+          filePaths: S.optional(__S(512, __c32, 0)),
+          pairedKey: S.optional(__S(496, __c31, 0)),
+          isExpired: S.optional(S.Boolean),
+          isSelfSigned: S.optional(S.Boolean),
+          isWeakSignature: S.optional(S.Boolean),
+          isShortKeySize: S.optional(S.Boolean),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CryptoCertificate" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(483, __c30, 3)),
+        }),
+      ).annotate({
+        identifier: "CryptoCertificateResource",
+      });
+    case 5:
+      return S.Array(__S(484, __c30, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(485, __c30, 5),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CryptoCertificateResourceListResult",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pairedKeyId: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PairedKey" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

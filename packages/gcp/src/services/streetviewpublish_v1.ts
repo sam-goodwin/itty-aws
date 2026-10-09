@@ -492,8 +492,8 @@ export const batchDeletePhotos: API.OperationMethod<
   BatchDeletePhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeletePhotosRequest_>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchDeletePhotosResponse>,
+  input: __S(129, __c8, 1) as any as S.Schema<BatchDeletePhotosRequest_>,
+  output: __S(131, __c8, 3) as any as S.Schema<BatchDeletePhotosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const batchGetPhotos: API.OperationMethod<
   BatchGetPhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BatchGetPhotosRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<BatchGetPhotosResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<BatchGetPhotosRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<BatchGetPhotosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -522,8 +522,8 @@ export const batchUpdatePhotos: API.OperationMethod<
   BatchUpdatePhotosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BatchUpdatePhotosRequest_>,
-  output: __S(26, __c3, 2) as any as S.Schema<BatchUpdatePhotosResponse>,
+  input: __S(243, __c15, 3) as any as S.Schema<BatchUpdatePhotosRequest_>,
+  output: __S(244, __c15, 4) as any as S.Schema<BatchUpdatePhotosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -537,8 +537,8 @@ export const createPhoto: API.OperationMethod<
   CreatePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreatePhotoRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Photo>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreatePhotoRequest>,
+  output: __S(232, __c14, 8) as any as S.Schema<Photo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const createPhotoSequence: API.OperationMethod<
   CreatePhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreatePhotoSequenceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
+  input: __S(284, __c17, 12) as any as S.Schema<CreatePhotoSequenceRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -567,8 +567,8 @@ export const deletePhoto: API.OperationMethod<
   DeletePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeletePhotoRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Empty>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeletePhotoRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const deletePhotoSequence: API.OperationMethod<
   DeletePhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeletePhotoSequenceRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeletePhotoSequenceRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export type GetPhotoError = NotFound | Forbidden | GcpOpError;
 /** Gets the metadata of the specified Photo. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. * google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed. */
 export const getPhoto: API.OperationMethod<GetPhotoRequest, Photo, GetPhotoError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(46, __c5, 6) as any as S.Schema<GetPhotoRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<Photo>,
+    input: __S(16, __c1, 0) as any as S.Schema<GetPhotoRequest>,
+    output: __S(232, __c14, 8) as any as S.Schema<Photo>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const getPhotoSequence: API.OperationMethod<
   GetPhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetPhotoSequenceRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetPhotoSequenceRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -624,8 +624,8 @@ export const listPhotos: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhotosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListPhotosRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListPhotosResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListPhotosRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ListPhotosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -641,8 +641,8 @@ export const listPhotoSequences: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPhotoSequencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListPhotoSequencesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListPhotoSequencesResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListPhotoSequencesRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<ListPhotoSequencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -657,8 +657,8 @@ export const startUploadPhoto: API.OperationMethod<
   StartUploadPhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<StartUploadPhotoRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UploadRef>,
+  input: __S(80, __c5, 0) as any as S.Schema<StartUploadPhotoRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UploadRef>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const startUploadPhotoSequence: API.OperationMethod<
   StartUploadPhotoSequenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<StartUploadPhotoSequenceRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UploadRef>,
+  input: __S(96, __c6, 0) as any as S.Schema<StartUploadPhotoSequenceRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<UploadRef>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const updatePhoto: API.OperationMethod<
   UpdatePhotoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdatePhotoRequest_>,
-  output: __S(18, __c2, 2) as any as S.Schema<Photo>,
+  input: __S(112, __c7, 0) as any as S.Schema<UpdatePhotoRequest_>,
+  output: __S(232, __c14, 8) as any as S.Schema<Photo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -703,365 +703,6 @@ export const updatePhoto: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          photoIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchDeletePhotosRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/photos:batchDelete",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeletePhotosRequest_",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchDeletePhotosResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          photoIds: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/photos:batchGet",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "BatchGetPhotosRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhotoId" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          placeId: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Place" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          number: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Level" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          roll: S.optional(S.Number),
-          gpsRecordTimestampUnixEpoch: S.optional(S.String),
-          level: S.optional(__S(12, __c1, 4)),
-          latLngPair: S.optional(__S(13, __c1, 5)),
-          heading: S.optional(S.Number),
-          accuracyMeters: S.optional(S.Number),
-          pitch: S.optional(S.Number),
-          altitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Pose" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Connection" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uploadUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UploadRef" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          photoId: S.optional(__S(9, __c1, 1)),
-          viewCount: S.optional(S.String),
-          places: S.optional(__S(11, __c1, 3)),
-          mapsPublishStatus: S.optional(S.String),
-          pose: S.optional(__S(14, __c1, 6)),
-          connections: S.optional(__S(16, __c2, 0)),
-          transferStatus: S.optional(S.String),
-          thumbnailUrl: S.optional(S.String),
-          captureTime: S.optional(S.String),
-          downloadUrl: S.optional(S.String),
-          uploadReference: S.optional(__S(17, __c2, 1)),
-          uploadTime: S.optional(S.String),
-          shareLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Photo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          photo: S.optional(__S(18, __c2, 2)),
-          status: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "PhotoResponse" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "BatchGetPhotosResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          photo: S.optional(__S(18, __c2, 2)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdatePhotoRequest" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updatePhotoRequests: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "BatchUpdatePhotosRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/photos:batchUpdate",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdatePhotosRequest_",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdatePhotosResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/photo",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreatePhotoRequest" });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
-      return S.Array(__S(18, __c2, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gpsStartTime: S.optional(S.String),
-          gpsEndTime: S.optional(S.String),
-          videoEndTime: S.optional(S.String),
-          videoStartTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NoOverlapGpsFailureDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NotOutdoorsFailureDetails",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gpsPointsFound: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "InsufficientGpsFailureDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          gapDuration: S.optional(S.String),
-          gapStartTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GpsDataGapFailureDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gapStartTime: S.optional(S.String),
-          gapDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImuDataGapFailureDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          noOverlapGpsDetails: S.optional(__S(30, __c3, 6)),
-          notOutdoorsDetails: S.optional(__S(31, __c3, 7)),
-          insufficientGpsDetails: S.optional(__S(32, __c4, 0)),
-          gpsDataGapDetails: S.optional(__S(33, __c4, 1)),
-          imuDataGapDetails: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "ProcessingFailureDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          southwest: S.optional(__S(13, __c1, 5)),
-          northeast: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "LatLngBounds" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-          z: S.optional(S.Number),
-          captureTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Measurement3d" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accelMpsps: S.optional(__S(38, __c4, 6)),
-          magUt: S.optional(__S(38, __c4, 6)),
-          gyroRps: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "Imu" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          failureReason: S.optional(S.String),
-          gpsSource: S.optional(S.String),
-          rawGpsTimeline: S.optional(__S(28, __c3, 4)),
-          captureTimeOverride: S.optional(S.String),
-          uploadReference: S.optional(__S(17, __c2, 1)),
-          filename: S.optional(S.String),
-          processingState: S.optional(S.String),
-          photos: S.optional(__S(29, __c3, 5)),
-          id: S.optional(S.String),
-          failureDetails: S.optional(__S(35, __c4, 3)),
-          distanceMeters: S.optional(S.Number),
-          sequenceBounds: S.optional(__S(36, __c4, 4)),
-          uploadTime: S.optional(S.String),
-          imu: S.optional(__S(39, __c4, 7)),
-          viewCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhotoSequence" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inputType: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/photoSequence",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePhotoSequenceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          error: S.optional(__S(5, __c0, 5)),
-          response: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          photoId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/photo/{photoId}",
-            baseUrl: "https://streetviewpublish.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePhotoRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           sequenceId: S.String.pipe(T.Label()),
@@ -1075,7 +716,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePhotoSequenceRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1089,7 +734,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPhotoRequest" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1105,7 +754,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetPhotoSequenceRequest" });
   }
 }
-function __c6(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1127,10 +776,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          photos: S.optional(__S(29, __c3, 5)),
+          photos: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "ListPhotosResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1146,21 +799,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListPhotoSequencesRequest",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          photoSequences: S.optional(__S(51, __c6, 3)),
+          photoSequences: S.optional(__S(65, __c4, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPhotoSequencesResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1169,10 +826,14 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartUploadPhotoRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1183,12 +844,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "StartUploadPhotoSequenceRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(232, __c14, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1199,7 +864,401 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdatePhotoRequest_" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          photoIds: S.optional(__S(144, __c9, 0)),
+        }),
+      ).annotate({ identifier: "BatchDeletePhotosRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/photos:batchDelete",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeletePhotosRequest_",
+      });
+    case 2:
+      return S.Array(__S(162, __c10, 2));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(130, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchDeletePhotosResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          photoIds: S.optional(__S(144, __c9, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/photos:batchGet",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "BatchGetPhotosRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({ identifier: "BatchGetPhotosResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          photo: S.optional(__S(232, __c14, 8)),
+          status: S.optional(__S(162, __c10, 2)),
+        }),
+      ).annotate({ identifier: "PhotoResponse" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uploadUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UploadRef" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhotoId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          placeId: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Place" });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          number: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Level" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          roll: S.optional(S.Number),
+          gpsRecordTimestampUnixEpoch: S.optional(S.String),
+          level: S.optional(__S(227, __c14, 3)),
+          latLngPair: S.optional(__S(228, __c14, 4)),
+          heading: S.optional(S.Number),
+          accuracyMeters: S.optional(S.Number),
+          pitch: S.optional(S.Number),
+          altitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Pose" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "Connection" });
+    case 7:
+      return S.Array(__S(230, __c14, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          photoId: S.optional(__S(224, __c14, 0)),
+          viewCount: S.optional(S.String),
+          places: S.optional(__S(226, __c14, 2)),
+          mapsPublishStatus: S.optional(S.String),
+          pose: S.optional(__S(229, __c14, 5)),
+          connections: S.optional(__S(231, __c14, 7)),
+          transferStatus: S.optional(S.String),
+          thumbnailUrl: S.optional(S.String),
+          captureTime: S.optional(S.String),
+          downloadUrl: S.optional(S.String),
+          uploadReference: S.optional(__S(208, __c13, 0)),
+          uploadTime: S.optional(S.String),
+          shareLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Photo" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          photo: S.optional(__S(232, __c14, 8)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdatePhotoRequest" });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updatePhotoRequests: S.optional(__S(241, __c15, 1)),
+        }),
+      ).annotate({ identifier: "BatchUpdatePhotosRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(242, __c15, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/photos:batchUpdate",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdatePhotosRequest_",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdatePhotosResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(232, __c14, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/photo",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreatePhotoRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(229, __c14, 5));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          gpsStartTime: S.optional(S.String),
+          gpsEndTime: S.optional(S.String),
+          videoEndTime: S.optional(S.String),
+          videoStartTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NoOverlapGpsFailureDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NotOutdoorsFailureDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          gpsPointsFound: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "InsufficientGpsFailureDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          gapDuration: S.optional(S.String),
+          gapStartTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GpsDataGapFailureDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          gapStartTime: S.optional(S.String),
+          gapDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImuDataGapFailureDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          noOverlapGpsDetails: S.optional(__S(273, __c17, 1)),
+          notOutdoorsDetails: S.optional(__S(274, __c17, 2)),
+          insufficientGpsDetails: S.optional(__S(275, __c17, 3)),
+          gpsDataGapDetails: S.optional(__S(276, __c17, 4)),
+          imuDataGapDetails: S.optional(__S(277, __c17, 5)),
+        }),
+      ).annotate({ identifier: "ProcessingFailureDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          southwest: S.optional(__S(228, __c14, 4)),
+          northeast: S.optional(__S(228, __c14, 4)),
+        }),
+      ).annotate({ identifier: "LatLngBounds" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+          z: S.optional(S.Number),
+          captureTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Measurement3d" });
+    case 9:
+      return S.Array(__S(280, __c17, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          accelMpsps: S.optional(__S(281, __c17, 9)),
+          magUt: S.optional(__S(281, __c17, 9)),
+          gyroRps: S.optional(__S(281, __c17, 9)),
+        }),
+      ).annotate({ identifier: "Imu" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          failureReason: S.optional(S.String),
+          gpsSource: S.optional(S.String),
+          rawGpsTimeline: S.optional(__S(272, __c17, 0)),
+          captureTimeOverride: S.optional(S.String),
+          uploadReference: S.optional(__S(208, __c13, 0)),
+          filename: S.optional(S.String),
+          processingState: S.optional(S.String),
+          photos: S.optional(__S(304, __c19, 0)),
+          id: S.optional(S.String),
+          failureDetails: S.optional(__S(278, __c17, 6)),
+          distanceMeters: S.optional(S.Number),
+          sequenceBounds: S.optional(__S(279, __c17, 7)),
+          uploadTime: S.optional(S.String),
+          imu: S.optional(__S(282, __c17, 10)),
+          viewCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhotoSequence" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          inputType: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(283, __c17, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/photoSequence",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePhotoSequenceRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(160, __c10, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(162, __c10, 2)),
+          response: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(232, __c14, 8));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          photoId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/photo/{photoId}",
+            baseUrl: "https://streetviewpublish.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePhotoRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

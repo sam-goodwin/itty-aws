@@ -803,8 +803,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const DeleteFileShare: API.OperationMethod<
   DeleteFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteFileShareRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteFileShareResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteFileShareRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const DeleteFileShareSnapshot: API.OperationMethod<
   DeleteFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteFileShareSnapshotRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteFileShareSnapshotResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteFileShareSnapshotRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<DeleteFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -848,8 +848,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const FileSharesCreateOrUpdate: API.OperationMethod<
   FileSharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<FileSharesCreateOrUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<FileSharesCreateOrUpdateResponse>,
+  input: __S(209, __c26, 1) as any as S.Schema<FileSharesCreateOrUpdateRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<FileSharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const FileShareSnapshotCreateOrUpdate: API.OperationMethod<
   FileShareSnapshotCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<FileShareSnapshotCreateOrUpdateRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<FileShareSnapshotCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const GetFileShare: API.OperationMethod<
   GetFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetFileShareRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetFileShareResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetFileShareRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<GetFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const GetFileShareLimits: API.OperationMethod<
   GetFileShareLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetFileShareLimitsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<FileShareLimitsResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetFileShareLimitsRequest>,
+  output: __S(268, __c33, 4) as any as S.Schema<FileShareLimitsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const GetFileShareProvisioningRecommendation: API.OperationMethod<
   GetFileShareProvisioningRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<FileShareProvisioningRecommendationResponse>,
+  input: __S(273, __c34, 1) as any as S.Schema<GetFileShareProvisioningRecommendationRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<FileShareProvisioningRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const GetFileShareSnapshot: API.OperationMethod<
   GetFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetFileShareSnapshotRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetFileShareSnapshotResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetFileShareSnapshotRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const GetFileShareUsageData: API.OperationMethod<
   GetFileShareUsageDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetFileShareUsageDataRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<FileShareUsageDataResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetFileShareUsageDataRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<FileShareUsageDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -968,8 +968,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -998,8 +998,8 @@ export const ListFileShareByParent: API.OperationMethod<
   ListFileShareByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListFileShareByParentRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<FileShareListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListFileShareByParentRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<FileShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1013,8 @@ export const ListFileShareBySubscription: API.OperationMethod<
   ListFileShareBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListFileShareBySubscriptionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<FileShareListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListFileShareBySubscriptionRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<FileShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1028,8 @@ export const ListFileShareSnapshot: API.OperationMethod<
   ListFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListFileShareSnapshotRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<FileShareSnapshotListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListFileShareSnapshotRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<FileShareSnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1043,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(140, __c17, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1058,8 @@ export const ListPrivateEndpointConnectionByFileShare: API.OperationMethod<
   ListPrivateEndpointConnectionByFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListPrivateEndpointConnectionByFileShareRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListPrivateEndpointConnectionByFileShareRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1073,8 +1073,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const UpdateFileShare: API.OperationMethod<
   UpdateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UpdateFileShareRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateFileShareResponse>,
+  input: __S(169, __c21, 1) as any as S.Schema<UpdateFileShareRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1103,8 @@ export const UpdateFileShareSnapshot: API.OperationMethod<
   UpdateFileShareSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateFileShareSnapshotRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UpdateFileShareSnapshotResponse>,
+  input: __S(177, __c22, 1) as any as S.Schema<UpdateFileShareSnapshotRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateFileShareSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1141,37 +1141,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckFileShareNameAvailabilityResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointInput",
-      });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(2, __c0, 2)),
-          privateLinkServiceConnectionState: __S(3, __c0, 3),
+          privateEndpoint: S.optional(__S(16, __c2, 0)),
+          privateLinkServiceConnectionState: __S(40, __c5, 0),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1183,7 +1173,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1194,359 +1196,60 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(7, __c0, 7)),
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: __S(3, __c0, 3),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CreatePrivateEndpointConnectionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFileShareRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFileShareSnapshotRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFileShareSnapshotResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePrivateEndpointConnectionResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rootSquash: S.optional(S.String),
-          encryptionInTransitRequired: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NfsProtocolProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSubnets: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "PublicAccessProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mountName: S.optional(S.String),
-          mediaTier: S.optional(S.String),
-          redundancy: S.optional(S.String),
-          protocol: S.optional(S.String),
-          provisionedStorageGiB: S.optional(S.Number),
-          provisionedIOPerSec: S.optional(S.Number),
-          provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
-          publicAccessProperties: S.optional(__S(18, __c2, 2)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileSharePropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(16, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FileSharesCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mountName: S.optional(S.String),
-          hostName: S.optional(S.String),
-          mediaTier: S.optional(S.String),
-          redundancy: S.optional(S.String),
-          protocol: S.optional(S.String),
-          provisionedStorageGiB: S.optional(S.Number),
-          provisionedStorageNextAllowedDowngrade: S.optional(S.String),
-          provisionedIOPerSec: S.optional(S.Number),
-          provisionedIOPerSecNextAllowedDowngrade: S.optional(S.String),
-          provisionedThroughputMiBPerSec: S.optional(S.Number),
-          provisionedThroughputNextAllowedDowngrade: S.optional(S.String),
-          includedBurstIOPerSec: S.optional(S.Number),
-          maxBurstIOPerSecCredits: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
-          publicAccessProperties: S.optional(__S(18, __c2, 2)),
-          provisioningState: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "FileShareProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(16, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "FileSharesCreateOrUpdateResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          initiatorId: S.optional(S.String),
-          metadata: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "FileShareSnapshotPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FileShareSnapshotCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetFileShareRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(16, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "GetFileShareResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getLimits",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFileShareLimitsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxFileShares: S.Number,
-          maxFileShareSnapshots: S.Number,
-          maxFileShareSubnets: S.Number,
-          maxFileSharePrivateEndpointConnections: S.Number,
-          minProvisionedStorageGiB: S.Number,
-          maxProvisionedStorageGiB: S.Number,
-          minProvisionedIOPerSec: S.Number,
-          maxProvisionedIOPerSec: S.Number,
-          minProvisionedThroughputMiBPerSec: S.Number,
-          maxProvisionedThroughputMiBPerSec: S.Number,
-        }),
-      ).annotate({ identifier: "FileShareLimits" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          baseIOPerSec: S.Number,
-          scalarIOPerSec: S.Number,
-          baseThroughputMiBPerSec: S.Number,
-          scalarThroughputMiBPerSec: S.Number,
-          guardrailIOPerSecScalar: S.Number,
-          guardrailThroughputScalar: S.Number,
-        }),
-      ).annotate({
-        identifier: "FileShareProvisioningConstants",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          limits: __S(29, __c3, 5),
-          provisioningConstants: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "FileShareLimitsOutput" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(31, __c3, 7),
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
         }),
-      ).annotate({ identifier: "FileShareLimitsResponse" });
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisionedStorageGiB: S.Number,
+          id: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "FileShareProvisioningRecommendationInput",
-      });
+      ).annotate({ identifier: "PrivateEndpoint" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          properties: __S(33, __c4, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getProvisioningRecommendation",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
+          groupIds: S.optional(__S(32, __c4, 0)),
+          privateEndpoint: S.optional(__S(41, __c5, 1)),
+          privateLinkServiceConnectionState: __S(40, __c5, 0),
+          provisioningState: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "GetFileShareProvisioningRecommendationRequest",
+        identifier: "PrivateEndpointConnectionProperties",
       });
     case 3:
-      return S.Array(S.String);
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          provisionedIOPerSec: S.Number,
-          provisionedThroughputMiBPerSec: S.Number,
-          availableRedundancyOptions: __S(35, __c4, 3),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
-        identifier: "FileShareProvisioningRecommendationOutput",
+        identifier: "CreatePrivateEndpointConnectionResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "FileShareProvisioningRecommendationResponse",
-      });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1564,19 +1267,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetFileShareSnapshotRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           snapshotTime: S.optional(S.String),
           initiatorId: S.optional(S.String),
-          metadata: S.optional(__S(16, __c2, 0)),
+          metadata: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "FileShareSnapshotProperties",
       });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1584,13 +1291,17 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "GetFileShareSnapshotResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1606,27 +1317,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetFileShareUsageDataRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fileShareCount: S.Number,
         }),
       ).annotate({ identifier: "LiveSharesUsageData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          liveShares: __S(73, __c9, 1),
+        }),
+      ).annotate({ identifier: "FileShareUsageDataOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          liveShares: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "FileShareUsageDataOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(43, __c5, 3),
+          properties: __S(74, __c9, 2),
         }),
       ).annotate({
         identifier: "FileShareUsageDataResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1644,7 +1359,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1662,33 +1381,37 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkResourceRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(7, __c0, 7)),
-          requiredZoneNames: S.optional(__S(7, __c0, 7)),
+          requiredMembers: S.optional(__S(32, __c4, 0)),
+          requiredZoneNames: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1704,16 +1427,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFileShareByParentRequest",
       });
-    case 2:
-      return S.Array(__S(27, __c3, 3));
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c32, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(50, __c6, 2),
+          value: __S(112, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareListResult" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1728,7 +1459,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFileShareBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1745,32 +1480,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFileShareSnapshotRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(39, __c4, 7)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "FileShareSnapshot" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55, __c6, 7),
+          value: __S(130, __c16, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FileShareSnapshotListResult",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1781,7 +1516,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1790,26 +1525,30 @@ function __c7(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(58, __c7, 2)),
+          display: S.optional(__S(137, __c17, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(138, __c17, 2));
     case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(60, __c7, 4)),
+          value: S.optional(__S(139, __c17, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1826,10 +1565,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByFileShareRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(21, __c2, 5),
+          value: __S(224, __c28, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1837,7 +1576,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1862,42 +1601,65 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(47, __c5, 7)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(153, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(66, __c8, 2),
+          value: __S(154, __c19, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisionedStorageGiB: S.optional(S.Number),
-          provisionedIOPerSec: S.optional(S.Number),
-          provisionedThroughputMiBPerSec: S.optional(S.Number),
-          nfsProtocolProperties: S.optional(__S(17, __c2, 1)),
-          publicAccessProperties: S.optional(__S(18, __c2, 2)),
-          publicNetworkAccess: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FileShareUpdateProperties",
-      });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(68, __c8, 4)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFileShareRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisionedStorageGiB: S.optional(S.Number),
+          provisionedIOPerSec: S.optional(S.Number),
+          provisionedThroughputMiBPerSec: S.optional(S.Number),
+          nfsProtocolProperties: S.optional(__S(232, __c29, 0)),
+          publicAccessProperties: S.optional(__S(233, __c29, 1)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FileShareUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(216, __c27, 0)),
+          properties: S.optional(__S(168, __c21, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1907,22 +1669,26 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFileShareRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(16, __c2, 0)),
+          metadata: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "FileShareSnapshotUpdateProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(70, __c8, 6)),
+          properties: S.optional(__S(176, __c22, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1936,7 +1702,344 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFileShareSnapshotRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFileShareSnapshotResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mountName: S.optional(S.String),
+          mediaTier: S.optional(S.String),
+          redundancy: S.optional(S.String),
+          protocol: S.optional(S.String),
+          provisionedStorageGiB: S.optional(S.Number),
+          provisionedIOPerSec: S.optional(S.Number),
+          provisionedThroughputMiBPerSec: S.optional(S.Number),
+          nfsProtocolProperties: S.optional(__S(232, __c29, 0)),
+          publicAccessProperties: S.optional(__S(233, __c29, 1)),
+          publicNetworkAccess: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileSharePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(208, __c26, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "FileSharesCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(234, __c29, 2)),
+        }),
+      ).annotate({
+        identifier: "FileSharesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(43, __c5, 3));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rootSquash: S.optional(S.String),
+          encryptionInTransitRequired: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NfsProtocolProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSubnets: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({ identifier: "PublicAccessProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mountName: S.optional(S.String),
+          hostName: S.optional(S.String),
+          mediaTier: S.optional(S.String),
+          redundancy: S.optional(S.String),
+          protocol: S.optional(S.String),
+          provisionedStorageGiB: S.optional(S.Number),
+          provisionedStorageNextAllowedDowngrade: S.optional(S.String),
+          provisionedIOPerSec: S.optional(S.Number),
+          provisionedIOPerSecNextAllowedDowngrade: S.optional(S.String),
+          provisionedThroughputMiBPerSec: S.optional(S.Number),
+          provisionedThroughputNextAllowedDowngrade: S.optional(S.String),
+          includedBurstIOPerSec: S.optional(S.Number),
+          maxBurstIOPerSecCredits: S.optional(S.Number),
+          nfsProtocolProperties: S.optional(__S(232, __c29, 0)),
+          publicAccessProperties: S.optional(__S(233, __c29, 1)),
+          provisioningState: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(224, __c28, 0)),
+        }),
+      ).annotate({ identifier: "FileShareProperties" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initiatorId: S.optional(S.String),
+          metadata: S.optional(__S(216, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "FileShareSnapshotPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(240, __c30, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}/fileShareSnapshots/{name}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "FileShareSnapshotCreateOrUpdateRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.FileShares/fileShares/{resourceName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetFileShareRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(216, __c27, 0)),
+          location: S.String,
+          properties: S.optional(__S(234, __c29, 2)),
+        }),
+      ).annotate({ identifier: "GetFileShareResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getLimits",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFileShareLimitsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxFileShares: S.Number,
+          maxFileShareSnapshots: S.Number,
+          maxFileShareSubnets: S.Number,
+          maxFileSharePrivateEndpointConnections: S.Number,
+          minProvisionedStorageGiB: S.Number,
+          maxProvisionedStorageGiB: S.Number,
+          minProvisionedIOPerSec: S.Number,
+          maxProvisionedIOPerSec: S.Number,
+          minProvisionedThroughputMiBPerSec: S.Number,
+          maxProvisionedThroughputMiBPerSec: S.Number,
+        }),
+      ).annotate({ identifier: "FileShareLimits" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baseIOPerSec: S.Number,
+          scalarIOPerSec: S.Number,
+          baseThroughputMiBPerSec: S.Number,
+          scalarThroughputMiBPerSec: S.Number,
+          guardrailIOPerSecScalar: S.Number,
+          guardrailThroughputScalar: S.Number,
+        }),
+      ).annotate({
+        identifier: "FileShareProvisioningConstants",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          limits: __S(265, __c33, 1),
+          provisioningConstants: __S(266, __c33, 2),
+        }),
+      ).annotate({ identifier: "FileShareLimitsOutput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(267, __c33, 3),
+        }),
+      ).annotate({ identifier: "FileShareLimitsResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisionedStorageGiB: S.Number,
+        }),
+      ).annotate({
+        identifier: "FileShareProvisioningRecommendationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          properties: __S(272, __c34, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.FileShares/locations/{location}/getProvisioningRecommendation",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFileShareProvisioningRecommendationRequest",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisionedIOPerSec: S.Number,
+          provisionedThroughputMiBPerSec: S.Number,
+          availableRedundancyOptions: __S(274, __c34, 2),
+        }),
+      ).annotate({
+        identifier: "FileShareProvisioningRecommendationOutput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(275, __c34, 3),
+        }),
+      ).annotate({
+        identifier: "FileShareProvisioningRecommendationResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

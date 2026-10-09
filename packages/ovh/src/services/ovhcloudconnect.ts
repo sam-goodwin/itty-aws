@@ -953,7 +953,7 @@ export const confirmOvhCloudConnectTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConfirmOvhCloudConnectTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmOvhCloudConnectTerminationResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<ConfirmOvhCloudConnectTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -967,8 +967,8 @@ export const createOvhCloudConnectChangeContact: API.OperationMethod<
   CreateOvhCloudConnectChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOvhCloudConnectChangeContactRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateOvhCloudConnectChangeContactResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateOvhCloudConnectChangeContactRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<CreateOvhCloudConnectChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -982,8 +982,8 @@ export const createOvhCloudConnectConfigPop: API.OperationMethod<
   CreateOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateOvhCloudConnectConfigPopRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(60, __c15, 0) as any as S.Schema<CreateOvhCloudConnectConfigPopRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -997,8 +997,8 @@ export const createOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   CreateOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(116, __c29, 0) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1012,8 +1012,12 @@ export const createOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   CreateOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterExtraRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(
+    172,
+    __c43,
+    0,
+  ) as any as S.Schema<CreateOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1027,8 +1031,8 @@ export const createOvhCloudConnectDiagnostic: API.OperationMethod<
   CreateOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateOvhCloudConnectDiagnosticRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OvhcloudconnectDiagnostic>,
+  input: __S(216, __c54, 0) as any as S.Schema<CreateOvhCloudConnectDiagnosticRequest>,
+  output: __S(222, __c55, 2) as any as S.Schema<OvhcloudconnectDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1046,8 @@ export const createOvhCloudConnectLoa: API.OperationMethod<
   CreateOvhCloudConnectLoaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateOvhCloudConnectLoaRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateOvhCloudConnectLoaResponse>,
+  input: __S(232, __c58, 0) as any as S.Schema<CreateOvhCloudConnectLoaRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateOvhCloudConnectLoaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1057,8 +1061,8 @@ export const createOvhCloudConnectLogSubscription: API.OperationMethod<
   CreateOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateOvhCloudConnectLogSubscriptionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: __S(236, __c59, 0) as any as S.Schema<CreateOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(240, __c60, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1076,8 @@ export const createOvhCloudConnectLogUrl: API.OperationMethod<
   CreateOvhCloudConnectLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateOvhCloudConnectLogUrlRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
+  input: __S(244, __c61, 0) as any as S.Schema<CreateOvhCloudConnectLogUrlRequest>,
+  output: __S(245, __c61, 1) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1087,8 +1091,8 @@ export const createOvhCloudConnectMonitoring: API.OperationMethod<
   CreateOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateOvhCloudConnectMonitoringRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateOvhCloudConnectMonitoringResponse>,
+  input: __S(248, __c62, 0) as any as S.Schema<CreateOvhCloudConnectMonitoringRequest>,
+  output: __S(252, __c63, 0) as any as S.Schema<CreateOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1106,8 @@ export const deleteOvhCloudConnectConfigPop: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteOvhCloudConnectConfigPopRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteOvhCloudConnectConfigPopRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1121,8 @@ export const deleteOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1132,8 +1136,8 @@ export const deleteOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   DeleteOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterExtraRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1151,8 @@ export const deleteOvhCloudConnectLogSubscription: API.OperationMethod<
   DeleteOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteOvhCloudConnectLogSubscriptionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(240, __c60, 0) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1166,8 @@ export const deleteOvhCloudConnectMonitoring: API.OperationMethod<
   DeleteOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteOvhCloudConnectMonitoringRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteOvhCloudConnectMonitoringRequest>,
+  output: __S(252, __c63, 0) as any as S.Schema<DeleteOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1177,8 +1181,8 @@ export const getOvhCloudConnect: API.OperationMethod<
   GetOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetOvhCloudConnectRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<OvhcloudconnectServiceWithIAM>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetOvhCloudConnectRequest>,
+  output: __S(43, __c10, 3) as any as S.Schema<OvhcloudconnectServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1192,8 +1196,8 @@ export const getOvhCloudConnectConfigPop: API.OperationMethod<
   GetOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetOvhCloudConnectConfigPopRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<OvhcloudconnectPopConfig>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetOvhCloudConnectConfigPopRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<OvhcloudconnectPopConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1207,8 +1211,8 @@ export const getOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   GetOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<OvhcloudconnectDatacenterConfig>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<OvhcloudconnectDatacenterConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1226,8 @@ export const getOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   GetOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterExtraRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<OvhcloudconnectDatacenterExtraConfig>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<OvhcloudconnectDatacenterExtraConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1241,8 @@ export const getOvhCloudConnectConfigPopStatus: API.OperationMethod<
   GetOvhCloudConnectConfigPopStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetOvhCloudConnectConfigPopStatusRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<OvhcloudconnectPopConfStatus>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetOvhCloudConnectConfigPopStatusRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<OvhcloudconnectPopConfStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1252,8 +1256,8 @@ export const getOvhCloudConnectDatacenter: API.OperationMethod<
   GetOvhCloudConnectDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetOvhCloudConnectDatacenterRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<OvhcloudconnectDatacenter>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetOvhCloudConnectDatacenterRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<OvhcloudconnectDatacenter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1267,8 +1271,8 @@ export const getOvhCloudConnectDiagnostic: API.OperationMethod<
   GetOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetOvhCloudConnectDiagnosticRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OvhcloudconnectDiagnostic>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetOvhCloudConnectDiagnosticRequest>,
+  output: __S(222, __c55, 2) as any as S.Schema<OvhcloudconnectDiagnostic>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1282,8 +1286,8 @@ export const getOvhCloudConnectIncident: API.OperationMethod<
   GetOvhCloudConnectIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetOvhCloudConnectIncidentRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<OvhcloudconnectIncident>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetOvhCloudConnectIncidentRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<OvhcloudconnectIncident>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1297,8 +1301,8 @@ export const getOvhCloudConnectInterface: API.OperationMethod<
   GetOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetOvhCloudConnectInterfaceRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<OvhcloudconnectInterface>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetOvhCloudConnectInterfaceRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<OvhcloudconnectInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1312,8 +1316,8 @@ export const getOvhCloudConnectInterfaceStatus: API.OperationMethod<
   GetOvhCloudConnectInterfaceStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetOvhCloudConnectInterfaceStatusRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OvhcloudconnectInterfaceStatus>,
+  input: __S(84, __c21, 0) as any as S.Schema<GetOvhCloudConnectInterfaceStatusRequest>,
+  output: __S(85, __c21, 1) as any as S.Schema<OvhcloudconnectInterfaceStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1327,8 +1331,8 @@ export const getOvhCloudConnectLogKind: API.OperationMethod<
   GetOvhCloudConnectLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetOvhCloudConnectLogKindRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DbaasLogsLogKind>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetOvhCloudConnectLogKindRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<DbaasLogsLogKind>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1342,8 +1346,8 @@ export const getOvhCloudConnectLogSubscription: API.OperationMethod<
   GetOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetOvhCloudConnectLogSubscriptionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DbaasLogsLogSubscription>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(94, __c23, 2) as any as S.Schema<DbaasLogsLogSubscription>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1361,8 @@ export const getOvhCloudConnectServiceInfos: API.OperationMethod<
   GetOvhCloudConnectServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetOvhCloudConnectServiceInfosRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ServicesService>,
+  input: __S(96, __c24, 0) as any as S.Schema<GetOvhCloudConnectServiceInfosRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1376,8 @@ export const getOvhCloudConnectServiceKey: API.OperationMethod<
   GetOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetOvhCloudConnectServiceKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<OvhcloudconnectKey>,
+  input: __S(104, __c26, 0) as any as S.Schema<GetOvhCloudConnectServiceKeyRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<OvhcloudconnectKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1387,8 +1391,8 @@ export const getOvhCloudConnectTask: API.OperationMethod<
   GetOvhCloudConnectTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetOvhCloudConnectTaskRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(112, __c28, 0) as any as S.Schema<GetOvhCloudConnectTaskRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1406,8 @@ export const listOvhCloudConnect: API.OperationMethod<
   ListOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListOvhCloudConnectRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectResponse>,
+  input: __S(122, __c30, 2) as any as S.Schema<ListOvhCloudConnectRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<ListOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1421,8 @@ export const listOvhCloudConnectConfigPop: API.OperationMethod<
   ListOvhCloudConnectConfigPopError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListOvhCloudConnectConfigPopRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<ListOvhCloudConnectConfigPopRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectConfigPopResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1436,8 @@ export const listOvhCloudConnectConfigPopDatacenter: API.OperationMethod<
   ListOvhCloudConnectConfigPopDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1451,8 @@ export const listOvhCloudConnectConfigPopDatacenterExtra: API.OperationMethod<
   ListOvhCloudConnectConfigPopDatacenterExtraError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>,
+  input: __S(140, __c35, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectConfigPopDatacenterExtraResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1466,8 @@ export const listOvhCloudConnectConfigPopStatistics: API.OperationMethod<
   ListOvhCloudConnectConfigPopStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsRequest>,
+  output: __S(151, __c37, 3) as any as S.Schema<ListOvhCloudConnectConfigPopStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1477,8 +1481,8 @@ export const listOvhCloudConnectDatacenter: API.OperationMethod<
   ListOvhCloudConnectDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListOvhCloudConnectDatacenterRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectDatacenterResponse>,
+  input: __S(152, __c38, 0) as any as S.Schema<ListOvhCloudConnectDatacenterRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1496,8 @@ export const listOvhCloudConnectDiagnostic: API.OperationMethod<
   ListOvhCloudConnectDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListOvhCloudConnectDiagnosticRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>,
+  input: __S(156, __c39, 0) as any as S.Schema<ListOvhCloudConnectDiagnosticRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectDiagnosticResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1511,8 @@ export const listOvhCloudConnectIncident: API.OperationMethod<
   ListOvhCloudConnectIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListOvhCloudConnectIncidentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectIncidentResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<ListOvhCloudConnectIncidentRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectIncidentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1522,8 +1526,8 @@ export const listOvhCloudConnectInterface: API.OperationMethod<
   ListOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListOvhCloudConnectInterfaceRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectInterfaceResponse>,
+  input: __S(164, __c41, 0) as any as S.Schema<ListOvhCloudConnectInterfaceRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectInterfaceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1537,8 +1541,8 @@ export const listOvhCloudConnectInterfaceStatistics: API.OperationMethod<
   ListOvhCloudConnectInterfaceStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>,
+  input: __S(168, __c42, 0) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsRequest>,
+  output: __S(151, __c37, 3) as any as S.Schema<ListOvhCloudConnectInterfaceStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1556,8 @@ export const listOvhCloudConnectLogKind: API.OperationMethod<
   ListOvhCloudConnectLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListOvhCloudConnectLogKindRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectLogKindResponse>,
+  input: __S(176, __c44, 0) as any as S.Schema<ListOvhCloudConnectLogKindRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<ListOvhCloudConnectLogKindResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1567,8 +1571,8 @@ export const listOvhCloudConnectLogSubscription: API.OperationMethod<
   ListOvhCloudConnectLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListOvhCloudConnectLogSubscriptionRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>,
+  input: __S(180, __c45, 0) as any as S.Schema<ListOvhCloudConnectLogSubscriptionRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<ListOvhCloudConnectLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1582,8 +1586,8 @@ export const listOvhCloudConnectMonitoring: API.OperationMethod<
   ListOvhCloudConnectMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListOvhCloudConnectMonitoringRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListOvhCloudConnectMonitoringResponse>,
+  input: __S(184, __c46, 0) as any as S.Schema<ListOvhCloudConnectMonitoringRequest>,
+  output: __S(187, __c46, 3) as any as S.Schema<ListOvhCloudConnectMonitoringResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1597,8 +1601,8 @@ export const listOvhCloudConnectServiceKey: API.OperationMethod<
   ListOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListOvhCloudConnectServiceKeyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>,
+  input: __S(188, __c47, 0) as any as S.Schema<ListOvhCloudConnectServiceKeyRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectServiceKeyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1612,8 +1616,8 @@ export const listOvhCloudConnectTask: API.OperationMethod<
   ListOvhCloudConnectTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListOvhCloudConnectTaskRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListOvhCloudConnectTaskResponse>,
+  input: __S(192, __c48, 0) as any as S.Schema<ListOvhCloudConnectTaskRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<ListOvhCloudConnectTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1627,8 +1631,8 @@ export const lockOvhCloudConnectInterface: API.OperationMethod<
   LockOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<LockOvhCloudConnectInterfaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(196, __c49, 0) as any as S.Schema<LockOvhCloudConnectInterfaceRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1646,8 @@ export const putOvhCloudConnect: API.OperationMethod<
   PutOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<PutOvhCloudConnectRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PutOvhCloudConnectResponse>,
+  input: __S(200, __c50, 0) as any as S.Schema<PutOvhCloudConnectRequest>,
+  output: __S(128, __c32, 0) as any as S.Schema<PutOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1661,8 @@ export const putOvhCloudConnectServiceInfos: API.OperationMethod<
   PutOvhCloudConnectServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PutOvhCloudConnectServiceInfosRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>,
+  input: __S(204, __c51, 0) as any as S.Schema<PutOvhCloudConnectServiceInfosRequest>,
+  output: __S(252, __c63, 0) as any as S.Schema<PutOvhCloudConnectServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1676,8 @@ export const regenerateOvhCloudConnectServiceKey: API.OperationMethod<
   RegenerateOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<RegenerateOvhCloudConnectServiceKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<OvhcloudconnectKey>,
+  input: __S(208, __c52, 0) as any as S.Schema<RegenerateOvhCloudConnectServiceKeyRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<OvhcloudconnectKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1691,8 @@ export const sendOvhCloudConnectServiceKey: API.OperationMethod<
   SendOvhCloudConnectServiceKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<SendOvhCloudConnectServiceKeyRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<OvhcloudconnectSendKeyAnswer>,
+  input: __S(212, __c53, 0) as any as S.Schema<SendOvhCloudConnectServiceKeyRequest>,
+  output: __S(213, __c53, 1) as any as S.Schema<OvhcloudconnectSendKeyAnswer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1702,8 +1706,8 @@ export const terminateOvhCloudConnect: API.OperationMethod<
   TerminateOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<TerminateOvhCloudConnectRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateOvhCloudConnectResponse>,
+  input: __S(224, __c56, 0) as any as S.Schema<TerminateOvhCloudConnectRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<TerminateOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1717,8 +1721,8 @@ export const unlockOvhCloudConnectInterface: API.OperationMethod<
   UnlockOvhCloudConnectInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UnlockOvhCloudConnectInterfaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<OvhcloudconnectTask>,
+  input: __S(228, __c57, 0) as any as S.Schema<UnlockOvhCloudConnectInterfaceRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<OvhcloudconnectTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1745,11 +1749,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmOvhCloudConnectTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmOvhCloudConnectTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1766,201 +1778,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOvhCloudConnectChangeContactRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 4:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(12, __c3, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateOvhCloudConnectChangeContactResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          customerBgpArea: S.optional(S.NullOr(S.Number)),
-          interfaceId: S.Number,
-          ovhBgpArea: S.optional(S.NullOr(S.Number)),
-          subnet: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/config/pop", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectConfigPopRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          resourceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OvhcloudconnectTask" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          popId: S.Number.pipe(T.Label()),
-          datacenterId: S.Number,
-          ovhBgpArea: S.optional(S.NullOr(S.Number)),
-          subnet: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectConfigPopDatacenterRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          popId: S.Number.pipe(T.Label()),
-          datacenterId: S.Number.pipe(T.Label()),
-          bgpNeighborArea: S.optional(S.NullOr(S.Number)),
-          bgpNeighborIp: S.optional(S.NullOr(S.String)),
-          nextHop: S.optional(S.NullOr(S.String)),
-          subnet: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectConfigPopDatacenterExtraRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          dcConfigId: S.optional(S.Number),
-          diagnosticName: S.String,
-          diagnosticType: S.optional(S.String),
-          extraConfigId: S.optional(S.Number),
-          popConfigId: S.Number,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/diagnostic", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectDiagnosticRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          aspath: S.optional(S.NullOr(S.String)),
-          cmd: S.optional(S.NullOr(S.String)),
-          localprefix: S.optional(S.NullOr(S.Number)),
-          mac: S.optional(S.NullOr(S.String)),
-          med: S.optional(S.NullOr(S.Number)),
-          output: S.optional(S.NullOr(S.String)),
-          prefix: S.optional(S.NullOr(S.String)),
-          routermac: S.optional(S.NullOr(S.String)),
-          timestamp: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "OvhcloudconnectDiagnosticResult",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          result: S.optional(S.NullOr(__S(11, __c1, 3))),
-          source: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OvhcloudconnectDiagnostic",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/loa", code: 200 })),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectLoaRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          kind: S.String,
-          streamId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/ovhCloudConnect/{serviceName}/log/subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectLogSubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operationId: S.optional(S.String),
-          serviceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DbaasLogsLogSubscriptionResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          kind: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/log/url", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectLogUrlRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expirationDate: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DbaasLogsTemporaryLogsLink",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          subscriptions: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/monitoring", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOvhCloudConnectMonitoringRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateOvhCloudConnectMonitoringResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1975,7 +1811,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteOvhCloudConnectConfigPopRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -1991,7 +1831,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteOvhCloudConnectConfigPopDatacenterRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2010,7 +1854,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2027,7 +1871,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteOvhCloudConnectLogSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2037,7 +1885,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteOvhCloudConnectMonitoringRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2045,24 +1897,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectRequest",
       });
-    case 3:
+    case 1:
       return S.Record(S.String, S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(27, __c3, 3))),
+          tags: S.optional(S.NullOr(__S(41, __c10, 1))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bandwidth: S.optional(S.String),
           description: S.optional(S.String),
-          iam: S.optional(S.NullOr(__S(28, __c3, 4))),
-          interfaceList: S.optional(__S(3, __c0, 3)),
+          iam: S.optional(S.NullOr(__S(42, __c10, 2))),
+          interfaceList: S.optional(__S(12, __c3, 0)),
           pop: S.optional(S.String),
           portQuantity: S.optional(S.String),
           product: S.optional(S.String),
@@ -2074,7 +1926,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectServiceWithIAM",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2089,7 +1945,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectConfigPopRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerBgpArea: S.optional(S.NullOr(S.Number)),
@@ -2103,7 +1959,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "OvhcloudconnectPopConfig" });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2133,7 +1989,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectDatacenterConfig",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2150,7 +2010,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectConfigPopDatacenterExtraRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bgpNeighborArea: S.optional(S.NullOr(S.Number)),
@@ -2164,7 +2024,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectDatacenterExtraConfig",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2179,7 +2043,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectConfigPopStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           flapCount: S.optional(S.NullOr(S.Number)),
@@ -2192,7 +2056,43 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectPopConfStatus",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          customerBgpArea: S.optional(S.NullOr(S.Number)),
+          interfaceId: S.Number,
+          ovhBgpArea: S.optional(S.NullOr(S.Number)),
+          subnet: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/config/pop", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectConfigPopRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          resourceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OvhcloudconnectTask" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2207,7 +2107,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectDatacenterRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Boolean),
@@ -2221,7 +2121,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2238,7 +2138,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectDiagnosticRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2249,7 +2153,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectIncidentRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           endDate: S.optional(S.NullOr(S.String)),
@@ -2258,7 +2162,11 @@ function __c5(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectIncident" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2273,7 +2181,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectInterfaceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deviceDisplayName: S.optional(S.NullOr(S.String)),
@@ -2291,7 +2199,11 @@ function __c5(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectInterface" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2306,7 +2218,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectInterfaceStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lastChange: S.optional(S.NullOr(S.String)),
@@ -2318,7 +2230,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectInterfaceStatus",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2333,14 +2249,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectLogKindRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          additionalReturnedFields: S.optional(__S(18, __c2, 2)),
+          additionalReturnedFields: S.optional(__S(256, __c64, 0)),
           createdAt: S.optional(S.String),
           displayName: S.optional(S.String),
           kindId: S.optional(S.String),
@@ -2348,7 +2260,11 @@ function __c6(j: number): any {
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbaasLogsLogKind" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2363,7 +2279,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectLogSubscriptionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2372,19 +2288,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DbaasLogsLogSubscriptionResource",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
           kind: S.optional(S.String),
-          resource: S.optional(__S(50, __c6, 2)),
+          resource: S.optional(__S(93, __c23, 1)),
           serviceName: S.optional(S.String),
           streamId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "DbaasLogsLogSubscription" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2394,17 +2314,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectServiceInfosRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -2415,14 +2325,32 @@ function __c6(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(3, __c0, 3))),
-          renew: S.optional(S.NullOr(__S(53, __c6, 5))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(12, __c3, 0))),
+          renew: S.optional(S.NullOr(__S(100, __c25, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2439,7 +2367,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2450,7 +2378,11 @@ function __c7(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvhcloudconnectKey" });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2461,27 +2393,65 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetOvhCloudConnectTaskRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.Record(S.String, __S(59, __c7, 3));
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(60, __c7, 4).pipe(T.Query())),
+          serviceName: S.String.pipe(T.Label()),
+          popId: S.Number.pipe(T.Label()),
+          datacenterId: S.Number,
+          ovhBgpArea: S.optional(S.NullOr(S.Number)),
+          subnet: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectConfigPopDatacenterRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c32, 0));
+    case 1:
+      return S.Record(S.String, __S(120, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(121, __c30, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ovhCloudConnect", code: 200 })),
       ).annotate({
         identifier: "ListOvhCloudConnectRequest",
       });
-    case 6:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(256, __c64, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectResponse",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2493,7 +2463,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2510,7 +2480,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectConfigPopDatacenterRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2526,7 +2500,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectConfigPopDatacenterExtraRequest",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2543,7 +2521,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectConfigPopStatisticsRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -2552,20 +2534,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectMetricsValue",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Number),
-          value: S.optional(__S(67, __c8, 3)),
+          value: S.optional(__S(148, __c37, 0)),
         }),
       ).annotate({ identifier: "OvhcloudconnectMetrics" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() => __S(69, __c8, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(149, __c37, 1));
+    case 3:
+      return S.suspend(() => __S(150, __c37, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectConfigPopStatisticsResponse",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2577,7 +2563,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2589,7 +2575,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectDiagnosticRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2599,7 +2589,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectIncidentRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2609,7 +2603,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectInterfaceRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2626,7 +2624,36 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectInterfaceStatisticsRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          popId: S.Number.pipe(T.Label()),
+          datacenterId: S.Number.pipe(T.Label()),
+          bgpNeighborArea: S.optional(S.NullOr(S.Number)),
+          bgpNeighborIp: S.optional(S.NullOr(S.String)),
+          nextHop: S.optional(S.NullOr(S.String)),
+          subnet: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ovhCloudConnect/{serviceName}/config/pop/{popId}/datacenter/{datacenterId}/extra",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectConfigPopDatacenterExtraRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2636,7 +2663,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectLogKindRequest",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2651,7 +2682,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectLogSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2661,7 +2696,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectMonitoringRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activated: S.optional(S.Boolean),
@@ -2672,17 +2707,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectMonitoring",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() => __S(80, __c10, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(185, __c46, 1));
+    case 3:
+      return S.suspend(() => __S(186, __c46, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOvhCloudConnectMonitoringResponse",
       });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2692,7 +2727,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectServiceKeyRequest",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2700,7 +2739,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOvhCloudConnectTaskRequest",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2715,7 +2758,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LockOvhCloudConnectInterfaceRequest",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2724,18 +2771,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutOvhCloudConnectRequest",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(53, __c6, 5))),
+          renew: S.optional(S.NullOr(__S(100, __c25, 0))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/ovhCloudConnect/{serviceName}/serviceInfos", code: 200 }),
         ),
       ).annotate({
         identifier: "PutOvhCloudConnectServiceInfosRequest",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2752,7 +2807,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2778,7 +2833,66 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "OvhcloudconnectSendKeyAnswer",
       });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          dcConfigId: S.optional(S.Number),
+          diagnosticName: S.String,
+          diagnosticType: S.optional(S.String),
+          extraConfigId: S.optional(S.Number),
+          popConfigId: S.Number,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/diagnostic", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectDiagnosticRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aspath: S.optional(S.NullOr(S.String)),
+          cmd: S.optional(S.NullOr(S.String)),
+          localprefix: S.optional(S.NullOr(S.Number)),
+          mac: S.optional(S.NullOr(S.String)),
+          med: S.optional(S.NullOr(S.Number)),
+          output: S.optional(S.NullOr(S.String)),
+          prefix: S.optional(S.NullOr(S.String)),
+          routermac: S.optional(S.NullOr(S.String)),
+          timestamp: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "OvhcloudconnectDiagnosticResult",
+      });
+    case 1:
+      return S.Array(__S(220, __c55, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          result: S.optional(S.NullOr(__S(221, __c55, 1))),
+          source: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OvhcloudconnectDiagnostic",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2788,7 +2902,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "TerminateOvhCloudConnectRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2805,7 +2923,104 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/loa", code: 200 })),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectLoaRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          kind: S.String,
+          streamId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/ovhCloudConnect/{serviceName}/log/subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectLogSubscriptionRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.optional(S.String),
+          serviceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DbaasLogsLogSubscriptionResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          kind: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/log/url", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectLogUrlRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expirationDate: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DbaasLogsTemporaryLogsLink",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          subscriptions: S.optional(__S(256, __c64, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/ovhCloudConnect/{serviceName}/monitoring", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOvhCloudConnectMonitoringRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateOvhCloudConnectMonitoringResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

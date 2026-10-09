@@ -355,8 +355,8 @@ export const bulkQuery: API.OperationMethod<
   BulkQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BulkQueryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BulkQueryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BulkQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<BulkQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const createLogo: API.OperationMethod<
   CreateLogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateLogoRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateLogoResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateLogoRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateLogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -385,8 +385,8 @@ export const createQuery: API.OperationMethod<
   CreateQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateQueryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateQueryResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -400,8 +400,8 @@ export const createV2Logo: API.OperationMethod<
   CreateV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateV2LogoRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateV2LogoResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateV2LogoRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -415,8 +415,8 @@ export const deleteLogo: API.OperationMethod<
   DeleteLogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteLogoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteLogoResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteLogoRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteLogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -430,8 +430,8 @@ export const deleteQuery: API.OperationMethod<
   DeleteQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteQueryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteQueryResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteQueryRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -445,8 +445,8 @@ export const deleteV2Logo: API.OperationMethod<
   DeleteV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteV2LogoRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteV2LogoResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteV2LogoRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -460,8 +460,8 @@ export const downloadLogoMatch: API.OperationMethod<
   DownloadLogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DownloadLogoMatchRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DownloadLogoMatchResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DownloadLogoMatchRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DownloadLogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -475,8 +475,8 @@ export const downloadMatch: API.OperationMethod<
   DownloadMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DownloadMatchRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DownloadMatchResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DownloadMatchRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<DownloadMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -490,8 +490,8 @@ export const getLogoMatch: API.OperationMethod<
   GetLogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetLogoMatchRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetLogoMatchResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetLogoMatchRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetLogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -505,8 +505,8 @@ export const getMatch: API.OperationMethod<
   GetMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetMatchRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetMatchResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetMatchRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -520,8 +520,8 @@ export const getV2Logo: API.OperationMethod<
   GetV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetV2LogoRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetV2LogoResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetV2LogoRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetV2LogoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -535,8 +535,8 @@ export const getV2LogoMatch: API.OperationMethod<
   GetV2LogoMatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetV2LogoMatchRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetV2LogoMatchResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetV2LogoMatchRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetV2LogoMatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -550,8 +550,8 @@ export const getV2Match: API.OperationMethod<
   GetV2MatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetV2MatchRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetV2MatchResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetV2MatchRequest>,
+  output: __S(62, __c7, 6) as any as S.Schema<GetV2MatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -565,8 +565,8 @@ export const getV2Query: API.OperationMethod<
   GetV2QueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetV2QueryRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetV2QueryResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetV2QueryRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetV2QueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const submitBrandProtection: API.OperationMethod<
   SubmitBrandProtectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<SubmitBrandProtectionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SubmitBrandProtectionResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<SubmitBrandProtectionRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<SubmitBrandProtectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
   UrlInfoResultItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(38, __c4, 6) as any as S.Schema<UrlInfoBrandProtectionRequest>,
-    output: __S(39, __c4, 7) as any as S.Schema<UrlInfoBrandProtectionResponse>,
+    input: __S(80, __c10, 0) as any as S.Schema<UrlInfoBrandProtectionRequest>,
+    output: __S(81, __c10, 1) as any as S.Schema<UrlInfoBrandProtectionResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -611,14 +611,10 @@ export const urlInfoBrandProtection: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          queries: S.optional(__S(1, __c0, 1)),
+          queries: S.optional(__S(17, __c2, 1)),
         })
           .pipe(
             T.Http({
@@ -629,11 +625,27 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkQueryRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "BulkQueryResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -651,7 +663,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLogoRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
@@ -659,7 +671,277 @@ function __c0(j: number): any {
           uploadPath: S.optional(S.NullOr(S.String).pipe(T.Body("upload_path"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLogoResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(S.String.pipe(T.Query())),
+          includeDismissed: S.optional(S.Boolean.pipe(T.Query("include_dismissed"))),
+          includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/brand-protection/matches",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetMatchRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(S.String.pipe(T.Query())),
+          download: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2LogoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          r2Path: S.String.pipe(T.Body("r2_path")),
+          similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
+          tag: S.String,
+          uploadedAt: S.String.pipe(T.Body("uploaded_at")),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+          imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2LogoResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          queryId: S.String.pipe(T.Query("query_id")),
+          download: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.String.pipe(T.Query())),
+          offset: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2LogoMatchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          domain: S.String,
+          matchedAt: S.String.pipe(T.Body("matched_at")),
+          queryId: S.Number.pipe(T.Body("query_id")),
+          registrar: S.String,
+          similarityScore: S.Number.pipe(T.Body("similarity_score")),
+          urlScanId: S.String.pipe(T.Body("url_scan_id")),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+          imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
+        }),
+      ).annotate({
+        identifier: "V2LogoMatchesGetResponseMatchesItem",
+      });
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matches: __S(50, __c6, 2),
+          total: S.Number,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2LogoMatchResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          queryId: __S(136, __c17, 0).pipe(T.Query("query_id")),
+          domainSearch: S.optional(S.String.pipe(T.Query("domain_search"))),
+          includeDismissed: S.optional(S.String.pipe(T.Query("include_dismissed"))),
+          includeDomainId: S.optional(S.String.pipe(T.Query("include_domain_id"))),
+          limit: S.optional(S.String.pipe(T.Query())),
+          offset: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2MatchRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          submissionId: S.String.pipe(T.Body("submission_id")),
+        }),
+      ).annotate({
+        identifier: "V2MatchesGetResponseMatchesItemPublicScans",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dismissed: S.Boolean,
+          matchId: S.Number.pipe(T.Body("match_id")),
+          queryId: S.Number.pipe(T.Body("query_id")),
+          queryTag: S.String.pipe(T.Body("query_tag")),
+        }),
+      ).annotate({
+        identifier: "V2MatchesGetResponseMatchesItemMatchDetailsItem",
+      });
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          firstSeen: S.String.pipe(T.Body("first_seen")),
+          publicScans: __S(57, __c7, 1).pipe(T.Body("public_scans")),
+          registrar: S.String,
+          scanStatus: S.String.pipe(T.Body("scan_status")),
+          scanSubmissionId: S.Number.pipe(T.Body("scan_submission_id")),
+          source: S.String,
+          dismissed: S.optional(S.NullOr(S.Boolean)),
+          matchDetails: S.optional(S.NullOr(__S(59, __c7, 3)).pipe(T.Body("match_details"))),
+        }),
+      ).annotate({
+        identifier: "V2MatchesGetResponseMatchesItem",
+      });
+    case 5:
+      return S.Array(__S(60, __c7, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          matches: __S(61, __c7, 5),
+          total: S.Number,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2MatchResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2QueryRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [],
+          ["created", "parameters", "queryId", "queryTag", "scan", "updated"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(65, __c8, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetV2QueryResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/brand-protection/submit",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SubmitBrandProtectionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skippedUrls: S.optional(S.NullOr(__S(17, __c2, 1)).pipe(T.Body("skipped_urls"))),
+          submittedUrls: S.optional(S.NullOr(__S(17, __c2, 1)).pipe(T.Body("submitted_urls"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SubmitBrandProtectionResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/brand-protection/url-info",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UrlInfoBrandProtectionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(17, __c2, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UrlInfoBrandProtectionResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -681,7 +963,11 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateQueryRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -699,18 +985,18 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateV2LogoRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
           queryId: S.optional(S.NullOr(S.Number).pipe(T.Body("query_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateV2LogoResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -725,7 +1011,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteLogoRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -742,7 +1032,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteQueryRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -757,20 +1051,22 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV2LogoRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteV2LogoResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           limit: S.optional(S.String.pipe(T.Query())),
-          logoId: S.optional(__S(13, __c1, 5).pipe(T.Query("logo_id"))),
+          logoId: S.optional(__S(136, __c17, 0).pipe(T.Query("logo_id"))),
           offset: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -782,10 +1078,10 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DownloadLogoMatchRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(S.NullOr(__S(1, __c0, 1))),
+          matches: S.optional(S.NullOr(__S(17, __c2, 1))),
           total: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -793,7 +1089,13 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -814,19 +1116,27 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DownloadMatchRequest" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(S.NullOr(__S(1, __c0, 1))),
+          matches: S.optional(S.NullOr(__S(17, __c2, 1))),
           total: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DownloadMatchResponse" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           limit: S.optional(S.String.pipe(T.Query())),
-          logoId: S.optional(__S(13, __c1, 5).pipe(T.Query("logo_id"))),
+          logoId: S.optional(__S(136, __c17, 0).pipe(T.Query("logo_id"))),
           offset: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
@@ -838,255 +1148,8 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLogoMatchRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(S.String.pipe(T.Query())),
-          includeDismissed: S.optional(S.Boolean.pipe(T.Query("include_dismissed"))),
-          includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/brand-protection/matches",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetMatchRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(S.String.pipe(T.Query())),
-          download: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2LogoRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          r2Path: S.String.pipe(T.Body("r2_path")),
-          similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
-          tag: S.String,
-          uploadedAt: S.String.pipe(T.Body("uploaded_at")),
-          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-          imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2LogoResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          queryId: S.String.pipe(T.Query("query_id")),
-          download: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.String.pipe(T.Query())),
-          offset: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2LogoMatchRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          domain: S.String,
-          matchedAt: S.String.pipe(T.Body("matched_at")),
-          queryId: S.Number.pipe(T.Body("query_id")),
-          registrar: S.String,
-          similarityScore: S.Number.pipe(T.Body("similarity_score")),
-          urlScanId: S.String.pipe(T.Body("url_scan_id")),
-          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-          imageData: S.optional(S.NullOr(S.String).pipe(T.Body("image_data"))),
-        }),
-      ).annotate({
-        identifier: "V2LogoMatchesGetResponseMatchesItem",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matches: __S(24, __c3, 0),
-          total: S.Number,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2LogoMatchResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          queryId: __S(13, __c1, 5).pipe(T.Query("query_id")),
-          domainSearch: S.optional(S.String.pipe(T.Query("domain_search"))),
-          includeDismissed: S.optional(S.String.pipe(T.Query("include_dismissed"))),
-          includeDomainId: S.optional(S.String.pipe(T.Query("include_domain_id"))),
-          limit: S.optional(S.String.pipe(T.Query())),
-          offset: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2MatchRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          submissionId: S.String.pipe(T.Body("submission_id")),
-        }),
-      ).annotate({
-        identifier: "V2MatchesGetResponseMatchesItemPublicScans",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dismissed: S.Boolean,
-          matchId: S.Number.pipe(T.Body("match_id")),
-          queryId: S.Number.pipe(T.Body("query_id")),
-          queryTag: S.String.pipe(T.Body("query_tag")),
-        }),
-      ).annotate({
-        identifier: "V2MatchesGetResponseMatchesItemMatchDetailsItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          firstSeen: S.String.pipe(T.Body("first_seen")),
-          publicScans: __S(27, __c3, 3).pipe(T.Body("public_scans")),
-          registrar: S.String,
-          scanStatus: S.String.pipe(T.Body("scan_status")),
-          scanSubmissionId: S.Number.pipe(T.Body("scan_submission_id")),
-          source: S.String,
-          dismissed: S.optional(S.NullOr(S.Boolean)),
-          matchDetails: S.optional(S.NullOr(__S(29, __c3, 5)).pipe(T.Body("match_details"))),
-        }),
-      ).annotate({
-        identifier: "V2MatchesGetResponseMatchesItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          matches: __S(31, __c3, 7),
-          total: S.Number,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2MatchResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          id: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2QueryRequest" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          [],
-          ["created", "parameters", "queryId", "queryTag", "scan", "updated"],
-        ]),
-      );
-    case 3:
-      return S.suspend(() =>
-        __S(34, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetV2QueryResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/brand-protection/submit",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SubmitBrandProtectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          skippedUrls: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("skipped_urls"))),
-          submittedUrls: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("submitted_urls"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SubmitBrandProtectionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/brand-protection/url-info",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UrlInfoBrandProtectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(1, __c0, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UrlInfoBrandProtectionResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

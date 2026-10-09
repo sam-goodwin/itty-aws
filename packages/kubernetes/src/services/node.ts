@@ -554,8 +554,8 @@ export const createNodeV1RuntimeClass: API.OperationMethod<
   CreateNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateNodeV1RuntimeClassRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateNodeV1RuntimeClassRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -569,8 +569,8 @@ export const deleteNodeV1CollectionRuntimeClass: API.OperationMethod<
   DeleteNodeV1CollectionRuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteNodeV1CollectionRuntimeClassRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteNodeV1CollectionRuntimeClassRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -584,8 +584,8 @@ export const deleteNodeV1RuntimeClass: API.OperationMethod<
   DeleteNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteNodeV1RuntimeClassRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteNodeV1RuntimeClassRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -599,8 +599,8 @@ export const getNodeAPIGroup: API.OperationMethod<
   GetNodeAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetNodeAPIGroupRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetNodeAPIGroupRequest>,
+  output: __S(197, __c12, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -614,8 +614,8 @@ export const getNodeV1APIResources: API.OperationMethod<
   GetNodeV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetNodeV1APIResourcesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetNodeV1APIResourcesRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -629,8 +629,8 @@ export const listNodeV1RuntimeClass: API.OperationMethod<
   ListNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListNodeV1RuntimeClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNodeV1RuntimeClassList>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListNodeV1RuntimeClassRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<IoK8sApiNodeV1RuntimeClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const patchNodeV1RuntimeClass: API.OperationMethod<
   PatchNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<PatchNodeV1RuntimeClassRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
+  input: __S(240, __c15, 0) as any as S.Schema<PatchNodeV1RuntimeClassRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const readNodeV1RuntimeClass: API.OperationMethod<
   ReadNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ReadNodeV1RuntimeClassRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
+  input: __S(0, __c0, 0) as any as S.Schema<ReadNodeV1RuntimeClassRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -682,8 +682,8 @@ export const replaceNodeV1RuntimeClass: API.OperationMethod<
   ReplaceNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ReplaceNodeV1RuntimeClassRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
+  input: __S(16, __c1, 0) as any as S.Schema<ReplaceNodeV1RuntimeClassRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -697,8 +697,8 @@ export const watchNodeV1RuntimeClass: API.OperationMethod<
   WatchNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<WatchNodeV1RuntimeClassRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(32, __c2, 0) as any as S.Schema<WatchNodeV1RuntimeClassRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -712,8 +712,8 @@ export const watchNodeV1RuntimeClassList: API.OperationMethod<
   WatchNodeV1RuntimeClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<WatchNodeV1RuntimeClassListRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(64, __c4, 0) as any as S.Schema<WatchNodeV1RuntimeClassListRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -723,375 +723,6 @@ export const watchNodeV1RuntimeClassList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          podFixed: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "IoK8sApiNodeV1Overhead" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          effect: S.optional(S.String),
-          key: S.optional(S.String),
-          operator: S.optional(S.String),
-          tolerationSeconds: S.optional(S.Number),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IoK8sApiCoreV1Toleration" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nodeSelector: S.optional(__S(0, __c0, 0)),
-          tolerations: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "IoK8sApiNodeV1Scheduling" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          handler: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          overhead: S.optional(__S(7, __c0, 7)),
-          scheduling: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 })),
-      ).annotate({
-        identifier: "CreateNodeV1RuntimeClassRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          handler: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          overhead: S.optional(__S(7, __c0, 7)),
-          scheduling: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNodeV1RuntimeClass",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteNodeV1CollectionRuntimeClassRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(16, __c2, 0)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(17, __c2, 1)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(19, __c2, 3)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNodeV1RuntimeClassRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/", code: 200 })),
-      ).annotate({ identifier: "GetNodeAPIGroupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.Array(__S(23, __c2, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(23, __c2, 7)),
-          serverAddressByClientCIDRs: S.optional(__S(25, __c3, 1)),
-          versions: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/v1/", code: 200 })),
-      ).annotate({
-        identifier: "GetNodeV1APIResourcesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 })),
-      ).annotate({
-        identifier: "ListNodeV1RuntimeClassRequest",
-      });
-    case 1:
-      return S.Array(__S(12, __c1, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(33, __c4, 1),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNodeV1RuntimeClassList",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PatchNodeV1RuntimeClassRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1102,7 +733,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ReadNodeV1RuntimeClassRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1113,16 +748,20 @@ function __c4(j: number): any {
           apiVersion: S.optional(S.String),
           handler: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          overhead: S.optional(__S(7, __c0, 7)),
-          scheduling: S.optional(__S(10, __c1, 2)),
+          metadata: S.optional(__S(117, __c7, 5)),
+          overhead: S.optional(__S(118, __c7, 6)),
+          scheduling: S.optional(__S(121, __c7, 9)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}", code: 200 }),
         ),
       ).annotate({
         identifier: "ReplaceNodeV1RuntimeClassRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1148,7 +787,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WatchNodeV1RuntimeClassRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1159,7 +802,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1184,7 +827,403 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          handler: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(117, __c7, 5)),
+          overhead: S.optional(__S(118, __c7, 6)),
+          scheduling: S.optional(__S(121, __c7, 9)),
+        }).pipe(T.Http({ method: "POST", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 })),
+      ).annotate({
+        identifier: "CreateNodeV1RuntimeClassRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(112, __c7, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(96, __c6, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(112, __c7, 0)),
+          managedFields: S.optional(__S(114, __c7, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(116, __c7, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          podFixed: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "IoK8sApiNodeV1Overhead" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          effect: S.optional(S.String),
+          key: S.optional(S.String),
+          operator: S.optional(S.String),
+          tolerationSeconds: S.optional(S.Number),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IoK8sApiCoreV1Toleration" });
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          nodeSelector: S.optional(__S(112, __c7, 0)),
+          tolerations: S.optional(__S(120, __c7, 8)),
+        }),
+      ).annotate({ identifier: "IoK8sApiNodeV1Scheduling" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          handler: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(117, __c7, 5)),
+          overhead: S.optional(__S(118, __c7, 6)),
+          scheduling: S.optional(__S(121, __c7, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNodeV1RuntimeClass",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(144, __c9, 0)),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteNodeV1CollectionRuntimeClassRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(146, __c9, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(147, __c9, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(161, __c10, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(144, __c9, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNodeV1RuntimeClassRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/", code: 200 })),
+      ).annotate({ identifier: "GetNodeAPIGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(194, __c12, 2));
+    case 4:
+      return S.Array(__S(193, __c12, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(193, __c12, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(195, __c12, 3)),
+          versions: __S(196, __c12, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/v1/", code: 200 })),
+      ).annotate({
+        identifier: "GetNodeV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(96, __c6, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(96, __c6, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(96, __c6, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(210, __c13, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 })),
+      ).annotate({
+        identifier: "ListNodeV1RuntimeClassRequest",
+      });
+    case 1:
+      return S.Array(__S(122, __c7, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(225, __c14, 1),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNodeV1RuntimeClassList",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PatchNodeV1RuntimeClassRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

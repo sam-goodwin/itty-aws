@@ -632,8 +632,8 @@ export const createDataWarehouseDeprovision: API.OperationMethod<
   CreateDataWarehouseDeprovisionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateDataWarehouseDeprovisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDataWarehouseDeprovisionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateDataWarehouseDeprovisionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<CreateDataWarehouseDeprovisionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -647,8 +647,8 @@ export const createDataWarehouseOnboardTeam: API.OperationMethod<
   CreateDataWarehouseOnboardTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDataWarehouseOnboardTeamRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<OnboardWarehouseTeamResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateDataWarehouseOnboardTeamRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<OnboardWarehouseTeamResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const createDataWarehouseProvision: API.OperationMethod<
   CreateDataWarehouseProvisionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateDataWarehouseProvisionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDataWarehouseProvisionResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateDataWarehouseProvisionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<CreateDataWarehouseProvisionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const dataWarehouseResetPasswordCreate: API.OperationMethod<
   DataWarehouseResetPasswordCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DataWarehouseResetPasswordCreateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ResetPasswordResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DataWarehouseResetPasswordCreateRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ResetPasswordResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -692,8 +692,8 @@ export const deleteDataWarehouseOrgDestroy: API.OperationMethod<
   DeleteDataWarehouseOrgDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteDataWarehouseOrgDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteWarehouseOrgResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteDataWarehouseOrgDestroyRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<DeleteWarehouseOrgResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -707,8 +707,8 @@ export const getDataWarehouseCheckDatabaseName: API.OperationMethod<
   GetDataWarehouseCheckDatabaseNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetDataWarehouseCheckDatabaseNameRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CheckDatabaseNameResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetDataWarehouseCheckDatabaseNameRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<CheckDatabaseNameResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -722,8 +722,8 @@ export const getDataWarehouseCheckSchemaName: API.OperationMethod<
   GetDataWarehouseCheckSchemaNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetDataWarehouseCheckSchemaNameRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CheckSchemaNameResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetDataWarehouseCheckSchemaNameRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<CheckSchemaNameResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -737,8 +737,8 @@ export const getDataWarehouseCompletedActivity: API.OperationMethod<
   GetDataWarehouseCompletedActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDataWarehouseCompletedActivityRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PipelineActivityResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDataWarehouseCompletedActivityRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<PipelineActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -752,8 +752,8 @@ export const getDataWarehouseDataHealthIssue: API.OperationMethod<
   GetDataWarehouseDataHealthIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetDataWarehouseDataHealthIssueRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DataHealthIssuesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetDataWarehouseDataHealthIssueRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<DataHealthIssuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -767,8 +767,8 @@ export const getDataWarehouseDataOpsDashboard: API.OperationMethod<
   GetDataWarehouseDataOpsDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetDataWarehouseDataOpsDashboardRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetDataWarehouseDataOpsDashboardRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetDataWarehouseDataOpsDashboardResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -782,8 +782,8 @@ export const getDataWarehouseDataQualityGate: API.OperationMethod<
   GetDataWarehouseDataQualityGateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetDataWarehouseDataQualityGateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DataQualityGateConfig>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetDataWarehouseDataQualityGateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DataQualityGateConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const getDataWarehouseJobStat: API.OperationMethod<
   GetDataWarehouseJobStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetDataWarehouseJobStatRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PipelineJobStatsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetDataWarehouseJobStatRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<PipelineJobStatsResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -812,8 +812,8 @@ export const getDataWarehouseManagedWarehouseDataStatus: API.OperationMethod<
   GetDataWarehouseManagedWarehouseDataStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetDataWarehouseManagedWarehouseDataStatusRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ManagedWarehouseDataStatusResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetDataWarehouseManagedWarehouseDataStatusRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<ManagedWarehouseDataStatusResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const getDataWarehouseManagedWarehouseMonitoring: API.OperationMethod<
   GetDataWarehouseManagedWarehouseMonitoringError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ManagedWarehouseMonitoringSnapshotResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringRequest>,
+  output: __S(136, __c8, 8) as any as S.Schema<ManagedWarehouseMonitoringSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -851,11 +851,11 @@ export const getDataWarehouseManagedWarehouseMonitoringTimeseries: API.Operation
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    44,
-    __c5,
-    4,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ManagedWarehouseMonitoringSeriesResponse>,
+  output: __S(150, __c9, 6) as any as S.Schema<ManagedWarehouseMonitoringSeriesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -869,8 +869,8 @@ export const getDataWarehouseManagedWarehouseSourceSchema: API.OperationMethod<
   GetDataWarehouseManagedWarehouseSourceSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetDataWarehouseManagedWarehouseSourceSchemaRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ManagedWarehouseSourceSchemasResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetDataWarehouseManagedWarehouseSourceSchemaRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<ManagedWarehouseSourceSchemasResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -884,8 +884,8 @@ export const getDataWarehousePropertyValue: API.OperationMethod<
   GetDataWarehousePropertyValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetDataWarehousePropertyValueRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetDataWarehousePropertyValueResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetDataWarehousePropertyValueRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetDataWarehousePropertyValueResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -899,8 +899,8 @@ export const getDataWarehouseRunningActivity: API.OperationMethod<
   GetDataWarehouseRunningActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetDataWarehouseRunningActivityRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PipelineActivityResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetDataWarehouseRunningActivityRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<PipelineActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -914,8 +914,8 @@ export const getDataWarehouseTotalRowsStat: API.OperationMethod<
   GetDataWarehouseTotalRowsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetDataWarehouseTotalRowsStatRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PipelineRowsStatsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetDataWarehouseTotalRowsStatRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<PipelineRowsStatsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -929,8 +929,8 @@ export const getDataWarehouseWarehouseStatus: API.OperationMethod<
   GetDataWarehouseWarehouseStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetDataWarehouseWarehouseStatusRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<WarehouseStatusResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetDataWarehouseWarehouseStatusRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<WarehouseStatusResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -944,8 +944,8 @@ export const updateDataWarehouseDataQualityGatePartial: API.OperationMethod<
   UpdateDataWarehouseDataQualityGatePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<UpdateDataWarehouseDataQualityGatePartialRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DataQualityGateConfig>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateDataWarehouseDataQualityGatePartialRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DataQualityGateConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -955,158 +955,6 @@ export const updateDataWarehouseDataQualityGatePartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_warehouse/deprovision/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDataWarehouseDeprovisionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateDataWarehouseDeprovisionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          schema_name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_warehouse/onboard-team/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDataWarehouseOnboardTeamRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          onboarded: S.Boolean,
-          schema_name: S.String,
-        }),
-      ).annotate({
-        identifier: "OnboardWarehouseTeamResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          database_name: S.String,
-          schema_name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_warehouse/provision/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDataWarehouseProvisionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/data_warehouse/reset-password/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DataWarehouseResetPasswordCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "ResetPasswordResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/data_warehouse/delete-org/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDataWarehouseOrgDestroyRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          org: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteWarehouseOrgResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_warehouse/check-database-name/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataWarehouseCheckDatabaseNameRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          available: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CheckDatabaseNameResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/data_warehouse/check-schema-name/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataWarehouseCheckSchemaNameRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          available: S.Boolean,
-        }),
-      ).annotate({ identifier: "CheckSchemaNameResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1125,7 +973,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseCompletedActivityRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1141,21 +993,21 @@ function __c1(j: number): any {
           source_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PipelineActivityRow" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(17, __c1, 1),
+          next: S.NullOr(S.String),
+          previous: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "PipelineActivityResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(15, __c1, 7),
-          next: S.NullOr(S.String),
-          previous: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "PipelineActivityResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1169,7 +1021,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseDataHealthIssueRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1183,16 +1035,20 @@ function __c2(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DataHealthIssue" });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(19, __c2, 3),
+          results: __S(34, __c2, 2),
           count: S.Number,
         }),
       ).annotate({ identifier: "DataHealthIssuesResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1206,7 +1062,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseDataOpsDashboardRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1220,7 +1080,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseDataQualityGateRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gate_materialization_on_checks: S.Boolean,
@@ -1228,7 +1092,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DataQualityGateConfig" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1262,7 +1126,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "JobStatsBucket" });
     case 3:
-      return S.Record(S.String, __S(26, __c3, 2));
+      return S.Record(S.String, __S(98, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1271,12 +1135,16 @@ function __c3(j: number): any {
           total_jobs: S.Number,
           successful_jobs: S.Number,
           failed_jobs: S.Number,
-          external_data_jobs: __S(25, __c3, 1),
-          modeling_jobs: __S(25, __c3, 1),
-          breakdown: __S(27, __c3, 3),
+          external_data_jobs: __S(97, __c6, 1),
+          modeling_jobs: __S(97, __c6, 1),
+          breakdown: __S(99, __c6, 3),
         }),
       ).annotate({ identifier: "PipelineJobStatsResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1290,7 +1158,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseManagedWarehouseDataStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataset: S.String,
@@ -1304,7 +1172,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseDatasetStatus",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           source_id: S.String,
@@ -1320,35 +1188,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseSourceSummary",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           readiness_state: S.String,
           detail: S.String,
-          sources: __S(32, __c4, 0),
+          sources: __S(115, __c7, 3),
         }),
       ).annotate({
         identifier: "ManagedWarehouseSourcesStatus",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           overall_readiness_state: S.String,
-          events: __S(30, __c3, 6),
-          persons: __S(30, __c3, 6),
-          sources: __S(33, __c4, 1),
+          events: __S(113, __c7, 1),
+          persons: __S(113, __c7, 1),
+          sources: __S(116, __c7, 4),
           generated_at: S.String,
         }),
       ).annotate({
         identifier: "ManagedWarehouseDataStatusResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1362,7 +1230,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseManagedWarehouseMonitoringRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -1370,7 +1238,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringWarehouse",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           max_workers: S.Number,
@@ -1383,7 +1251,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringLimits",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           workers: S.Number,
@@ -1396,7 +1264,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringTotals",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           protocol: S.String,
@@ -1410,11 +1278,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringWorkerSession",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1424,14 +1288,14 @@ function __c5(j: number): any {
           ttl_seconds: S.Number,
           created_at: S.String,
           last_heartbeat_at: S.String,
-          session: S.optional(S.NullOr(__S(39, __c4, 7))),
+          session: S.optional(S.NullOr(__S(132, __c8, 4))),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringWorker",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(133, __c8, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           cp_responders: S.Number,
@@ -1441,22 +1305,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringCoverage",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           schema_version: S.Number,
           org_id: S.String,
           as_of: S.String,
-          warehouse: __S(36, __c4, 4),
-          limits: __S(37, __c4, 5),
-          totals: __S(38, __c4, 6),
-          workers: __S(41, __c5, 1),
-          coverage: __S(42, __c5, 2),
+          warehouse: __S(129, __c8, 1),
+          limits: __S(130, __c8, 2),
+          totals: __S(131, __c8, 3),
+          workers: __S(134, __c8, 6),
+          coverage: __S(135, __c8, 7),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSnapshotResponse",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1472,9 +1340,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseManagedWarehouseMonitoringTimeseriesRequest",
       });
-    case 5:
+    case 1:
       return S.Record(S.String, S.String);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
@@ -1483,24 +1351,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseMonitoringPoint",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: __S(45, __c5, 5),
-          points: __S(47, __c5, 7),
+          labels: __S(145, __c9, 1),
+          points: __S(147, __c9, 3),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSeries",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(148, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           schema_version: S.Number,
@@ -1510,12 +1374,16 @@ function __c6(j: number): any {
           start: S.String,
           end: S.String,
           step_seconds: S.Number,
-          series: __S(49, __c6, 1),
+          series: __S(149, __c9, 5),
         }),
       ).annotate({
         identifier: "ManagedWarehouseMonitoringSeriesResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1530,7 +1398,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseManagedWarehouseSourceSchemaRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schema_id: S.String,
@@ -1550,17 +1418,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ManagedWarehouseSourceTableStatus",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(53, __c6, 5),
+          schemas: __S(162, __c10, 2),
         }),
       ).annotate({
         identifier: "ManagedWarehouseSourceSchemasResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1576,7 +1448,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1596,7 +1468,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseRunningActivityRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1610,9 +1486,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseTotalRowsStatRequest",
       });
-    case 2:
+    case 1:
       return S.Record(S.String, S.Number);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           billing_available: S.Boolean,
@@ -1623,12 +1499,16 @@ function __c7(j: number): any {
           tracked_billing_rows: S.Number,
           pending_billing_rows: S.Number,
           materialized_rows_in_billing_period: S.Number,
-          breakdown_of_rows_by_source: __S(58, __c7, 2),
+          breakdown_of_rows_by_source: __S(209, __c13, 1),
         }),
       ).annotate({
         identifier: "PipelineRowsStatsResponse",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1642,7 +1522,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetDataWarehouseWarehouseStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           host: S.String,
@@ -1651,7 +1531,7 @@ function __c7(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "WarehouseConnection" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           org_id: S.String,
@@ -1663,14 +1543,18 @@ function __c7(j: number): any {
           secrets_state: S.String,
           ready_at: S.NullOr(S.String),
           failed_at: S.NullOr(S.String),
-          connection: S.optional(S.NullOr(__S(61, __c7, 5))),
+          connection: S.optional(S.NullOr(__S(225, __c14, 1))),
           has_backfill: S.Boolean,
           table_suffix: S.NullOr(S.String),
           team_onboarded: S.Boolean,
           schema_name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "WarehouseStatusResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1687,7 +1571,186 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_warehouse/deprovision/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDataWarehouseDeprovisionRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateDataWarehouseDeprovisionResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          schema_name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_warehouse/onboard-team/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDataWarehouseOnboardTeamRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          onboarded: S.Boolean,
+          schema_name: S.String,
+        }),
+      ).annotate({
+        identifier: "OnboardWarehouseTeamResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          database_name: S.String,
+          schema_name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_warehouse/provision/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDataWarehouseProvisionRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/data_warehouse/reset-password/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DataWarehouseResetPasswordCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "ResetPasswordResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/data_warehouse/delete-org/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDataWarehouseOrgDestroyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          org: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteWarehouseOrgResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_warehouse/check-database-name/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataWarehouseCheckDatabaseNameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          available: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CheckDatabaseNameResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/data_warehouse/check-schema-name/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataWarehouseCheckSchemaNameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          available: S.Boolean,
+        }),
+      ).annotate({ identifier: "CheckSchemaNameResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

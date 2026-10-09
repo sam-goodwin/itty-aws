@@ -558,8 +558,8 @@ export const activateSubscription: API.OperationMethod<
   ActivateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateSubscriptionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<ActivateSubscriptionOutput>,
+  input: __S(512, __c16, 0) as any as S.Schema<ActivateSubscriptionInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<ActivateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -581,8 +581,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateDomainInput>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateDomainOutput>,
+  input: __S(609, __c19, 1) as any as S.Schema<CreateDomainInput>,
+  output: __S(610, __c19, 2) as any as S.Schema<CreateDomainOutput>,
   errors: [ServiceQuotaExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -605,8 +605,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateSubscriptionInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateSubscriptionOutput>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateSubscriptionInput>,
+  output: __S(576, __c18, 0) as any as S.Schema<CreateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -634,8 +634,8 @@ export const deactivateSubscription: API.OperationMethod<
   DeactivateSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeactivateSubscriptionInput>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeactivateSubscriptionOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeactivateSubscriptionInput>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeactivateSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -657,8 +657,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteDomainInput>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteDomainOutput>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteDomainInput>,
+  output: __S(33, __c1, 1) as any as S.Schema<DeleteDomainOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -675,8 +675,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDomainInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetDomainOutput>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetDomainInput>,
+  output: __S(65, __c2, 1) as any as S.Schema<GetDomainOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -699,8 +699,8 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
   GetMedicalScribeListeningSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetMedicalScribeListeningSessionInput>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetMedicalScribeListeningSessionOutput>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetMedicalScribeListeningSessionInput>,
+  output: __S(105, __c3, 9) as any as S.Schema<GetMedicalScribeListeningSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -730,8 +730,8 @@ export const getPatientInsightsJob: API.OperationMethod<
   GetPatientInsightsJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetPatientInsightsJobRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetPatientInsightsJobResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetPatientInsightsJobRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<GetPatientInsightsJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -760,8 +760,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetSubscriptionInput>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetSubscriptionOutput>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetSubscriptionInput>,
+  output: __S(225, __c7, 1) as any as S.Schema<GetSubscriptionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -784,8 +784,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListDomainsInput>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListDomainsOutput>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListDomainsInput>,
+  output: __S(259, __c8, 3) as any as S.Schema<ListDomainsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -814,8 +814,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListSubscriptionsInput>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListSubscriptionsOutput>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListSubscriptionsInput>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListSubscriptionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +843,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(321, __c10, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -868,8 +868,8 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
   StartMedicalScribeListeningSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<StartMedicalScribeListeningSessionInput>,
-  output: __S(66, __c8, 2) as any as S.Schema<StartMedicalScribeListeningSessionOutput>,
+  input: __S(365, __c11, 13) as any as S.Schema<StartMedicalScribeListeningSessionInput>,
+  output: __S(369, __c11, 17) as any as S.Schema<StartMedicalScribeListeningSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +901,8 @@ export const startPatientInsightsJob: API.OperationMethod<
   StartPatientInsightsJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<StartPatientInsightsJobRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<StartPatientInsightsJobResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<StartPatientInsightsJobRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<StartPatientInsightsJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -927,8 +927,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<TagResourceInput>,
-  output: __S(70, __c8, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(448, __c14, 0) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -945,8 +945,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(70, __c8, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<UntagResourceInput>,
+  output: __S(448, __c14, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -955,6 +955,620 @@ export const untagResource: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/domains/{domainId}/subscriptions/{subscriptionId}/deactivate",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeactivateSubscriptionInput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ domainId: S.String.pipe(T.HttpLabel("domainId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/domain/{domainId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDomainInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ domainId: S.String, arn: S.String, status: S.String }),
+      ).annotate({ identifier: "DeleteDomainOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ domainId: S.String.pipe(T.HttpLabel("domainId")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/domain/{domainId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetDomainInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          arn: S.String,
+          name: S.String,
+          kmsKeyArn: S.optional(S.String),
+          encryptionContext: S.optional(__S(640, __c20, 0)),
+          status: S.String,
+          webAppUrl: S.optional(S.String),
+          webAppConfiguration: S.optional(__S(641, __c20, 1)),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          tags: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({ identifier: "GetDomainOutput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/medical-scribe-stream/domain/{domainId}/subscription/{subscriptionId}/session/{sessionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMedicalScribeListeningSessionInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ templateType: S.optional(S.String) })).annotate({
+        identifier: "ManagedTemplateResponse",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ managedTemplate: __S(97, __c3, 1) }),
+        /*@__PURE__*/ S.Struct({ customTemplate: __S(97, __c3, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ noteTemplateSettings: S.optional(__S(98, __c3, 2)) }),
+      ).annotate({
+        identifier: "ClinicalNoteGenerationSettingsResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          outputS3Uri: S.String,
+          clinicalNoteGenerationSettings: __S(99, __c3, 3),
+        }),
+      ).annotate({
+        identifier: "MedicalScribePostStreamActionSettingsResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          outputLocation: S.optional(S.String),
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ArtifactDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          noteResult: S.optional(__S(101, __c3, 5)),
+          transcriptResult: S.optional(__S(101, __c3, 5)),
+          afterVisitSummaryResult: S.optional(__S(101, __c3, 5)),
+        }),
+      ).annotate({
+        identifier: "ClinicalNoteGenerationResult",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ clinicalNoteGenerationResult: S.optional(__S(102, __c3, 6)) }),
+      ).annotate({
+        identifier: "MedicalScribePostStreamActionsResult",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String),
+          domainId: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          mediaSampleRateHertz: S.optional(S.Number),
+          mediaEncoding: S.optional(S.String),
+          channelDefinitions: S.optional(__S(129, __c4, 1)),
+          postStreamActionSettings: S.optional(__S(100, __c3, 4)),
+          postStreamActionResult: S.optional(__S(103, __c3, 7)),
+          encounterContextProvided: S.optional(S.Boolean),
+          streamStatus: S.optional(S.String),
+          streamCreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          streamEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "MedicalScribeListeningSessionDetails",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          medicalScribeListeningSessionDetails: S.optional(__S(104, __c3, 8)),
+        }),
+      ).annotate({
+        identifier: "GetMedicalScribeListeningSessionOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ channelId: S.Number, participantRole: S.String })).annotate(
+        {
+          identifier: "MedicalScribeChannelDefinition",
+        },
+      );
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/domain/{domainId}/patient-insights-job/{jobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPatientInsightsJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          jobArn: S.String,
+          jobStatus: S.String,
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          insightsOutput: S.optional(__S(192, __c6, 0)),
+          statusDetails: S.optional(S.String),
+          patientContext: __S(193, __c6, 1),
+          insightsContext: __S(194, __c6, 2),
+          encounterContext: __S(195, __c6, 3),
+          userContext: __S(196, __c6, 4),
+          inputDataConfig: __S(199, __c6, 7),
+          outputDataConfig: __S(200, __c6, 8),
+        }),
+      ).annotate({
+        identifier: "GetPatientInsightsJobResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
+        identifier: "InsightsOutput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          patientId: SensitiveString,
+          dateOfBirth: S.optional(SensitiveString),
+          pronouns: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PatientInsightsPatientContext",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ insightsType: S.String })).annotate({
+        identifier: "InsightsContext",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ encounterReason: SensitiveString })).annotate({
+        identifier: "PatientInsightsEncounterContext",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ role: S.String, userId: SensitiveString, specialty: S.optional(S.String) }),
+      ).annotate({ identifier: "UserContext" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ fhirEndpoint: S.String, oauthToken: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "FHIRServer" });
+    case 6:
+      return S.Array(__S(192, __c6, 0));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          fhirServer: S.optional(__S(197, __c6, 5)),
+          s3Sources: S.optional(__S(198, __c6, 6)),
+        }),
+      ).annotate({ identifier: "InputDataConfig" });
+    case 8:
+      return S.suspend(() => S.Struct({ s3OutputPath: S.String })).annotate({
+        identifier: "OutputDataConfig",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/domains/{domainId}/subscriptions/{subscriptionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSubscriptionInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ subscription: S.optional(__S(576, __c18, 0)) })).annotate({
+        identifier: "GetSubscriptionOutput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String).pipe(T.HttpQuery("status")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/domain" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDomainsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String,
+          arn: S.String,
+          name: S.String,
+          status: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DomainSummary" });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ domains: __S(258, __c8, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainsOutput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/domains/{domainId}/subscriptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSubscriptionsInput" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ subscriptions: __S(289, __c9, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSubscriptionsOutput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(672, __c21, 0)) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ audioChunk: T.Blob })).annotate({
+        identifier: "MedicalScribeAudioEvent",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ audioChunk: T.Blob.pipe(T.EventPayload()) })).annotate({
+        identifier: "MedicalScribeBinaryAudioEvent",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
+        identifier: "MedicalScribeSessionControlEvent",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ templateType: S.String })).annotate({
+        identifier: "ManagedTemplate",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ sectionHeader: SensitiveString, sectionInstruction: SensitiveString }),
+      ).annotate({
+        identifier: "TemplateSectionInstruction",
+      });
+    case 5:
+      return S.Array(__S(356, __c11, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ templateType: S.String, templateInstructions: __S(357, __c11, 5) }),
+      ).annotate({ identifier: "CustomTemplate" });
+    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ managedTemplate: __S(355, __c11, 3) }),
+        /*@__PURE__*/ S.Struct({ customTemplate: __S(358, __c11, 6) }),
+      ]);
+    case 8:
+      return S.suspend(() => S.Struct({ noteTemplateSettings: __S(359, __c11, 7) })).annotate({
+        identifier: "ClinicalNoteGenerationSettings",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          outputS3Uri: S.String,
+          clinicalNoteGenerationSettings: __S(360, __c11, 8),
+        }),
+      ).annotate({
+        identifier: "MedicalScribePostStreamActionSettings",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ unstructuredContext: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "EncounterContext" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          postStreamActionSettings: __S(361, __c11, 9),
+          channelDefinitions: S.optional(__S(129, __c4, 1)),
+          encounterContext: S.optional(__S(362, __c11, 10)),
+        }),
+      ).annotate({
+        identifier: "MedicalScribeConfigurationEvent",
+      });
+    case 12:
+      return T.InputEventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ audioEvent: __S(352, __c11, 0) }),
+          /*@__PURE__*/ S.Struct({ binaryAudioEvent: __S(353, __c11, 1) }),
+          /*@__PURE__*/ S.Struct({ sessionControlEvent: __S(354, __c11, 2) }),
+          /*@__PURE__*/ S.Struct({ configurationEvent: __S(363, __c11, 11) }),
+        ]),
+      );
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-session-id")),
+          domainId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-domain-id")),
+          subscriptionId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-subscription-id")),
+          languageCode: S.String.pipe(T.HttpHeader("x-amzn-medscribe-language-code")),
+          mediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-medscribe-sample-rate")),
+          mediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-medscribe-media-encoding")),
+          inputStream: S.optional(__S(364, __c11, 12)).pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/medical-scribe-stream/" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartMedicalScribeListeningSessionInput",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          segmentId: S.optional(S.String),
+          audioBeginOffset: S.optional(S.Number),
+          audioEndOffset: S.optional(S.Number),
+          isPartial: S.optional(S.Boolean),
+          channelId: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MedicalScribeTranscriptSegment",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({ transcriptSegment: S.optional(__S(366, __c11, 14)) }),
+      ).annotate({
+        identifier: "MedicalScribeTranscriptEvent",
+      });
+    case 16:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ transcriptEvent: __S(367, __c11, 15) }),
+          /*@__PURE__*/ S.Struct({
+            internalFailureException: /*@__PURE__*/ S.suspend(
+              () => InternalServerException,
+            ).annotate({
+              identifier: "InternalServerException",
+            }),
+          }),
+          /*@__PURE__*/ S.Struct({
+            validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
+              identifier: "ValidationException",
+            }),
+          }),
+        ]),
+      );
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-session-id")),
+          domainId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-domain-id")),
+          subscriptionId: S.optional(S.String).pipe(
+            T.HttpHeader("x-amzn-medscribe-subscription-id"),
+          ),
+          requestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
+          languageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-language-code")),
+          mediaSampleRateHertz: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amzn-medscribe-sample-rate"),
+          ),
+          mediaEncoding: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-media-encoding")),
+          responseStream: S.optional(__S(368, __c11, 16)).pipe(T.HttpPayload()),
+        }),
+      ).annotate({
+        identifier: "StartMedicalScribeListeningSessionOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainId: S.String.pipe(T.HttpLabel("domainId")),
+          patientContext: __S(193, __c6, 1),
+          insightsContext: __S(194, __c6, 2),
+          encounterContext: __S(195, __c6, 3),
+          userContext: __S(196, __c6, 4),
+          inputDataConfig: __S(199, __c6, 7),
+          outputDataConfig: __S(200, __c6, 8),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/domain/{domainId}/patient-insights-job" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartPatientInsightsJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobArn: S.String,
+          jobId: S.String,
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "StartPatientInsightsJobResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(672, __c21, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(480, __c15, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -977,7 +1591,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateSubscriptionInput",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ subscription: S.optional(__S(576, __c18, 0)) })).annotate({
+        identifier: "ActivateSubscriptionOutput",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainId: S.String,
@@ -990,54 +1616,62 @@ function __c0(j: number): any {
           deactivatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SubscriptionDescription" });
-    case 2:
-      return S.suspend(() => S.Struct({ subscription: S.optional(__S(1, __c0, 1)) })).annotate({
-        identifier: "ActivateSubscriptionOutput",
-      });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ehrRole: S.String, idcInstanceId: S.String, idcRegion: S.String }),
       ).annotate({
         identifier: "CreateWebAppConfiguration",
       });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           kmsKeyArn: S.optional(S.String),
-          webAppSetupConfiguration: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          webAppSetupConfiguration: S.optional(__S(608, __c19, 0)),
+          tags: S.optional(__S(672, __c21, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/domain" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDomainInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ encryptionType: S.String, kmsKeyArn: S.optional(S.String) }),
-      ).annotate({ identifier: "EncryptionContext" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ehrRole: S.String, idcApplicationId: S.String, idcRegion: S.String }),
-      ).annotate({ identifier: "WebAppConfiguration" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           domainId: S.String,
           arn: S.String,
           name: S.String,
           kmsKeyArn: S.optional(S.String),
-          encryptionContext: S.optional(__S(6, __c0, 6)),
+          encryptionContext: S.optional(__S(640, __c20, 0)),
           status: S.String,
           webAppUrl: S.optional(S.String),
-          webAppConfiguration: S.optional(__S(7, __c0, 7)),
+          webAppConfiguration: S.optional(__S(641, __c20, 1)),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CreateDomainOutput" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ encryptionType: S.String, kmsKeyArn: S.optional(S.String) }),
+      ).annotate({ identifier: "EncryptionContext" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ ehrRole: S.String, idcApplicationId: S.String, idcRegion: S.String }),
+      ).annotate({ identifier: "WebAppConfiguration" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ domainId: S.String.pipe(T.HttpLabel("domainId")) }).pipe(
           T.all(
@@ -1050,591 +1684,8 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSubscriptionInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/domains/{domainId}/subscriptions/{subscriptionId}/deactivate",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeactivateSubscriptionInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ domainId: S.String.pipe(T.HttpLabel("domainId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/domain/{domainId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteDomainInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ domainId: S.String, arn: S.String, status: S.String }),
-      ).annotate({ identifier: "DeleteDomainOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ domainId: S.String.pipe(T.HttpLabel("domainId")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/domain/{domainId}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetDomainInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String,
-          arn: S.String,
-          name: S.String,
-          kmsKeyArn: S.optional(S.String),
-          encryptionContext: S.optional(__S(6, __c0, 6)),
-          status: S.String,
-          webAppUrl: S.optional(S.String),
-          webAppConfiguration: S.optional(__S(7, __c0, 7)),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "GetDomainOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/medical-scribe-stream/domain/{domainId}/subscription/{subscriptionId}/session/{sessionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMedicalScribeListeningSessionInput",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ channelId: S.Number, participantRole: S.String })).annotate(
-        {
-          identifier: "MedicalScribeChannelDefinition",
-        },
-      );
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ templateType: S.optional(S.String) })).annotate({
-        identifier: "ManagedTemplateResponse",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ managedTemplate: __S(18, __c2, 2) }),
-        /*@__PURE__*/ S.Struct({ customTemplate: __S(18, __c2, 2) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ noteTemplateSettings: S.optional(__S(19, __c2, 3)) }),
-      ).annotate({
-        identifier: "ClinicalNoteGenerationSettingsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          outputS3Uri: S.String,
-          clinicalNoteGenerationSettings: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionSettingsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          outputLocation: S.optional(S.String),
-          status: S.optional(S.String),
-          failureReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ArtifactDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          noteResult: S.optional(__S(22, __c2, 6)),
-          transcriptResult: S.optional(__S(22, __c2, 6)),
-          afterVisitSummaryResult: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "ClinicalNoteGenerationResult",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ clinicalNoteGenerationResult: S.optional(__S(23, __c2, 7)) }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionsResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String),
-          domainId: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          mediaSampleRateHertz: S.optional(S.Number),
-          mediaEncoding: S.optional(S.String),
-          channelDefinitions: S.optional(__S(17, __c2, 1)),
-          postStreamActionSettings: S.optional(__S(21, __c2, 5)),
-          postStreamActionResult: S.optional(__S(24, __c3, 0)),
-          encounterContextProvided: S.optional(S.Boolean),
-          streamStatus: S.optional(S.String),
-          streamCreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          streamEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "MedicalScribeListeningSessionDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          medicalScribeListeningSessionDetails: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GetMedicalScribeListeningSessionOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/domain/{domainId}/patient-insights-job/{jobId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetPatientInsightsJobRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
-        identifier: "InsightsOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          patientId: SensitiveString,
-          dateOfBirth: S.optional(SensitiveString),
-          pronouns: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PatientInsightsPatientContext",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ insightsType: S.String })).annotate({
-        identifier: "InsightsContext",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ encounterReason: SensitiveString })).annotate({
-        identifier: "PatientInsightsEncounterContext",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ role: S.String, userId: SensitiveString, specialty: S.optional(S.String) }),
-      ).annotate({ identifier: "UserContext" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ fhirEndpoint: S.String, oauthToken: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "FHIRServer" });
-    case 2:
-      return S.Array(__S(28, __c3, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fhirServer: S.optional(__S(33, __c4, 1)),
-          s3Sources: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "InputDataConfig" });
-    case 4:
-      return S.suspend(() => S.Struct({ s3OutputPath: S.String })).annotate({
-        identifier: "OutputDataConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          jobArn: S.String,
-          jobStatus: S.String,
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          insightsOutput: S.optional(__S(28, __c3, 4)),
-          statusDetails: S.optional(S.String),
-          patientContext: __S(29, __c3, 5),
-          insightsContext: __S(30, __c3, 6),
-          encounterContext: __S(31, __c3, 7),
-          userContext: __S(32, __c4, 0),
-          inputDataConfig: __S(35, __c4, 3),
-          outputDataConfig: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "GetPatientInsightsJobResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          subscriptionId: S.String.pipe(T.HttpLabel("subscriptionId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/domains/{domainId}/subscriptions/{subscriptionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetSubscriptionInput" });
-    case 7:
-      return S.suspend(() => S.Struct({ subscription: S.optional(__S(1, __c0, 1)) })).annotate({
-        identifier: "GetSubscriptionOutput",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String).pipe(T.HttpQuery("status")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/domain" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListDomainsInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String,
-          arn: S.String,
-          name: S.String,
-          status: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "DomainSummary" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ domains: __S(42, __c5, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDomainsOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/domains/{domainId}/subscriptions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListSubscriptionsInput" });
-    case 5:
-      return S.Array(__S(1, __c0, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ subscriptions: __S(45, __c5, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSubscriptionsOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListTagsForResourceInput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(4, __c0, 4)) })).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ audioChunk: T.Blob })).annotate({
-        identifier: "MedicalScribeAudioEvent",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ audioChunk: T.Blob.pipe(T.EventPayload()) })).annotate({
-        identifier: "MedicalScribeBinaryAudioEvent",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
-        identifier: "MedicalScribeSessionControlEvent",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ templateType: S.String })).annotate({
-        identifier: "ManagedTemplate",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ sectionHeader: SensitiveString, sectionInstruction: SensitiveString }),
-      ).annotate({
-        identifier: "TemplateSectionInstruction",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ templateType: S.String, templateInstructions: __S(54, __c6, 6) }),
-      ).annotate({ identifier: "CustomTemplate" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ managedTemplate: __S(52, __c6, 4) }),
-        /*@__PURE__*/ S.Struct({ customTemplate: __S(55, __c6, 7) }),
-      ]);
-    case 1:
-      return S.suspend(() => S.Struct({ noteTemplateSettings: __S(56, __c7, 0) })).annotate({
-        identifier: "ClinicalNoteGenerationSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          outputS3Uri: S.String,
-          clinicalNoteGenerationSettings: __S(57, __c7, 1),
-        }),
-      ).annotate({
-        identifier: "MedicalScribePostStreamActionSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ unstructuredContext: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "EncounterContext" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          postStreamActionSettings: __S(58, __c7, 2),
-          channelDefinitions: S.optional(__S(17, __c2, 1)),
-          encounterContext: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "MedicalScribeConfigurationEvent",
-      });
-    case 5:
-      return T.InputEventStream(
-        /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ audioEvent: __S(49, __c6, 1) }),
-          /*@__PURE__*/ S.Struct({ binaryAudioEvent: __S(50, __c6, 2) }),
-          /*@__PURE__*/ S.Struct({ sessionControlEvent: __S(51, __c6, 3) }),
-          /*@__PURE__*/ S.Struct({ configurationEvent: __S(60, __c7, 4) }),
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-session-id")),
-          domainId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-domain-id")),
-          subscriptionId: S.String.pipe(T.HttpHeader("x-amzn-medscribe-subscription-id")),
-          languageCode: S.String.pipe(T.HttpHeader("x-amzn-medscribe-language-code")),
-          mediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-medscribe-sample-rate")),
-          mediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-medscribe-media-encoding")),
-          inputStream: S.optional(__S(61, __c7, 5)).pipe(T.HttpPayload()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/medical-scribe-stream/" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartMedicalScribeListeningSessionInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          segmentId: S.optional(S.String),
-          audioBeginOffset: S.optional(S.Number),
-          audioEndOffset: S.optional(S.Number),
-          isPartial: S.optional(S.Boolean),
-          channelId: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MedicalScribeTranscriptSegment",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ transcriptSegment: S.optional(__S(63, __c7, 7)) }),
-      ).annotate({
-        identifier: "MedicalScribeTranscriptEvent",
-      });
-    case 1:
-      return T.EventStream(
-        /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ transcriptEvent: __S(64, __c8, 0) }),
-          /*@__PURE__*/ S.Struct({
-            internalFailureException: /*@__PURE__*/ S.suspend(
-              () => InternalServerException,
-            ).annotate({
-              identifier: "InternalServerException",
-            }),
-          }),
-          /*@__PURE__*/ S.Struct({
-            validationException: /*@__PURE__*/ S.suspend(() => ValidationException).annotate({
-              identifier: "ValidationException",
-            }),
-          }),
-        ]),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-session-id")),
-          domainId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-domain-id")),
-          subscriptionId: S.optional(S.String).pipe(
-            T.HttpHeader("x-amzn-medscribe-subscription-id"),
-          ),
-          requestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
-          languageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-language-code")),
-          mediaSampleRateHertz: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amzn-medscribe-sample-rate"),
-          ),
-          mediaEncoding: S.optional(S.String).pipe(T.HttpHeader("x-amzn-medscribe-media-encoding")),
-          responseStream: S.optional(__S(65, __c8, 1)).pipe(T.HttpPayload()),
-        }),
-      ).annotate({
-        identifier: "StartMedicalScribeListeningSessionOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domainId: S.String.pipe(T.HttpLabel("domainId")),
-          patientContext: __S(29, __c3, 5),
-          insightsContext: __S(30, __c3, 6),
-          encounterContext: __S(31, __c3, 7),
-          userContext: __S(32, __c4, 0),
-          inputDataConfig: __S(35, __c4, 3),
-          outputDataConfig: __S(36, __c4, 4),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/domain/{domainId}/patient-insights-job" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartPatientInsightsJobRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jobArn: S.String,
-          jobId: S.String,
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "StartPatientInsightsJobResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(4, __c0, 4),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceInput" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(71, __c8, 7).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

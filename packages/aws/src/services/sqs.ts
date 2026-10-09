@@ -708,8 +708,8 @@ export const addPermission: API.OperationMethod<
   AddPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddPermissionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AddPermissionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddPermissionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddPermissionResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -752,8 +752,8 @@ export const cancelMessageMoveTask: API.OperationMethod<
   CancelMessageMoveTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelMessageMoveTaskRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CancelMessageMoveTaskResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<CancelMessageMoveTaskRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CancelMessageMoveTaskResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -828,8 +828,8 @@ export const changeMessageVisibility: API.OperationMethod<
   ChangeMessageVisibilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ChangeMessageVisibilityRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ChangeMessageVisibilityResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ChangeMessageVisibilityRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ChangeMessageVisibilityResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -873,8 +873,8 @@ export const changeMessageVisibilityBatch: API.OperationMethod<
   ChangeMessageVisibilityBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ChangeMessageVisibilityBatchRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ChangeMessageVisibilityBatchResult>,
+  input: __S(42, __c5, 2) as any as S.Schema<ChangeMessageVisibilityBatchRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ChangeMessageVisibilityBatchResult>,
   errors: [
     BatchEntryIdsNotDistinct,
     EmptyBatchRequest,
@@ -957,8 +957,8 @@ export const createQueue: API.OperationMethod<
   CreateQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateQueueRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateQueueResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateQueueRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<CreateQueueResult>,
   errors: [
     InvalidAddress,
     InvalidAttributeName,
@@ -1014,8 +1014,8 @@ export const deleteMessage: API.OperationMethod<
   DeleteMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteMessageRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMessageResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteMessageRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteMessageResponse>,
   errors: [
     InvalidAddress,
     InvalidIdFormat,
@@ -1055,8 +1055,8 @@ export const deleteMessageBatch: API.OperationMethod<
   DeleteMessageBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteMessageBatchRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteMessageBatchResult>,
+  input: __S(106, __c13, 2) as any as S.Schema<DeleteMessageBatchRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<DeleteMessageBatchResult>,
   errors: [
     BatchEntryIdsNotDistinct,
     EmptyBatchRequest,
@@ -1109,8 +1109,8 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteQueueRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteQueueResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteQueueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteQueueResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1142,8 +1142,8 @@ export const getQueueAttributes: API.OperationMethod<
   GetQueueAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetQueueAttributesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetQueueAttributesResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetQueueAttributesRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetQueueAttributesResult>,
   errors: [
     InvalidAddress,
     InvalidAttributeName,
@@ -1184,8 +1184,8 @@ export const getQueueUrl: API.OperationMethod<
   GetQueueUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetQueueUrlRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetQueueUrlResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetQueueUrlRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetQueueUrlResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1227,8 +1227,8 @@ export const listDeadLetterSourceQueues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListDeadLetterSourceQueuesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListDeadLetterSourceQueuesResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListDeadLetterSourceQueuesRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListDeadLetterSourceQueuesResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1274,8 +1274,8 @@ export const listMessageMoveTasks: API.OperationMethod<
   ListMessageMoveTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListMessageMoveTasksRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListMessageMoveTasksResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListMessageMoveTasksRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListMessageMoveTasksResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1321,8 +1321,8 @@ export const listQueues: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListQueuesResult>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListQueuesRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<ListQueuesResult>,
   errors: [InvalidAddress, InvalidSecurity, RequestThrottled, UnsupportedOperation],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1357,8 +1357,8 @@ export const listQueueTags: API.OperationMethod<
   ListQueueTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListQueueTagsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListQueueTagsResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListQueueTagsRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ListQueueTagsResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1402,8 +1402,8 @@ export const purgeQueue: API.OperationMethod<
   PurgeQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PurgeQueueRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<PurgeQueueResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<PurgeQueueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PurgeQueueResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1480,8 +1480,8 @@ export const receiveMessage: API.OperationMethod<
   ReceiveMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ReceiveMessageRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ReceiveMessageResult>,
+  input: __S(184, __c23, 0) as any as S.Schema<ReceiveMessageRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ReceiveMessageResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1529,8 +1529,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RemovePermissionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RemovePermissionResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<RemovePermissionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemovePermissionResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1576,8 +1576,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<SendMessageRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<SendMessageResult>,
+  input: __S(208, __c26, 0) as any as S.Schema<SendMessageRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<SendMessageResult>,
   errors: [
     InvalidAddress,
     InvalidMessageContents,
@@ -1652,8 +1652,8 @@ export const sendMessageBatch: API.OperationMethod<
   SendMessageBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<SendMessageBatchRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<SendMessageBatchResult>,
+  input: __S(226, __c28, 2) as any as S.Schema<SendMessageBatchRequest>,
+  output: __S(229, __c28, 5) as any as S.Schema<SendMessageBatchResult>,
   errors: [
     BatchEntryIdsNotDistinct,
     BatchRequestTooLong,
@@ -1718,8 +1718,8 @@ export const setQueueAttributes: API.OperationMethod<
   SetQueueAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<SetQueueAttributesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<SetQueueAttributesResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<SetQueueAttributesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetQueueAttributesResponse>,
   errors: [
     InvalidAddress,
     InvalidAttributeName,
@@ -1772,8 +1772,8 @@ export const startMessageMoveTask: API.OperationMethod<
   StartMessageMoveTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<StartMessageMoveTaskRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<StartMessageMoveTaskResult>,
+  input: __S(240, __c30, 0) as any as S.Schema<StartMessageMoveTaskRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<StartMessageMoveTaskResult>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1824,8 +1824,8 @@ export const tagQueue: API.OperationMethod<
   TagQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<TagQueueRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TagQueueResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<TagQueueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TagQueueResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1859,8 +1859,8 @@ export const untagQueue: API.OperationMethod<
   UntagQueueError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<UntagQueueRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UntagQueueResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<UntagQueueRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UntagQueueResponse>,
   errors: [
     InvalidAddress,
     InvalidSecurity,
@@ -1877,21 +1877,33 @@ export const untagQueue: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
           Label: S.String,
-          AWSAccountIds: __S(0, __c0, 0).pipe(T.XmlName("AWSAccountId"), T.XmlFlattened()),
-          Actions: __S(0, __c0, 0).pipe(T.XmlName("ActionName"), T.XmlFlattened()),
+          AWSAccountIds: __S(16, __c2, 0).pipe(T.XmlName("AWSAccountId"), T.XmlFlattened()),
+          Actions: __S(16, __c2, 0).pipe(T.XmlName("ActionName"), T.XmlFlattened()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AddPermissionRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddPermissionResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TaskHandle: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1899,13 +1911,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelMessageMoveTaskRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ApproximateNumberOfMessagesMoved: S.optional(S.Number) }),
       ).annotate({
         identifier: "CancelMessageMoveTaskResult",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ QueueUrl: S.String, ReceiptHandle: S.String, VisibilityTimeout: S.Number }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1913,11 +1929,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangeMessageVisibilityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ChangeMessageVisibilityResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1927,17 +1947,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangeMessageVisibilityBatchRequestEntry",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          Entries: __S(8, __c1, 0).pipe(
+          Entries: __S(41, __c5, 1).pipe(
             T.XmlName("ChangeMessageVisibilityBatchRequestEntry"),
             T.XmlFlattened(),
           ),
@@ -1945,13 +1961,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChangeMessageVisibilityBatchRequest",
       });
-    case 2:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Successful: S.optional(__S(49, __c6, 1)).pipe(
+            T.XmlName("ChangeMessageVisibilityBatchResultEntry"),
+            T.XmlFlattened(),
+          ),
+          Failed: S.optional(__S(57, __c7, 1)).pipe(
+            T.XmlName("BatchResultErrorEntry"),
+            T.XmlFlattened(),
+          ),
+        }),
+      ).annotate({
+        identifier: "ChangeMessageVisibilityBatchResult",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Id: S.String })).annotate({
         identifier: "ChangeMessageVisibilityBatchResultEntry",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -1960,66 +1999,71 @@ function __c1(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchResultErrorEntry" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(__S(11, __c1, 3)).pipe(
-            T.XmlName("ChangeMessageVisibilityBatchResultEntry"),
-            T.XmlFlattened(),
-          ),
-          Failed: S.optional(__S(13, __c1, 5)).pipe(
-            T.XmlName("BatchResultErrorEntry"),
-            T.XmlFlattened(),
-          ),
-        }),
-      ).annotate({
-        identifier: "ChangeMessageVisibilityBatchResult",
-      });
-    case 7:
+          QueueName: S.String,
+          Attributes: S.optional(__S(72, __c9, 0)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          tags: S.optional(__S(88, __c11, 0)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateQueueRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
       );
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ QueueUrl: S.optional(S.String) })).annotate({
+        identifier: "CreateQueueResult",
+      });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Record(
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Key")),
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")).pipe(S.optional),
       );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          QueueName: S.String,
-          Attributes: S.optional(__S(15, __c1, 7)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
-          tags: S.optional(__S(16, __c2, 0)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateQueueRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ QueueUrl: S.optional(S.String) })).annotate({
-        identifier: "CreateQueueResult",
-      });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ QueueUrl: S.String, ReceiptHandle: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteMessageRequest" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Id: S.String, ReceiptHandle: S.String })).annotate({
         identifier: "DeleteMessageBatchRequestEntry",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          Entries: __S(21, __c2, 5).pipe(
+          Entries: __S(105, __c13, 1).pipe(
             T.XmlName("DeleteMessageBatchRequestEntry"),
             T.XmlFlattened(),
           ),
@@ -2027,14 +2071,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteMessageBatchRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(__S(11, __c1, 3)).pipe(
+          Successful: S.optional(__S(49, __c6, 1)).pipe(
             T.XmlName("DeleteMessageBatchResultEntry"),
             T.XmlFlattened(),
           ),
-          Failed: S.optional(__S(13, __c1, 5)).pipe(
+          Failed: S.optional(__S(57, __c7, 1)).pipe(
             T.XmlName("BatchResultErrorEntry"),
             T.XmlFlattened(),
           ),
@@ -2042,7 +2086,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteMessageBatchResult" });
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2050,13 +2094,15 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteQueueRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          AttributeNames: S.optional(__S(25, __c3, 1)).pipe(
+          AttributeNames: S.optional(__S(128, __c16, 0)).pipe(
             T.XmlName("AttributeName"),
             T.XmlFlattened(),
           ),
@@ -2064,19 +2110,33 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetQueueAttributesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(__S(15, __c1, 7)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Attributes: S.optional(__S(72, __c9, 0)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "GetQueueAttributesResult" });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ QueueName: S.String, QueueOwnerAWSAccountId: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetQueueUrlRequest" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
@@ -2086,16 +2146,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListDeadLetterSourceQueuesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          queueUrls: __S(0, __c0, 0).pipe(T.XmlName("QueueUrl"), T.XmlFlattened()),
+          queueUrls: __S(16, __c2, 0).pipe(T.XmlName("QueueUrl"), T.XmlFlattened()),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeadLetterSourceQueuesResult",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SourceArn: S.String, MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2103,11 +2167,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListMessageMoveTasksRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TaskHandle: S.optional(S.String),
@@ -2123,12 +2183,12 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListMessageMoveTasksResultEntry",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Results: S.optional(__S(33, __c4, 1)).pipe(
+          Results: S.optional(__S(154, __c19, 2)).pipe(
             T.XmlName("ListMessageMoveTasksResultEntry"),
             T.XmlFlattened(),
           ),
@@ -2136,7 +2196,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListMessageMoveTasksResult",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueNamePrefix: S.optional(S.String),
@@ -2144,24 +2208,32 @@ function __c4(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListQueuesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          QueueUrls: S.optional(__S(0, __c0, 0)).pipe(T.XmlName("QueueUrl"), T.XmlFlattened()),
+          QueueUrls: S.optional(__S(16, __c2, 0)).pipe(T.XmlName("QueueUrl"), T.XmlFlattened()),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQueuesResult" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ QueueUrl: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListQueueTagsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(16, __c2, 0)).pipe(T.XmlName("Tag"), T.XmlFlattened()) }),
+        S.Struct({ Tags: S.optional(__S(88, __c11, 0)).pipe(T.XmlName("Tag"), T.XmlFlattened()) }),
       ).annotate({ identifier: "ListQueueTagsResult" });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ QueueUrl: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2169,21 +2241,21 @@ function __c4(j: number): any {
       ).annotate({ identifier: "PurgeQueueRequest" });
   }
 }
-function __c5(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          AttributeNames: S.optional(__S(25, __c3, 1)).pipe(
+          AttributeNames: S.optional(__S(128, __c16, 0)).pipe(
             T.XmlName("AttributeName"),
             T.XmlFlattened(),
           ),
-          MessageSystemAttributeNames: S.optional(__S(25, __c3, 1)).pipe(
+          MessageSystemAttributeNames: S.optional(__S(128, __c16, 0)).pipe(
             T.XmlName("AttributeName"),
             T.XmlFlattened(),
           ),
-          MessageAttributeNames: S.optional(__S(0, __c0, 0)).pipe(
+          MessageAttributeNames: S.optional(__S(16, __c2, 0)).pipe(
             T.XmlName("MessageAttributeName"),
             T.XmlFlattened(),
           ),
@@ -2194,59 +2266,63 @@ function __c5(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ReceiveMessageRequest" });
     case 1:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("StringListValue")));
-    case 2:
-      return S.Array(/*@__PURE__*/ T.Blob.pipe(/*@__PURE__*/ T.XmlName("BinaryListValue")));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          StringValue: S.optional(S.String),
-          BinaryValue: S.optional(T.Blob),
-          StringListValues: S.optional(__S(41, __c5, 1)).pipe(
-            T.XmlName("StringListValue"),
-            T.XmlFlattened(),
-          ),
-          BinaryListValues: S.optional(__S(42, __c5, 2)).pipe(
-            T.XmlName("BinaryListValue"),
-            T.XmlFlattened(),
-          ),
-          DataType: S.String,
-        }),
-      ).annotate({ identifier: "MessageAttributeValue" });
-    case 4:
-      return S.Record(
-        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
-        /*@__PURE__*/ __S(43, __c5, 3)
-          .pipe(/*@__PURE__*/ T.XmlName("Value"))
-          .annotate({ identifier: "MessageAttributeValue" })
-          .pipe(S.optional),
-      );
-    case 5:
       return S.suspend(() =>
         S.Struct({
           MessageId: S.optional(S.String),
           ReceiptHandle: S.optional(S.String),
           MD5OfBody: S.optional(S.String),
           Body: S.optional(S.String),
-          Attributes: S.optional(__S(15, __c1, 7)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Attributes: S.optional(__S(72, __c9, 0)).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
           MD5OfMessageAttributes: S.optional(S.String),
-          MessageAttributes: S.optional(__S(44, __c5, 4)).pipe(
+          MessageAttributes: S.optional(__S(195, __c24, 3)).pipe(
             T.XmlName("MessageAttribute"),
             T.XmlFlattened(),
           ),
         }),
       ).annotate({ identifier: "Message" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Messages: S.optional(__S(46, __c5, 6)).pipe(T.XmlName("Message"), T.XmlFlattened()),
+          Messages: S.optional(__S(186, __c23, 2)).pipe(T.XmlName("Message"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "ReceiveMessageResult" });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("StringListValue")));
+    case 1:
+      return S.Array(/*@__PURE__*/ T.Blob.pipe(/*@__PURE__*/ T.XmlName("BinaryListValue")));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          StringValue: S.optional(S.String),
+          BinaryValue: S.optional(T.Blob),
+          StringListValues: S.optional(__S(192, __c24, 0)).pipe(
+            T.XmlName("StringListValue"),
+            T.XmlFlattened(),
+          ),
+          BinaryListValues: S.optional(__S(193, __c24, 1)).pipe(
+            T.XmlName("BinaryListValue"),
+            T.XmlFlattened(),
+          ),
+          DataType: S.String,
+        }),
+      ).annotate({ identifier: "MessageAttributeValue" });
+    case 3:
+      return S.Record(
+        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+        /*@__PURE__*/ __S(194, __c24, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("Value"))
+          .annotate({ identifier: "MessageAttributeValue" })
+          .pipe(S.optional),
+      );
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2254,43 +2330,21 @@ function __c6(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RemovePermissionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          StringValue: S.optional(S.String),
-          BinaryValue: S.optional(T.Blob),
-          StringListValues: S.optional(__S(41, __c5, 1)).pipe(
-            T.XmlName("StringListValue"),
-            T.XmlFlattened(),
-          ),
-          BinaryListValues: S.optional(__S(42, __c5, 2)).pipe(
-            T.XmlName("BinaryListValue"),
-            T.XmlFlattened(),
-          ),
-          DataType: S.String,
-        }),
-      ).annotate({
-        identifier: "MessageSystemAttributeValue",
-      });
-    case 2:
-      return S.Record(
-        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
-        /*@__PURE__*/ __S(49, __c6, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("Value"))
-          .annotate({ identifier: "MessageSystemAttributeValue" })
-          .pipe(S.optional),
-      );
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
           MessageBody: S.String,
           DelaySeconds: S.optional(S.Number),
-          MessageAttributes: S.optional(__S(44, __c5, 4)).pipe(
+          MessageAttributes: S.optional(__S(195, __c24, 3)).pipe(
             T.XmlName("MessageAttribute"),
             T.XmlFlattened(),
           ),
-          MessageSystemAttributes: S.optional(__S(50, __c6, 2)).pipe(
+          MessageSystemAttributes: S.optional(__S(217, __c27, 1)).pipe(
             T.XmlName("MessageSystemAttribute"),
             T.XmlFlattened(),
           ),
@@ -2298,7 +2352,7 @@ function __c6(j: number): any {
           MessageGroupId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendMessageRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MD5OfMessageBody: S.optional(S.String),
@@ -2308,17 +2362,51 @@ function __c6(j: number): any {
           SequenceNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "SendMessageResult" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StringValue: S.optional(S.String),
+          BinaryValue: S.optional(T.Blob),
+          StringListValues: S.optional(__S(192, __c24, 0)).pipe(
+            T.XmlName("StringListValue"),
+            T.XmlFlattened(),
+          ),
+          BinaryListValues: S.optional(__S(193, __c24, 1)).pipe(
+            T.XmlName("BinaryListValue"),
+            T.XmlFlattened(),
+          ),
+          DataType: S.String,
+        }),
+      ).annotate({
+        identifier: "MessageSystemAttributeValue",
+      });
+    case 1:
+      return S.Record(
+        /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Name")),
+        /*@__PURE__*/ __S(216, __c27, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Value"))
+          .annotate({ identifier: "MessageSystemAttributeValue" })
+          .pipe(S.optional),
+      );
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           MessageBody: S.String,
           DelaySeconds: S.optional(S.Number),
-          MessageAttributes: S.optional(__S(44, __c5, 4)).pipe(
+          MessageAttributes: S.optional(__S(195, __c24, 3)).pipe(
             T.XmlName("MessageAttribute"),
             T.XmlFlattened(),
           ),
-          MessageSystemAttributes: S.optional(__S(50, __c6, 2)).pipe(
+          MessageSystemAttributes: S.optional(__S(217, __c27, 1)).pipe(
             T.XmlName("MessageSystemAttribute"),
             T.XmlFlattened(),
           ),
@@ -2328,23 +2416,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SendMessageBatchRequestEntry",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(224, __c28, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          Entries: __S(54, __c6, 6).pipe(
+          Entries: __S(225, __c28, 1).pipe(
             T.XmlName("SendMessageBatchRequestEntry"),
             T.XmlFlattened(),
           ),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendMessageBatchRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -2357,31 +2441,39 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SendMessageBatchResultEntry",
       });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(227, __c28, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          Successful: S.optional(__S(57, __c7, 1)).pipe(
+          Successful: S.optional(__S(228, __c28, 4)).pipe(
             T.XmlName("SendMessageBatchResultEntry"),
             T.XmlFlattened(),
           ),
-          Failed: S.optional(__S(13, __c1, 5)).pipe(
+          Failed: S.optional(__S(57, __c7, 1)).pipe(
             T.XmlName("BatchResultErrorEntry"),
             T.XmlFlattened(),
           ),
         }),
       ).annotate({ identifier: "SendMessageBatchResult" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          Attributes: __S(15, __c1, 7).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
+          Attributes: __S(72, __c9, 0).pipe(T.XmlName("Attribute"), T.XmlFlattened()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetQueueAttributesRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceArn: S.String,
@@ -2391,27 +2483,34 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "StartMessageMoveTaskRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ TaskHandle: S.optional(S.String) })).annotate({
         identifier: "StartMessageMoveTaskResult",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          Tags: __S(16, __c2, 0).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+          Tags: __S(88, __c11, 0).pipe(T.XmlName("Tag"), T.XmlFlattened()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagQueueRequest" });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           QueueUrl: S.String,
-          TagKeys: __S(0, __c0, 0).pipe(T.XmlName("TagKey"), T.XmlFlattened()),
+          TagKeys: __S(16, __c2, 0).pipe(T.XmlName("TagKey"), T.XmlFlattened()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagQueueRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

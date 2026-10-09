@@ -129,7 +129,7 @@ export const createDataColorTheme: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateDataColorThemeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataColorTheme>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +142,8 @@ export const dataColorThemesDestroy: API.OperationMethod<
   DataColorThemesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DataColorThemesDestroyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataColorThemesDestroyResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DataColorThemesDestroyRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DataColorThemesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -156,8 +156,8 @@ export const getDataColorTheme: API.OperationMethod<
   GetDataColorThemeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetDataColorThemeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataColorTheme>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetDataColorThemeRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataColorTheme>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -170,8 +170,8 @@ export const listDataColorThemes: API.OperationMethod<
   ListDataColorThemesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListDataColorThemesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PaginatedDataColorThemeList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListDataColorThemesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedDataColorThemeList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -184,8 +184,8 @@ export const updateDataColorTheme: API.OperationMethod<
   UpdateDataColorThemeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateDataColorThemeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataColorTheme>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateDataColorThemeRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -198,8 +198,8 @@ export const updateDataColorThemesPartial: API.OperationMethod<
   UpdateDataColorThemesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateDataColorThemesPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DataColorTheme>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateDataColorThemesPartialRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,9 +224,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDataColorThemeRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -236,11 +240,11 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -248,10 +252,14 @@ function __c0(j: number): any {
           colors: S.optional(S.Unknown),
           is_global: S.optional(S.Boolean),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
+          created_by: S.optional(S.NullOr(__S(5, __c1, 1))),
         }),
       ).annotate({ identifier: "DataColorTheme" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -266,11 +274,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DataColorThemesDestroyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DataColorThemesDestroyResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -283,7 +295,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataColorThemeRequest" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -299,24 +315,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListDataColorThemesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(8, __c1, 0)),
+          results: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedDataColorThemeList",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -333,7 +349,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateDataColorThemeRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -352,7 +372,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -174,8 +174,8 @@ export const batchPutMetrics: API.OperationMethod<
   BatchPutMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchPutMetricsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BatchPutMetricsResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<BatchPutMetricsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<BatchPutMetricsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -222,7 +222,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({ MetricQueryResults: S.optional(__S(5, __c0, 5)) }),
       ).annotate({ identifier: "BatchGetMetricsResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
@@ -231,34 +235,29 @@ function __c0(j: number): any {
           Value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RawMetricData" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           TrialComponentName: S.optional(S.String),
-          MetricData: S.optional(__S(8, __c1, 0)),
+          MetricData: S.optional(__S(9, __c1, 1)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/BatchPutMetrics" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchPutMetricsRequest" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), MetricIndex: S.optional(S.Number) }),
       ).annotate({ identifier: "BatchPutMetricsError" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.suspend(() => S.Struct({ Errors: S.optional(__S(11, __c1, 3)) })).annotate({
+      return S.Array(__S(11, __c1, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ Errors: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "BatchPutMetricsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

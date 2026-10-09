@@ -950,8 +950,8 @@ export const acquireShareProjectsLocationsSharePools: API.OperationMethod<
   AcquireShareProjectsLocationsSharePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcquireShareProjectsLocationsSharePoolsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcquireShareResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<AcquireShareProjectsLocationsSharePoolsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<AcquireShareResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -970,8 +970,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(1312, __c41, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const createProjectsLocationsBackups: API.OperationMethod<
   CreateProjectsLocationsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateProjectsLocationsBackupsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1376, __c43, 0) as any as S.Schema<CreateProjectsLocationsBackupsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1010,8 +1010,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1030,8 +1030,8 @@ export const createProjectsLocationsInstancesShares: API.OperationMethod<
   CreateProjectsLocationsInstancesSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateProjectsLocationsInstancesSharesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateProjectsLocationsInstancesSharesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1050,8 @@ export const createProjectsLocationsInstancesSnapshots: API.OperationMethod<
   CreateProjectsLocationsInstancesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateProjectsLocationsInstancesSnapshotsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1728, __c54, 0) as any as S.Schema<CreateProjectsLocationsInstancesSnapshotsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1070,8 +1070,8 @@ export const createProjectsLocationsVolumePools: API.OperationMethod<
   CreateProjectsLocationsVolumePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsVolumePoolsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsVolumePoolsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1090,8 @@ export const createProjectsLocationsVolumePoolsVolumes: API.OperationMethod<
   CreateProjectsLocationsVolumePoolsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateProjectsLocationsVolumePoolsVolumesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Volume>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateProjectsLocationsVolumePoolsVolumesRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<Volume>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectsLocationsBackupsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1130,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1150,8 @@ export const deleteProjectsLocationsInstancesShares: API.OperationMethod<
   DeleteProjectsLocationsInstancesSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteProjectsLocationsInstancesSharesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteProjectsLocationsInstancesSharesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1170,8 @@ export const deleteProjectsLocationsInstancesSnapshots: API.OperationMethod<
   DeleteProjectsLocationsInstancesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteProjectsLocationsInstancesSnapshotsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProjectsLocationsInstancesSnapshotsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1190,8 +1190,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1210,8 @@ export const deleteProjectsLocationsVolumePools: API.OperationMethod<
   DeleteProjectsLocationsVolumePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteProjectsLocationsVolumePoolsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteProjectsLocationsVolumePoolsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const deleteProjectsLocationsVolumePoolsVolumes: API.OperationMethod<
   DeleteProjectsLocationsVolumePoolsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsLocationsVolumePoolsVolumesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteProjectsLocationsVolumePoolsVolumesRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Location>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const getProjectsLocationsBackups: API.OperationMethod<
   GetProjectsLocationsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetProjectsLocationsBackupsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Backup>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetProjectsLocationsBackupsRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Backup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Instance>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(1584, __c49, 16) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const getProjectsLocationsInstancesShares: API.OperationMethod<
   GetProjectsLocationsInstancesSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsInstancesSharesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Share>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetProjectsLocationsInstancesSharesRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<Share>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const getProjectsLocationsInstancesSnapshots: API.OperationMethod<
   GetProjectsLocationsInstancesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetProjectsLocationsInstancesSnapshotsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Snapshot>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetProjectsLocationsInstancesSnapshotsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Snapshot>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const getProjectsLocationsVolumePools: API.OperationMethod<
   GetProjectsLocationsVolumePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetProjectsLocationsVolumePoolsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<VolumePool>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetProjectsLocationsVolumePoolsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VolumePool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const getProjectsLocationsVolumePoolsVolumes: API.OperationMethod<
   GetProjectsLocationsVolumePoolsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetProjectsLocationsVolumePoolsVolumesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Volume>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetProjectsLocationsVolumePoolsVolumesRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<Volume>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1366,8 +1366,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListLocationsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1383,8 +1383,8 @@ export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListProjectsLocationsBackupsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListBackupsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListProjectsLocationsBackupsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1400,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListInstancesResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(706, __c22, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1417,8 @@ export const listProjectsLocationsInstancesShares: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSharesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListProjectsLocationsInstancesSharesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListSharesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListProjectsLocationsInstancesSharesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListSharesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1434,8 +1434,8 @@ export const listProjectsLocationsInstancesSnapshots: API.PaginatedOperationMeth
   GcpOpContext,
   ListSnapshotsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListSnapshotsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ListSnapshotsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1451,8 +1451,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(802, __c25, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1468,8 +1468,8 @@ export const listProjectsLocationsVolumePools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVolumePoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListProjectsLocationsVolumePoolsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListVolumePoolsResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListProjectsLocationsVolumePoolsRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<ListVolumePoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1485,8 @@ export const listProjectsLocationsVolumePoolsVolumes: API.PaginatedOperationMeth
   GcpOpContext,
   ListVolumesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListProjectsLocationsVolumePoolsVolumesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListVolumesResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListProjectsLocationsVolumePoolsVolumesRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ListVolumesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1506,8 +1506,8 @@ export const patchProjectsLocationsBackups: API.OperationMethod<
   PatchProjectsLocationsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<PatchProjectsLocationsBackupsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchProjectsLocationsBackupsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1526,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(928, __c29, 0) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const patchProjectsLocationsInstancesShares: API.OperationMethod<
   PatchProjectsLocationsInstancesSharesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<PatchProjectsLocationsInstancesSharesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(960, __c30, 0) as any as S.Schema<PatchProjectsLocationsInstancesSharesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1566,8 +1566,8 @@ export const patchProjectsLocationsInstancesSnapshots: API.OperationMethod<
   PatchProjectsLocationsInstancesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PatchProjectsLocationsInstancesSnapshotsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(992, __c31, 0) as any as S.Schema<PatchProjectsLocationsInstancesSnapshotsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1586,8 @@ export const patchProjectsLocationsVolumePools: API.OperationMethod<
   PatchProjectsLocationsVolumePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<PatchProjectsLocationsVolumePoolsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1024, __c32, 0) as any as S.Schema<PatchProjectsLocationsVolumePoolsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const pauseReplicaProjectsLocationsInstances: API.OperationMethod<
   PauseReplicaProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PauseReplicaProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1120, __c35, 0) as any as S.Schema<PauseReplicaProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1626,8 @@ export const promoteReplicaProjectsLocationsInstances: API.OperationMethod<
   PromoteReplicaProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<PromoteReplicaProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1153, __c36, 1) as any as S.Schema<PromoteReplicaProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1646,8 @@ export const releaseShareProjectsLocationsSharePools: API.OperationMethod<
   ReleaseShareProjectsLocationsSharePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ReleaseShareProjectsLocationsSharePoolsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ReleaseShareResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ReleaseShareProjectsLocationsSharePoolsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<ReleaseShareResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1217, __c38, 1) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const resumeReplicaProjectsLocationsInstances: API.OperationMethod<
   ResumeReplicaProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ResumeReplicaProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ResumeReplicaProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const revertProjectsLocationsInstances: API.OperationMethod<
   RevertProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<RevertProjectsLocationsInstancesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Operation>,
+  input: __S(1281, __c40, 1) as any as S.Schema<RevertProjectsLocationsInstancesRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1719,388 +1719,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          requestId: S.optional(S.String),
-          capacityGb: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AcquireShareRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}:acquireShare",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcquireShareProjectsLocationsSharePoolsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.optional(S.String),
-          shareId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AcquireShareResponse" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:cancel",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          capacityGb: S.optional(S.String),
-          fileSystemProtocol: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          sourceFileShare: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          kmsKeyName: S.optional(S.String),
-          sourceInstanceTier: S.optional(S.String),
-          satisfiesPzi: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          downloadBytes: S.optional(S.String),
-          sourceVolume: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          sourceInstance: S.optional(S.String),
-          storageBytes: S.optional(S.String),
-          state: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Backup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          backupId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/backups",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBackupsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(9, __c1, 1)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(8, __c1, 0)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(8, __c1, 0)),
-          error: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxIops: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FixedIOPS" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxIopsPerTb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IOPSPerTB" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fixedIops: S.optional(__S(12, __c1, 4)),
-          iopsPerTb: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "PerformanceConfig" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          usersOu: S.optional(S.String),
-          domain: S.optional(S.String),
-          servers: S.optional(__S(15, __c1, 7)),
-          groupsOu: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LdapConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          computer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagedActiveDirectoryConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ldap: S.optional(__S(16, __c2, 0)),
-          managedActiveDirectory: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "DirectoryServicesConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maxReadThroughputBps: S.optional(S.String),
-          maxReadIops: S.optional(S.String),
-          maxWriteThroughputBps: S.optional(S.String),
-          maxIops: S.optional(S.String),
-          maxWriteIops: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PerformanceLimits" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          lastActiveSyncTime: S.optional(S.String),
-          peerInstance: S.optional(S.String),
-          stateUpdateTime: S.optional(S.String),
-          stateReasons: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ReplicaConfig" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          replicas: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "Replication" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pathPatterns: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "RestoreConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          squashMode: S.optional(S.String),
-          anonGid: S.optional(S.String),
-          accessMode: S.optional(S.String),
-          network: S.optional(S.String),
-          anonUid: S.optional(S.String),
-          securityFlavors: S.optional(__S(20, __c2, 4)),
-          ipRanges: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "NfsExportOptions" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceBackupdrBackup: S.optional(S.String),
-          capacityGb: S.optional(S.String),
-          restoreConfig: S.optional(__S(24, __c3, 0)),
-          name: S.optional(S.String),
-          nfsExportOptions: S.optional(__S(26, __c3, 2)),
-          sourceBackup: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileShareConfig" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpointProject: S.optional(S.String),
-          requestedIpAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PscConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          modes: S.optional(__S(20, __c2, 4)),
-          reservedIpRange: S.optional(S.String),
-          ipAddresses: S.optional(__S(15, __c1, 7)),
-          pscConfig: S.optional(__S(29, __c3, 5)),
-          network: S.optional(S.String),
-          connectMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfig" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          capacityGb: S.optional(S.String),
-          capacityStepSizeGb: S.optional(S.String),
-          minCapacityGb: S.optional(S.String),
-          etag: S.optional(S.String),
-          deletionProtectionEnabled: S.optional(S.Boolean),
-          performanceConfig: S.optional(__S(14, __c1, 6)),
-          customPerformanceSupported: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          directoryServices: S.optional(__S(18, __c2, 2)),
-          performanceLimits: S.optional(__S(19, __c2, 3)),
-          name: S.optional(S.String),
-          satisfiesPzi: S.optional(S.Boolean),
-          maxShareCount: S.optional(S.String),
-          replication: S.optional(__S(23, __c2, 7)),
-          statusMessage: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
-          protocol: S.optional(S.String),
-          suspensionReasons: S.optional(__S(20, __c2, 4)),
-          tier: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          multiShareEnabled: S.optional(S.Boolean),
-          tags: S.optional(__S(5, __c0, 5)),
-          fileShares: S.optional(__S(28, __c3, 4)),
-          kmsKeyName: S.optional(S.String),
-          deletionProtectionReason: S.optional(S.String),
-          backendType: S.optional(S.String),
-          networks: S.optional(__S(31, __c3, 7)),
-          maxCapacityGb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          instanceId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/instances",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nfsExportOptions: S.optional(__S(26, __c3, 2)),
-          name: S.optional(S.String),
-          backup: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
-          state: S.optional(S.String),
-          mountName: S.optional(S.String),
-          capacityMb: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          capacityGb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Share" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          shareId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/shares",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesSharesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
-          filesystemUsedBytes: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Snapshot" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          snapshotId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/snapshots",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsInstancesSnapshotsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          activeVolumeIops: S.optional(S.Number),
-          description: S.optional(S.String),
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-          defaultVolumeQuotaMib: S.optional(S.Number),
-          network: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "VolumePool" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           volumePoolId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2113,7 +1734,44 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          activeVolumeIops: S.optional(S.Number),
+          description: S.optional(S.String),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+          defaultVolumeQuotaMib: S.optional(S.Number),
+          network: S.optional(S.String),
+          labels: S.optional(__S(1440, __c45, 0)),
+        }),
+      ).annotate({ identifier: "VolumePool" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(97, __c3, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/volumes",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsVolumePoolsVolumesRequest",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2125,30 +1783,18 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mountPoint: S.optional(__S(40, __c5, 0)),
+          mountPoint: S.optional(__S(96, __c3, 0)),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
+          labels: S.optional(__S(1440, __c45, 0)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volume" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(41, __c5, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/volumes",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsVolumePoolsVolumesRequest",
-      });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2162,7 +1808,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsBackupsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -2176,48 +1826,6 @@ function __c5(j: number): any {
         ),
       ).annotate({
         identifier: "DeleteProjectsLocationsInstancesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsInstancesSharesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsInstancesSnapshotsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://file.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
       });
   }
 }
@@ -2235,9 +1843,67 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({
+        identifier: "DeleteProjectsLocationsInstancesSharesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsInstancesSnapshotsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
         identifier: "DeleteProjectsLocationsVolumePoolsRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2251,7 +1917,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsVolumePoolsVolumesRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2265,17 +1935,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(__S(5, __c0, 5)),
+          labels: S.optional(__S(1440, __c45, 0)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
+          metadata: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2289,7 +1967,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBackupsRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2303,7 +1985,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2317,7 +2003,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsInstancesSharesRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2333,7 +2023,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2349,7 +2039,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2363,7 +2057,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsVolumePoolsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2377,11 +2075,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsVolumePoolsVolumesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1600, __c50, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2395,16 +2097,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(60, __c7, 4)),
+          locations: S.optional(__S(641, __c20, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2422,21 +2128,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBackupsRequest",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
-          backups: S.optional(__S(63, __c7, 7)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
+          backups: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2454,17 +2160,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesRequest",
       });
+    case 1:
+      return S.Array(__S(1584, __c49, 16));
     case 2:
-      return S.Array(__S(32, __c4, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(__S(66, __c8, 2)),
+          instances: S.optional(__S(705, __c22, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2482,17 +2192,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesSharesRequest",
       });
-    case 5:
-      return S.Array(__S(34, __c4, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          shares: S.optional(__S(69, __c8, 5)),
+          shares: S.optional(__S(737, __c23, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListSharesResponse" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2511,21 +2225,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInstancesSnapshotsRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(36, __c4, 4));
     case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          snapshots: S.optional(__S(72, __c9, 0)),
+          snapshots: S.optional(__S(769, __c24, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListSnapshotsResponse" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -2543,17 +2257,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(1506, __c47, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(75, __c9, 3)),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          operations: S.optional(__S(801, __c25, 1)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2571,19 +2289,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsVolumePoolsRequest",
       });
-    case 6:
-      return S.Array(__S(38, __c4, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          volumePools: S.optional(__S(78, __c9, 6)),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          volumePools: S.optional(__S(833, __c26, 1)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListVolumePoolsResponse" });
   }
 }
-function __c10(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2604,21 +2322,25 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsVolumePoolsVolumesRequest",
       });
     case 1:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(97, __c3, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumes: S.optional(__S(81, __c10, 1)),
+          volumes: S.optional(__S(865, __c27, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(1600, __c50, 0)),
         }),
       ).annotate({ identifier: "ListVolumesResponse" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1408, __c44, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2629,12 +2351,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsBackupsRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1584, __c49, 16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2645,12 +2371,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c53, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2661,12 +2391,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesSharesRequest",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2677,12 +2411,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesSnapshotsRequest",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2695,13 +2433,50 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          capacityGb: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AcquireShareRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}:acquireShare",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcquireShareProjectsLocationsSharePoolsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.optional(S.String),
+          shareId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcquireShareResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2712,17 +2487,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PauseReplicaProjectsLocationsInstancesRequest",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           peerInstance: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromoteReplicaRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(89, __c11, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2733,11 +2512,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PromoteReplicaProjectsLocationsInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2748,7 +2531,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ReleaseShareProjectsLocationsSharePoolsRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceBackup: S.optional(S.String),
@@ -2756,11 +2543,11 @@ function __c11(j: number): any {
           fileShare: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestoreInstanceRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1216, __c38, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2771,11 +2558,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RestoreProjectsLocationsInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2786,21 +2577,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ResumeReplicaProjectsLocationsInstancesRequest",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetSnapshotId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevertInstanceRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1280, __c40, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2813,7 +2604,387 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1344, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:cancel",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backupId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1408, __c44, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/backups",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBackupsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          capacityGb: S.optional(S.String),
+          fileSystemProtocol: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          sourceFileShare: S.optional(S.String),
+          tags: S.optional(__S(1440, __c45, 0)),
+          kmsKeyName: S.optional(S.String),
+          sourceInstanceTier: S.optional(S.String),
+          satisfiesPzi: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          downloadBytes: S.optional(S.String),
+          sourceVolume: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          sourceInstance: S.optional(S.String),
+          storageBytes: S.optional(S.String),
+          state: S.optional(S.String),
+          labels: S.optional(__S(1440, __c45, 0)),
+        }),
+      ).annotate({ identifier: "Backup" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1472, __c46, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(1504, __c47, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(1472, __c46, 0)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(1472, __c46, 0)),
+          error: S.optional(__S(1505, __c47, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1584, __c49, 16).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/instances",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxIops: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FixedIOPS" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxIopsPerTb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IOPSPerTB" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fixedIops: S.optional(__S(1568, __c49, 0)),
+          iopsPerTb: S.optional(__S(1569, __c49, 1)),
+        }),
+      ).annotate({ identifier: "PerformanceConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usersOu: S.optional(S.String),
+          domain: S.optional(S.String),
+          servers: S.optional(__S(1600, __c50, 0)),
+          groupsOu: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LdapConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          computer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedActiveDirectoryConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ldap: S.optional(__S(1571, __c49, 3)),
+          managedActiveDirectory: S.optional(__S(1572, __c49, 4)),
+        }),
+      ).annotate({ identifier: "DirectoryServicesConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxReadThroughputBps: S.optional(S.String),
+          maxReadIops: S.optional(S.String),
+          maxWriteThroughputBps: S.optional(S.String),
+          maxIops: S.optional(S.String),
+          maxWriteIops: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PerformanceLimits" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          lastActiveSyncTime: S.optional(S.String),
+          peerInstance: S.optional(S.String),
+          stateUpdateTime: S.optional(S.String),
+          stateReasons: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({ identifier: "ReplicaConfig" });
+    case 8:
+      return S.Array(__S(1575, __c49, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          replicas: S.optional(__S(1576, __c49, 8)),
+        }),
+      ).annotate({ identifier: "Replication" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          pathPatterns: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({ identifier: "RestoreConfig" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          sourceBackupdrBackup: S.optional(S.String),
+          capacityGb: S.optional(S.String),
+          restoreConfig: S.optional(__S(1578, __c49, 10)),
+          name: S.optional(S.String),
+          nfsExportOptions: S.optional(__S(1634, __c51, 2)),
+          sourceBackup: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileShareConfig" });
+    case 12:
+      return S.Array(__S(1579, __c49, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          endpointProject: S.optional(S.String),
+          requestedIpAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PscConfig" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          modes: S.optional(__S(1632, __c51, 0)),
+          reservedIpRange: S.optional(S.String),
+          ipAddresses: S.optional(__S(1600, __c50, 0)),
+          pscConfig: S.optional(__S(1581, __c49, 13)),
+          network: S.optional(S.String),
+          connectMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+    case 15:
+      return S.Array(__S(1582, __c49, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          capacityGb: S.optional(S.String),
+          capacityStepSizeGb: S.optional(S.String),
+          minCapacityGb: S.optional(S.String),
+          etag: S.optional(S.String),
+          deletionProtectionEnabled: S.optional(S.Boolean),
+          performanceConfig: S.optional(__S(1570, __c49, 2)),
+          customPerformanceSupported: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          directoryServices: S.optional(__S(1573, __c49, 5)),
+          performanceLimits: S.optional(__S(1574, __c49, 6)),
+          name: S.optional(S.String),
+          satisfiesPzi: S.optional(S.Boolean),
+          maxShareCount: S.optional(S.String),
+          replication: S.optional(__S(1577, __c49, 9)),
+          statusMessage: S.optional(S.String),
+          labels: S.optional(__S(1440, __c45, 0)),
+          protocol: S.optional(S.String),
+          suspensionReasons: S.optional(__S(1632, __c51, 0)),
+          tier: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          multiShareEnabled: S.optional(S.Boolean),
+          tags: S.optional(__S(1440, __c45, 0)),
+          fileShares: S.optional(__S(1580, __c49, 12)),
+          kmsKeyName: S.optional(S.String),
+          deletionProtectionReason: S.optional(S.String),
+          backendType: S.optional(S.String),
+          networks: S.optional(__S(1583, __c49, 15)),
+          maxCapacityGb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          squashMode: S.optional(S.String),
+          anonGid: S.optional(S.String),
+          accessMode: S.optional(S.String),
+          network: S.optional(S.String),
+          anonUid: S.optional(S.String),
+          securityFlavors: S.optional(__S(1632, __c51, 0)),
+          ipRanges: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({ identifier: "NfsExportOptions" });
+    case 2:
+      return S.Array(__S(1633, __c51, 1));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          shareId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1696, __c53, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/shares",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesSharesRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nfsExportOptions: S.optional(__S(1634, __c51, 2)),
+          name: S.optional(S.String),
+          backup: S.optional(S.String),
+          labels: S.optional(__S(1440, __c45, 0)),
+          state: S.optional(S.String),
+          mountName: S.optional(S.String),
+          capacityMb: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          capacityGb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Share" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          snapshotId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/snapshots",
+            baseUrl: "https://file.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsInstancesSnapshotsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(1440, __c45, 0)),
+          filesystemUsedBytes: S.optional(S.String),
+          tags: S.optional(__S(1440, __c45, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Snapshot" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

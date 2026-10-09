@@ -186,8 +186,8 @@ export const createLead: API.OperationMethod<
   CreateLeadError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateLeadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Lead>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateLeadRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Lead>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -197,8 +197,8 @@ export type GetLeadError = BadRequest | Forbidden | NotFound | UnprocessableEnti
 /** Retrieve lead [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing lead. Required permissions: - `lead:basic:read` - `member:email:read` - `access_pass:basic:read` - `member:basic:read` */
 export const getLead: API.OperationMethod<GetLeadRequest, Lead, GetLeadError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(6, __c0, 6) as any as S.Schema<GetLeadRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<Lead>,
+    input: __S(16, __c2, 0) as any as S.Schema<GetLeadRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<Lead>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const listLead: API.PaginatedOperationMethod<
   LeadListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8, __c1, 0) as any as S.Schema<ListLeadRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListLeadResponse>,
+    input: __S(25, __c3, 1) as any as S.Schema<ListLeadRequest>,
+    output: __S(28, __c3, 4) as any as S.Schema<ListLeadResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -239,8 +239,8 @@ export const updateLead: API.OperationMethod<
   UpdateLeadError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UpdateLeadRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Lead>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateLeadRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<Lead>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -250,31 +250,35 @@ export const updateLead: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
+          metadata: S.optional(S.NullOr(__S(8, __c1, 0))),
           product_id: S.optional(S.NullOr(S.String)),
           referrer: S.optional(S.NullOr(S.String)),
           user_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/leads", code: 200 })),
       ).annotate({ identifier: "CreateLeadRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }),
       ).annotate({ identifier: "LeadMember" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "LeadProduct" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           email: S.NullOr(S.String),
@@ -283,32 +287,36 @@ function __c0(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "LeadUser" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           id: S.String,
-          member: S.NullOr(__S(2, __c0, 2)),
-          metadata: S.NullOr(__S(0, __c0, 0)),
-          product: S.NullOr(__S(3, __c0, 3)),
+          member: S.NullOr(__S(9, __c1, 1)),
+          metadata: S.NullOr(__S(8, __c1, 0)),
+          product: S.NullOr(__S(10, __c1, 2)),
           referrer: S.NullOr(S.String),
           updated_at: S.String,
-          user: __S(4, __c0, 4),
+          user: __S(11, __c1, 3),
         }),
       ).annotate({ identifier: "Lead" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/leads/{id}", code: 200 })),
       ).annotate({ identifier: "GetLeadRequest" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -317,13 +325,13 @@ function __c1(j: number): any {
           last: S.optional(S.Number.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          product_ids: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          product_ids: S.optional(__S(24, __c3, 0).pipe(T.Query())),
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/leads", code: 200 })),
       ).annotate({ identifier: "ListLeadRequest" });
-    case 1:
-      return S.Array(__S(5, __c0, 5));
     case 2:
+      return S.Array(__S(12, __c1, 4));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -332,24 +340,27 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(9, __c1, 1),
-          page_info: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListLeadResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          data: __S(26, __c3, 2),
+          page_info: __S(27, __c3, 3),
+        }),
+      ).annotate({ identifier: "ListLeadResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(S.NullOr(__S(0, __c0, 0))),
+          metadata: S.optional(S.NullOr(__S(8, __c1, 0))),
           referrer: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/leads/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateLeadRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

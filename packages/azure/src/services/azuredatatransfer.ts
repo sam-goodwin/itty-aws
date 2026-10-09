@@ -1942,7 +1942,7 @@ export const ApprovePipelineConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ApprovePipelineConnectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ApprovePipelineConnectionResponse>,
+  output: __S(64, __c8, 0) as any as S.Schema<ApprovePipelineConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1956,8 @@ export const ConnectionsCreateOrUpdate: API.OperationMethod<
   ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ConnectionsCreateOrUpdateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ConnectionsCreateOrUpdateResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<ConnectionsCreateOrUpdateRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1971,8 @@ export const ConnectionsLink: API.OperationMethod<
   ConnectionsLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ConnectionsLinkRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ConnectionsLinkResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ConnectionsLinkRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<ConnectionsLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1986,8 +1986,8 @@ export const DeleteConnection: API.OperationMethod<
   DeleteConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteConnectionResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2001,8 +2001,8 @@ export const DeleteFlow: API.OperationMethod<
   DeleteFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteFlowRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteFlowResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<DeleteFlowRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2016,8 +2016,8 @@ export const DeletePipeline: API.OperationMethod<
   DeletePipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeletePipelineRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeletePipelineResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeletePipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2031,8 @@ export const DisableFlow: API.OperationMethod<
   DisableFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DisableFlowRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DisableFlowResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DisableFlowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<DisableFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2046,8 +2046,8 @@ export const EnableFlow: API.OperationMethod<
   EnableFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<EnableFlowRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EnableFlowResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<EnableFlowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<EnableFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2061,8 +2061,8 @@ export const ExecutePipelineAction: API.OperationMethod<
   ExecutePipelineActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ExecutePipelineActionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ExecutePipelineActionResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<ExecutePipelineActionRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<ExecutePipelineActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2076,8 @@ export const FlowsCreateOrUpdate: API.OperationMethod<
   FlowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<FlowsCreateOrUpdateRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<FlowsCreateOrUpdateResponse>,
+  input: __S(505, __c63, 1) as any as S.Schema<FlowsCreateOrUpdateRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<FlowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2091,8 +2091,8 @@ export const FlowsLink: API.OperationMethod<
   FlowsLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<FlowsLinkRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<FlowsLinkResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<FlowsLinkRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<FlowsLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2106,8 +2106,8 @@ export const GenerateFlowPassphrase: API.OperationMethod<
   GenerateFlowPassphraseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GenerateFlowPassphraseRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GenerateFlowPassphraseResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GenerateFlowPassphraseRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<GenerateFlowPassphraseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2121,8 +2121,8 @@ export const GetConnection: API.OperationMethod<
   GetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetConnectionResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<GetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2136,8 +2136,8 @@ export const GetFlow: API.OperationMethod<
   GetFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetFlowRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetFlowResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetFlowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<GetFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2151,8 +2151,8 @@ export const GetFlowDestinationEndpointPorts: API.OperationMethod<
   GetFlowDestinationEndpointPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetFlowDestinationEndpointPortsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetDestinationEndpointPortsResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetFlowDestinationEndpointPortsRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetDestinationEndpointPortsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2166,8 @@ export const GetFlowDestinationEndpoints: API.OperationMethod<
   GetFlowDestinationEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetFlowDestinationEndpointsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetDestinationEndpointsResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetFlowDestinationEndpointsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetDestinationEndpointsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2181,8 +2181,8 @@ export const GetFlowSourceAddresses: API.OperationMethod<
   GetFlowSourceAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetFlowSourceAddressesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<StreamSourceAddresses>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetFlowSourceAddressesRequest>,
+  output: __S(440, __c55, 0) as any as S.Schema<StreamSourceAddresses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2196,8 +2196,8 @@ export const GetFlowStreamConnectionString: API.OperationMethod<
   GetFlowStreamConnectionStringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetFlowStreamConnectionStringRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetStreamConnectionStringResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetFlowStreamConnectionStringRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetStreamConnectionStringResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2211,8 +2211,8 @@ export const GetPipeline: API.OperationMethod<
   GetPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetPipelineRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetPipelineResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetPipelineRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetPipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2226,8 @@ export const ListAzureDataTransferApprovedSchemas: API.OperationMethod<
   ListAzureDataTransferApprovedSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListAzureDataTransferApprovedSchemasRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<SchemasListResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListAzureDataTransferApprovedSchemasRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<SchemasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2241,8 +2241,8 @@ export const ListConnectionByResourceGroup: API.OperationMethod<
   ListConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListConnectionByResourceGroupRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ConnectionListResult>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListConnectionByResourceGroupRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2256,8 +2256,8 @@ export const ListConnectionBySubscription: API.OperationMethod<
   ListConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListConnectionBySubscriptionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ConnectionListResult>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListConnectionBySubscriptionRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2271,8 +2271,8 @@ export const ListFlowByConnection: API.OperationMethod<
   ListFlowByConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListFlowByConnectionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<FlowListResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListFlowByConnectionRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<FlowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2286,8 +2286,8 @@ export const ListListFlowsByPipeline: API.OperationMethod<
   ListListFlowsByPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListListFlowsByPipelineRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListFlowsByPipelineResult>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListListFlowsByPipelineRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<ListFlowsByPipelineResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2301,8 +2301,8 @@ export const ListListPendingConnections: API.OperationMethod<
   ListListPendingConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListListPendingConnectionsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<PendingConnectionListResult>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListListPendingConnectionsRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<PendingConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2316,8 +2316,8 @@ export const ListListPendingFlows: API.OperationMethod<
   ListListPendingFlowsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListListPendingFlowsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<PendingFlowListResult>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListListPendingFlowsRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<PendingFlowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2331,8 +2331,8 @@ export const ListListSchemas: API.OperationMethod<
   ListListSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListListSchemasRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<SchemasListResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListListSchemasRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<SchemasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2346,8 +2346,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(284, __c35, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2361,8 +2361,8 @@ export const ListPipelineByResourceGroup: API.OperationMethod<
   ListPipelineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListPipelineByResourceGroupRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<PipelineListResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListPipelineByResourceGroupRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<PipelineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2376,8 +2376,8 @@ export const ListPipelineBySubscription: API.OperationMethod<
   ListPipelineBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListPipelineBySubscriptionRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<PipelineListResult>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListPipelineBySubscriptionRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<PipelineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2391,8 +2391,8 @@ export const PipelinesCreateOrUpdate: API.OperationMethod<
   PipelinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PipelinesCreateOrUpdateRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<PipelinesCreateOrUpdateResponse>,
+  input: __S(321, __c40, 1) as any as S.Schema<PipelinesCreateOrUpdateRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<PipelinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2406,8 +2406,8 @@ export const RejectPipelineConnection: API.OperationMethod<
   RejectPipelineConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<RejectPipelineConnectionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<RejectPipelineConnectionResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<RejectPipelineConnectionRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<RejectPipelineConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2421,8 +2421,8 @@ export const SetFlowDestinationEndpointPorts: API.OperationMethod<
   SetFlowDestinationEndpointPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<SetFlowDestinationEndpointPortsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SetFlowDestinationEndpointPortsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<SetFlowDestinationEndpointPortsRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<SetFlowDestinationEndpointPortsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2436,8 +2436,8 @@ export const SetFlowDestinationEndpoints: API.OperationMethod<
   SetFlowDestinationEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<SetFlowDestinationEndpointsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SetFlowDestinationEndpointsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<SetFlowDestinationEndpointsRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<SetFlowDestinationEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2451,8 +2451,8 @@ export const SetFlowPassphrase: API.OperationMethod<
   SetFlowPassphraseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<SetFlowPassphraseRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SetFlowPassphraseResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<SetFlowPassphraseRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<SetFlowPassphraseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2466,8 @@ export const SetFlowSourceAddresses: API.OperationMethod<
   SetFlowSourceAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<SetFlowSourceAddressesRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SetFlowSourceAddressesResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<SetFlowSourceAddressesRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<SetFlowSourceAddressesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2481,8 +2481,8 @@ export const UpdateConnection: API.OperationMethod<
   UpdateConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<UpdateConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateConnectionResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<UpdateConnectionRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<UpdateConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2496,8 +2496,8 @@ export const UpdateFlow: API.OperationMethod<
   UpdateFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<UpdateFlowRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UpdateFlowResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<UpdateFlowRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<UpdateFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2511,8 +2511,8 @@ export const UpdatePipeline: API.OperationMethod<
   UpdatePipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdatePipelineRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdatePipelineResponse>,
+  input: __S(385, __c48, 1) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdatePipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2526,8 @@ export const ValidateAzureDataTransferSchema: API.OperationMethod<
   ValidateAzureDataTransferSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ValidateAzureDataTransferSchemaRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ValidateSchemaResult>,
+  input: __S(392, __c49, 0) as any as S.Schema<ValidateAzureDataTransferSchemaRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<ValidateSchemaResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2555,7 +2555,60 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApprovePipelineConnectionRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pipeline: S.String,
+          direction: S.optional(S.String),
+          justification: S.optional(S.String),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(33, __c4, 1)),
+          statusReason: S.optional(S.String),
+          linkStatus: S.optional(S.String),
+          linkedConnectionId: S.optional(S.String),
+          flowTypes: S.optional(__S(33, __c4, 1)),
+          requirementId: S.optional(S.String),
+          remoteSubscriptionId: S.optional(S.String),
+          approver: S.optional(S.String),
+          pin: S.optional(S.String),
+          dateSubmitted: S.optional(S.String),
+          primaryContact: S.optional(S.String),
+          secondaryContacts: S.optional(__S(24, __c3, 0)),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(24, __c3, 0)),
+          schemas: S.optional(__S(8, __c1, 0)),
+          schemaUris: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "ConnectionProperties" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
     case 1:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2566,13 +2619,35 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(48, __c6, 0)));
     case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Array(S.String);
-    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(49, __c6, 1)),
+        }),
+      ).annotate({
+        identifier: "ApprovePipelineConnectionResponseIdentity",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2585,120 +2660,58 @@ function __c0(j: number): any {
           schemaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pipeline: S.String,
-          direction: S.optional(S.String),
-          justification: S.optional(S.String),
-          status: S.optional(S.String),
-          forceDisabledStatus: S.optional(__S(3, __c0, 3)),
-          statusReason: S.optional(S.String),
-          linkStatus: S.optional(S.String),
-          linkedConnectionId: S.optional(S.String),
-          flowTypes: S.optional(__S(3, __c0, 3)),
-          requirementId: S.optional(S.String),
-          remoteSubscriptionId: S.optional(S.String),
-          approver: S.optional(S.String),
-          pin: S.optional(S.String),
-          dateSubmitted: S.optional(S.String),
-          primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(__S(4, __c0, 4)),
-          provisioningState: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          schemas: S.optional(__S(6, __c0, 6)),
-          schemaUris: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ConnectionProperties" });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8, __c1, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ApprovePipelineConnectionResponseIdentity",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(16, __c2, 0)),
+          identity: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({
         identifier: "ApprovePipelineConnectionResponse",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pipeline: S.String,
           direction: S.optional(S.String),
           justification: S.optional(S.String),
-          flowTypes: S.optional(__S(3, __c0, 3)),
+          flowTypes: S.optional(__S(33, __c4, 1)),
           requirementId: S.optional(S.String),
           remoteSubscriptionId: S.optional(S.String),
           pin: S.optional(S.String),
           primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(__S(4, __c0, 4)),
-          policies: S.optional(__S(4, __c0, 4)),
-          schemas: S.optional(__S(6, __c0, 6)),
-          schemaUris: S.optional(__S(4, __c0, 4)),
+          secondaryContacts: S.optional(__S(24, __c3, 0)),
+          policies: S.optional(__S(24, __c3, 0)),
+          schemas: S.optional(__S(8, __c1, 0)),
+          schemaUris: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "ConnectionPropertiesInput",
       });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13, __c1, 5)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "ConnectionsCreateOrUpdateRequestIdentity",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(72, __c9, 0)),
+          identity: S.optional(__S(89, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2710,403 +2723,34 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConnectionsCreateOrUpdateRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          id: S.String,
-          statusReason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "ConnectionsLinkRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "ConnectionsLinkResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteConnectionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          flowName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFlowRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          pipelineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePipelineRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          flowName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "DisableFlowRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.String,
-          location: S.optional(S.String),
-          subscriptionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SelectedResource" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billingTier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessagingOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          remoteEndpoint: S.optional(S.String),
-          cname: S.optional(S.String),
-          apiMode: S.optional(S.String),
-          identityTranslation: S.optional(S.String),
-          senderClientId: S.optional(S.String),
-          remoteCallingModeClientId: S.optional(S.String),
-          audienceOverride: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiFlowOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceAddresses: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "StreamSourceAddresses" });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          connection: S.optional(__S(23, __c2, 7)),
-          flowId: S.optional(S.String),
-          keyVaultUri: S.optional(S.String),
-          linkStatus: S.optional(S.String),
-          linkedFlowId: S.optional(S.String),
-          status: S.optional(S.String),
-          forceDisabledStatus: S.optional(__S(3, __c0, 3)),
-          storageAccountName: S.optional(S.String),
-          storageAccountId: S.optional(S.String),
-          storageContainerName: S.optional(S.String),
-          storageTableName: S.optional(S.String),
-          serviceBusQueueId: S.optional(S.String),
-          flowType: S.optional(S.String),
-          dataType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          schema: S.optional(__S(5, __c0, 5)),
-          messagingOptions: S.optional(__S(24, __c3, 0)),
-          apiFlowOptions: S.optional(__S(25, __c3, 1)),
-          customerManagedKeyVaultUri: S.optional(S.String),
-          streamId: S.optional(S.String),
-          streamProtocol: S.optional(S.String),
-          streamLatency: S.optional(S.Number),
-          passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(__S(26, __c3, 2)),
-          destinationEndpoints: S.optional(__S(4, __c0, 4)),
-          destinationEndpointPorts: S.optional(__S(27, __c3, 3)),
-          eventHubId: S.optional(S.String),
-          consumerGroup: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlowProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          publisher: S.String,
-          product: S.String,
-          promotionCode: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DisableFlowResponsePlan" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(28, __c3, 4)),
-          plan: S.optional(__S(29, __c3, 5)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "DisableFlowResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          flowName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({ identifier: "EnableFlowRequest" });
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          pipelineName: S.String.pipe(T.Label()),
-          actionType: S.String,
-          targetType: S.String,
-          targets: __S(4, __c0, 4),
-          justification: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecutePipelineActionRequest",
-      });
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(80, __c10, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({
-        identifier: "ReadPipelineConnectionSystemData",
+        identifier: "ConnectionsCreateOrUpdateRequestIdentity",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          id: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperationStatusProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          operationStatus: S.optional(__S(34, __c4, 2)),
-          statusSetBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternalMetadataProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          internalMetadata: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "PipelineConnectionProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-          systemData: S.optional(__S(33, __c4, 1)),
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "ReadPipelineConnection" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          notifications: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Subscriber" });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          remoteCloud: S.String,
-          displayName: S.optional(S.String),
-          connections: S.optional(__S(38, __c4, 6)),
-          subscribers: S.optional(__S(40, __c5, 0)),
-          provisioningState: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          flowTypes: S.optional(__S(3, __c0, 3)),
-          disabledFlowTypes: S.optional(__S(3, __c0, 3)),
-          quarantineDownloadStorageAccount: S.optional(S.String),
-          quarantineDownloadStorageContainer: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PipelineProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ExecutePipelineActionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connection: S.optional(__S(23, __c2, 7)),
-          keyVaultUri: S.optional(S.String),
-          status: S.optional(S.String),
-          storageAccountName: S.optional(S.String),
-          storageAccountId: S.optional(S.String),
-          storageContainerName: S.optional(S.String),
-          storageTableName: S.optional(S.String),
-          serviceBusQueueId: S.optional(S.String),
-          flowType: S.optional(S.String),
-          dataType: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          schema: S.optional(__S(5, __c0, 5)),
-          messagingOptions: S.optional(__S(24, __c3, 0)),
-          apiFlowOptions: S.optional(__S(25, __c3, 1)),
-          customerManagedKeyVaultUri: S.optional(S.String),
-          streamId: S.optional(S.String),
-          streamProtocol: S.optional(S.String),
-          streamLatency: S.optional(S.Number),
-          passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(__S(26, __c3, 2)),
-          destinationEndpoints: S.optional(__S(4, __c0, 4)),
-          destinationEndpointPorts: S.optional(__S(27, __c3, 3)),
-          eventHubId: S.optional(S.String),
-          consumerGroup: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlowPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          flowName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(43, __c5, 3)),
-          plan: S.optional(__S(29, __c3, 5)),
-          identity: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
-            code: 200,
-            apiVersion: "2025-05-21",
-          }),
-        ),
-      ).annotate({
-        identifier: "FlowsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(28, __c3, 4)),
-          plan: S.optional(__S(29, __c3, 5)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "FlowsCreateOrUpdateResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3124,7 +2768,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FlowsLinkRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3144,7 +2792,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3161,7 +2809,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConnectionRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3177,7 +2829,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFlowRequest" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3195,15 +2851,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetFlowDestinationEndpointPortsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(__S(27, __c3, 3)),
+          ports: S.optional(__S(432, __c54, 0)),
         }),
       ).annotate({
         identifier: "GetDestinationEndpointPortsResult",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3221,15 +2881,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetFlowDestinationEndpointsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(4, __c0, 4)),
+          endpoints: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GetDestinationEndpointsResult",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3247,7 +2911,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetFlowSourceAddressesRequest",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3265,11 +2933,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetFlowStreamConnectionStringRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -3277,7 +2941,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetStreamConnectionStringResult",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3292,20 +2960,28 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPipelineRequest" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(41, __c5, 1)),
-          identity: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(495, __c61, 7)),
+          identity: S.optional(__S(50, __c6, 2)),
         }),
       ).annotate({ identifier: "GetPipelineResponse" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pipeline: S.optional(S.String),
@@ -3321,13 +2997,59 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAzureDataTransferApprovedSchemasRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(6, __c0, 6)),
+          value: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "SchemasListResult" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          id: S.String,
+          statusReason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/link",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "ConnectionsLinkRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c2, 0)),
+          identity: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({ identifier: "ConnectionsLinkResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3343,18 +3065,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConnectionByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(200, __c25, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(62, __c7, 6),
+          value: __S(216, __c27, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionListResult" });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3371,7 +3097,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListConnectionBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3388,22 +3118,30 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListFlowByConnectionRequest",
       });
-    case 2:
-      return S.Array(__S(30, __c3, 6));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(66, __c8, 2),
+          value: __S(240, __c30, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlowListResult" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(424, __c53, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          value: S.optional(__S(4, __c0, 4)),
+          value: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3415,28 +3153,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListListFlowsByPipelineRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          flows: S.optional(__S(66, __c8, 2)),
+          flows: S.optional(__S(240, __c30, 0)),
         }),
       ).annotate({
         identifier: "ListFlowsByPipelineConnection",
       });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(249, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(70, __c8, 6)),
+          value: S.optional(__S(250, __c31, 2)),
         }),
       ).annotate({
         identifier: "ListFlowsByPipelineResult",
       });
   }
 }
-function __c9(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3463,42 +3201,46 @@ function __c9(j: number): any {
           direction: S.optional(S.String),
           justification: S.optional(S.String),
           status: S.optional(S.String),
-          forceDisabledStatus: S.optional(__S(3, __c0, 3)),
+          forceDisabledStatus: S.optional(__S(33, __c4, 1)),
           statusReason: S.optional(S.String),
           linkStatus: S.optional(S.String),
           linkedConnectionId: S.optional(S.String),
-          flowTypes: S.optional(__S(3, __c0, 3)),
+          flowTypes: S.optional(__S(33, __c4, 1)),
           requirementId: S.optional(S.String),
           remoteSubscriptionId: S.optional(S.String),
           approver: S.optional(S.String),
           pin: S.optional(S.String),
           dateSubmitted: S.optional(S.String),
           primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(__S(4, __c0, 4)),
+          secondaryContacts: S.optional(__S(24, __c3, 0)),
           provisioningState: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          schemas: S.optional(__S(6, __c0, 6)),
-          schemaUris: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
+          policies: S.optional(__S(24, __c3, 0)),
+          schemas: S.optional(__S(8, __c1, 0)),
+          schemaUris: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(33, __c4, 1)),
+          systemData: S.optional(__S(480, __c60, 0)),
         }),
       ).annotate({ identifier: "PendingConnection" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(257, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(74, __c9, 2),
+          value: __S(258, __c32, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PendingConnectionListResult",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3515,18 +3257,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListListPendingFlowsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.String),
           connectionId: S.optional(S.String),
-          connection: S.optional(__S(23, __c2, 7)),
+          connection: S.optional(__S(448, __c56, 0)),
           flowId: S.optional(S.String),
           keyVaultUri: S.optional(S.String),
           linkStatus: S.optional(S.String),
           linkedFlowId: S.optional(S.String),
           status: S.optional(S.String),
-          forceDisabledStatus: S.optional(__S(3, __c0, 3)),
+          forceDisabledStatus: S.optional(__S(33, __c4, 1)),
           storageAccountName: S.optional(S.String),
           storageAccountId: S.optional(S.String),
           storageContainerName: S.optional(S.String),
@@ -3535,40 +3277,40 @@ function __c9(j: number): any {
           flowType: S.optional(S.String),
           dataType: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          policies: S.optional(__S(4, __c0, 4)),
-          schema: S.optional(__S(5, __c0, 5)),
-          messagingOptions: S.optional(__S(24, __c3, 0)),
-          apiFlowOptions: S.optional(__S(25, __c3, 1)),
+          policies: S.optional(__S(24, __c3, 0)),
+          schema: S.optional(__S(56, __c7, 0)),
+          messagingOptions: S.optional(__S(449, __c56, 1)),
+          apiFlowOptions: S.optional(__S(450, __c56, 2)),
           customerManagedKeyVaultUri: S.optional(S.String),
           streamId: S.optional(S.String),
           streamProtocol: S.optional(S.String),
           streamLatency: S.optional(S.Number),
           passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(__S(26, __c3, 2)),
-          destinationEndpoints: S.optional(__S(4, __c0, 4)),
-          destinationEndpointPorts: S.optional(__S(27, __c3, 3)),
+          sourceAddresses: S.optional(__S(440, __c55, 0)),
+          destinationEndpoints: S.optional(__S(24, __c3, 0)),
+          destinationEndpointPorts: S.optional(__S(432, __c54, 0)),
           eventHubId: S.optional(S.String),
           consumerGroup: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
+          systemData: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "PendingFlow" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(265, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(78, __c9, 6),
+          value: __S(266, __c33, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PendingFlowListResult" });
   }
 }
-function __c10(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3593,7 +3335,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListListSchemasRequest" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3604,7 +3350,7 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -3613,26 +3359,30 @@ function __c10(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(82, __c10, 2)),
+          display: S.optional(__S(281, __c35, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(282, __c35, 2));
     case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(84, __c10, 4)),
+          value: S.optional(__S(283, __c35, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3648,20 +3398,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPipelineByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(58, __c7, 2));
   }
 }
-function __c11(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(168, __c21, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(87, __c10, 7),
+          value: __S(296, __c37, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineListResult" });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3676,30 +3430,53 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPipelineBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           remoteCloud: S.String,
           displayName: S.optional(S.String),
-          subscribers: S.optional(__S(40, __c5, 0)),
-          policies: S.optional(__S(4, __c0, 4)),
-          flowTypes: S.optional(__S(3, __c0, 3)),
-          disabledFlowTypes: S.optional(__S(3, __c0, 3)),
+          subscribers: S.optional(__S(494, __c61, 6)),
+          policies: S.optional(__S(24, __c3, 0)),
+          flowTypes: S.optional(__S(33, __c4, 1)),
+          disabledFlowTypes: S.optional(__S(33, __c4, 1)),
           quarantineDownloadStorageAccount: S.optional(S.String),
           quarantineDownloadStorageContainer: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelinePropertiesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(32, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(90, __c11, 2)),
-          identity: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(320, __c40, 0)),
+          identity: S.optional(__S(89, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3711,7 +3488,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PipelinesCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3730,14 +3511,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "RejectPipelineConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          ports: S.optional(__S(27, __c3, 3)),
+          ports: S.optional(__S(432, __c54, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3749,14 +3534,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SetFlowDestinationEndpointPortsRequest",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          endpoints: S.optional(__S(4, __c0, 4)),
+          endpoints: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3768,7 +3557,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SetFlowDestinationEndpointsRequest",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3787,7 +3580,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "SetFlowPassphraseRequest" });
   }
 }
-function __c12(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3796,7 +3589,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          values: S.optional(__S(4, __c0, 4)),
+          values: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3808,14 +3601,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SetFlowSourceAddressesRequest",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(89, __c11, 1)),
+          tags: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3825,15 +3622,19 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConnectionRequest" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(89, __c11, 1)),
+          tags: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3843,21 +3644,25 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFlowRequest" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          flowTypes: S.optional(__S(3, __c0, 3)),
+          flowTypes: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "PipelinesPatchProperties" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(99, __c12, 3)),
-          tags: S.optional(__S(2, __c0, 2)),
-          identity: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(384, __c48, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
+          identity: S.optional(__S(89, __c11, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3867,7 +3672,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePipelineRequest" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3889,7 +3698,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ValidateAzureDataTransferSchemaRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -3898,7 +3707,405 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ValidateSchemaResult" });
   }
 }
-
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          flowName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFlowRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          pipelineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePipelineRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          flowName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/disable",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "DisableFlowRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(456, __c57, 0)),
+          plan: S.optional(__S(457, __c57, 1)),
+          identity: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({ identifier: "DisableFlowResponse" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAddresses: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "StreamSourceAddresses" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.String,
+          location: S.optional(S.String),
+          subscriptionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SelectedResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billingTier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessagingOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          remoteEndpoint: S.optional(S.String),
+          cname: S.optional(S.String),
+          apiMode: S.optional(S.String),
+          identityTranslation: S.optional(S.String),
+          senderClientId: S.optional(S.String),
+          remoteCallingModeClientId: S.optional(S.String),
+          audienceOverride: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiFlowOptions" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connection: S.optional(__S(448, __c56, 0)),
+          flowId: S.optional(S.String),
+          keyVaultUri: S.optional(S.String),
+          linkStatus: S.optional(S.String),
+          linkedFlowId: S.optional(S.String),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(33, __c4, 1)),
+          storageAccountName: S.optional(S.String),
+          storageAccountId: S.optional(S.String),
+          storageContainerName: S.optional(S.String),
+          storageTableName: S.optional(S.String),
+          serviceBusQueueId: S.optional(S.String),
+          flowType: S.optional(S.String),
+          dataType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(24, __c3, 0)),
+          schema: S.optional(__S(56, __c7, 0)),
+          messagingOptions: S.optional(__S(449, __c56, 1)),
+          apiFlowOptions: S.optional(__S(450, __c56, 2)),
+          customerManagedKeyVaultUri: S.optional(S.String),
+          streamId: S.optional(S.String),
+          streamProtocol: S.optional(S.String),
+          streamLatency: S.optional(S.Number),
+          passphrase: S.optional(S.String),
+          sourceAddresses: S.optional(__S(440, __c55, 0)),
+          destinationEndpoints: S.optional(__S(24, __c3, 0)),
+          destinationEndpointPorts: S.optional(__S(432, __c54, 0)),
+          eventHubId: S.optional(S.String),
+          consumerGroup: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlowProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          publisher: S.String,
+          product: S.String,
+          promotionCode: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DisableFlowResponsePlan" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          flowName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}/enable",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({ identifier: "EnableFlowRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          pipelineName: S.String.pipe(T.Label()),
+          actionType: S.String,
+          targetType: S.String,
+          targets: __S(24, __c3, 0),
+          justification: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/pipelines/{pipelineName}/executeAction",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecutePipelineActionRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReadPipelineConnectionSystemData",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          id: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperationStatusProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operationStatus: S.optional(__S(488, __c61, 0)),
+          statusSetBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternalMetadataProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          internalMetadata: S.optional(__S(489, __c61, 1)),
+        }),
+      ).annotate({
+        identifier: "PipelineConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+          systemData: S.optional(__S(480, __c60, 0)),
+          properties: S.optional(__S(490, __c61, 2)),
+        }),
+      ).annotate({ identifier: "ReadPipelineConnection" });
+    case 4:
+      return S.Array(__S(491, __c61, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          notifications: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Subscriber" });
+    case 6:
+      return S.Array(__S(493, __c61, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          remoteCloud: S.String,
+          displayName: S.optional(S.String),
+          connections: S.optional(__S(492, __c61, 4)),
+          subscribers: S.optional(__S(494, __c61, 6)),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(24, __c3, 0)),
+          flowTypes: S.optional(__S(33, __c4, 1)),
+          disabledFlowTypes: S.optional(__S(33, __c4, 1)),
+          quarantineDownloadStorageAccount: S.optional(S.String),
+          quarantineDownloadStorageContainer: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PipelineProperties" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(495, __c61, 7)),
+          identity: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "ExecutePipelineActionResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connection: S.optional(__S(448, __c56, 0)),
+          keyVaultUri: S.optional(S.String),
+          status: S.optional(S.String),
+          storageAccountName: S.optional(S.String),
+          storageAccountId: S.optional(S.String),
+          storageContainerName: S.optional(S.String),
+          storageTableName: S.optional(S.String),
+          serviceBusQueueId: S.optional(S.String),
+          flowType: S.optional(S.String),
+          dataType: S.optional(S.String),
+          policies: S.optional(__S(24, __c3, 0)),
+          schema: S.optional(__S(56, __c7, 0)),
+          messagingOptions: S.optional(__S(449, __c56, 1)),
+          apiFlowOptions: S.optional(__S(450, __c56, 2)),
+          customerManagedKeyVaultUri: S.optional(S.String),
+          streamId: S.optional(S.String),
+          streamProtocol: S.optional(S.String),
+          streamLatency: S.optional(S.Number),
+          passphrase: S.optional(S.String),
+          sourceAddresses: S.optional(__S(440, __c55, 0)),
+          destinationEndpoints: S.optional(__S(24, __c3, 0)),
+          destinationEndpointPorts: S.optional(__S(432, __c54, 0)),
+          eventHubId: S.optional(S.String),
+          consumerGroup: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlowPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          flowName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(504, __c63, 0)),
+          plan: S.optional(__S(457, __c57, 1)),
+          identity: S.optional(__S(89, __c11, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+            code: 200,
+            apiVersion: "2025-05-21",
+          }),
+        ),
+      ).annotate({
+        identifier: "FlowsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(32, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(456, __c57, 0)),
+          plan: S.optional(__S(457, __c57, 1)),
+          identity: S.optional(__S(50, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "FlowsCreateOrUpdateResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

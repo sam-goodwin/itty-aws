@@ -663,8 +663,8 @@ export const allocateIdsProjects: API.OperationMethod<
   AllocateIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AllocateIdsProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AllocateIdsResponse>,
+  input: __S(97, __c3, 1) as any as S.Schema<AllocateIdsProjectsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<AllocateIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const beginTransactionProjects: API.OperationMethod<
   BeginTransactionProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BeginTransactionProjectsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<BeginTransactionResponse>,
+  input: __S(196, __c6, 4) as any as S.Schema<BeginTransactionProjectsRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<BeginTransactionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -698,8 +698,8 @@ export const commitProjects: API.OperationMethod<
   CommitProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CommitProjectsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CommitResponse>,
+  input: __S(261, __c8, 5) as any as S.Schema<CommitProjectsRequest>,
+  output: __S(264, __c8, 8) as any as S.Schema<CommitResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -713,8 +713,8 @@ export const lookupProjects: API.OperationMethod<
   LookupProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<LookupProjectsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<LookupResponse>,
+  input: __S(353, __c11, 1) as any as S.Schema<LookupProjectsRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<LookupResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -728,8 +728,8 @@ export const reserveIdsProjects: API.OperationMethod<
   ReserveIdsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ReserveIdsProjectsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ReserveIdsResponse>,
+  input: __S(449, __c14, 1) as any as S.Schema<ReserveIdsProjectsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<ReserveIdsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const rollbackProjects: API.OperationMethod<
   RollbackProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<RollbackProjectsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RollbackResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<RollbackProjectsRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<RollbackResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -763,8 +763,8 @@ export const runAggregationQueryProjects: API.OperationMethod<
   RunAggregationQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<RunAggregationQueryProjectsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<RunAggregationQueryResponse>,
+  input: __S(5, __c0, 5) as any as S.Schema<RunAggregationQueryProjectsRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<RunAggregationQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -778,8 +778,8 @@ export const runQueryProjects: API.OperationMethod<
   RunQueryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<RunQueryProjectsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<RunQueryResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<RunQueryProjectsRequest>,
+  output: __S(67, __c2, 3) as any as S.Schema<RunQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -791,326 +791,83 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
+          upTo: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PathElement" });
+      ).annotate({ identifier: "Count" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          projectId: S.optional(S.String),
-          namespaceId: S.optional(S.String),
+          avg: S.optional(__S(34, __c1, 2)),
+          count: S.optional(__S(0, __c0, 0)),
+          alias: S.optional(S.String),
+          sum: S.optional(__S(34, __c1, 2)),
         }),
-      ).annotate({ identifier: "PartitionId" });
+      ).annotate({ identifier: "Aggregation" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          path: S.optional(__S(1, __c0, 1)),
-          partitionId: S.optional(__S(2, __c0, 2)),
+          aggregations: S.optional(__S(2, __c0, 2)),
+          nestedQuery: S.optional(__S(44, __c1, 12)),
         }),
-      ).annotate({ identifier: "Key" });
+      ).annotate({ identifier: "AggregationQuery" });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.suspend(() =>
+        S.Struct({
+          explainOptions: S.optional(__S(32, __c1, 0)),
+          aggregationQuery: S.optional(__S(3, __c0, 3)),
+          gqlQuery: S.optional(__S(48, __c1, 16)),
+          readOptions: S.optional(__S(384, __c12, 0)),
+          partitionId: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "RunAggregationQueryRequest",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AllocateIdsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1beta3/projects/{projectId}:allocateIds",
+            uri: "v1beta3/projects/{projectId}:runAggregationQuery",
             baseUrl: "https://datastore.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "AllocateIdsProjectsRequest",
+        identifier: "RunAggregationQueryProjectsRequest",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          readTime: S.optional(S.String),
+          aggregateProperties: S.optional(__S(292, __c9, 4)),
         }),
-      ).annotate({ identifier: "ReadOnly" });
+      ).annotate({ identifier: "AggregationResult" });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          moreResults: S.optional(S.String),
+          readTime: S.optional(S.String),
+          aggregationResults: S.optional(__S(7, __c0, 7)),
+        }),
+      ).annotate({ identifier: "AggregationResultBatch" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          explainMetrics: S.optional(__S(53, __c1, 21)),
+          batch: S.optional(__S(8, __c0, 8)),
+          query: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({
+        identifier: "RunAggregationQueryResponse",
+      });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          previousTransaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReadWrite" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          readOnly: S.optional(__S(7, __c0, 7)),
-          readWrite: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "TransactionOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          transactionOptions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "BeginTransactionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:beginTransaction",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BeginTransactionProjectsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          transaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BeginTransactionResponse" });
-    case 5:
-      return S.Array(S.suspend(() => __S(16, __c2, 0)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "ArrayValue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          longitude: S.optional(S.Number),
-          latitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nullValue: S.optional(S.String),
-          excludeFromIndexes: S.optional(S.Boolean),
-          entityValue: S.optional(S.suspend(() => __S(18, __c2, 2))),
-          timestampValue: S.optional(S.String),
-          meaning: S.optional(S.Number),
-          stringValue: S.optional(S.String),
-          blobValue: S.optional(S.String),
-          arrayValue: S.optional(__S(14, __c1, 6)),
-          integerValue: S.optional(S.String),
-          keyValue: S.optional(__S(3, __c0, 3)),
-          geoPointValue: S.optional(__S(15, __c1, 7)),
-          doubleValue: S.optional(S.Number),
-          booleanValue: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Value" });
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Entity" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appendMissingElements: S.optional(__S(14, __c1, 6)),
-          property: S.optional(S.String),
-          increment: S.optional(__S(16, __c2, 0)),
-          maximum: S.optional(__S(16, __c2, 0)),
-          removeAllFromArray: S.optional(__S(14, __c1, 6)),
-          setToServerValue: S.optional(S.String),
-          minimum: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "PropertyTransform" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paths: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "PropertyMask" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          update: S.optional(__S(18, __c2, 2)),
-          conflictResolutionStrategy: S.optional(S.String),
-          baseVersion: S.optional(S.String),
-          delete: S.optional(__S(3, __c0, 3)),
-          propertyTransforms: S.optional(__S(20, __c2, 4)),
-          updateTime: S.optional(S.String),
-          upsert: S.optional(__S(18, __c2, 2)),
-          insert: S.optional(__S(18, __c2, 2)),
-          propertyMask: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "Mutation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          transaction: S.optional(S.String),
-          mutations: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "CommitRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:commit",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CommitProjectsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          conflictDetected: S.optional(S.Boolean),
-          transformResults: S.optional(__S(13, __c1, 5)),
-          updateTime: S.optional(S.String),
-          key: S.optional(__S(3, __c0, 3)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MutationResult" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mutationResults: S.optional(__S(28, __c3, 4)),
-          indexUpdates: S.optional(S.Number),
-          commitTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommitResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          readConsistency: S.optional(S.String),
-          transaction: S.optional(S.String),
-          readTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReadOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keys: S.optional(__S(4, __c0, 4)),
-          readOptions: S.optional(__S(30, __c3, 6)),
-          propertyMask: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "LookupRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:lookup",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "LookupProjectsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cursor: S.optional(S.String),
-          version: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          entity: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "EntityResult" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          found: S.optional(__S(34, __c4, 2)),
-          deferred: S.optional(__S(4, __c0, 4)),
-          readTime: S.optional(S.String),
-          missing: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "LookupResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          databaseId: S.optional(S.String),
-          keys: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ReserveIdsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:reserveIds",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReserveIdsProjectsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ReserveIdsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:rollback",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "RollbackProjectsRequest" });
-  }
-}
-function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1127,227 +884,138 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          property: S.optional(__S(41, __c5, 1)),
+          property: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "Avg" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          upTo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Count" });
+      return S.Array(__S(34, __c1, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          avg: S.optional(__S(42, __c5, 2)),
-          count: S.optional(__S(43, __c5, 3)),
-          alias: S.optional(S.String),
-          sum: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "Aggregation" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.Array(__S(42, __c5, 2));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           distanceResultProperty: S.optional(S.String),
           distanceThreshold: S.optional(S.Number),
-          queryVector: S.optional(__S(16, __c2, 0)),
+          queryVector: S.optional(__S(291, __c9, 3)),
           limit: S.optional(S.Number),
           distanceMeasure: S.optional(S.String),
-          vectorProperty: S.optional(__S(41, __c5, 1)),
+          vectorProperty: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "FindNearest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           op: S.optional(S.String),
-          property: S.optional(__S(41, __c5, 1)),
-          value: S.optional(__S(16, __c2, 0)),
+          property: S.optional(__S(33, __c1, 1)),
+          value: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({ identifier: "PropertyFilter" });
-    case 1:
-      return S.Array(S.suspend(() => __S(51, __c6, 3)));
-    case 2:
+    case 6:
+      return S.Array(S.suspend(() => __S(40, __c1, 8)));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(49, __c6, 1)),
+          filters: S.optional(__S(38, __c1, 6)),
           op: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeFilter" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          propertyFilter: S.optional(__S(48, __c6, 0)),
-          compositeFilter: S.optional(__S(50, __c6, 2)),
+          propertyFilter: S.optional(__S(37, __c1, 5)),
+          compositeFilter: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "Filter" });
-    case 4:
-      return S.Array(__S(41, __c5, 1));
-    case 5:
+    case 9:
+      return S.Array(__S(33, __c1, 1));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          property: S.optional(__S(41, __c5, 1)),
+          property: S.optional(__S(33, __c1, 1)),
           direction: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyOrder" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(42, __c1, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           offset: S.optional(S.Number),
-          projection: S.optional(__S(46, __c5, 6)),
-          findNearest: S.optional(__S(47, __c5, 7)),
+          projection: S.optional(__S(35, __c1, 3)),
+          findNearest: S.optional(__S(36, __c1, 4)),
           limit: S.optional(S.Number),
-          filter: S.optional(__S(51, __c6, 3)),
-          distinctOn: S.optional(__S(52, __c6, 4)),
-          kind: S.optional(__S(52, __c6, 4)),
+          filter: S.optional(__S(40, __c1, 8)),
+          distinctOn: S.optional(__S(41, __c1, 9)),
+          kind: S.optional(__S(41, __c1, 9)),
           endCursor: S.optional(S.String),
-          order: S.optional(__S(54, __c6, 6)),
+          order: S.optional(__S(43, __c1, 11)),
           startCursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "Query" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(__S(45, __c5, 5)),
-          nestedQuery: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "AggregationQuery" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
+          value: S.optional(__S(291, __c9, 3)),
           cursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "GqlQueryParameter" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.Record(S.String, __S(57, __c7, 1));
-    case 4:
+    case 14:
+      return S.Array(__S(45, __c1, 13));
+    case 15:
+      return S.Record(S.String, __S(45, __c1, 13));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           allowLiterals: S.optional(S.Boolean),
-          positionalBindings: S.optional(__S(58, __c7, 2)),
+          positionalBindings: S.optional(__S(46, __c1, 14)),
           queryString: S.optional(S.String),
-          namedBindings: S.optional(__S(59, __c7, 3)),
+          namedBindings: S.optional(__S(47, __c1, 15)),
         }),
       ).annotate({ identifier: "GqlQuery" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          explainOptions: S.optional(__S(40, __c5, 0)),
-          aggregationQuery: S.optional(__S(56, __c7, 0)),
-          gqlQuery: S.optional(__S(60, __c7, 4)),
-          readOptions: S.optional(__S(30, __c3, 6)),
-          partitionId: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "RunAggregationQueryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta3/projects/{projectId}:runAggregationQuery",
-            baseUrl: "https://datastore.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunAggregationQueryProjectsRequest",
-      });
-    case 7:
+    case 17:
       return S.Record(S.String, S.Unknown);
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(49, __c1, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          indexesUsed: S.optional(__S(64, __c8, 0)),
+          indexesUsed: S.optional(__S(50, __c1, 18)),
         }),
       ).annotate({ identifier: "PlanSummary" });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          debugStats: S.optional(__S(63, __c7, 7)),
+          debugStats: S.optional(__S(49, __c1, 17)),
           readOperations: S.optional(S.String),
           resultsReturned: S.optional(S.String),
           executionDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionStats" });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          planSummary: S.optional(__S(65, __c8, 1)),
-          executionStats: S.optional(__S(66, __c8, 2)),
+          planSummary: S.optional(__S(51, __c1, 19)),
+          executionStats: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "ExplainMetrics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          aggregateProperties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AggregationResult" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          moreResults: S.optional(S.String),
-          readTime: S.optional(S.String),
-          aggregationResults: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "AggregationResultBatch" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          explainMetrics: S.optional(__S(67, __c8, 3)),
-          batch: S.optional(__S(70, __c8, 6)),
-          query: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "RunAggregationQueryResponse",
-      });
   }
 }
-function __c9(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gqlQuery: S.optional(__S(60, __c7, 4)),
-          propertyMask: S.optional(__S(22, __c2, 6)),
-          explainOptions: S.optional(__S(40, __c5, 0)),
-          readOptions: S.optional(__S(30, __c3, 6)),
-          query: S.optional(__S(55, __c6, 7)),
-          partitionId: S.optional(__S(2, __c0, 2)),
+          gqlQuery: S.optional(__S(48, __c1, 16)),
+          propertyMask: S.optional(__S(321, __c10, 1)),
+          explainOptions: S.optional(__S(32, __c1, 0)),
+          readOptions: S.optional(__S(384, __c12, 0)),
+          query: S.optional(__S(44, __c1, 12)),
+          partitionId: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "RunQueryRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1366,20 +1034,379 @@ function __c9(j: number): any {
           moreResults: S.optional(S.String),
           entityResultType: S.optional(S.String),
           skippedCursor: S.optional(S.String),
-          entityResults: S.optional(__S(34, __c4, 2)),
+          entityResults: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "QueryResultBatch" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          batch: S.optional(__S(74, __c9, 2)),
-          query: S.optional(__S(55, __c6, 7)),
-          explainMetrics: S.optional(__S(67, __c8, 3)),
+          batch: S.optional(__S(66, __c2, 2)),
+          query: S.optional(__S(44, __c1, 12)),
+          explainMetrics: S.optional(__S(53, __c1, 21)),
         }),
       ).annotate({ identifier: "RunQueryResponse" });
   }
 }
-
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "AllocateIdsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:allocateIds",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AllocateIdsProjectsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PathElement" });
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+          namespaceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionId" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(__S(129, __c4, 1)),
+          partitionId: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "Key" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(131, __c4, 3));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadOnly" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          previousTransaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadWrite" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readOnly: S.optional(__S(192, __c6, 0)),
+          readWrite: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "TransactionOptions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          transactionOptions: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({ identifier: "BeginTransactionRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(195, __c6, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:beginTransaction",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BeginTransactionProjectsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BeginTransactionResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appendMissingElements: S.optional(__S(289, __c9, 1)),
+          property: S.optional(S.String),
+          increment: S.optional(__S(291, __c9, 3)),
+          maximum: S.optional(__S(291, __c9, 3)),
+          removeAllFromArray: S.optional(__S(289, __c9, 1)),
+          setToServerValue: S.optional(S.String),
+          minimum: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "PropertyTransform" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          update: S.optional(__S(293, __c9, 5)),
+          conflictResolutionStrategy: S.optional(S.String),
+          baseVersion: S.optional(S.String),
+          delete: S.optional(__S(131, __c4, 3)),
+          propertyTransforms: S.optional(__S(257, __c8, 1)),
+          updateTime: S.optional(S.String),
+          upsert: S.optional(__S(293, __c9, 5)),
+          insert: S.optional(__S(293, __c9, 5)),
+          propertyMask: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({ identifier: "Mutation" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          transaction: S.optional(S.String),
+          mutations: S.optional(__S(259, __c8, 3)),
+        }),
+      ).annotate({ identifier: "CommitRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(260, __c8, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:commit",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CommitProjectsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          conflictDetected: S.optional(S.Boolean),
+          transformResults: S.optional(__S(288, __c9, 0)),
+          updateTime: S.optional(S.String),
+          key: S.optional(__S(131, __c4, 3)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MutationResult" });
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          mutationResults: S.optional(__S(263, __c8, 7)),
+          indexUpdates: S.optional(S.Number),
+          commitTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommitResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.suspend(() => __S(291, __c9, 3)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "ArrayValue" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          longitude: S.optional(S.Number),
+          latitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nullValue: S.optional(S.String),
+          excludeFromIndexes: S.optional(S.Boolean),
+          entityValue: S.optional(S.suspend(() => __S(293, __c9, 5))),
+          timestampValue: S.optional(S.String),
+          meaning: S.optional(S.Number),
+          stringValue: S.optional(S.String),
+          blobValue: S.optional(S.String),
+          arrayValue: S.optional(__S(289, __c9, 1)),
+          integerValue: S.optional(S.String),
+          keyValue: S.optional(__S(131, __c4, 3)),
+          geoPointValue: S.optional(__S(290, __c9, 2)),
+          doubleValue: S.optional(S.Number),
+          booleanValue: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Value" });
+    case 4:
+      return S.Record(S.String, __S(291, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(__S(131, __c4, 3)),
+          properties: S.optional(__S(292, __c9, 4)),
+        }),
+      ).annotate({ identifier: "Entity" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          paths: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "PropertyMask" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(160, __c5, 0)),
+          readOptions: S.optional(__S(384, __c12, 0)),
+          propertyMask: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({ identifier: "LookupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:lookup",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "LookupProjectsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          found: S.optional(__S(417, __c13, 1)),
+          deferred: S.optional(__S(160, __c5, 0)),
+          readTime: S.optional(S.String),
+          missing: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({ identifier: "LookupResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readConsistency: S.optional(S.String),
+          transaction: S.optional(S.String),
+          readTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReadOptions" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.optional(S.String),
+          version: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          entity: S.optional(__S(293, __c9, 5)),
+        }),
+      ).annotate({ identifier: "EntityResult" });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databaseId: S.optional(S.String),
+          keys: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "ReserveIdsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:reserveIds",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReserveIdsProjectsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ReserveIdsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta3/projects/{projectId}:rollback",
+            baseUrl: "https://datastore.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "RollbackProjectsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

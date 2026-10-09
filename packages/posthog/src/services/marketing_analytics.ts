@@ -2432,8 +2432,8 @@ export const createMarketingAnalyticsTestMapping: API.OperationMethod<
   CreateMarketingAnalyticsTestMappingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateMarketingAnalyticsTestMappingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateMarketingAnalyticsTestMappingResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateMarketingAnalyticsTestMappingRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<CreateMarketingAnalyticsTestMappingResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2450,8 +2450,12 @@ export const deleteMarketingAnalyticsConversionGoalDestroy: API.OperationMethod<
   DeleteMarketingAnalyticsConversionGoalDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteMarketingAnalyticsConversionGoalDestroyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
+  input: __S(
+    320,
+    __c10,
+    0,
+  ) as any as S.Schema<DeleteMarketingAnalyticsConversionGoalDestroyRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2465,8 +2469,8 @@ export const getMarketingAnalyticsConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetMarketingAnalyticsConversionGoalRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ConversionGoalsListResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetMarketingAnalyticsConversionGoalRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ConversionGoalsListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2480,8 +2484,8 @@ export const getMarketingAnalyticsDataSource: API.OperationMethod<
   GetMarketingAnalyticsDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetMarketingAnalyticsDataSourceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSourceHealthResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetMarketingAnalyticsDataSourceRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<DataSourceHealthResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2495,8 +2499,8 @@ export const getMarketingAnalyticsDiagnose: API.OperationMethod<
   GetMarketingAnalyticsDiagnoseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetMarketingAnalyticsDiagnoseRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<MarketingDiagnosticResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetMarketingAnalyticsDiagnoseRequest>,
+  output: __S(552, __c17, 8) as any as S.Schema<MarketingDiagnosticResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2510,8 +2514,8 @@ export const getMarketingAnalyticsExplainConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsExplainConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetMarketingAnalyticsExplainConversionGoalRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GoalExplanation>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetMarketingAnalyticsExplainConversionGoalRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<GoalExplanation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2525,8 +2529,8 @@ export const getMarketingAnalyticsSetupPlan: API.OperationMethod<
   GetMarketingAnalyticsSetupPlanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetMarketingAnalyticsSetupPlanRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SetupPlanResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetMarketingAnalyticsSetupPlanRequest>,
+  output: __S(677, __c21, 5) as any as S.Schema<SetupPlanResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2540,8 +2544,8 @@ export const getMarketingAnalyticsSourceValidation: API.OperationMethod<
   GetMarketingAnalyticsSourceValidationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SourceValidation>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetMarketingAnalyticsSourceValidationRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<SourceValidation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2555,8 +2559,8 @@ export const getMarketingAnalyticsSuggestConversionGoal: API.OperationMethod<
   GetMarketingAnalyticsSuggestConversionGoalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<EventSuggestionsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetMarketingAnalyticsSuggestConversionGoalRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<EventSuggestionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2570,8 +2574,8 @@ export const getMarketingAnalyticsSuggestUtmMapping: API.OperationMethod<
   GetMarketingAnalyticsSuggestUtmMappingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetMarketingAnalyticsSuggestUtmMappingRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UtmMappingSuggestionsResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetMarketingAnalyticsSuggestUtmMappingRequest>,
+  output: __S(75, __c2, 11) as any as S.Schema<UtmMappingSuggestionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2585,8 +2589,8 @@ export const getMarketingAnalyticsUtmAudit: API.OperationMethod<
   GetMarketingAnalyticsUtmAuditError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetMarketingAnalyticsUtmAuditRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UtmAuditResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetMarketingAnalyticsUtmAuditRequest>,
+  output: __S(106, __c3, 10) as any as S.Schema<UtmAuditResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2599,8 +2603,8 @@ export const listMarketingAnalyticsConversionRecordings: API.OperationMethod<
   ListMarketingAnalyticsConversionRecordingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListMarketingAnalyticsConversionRecordingsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ConversionRecordingsResponse>,
+  input: __S(166, __c5, 6) as any as S.Schema<ListMarketingAnalyticsConversionRecordingsRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<ConversionRecordingsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2614,8 +2618,8 @@ export const marketingAnalyticsApplySetupOpsCreate: API.OperationMethod<
   MarketingAnalyticsApplySetupOpsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ApplySetupOpsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<ApplySetupOpsResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2632,12 +2636,8 @@ export const marketingAnalyticsConversionGoalsCreateCreate: API.OperationMethod<
   MarketingAnalyticsConversionGoalsCreateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(
-    110,
-    __c13,
-    6,
-  ) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2656,11 +2656,11 @@ export const marketingAnalyticsConversionGoalsUpdatePartialUpdate: API.Operation
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    256,
+    __c8,
+    0,
   ) as any as S.Schema<MarketingAnalyticsConversionGoalsUpdatePartialUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConversionGoalWriteResponse>,
+  output: __S(353, __c11, 1) as any as S.Schema<ConversionGoalWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2675,375 +2675,6 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/marketing_analytics/test_mapping/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMarketingAnalyticsTestMappingRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateMarketingAnalyticsTestMappingResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          conversion_goal_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/delete/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMarketingAnalyticsConversionGoalDestroyRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          goal: S.Unknown,
-          conversion_goals: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ConversionGoalWriteResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMarketingAnalyticsConversionGoalRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversion_goal_id: S.String,
-          name: S.String,
-          kind: S.String,
-          target_label: S.String,
-          last_30d_count: S.Number,
-          integrated_count: S.NullOr(S.Number),
-          events_without_utm_source: S.NullOr(S.Number),
-          events_with_unmatched_utm_source: S.NullOr(S.Number),
-          non_integrated_count: S.NullOr(S.Number),
-          integrated_pct: S.NullOr(S.Number),
-          is_misconfigured: S.Boolean,
-          misconfig_reason: S.NullOr(S.String),
-          is_approximate: S.Boolean,
-          approximation_reason: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ConversionGoalSummary" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          goals: __S(8, __c1, 0),
-          attribution_window_days: S.Number,
-          attribution_mode: S.String,
-          has_misconfigured: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ConversionGoalsListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          source_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/marketing_analytics/data_sources/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMarketingAnalyticsDataSourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          table_name: S.String,
-          present: S.Boolean,
-          should_sync: S.Boolean,
-          status: S.NullOr(S.String),
-          last_synced_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "RequiredTableStatus" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          source_type: S.String,
-          is_native: S.Boolean,
-          display_name: S.String,
-          connected: S.Boolean,
-          last_sync_at: S.NullOr(S.String),
-          last_sync_status: S.String,
-          last_error: S.NullOr(S.String),
-          rows_last_24h: S.Number,
-          rows_last_7d: S.Number,
-          sources_map_present: S.Boolean,
-          schema_columns_mapped: __S(3, __c0, 3),
-          schema_columns_required_missing: __S(3, __c0, 3),
-          required_tables: __S(12, __c1, 4),
-          settings_url: S.String,
-          schemas_url: S.NullOr(S.String),
-          diagnosis: S.String,
-          fix_suggestion: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "DataSourceHealthEntry" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          integrations: __S(14, __c1, 6),
-          has_any_data: S.Boolean,
-          overall_status: S.String,
-          issues_summary: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "DataSourceHealthResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          attribution_lookback_days: S.optional(S.Number.pipe(T.Query())),
-          include_conversion_goals: S.optional(S.Boolean.pipe(T.Query())),
-          source_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/marketing_analytics/diagnose/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMarketingAnalyticsDiagnoseRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          raw_value: S.String,
-          event_count: S.Number,
-          suggested_integration: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "UnmatchedUtmSample" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integration_key: S.String,
-          display_name: S.String,
-          events_with_utm_last_7d: S.Number,
-          events_matched_last_7d: S.Number,
-          events_unmatched_likely_yours_last_7d: S.Number,
-          last_event_with_matching_utm_at: S.NullOr(S.String),
-          matched_pct: S.Number,
-          sample_unmatched_utm_sources: __S(18, __c2, 2),
-          events_matched_paid_last_7d: S.Number,
-          events_matched_tagged_medium_last_7d: S.Number,
-        }),
-      ).annotate({ identifier: "AttributionHealthEntry" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          detail: S.String,
-          severity: S.String,
-          target_tool: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "RecommendedAction" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          integration_key: S.String,
-          source_type: S.String,
-          display_name: S.String,
-          overall_status: S.String,
-          diagnosis: S.String,
-          data_source: S.optional(S.NullOr(__S(13, __c1, 5))),
-          attribution: S.optional(S.NullOr(__S(19, __c2, 3))),
-          recommended_actions: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "IntegrationDiagnostic" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          integrations: __S(23, __c2, 7),
-          overall_status: S.String,
-          summary: S.String,
-          conversion_goals: S.optional(S.NullOr(__S(9, __c1, 1))),
-          recommended_actions: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "MarketingDiagnosticResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          conversion_goal_id: S.String.pipe(T.Query()),
-          date_from: S.optional(S.String.pipe(T.Query())),
-          date_to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/marketing_analytics/explain_conversion_goal/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMarketingAnalyticsExplainConversionGoalRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.NullOr(S.String),
-          date_to: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "GoalExplanationPeriod" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          event_uuid: S.String,
-          timestamp: S.String,
-          distinct_id: S.String,
-          utm_source: S.NullOr(S.String),
-          utm_campaign: S.NullOr(S.String),
-          matched_integration: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "GoalEventSample" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversion_goal_id: S.String,
-          goal_name: S.String,
-          kind: S.String,
-          period: __S(26, __c3, 2),
-          total_count: S.Number,
-          integrated_count: S.NullOr(S.Number),
-          events_without_utm_source: S.NullOr(S.Number),
-          events_with_unmatched_utm_source: S.NullOr(S.Number),
-          non_integrated_count: S.NullOr(S.Number),
-          by_event: __S(28, __c3, 4),
-          by_utm_source: __S(28, __c3, 4),
-          by_matched_integration: __S(28, __c3, 4),
-          samples: __S(30, __c3, 6),
-          notes: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "GoalExplanation" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          date_from: S.optional(S.String.pipe(T.Query())),
-          refresh: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/marketing_analytics/setup_plan/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMarketingAnalyticsSetupPlanRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          source: S.String,
-          severity: S.String,
-          confidence: S.Number,
-          title: S.String,
-          evidence: S.String,
-          unlocks: __S(3, __c0, 3),
-          apply: S.Unknown,
-          also_recommended: __S(27, __c3, 3),
-          safe_to_batch: S.Boolean,
-          rank_score: S.Number,
-          integration: S.NullOr(S.String),
-          deep_link: S.NullOr(S.String),
-          docs_url: S.NullOr(S.String),
-          spend_at_risk: S.Number,
-          event_volume: S.Number,
-        }),
-      ).annotate({ identifier: "Suggestion" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          capability: S.String,
-          status: S.String,
-          explanation: S.String,
-          blocked_by: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "CapabilityReadiness" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          suggestions: __S(34, __c4, 2),
-          readiness: __S(36, __c4, 4),
-          degraded: __S(3, __c0, 3),
-          truncated: S.Boolean,
-          summary: S.String,
-        }),
-      ).annotate({ identifier: "SetupPlanResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
             method: "GET",
             uri: "/api/projects/{project_id}/marketing_analytics/source_validation/",
             code: 200,
@@ -3052,19 +2683,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetMarketingAnalyticsSourceValidationRequest",
       });
-    case 7:
-      return S.Record(S.String, __S(3, __c0, 3));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          errors_by_source: __S(39, __c4, 7),
+          errors_by_source: __S(1, __c0, 1),
         }),
       ).annotate({ identifier: "SourceValidation" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3080,7 +2711,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMarketingAnalyticsSuggestConversionGoalRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           event_name: S.String,
@@ -3088,23 +2719,27 @@ function __c5(j: number): any {
           distinct_users_30d: S.Number,
           pct_with_utm_source: S.Number,
           pct_with_utm_campaign: S.Number,
-          top_utm_sources: __S(28, __c3, 4),
+          top_utm_sources: __S(608, __c19, 0),
           is_already_a_goal: S.Boolean,
           suggestion_score: S.Number,
           suggestion_reason: S.String,
         }),
       ).annotate({ identifier: "CandidateEvent" });
+    case 2:
+      return S.Array(__S(33, __c1, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          candidates: __S(43, __c5, 3),
+          candidates: __S(34, __c1, 2),
           lookback_days: S.Number,
           excluded_events_count: S.Number,
         }),
       ).annotate({ identifier: "EventSuggestionsResponse" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3120,7 +2755,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMarketingAnalyticsSuggestUtmMappingRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw_utm_source: S.String,
@@ -3130,19 +2765,15 @@ function __c5(j: number): any {
           event_count_30d: S.Number,
         }),
       ).annotate({ identifier: "SourceMappingSuggestion" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           integration: S.String,
           integration_display_name: S.String,
           suggested_clean_name: S.String,
-          raw_campaign_values: __S(3, __c0, 3),
+          raw_campaign_values: __S(512, __c16, 0),
           confidence: S.Number,
           method: S.String,
           reason: S.String,
@@ -3151,9 +2782,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CampaignMappingSuggestion",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           raw_utm_source: S.String,
@@ -3161,9 +2792,9 @@ function __c6(j: number): any {
           suggested_integration: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "RawUnmatchedSample" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(69, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           raw_utm_source: S.String,
@@ -3173,9 +2804,9 @@ function __c6(j: number): any {
           suggested_integration: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CatalogueEntry" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           raw_utm_source: S.String,
@@ -3184,29 +2815,29 @@ function __c6(j: number): any {
           source: S.String,
         }),
       ).annotate({ identifier: "CurrentMapping" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          source_suggestions: __S(47, __c5, 7),
-          campaign_suggestions: __S(49, __c6, 1),
-          raw_unmatched_samples: __S(51, __c6, 3),
-          full_utm_source_catalogue: __S(53, __c6, 5),
-          current_mappings: __S(55, __c6, 7),
+          source_suggestions: __S(66, __c2, 2),
+          campaign_suggestions: __S(68, __c2, 4),
+          raw_unmatched_samples: __S(70, __c2, 6),
+          full_utm_source_catalogue: __S(72, __c2, 8),
+          current_mappings: __S(74, __c2, 10),
           total_unmatched_events_in_window: S.Number,
           total_events_with_utm_in_window: S.Number,
           lookback_days_used: S.Number,
-          notes: __S(3, __c0, 3),
+          notes: __S(512, __c16, 0),
         }),
       ).annotate({
         identifier: "UtmMappingSuggestionsResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3222,34 +2853,34 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMarketingAnalyticsUtmAuditRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           utm_source: S.String,
           event_count: S.Number,
         }),
       ).annotate({ identifier: "UtmAlternativeSource" });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.Array(S.String);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
           severity: S.String,
           kind: S.String,
           message: S.String,
-          alternative_sources: __S(59, __c7, 3),
-          shared_with_integrations: __S(3, __c0, 3),
+          alternative_sources: __S(98, __c3, 2),
+          shared_with_integrations: __S(512, __c16, 0),
           missing_source_count: S.Number,
-          suggested_actions: __S(60, __c7, 4),
+          suggested_actions: __S(99, __c3, 3),
           mapping_candidate: S.String,
         }),
       ).annotate({ identifier: "UtmIssue" });
+    case 5:
+      return S.Array(__S(100, __c3, 4));
     case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           campaign_name: S.String,
@@ -3260,16 +2891,12 @@ function __c7(j: number): any {
           impressions: S.Number,
           has_utm_events: S.Boolean,
           event_count: S.Number,
-          issues: __S(62, __c7, 6),
+          issues: __S(101, __c3, 5),
         }),
       ).annotate({ identifier: "CampaignAuditResult" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(102, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           utm_campaign: S.String,
@@ -3280,50 +2907,50 @@ function __c8(j: number): any {
           matched_campaign: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UtmEvent" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(104, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           total_campaigns: S.Number,
           campaigns_with_issues: S.Number,
           campaigns_without_issues: S.Number,
           total_spend_at_risk: S.Number,
-          results: __S(64, __c8, 0),
-          all_utm_events: __S(66, __c8, 2),
+          results: __S(103, __c3, 7),
+          all_utm_events: __S(105, __c3, 9),
         }),
       ).annotate({ identifier: "UtmAuditResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           compare: S.optional(S.NullOr(S.Boolean)),
           compare_to: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CompareFilter" });
-    case 5:
+    case 1:
       return S.Array(S.Number);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
-          daysOfWeek: S.optional(S.NullOr(__S(69, __c8, 5))),
+          daysOfWeek: S.optional(S.NullOr(__S(129, __c4, 1))),
           excludeIncompletePeriods: S.optional(S.NullOr(S.Boolean)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "DateRange" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           includeNonIntegrated: S.optional(S.NullOr(S.Boolean)),
-          integrationSourceIds: S.optional(S.NullOr(__S(3, __c0, 3))),
+          integrationSourceIds: S.optional(S.NullOr(__S(512, __c16, 0))),
         }),
       ).annotate({ identifier: "IntegrationFilter" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3332,21 +2959,21 @@ function __c9(j: number): any {
           pattern: S.String,
         }),
       ).annotate({ identifier: "CustomBotCondition" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(132, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.NullOr(S.String)),
           combiner: S.String,
           id: S.String,
-          items: __S(73, __c9, 1),
+          items: __S(133, __c4, 5),
           name: S.String,
         }),
       ).annotate({ identifier: "CustomBotRule" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(134, __c4, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3355,24 +2982,20 @@ function __c9(j: number): any {
           value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "CustomChannelCondition" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(136, __c4, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           channel_type: S.optional(S.String),
           combiner: S.optional(S.String),
           id: S.optional(S.String),
-          items: S.optional(__S(77, __c9, 5)),
+          items: S.optional(__S(137, __c4, 9)),
         }),
       ).annotate({ identifier: "CustomChannelRule" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(138, __c4, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           distinct_id_field: S.optional(S.String),
@@ -3383,20 +3006,20 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DataWarehouseEventsModifier",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(140, __c4, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
           bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
           convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
           cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(__S(75, __c9, 3))),
-          customChannelTypeRules: S.optional(S.NullOr(__S(79, __c9, 7))),
-          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(81, __c10, 1))),
+          customBotDefinitions: S.optional(S.NullOr(__S(135, __c4, 7))),
+          customChannelTypeRules: S.optional(S.NullOr(__S(139, __c4, 11))),
+          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(141, __c4, 13))),
           debug: S.optional(S.NullOr(S.Boolean)),
-          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(3, __c0, 3))),
+          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(512, __c16, 0))),
           formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
           inCohortVia: S.optional(S.NullOr(S.String)),
           inlineCohortCalculation: S.optional(S.NullOr(S.String)),
@@ -3427,13 +3050,13 @@ function __c10(j: number): any {
           webAnalyticsFirstPageviewFilters: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "HogQLQueryModifiers" });
-    case 3:
+    case 15:
       return S.Array(S.Unknown);
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 16:
+      return S.Array(__S(143, __c4, 15));
+    case 17:
       return S.Array(S.Unknown);
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           active_cpu_time: S.optional(S.Number),
@@ -3443,7 +3066,7 @@ function __c10(j: number): any {
           time_elapsed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClickhouseQueryProgress" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           actionable: S.Boolean,
@@ -3456,32 +3079,28 @@ function __c10(j: number): any {
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 20:
+      return S.Array(__S(147, __c4, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: __S(88, __c11, 0),
+          findings: __S(148, __c4, 20),
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "QueryScanAnalysis" });
-    case 2:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(__S(89, __c11, 1))),
+          analysis: S.optional(S.NullOr(__S(149, __c4, 21))),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
           rows_read: S.Number,
         }),
       ).annotate({ identifier: "QueryScanSummary" });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           budget_remaining_bytes: S.optional(S.NullOr(S.Number)),
@@ -3496,18 +3115,18 @@ function __c11(j: number): any {
           expiration_time: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(__S(3, __c0, 3))),
+          labels: S.optional(S.NullOr(__S(512, __c16, 0))),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(__S(86, __c10, 6))),
-          query_scan: S.optional(S.NullOr(__S(90, __c11, 2))),
+          query_progress: S.optional(S.NullOr(__S(146, __c4, 18))),
+          query_scan: S.optional(S.NullOr(__S(150, __c4, 22))),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
           team_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryStatus" });
-    case 4:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           date_from: S.optional(S.String),
@@ -3516,7 +3135,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ResolvedDateRangeResponse",
       });
-    case 5:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           changeFromPreviousPct: S.optional(S.NullOr(S.Number)),
@@ -3528,31 +3147,27 @@ function __c11(j: number): any {
           value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MarketingAnalyticsItem" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
+      return S.Array(__S(153, __c4, 25));
+    case 27:
+      return S.Array(__S(154, __c4, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           denominator: S.optional(S.NullOr(S.Number)),
           numerator: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SamplingRate" });
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           k: S.optional(S.String),
           t: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryTiming" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 30:
+      return S.Array(__S(157, __c4, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3560,47 +3175,47 @@ function __c12(j: number): any {
           table_name: S.String,
         }),
       ).annotate({ identifier: "DataWarehouseSourceUsage" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(159, __c4, 31));
+    case 1:
       return S.Array(S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(S.NullOr(__S(27, __c3, 3))),
+          columns: S.optional(S.NullOr(__S(640, __c20, 0))),
           dataComputedAt: S.optional(S.NullOr(S.String)),
           error: S.optional(S.NullOr(S.String)),
           hasMore: S.optional(S.NullOr(S.Boolean)),
           hogql: S.optional(S.NullOr(S.String)),
           limit: S.optional(S.NullOr(S.Number)),
-          modifiers: S.optional(S.NullOr(__S(82, __c10, 2))),
+          modifiers: S.optional(S.NullOr(__S(142, __c4, 14))),
           offset: S.optional(S.NullOr(S.Number)),
           precomputeNotReady: S.optional(S.NullOr(S.Boolean)),
-          query_status: S.optional(S.NullOr(__S(91, __c11, 3))),
-          resolved_compare_date_range: S.optional(S.NullOr(__S(92, __c11, 4))),
-          resolved_date_range: S.optional(S.NullOr(__S(92, __c11, 4))),
-          results: S.optional(__S(95, __c11, 7)),
-          samplingRate: S.optional(S.NullOr(__S(96, __c12, 0))),
-          timings: S.optional(S.NullOr(__S(98, __c12, 2))),
-          types: S.optional(S.NullOr(__S(27, __c3, 3))),
-          used_data_warehouse_sources: S.optional(S.NullOr(__S(100, __c12, 4))),
-          warnings: S.optional(S.NullOr(__S(101, __c12, 5))),
+          query_status: S.optional(S.NullOr(__S(151, __c4, 23))),
+          resolved_compare_date_range: S.optional(S.NullOr(__S(152, __c4, 24))),
+          resolved_date_range: S.optional(S.NullOr(__S(152, __c4, 24))),
+          results: S.optional(__S(155, __c4, 27)),
+          samplingRate: S.optional(S.NullOr(__S(156, __c4, 28))),
+          timings: S.optional(S.NullOr(__S(158, __c4, 30))),
+          types: S.optional(S.NullOr(__S(640, __c20, 0))),
+          used_data_warehouse_sources: S.optional(S.NullOr(__S(160, __c5, 0))),
+          warnings: S.optional(S.NullOr(__S(161, __c5, 1))),
         }),
       ).annotate({
         identifier: "MarketingAnalyticsTableQueryResponse",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          forceSamplingRate: S.optional(S.NullOr(__S(96, __c12, 0))),
+          forceSamplingRate: S.optional(S.NullOr(__S(156, __c4, 28))),
         }),
       ).annotate({ identifier: "WebAnalyticsSampling" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -3609,44 +3224,44 @@ function __c13(j: number): any {
           scene: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "QueryLogTags" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-          compareFilter: S.optional(S.NullOr(__S(68, __c8, 4))),
+          compareFilter: S.optional(S.NullOr(__S(128, __c4, 0))),
           conversionGoal: S.optional(S.NullOr(S.Unknown)),
           dataColorTheme: S.optional(S.NullOr(S.Number)),
-          dateRange: S.optional(S.NullOr(__S(70, __c8, 6))),
+          dateRange: S.optional(S.NullOr(__S(130, __c4, 2))),
           doPathCleaning: S.optional(S.NullOr(S.Boolean)),
           draftConversionGoal: S.optional(S.NullOr(S.Unknown)),
           drillDownLevel: S.optional(S.NullOr(S.String)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
           includeRevenue: S.optional(S.NullOr(S.Boolean)),
-          integrationFilter: S.optional(S.NullOr(__S(71, __c8, 7))),
+          integrationFilter: S.optional(S.NullOr(__S(131, __c4, 3))),
           interval: S.optional(S.NullOr(S.String)),
           kind: S.optional(S.String),
           limit: S.optional(S.NullOr(S.Number)),
-          modifiers: S.optional(S.NullOr(__S(82, __c10, 2))),
+          modifiers: S.optional(S.NullOr(__S(142, __c4, 14))),
           offset: S.optional(S.NullOr(S.Number)),
-          orderBy: S.optional(S.NullOr(__S(84, __c10, 4))),
-          properties: S.optional(__S(85, __c10, 5)),
-          response: S.optional(S.NullOr(__S(102, __c12, 6))),
-          sampling: S.optional(S.NullOr(__S(103, __c12, 7))),
+          orderBy: S.optional(S.NullOr(__S(144, __c4, 16))),
+          properties: S.optional(__S(145, __c4, 17)),
+          response: S.optional(S.NullOr(__S(162, __c5, 2))),
+          sampling: S.optional(S.NullOr(__S(163, __c5, 3))),
           samplingFactor: S.optional(S.NullOr(S.Number)),
-          select: S.optional(S.NullOr(__S(3, __c0, 3))),
-          tags: S.optional(S.NullOr(__S(104, __c13, 0))),
+          select: S.optional(S.NullOr(__S(512, __c16, 0))),
+          tags: S.optional(S.NullOr(__S(164, __c5, 4))),
           useSessionsTable: S.optional(S.NullOr(S.Boolean)),
           version: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "MarketingAnalyticsTableQuery",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           client_query_id: S.optional(S.String),
-          source: __S(105, __c13, 1),
+          source: __S(165, __c5, 5),
           goal_id: S.String,
           group: S.String,
           source_name: S.optional(S.String),
@@ -3663,21 +3278,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListMarketingAnalyticsConversionRecordingsRequest",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          session_ids: __S(3, __c0, 3),
+          session_ids: __S(512, __c16, 0),
           has_more: S.Boolean,
           preparing: S.Boolean,
         }),
       ).annotate({
         identifier: "ConversionRecordingsResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ops: __S(27, __c3, 3),
+          ops: __S(640, __c20, 0),
           source: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3689,15 +3308,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "MarketingAnalyticsApplySetupOpsCreateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          applied: __S(27, __c3, 3),
-          undo_ops: __S(27, __c3, 3),
+          applied: __S(640, __c20, 0),
+          undo_ops: __S(640, __c20, 0),
           marketing_analytics_config: S.Unknown,
         }),
       ).annotate({ identifier: "ApplySetupOpsResponse" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3712,7 +3335,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "MarketingAnalyticsConversionGoalsCreateCreateRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3730,7 +3357,411 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/marketing_analytics/test_mapping/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMarketingAnalyticsTestMappingRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateMarketingAnalyticsTestMappingResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          conversion_goal_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/delete/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMarketingAnalyticsConversionGoalDestroyRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          goal: S.Unknown,
+          conversion_goals: __S(352, __c11, 0),
+        }),
+      ).annotate({
+        identifier: "ConversionGoalWriteResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMarketingAnalyticsConversionGoalRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversion_goal_id: S.String,
+          name: S.String,
+          kind: S.String,
+          target_label: S.String,
+          last_30d_count: S.Number,
+          integrated_count: S.NullOr(S.Number),
+          events_without_utm_source: S.NullOr(S.Number),
+          events_with_unmatched_utm_source: S.NullOr(S.Number),
+          non_integrated_count: S.NullOr(S.Number),
+          integrated_pct: S.NullOr(S.Number),
+          is_misconfigured: S.Boolean,
+          misconfig_reason: S.NullOr(S.String),
+          is_approximate: S.Boolean,
+          approximation_reason: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ConversionGoalSummary" });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          goals: __S(417, __c13, 1),
+          attribution_window_days: S.Number,
+          attribution_mode: S.String,
+          has_misconfigured: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ConversionGoalsListResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          source_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/marketing_analytics/data_sources/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMarketingAnalyticsDataSourceRequest",
+      });
+    case 1:
+      return S.Array(__S(482, __c15, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          integrations: __S(449, __c14, 1),
+          has_any_data: S.Boolean,
+          overall_status: S.String,
+          issues_summary: __S(512, __c16, 0),
+        }),
+      ).annotate({ identifier: "DataSourceHealthResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table_name: S.String,
+          present: S.Boolean,
+          should_sync: S.Boolean,
+          status: S.NullOr(S.String),
+          last_synced_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "RequiredTableStatus" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          source_type: S.String,
+          is_native: S.Boolean,
+          display_name: S.String,
+          connected: S.Boolean,
+          last_sync_at: S.NullOr(S.String),
+          last_sync_status: S.String,
+          last_error: S.NullOr(S.String),
+          rows_last_24h: S.Number,
+          rows_last_7d: S.Number,
+          sources_map_present: S.Boolean,
+          schema_columns_mapped: __S(512, __c16, 0),
+          schema_columns_required_missing: __S(512, __c16, 0),
+          required_tables: __S(481, __c15, 1),
+          settings_url: S.String,
+          schemas_url: S.NullOr(S.String),
+          diagnosis: S.String,
+          fix_suggestion: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "DataSourceHealthEntry" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          attribution_lookback_days: S.optional(S.Number.pipe(T.Query())),
+          include_conversion_goals: S.optional(S.Boolean.pipe(T.Query())),
+          source_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/marketing_analytics/diagnose/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMarketingAnalyticsDiagnoseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          raw_value: S.String,
+          event_count: S.Number,
+          suggested_integration: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "UnmatchedUtmSample" });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          integration_key: S.String,
+          display_name: S.String,
+          events_with_utm_last_7d: S.Number,
+          events_matched_last_7d: S.Number,
+          events_unmatched_likely_yours_last_7d: S.Number,
+          last_event_with_matching_utm_at: S.NullOr(S.String),
+          matched_pct: S.Number,
+          sample_unmatched_utm_sources: __S(546, __c17, 2),
+          events_matched_paid_last_7d: S.Number,
+          events_matched_tagged_medium_last_7d: S.Number,
+        }),
+      ).annotate({ identifier: "AttributionHealthEntry" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          detail: S.String,
+          severity: S.String,
+          target_tool: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "RecommendedAction" });
+    case 5:
+      return S.Array(__S(548, __c17, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          integration_key: S.String,
+          source_type: S.String,
+          display_name: S.String,
+          overall_status: S.String,
+          diagnosis: S.String,
+          data_source: S.optional(S.NullOr(__S(482, __c15, 2))),
+          attribution: S.optional(S.NullOr(__S(547, __c17, 3))),
+          recommended_actions: __S(549, __c17, 5),
+        }),
+      ).annotate({ identifier: "IntegrationDiagnostic" });
+    case 7:
+      return S.Array(__S(550, __c17, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          integrations: __S(551, __c17, 7),
+          overall_status: S.String,
+          summary: S.String,
+          conversion_goals: S.optional(S.NullOr(__S(418, __c13, 2))),
+          recommended_actions: __S(549, __c17, 5),
+        }),
+      ).annotate({
+        identifier: "MarketingDiagnosticResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          conversion_goal_id: S.String.pipe(T.Query()),
+          date_from: S.optional(S.String.pipe(T.Query())),
+          date_to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/marketing_analytics/explain_conversion_goal/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMarketingAnalyticsExplainConversionGoalRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.NullOr(S.String),
+          date_to: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "GoalExplanationPeriod" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          event_uuid: S.String,
+          timestamp: S.String,
+          distinct_id: S.String,
+          utm_source: S.NullOr(S.String),
+          utm_campaign: S.NullOr(S.String),
+          matched_integration: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "GoalEventSample" });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          conversion_goal_id: S.String,
+          goal_name: S.String,
+          kind: S.String,
+          period: __S(577, __c18, 1),
+          total_count: S.Number,
+          integrated_count: S.NullOr(S.Number),
+          events_without_utm_source: S.NullOr(S.Number),
+          events_with_unmatched_utm_source: S.NullOr(S.Number),
+          non_integrated_count: S.NullOr(S.Number),
+          by_event: __S(608, __c19, 0),
+          by_utm_source: __S(608, __c19, 0),
+          by_matched_integration: __S(608, __c19, 0),
+          samples: __S(579, __c18, 3),
+          notes: __S(512, __c16, 0),
+        }),
+      ).annotate({ identifier: "GoalExplanation" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c20, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          date_from: S.optional(S.String.pipe(T.Query())),
+          refresh: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/marketing_analytics/setup_plan/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMarketingAnalyticsSetupPlanRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          source: S.String,
+          severity: S.String,
+          confidence: S.Number,
+          title: S.String,
+          evidence: S.String,
+          unlocks: __S(512, __c16, 0),
+          apply: S.Unknown,
+          also_recommended: __S(640, __c20, 0),
+          safe_to_batch: S.Boolean,
+          rank_score: S.Number,
+          integration: S.NullOr(S.String),
+          deep_link: S.NullOr(S.String),
+          docs_url: S.NullOr(S.String),
+          spend_at_risk: S.Number,
+          event_volume: S.Number,
+        }),
+      ).annotate({ identifier: "Suggestion" });
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          capability: S.String,
+          status: S.String,
+          explanation: S.String,
+          blocked_by: __S(512, __c16, 0),
+        }),
+      ).annotate({ identifier: "CapabilityReadiness" });
+    case 4:
+      return S.Array(__S(675, __c21, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          suggestions: __S(674, __c21, 2),
+          readiness: __S(676, __c21, 4),
+          degraded: __S(512, __c16, 0),
+          truncated: S.Boolean,
+          summary: S.String,
+        }),
+      ).annotate({ identifier: "SetupPlanResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

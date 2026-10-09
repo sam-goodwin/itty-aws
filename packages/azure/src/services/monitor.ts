@@ -507,8 +507,8 @@ export const FetchDataCollectionRuleConfigurationMetadata: API.OperationMethod<
   FetchDataCollectionRuleConfigurationMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<FetchDataCollectionRuleConfigurationMetadataRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DataCollectionRuleConfigurationMetadataResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<FetchDataCollectionRuleConfigurationMetadataRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<DataCollectionRuleConfigurationMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -522,8 +522,8 @@ export const GetScheduledQueryRule: API.OperationMethod<
   GetScheduledQueryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetScheduledQueryRuleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetScheduledQueryRuleRequest>,
+  output: __S(78, __c4, 14) as any as S.Schema<ScheduledQueryRuleResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -537,8 +537,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(84, __c5, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const ListScheduledQueryRuleByResourceGroup: API.OperationMethod<
   ListScheduledQueryRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListScheduledQueryRuleByResourceGroupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListScheduledQueryRuleByResourceGroupRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -567,8 +567,8 @@ export const ListScheduledQueryRuleBySubscription: API.OperationMethod<
   ListScheduledQueryRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListScheduledQueryRuleBySubscriptionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListScheduledQueryRuleBySubscriptionRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ScheduledQueryRuleResourceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const ScheduledQueryRulesCreateOrUpdate: API.OperationMethod<
   ScheduledQueryRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: __S(144, __c9, 0) as any as S.Schema<ScheduledQueryRulesCreateOrUpdateRequest>,
+  output: __S(78, __c4, 14) as any as S.Schema<ScheduledQueryRuleResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const UpdateScheduledQueryRule: API.OperationMethod<
   UpdateScheduledQueryRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateScheduledQueryRuleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ScheduledQueryRuleResource>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpdateScheduledQueryRuleRequest>,
+  output: __S(78, __c4, 14) as any as S.Schema<ScheduledQueryRuleResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -628,7 +628,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteScheduledQueryRuleResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -647,17 +651,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FetchDataCollectionRuleConfigurationMetadataRequest",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          groups: S.optional(__S(3, __c0, 3)),
+          groups: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "LogsSpecification" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -665,61 +667,67 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          groups: S.optional(__S(3, __c0, 3)),
+          groups: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "MetricsSpecification" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          logsSpecification: S.optional(__S(4, __c0, 4)),
-          metricsSpecification: S.optional(__S(5, __c0, 5)),
+          logsSpecification: S.optional(__S(17, __c1, 1)),
+          metricsSpecification: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "StreamDetailMetadata" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           streamId: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
+          metadata: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "StreamMetadata" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(20, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          supportedDestinations: S.optional(__S(3, __c0, 3)),
-          supportedResourceTypes: S.optional(__S(3, __c0, 3)),
-          supportedStreams: S.optional(__S(8, __c1, 0)),
+          supportedDestinations: S.optional(__S(32, __c2, 0)),
+          supportedResourceTypes: S.optional(__S(32, __c2, 0)),
+          supportedStreams: S.optional(__S(21, __c1, 5)),
         }),
       ).annotate({ identifier: "TelemetryTypeMetadata" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          platformLogs: S.optional(__S(9, __c1, 1)),
-          platformMetrics: S.optional(__S(9, __c1, 1)),
+          platformLogs: S.optional(__S(22, __c1, 6)),
+          platformMetrics: S.optional(__S(22, __c1, 6)),
         }),
       ).annotate({
         identifier: "PlatformTelemetryMetadata",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          platformTelemetry: S.optional(__S(10, __c1, 2)),
+          platformTelemetry: S.optional(__S(23, __c1, 7)),
         }),
       ).annotate({ identifier: "ConfigurationMetadata" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          configurationMetadata: S.optional(__S(11, __c1, 3)),
+          configurationMetadata: S.optional(__S(24, __c1, 8)),
         }),
       ).annotate({
         identifier: "DataCollectionRuleConfigurationMetadataResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -736,31 +744,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetScheduledQueryRuleRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdentityProperties" });
-    case 7:
-      return S.Record(S.String, __S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Record(S.String, __S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(15, __c1, 7)),
+          userAssignedIdentities: S.optional(__S(65, __c4, 1)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 1:
+    case 3:
       return S.Record(S.String, S.String);
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -773,24 +781,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ScheduledQueryRuleResourceSystemData",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           operator: S.String,
-          values: __S(3, __c0, 3),
+          values: __S(32, __c2, 0),
         }),
       ).annotate({ identifier: "Dimension" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(69, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           numberOfEvaluationPeriods: S.optional(S.Number),
           minFailingPeriodsToAlert: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ConditionFailingPeriods" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           criterionType: S.optional(S.String),
@@ -798,46 +806,42 @@ function __c2(j: number): any {
           timeAggregation: S.optional(S.String),
           metricMeasureColumn: S.optional(S.String),
           resourceIdColumn: S.optional(S.String),
-          dimensions: S.optional(__S(20, __c2, 4)),
+          dimensions: S.optional(__S(70, __c4, 6)),
           operator: S.optional(S.String),
           threshold: S.optional(S.Number),
           alertSensitivity: S.optional(S.String),
           ignoreDataBefore: S.optional(S.String),
-          failingPeriods: S.optional(__S(21, __c2, 5)),
+          failingPeriods: S.optional(__S(71, __c4, 7)),
           metricName: S.optional(S.String),
           minRecurrenceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Condition" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(72, __c4, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          allOf: S.optional(__S(23, __c2, 7)),
+          allOf: S.optional(__S(73, __c4, 9)),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleCriteria",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          actionGroups: S.optional(__S(3, __c0, 3)),
-          customProperties: S.optional(__S(17, __c2, 1)),
-          actionProperties: S.optional(__S(17, __c2, 1)),
+          actionGroups: S.optional(__S(32, __c2, 0)),
+          customProperties: S.optional(__S(67, __c4, 3)),
+          actionProperties: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "Actions" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           autoResolved: S.optional(S.Boolean),
           timeToResolve: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuleResolveConfiguration" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           createdWithApiVersion: S.optional(S.String),
@@ -846,41 +850,45 @@ function __c3(j: number): any {
           displayName: S.optional(S.String),
           severity: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(__S(3, __c0, 3)),
+          scopes: S.optional(__S(32, __c2, 0)),
           evaluationFrequency: S.optional(S.String),
           windowSize: S.optional(S.String),
           overrideQueryTimeRange: S.optional(S.String),
-          targetResourceTypes: S.optional(__S(3, __c0, 3)),
-          criteria: S.optional(__S(24, __c3, 0)),
+          targetResourceTypes: S.optional(__S(32, __c2, 0)),
+          criteria: S.optional(__S(74, __c4, 10)),
           muteActionsDuration: S.optional(S.String),
-          actions: S.optional(__S(25, __c3, 1)),
+          actions: S.optional(__S(75, __c4, 11)),
           isWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
           checkWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
           skipQueryValidation: S.optional(S.Boolean),
           autoMitigate: S.optional(S.Boolean),
-          resolveConfiguration: S.optional(__S(26, __c3, 2)),
+          resolveConfiguration: S.optional(__S(76, __c4, 12)),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleProperties",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          identity: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(17, __c2, 1)),
+          identity: S.optional(__S(66, __c4, 2)),
+          tags: S.optional(__S(67, __c4, 3)),
           location: S.String,
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          systemData: S.optional(__S(18, __c2, 2)),
-          properties: __S(27, __c3, 3),
+          systemData: S.optional(__S(68, __c4, 4)),
+          properties: __S(77, __c4, 13),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleResource",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -891,7 +899,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -900,30 +908,30 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(30, __c3, 6)),
+          display: S.optional(__S(81, __c5, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(82, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(32, __c4, 0)),
+          value: S.optional(__S(83, __c5, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -939,18 +947,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListScheduledQueryRuleByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(28, __c3, 4));
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(78, __c4, 14));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35, __c4, 3)),
+          value: S.optional(__S(112, __c7, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScheduledQueryRuleResourceCollection",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -965,57 +981,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListScheduledQueryRuleBySubscriptionRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserIdentityPropertiesInput",
-      });
-    case 7:
-      return S.Record(S.String, __S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          severity: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-          scopes: S.optional(__S(3, __c0, 3)),
-          evaluationFrequency: S.optional(S.String),
-          windowSize: S.optional(S.String),
-          overrideQueryTimeRange: S.optional(S.String),
-          targetResourceTypes: S.optional(__S(3, __c0, 3)),
-          criteria: S.optional(__S(24, __c3, 0)),
-          muteActionsDuration: S.optional(S.String),
-          actions: S.optional(__S(25, __c3, 1)),
-          checkWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
-          skipQueryValidation: S.optional(S.Boolean),
-          autoMitigate: S.optional(S.Boolean),
-          resolveConfiguration: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "ScheduledQueryRulePropertiesInput",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(17, __c2, 1)),
+          identity: S.optional(__S(162, __c10, 2)),
+          tags: S.optional(__S(67, __c4, 3)),
           location: S.String,
           kind: S.optional(S.String),
-          properties: __S(41, __c5, 1),
+          properties: __S(163, __c10, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1027,15 +1007,59 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ScheduledQueryRulesCreateOrUpdateRequest",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserIdentityPropertiesInput",
+      });
+    case 1:
+      return S.Record(S.String, __S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          severity: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+          scopes: S.optional(__S(32, __c2, 0)),
+          evaluationFrequency: S.optional(S.String),
+          windowSize: S.optional(S.String),
+          overrideQueryTimeRange: S.optional(S.String),
+          targetResourceTypes: S.optional(__S(32, __c2, 0)),
+          criteria: S.optional(__S(74, __c4, 10)),
+          muteActionsDuration: S.optional(S.String),
+          actions: S.optional(__S(75, __c4, 11)),
+          checkWorkspaceAlertsStorageConfigured: S.optional(S.Boolean),
+          skipQueryValidation: S.optional(S.Boolean),
+          autoMitigate: S.optional(S.Boolean),
+          resolveConfiguration: S.optional(__S(76, __c4, 12)),
+        }),
+      ).annotate({
+        identifier: "ScheduledQueryRulePropertiesInput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(41, __c5, 1)),
+          identity: S.optional(__S(162, __c10, 2)),
+          tags: S.optional(__S(67, __c4, 3)),
+          properties: S.optional(__S(163, __c10, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1049,7 +1073,6 @@ function __c5(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

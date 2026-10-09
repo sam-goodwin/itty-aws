@@ -111,7 +111,7 @@ export const getIso: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetIsoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetIsoResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetIsoResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -127,8 +127,8 @@ export const listIsos: API.PaginatedOperationMethod<
   ListIsosResponseIsosItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<ListIsosRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<ListIsosResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListIsosRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListIsosResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -155,30 +155,38 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          iso: __S(9, __c1, 1),
+        }),
+      ).annotate({ identifier: "GetIsoResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           unavailable_after: S.String,
           announced: S.String,
         }),
       ).annotate({
         identifier: "GetIsoResponseIsoDeprecation",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.NullOr(S.String),
           description: S.String,
           type: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(1, __c0, 1)),
+          deprecation: S.NullOr(__S(8, __c1, 0)),
           architecture: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetIsoResponseIso" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          iso: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "GetIsoResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -188,9 +196,9 @@ function __c0(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/isos", code: 200 })),
       ).annotate({ identifier: "ListIsosRequest" });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(9, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -203,26 +211,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListIsosResponseMetaPagination",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(6, __c0, 6),
+          pagination: __S(18, __c2, 2),
         }),
       ).annotate({ identifier: "ListIsosResponseMeta" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          isos: __S(5, __c0, 5),
-          meta: __S(7, __c0, 7),
+          isos: __S(17, __c2, 1),
+          meta: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "ListIsosResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

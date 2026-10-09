@@ -382,8 +382,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetMembershipRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetMembershipResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetMembershipRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<GetMembershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListMembershipsRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListMembershipsResponse>,
+    input: __S(65, __c4, 1) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(68, __c4, 4) as any as S.Schema<ListMembershipsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const putMembership: API.OperationMethod<
   PutMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<PutMembershipRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<PutMembershipResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<PutMembershipRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<PutMembershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -447,7 +447,11 @@ function __c0(j: number): any {
           id: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteMembershipResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String.pipe(T.Label("membership_id")),
@@ -455,7 +459,36 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/memberships/{membership_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMembershipRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          access: S.optional(S.NullOr(S.String)),
+          permissionGroups: S.optional(
+            S.NullOr(__S(50, __c3, 2)).pipe(T.Body("permission_groups")),
+          ),
+          resourceGroups: S.optional(S.NullOr(__S(56, __c3, 8)).pipe(T.Body("resource_groups"))),
+        }),
+      ).annotate({ identifier: "GetResponsePoliciesItem" });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          account: S.optional(S.NullOr(__S(34, __c2, 2))),
+          apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
+          permissions: S.optional(S.NullOr(__S(36, __c2, 4))),
+          policies: S.optional(S.NullOr(__S(18, __c1, 2))),
+          roles: S.optional(S.NullOr(__S(37, __c2, 5))),
+          status: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetMembershipResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parentOrgId: S.optional(S.NullOr(S.String).pipe(T.Body("parent_org_id"))),
@@ -464,7 +497,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetResponseAccountManagedBy",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           abuseContactEmail: S.optional(S.NullOr(S.String).pipe(T.Body("abuse_contact_email"))),
@@ -473,18 +506,18 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetResponseAccountSettings",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           type: S.String,
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          managedBy: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("managed_by"))),
-          settings: S.optional(S.NullOr(__S(4, __c0, 4))),
+          managedBy: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("managed_by"))),
+          settings: S.optional(S.NullOr(__S(33, __c2, 1))),
         }),
       ).annotate({ identifier: "GetResponseAccount" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           read: S.optional(S.NullOr(S.Boolean)),
@@ -493,26 +526,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetResponsePermissionsAnalytics",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          billing: S.optional(S.NullOr(__S(6, __c0, 6))),
-          cachePurge: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("cache_purge"))),
-          dns: S.optional(S.NullOr(__S(6, __c0, 6))),
-          dnsRecords: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("dns_records"))),
-          lb: S.optional(S.NullOr(__S(6, __c0, 6))),
-          logs: S.optional(S.NullOr(__S(6, __c0, 6))),
-          organization: S.optional(S.NullOr(__S(6, __c0, 6))),
-          ssl: S.optional(S.NullOr(__S(6, __c0, 6))),
-          waf: S.optional(S.NullOr(__S(6, __c0, 6))),
-          zoneSettings: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("zone_settings"))),
-          zones: S.optional(S.NullOr(__S(6, __c0, 6))),
+          analytics: S.optional(S.NullOr(__S(35, __c2, 3))),
+          billing: S.optional(S.NullOr(__S(35, __c2, 3))),
+          cachePurge: S.optional(S.NullOr(__S(35, __c2, 3)).pipe(T.Body("cache_purge"))),
+          dns: S.optional(S.NullOr(__S(35, __c2, 3))),
+          dnsRecords: S.optional(S.NullOr(__S(35, __c2, 3)).pipe(T.Body("dns_records"))),
+          lb: S.optional(S.NullOr(__S(35, __c2, 3))),
+          logs: S.optional(S.NullOr(__S(35, __c2, 3))),
+          organization: S.optional(S.NullOr(__S(35, __c2, 3))),
+          ssl: S.optional(S.NullOr(__S(35, __c2, 3))),
+          waf: S.optional(S.NullOr(__S(35, __c2, 3))),
+          zoneSettings: S.optional(S.NullOr(__S(35, __c2, 3)).pipe(T.Body("zone_settings"))),
+          zones: S.optional(S.NullOr(__S(35, __c2, 3))),
         }),
       ).annotate({ identifier: "GetResponsePermissions" });
+    case 5:
+      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -533,14 +568,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(S.NullOr(__S(8, __c1, 0))),
+          meta: S.optional(S.NullOr(__S(48, __c3, 0))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponsePoliciesItemPermissionGroupsItem",
       });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(49, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -550,12 +585,12 @@ function __c1(j: number): any {
         identifier: "GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem",
       });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(51, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          objects: __S(12, __c1, 4),
+          objects: __S(52, __c3, 4),
         }),
       ).annotate({
         identifier: "GetResponsePoliciesItemResourceGroupsItemScope",
@@ -573,56 +608,29 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          scope: __S(13, __c1, 5),
-          meta: S.optional(S.NullOr(__S(14, __c1, 6))),
+          scope: __S(53, __c3, 5),
+          meta: S.optional(S.NullOr(__S(54, __c3, 6))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponsePoliciesItemResourceGroupsItem",
       });
+    case 8:
+      return S.Array(__S(55, __c3, 7));
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(S.String)),
-          permissionGroups: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("permission_groups")),
-          ),
-          resourceGroups: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("resource_groups"))),
-        }),
-      ).annotate({ identifier: "GetResponsePoliciesItem" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(__S(5, __c0, 5))),
-          apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(__S(7, __c0, 7))),
-          policies: S.optional(S.NullOr(__S(18, __c2, 2))),
-          roles: S.optional(S.NullOr(__S(19, __c2, 3))),
-          status: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetMembershipResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRequestAccount" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(__S(21, __c2, 5).pipe(T.DeepQuery("account"))),
+          account: S.optional(__S(64, __c4, 0).pipe(T.DeepQuery("account"))),
           direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
@@ -633,31 +641,31 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(__S(5, __c0, 5))),
+          account: S.optional(S.NullOr(__S(34, __c2, 2))),
           apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(__S(7, __c0, 7))),
-          roles: S.optional(S.NullOr(__S(19, __c2, 3))),
+          permissions: S.optional(S.NullOr(__S(36, __c2, 4))),
+          roles: S.optional(S.NullOr(__S(37, __c2, 5))),
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(24, __c3, 0).pipe(T.EnvelopePayload()),
+          result: __S(67, __c4, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String.pipe(T.Label("membership_id")),
@@ -666,36 +674,35 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/memberships/{membership_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutMembershipRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           access: S.optional(S.NullOr(S.String)),
           permissionGroups: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("permission_groups")),
+            S.NullOr(__S(50, __c3, 2)).pipe(T.Body("permission_groups")),
           ),
-          resourceGroups: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("resource_groups"))),
+          resourceGroups: S.optional(S.NullOr(__S(56, __c3, 8)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "UpdateResponsePoliciesItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(__S(5, __c0, 5))),
+          account: S.optional(S.NullOr(__S(34, __c2, 2))),
           apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(__S(7, __c0, 7))),
-          policies: S.optional(S.NullOr(__S(28, __c3, 4))),
-          roles: S.optional(S.NullOr(__S(19, __c2, 3))),
+          permissions: S.optional(S.NullOr(__S(36, __c2, 4))),
+          policies: S.optional(S.NullOr(__S(82, __c5, 2))),
+          roles: S.optional(S.NullOr(__S(37, __c2, 5))),
           status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutMembershipResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

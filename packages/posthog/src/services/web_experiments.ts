@@ -111,7 +111,7 @@ export const createWebExperiment: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateWebExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
+  output: __S(4, __c1, 0) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -124,8 +124,8 @@ export const getWebExperiment: API.OperationMethod<
   GetWebExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetWebExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetWebExperimentRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WebExperimentsAPI>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -138,8 +138,8 @@ export const listWebExperiments: API.OperationMethod<
   ListWebExperimentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListWebExperimentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedWebExperimentsAPIList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListWebExperimentsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedWebExperimentsAPIList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -152,8 +152,8 @@ export const updateWebExperiment: API.OperationMethod<
   UpdateWebExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<UpdateWebExperimentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateWebExperimentRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -166,8 +166,8 @@ export const updateWebExperimentsPartial: API.OperationMethod<
   UpdateWebExperimentsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateWebExperimentsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<WebExperimentsAPI>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateWebExperimentsPartialRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<WebExperimentsAPI>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const webExperimentsDestroy: API.OperationMethod<
   WebExperimentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<WebExperimentsDestroyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<WebExperimentsDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<WebExperimentsDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<WebExperimentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -203,7 +203,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWebExperimentRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -213,7 +217,11 @@ function __c0(j: number): any {
           variants: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "WebExperimentsAPI" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -226,7 +234,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWebExperimentRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -238,20 +250,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWebExperimentsRequest",
       });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(4, __c0, 4)),
+          results: S.optional(__S(13, __c3, 1)),
         }),
       ).annotate({
         identifier: "PaginatedWebExperimentsAPIList",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -269,7 +285,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateWebExperimentRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -289,7 +309,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -312,7 +332,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

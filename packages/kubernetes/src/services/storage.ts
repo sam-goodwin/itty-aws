@@ -2495,8 +2495,8 @@ export const createStorageV1CSIDriver: API.OperationMethod<
   CreateStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateStorageV1CSIDriverRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateStorageV1CSIDriverRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2510,8 +2510,8 @@ export const createStorageV1CSINode: API.OperationMethod<
   CreateStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateStorageV1CSINodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateStorageV1CSINodeRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2528,8 +2528,8 @@ export const createStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   CreateStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
+  input: __S(1504, __c47, 0) as any as S.Schema<CreateStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2543,8 +2543,8 @@ export const createStorageV1StorageClass: API.OperationMethod<
   CreateStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateStorageV1StorageClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateStorageV1StorageClassRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2561,8 +2561,8 @@ export const createStorageV1VolumeAttachment: API.OperationMethod<
   CreateStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateStorageV1VolumeAttachmentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(2208, __c69, 0) as any as S.Schema<CreateStorageV1VolumeAttachmentRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2579,8 +2579,8 @@ export const createStorageV1VolumeAttributesClass: API.OperationMethod<
   CreateStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateStorageV1VolumeAttributesClassRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateStorageV1VolumeAttributesClassRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2594,8 +2594,8 @@ export const deleteStorageV1CollectionCSIDriver: API.OperationMethod<
   DeleteStorageV1CollectionCSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteStorageV1CollectionCSIDriverRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteStorageV1CollectionCSIDriverRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2609,8 +2609,8 @@ export const deleteStorageV1CollectionCSINode: API.OperationMethod<
   DeleteStorageV1CollectionCSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteStorageV1CollectionCSINodeRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteStorageV1CollectionCSINodeRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2625,11 +2625,11 @@ export const deleteStorageV1CollectionNamespacedCSIStorageCapacity: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const deleteStorageV1CollectionStorageClass: API.OperationMethod<
   DeleteStorageV1CollectionStorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteStorageV1CollectionStorageClassRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteStorageV1CollectionStorageClassRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2658,8 +2658,8 @@ export const deleteStorageV1CollectionVolumeAttachment: API.OperationMethod<
   DeleteStorageV1CollectionVolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteStorageV1CollectionVolumeAttachmentRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteStorageV1CollectionVolumeAttachmentRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2674,11 +2674,11 @@ export const deleteStorageV1CollectionVolumeAttributesClass: API.OperationMethod
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    86,
-    __c10,
-    6,
+    128,
+    __c4,
+    0,
   ) as any as S.Schema<DeleteStorageV1CollectionVolumeAttributesClassRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2692,8 +2692,8 @@ export const deleteStorageV1CSIDriver: API.OperationMethod<
   DeleteStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteStorageV1CSIDriverRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteStorageV1CSIDriverRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2707,8 +2707,8 @@ export const deleteStorageV1CSINode: API.OperationMethod<
   DeleteStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteStorageV1CSINodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteStorageV1CSINodeRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2725,8 +2725,8 @@ export const deleteStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   DeleteStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DeleteStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2740,8 +2740,8 @@ export const deleteStorageV1StorageClass: API.OperationMethod<
   DeleteStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DeleteStorageV1StorageClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteStorageV1StorageClassRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2755,8 +2755,8 @@ export const deleteStorageV1VolumeAttachment: API.OperationMethod<
   DeleteStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DeleteStorageV1VolumeAttachmentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteStorageV1VolumeAttachmentRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2770,8 +2770,8 @@ export const deleteStorageV1VolumeAttributesClass: API.OperationMethod<
   DeleteStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteStorageV1VolumeAttributesClassRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteStorageV1VolumeAttributesClassRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2785,8 @@ export const getStorageAPIGroup: API.OperationMethod<
   GetStorageAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetStorageAPIGroupRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetStorageAPIGroupRequest>,
+  output: __S(357, __c11, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2800,8 @@ export const getStorageV1APIResources: API.OperationMethod<
   GetStorageV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetStorageV1APIResourcesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetStorageV1APIResourcesRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2815,8 +2815,8 @@ export const listStorageV1CSIDriver: API.OperationMethod<
   ListStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListStorageV1CSIDriverRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<IoK8sApiStorageV1CSIDriverList>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListStorageV1CSIDriverRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<IoK8sApiStorageV1CSIDriverList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2830,8 @@ export const listStorageV1CSINode: API.OperationMethod<
   ListStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListStorageV1CSINodeRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<IoK8sApiStorageV1CSINodeList>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListStorageV1CSINodeRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<IoK8sApiStorageV1CSINodeList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2846,11 +2846,11 @@ export const listStorageV1CSIStorageCapacityForAllNamespaces: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<ListStorageV1CSIStorageCapacityForAllNamespacesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
+  output: __S(513, __c16, 1) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2864,8 +2864,8 @@ export const listStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ListStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacityList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2879,8 +2879,8 @@ export const listStorageV1StorageClass: API.OperationMethod<
   ListStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListStorageV1StorageClassRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<IoK8sApiStorageV1StorageClassList>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListStorageV1StorageClassRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<IoK8sApiStorageV1StorageClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2894,8 +2894,8 @@ export const listStorageV1VolumeAttachment: API.OperationMethod<
   ListStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListStorageV1VolumeAttachmentRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentList>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListStorageV1VolumeAttachmentRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<IoK8sApiStorageV1VolumeAttachmentList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2909,8 +2909,8 @@ export const listStorageV1VolumeAttributesClass: API.OperationMethod<
   ListStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListStorageV1VolumeAttributesClassRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassList>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListStorageV1VolumeAttributesClassRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2928,8 +2928,8 @@ export const patchStorageV1CSIDriver: API.OperationMethod<
   PatchStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<PatchStorageV1CSIDriverRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
+  input: __S(800, __c25, 0) as any as S.Schema<PatchStorageV1CSIDriverRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2947,8 @@ export const patchStorageV1CSINode: API.OperationMethod<
   PatchStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<PatchStorageV1CSINodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(832, __c26, 0) as any as S.Schema<PatchStorageV1CSINodeRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2962,8 +2962,8 @@ export const patchStorageV1CSINodeStatus: API.OperationMethod<
   PatchStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<PatchStorageV1CSINodeStatusRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(864, __c27, 0) as any as S.Schema<PatchStorageV1CSINodeStatusRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2981,8 +2981,8 @@ export const patchStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   PatchStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<PatchStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3000,8 +3000,8 @@ export const patchStorageV1StorageClass: API.OperationMethod<
   PatchStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<PatchStorageV1StorageClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
+  input: __S(928, __c29, 0) as any as S.Schema<PatchStorageV1StorageClassRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3019,8 @@ export const patchStorageV1VolumeAttachment: API.OperationMethod<
   PatchStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<PatchStorageV1VolumeAttachmentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(960, __c30, 0) as any as S.Schema<PatchStorageV1VolumeAttachmentRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3038,8 @@ export const patchStorageV1VolumeAttachmentStatus: API.OperationMethod<
   PatchStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<PatchStorageV1VolumeAttachmentStatusRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(992, __c31, 0) as any as S.Schema<PatchStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3057,8 +3057,8 @@ export const patchStorageV1VolumeAttributesClass: API.OperationMethod<
   PatchStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<PatchStorageV1VolumeAttributesClassRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
+  input: __S(1024, __c32, 0) as any as S.Schema<PatchStorageV1VolumeAttributesClassRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3072,8 +3072,8 @@ export const readStorageV1CSIDriver: API.OperationMethod<
   ReadStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ReadStorageV1CSIDriverRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ReadStorageV1CSIDriverRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3087,8 +3087,8 @@ export const readStorageV1CSINode: API.OperationMethod<
   ReadStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ReadStorageV1CSINodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ReadStorageV1CSINodeRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3102,8 +3102,8 @@ export const readStorageV1CSINodeStatus: API.OperationMethod<
   ReadStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ReadStorageV1CSINodeStatusRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ReadStorageV1CSINodeStatusRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3117,8 +3117,8 @@ export const readStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ReadStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ReadStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ReadStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3132,8 +3132,8 @@ export const readStorageV1StorageClass: API.OperationMethod<
   ReadStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ReadStorageV1StorageClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ReadStorageV1StorageClassRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3147,8 +3147,8 @@ export const readStorageV1VolumeAttachment: API.OperationMethod<
   ReadStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ReadStorageV1VolumeAttachmentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ReadStorageV1VolumeAttachmentRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3162,8 +3162,8 @@ export const readStorageV1VolumeAttachmentStatus: API.OperationMethod<
   ReadStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ReadStorageV1VolumeAttachmentStatusRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ReadStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3177,8 +3177,8 @@ export const readStorageV1VolumeAttributesClass: API.OperationMethod<
   ReadStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ReadStorageV1VolumeAttributesClassRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ReadStorageV1VolumeAttributesClassRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3196,8 +3196,8 @@ export const replaceStorageV1CSIDriver: API.OperationMethod<
   ReplaceStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ReplaceStorageV1CSIDriverRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ReplaceStorageV1CSIDriverRequest>,
+  output: __S(707, __c22, 3) as any as S.Schema<IoK8sApiStorageV1CSIDriver>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3215,8 +3215,8 @@ export const replaceStorageV1CSINode: API.OperationMethod<
   ReplaceStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ReplaceStorageV1CSINodeRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ReplaceStorageV1CSINodeRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3230,8 +3230,8 @@ export const replaceStorageV1CSINodeStatus: API.OperationMethod<
   ReplaceStorageV1CSINodeStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ReplaceStorageV1CSINodeStatusRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<IoK8sApiStorageV1CSINode>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ReplaceStorageV1CSINodeStatusRequest>,
+  output: __S(1161, __c36, 9) as any as S.Schema<IoK8sApiStorageV1CSINode>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3249,8 +3249,12 @@ export const replaceStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   ReplaceStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ReplaceStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
+  input: __S(
+    1472,
+    __c46,
+    0,
+  ) as any as S.Schema<ReplaceStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<IoK8sApiStorageV1CSIStorageCapacity>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3268,8 +3272,8 @@ export const replaceStorageV1StorageClass: API.OperationMethod<
   ReplaceStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ReplaceStorageV1StorageClassRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ReplaceStorageV1StorageClassRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<IoK8sApiStorageV1StorageClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3287,8 +3291,8 @@ export const replaceStorageV1VolumeAttachment: API.OperationMethod<
   ReplaceStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ReplaceStorageV1VolumeAttachmentRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ReplaceStorageV1VolumeAttachmentRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3306,8 +3310,8 @@ export const replaceStorageV1VolumeAttachmentStatus: API.OperationMethod<
   ReplaceStorageV1VolumeAttachmentStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ReplaceStorageV1VolumeAttachmentStatusRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ReplaceStorageV1VolumeAttachmentStatusRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<IoK8sApiStorageV1VolumeAttachment>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3325,8 +3329,8 @@ export const replaceStorageV1VolumeAttributesClass: API.OperationMethod<
   ReplaceStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ReplaceStorageV1VolumeAttributesClassRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<IoK8sApiStorageV1VolumeAttributesClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3340,8 +3344,8 @@ export const watchStorageV1CSIDriver: API.OperationMethod<
   WatchStorageV1CSIDriverError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<WatchStorageV1CSIDriverRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1696, __c53, 0) as any as S.Schema<WatchStorageV1CSIDriverRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3355,8 +3359,8 @@ export const watchStorageV1CSIDriverList: API.OperationMethod<
   WatchStorageV1CSIDriverListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<WatchStorageV1CSIDriverListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1760, __c55, 0) as any as S.Schema<WatchStorageV1CSIDriverListRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3370,8 +3374,8 @@ export const watchStorageV1CSINode: API.OperationMethod<
   WatchStorageV1CSINodeError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<WatchStorageV1CSINodeRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1792, __c56, 0) as any as S.Schema<WatchStorageV1CSINodeRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3385,8 +3389,8 @@ export const watchStorageV1CSINodeList: API.OperationMethod<
   WatchStorageV1CSINodeListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<WatchStorageV1CSINodeListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1824, __c57, 0) as any as S.Schema<WatchStorageV1CSINodeListRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3401,11 +3405,11 @@ export const watchStorageV1CSIStorageCapacityListForAllNamespaces: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    151,
-    __c18,
-    7,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<WatchStorageV1CSIStorageCapacityListForAllNamespacesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3419,8 +3423,8 @@ export const watchStorageV1NamespacedCSIStorageCapacity: API.OperationMethod<
   WatchStorageV1NamespacedCSIStorageCapacityError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1888, __c59, 0) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3435,11 +3439,11 @@ export const watchStorageV1NamespacedCSIStorageCapacityList: API.OperationMethod
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    1984,
+    __c62,
+    0,
   ) as any as S.Schema<WatchStorageV1NamespacedCSIStorageCapacityListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3453,8 +3457,8 @@ export const watchStorageV1StorageClass: API.OperationMethod<
   WatchStorageV1StorageClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<WatchStorageV1StorageClassRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2016, __c63, 0) as any as S.Schema<WatchStorageV1StorageClassRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3468,8 +3472,8 @@ export const watchStorageV1StorageClassList: API.OperationMethod<
   WatchStorageV1StorageClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<WatchStorageV1StorageClassListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2048, __c64, 0) as any as S.Schema<WatchStorageV1StorageClassListRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3483,8 +3487,8 @@ export const watchStorageV1VolumeAttachment: API.OperationMethod<
   WatchStorageV1VolumeAttachmentError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<WatchStorageV1VolumeAttachmentRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2080, __c65, 0) as any as S.Schema<WatchStorageV1VolumeAttachmentRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3498,8 +3502,8 @@ export const watchStorageV1VolumeAttachmentList: API.OperationMethod<
   WatchStorageV1VolumeAttachmentListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<WatchStorageV1VolumeAttachmentListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2112, __c66, 0) as any as S.Schema<WatchStorageV1VolumeAttachmentListRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3513,8 +3517,8 @@ export const watchStorageV1VolumeAttributesClass: API.OperationMethod<
   WatchStorageV1VolumeAttributesClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<WatchStorageV1VolumeAttributesClassRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2144, __c67, 0) as any as S.Schema<WatchStorageV1VolumeAttributesClassRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3528,8 +3532,8 @@ export const watchStorageV1VolumeAttributesClassList: API.OperationMethod<
   WatchStorageV1VolumeAttributesClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<WatchStorageV1VolumeAttributesClassListRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(2176, __c68, 0) as any as S.Schema<WatchStorageV1VolumeAttributesClassListRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3539,846 +3543,39 @@ export const watchStorageV1VolumeAttributesClassList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(2400, __c75, 0)),
+        }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
       ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          audience: S.optional(S.String),
-          expirationSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1TokenRequest",
+        identifier: "DeleteStorageV1CollectionCSINodeRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attachRequired: S.optional(S.Boolean),
-          fsGroupPolicy: S.optional(S.String),
-          nodeAllocatableUpdatePeriodSeconds: S.optional(S.Number),
-          podInfoOnMount: S.optional(S.Boolean),
-          preventPodSchedulingIfMissing: S.optional(S.Boolean),
-          requiresRepublish: S.optional(S.Boolean),
-          seLinuxMount: S.optional(S.Boolean),
-          serviceAccountTokenInSecrets: S.optional(S.Boolean),
-          storageCapacity: S.optional(S.Boolean),
-          tokenRequests: S.optional(__S(8, __c1, 0)),
-          volumeLifecycleModes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSIDriverSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
-      ).annotate({
-        identifier: "CreateStorageV1CSIDriverRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSIDriver",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeNodeResources",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allocatable: S.optional(__S(12, __c1, 4)),
-          name: S.String,
-          nodeID: S.String,
-          topologyKeys: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSINodeDriver",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          drivers: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSINodeSpec",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessMode: S.optional(S.String),
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.String,
-          status: S.String,
-          volumeMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1StorageHealthCondition",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          healthConditions: S.optional(__S(17, __c2, 1)),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1StorageHealth",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageHealth: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSINodeStatus",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(15, __c1, 7)),
-          status: S.optional(__S(20, __c2, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
-      ).annotate({
-        identifier: "CreateStorageV1CSINodeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(15, __c1, 7)),
-          status: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "IoK8sApiStorageV1CSINode" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(25, __c3, 1)),
-          matchLabels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          capacity: S.optional(S.String),
-          kind: S.optional(S.String),
-          maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          nodeTopology: S.optional(__S(26, __c3, 2)),
-          storageClassName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageV1NamespacedCSIStorageCapacityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          capacity: S.optional(S.String),
-          kind: S.optional(S.String),
-          maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          nodeTopology: S.optional(__S(26, __c3, 2)),
-          storageClassName: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1CSIStorageCapacity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          values: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1TopologySelectorLabelRequirement",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchLabelExpressions: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1TopologySelectorTerm",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(__S(32, __c4, 0)),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          mountOptions: S.optional(__S(1, __c0, 1)),
-          parameters: S.optional(__S(0, __c0, 0)),
-          provisioner: S.String,
-          reclaimPolicy: S.optional(S.String),
-          volumeBindingMode: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/storageclasses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageV1StorageClassRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(__S(32, __c4, 0)),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          mountOptions: S.optional(__S(1, __c0, 1)),
-          parameters: S.optional(__S(0, __c0, 0)),
-          provisioner: S.String,
-          reclaimPolicy: S.optional(S.String),
-          volumeBindingMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1StorageClass",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          partition: S.optional(S.Number),
-          readOnly: S.optional(S.Boolean),
-          volumeID: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cachingMode: S.optional(S.String),
-          diskName: S.String,
-          diskURI: S.String,
-          fsType: S.optional(S.String),
-          kind: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1AzureDiskVolumeSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          readOnly: S.optional(S.Boolean),
-          secretName: S.String,
-          secretNamespace: S.optional(S.String),
-          shareName: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1AzureFilePersistentVolumeSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1SecretReference",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          monitors: __S(1, __c0, 1),
-          path: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          secretFile: S.optional(S.String),
-          secretRef: S.optional(__S(38, __c4, 6)),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1CephFSPersistentVolumeSource",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(38, __c4, 6)),
-          volumeID: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1CinderPersistentVolumeSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldPath: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1ObjectReference",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          controllerExpandSecretRef: S.optional(__S(38, __c4, 6)),
-          controllerPublishSecretRef: S.optional(__S(38, __c4, 6)),
-          driver: S.String,
-          fsType: S.optional(S.String),
-          nodeExpandSecretRef: S.optional(__S(38, __c4, 6)),
-          nodePublishSecretRef: S.optional(__S(38, __c4, 6)),
-          nodeStageSecretRef: S.optional(__S(38, __c4, 6)),
-          readOnly: S.optional(S.Boolean),
-          volumeAttributes: S.optional(__S(0, __c0, 0)),
-          volumeHandle: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1CSIPersistentVolumeSource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          lun: S.optional(S.Number),
-          readOnly: S.optional(S.Boolean),
-          targetWWNs: S.optional(__S(1, __c0, 1)),
-          wwids: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1FCVolumeSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          driver: S.String,
-          fsType: S.optional(S.String),
-          options: S.optional(__S(0, __c0, 0)),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1FlexPersistentVolumeSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datasetName: S.optional(S.String),
-          datasetUUID: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1FlockerVolumeSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          partition: S.optional(S.Number),
-          pdName: S.String,
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1GCEPersistentDiskVolumeSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.String,
-          endpointsNamespace: S.optional(S.String),
-          path: S.String,
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1GlusterfsPersistentVolumeSource",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1HostPathVolumeSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          chapAuthDiscovery: S.optional(S.Boolean),
-          chapAuthSession: S.optional(S.Boolean),
-          fsType: S.optional(S.String),
-          initiatorName: S.optional(S.String),
-          iqn: S.String,
-          iscsiInterface: S.optional(S.String),
-          lun: S.optional(S.Number),
-          portals: S.optional(__S(1, __c0, 1)),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(38, __c4, 6)),
-          targetPortal: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1ISCSIPersistentVolumeSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          path: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1LocalVolumeSource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          readOnly: S.optional(S.Boolean),
-          server: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1NFSVolumeSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1NodeSelectorRequirement",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(53, __c6, 5)),
-          matchFields: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1NodeSelectorTerm",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nodeSelectorTerms: __S(55, __c6, 7),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1NodeSelector",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          required: __S(56, __c7, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1VolumeNodeAffinity",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          pdID: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1PhotonPersistentDiskVolumeSource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          volumeID: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1PortworxVolumeSource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          registry: S.String,
-          tenant: S.optional(S.String),
-          user: S.optional(S.String),
-          volume: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1QuobyteVolumeSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          image: S.String,
-          keyring: S.optional(S.String),
-          monitors: __S(1, __c0, 1),
-          pool: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(38, __c4, 6)),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1RBDPersistentVolumeSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          gateway: S.String,
-          protectionDomain: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(38, __c4, 6)),
-          sslEnabled: S.optional(S.Boolean),
-          storageMode: S.optional(S.String),
-          storagePool: S.optional(S.String),
-          system: S.String,
-          volumeName: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1ScaleIOPersistentVolumeSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(__S(41, __c5, 1)),
-          volumeName: S.String,
-          volumeNamespace: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1StorageOSPersistentVolumeSource",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fsType: S.optional(S.String),
-          storagePolicyID: S.optional(S.String),
-          storagePolicyName: S.optional(S.String),
-          volumePath: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1VsphereVirtualDiskVolumeSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accessModes: S.optional(__S(1, __c0, 1)),
-          awsElasticBlockStore: S.optional(__S(35, __c4, 3)),
-          azureDisk: S.optional(__S(36, __c4, 4)),
-          azureFile: S.optional(__S(37, __c4, 5)),
-          capacity: S.optional(__S(0, __c0, 0)),
-          cephfs: S.optional(__S(39, __c4, 7)),
-          cinder: S.optional(__S(40, __c5, 0)),
-          claimRef: S.optional(__S(41, __c5, 1)),
-          csi: S.optional(__S(42, __c5, 2)),
-          fc: S.optional(__S(43, __c5, 3)),
-          flexVolume: S.optional(__S(44, __c5, 4)),
-          flocker: S.optional(__S(45, __c5, 5)),
-          gcePersistentDisk: S.optional(__S(46, __c5, 6)),
-          glusterfs: S.optional(__S(47, __c5, 7)),
-          hostPath: S.optional(__S(48, __c6, 0)),
-          iscsi: S.optional(__S(49, __c6, 1)),
-          local: S.optional(__S(50, __c6, 2)),
-          mountOptions: S.optional(__S(1, __c0, 1)),
-          nfs: S.optional(__S(51, __c6, 3)),
-          nodeAffinity: S.optional(__S(57, __c7, 1)),
-          persistentVolumeReclaimPolicy: S.optional(S.String),
-          photonPersistentDisk: S.optional(__S(58, __c7, 2)),
-          portworxVolume: S.optional(__S(59, __c7, 3)),
-          quobyte: S.optional(__S(60, __c7, 4)),
-          rbd: S.optional(__S(61, __c7, 5)),
-          scaleIO: S.optional(__S(62, __c7, 6)),
-          storageClassName: S.optional(S.String),
-          storageos: S.optional(__S(63, __c7, 7)),
-          volumeAttributesClassName: S.optional(S.String),
-          volumeMode: S.optional(S.String),
-          vsphereVolume: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1PersistentVolumeSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inlineVolumeSpec: S.optional(__S(65, __c8, 1)),
-          persistentVolumeName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeAttachmentSource",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attacher: S.String,
-          nodeName: S.String,
-          source: __S(66, __c8, 2),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeAttachmentSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.Number),
-          message: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeError",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attachError: S.optional(__S(68, __c8, 4)),
-          attached: S.optional(S.Boolean),
-          attachmentMetadata: S.optional(__S(0, __c0, 0)),
-          detachError: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeAttachmentStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(67, __c8, 3),
-          status: S.optional(__S(69, __c8, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/volumeattachments", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageV1VolumeAttachmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(67, __c8, 3),
-          status: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeAttachment",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          driverName: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          parameters: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/storage.k8s.io/v1/volumeattributesclasses",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageV1VolumeAttributesClassRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          driverName: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          parameters: __S(0, __c0, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiStorageV1VolumeAttributesClass",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
           continue: S.optional(S.String.pipe(T.Query())),
           dryRun: S.optional(S.String.pipe(T.Query())),
           fieldSelector: S.optional(S.String.pipe(T.Query())),
@@ -4395,122 +3592,7 @@ function __c9(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
-        }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
-      ).annotate({
-        identifier: "DeleteStorageV1CollectionCSIDriverRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(77, __c9, 5)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(78, __c9, 6)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
-        }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
-      ).annotate({
-        identifier: "DeleteStorageV1CollectionCSINodeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4521,7 +3603,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1CollectionNamespacedCSIStorageCapacityRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4541,14 +3627,18 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/storageclasses", code: 200 }),
         ),
       ).annotate({
         identifier: "DeleteStorageV1CollectionStorageClassRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4568,14 +3658,18 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/volumeattachments", code: 200 }),
         ),
       ).annotate({
         identifier: "DeleteStorageV1CollectionVolumeAttachmentRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4595,7 +3689,7 @@ function __c10(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4606,28 +3700,9 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1CollectionVolumeAttributesClassRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers/{name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageV1CSIDriverRequest",
-      });
   }
 }
-function __c11(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4641,14 +3716,41 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers/{name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageV1CSIDriverRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csinodes/{name}", code: 200 }),
         ),
       ).annotate({
         identifier: "DeleteStorageV1CSINodeRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4661,7 +3763,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4672,7 +3774,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1NamespacedCSIStorageCapacityRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4684,7 +3790,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4695,7 +3801,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1StorageClassRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4707,7 +3817,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4718,7 +3828,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1VolumeAttachmentRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4730,7 +3844,7 @@ function __c11(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(74, __c9, 2)),
+          preconditions: S.optional(__S(2400, __c75, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4741,13 +3855,17 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteStorageV1VolumeAttributesClassRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/storage.k8s.io/", code: 200 })),
       ).annotate({
         identifier: "GetStorageAPIGroupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -4756,7 +3874,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -4765,64 +3883,68 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
+    case 3:
+      return S.Array(__S(354, __c11, 2));
+    case 4:
+      return S.Array(__S(353, __c11, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(353, __c11, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(355, __c11, 3)),
+          versions: __S(356, __c11, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.Array(__S(94, __c11, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(94, __c11, 6)),
-          serverAddressByClientCIDRs: S.optional(__S(96, __c12, 0)),
-          versions: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/storage.k8s.io/v1/", code: 200 })),
       ).annotate({
         identifier: "GetStorageV1APIResourcesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(736, __c23, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(736, __c23, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(736, __c23, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(101, __c12, 5),
+          resources: __S(386, __c12, 2),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4841,24 +3963,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListStorageV1CSIDriverRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
     case 1:
+      return S.Array(__S(707, __c22, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(104, __c13, 0),
+          items: __S(417, __c13, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIDriverList",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4877,20 +3999,24 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListStorageV1CSINodeRequest",
       });
-    case 3:
-      return S.Array(__S(22, __c2, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1161, __c36, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(107, __c13, 3),
+          items: __S(449, __c14, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSINodeList",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4911,22 +4037,26 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListStorageV1CSIStorageCapacityForAllNamespacesRequest",
       });
-    case 6:
-      return S.Array(__S(28, __c3, 4));
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1540, __c48, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(110, __c13, 6),
+          items: __S(512, __c16, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1CSIStorageCapacityList",
       });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4954,7 +4084,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListStorageV1NamespacedCSIStorageCapacityRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4975,20 +4109,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListStorageV1StorageClassRequest",
       });
+    case 1:
+      return S.Array(__S(1956, __c61, 4));
     case 2:
-      return S.Array(__S(34, __c4, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(114, __c14, 2),
+          items: __S(577, __c18, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1StorageClassList",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -5009,20 +4147,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListStorageV1VolumeAttachmentRequest",
       });
-    case 5:
-      return S.Array(__S(71, __c8, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(2275, __c71, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(117, __c14, 5),
+          items: __S(609, __c19, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttachmentList",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -5047,24 +4189,152 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListStorageV1VolumeAttributesClassRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(73, __c9, 1));
     case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(120, __c15, 0),
+          items: __S(641, __c20, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(80, __c10, 0)),
+          metadata: S.optional(__S(2465, __c77, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiStorageV1VolumeAttributesClassList",
       });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(706, __c22, 2)),
+        }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
+      ).annotate({
+        identifier: "CreateStorageV1CSIDriverRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          audience: S.optional(S.String),
+          expirationSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1TokenRequest",
+      });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attachRequired: S.optional(S.Boolean),
+          fsGroupPolicy: S.optional(S.String),
+          nodeAllocatableUpdatePeriodSeconds: S.optional(S.Number),
+          podInfoOnMount: S.optional(S.Boolean),
+          preventPodSchedulingIfMissing: S.optional(S.Boolean),
+          requiresRepublish: S.optional(S.Boolean),
+          seLinuxMount: S.optional(S.Boolean),
+          serviceAccountTokenInSecrets: S.optional(S.Boolean),
+          storageCapacity: S.optional(S.Boolean),
+          tokenRequests: S.optional(__S(705, __c22, 1)),
+          volumeLifecycleModes: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSIDriverSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSIDriver",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(771, __c24, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(768, __c24, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(736, __c23, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(768, __c24, 0)),
+          managedFields: S.optional(__S(770, __c24, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(772, __c24, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5079,7 +4349,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1CSIDriverRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5094,7 +4368,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1CSINodeRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5113,7 +4391,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1CSINodeStatusRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -5133,7 +4415,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1NamespacedCSIStorageCapacityRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5152,7 +4438,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1StorageClassRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5173,7 +4463,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5194,7 +4484,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1VolumeAttachmentStatusRequest",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5213,7 +4507,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchStorageV1VolumeAttributesClassRequest",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5224,7 +4522,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1CSIDriverRequest",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5235,7 +4537,108 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1CSINodeRequest",
       });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(1155, __c36, 3)),
+          status: S.optional(__S(1160, __c36, 8)),
+        }).pipe(T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/csinodes", code: 200 })),
+      ).annotate({
+        identifier: "CreateStorageV1CSINodeRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeNodeResources",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allocatable: S.optional(__S(1152, __c36, 0)),
+          name: S.String,
+          nodeID: S.String,
+          topologyKeys: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSINodeDriver",
+      });
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          drivers: S.optional(__S(1154, __c36, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSINodeSpec",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accessMode: S.optional(S.String),
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.String,
+          status: S.String,
+          volumeMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1StorageHealthCondition",
+      });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          healthConditions: S.optional(__S(1157, __c36, 5)),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1StorageHealth",
+      });
+    case 7:
+      return S.Array(__S(1158, __c36, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          storageHealth: S.optional(__S(1159, __c36, 7)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSINodeStatus",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(1155, __c36, 3)),
+          status: S.optional(__S(1160, __c36, 8)),
+        }),
+      ).annotate({ identifier: "IoK8sApiStorageV1CSINode" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5250,7 +4653,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1CSINodeStatusRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -5266,7 +4673,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1NamespacedCSIStorageCapacityRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5281,7 +4692,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1StorageClassRequest",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5298,7 +4713,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5315,7 +4730,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1VolumeAttachmentStatusRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5330,7 +4749,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ReadStorageV1VolumeAttributesClassRequest",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5340,15 +4763,19 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(9, __c1, 1)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(706, __c22, 2)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/storage.k8s.io/v1/csidrivers/{name}", code: 200 }),
         ),
       ).annotate({
         identifier: "ReplaceStorageV1CSIDriverRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5358,16 +4785,20 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(15, __c1, 7)),
-          status: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(1155, __c36, 3)),
+          status: S.optional(__S(1160, __c36, 8)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/storage.k8s.io/v1/csinodes/{name}", code: 200 }),
         ),
       ).annotate({
         identifier: "ReplaceStorageV1CSINodeRequest",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5377,9 +4808,9 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(15, __c1, 7)),
-          status: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: S.optional(__S(1155, __c36, 3)),
+          status: S.optional(__S(1160, __c36, 8)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5390,7 +4821,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ReplaceStorageV1CSINodeStatusRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -5403,8 +4838,8 @@ function __c17(j: number): any {
           capacity: S.optional(S.String),
           kind: S.optional(S.String),
           maximumVolumeSize: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          nodeTopology: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          nodeTopology: S.optional(__S(1539, __c48, 3)),
           storageClassName: S.String,
         }).pipe(
           T.Http({
@@ -5416,7 +4851,81 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ReplaceStorageV1NamespacedCSIStorageCapacityRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          capacity: S.optional(S.String),
+          kind: S.optional(S.String),
+          maximumVolumeSize: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          nodeTopology: S.optional(__S(1539, __c48, 3)),
+          storageClassName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/storage.k8s.io/v1/namespaces/{namespace}/csistoragecapacities",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageV1NamespacedCSIStorageCapacityRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 2:
+      return S.Array(__S(1537, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(1538, __c48, 2)),
+          matchLabels: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          capacity: S.optional(S.String),
+          kind: S.optional(S.String),
+          maximumVolumeSize: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          nodeTopology: S.optional(__S(1539, __c48, 3)),
+          storageClassName: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1CSIStorageCapacity",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5425,12 +4934,12 @@ function __c17(j: number): any {
           fieldManager: S.optional(S.String.pipe(T.Query())),
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           allowVolumeExpansion: S.optional(S.Boolean),
-          allowedTopologies: S.optional(__S(32, __c4, 0)),
+          allowedTopologies: S.optional(__S(1955, __c61, 3)),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          mountOptions: S.optional(__S(1, __c0, 1)),
-          parameters: S.optional(__S(0, __c0, 0)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          mountOptions: S.optional(__S(736, __c23, 0)),
+          parameters: S.optional(__S(768, __c24, 0)),
           provisioner: S.String,
           reclaimPolicy: S.optional(S.String),
           volumeBindingMode: S.optional(S.String),
@@ -5444,7 +4953,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ReplaceStorageV1StorageClassRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5454,9 +4967,9 @@ function __c17(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(67, __c8, 3),
-          status: S.optional(__S(69, __c8, 5)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: __S(2272, __c71, 0),
+          status: S.optional(__S(2274, __c71, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5469,7 +4982,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5481,9 +4994,9 @@ function __c18(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(67, __c8, 3),
-          status: S.optional(__S(69, __c8, 5)),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: __S(2272, __c71, 0),
+          status: S.optional(__S(2274, __c71, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5494,7 +5007,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ReplaceStorageV1VolumeAttachmentStatusRequest",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5505,8 +5022,8 @@ function __c18(j: number): any {
           apiVersion: S.optional(S.String),
           driverName: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          parameters: __S(0, __c0, 0),
+          metadata: S.optional(__S(773, __c24, 5)),
+          parameters: __S(768, __c24, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5517,7 +5034,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ReplaceStorageV1VolumeAttributesClassRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5543,7 +5064,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1CSIDriverRequest",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -5552,7 +5077,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5573,7 +5102,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1CSIDriverListRequest",
       });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5599,7 +5132,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1CSINodeRequest",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5620,7 +5157,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1CSINodeListRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5647,7 +5188,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5676,7 +5217,80 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1NamespacedCSIStorageCapacityRequest",
       });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          allowVolumeExpansion: S.optional(S.Boolean),
+          allowedTopologies: S.optional(__S(1955, __c61, 3)),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          mountOptions: S.optional(__S(736, __c23, 0)),
+          parameters: S.optional(__S(768, __c24, 0)),
+          provisioner: S.String,
+          reclaimPolicy: S.optional(S.String),
+          volumeBindingMode: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/storageclasses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageV1StorageClassRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          values: __S(736, __c23, 0),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1TopologySelectorLabelRequirement",
+      });
     case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          matchLabelExpressions: S.optional(__S(1953, __c61, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1TopologySelectorTerm",
+      });
+    case 3:
+      return S.Array(__S(1954, __c61, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          allowVolumeExpansion: S.optional(S.Boolean),
+          allowedTopologies: S.optional(__S(1955, __c61, 3)),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          mountOptions: S.optional(__S(736, __c23, 0)),
+          parameters: S.optional(__S(768, __c24, 0)),
+          provisioner: S.String,
+          reclaimPolicy: S.optional(S.String),
+          volumeBindingMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1StorageClass",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -5702,7 +5316,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1NamespacedCSIStorageCapacityListRequest",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5728,7 +5346,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1StorageClassRequest",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5749,7 +5371,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1StorageClassListRequest",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5775,7 +5401,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1VolumeAttachmentRequest",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5800,7 +5430,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1VolumeAttachmentListRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5826,7 +5460,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "WatchStorageV1VolumeAttributesClassRequest",
       });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -5853,7 +5491,604 @@ function __c19(j: number): any {
       });
   }
 }
-
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: __S(2272, __c71, 0),
+          status: S.optional(__S(2274, __c71, 2)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/storage.k8s.io/v1/volumeattachments", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageV1VolumeAttachmentRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          partition: S.optional(S.Number),
+          readOnly: S.optional(S.Boolean),
+          volumeID: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cachingMode: S.optional(S.String),
+          diskName: S.String,
+          diskURI: S.String,
+          fsType: S.optional(S.String),
+          kind: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1AzureDiskVolumeSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          readOnly: S.optional(S.Boolean),
+          secretName: S.String,
+          secretNamespace: S.optional(S.String),
+          shareName: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1AzureFilePersistentVolumeSource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1SecretReference",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          monitors: __S(736, __c23, 0),
+          path: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          secretFile: S.optional(S.String),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1CephFSPersistentVolumeSource",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+          volumeID: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1CinderPersistentVolumeSource",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldPath: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1ObjectReference",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          controllerExpandSecretRef: S.optional(__S(2243, __c70, 3)),
+          controllerPublishSecretRef: S.optional(__S(2243, __c70, 3)),
+          driver: S.String,
+          fsType: S.optional(S.String),
+          nodeExpandSecretRef: S.optional(__S(2243, __c70, 3)),
+          nodePublishSecretRef: S.optional(__S(2243, __c70, 3)),
+          nodeStageSecretRef: S.optional(__S(2243, __c70, 3)),
+          readOnly: S.optional(S.Boolean),
+          volumeAttributes: S.optional(__S(768, __c24, 0)),
+          volumeHandle: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1CSIPersistentVolumeSource",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          lun: S.optional(S.Number),
+          readOnly: S.optional(S.Boolean),
+          targetWWNs: S.optional(__S(736, __c23, 0)),
+          wwids: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1FCVolumeSource",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          driver: S.String,
+          fsType: S.optional(S.String),
+          options: S.optional(__S(768, __c24, 0)),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1FlexPersistentVolumeSource",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          datasetName: S.optional(S.String),
+          datasetUUID: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1FlockerVolumeSource",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          partition: S.optional(S.Number),
+          pdName: S.String,
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1GCEPersistentDiskVolumeSource",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          endpoints: S.String,
+          endpointsNamespace: S.optional(S.String),
+          path: S.String,
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1GlusterfsPersistentVolumeSource",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1HostPathVolumeSource",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          chapAuthDiscovery: S.optional(S.Boolean),
+          chapAuthSession: S.optional(S.Boolean),
+          fsType: S.optional(S.String),
+          initiatorName: S.optional(S.String),
+          iqn: S.String,
+          iscsiInterface: S.optional(S.String),
+          lun: S.optional(S.Number),
+          portals: S.optional(__S(736, __c23, 0)),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+          targetPortal: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1ISCSIPersistentVolumeSource",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          path: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1LocalVolumeSource",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          readOnly: S.optional(S.Boolean),
+          server: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1NFSVolumeSource",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1NodeSelectorRequirement",
+      });
+    case 18:
+      return S.Array(__S(2257, __c70, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(2258, __c70, 18)),
+          matchFields: S.optional(__S(2258, __c70, 18)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1NodeSelectorTerm",
+      });
+    case 20:
+      return S.Array(__S(2259, __c70, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          nodeSelectorTerms: __S(2260, __c70, 20),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1NodeSelector",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          required: __S(2261, __c70, 21),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1VolumeNodeAffinity",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          pdID: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1PhotonPersistentDiskVolumeSource",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          volumeID: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1PortworxVolumeSource",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          registry: S.String,
+          tenant: S.optional(S.String),
+          user: S.optional(S.String),
+          volume: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1QuobyteVolumeSource",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          image: S.String,
+          keyring: S.optional(S.String),
+          monitors: __S(736, __c23, 0),
+          pool: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1RBDPersistentVolumeSource",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          gateway: S.String,
+          protectionDomain: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2243, __c70, 3)),
+          sslEnabled: S.optional(S.Boolean),
+          storageMode: S.optional(S.String),
+          storagePool: S.optional(S.String),
+          system: S.String,
+          volumeName: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1ScaleIOPersistentVolumeSource",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          secretRef: S.optional(__S(2246, __c70, 6)),
+          volumeName: S.String,
+          volumeNamespace: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1StorageOSPersistentVolumeSource",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          fsType: S.optional(S.String),
+          storagePolicyID: S.optional(S.String),
+          storagePolicyName: S.optional(S.String),
+          volumePath: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1VsphereVirtualDiskVolumeSource",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          accessModes: S.optional(__S(736, __c23, 0)),
+          awsElasticBlockStore: S.optional(__S(2240, __c70, 0)),
+          azureDisk: S.optional(__S(2241, __c70, 1)),
+          azureFile: S.optional(__S(2242, __c70, 2)),
+          capacity: S.optional(__S(768, __c24, 0)),
+          cephfs: S.optional(__S(2244, __c70, 4)),
+          cinder: S.optional(__S(2245, __c70, 5)),
+          claimRef: S.optional(__S(2246, __c70, 6)),
+          csi: S.optional(__S(2247, __c70, 7)),
+          fc: S.optional(__S(2248, __c70, 8)),
+          flexVolume: S.optional(__S(2249, __c70, 9)),
+          flocker: S.optional(__S(2250, __c70, 10)),
+          gcePersistentDisk: S.optional(__S(2251, __c70, 11)),
+          glusterfs: S.optional(__S(2252, __c70, 12)),
+          hostPath: S.optional(__S(2253, __c70, 13)),
+          iscsi: S.optional(__S(2254, __c70, 14)),
+          local: S.optional(__S(2255, __c70, 15)),
+          mountOptions: S.optional(__S(736, __c23, 0)),
+          nfs: S.optional(__S(2256, __c70, 16)),
+          nodeAffinity: S.optional(__S(2262, __c70, 22)),
+          persistentVolumeReclaimPolicy: S.optional(S.String),
+          photonPersistentDisk: S.optional(__S(2263, __c70, 23)),
+          portworxVolume: S.optional(__S(2264, __c70, 24)),
+          quobyte: S.optional(__S(2265, __c70, 25)),
+          rbd: S.optional(__S(2266, __c70, 26)),
+          scaleIO: S.optional(__S(2267, __c70, 27)),
+          storageClassName: S.optional(S.String),
+          storageos: S.optional(__S(2268, __c70, 28)),
+          volumeAttributesClassName: S.optional(S.String),
+          volumeMode: S.optional(S.String),
+          vsphereVolume: S.optional(__S(2269, __c70, 29)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1PersistentVolumeSpec",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          inlineVolumeSpec: S.optional(__S(2270, __c70, 30)),
+          persistentVolumeName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeAttachmentSource",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attacher: S.String,
+          nodeName: S.String,
+          source: __S(2271, __c70, 31),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeAttachmentSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.Number),
+          message: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeError",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attachError: S.optional(__S(2273, __c71, 1)),
+          attached: S.optional(S.Boolean),
+          attachmentMetadata: S.optional(__S(768, __c24, 0)),
+          detachError: S.optional(__S(2273, __c71, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeAttachmentStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          spec: __S(2272, __c71, 0),
+          status: S.optional(__S(2274, __c71, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeAttachment",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          driverName: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          parameters: __S(768, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/storage.k8s.io/v1/volumeattributesclasses",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageV1VolumeAttributesClassRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          driverName: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(773, __c24, 5)),
+          parameters: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiStorageV1VolumeAttributesClass",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(2400, __c75, 0)),
+        }).pipe(T.Http({ method: "DELETE", uri: "/apis/storage.k8s.io/v1/csidrivers", code: 200 })),
+      ).annotate({
+        identifier: "DeleteStorageV1CollectionCSIDriverRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 1:
+      return S.Array(__S(2432, __c76, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(2433, __c76, 1)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(2434, __c76, 2)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(2465, __c77, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(2464, __c77, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

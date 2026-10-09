@@ -151,8 +151,8 @@ export const getIPList: API.OperationMethod<
   GetIPListError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetIPListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIPListResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetIPListRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<GetIPListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -166,8 +166,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetQuotaRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetQuotaResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -181,8 +181,8 @@ export const listIPLists: API.OperationMethod<
   ListIPListsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListIPListsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListIPListsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListIPListsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListIPListsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const uploadIPList: API.OperationMethod<
   UploadIPListError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UploadIPListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIPListResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<UploadIPListRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<GetIPListResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -225,7 +225,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteIPListResponse2",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -240,28 +244,36 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIPListRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 4:
+    case 1:
       return S.Array(S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          items: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "IPListUsage" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           contentHash: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(8, __c2, 0)),
           name: S.String,
           numberOfIps: S.optional(S.Number),
-          usage: S.optional(__S(5, __c0, 5)),
+          usage: S.optional(__S(10, __c2, 2)),
         }),
       ).annotate({ identifier: "GetIPListResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -275,32 +287,32 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQuotaRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           usage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IPListsQuota" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipLists: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Quotas" });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          ipLists: S.optional(__S(13, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Quotas" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           projectId: S.optional(S.String),
-          quotas: S.optional(__S(9, __c1, 1)),
+          quotas: S.optional(__S(14, __c3, 2)),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -314,22 +326,26 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListIPListsRequest" });
-    case 4:
-      return S.Array(__S(6, __c0, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(11, __c2, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(12, __c1, 4)),
+          items: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({ identifier: "ListIPListsResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           fileContent: S.String,
-          labels: S.optional(__S(3, __c0, 3)),
+          labels: S.optional(__S(8, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -341,7 +357,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UploadIPListRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

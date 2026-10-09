@@ -1960,7 +1960,7 @@ export const AbortWorkflow: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AbortWorkflowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AbortWorkflowResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<AbortWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1974,8 +1974,8 @@ export const CheckStorageSyncServiceNameAvailability: API.OperationMethod<
   CheckStorageSyncServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckStorageSyncServiceNameAvailabilityRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: __S(64, __c2, 0) as any as S.Schema<CheckStorageSyncServiceNameAvailabilityRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1990,11 +1990,11 @@ export const CloudEndpointsAfsShareMetadataCertificatePublicKeys: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>,
+  output: __S(641, __c20, 1) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2008,8 +2008,8 @@ export const CloudEndpointsPostRestore: API.OperationMethod<
   CloudEndpointsPostRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CloudEndpointsPostRestoreRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CloudEndpointsPostRestoreResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CloudEndpointsPostRestoreRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<CloudEndpointsPostRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2023,8 +2023,8 @@ export const CloudEndpointsPreBackup: API.OperationMethod<
   CloudEndpointsPreBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CloudEndpointsPreBackupRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CloudEndpointsPreBackupResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CloudEndpointsPreBackupRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<CloudEndpointsPreBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2038,8 @@ export const CloudEndpointsRestoreheartbeat: API.OperationMethod<
   CloudEndpointsRestoreheartbeatError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CloudEndpointsRestoreheartbeatRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2053,8 +2053,8 @@ export const CreateCloudEndpoint: API.OperationMethod<
   CreateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateCloudEndpointRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateCloudEndpointResponse>,
+  input: __S(1729, __c54, 1) as any as S.Schema<CreateCloudEndpointRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<CreateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2068,8 +2068,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(1857, __c58, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2083,8 @@ export const CreateRegisteredServer: API.OperationMethod<
   CreateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateRegisteredServerRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateRegisteredServerResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<CreateRegisteredServerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<CreateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2098,8 @@ export const CreateServerEndpoint: API.OperationMethod<
   CreateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateServerEndpointRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<CreateServerEndpointResponse>,
+  input: __S(2081, __c65, 1) as any as S.Schema<CreateServerEndpointRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<CreateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2113,8 +2113,8 @@ export const CreateStorageSyncService: API.OperationMethod<
   CreateStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateStorageSyncServiceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<CreateStorageSyncServiceResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateStorageSyncServiceRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<CreateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2128,8 @@ export const CreateSyncGroup: API.OperationMethod<
   CreateSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateSyncGroupRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CreateSyncGroupResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateSyncGroupRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<CreateSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2143,8 @@ export const DeleteCloudEndpoint: API.OperationMethod<
   DeleteCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteCloudEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCloudEndpointResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteCloudEndpointRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2158,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2173,8 @@ export const DeleteRegisteredServer: API.OperationMethod<
   DeleteRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteRegisteredServerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRegisteredServerResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteRegisteredServerRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2188,8 @@ export const DeleteServerEndpoint: API.OperationMethod<
   DeleteServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteServerEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServerEndpointResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteServerEndpointRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2203,8 @@ export const DeleteStorageSyncService: API.OperationMethod<
   DeleteStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteStorageSyncServiceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteStorageSyncServiceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteStorageSyncServiceRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<DeleteStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const DeleteSyncGroup: API.OperationMethod<
   DeleteSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteSyncGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSyncGroupResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteSyncGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2233,8 +2233,8 @@ export const GetCloudEndpoint: API.OperationMethod<
   GetCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetCloudEndpointRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetCloudEndpointResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetCloudEndpointRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<GetCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2248,8 +2248,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<OperationStatus>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2263,8 +2263,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2278,8 +2278,8 @@ export const GetRegisteredServer: API.OperationMethod<
   GetRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetRegisteredServerRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetRegisteredServerResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetRegisteredServerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<GetRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2293,8 +2293,8 @@ export const GetServerEndpoint: API.OperationMethod<
   GetServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetServerEndpointRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetServerEndpointResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetServerEndpointRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GetServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2308,8 +2308,8 @@ export const GetStorageSyncService: API.OperationMethod<
   GetStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetStorageSyncServiceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetStorageSyncServiceResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetStorageSyncServiceRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2323,8 +2323,8 @@ export const GetSyncGroup: API.OperationMethod<
   GetSyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetSyncGroupRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetSyncGroupResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetSyncGroupRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<GetSyncGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2338,8 +2338,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2353,8 +2353,8 @@ export const ListCloudEndpointBySyncGroup: API.OperationMethod<
   ListCloudEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CloudEndpointArray>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListCloudEndpointBySyncGroupRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<CloudEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2368,8 +2368,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<OperationEntityListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(939, __c29, 11) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2384,11 +2384,11 @@ export const ListPrivateEndpointConnectionByStorageSyncService: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    108,
-    __c13,
-    4,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByStorageSyncServiceRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(961, __c30, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2402,11 +2402,11 @@ export const ListPrivateLinkResourceByStorageSyncService: API.OperationMethod<
   ListPrivateLinkResourceByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceRequest>,
   output: __S(
-    114,
-    __c14,
-    2,
+    996,
+    __c31,
+    4,
   ) as any as S.Schema<ListPrivateLinkResourceByStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2421,8 +2421,8 @@ export const ListRegisteredServerByStorageSyncService: API.OperationMethod<
   ListRegisteredServerByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<RegisteredServerArray>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListRegisteredServerByStorageSyncServiceRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<RegisteredServerArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2436,8 +2436,8 @@ export const ListServerEndpointBySyncGroup: API.OperationMethod<
   ListServerEndpointBySyncGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ServerEndpointArray>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListServerEndpointBySyncGroupRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<ServerEndpointArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2451,8 +2451,8 @@ export const ListStorageSyncServiceByResourceGroup: API.OperationMethod<
   ListStorageSyncServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<StorageSyncServiceArray>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListStorageSyncServiceByResourceGroupRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2466,8 @@ export const ListStorageSyncServiceBySubscription: API.OperationMethod<
   ListStorageSyncServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<StorageSyncServiceArray>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListStorageSyncServiceBySubscriptionRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<StorageSyncServiceArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2481,8 +2481,8 @@ export const ListSyncGroupByStorageSyncService: API.OperationMethod<
   ListSyncGroupByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<SyncGroupArray>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListSyncGroupByStorageSyncServiceRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<SyncGroupArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2496,8 +2496,8 @@ export const ListWorkflowByStorageSyncService: API.OperationMethod<
   ListWorkflowByStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<WorkflowArray>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListWorkflowByStorageSyncServiceRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<WorkflowArray>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2511,8 +2511,8 @@ export const LocationOperationStatus2: API.OperationMethod<
   LocationOperationStatus2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<LocationOperationStatusRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<LocationOperationStatus>,
+  input: __S(1344, __c42, 0) as any as S.Schema<LocationOperationStatusRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<LocationOperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2526,8 @@ export const PostCloudEndpointBackup: API.OperationMethod<
   PostCloudEndpointBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<PostCloudEndpointBackupRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<PostBackupResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<PostCloudEndpointBackupRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<PostBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2541,8 +2541,8 @@ export const RestoreCloudEndpointsPre: API.OperationMethod<
   RestoreCloudEndpointsPreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<RestoreCloudEndpointsPreRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<RestoreCloudEndpointsPreResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<RestoreCloudEndpointsPreRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<RestoreCloudEndpointsPreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2556,8 @@ export const ServerEndpointsRecallAction: API.OperationMethod<
   ServerEndpointsRecallActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ServerEndpointsRecallActionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ServerEndpointsRecallActionResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ServerEndpointsRecallActionRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<ServerEndpointsRecallActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2571,8 +2571,8 @@ export const TriggerCloudEndpointChangeDetection: API.OperationMethod<
   TriggerCloudEndpointChangeDetectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<TriggerCloudEndpointChangeDetectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2586,8 +2586,8 @@ export const TriggerRegisteredServerRollover: API.OperationMethod<
   TriggerRegisteredServerRolloverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<TriggerRegisteredServerRolloverRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TriggerRegisteredServerRolloverResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<TriggerRegisteredServerRolloverRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<TriggerRegisteredServerRolloverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2601,8 +2601,8 @@ export const UpdateCloudEndpoint: API.OperationMethod<
   UpdateCloudEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdateCloudEndpointRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateCloudEndpointResponse>,
+  input: __S(1569, __c49, 1) as any as S.Schema<UpdateCloudEndpointRequest>,
+  output: __S(1792, __c56, 0) as any as S.Schema<UpdateCloudEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2616,8 +2616,8 @@ export const UpdateRegisteredServer: API.OperationMethod<
   UpdateRegisteredServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<UpdateRegisteredServerRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateRegisteredServerResponse>,
+  input: __S(1601, __c50, 1) as any as S.Schema<UpdateRegisteredServerRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UpdateRegisteredServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2631,8 +2631,8 @@ export const UpdateServerEndpoint: API.OperationMethod<
   UpdateServerEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<UpdateServerEndpointRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<UpdateServerEndpointResponse>,
+  input: __S(1633, __c51, 1) as any as S.Schema<UpdateServerEndpointRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<UpdateServerEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2646,8 @@ export const UpdateStorageSyncService: API.OperationMethod<
   UpdateStorageSyncServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<UpdateStorageSyncServiceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateStorageSyncServiceResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UpdateStorageSyncServiceRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateStorageSyncServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2672,11 +2672,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AbortWorkflowRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AbortWorkflowResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2694,7 +2702,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckStorageSyncServiceNameAvailabilityRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -2704,7 +2712,415 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2112, __c66, 0)),
+          location: S.String,
+          identity: S.optional(__S(225, __c7, 1)),
+          properties: S.optional(__S(226, __c7, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageSyncServiceRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(1922, __c60, 2)),
+        }),
+      ).annotate({
+        identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem",
+      });
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          incomingTrafficPolicy: S.optional(S.String),
+          storageSyncServiceStatus: S.optional(S.Number),
+          storageSyncServiceUid: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          useIdentity: S.optional(S.Boolean),
+          lastWorkflowId: S.optional(S.String),
+          lastOperationName: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "StorageSyncServiceProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(161, __c5, 1)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(162, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateStorageSyncServiceResponseIdentity",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          tags: S.optional(__S(2112, __c66, 0)),
+          location: S.String,
+          properties: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateStorageSyncServiceResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c1, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateStorageSyncServiceRequestIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          incomingTrafficPolicy: S.optional(S.String),
+          useIdentity: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StorageSyncServiceCreateParametersProperties",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateSyncGroupRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueId: S.optional(S.String),
+          syncGroupStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SyncGroupProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "CreateSyncGroupResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCloudEndpointRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegisteredServerRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          serverEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServerEndpointRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageSyncServiceRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSyncGroupRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetCloudEndpointRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(1763, __c55, 3)),
+        }),
+      ).annotate({ identifier: "GetCloudEndpointResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          workflowId: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          error: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({ identifier: "OperationStatus" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          requestUri: S.optional(S.String),
+          exceptionType: S.optional(S.String),
+          httpMethod: S.optional(S.String),
+          hashedMessage: S.optional(S.String),
+          httpErrorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageSyncErrorDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          callStack: S.optional(S.String),
+          message: S.optional(S.String),
+          innerException: S.optional(S.String),
+          innerExceptionCallStack: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageSyncInnerErrorDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(608, __c19, 0)),
+          innererror: S.optional(__S(609, __c19, 1)),
+        }),
+      ).annotate({ identifier: "StorageSyncApiError" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2723,7 +3139,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CloudEndpointsAfsShareMetadataCertificatePublicKeysRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           firstKey: S.optional(S.String),
@@ -2732,18 +3148,364 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CloudEndpointAfsShareMetadataCertificatePublicKeys",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          isdir: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RestoreFileSpec" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRegisteredServerRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          serverEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetServerEndpointRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetStorageSyncServiceRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSyncGroupRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          workflowId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetWorkflowRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastStepName: S.optional(S.String),
+          status: S.optional(S.String),
+          operation: S.optional(S.String),
+          steps: S.optional(S.String),
+          lastOperationId: S.optional(S.String),
+          commandName: S.optional(S.String),
+          createdTimestamp: S.optional(S.String),
+          lastStatusTimestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "GetWorkflowResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCloudEndpointBySyncGroupRequest",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(897, __c28, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudEndpointArray" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.StorageSync/operations",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          operation: S.optional(S.String),
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplayInfo" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          toBeExportedForShoebox: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "OperationResourceMetricSpecificationDimension",
+      });
+    case 4:
+      return S.Array(__S(931, __c29, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          displayDescription: S.optional(S.String),
+          unit: S.optional(S.String),
+          aggregationType: S.optional(S.String),
+          supportedAggregationTypes: S.optional(__S(930, __c29, 2)),
+          fillGapWithZero: S.optional(S.Boolean),
+          lockAggregationType: S.optional(S.String),
+          dimensions: S.optional(__S(932, __c29, 4)),
+        }),
+      ).annotate({
+        identifier: "OperationResourceMetricSpecification",
+      });
+    case 6:
+      return S.Array(__S(933, __c29, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          metricSpecifications: S.optional(__S(934, __c29, 6)),
+        }),
+      ).annotate({
+        identifier: "OperationResourceServiceSpecification",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(935, __c29, 7)),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(929, __c29, 1)),
+          origin: S.optional(S.String),
+          properties: S.optional(__S(936, __c29, 8)),
+        }),
+      ).annotate({ identifier: "OperationEntity" });
+    case 10:
+      return S.Array(__S(937, __c29, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(938, __c29, 10),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperationEntityListResult",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionByStorageSyncServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(129, __c4, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkResourceByStorageSyncServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(1888, __c59, 0)),
+          requiredZoneNames: S.optional(__S(1888, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({ identifier: "PrivateLinkResource" });
+    case 3:
+      return S.Array(__S(994, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(995, __c31, 3)),
+        }),
+      ).annotate({
+        identifier: "ListPrivateLinkResourceByStorageSyncServiceResponse",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2760,7 +3522,7 @@ function __c1(j: number): any {
           status: S.optional(S.String),
           sourceAzureFileShareUri: S.optional(S.String),
           failedFileList: S.optional(S.String),
-          restoreFileSpec: S.optional(__S(7, __c0, 7)),
+          restoreFileSpec: S.optional(__S(1057, __c33, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2772,11 +3534,366 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudEndpointsPostRestoreRequest",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          isdir: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RestoreFileSpec" });
     case 1:
+      return S.Array(__S(1056, __c33, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CloudEndpointsPostRestoreResponse",
       });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegisteredServerByStorageSyncServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({ identifier: "RegisteredServer" });
     case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1122, __c35, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisteredServerArray" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServerEndpointBySyncGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(2165, __c67, 21)),
+        }),
+      ).annotate({ identifier: "ServerEndpoint" });
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1154, __c36, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServerEndpointArray" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListStorageSyncServiceByResourceGroupRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          tags: S.optional(__S(2112, __c66, 0)),
+          location: S.String,
+          properties: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({ identifier: "StorageSyncService" });
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1217, __c38, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageSyncServiceArray" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListStorageSyncServiceBySubscriptionRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSyncGroupByStorageSyncServiceRequest",
+      });
+    case 1:
+      return S.Array(__S(289, __c9, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1281, __c40, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SyncGroupArray" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListWorkflowByStorageSyncServiceRequest",
+      });
+    case 1:
+      return S.Array(__S(865, __c27, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1313, __c41, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowArray" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          locationName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "LocationOperationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          error: S.optional(__S(610, __c19, 2)),
+          percentComplete: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LocationOperationStatus" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+          azureFileShare: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PostCloudEndpointBackupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cloudEndpointName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PostBackupResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          backupMetadata: S.optional(__S(1377, __c43, 1)),
+        }),
+      ).annotate({ identifier: "PostBackupResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+          partition: S.optional(S.String),
+          replicaGroup: S.optional(S.String),
+          requestId: S.optional(S.String),
+          azureFileShareUri: S.optional(S.String),
+          status: S.optional(S.String),
+          sourceAzureFileShareUri: S.optional(S.String),
+          backupMetadataPropertyBag: S.optional(S.String),
+          restoreFileSpec: S.optional(__S(1057, __c33, 1)),
+          pauseWaitForSyncDrainTimePeriodInSeconds: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreCloudEndpointsPreRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          serverEndpointName: S.String.pipe(T.Label()),
+          pattern: S.optional(S.String),
+          recallPath: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ServerEndpointsRecallActionRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2796,11 +3913,189 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudEndpointsPreBackupRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CloudEndpointsPreBackupResponse",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+          directoryPath: S.optional(S.String),
+          changeDetectionMode: S.optional(S.String),
+          paths: S.optional(__S(1888, __c59, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerCloudEndpointChangeDetectionRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          serverCertificate: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerRegisteredServerRolloverRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          changeEnumerationIntervalDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CloudEndpointUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          cloudEndpointName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCloudEndpointRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.Boolean),
+          applicationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegisteredServerUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1600, __c50, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRegisteredServerRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudTiering: S.optional(S.String),
+          volumeFreeSpacePercent: S.optional(S.Number),
+          tierFilesOlderThanDays: S.optional(S.Number),
+          offlineDataTransfer: S.optional(S.String),
+          offlineDataTransferShareName: S.optional(S.String),
+          localCacheMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServerEndpointUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          syncGroupName: S.String.pipe(T.Label()),
+          serverEndpointName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1632, __c51, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateServerEndpointRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageSyncServiceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(2112, __c66, 0)),
+          identity: S.optional(__S(225, __c7, 1)),
+          properties: S.optional(__S(226, __c7, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
+            code: 200,
+            apiVersion: "2025-12-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageSyncServiceRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2819,7 +4114,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudEndpointsRestoreheartbeatRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storageAccountResourceId: S.optional(S.String),
@@ -2831,7 +4130,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CloudEndpointCreateParametersProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2839,7 +4138,7 @@ function __c1(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(1728, __c54, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2851,20 +4150,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateCloudEndpointRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
   }
 }
-function __c2(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2903,8 +4191,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
-          lastEnumerationStatus: S.optional(__S(16, __c2, 0)),
-          activity: S.optional(__S(17, __c2, 1)),
+          lastEnumerationStatus: S.optional(__S(1760, __c55, 0)),
+          activity: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({
         identifier: "CloudEndpointChangeEnumerationStatus",
@@ -2921,49 +4209,62 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          changeEnumerationStatus: S.optional(__S(18, __c2, 2)),
+          changeEnumerationStatus: S.optional(__S(1762, __c55, 2)),
           changeEnumerationIntervalDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudEndpointProperties" });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(19, __c2, 3)),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(1763, __c55, 3)),
         }),
       ).annotate({
         identifier: "CreateCloudEndpointResponse",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 6:
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1, __c0, 1)),
-          privateLinkServiceConnectionState: __S(21, __c2, 5),
+          privateEndpoint: S.optional(__S(32, __c1, 0)),
+          privateLinkServiceConnectionState: __S(1920, __c60, 0),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(1856, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2977,10 +4278,24 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2990,27 +4305,35 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(24, __c3, 0)),
-          privateEndpoint: S.optional(__S(25, __c3, 1)),
-          privateLinkServiceConnectionState: __S(21, __c2, 5),
+          groupIds: S.optional(__S(1888, __c59, 0)),
+          privateEndpoint: S.optional(__S(1921, __c60, 1)),
+          privateLinkServiceConnectionState: __S(1920, __c60, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(26, __c3, 2)),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(1922, __c60, 2)),
         }),
       ).annotate({
         identifier: "CreatePrivateEndpointConnectionResponse",
       });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serverCertificate: S.optional(S.String),
@@ -3028,14 +4351,14 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RegisteredServerCreateParametersProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageSyncServiceName: S.String.pipe(T.Label()),
           serverId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(1984, __c62, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3047,7 +4370,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateRegisteredServerRequest",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serverCertificate: S.optional(S.String),
@@ -3081,21 +4408,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RegisteredServerProperties",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(30, __c3, 6)),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({
         identifier: "CreateRegisteredServerResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3123,7 +4454,7 @@ function __c4(j: number): any {
           storageSyncServiceName: S.String.pipe(T.Label()),
           syncGroupName: S.String.pipe(T.Label()),
           serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(2080, __c65, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3135,7 +4466,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateServerEndpointRequest",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.Number),
@@ -3145,9 +4486,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ServerEndpointFilesNotSyncingError",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(2144, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lastSyncResult: S.optional(S.Number),
@@ -3156,13 +4497,13 @@ function __c4(j: number): any {
           lastSyncPerItemErrorCount: S.optional(S.Number),
           persistentFilesNotSyncingCount: S.optional(S.Number),
           transientFilesNotSyncingCount: S.optional(S.Number),
-          filesNotSyncingErrors: S.optional(__S(35, __c4, 3)),
+          filesNotSyncingErrors: S.optional(__S(2145, __c67, 1)),
           lastSyncMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerEndpointSyncSessionStatus",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
@@ -3188,7 +4529,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ServerEndpointSyncActivityStatus",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
@@ -3199,7 +4540,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ServerEndpointBackgroundDataDownloadActivity",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           downloadHealth: S.optional(S.String),
@@ -3208,19 +4549,15 @@ function __c4(j: number): any {
           syncActivity: S.optional(S.String),
           totalPersistentFilesNotSyncingCount: S.optional(S.Number),
           lastUpdatedTimestamp: S.optional(S.String),
-          uploadStatus: S.optional(__S(36, __c4, 4)),
-          downloadStatus: S.optional(__S(36, __c4, 4)),
-          uploadActivity: S.optional(__S(37, __c4, 5)),
-          downloadActivity: S.optional(__S(37, __c4, 5)),
+          uploadStatus: S.optional(__S(2146, __c67, 2)),
+          downloadStatus: S.optional(__S(2146, __c67, 2)),
+          uploadActivity: S.optional(__S(2147, __c67, 3)),
+          downloadActivity: S.optional(__S(2147, __c67, 3)),
           offlineDataTransferStatus: S.optional(S.String),
-          backgroundDataDownloadActivity: S.optional(__S(38, __c4, 6)),
+          backgroundDataDownloadActivity: S.optional(__S(2148, __c67, 4)),
         }),
       ).annotate({ identifier: "ServerEndpointSyncStatus" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
@@ -3231,7 +4568,7 @@ function __c5(j: number): any {
           spaceSavingsBytes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudTieringSpaceSavings" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
@@ -3242,26 +4579,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CloudTieringCachePerformance",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.Number),
           fileCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FilesNotTieringError" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(2152, __c67, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalFileCount: S.optional(S.Number),
-          errors: S.optional(__S(43, __c5, 3)),
+          errors: S.optional(__S(2153, __c67, 9)),
         }),
       ).annotate({
         identifier: "CloudTieringFilesNotTiering",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
@@ -3271,7 +4608,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CloudTieringVolumeFreeSpacePolicyStatus",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
@@ -3280,18 +4617,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CloudTieringDatePolicyStatus",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudTieringLowDiskMode" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
@@ -3299,17 +4632,17 @@ function __c6(j: number): any {
           healthLastUpdatedTimestamp: S.optional(S.String),
           lastCloudTieringResult: S.optional(S.Number),
           lastSuccessTimestamp: S.optional(S.String),
-          spaceSavings: S.optional(__S(40, __c5, 0)),
-          cachePerformance: S.optional(__S(41, __c5, 1)),
-          filesNotTiering: S.optional(__S(44, __c5, 4)),
-          volumeFreeSpacePolicyStatus: S.optional(__S(45, __c5, 5)),
-          datePolicyStatus: S.optional(__S(46, __c5, 6)),
-          lowDiskMode: S.optional(__S(47, __c5, 7)),
+          spaceSavings: S.optional(__S(2150, __c67, 6)),
+          cachePerformance: S.optional(__S(2151, __c67, 7)),
+          filesNotTiering: S.optional(__S(2154, __c67, 10)),
+          volumeFreeSpacePolicyStatus: S.optional(__S(2155, __c67, 11)),
+          datePolicyStatus: S.optional(__S(2156, __c67, 12)),
+          lowDiskMode: S.optional(__S(2157, __c67, 13)),
         }),
       ).annotate({
         identifier: "ServerEndpointCloudTieringStatus",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.Number),
@@ -3318,21 +4651,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ServerEndpointRecallError",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 16:
+      return S.Array(__S(2159, __c67, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestamp: S.optional(S.String),
           totalRecallErrorsCount: S.optional(S.Number),
-          recallErrors: S.optional(__S(50, __c6, 2)),
+          recallErrors: S.optional(__S(2160, __c67, 16)),
         }),
       ).annotate({
         identifier: "ServerEndpointRecallStatus",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3342,28 +4673,24 @@ function __c6(j: number): any {
           progressPercentage: S.optional(S.Number),
           endTime: S.optional(S.String),
           errorCode: S.optional(S.Number),
-          additionalInformation: S.optional(__S(52, __c6, 4)),
+          additionalInformation: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({
         identifier: "ServerEndpointProvisioningStepStatus",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(2162, __c67, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           provisioningStatus: S.optional(S.String),
           provisioningType: S.optional(S.String),
-          provisioningStepStatuses: S.optional(__S(54, __c6, 6)),
+          provisioningStepStatuses: S.optional(__S(2163, __c67, 19)),
         }),
       ).annotate({
         identifier: "ServerEndpointProvisioningStatus",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           serverLocalPath: S.optional(S.String),
@@ -3375,1166 +4702,38 @@ function __c7(j: number): any {
           provisioningState: S.optional(S.String),
           lastWorkflowId: S.optional(S.String),
           lastOperationName: S.optional(S.String),
-          syncStatus: S.optional(__S(39, __c4, 7)),
+          syncStatus: S.optional(__S(2149, __c67, 5)),
           offlineDataTransfer: S.optional(S.String),
           offlineDataTransferStorageAccountResourceId: S.optional(S.String),
           offlineDataTransferStorageAccountTenantId: S.optional(S.String),
           offlineDataTransferShareName: S.optional(S.String),
-          cloudTieringStatus: S.optional(__S(48, __c6, 0)),
-          recallStatus: S.optional(__S(51, __c6, 3)),
+          cloudTieringStatus: S.optional(__S(2158, __c67, 14)),
+          recallStatus: S.optional(__S(2161, __c67, 17)),
           initialDownloadPolicy: S.optional(S.String),
           localCacheMode: S.optional(S.String),
           initialUploadPolicy: S.optional(S.String),
           serverName: S.optional(S.String),
-          serverEndpointProvisioningStatus: S.optional(__S(55, __c6, 7)),
+          serverEndpointProvisioningStatus: S.optional(__S(2164, __c67, 20)),
         }),
       ).annotate({ identifier: "ServerEndpointProperties" });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(56, __c7, 0)),
+          systemData: S.optional(__S(1824, __c57, 0)),
+          properties: S.optional(__S(2165, __c67, 21)),
         }),
       ).annotate({
         identifier: "CreateServerEndpointResponse",
       });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1, __c0, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateStorageSyncServiceRequestIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          incomingTrafficPolicy: S.optional(S.String),
-          useIdentity: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StorageSyncServiceCreateParametersProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(52, __c6, 4)),
-          location: S.String,
-          identity: S.optional(__S(59, __c7, 3)),
-          properties: S.optional(__S(60, __c7, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageSyncServiceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          incomingTrafficPolicy: S.optional(S.String),
-          storageSyncServiceStatus: S.optional(S.Number),
-          storageSyncServiceUid: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          useIdentity: S.optional(S.Boolean),
-          lastWorkflowId: S.optional(S.String),
-          lastOperationName: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "StorageSyncServiceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(65, __c8, 1)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateStorageSyncServiceResponseIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(52, __c6, 4)),
-          location: S.String,
-          properties: S.optional(__S(64, __c8, 0)),
-          identity: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateStorageSyncServiceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateSyncGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueId: S.optional(S.String),
-          syncGroupStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SyncGroupProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "CreateSyncGroupResponse" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCloudEndpointRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegisteredServerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          serverEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServerEndpointRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageSyncServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSyncGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetCloudEndpointRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "GetCloudEndpointResponse" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          workflowId: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/locations/{locationName}/workflows/{workflowId}/operations/{operationId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          requestUri: S.optional(S.String),
-          exceptionType: S.optional(S.String),
-          httpMethod: S.optional(S.String),
-          hashedMessage: S.optional(S.String),
-          httpErrorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageSyncErrorDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          callStack: S.optional(S.String),
-          message: S.optional(S.String),
-          innerException: S.optional(S.String),
-          innerExceptionCallStack: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageSyncInnerErrorDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(81, __c10, 1)),
-          innererror: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "StorageSyncApiError" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          error: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "OperationStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRegisteredServerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          serverEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetServerEndpointRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetStorageSyncServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSyncGroupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          workflowId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows/{workflowId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetWorkflowRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lastStepName: S.optional(S.String),
-          status: S.optional(S.String),
-          operation: S.optional(S.String),
-          steps: S.optional(S.String),
-          lastOperationId: S.optional(S.String),
-          commandName: S.optional(S.String),
-          createdTimestamp: S.optional(S.String),
-          lastStatusTimestamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({ identifier: "GetWorkflowResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCloudEndpointBySyncGroupRequest",
-      });
-    case 6:
-      return S.Array(__S(79, __c9, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(94, __c11, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudEndpointArray" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.StorageSync/operations",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          operation: S.optional(S.String),
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplayInfo" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          toBeExportedForShoebox: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "OperationResourceMetricSpecificationDimension",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          displayDescription: S.optional(S.String),
-          unit: S.optional(S.String),
-          aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(98, __c12, 2)),
-          fillGapWithZero: S.optional(S.Boolean),
-          lockAggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "OperationResourceMetricSpecification",
-      });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metricSpecifications: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "OperationResourceServiceSpecification",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(97, __c12, 1)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "OperationEntity" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(106, __c13, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperationEntityListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionByStorageSyncServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(63, __c7, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkResourceByStorageSyncServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(24, __c3, 0)),
-          requiredZoneNames: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "PrivateLinkResource" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "ListPrivateLinkResourceByStorageSyncServiceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegisteredServerByStorageSyncServiceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "RegisteredServer" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(117, __c14, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegisteredServerArray" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServerEndpointBySyncGroupRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "ServerEndpoint" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(121, __c15, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServerEndpointArray" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListStorageSyncServiceByResourceGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(52, __c6, 4)),
-          location: S.String,
-          properties: S.optional(__S(64, __c8, 0)),
-          identity: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "StorageSyncService" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(125, __c15, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageSyncServiceArray" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/storageSyncServices",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListStorageSyncServiceBySubscriptionRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSyncGroupByStorageSyncServiceRequest",
-      });
-    case 1:
-      return S.Array(__S(71, __c8, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(129, __c16, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SyncGroupArray" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/workflows",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListWorkflowByStorageSyncServiceRequest",
-      });
-    case 4:
-      return S.Array(__S(92, __c11, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(132, __c16, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowArray" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          locationName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageSync/locations/{locationName}/operations/{operationId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "LocationOperationStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          error: S.optional(__S(83, __c10, 3)),
-          percentComplete: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LocationOperationStatus" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-          azureFileShare: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/postbackup",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PostCloudEndpointBackupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cloudEndpointName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PostBackupResponseProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backupMetadata: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "PostBackupResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-          partition: S.optional(S.String),
-          replicaGroup: S.optional(S.String),
-          requestId: S.optional(S.String),
-          azureFileShareUri: S.optional(S.String),
-          status: S.optional(S.String),
-          sourceAzureFileShareUri: S.optional(S.String),
-          backupMetadataPropertyBag: S.optional(S.String),
-          restoreFileSpec: S.optional(__S(7, __c0, 7)),
-          pauseWaitForSyncDrainTimePeriodInSeconds: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/prerestore",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreCloudEndpointsPreRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          serverEndpointName: S.String.pipe(T.Label()),
-          pattern: S.optional(S.String),
-          recallPath: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}/recallAction",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ServerEndpointsRecallActionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-          directoryPath: S.optional(S.String),
-          changeDetectionMode: S.optional(S.String),
-          paths: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}/triggerChangeDetection",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerCloudEndpointChangeDetectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          serverCertificate: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}/triggerRollover",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerRegisteredServerRolloverRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          changeEnumerationIntervalDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CloudEndpointUpdateProperties",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          cloudEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(143, __c17, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/cloudEndpoints/{cloudEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCloudEndpointRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.Boolean),
-          applicationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegisteredServerUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(145, __c18, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/registeredServers/{serverId}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRegisteredServerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cloudTiering: S.optional(S.String),
-          volumeFreeSpacePercent: S.optional(S.Number),
-          tierFilesOlderThanDays: S.optional(S.Number),
-          offlineDataTransfer: S.optional(S.String),
-          offlineDataTransferShareName: S.optional(S.String),
-          localCacheMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServerEndpointUpdateProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          syncGroupName: S.String.pipe(T.Label()),
-          serverEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(147, __c18, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/syncGroups/{syncGroupName}/serverEndpoints/{serverEndpointName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateServerEndpointRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageSyncServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(52, __c6, 4)),
-          identity: S.optional(__S(59, __c7, 3)),
-          properties: S.optional(__S(60, __c7, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}",
-            code: 200,
-            apiVersion: "2025-12-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageSyncServiceRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

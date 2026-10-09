@@ -691,8 +691,8 @@ export const getPaymentMethod: API.OperationMethod<
   GetPaymentMethodError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetPaymentMethodRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetPaymentMethodResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetPaymentMethodRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetPaymentMethodResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -713,8 +713,8 @@ export const listPaymentMethod: API.PaginatedOperationMethod<
   PaymentMethodListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ListPaymentMethodRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<ListPaymentMethodResponse>,
+    input: __S(17, __c2, 1) as any as S.Schema<ListPaymentMethodRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListPaymentMethodResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -747,7 +747,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeletePaymentMethodResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -755,13 +759,17 @@ function __c0(j: number): any {
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/payment_methods/{id}", code: 200 })),
       ).annotate({ identifier: "GetPaymentMethodRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPaymentMethodResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -773,18 +781,18 @@ function __c0(j: number): any {
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           future_usage: S.optional(S.String.pipe(T.Query())),
-          payment_method_types: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          card_brands: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          card_funding_types: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          payment_method_types: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          card_brands: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          card_funding_types: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           has_payer_document: S.optional(S.Boolean.pipe(T.Query())),
           expired: S.optional(S.Boolean.pipe(T.Query())),
           broken: S.optional(S.Boolean.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/payment_methods", code: 200 })),
       ).annotate({ identifier: "ListPaymentMethodRequest" });
-    case 6:
+    case 2:
       return S.Array(S.Unknown);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -793,22 +801,17 @@ function __c0(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(6, __c0, 6),
-          page_info: __S(7, __c0, 7),
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListPaymentMethodResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

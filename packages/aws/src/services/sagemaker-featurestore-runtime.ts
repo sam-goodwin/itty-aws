@@ -284,8 +284,8 @@ export const batchGetRecord: API.OperationMethod<
   BatchGetRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchGetRecordRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BatchGetRecordResponse>,
+  input: __S(34, __c4, 2) as any as S.Schema<BatchGetRecordRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<BatchGetRecordResponse>,
   errors: [AccessForbidden, InternalFailure, ServiceUnavailable, ValidationError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -315,8 +315,8 @@ export const batchWriteRecord: API.OperationMethod<
   BatchWriteRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BatchWriteRecordRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchWriteRecordResponse>,
+  input: __S(58, __c7, 2) as any as S.Schema<BatchWriteRecordRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<BatchWriteRecordResponse>,
   errors: [AccessForbidden, InternalFailure, ResourceNotFound, ServiceUnavailable, ValidationError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -369,8 +369,8 @@ export const deleteRecord: API.OperationMethod<
   DeleteRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteRecordRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteRecordResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteRecordRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteRecordResponse>,
   errors: [
     AccessForbidden,
     InternalFailure,
@@ -402,8 +402,8 @@ export const getRecord: API.OperationMethod<
   GetRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetRecordRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetRecordResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRecordRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetRecordResponse>,
   errors: [
     AccessForbidden,
     InternalFailure,
@@ -436,8 +436,8 @@ export const listRecords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ValueAsString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListRecordsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListRecordsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListRecordsRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ListRecordsResponse>,
   errors: [AccessForbidden, InternalFailure, ResourceNotFound, ServiceUnavailable, ValidationError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -484,8 +484,8 @@ export const putRecord: API.OperationMethod<
   PutRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PutRecordRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutRecordResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<PutRecordRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<PutRecordResponse>,
   errors: [
     AccessForbidden,
     InternalFailure,
@@ -535,8 +535,8 @@ export const updateRecord: API.OperationMethod<
   UpdateRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateRecordRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateRecordResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateRecordRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateRecordResponse>,
   errors: [
     AccessForbidden,
     ConflictException,
@@ -554,152 +554,13 @@ export const updateRecord: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureGroupName: S.optional(S.String),
-          RecordIdentifiersValueAsString: S.optional(__S(0, __c0, 0)),
-          FeatureNames: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchGetRecordIdentifier" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Identifiers: S.optional(__S(2, __c0, 2)),
-          ExpirationTimeResponse: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/BatchGetRecord" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetRecordRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureName: S.optional(S.String),
-          ValueAsString: S.optional(S.String),
-          ValueAsStringList: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "FeatureValue" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureGroupName: S.optional(S.String),
-          RecordIdentifierValueAsString: S.optional(S.String),
-          Record: S.optional(__S(5, __c0, 5)),
-          ExpiresAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchGetRecordResultDetail",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureGroupName: S.optional(S.String),
-          RecordIdentifierValueAsString: S.optional(S.String),
-          ErrorCode: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchGetRecordError" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Records: S.optional(__S(7, __c0, 7)),
-          Errors: S.optional(__S(9, __c1, 1)),
-          UnprocessedIdentifiers: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "BatchGetRecordResponse" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Unit: S.optional(S.String), Value: S.optional(S.Number) }),
-      ).annotate({ identifier: "TtlDuration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureGroupName: S.optional(S.String),
-          Record: S.optional(__S(5, __c0, 5)),
-          TargetStores: S.optional(__S(11, __c1, 3)),
-          TtlDuration: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "BatchWriteRecordEntry" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Entries: S.optional(__S(14, __c1, 6)),
-          TtlDuration: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/BatchWriteRecord" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchWriteRecordRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Entry: S.optional(__S(13, __c1, 5)),
-          ErrorCode: S.optional(S.String),
-          ErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchWriteRecordError" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Errors: S.optional(__S(17, __c2, 1)),
-          UnprocessedEntries: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "BatchWriteRecordResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
           RecordIdentifierValueAsString: S.optional(S.String).pipe(
             T.HttpQuery("RecordIdentifierValueAsString"),
           ),
-          EventTime: S.optional(S.String).pipe(T.HttpQuery("EventTime")),
-          TargetStores: S.optional(__S(11, __c1, 3)).pipe(T.HttpQuery("TargetStores")),
-          DeletionMode: S.optional(S.String).pipe(T.HttpQuery("DeletionMode")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/FeatureGroup/{FeatureGroupName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteRecordRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRecordResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
-          RecordIdentifierValueAsString: S.optional(S.String).pipe(
-            T.HttpQuery("RecordIdentifierValueAsString"),
-          ),
-          FeatureNames: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("FeatureName")),
+          FeatureNames: S.optional(__S(40, __c5, 0)).pipe(T.HttpQuery("FeatureName")),
           ExpirationTimeResponse: S.optional(S.String).pipe(T.HttpQuery("ExpirationTimeResponse")),
         }).pipe(
           T.all(
@@ -712,11 +573,15 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetRecordRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Record: S.optional(__S(5, __c0, 5)), ExpiresAt: S.optional(S.String) }),
+        S.Struct({ Record: S.optional(__S(49, __c6, 1)), ExpiresAt: S.optional(S.String) }),
       ).annotate({ identifier: "GetRecordResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
@@ -734,24 +599,24 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListRecordsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RecordIdentifiers: S.optional(__S(40, __c5, 0)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRecordsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RecordIdentifiers: S.optional(__S(0, __c0, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRecordsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
-          Record: S.optional(__S(5, __c0, 5)),
-          TargetStores: S.optional(__S(11, __c1, 3)),
-          TtlDuration: S.optional(__S(12, __c1, 4)),
+          Record: S.optional(__S(49, __c6, 1)),
+          TargetStores: S.optional(__S(72, __c9, 0)),
+          TtlDuration: S.optional(__S(64, __c8, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/FeatureGroup/{FeatureGroupName}" }),
@@ -763,14 +628,18 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutRecordRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
           RecordIdentifierValueAsString: S.optional(S.String),
-          Features: S.optional(__S(5, __c0, 5)),
-          TargetStores: S.optional(__S(11, __c1, 3)),
-          TtlDuration: S.optional(__S(12, __c1, 4)),
+          Features: S.optional(__S(49, __c6, 1)),
+          TargetStores: S.optional(__S(72, __c9, 0)),
+          TtlDuration: S.optional(__S(64, __c8, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/FeatureGroup/{FeatureGroupName}/Record" }),
@@ -784,7 +653,169 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateRecordRequest" });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureGroupName: S.optional(S.String),
+          RecordIdentifiersValueAsString: S.optional(__S(40, __c5, 0)),
+          FeatureNames: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({ identifier: "BatchGetRecordIdentifier" });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Identifiers: S.optional(__S(33, __c4, 1)),
+          ExpirationTimeResponse: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchGetRecord" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetRecordRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureGroupName: S.optional(S.String),
+          RecordIdentifierValueAsString: S.optional(S.String),
+          Record: S.optional(__S(49, __c6, 1)),
+          ExpiresAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetRecordResultDetail",
+      });
+    case 4:
+      return S.Array(__S(35, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureGroupName: S.optional(S.String),
+          RecordIdentifierValueAsString: S.optional(S.String),
+          ErrorCode: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchGetRecordError" });
+    case 6:
+      return S.Array(__S(37, __c4, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Records: S.optional(__S(36, __c4, 4)),
+          Errors: S.optional(__S(38, __c4, 6)),
+          UnprocessedIdentifiers: S.optional(__S(33, __c4, 1)),
+        }),
+      ).annotate({ identifier: "BatchGetRecordResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureName: S.optional(S.String),
+          ValueAsString: S.optional(S.String),
+          ValueAsStringList: S.optional(__S(40, __c5, 0)),
+        }),
+      ).annotate({ identifier: "FeatureValue" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureGroupName: S.optional(S.String),
+          Record: S.optional(__S(49, __c6, 1)),
+          TargetStores: S.optional(__S(72, __c9, 0)),
+          TtlDuration: S.optional(__S(64, __c8, 0)),
+        }),
+      ).annotate({ identifier: "BatchWriteRecordEntry" });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Entries: S.optional(__S(57, __c7, 1)),
+          TtlDuration: S.optional(__S(64, __c8, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchWriteRecord" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchWriteRecordRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Entry: S.optional(__S(56, __c7, 0)),
+          ErrorCode: S.optional(S.String),
+          ErrorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchWriteRecordError" });
+    case 4:
+      return S.Array(__S(59, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Errors: S.optional(__S(60, __c7, 4)),
+          UnprocessedEntries: S.optional(__S(57, __c7, 1)),
+        }),
+      ).annotate({ identifier: "BatchWriteRecordResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Unit: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "TtlDuration" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
+          RecordIdentifierValueAsString: S.optional(S.String).pipe(
+            T.HttpQuery("RecordIdentifierValueAsString"),
+          ),
+          EventTime: S.optional(S.String).pipe(T.HttpQuery("EventTime")),
+          TargetStores: S.optional(__S(72, __c9, 0)).pipe(T.HttpQuery("TargetStores")),
+          DeletionMode: S.optional(S.String).pipe(T.HttpQuery("DeletionMode")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/FeatureGroup/{FeatureGroupName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteRecordRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteRecordResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

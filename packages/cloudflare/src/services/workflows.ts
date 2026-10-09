@@ -976,8 +976,8 @@ export const bulkInstance: API.PaginatedOperationMethod<
   InstancesBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<BulkInstanceRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<BulkInstanceResponse>,
+    input: __S(245, __c15, 5) as any as S.Schema<BulkInstanceRequest>,
+    output: __S(248, __c15, 8) as any as S.Schema<BulkInstanceResponse>,
     errors: [
       WorkflowNotFound,
       InstanceAlreadyExists,
@@ -1006,8 +1006,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateInstanceResponse>,
+  input: __S(259, __c16, 3) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(260, __c16, 4) as any as S.Schema<CreateInstanceResponse>,
   errors: [
     WorkflowNotFound,
     InstanceAlreadyExists,
@@ -1033,8 +1033,8 @@ export const createInstanceEvent: API.OperationMethod<
   CreateInstanceEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateInstanceEventRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateInstanceEventResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateInstanceEventRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateInstanceEventResponse>,
   errors: [
     WorkflowNotFound,
     InvalidRoute,
@@ -1055,8 +1055,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [WorkflowNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1074,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetInstanceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetInstanceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(39, __c2, 7) as any as S.Schema<GetInstanceResponse>,
   errors: [
     WorkflowNotFound,
     InvalidRoute,
@@ -1095,8 +1095,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetVersionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetVersionResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<GetVersionResponse>,
   errors: [WorkflowNotFound, InvalidRoute, VersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetWorkflowResponse>,
   errors: [WorkflowNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1125,8 +1125,8 @@ export const graphVersion: API.OperationMethod<
   GraphVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GraphVersionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GraphVersionResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GraphVersionRequest>,
+  output: __S(137, __c8, 9) as any as S.Schema<GraphVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1147,8 @@ export const listInstances: API.PaginatedOperationMethod<
   InstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(47, __c5, 7) as any as S.Schema<ListInstancesRequest>,
-    output: __S(50, __c6, 2) as any as S.Schema<ListInstancesResponse>,
+    input: __S(144, __c9, 0) as any as S.Schema<ListInstancesRequest>,
+    output: __S(147, __c9, 3) as any as S.Schema<ListInstancesResponse>,
     errors: [
       WorkflowNotFound,
       WorkflowInternalError,
@@ -1180,8 +1180,8 @@ export const listVersions: API.PaginatedOperationMethod<
   VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(51, __c6, 3) as any as S.Schema<ListVersionsRequest>,
-    output: __S(54, __c6, 6) as any as S.Schema<ListVersionsResponse>,
+    input: __S(160, __c10, 0) as any as S.Schema<ListVersionsRequest>,
+    output: __S(163, __c10, 3) as any as S.Schema<ListVersionsResponse>,
     errors: [WorkflowNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1206,8 +1206,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(55, __c6, 7) as any as S.Schema<ListWorkflowsRequest>,
-    output: __S(58, __c7, 2) as any as S.Schema<ListWorkflowsResponse>,
+    input: __S(176, __c11, 0) as any as S.Schema<ListWorkflowsRequest>,
+    output: __S(179, __c11, 3) as any as S.Schema<ListWorkflowsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1235,8 +1235,8 @@ export const patchInstanceStatus: API.OperationMethod<
   PatchInstanceStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PatchInstanceStatusRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PatchInstanceStatusResponse>,
+  input: __S(193, __c12, 1) as any as S.Schema<PatchInstanceStatusRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<PatchInstanceStatusResponse>,
   errors: [
     WorkflowNotFound,
     InvalidRoute,
@@ -1257,8 +1257,8 @@ export const putWorkflow: API.OperationMethod<
   PutWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<PutWorkflowRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<PutWorkflowResponse>,
+  input: __S(215, __c13, 7) as any as S.Schema<PutWorkflowRequest>,
+  output: __S(216, __c13, 8) as any as S.Schema<PutWorkflowResponse>,
   errors: [WorkflowInternalError, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1272,8 +1272,8 @@ export const stepInstance: API.OperationMethod<
   StepInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<StepInstanceRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<StepInstanceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<StepInstanceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<StepInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1283,113 +1283,6 @@ export const stepInstance: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorRetention: S.optional(__S(0, __c0, 0).pipe(T.Body("error_retention"))),
-          successRetention: S.optional(__S(1, __c0, 1).pipe(T.Body("success_retention"))),
-        }),
-      ).annotate({
-        identifier: "InstancesBulkRequestBodyItemInstanceRetention",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
-          instanceRetention: S.optional(__S(2, __c0, 2).pipe(T.Body("instance_retention"))),
-          locationHint: S.optional(S.String.pipe(T.Body("location_hint"))),
-          params: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesBulkRequestBodyItem",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          workflowName: S.String.pipe(T.Label("workflow_name")),
-          body: __S(4, __c0, 4).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/batch",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkInstanceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          versionId: S.String.pipe(T.Body("version_id")),
-          workflowId: S.String.pipe(T.Body("workflow_id")),
-          triggerSource: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_source"))),
-        }),
-      ).annotate({ identifier: "InstancesBulkResultItem" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(7, __c0, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkInstanceResponse" });
-    case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          errorRetention: S.optional(__S(9, __c1, 1).pipe(T.Body("error_retention"))),
-          successRetention: S.optional(__S(10, __c1, 2).pipe(T.Body("success_retention"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestInstanceRetention",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          workflowName: S.String.pipe(T.Label("workflow_name")),
-          instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
-          instanceRetention: S.optional(__S(11, __c1, 3).pipe(T.Body("instance_retention"))),
-          locationHint: S.optional(S.String.pipe(T.Body("location_hint"))),
-          params: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/workflows/{workflow_name}/instances",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateInstanceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          versionId: S.String.pipe(T.Body("version_id")),
-          workflowId: S.String.pipe(T.Body("workflow_id")),
-          triggerSource: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_source"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateInstanceResponse" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1408,7 +1301,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateInstanceEventRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String,
@@ -1419,7 +1312,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1443,7 +1336,11 @@ function __c2(j: number): any {
           success: S.Boolean,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWorkflowResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1461,27 +1358,18 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInstanceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "InstancesGetResponseError",
-      });
-    case 4:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          error: __S(19, __c2, 3),
+          error: __S(48, __c3, 0),
           outcome: S.String,
         }),
       ).annotate({
         identifier: "InstancesGetResponseRollback",
       });
-    case 6:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["attempts", "config", "end", "name", "output", "start", "success", "type"],
@@ -1490,13 +1378,9 @@ function __c2(j: number): any {
           ["end", "error", "finished", "name", "start", "type", "eventType", "output"],
         ]),
       );
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           source: S.String,
@@ -1504,7 +1388,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "InstancesGetResponseTrigger",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           cron: S.String,
@@ -1513,26 +1397,43 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "InstancesGetResponseSchedule",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           end: S.String,
-          error: __S(19, __c2, 3),
-          output: __S(20, __c2, 4),
+          error: __S(48, __c3, 0),
+          output: __S(33, __c2, 1),
           params: S.Unknown,
           queued: S.String,
-          rollback: __S(21, __c2, 5),
+          rollback: __S(34, __c2, 2),
           start: S.String,
           status: S.String,
           stepCount: S.Number.pipe(T.Body("step_count")),
-          steps: __S(23, __c2, 7),
+          steps: __S(36, __c2, 4),
           success: S.Boolean,
-          trigger: __S(24, __c3, 0),
+          trigger: __S(37, __c2, 5),
           versionId: S.String,
-          schedule: S.optional(S.NullOr(__S(25, __c3, 1))),
+          schedule: S.optional(S.NullOr(__S(38, __c2, 6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInstanceResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "InstancesGetResponseError",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1548,32 +1449,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVersionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "VersionsGetResponseConcurrency",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("error_retention"))),
-          successRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("success_retention"))),
-        }),
-      ).annotate({
-        identifier: "VersionsGetResponseDefaultRetention",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "VersionsGetResponseLimits",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1583,16 +1459,45 @@ function __c3(j: number): any {
           language: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           workflowId: S.String.pipe(T.Body("workflow_id")),
-          concurrency: S.optional(S.NullOr(__S(28, __c3, 4))),
+          concurrency: S.optional(S.NullOr(__S(80, __c5, 0))),
           defaultRetention: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("default_retention")),
+            S.NullOr(__S(81, __c5, 1)).pipe(T.Body("default_retention")),
           ),
-          limits: S.optional(S.NullOr(__S(30, __c3, 6))),
+          limits: S.optional(S.NullOr(__S(82, __c5, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVersionResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "VersionsGetResponseConcurrency",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("error_retention"))),
+          successRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("success_retention"))),
+        }),
+      ).annotate({
+        identifier: "VersionsGetResponseDefaultRetention",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "VersionsGetResponseLimits",
+      });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1610,32 +1515,40 @@ function __c4(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWorkflowRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          className: S.String.pipe(T.Body("class_name")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          instances: __S(112, __c7, 0),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          name: S.String,
+          scriptName: S.String.pipe(T.Body("script_name")),
+          triggeredOn: S.String.pipe(T.Body("triggered_on")),
+          schedules: S.optional(S.NullOr(__S(114, __c7, 2))),
+          scriptDeleted: S.optional(S.NullOr(S.Boolean).pipe(T.Body("script_deleted"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetWorkflowResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Number);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cron: S.String,
           nextInstance: S.String.pipe(T.Body("next_instance")),
         }),
       ).annotate({ identifier: "GetResponseSchedulesItem" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          className: S.String.pipe(T.Body("class_name")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          instances: __S(33, __c4, 1),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          name: S.String,
-          scriptName: S.String.pipe(T.Body("script_name")),
-          triggeredOn: S.String.pipe(T.Body("triggered_on")),
-          schedules: S.optional(S.NullOr(__S(35, __c4, 3))),
-          scriptDeleted: S.optional(S.NullOr(S.Boolean).pipe(T.Body("script_deleted"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetWorkflowResponse" });
-    case 5:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1651,25 +1564,21 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GraphVersionRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          nodes: __S(38, __c4, 6),
+          nodes: __S(129, __c8, 1),
           type: S.String,
         }),
       ).annotate({
         identifier: "VersionsGraphResponseGraphWorkflowFunctionsValue",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(39, __c4, 7));
-    case 1:
+    case 3:
+      return S.Record(S.String, __S(130, __c8, 2));
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -1709,47 +1618,51 @@ function __c5(j: number): any {
           },
         ),
       );
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(132, __c8, 4));
+    case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
           key: "type",
           values: ["unknown", "object"],
         }),
       );
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           className: S.String.pipe(T.Body("class_name")),
-          functions: __S(40, __c5, 0),
-          nodes: __S(42, __c5, 2),
-          payload: S.optional(S.NullOr(__S(43, __c5, 3))),
+          functions: __S(131, __c8, 3),
+          nodes: __S(133, __c8, 5),
+          payload: S.optional(S.NullOr(__S(134, __c8, 6))),
         }),
       ).annotate({
         identifier: "VersionsGraphResponseGraphWorkflow",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           version: S.Number,
-          workflow: __S(44, __c5, 4),
+          workflow: __S(135, __c8, 7),
         }),
       ).annotate({
         identifier: "VersionsGraphResponseGraph",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           className: S.String.pipe(T.Body("class_name")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          graph: __S(45, __c5, 5),
+          graph: __S(136, __c8, 8),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           workflowId: S.String.pipe(T.Body("workflow_id")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GraphVersionResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1771,11 +1684,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInstancesRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1789,16 +1698,20 @@ function __c6(j: number): any {
           triggerSource: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_source"))),
         }),
       ).annotate({ identifier: "InstancesListResultItem" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(49, __c6, 1).pipe(T.EnvelopePayload()),
+          result: __S(146, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1815,7 +1728,7 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListVersionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1825,23 +1738,27 @@ function __c6(j: number): any {
           language: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           workflowId: S.String.pipe(T.Body("workflow_id")),
-          concurrency: S.optional(S.NullOr(__S(28, __c3, 4))),
+          concurrency: S.optional(S.NullOr(__S(80, __c5, 0))),
           defaultRetention: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("default_retention")),
+            S.NullOr(__S(81, __c5, 1)).pipe(T.Body("default_retention")),
           ),
-          limits: S.optional(S.NullOr(__S(30, __c3, 6))),
+          limits: S.optional(S.NullOr(__S(82, __c5, 2))),
         }),
       ).annotate({ identifier: "VersionsListResultItem" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(53, __c6, 5).pipe(T.EnvelopePayload()),
+          result: __S(162, __c10, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1852,35 +1769,35 @@ function __c6(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/workflows", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWorkflowsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           className: S.String.pipe(T.Body("class_name")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          instances: __S(33, __c4, 1),
+          instances: __S(112, __c7, 0),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           scriptName: S.String.pipe(T.Body("script_name")),
           triggeredOn: S.String.pipe(T.Body("triggered_on")),
-          schedules: S.optional(S.NullOr(__S(35, __c4, 3))),
+          schedules: S.optional(S.NullOr(__S(114, __c7, 2))),
           scriptDeleted: S.optional(S.NullOr(S.Boolean).pipe(T.Body("script_deleted"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(57, __c7, 1).pipe(T.EnvelopePayload()),
+          result: __S(178, __c11, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWorkflowsResponse" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1890,7 +1807,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InstancesStatusEditRequestFrom",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1898,7 +1815,7 @@ function __c7(j: number): any {
           instanceId: S.String.pipe(T.Label("instance_id")),
           status: S.String,
           rollback: S.optional(S.Boolean),
-          from: S.optional(__S(59, __c7, 3)),
+          from: S.optional(__S(192, __c12, 0)),
         })
           .pipe(
             T.Http({
@@ -1911,7 +1828,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchInstanceStatusRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1920,36 +1837,36 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchInstanceStatusResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateRequestConcurrency" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          errorRetention: S.optional(__S(63, __c7, 7).pipe(T.Body("error_retention"))),
-          successRetention: S.optional(__S(64, __c8, 0).pipe(T.Body("success_retention"))),
+          errorRetention: S.optional(__S(209, __c13, 1).pipe(T.Body("error_retention"))),
+          successRetention: S.optional(__S(210, __c13, 2).pipe(T.Body("success_retention"))),
         }),
       ).annotate({
         identifier: "UpdateRequestDefaultRetention",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           steps: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpdateRequestLimits" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           cron: S.String,
@@ -1957,19 +1874,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateRequestSchedulesItem",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(213, __c13, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           workflowName: S.String.pipe(T.Label("workflow_name")),
           className: S.String.pipe(T.Body("class_name")),
           scriptName: S.String.pipe(T.Body("script_name")),
-          concurrency: S.optional(__S(62, __c7, 6)),
-          defaultRetention: S.optional(__S(65, __c8, 1).pipe(T.Body("default_retention"))),
-          limits: S.optional(__S(66, __c8, 2)),
-          schedules: S.optional(__S(68, __c8, 4)),
+          concurrency: S.optional(__S(208, __c13, 0)),
+          defaultRetention: S.optional(__S(211, __c13, 3).pipe(T.Body("default_retention"))),
+          limits: S.optional(__S(212, __c13, 4)),
+          schedules: S.optional(__S(214, __c13, 6)),
         })
           .pipe(
             T.Http({
@@ -1980,7 +1897,7 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutWorkflowRequest" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1995,7 +1912,11 @@ function __c8(j: number): any {
           versionId: S.String.pipe(T.Body("version_id")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutWorkflowResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2014,14 +1935,10 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "StepInstanceRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          error: __S(19, __c2, 3),
+          error: __S(48, __c3, 0),
           status: S.String,
           eventType: S.optional(S.NullOr(S.String).pipe(T.Body("event_type"))),
           output: S.optional(S.NullOr(S.Unknown)),
@@ -2029,7 +1946,117 @@ function __c9(j: number): any {
       ).annotate({ identifier: "StepInstanceResponse" });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorRetention: S.optional(__S(240, __c15, 0).pipe(T.Body("error_retention"))),
+          successRetention: S.optional(__S(241, __c15, 1).pipe(T.Body("success_retention"))),
+        }),
+      ).annotate({
+        identifier: "InstancesBulkRequestBodyItemInstanceRetention",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+          instanceRetention: S.optional(__S(242, __c15, 2).pipe(T.Body("instance_retention"))),
+          locationHint: S.optional(S.String.pipe(T.Body("location_hint"))),
+          params: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesBulkRequestBodyItem",
+      });
+    case 4:
+      return S.Array(__S(243, __c15, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workflowName: S.String.pipe(T.Label("workflow_name")),
+          body: __S(244, __c15, 4).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/batch",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkInstanceRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          versionId: S.String.pipe(T.Body("version_id")),
+          workflowId: S.String.pipe(T.Body("workflow_id")),
+          triggerSource: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_source"))),
+        }),
+      ).annotate({ identifier: "InstancesBulkResultItem" });
+    case 7:
+      return S.Array(__S(246, __c15, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(247, __c15, 7).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkInstanceResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorRetention: S.optional(__S(256, __c16, 0).pipe(T.Body("error_retention"))),
+          successRetention: S.optional(__S(257, __c16, 1).pipe(T.Body("success_retention"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestInstanceRetention",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workflowName: S.String.pipe(T.Label("workflow_name")),
+          instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
+          instanceRetention: S.optional(__S(258, __c16, 2).pipe(T.Body("instance_retention"))),
+          locationHint: S.optional(S.String.pipe(T.Body("location_hint"))),
+          params: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workflows/{workflow_name}/instances",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateInstanceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          versionId: S.String.pipe(T.Body("version_id")),
+          workflowId: S.String.pipe(T.Body("workflow_id")),
+          triggerSource: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_source"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateInstanceResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

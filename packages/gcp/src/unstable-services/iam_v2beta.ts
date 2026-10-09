@@ -197,7 +197,7 @@ export const createPolicyPolicies: API.OperationMethod<
   CreatePolicyPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreatePolicyPoliciesRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePolicyPoliciesRequest>,
   output: __S(11, __c1, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -212,7 +212,7 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeletePoliciesRequest>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeletePoliciesRequest>,
   output: __S(11, __c1, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -227,8 +227,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GoogleIamV2betaPolicy>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetPoliciesRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<GoogleIamV2betaPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -242,7 +242,7 @@ export const getPoliciesOperations: API.OperationMethod<
   GetPoliciesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetPoliciesOperationsRequest>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetPoliciesOperationsRequest>,
   output: __S(11, __c1, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -258,8 +258,8 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleIamV2betaListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListPoliciesPoliciesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleIamV2betaListPoliciesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListPoliciesPoliciesRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GoogleIamV2betaListPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -274,7 +274,7 @@ export const updatePolicies: API.OperationMethod<
   UpdatePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdatePoliciesRequest>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdatePoliciesRequest>,
   output: __S(11, __c1, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -287,58 +287,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(S.String),
-          expression: S.optional(S.String),
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeExpr" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          denialCondition: S.optional(__S(0, __c0, 0)),
-          deniedPrincipals: S.optional(__S(1, __c0, 1)),
-          exceptionPermissions: S.optional(__S(1, __c0, 1)),
-          deniedPermissions: S.optional(__S(1, __c0, 1)),
-          exceptionPrincipals: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GoogleIamV2betaDenyRule" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          denyRule: S.optional(__S(2, __c0, 2)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV2betaPolicyRule",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          rules: S.optional(__S(4, __c0, 4)),
-          displayName: S.optional(S.String),
-          annotations: S.optional(__S(5, __c0, 5)),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleIamV2betaPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           policyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -377,7 +328,64 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          expression: S.optional(S.String),
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeExpr" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          denialCondition: S.optional(__S(16, __c2, 0)),
+          deniedPrincipals: S.optional(__S(17, __c2, 1)),
+          exceptionPermissions: S.optional(__S(17, __c2, 1)),
+          deniedPermissions: S.optional(__S(17, __c2, 1)),
+          exceptionPrincipals: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GoogleIamV2betaDenyRule" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          denyRule: S.optional(__S(18, __c2, 2)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV2betaPolicyRule",
+      });
     case 4:
+      return S.Array(__S(19, __c2, 3));
+    case 5:
+      return S.Record(S.String, S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          rules: S.optional(__S(20, __c2, 4)),
+          displayName: S.optional(S.String),
+          annotations: S.optional(__S(21, __c2, 5)),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleIamV2betaPolicy" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -390,7 +398,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoliciesRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -398,7 +410,11 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "v2beta/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetPoliciesRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -408,7 +424,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPoliciesOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -424,33 +444,32 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListPoliciesPoliciesRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(6, __c0, 6));
     case 1:
+      return S.Array(__S(22, __c2, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(16, __c2, 0)),
+          policies: S.optional(__S(49, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV2betaListPoliciesResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v2beta/{+name}", baseUrl: "https://iam.googleapis.com/" }),
         ),
       ).annotate({ identifier: "UpdatePoliciesRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

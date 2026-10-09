@@ -106,7 +106,7 @@ export class BadRequestException
     "BadRequestException",
     {
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(85, __c10, 5)).annotate({ identifier: "ErrorDetails" }),
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({ identifier: "ErrorDetails" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -117,7 +117,7 @@ export class InternalServerErrorException
     "InternalServerErrorException",
     {
       ErrorDetails: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(85, __c10, 5)).annotate({ identifier: "ErrorDetails" }),
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({ identifier: "ErrorDetails" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -137,14 +137,14 @@ export interface AssociateServiceRoleToAccountResponse {
   AssociatedAt?: string;
 }
 export type __mapOf__string = { [key: string]: string | undefined };
-const __mapOf__string = /*@__PURE__*/ __L.at(__c0, 3);
+const __mapOf__string = /*@__PURE__*/ __L.at(__c53, 0);
 export interface Connector {
   ConnectorArn?: string;
   Id?: string;
   Parameters?: { [key: string]: string | undefined };
 }
 export type __listOfConnector = Connector[];
-const __listOfConnector = /*@__PURE__*/ __L.at(__c0, 5);
+const __listOfConnector = /*@__PURE__*/ __L.at(__c54, 1);
 export interface ConnectorDefinitionVersion {
   Connectors?: Connector[];
 }
@@ -182,7 +182,7 @@ export interface Core {
   ThingArn?: string;
 }
 export type __listOfCore = Core[];
-const __listOfCore = /*@__PURE__*/ __L.at(__c1, 5);
+const __listOfCore = /*@__PURE__*/ __L.at(__c83, 1);
 export interface CoreDefinitionVersion {
   Cores?: Core[];
 }
@@ -289,7 +289,7 @@ export interface ResourceAccessPolicy {
   ResourceId?: string;
 }
 export type __listOfResourceAccessPolicy = ResourceAccessPolicy[];
-const __listOfResourceAccessPolicy = /*@__PURE__*/ __L.at(__c3, 3);
+const __listOfResourceAccessPolicy = /*@__PURE__*/ __L.at(__c3, 5);
 export interface FunctionConfigurationEnvironment {
   AccessSysfs?: boolean;
   Execution?: FunctionExecutionConfig;
@@ -312,7 +312,7 @@ export interface Function {
   Id?: string;
 }
 export type __listOfFunction = Function[];
-const __listOfFunction = /*@__PURE__*/ __L.at(__c3, 7);
+const __listOfFunction = /*@__PURE__*/ __L.at(__c3, 9);
 export interface FunctionDefinitionVersion {
   DefaultConfig?: FunctionDefaultConfig;
   Functions?: Function[];
@@ -403,7 +403,7 @@ export interface Logger {
   Type?: LoggerType;
 }
 export type __listOfLogger = Logger[];
-const __listOfLogger = /*@__PURE__*/ __L.at(__c5, 2);
+const __listOfLogger = /*@__PURE__*/ __L.at(__c12, 1);
 export interface LoggerDefinitionVersion {
   Loggers?: Logger[];
 }
@@ -461,7 +461,7 @@ export interface SageMakerMachineLearningModelResourceData {
   SageMakerJobArn?: string;
 }
 export type __listOf__string = string[];
-const __listOf__string = /*@__PURE__*/ __L.at(__c6, 4);
+const __listOf__string = /*@__PURE__*/ __L.at(__c16, 0);
 export interface SecretsManagerSecretResourceData {
   ARN?: string;
   AdditionalStagingLabelsToDownload?: string[];
@@ -479,7 +479,7 @@ export interface Resource {
   ResourceDataContainer?: ResourceDataContainer;
 }
 export type __listOfResource = Resource[];
-const __listOfResource = /*@__PURE__*/ __L.at(__c7, 0);
+const __listOfResource = /*@__PURE__*/ __L.at(__c17, 9);
 export interface ResourceDefinitionVersion {
   Resources?: Resource[];
 }
@@ -551,7 +551,7 @@ export interface Subscription {
   Target?: string;
 }
 export type __listOfSubscription = Subscription[];
-const __listOfSubscription = /*@__PURE__*/ __L.at(__c7, 7);
+const __listOfSubscription = /*@__PURE__*/ __L.at(__c24, 1);
 export interface SubscriptionDefinitionVersion {
   Subscriptions?: Subscription[];
 }
@@ -669,7 +669,7 @@ export interface ConnectivityInfo {
   PortNumber?: number;
 }
 export type __listOfConnectivityInfo = ConnectivityInfo[];
-const __listOfConnectivityInfo = /*@__PURE__*/ __L.at(__c11, 1);
+const __listOfConnectivityInfo = /*@__PURE__*/ __L.at(__c45, 1);
 export interface GetConnectivityInfoResponse {
   ConnectivityInfo?: ConnectivityInfo[];
   Message?: string;
@@ -1023,7 +1023,7 @@ export interface DefinitionInformation {
   Tags?: { [key: string]: string | undefined };
 }
 export type __listOfDefinitionInformation = DefinitionInformation[];
-const __listOfDefinitionInformation = /*@__PURE__*/ __L.at(__c17, 2);
+const __listOfDefinitionInformation = /*@__PURE__*/ __L.at(__c80, 1);
 export interface ListConnectorDefinitionsResponse {
   Definitions?: DefinitionInformation[];
   NextToken?: string;
@@ -1040,7 +1040,7 @@ export interface VersionInformation {
   Version?: string;
 }
 export type __listOfVersionInformation = VersionInformation[];
-const __listOfVersionInformation = /*@__PURE__*/ __L.at(__c17, 6);
+const __listOfVersionInformation = /*@__PURE__*/ __L.at(__c85, 1);
 export interface ListConnectorDefinitionVersionsResponse {
   NextToken?: string;
   Versions?: VersionInformation[];
@@ -1121,7 +1121,7 @@ export interface GroupCertificateAuthorityProperties {
   GroupCertificateAuthorityId?: string;
 }
 export type __listOfGroupCertificateAuthorityProperties = GroupCertificateAuthorityProperties[];
-const __listOfGroupCertificateAuthorityProperties = /*@__PURE__*/ __L.at(__c19, 4);
+const __listOfGroupCertificateAuthorityProperties = /*@__PURE__*/ __L.at(__c93, 2);
 export interface ListGroupCertificateAuthoritiesResponse {
   GroupCertificateAuthorities?: GroupCertificateAuthorityProperties[];
 }
@@ -1139,7 +1139,7 @@ export interface GroupInformation {
   Name?: string;
 }
 export type __listOfGroupInformation = GroupInformation[];
-const __listOfGroupInformation = /*@__PURE__*/ __L.at(__c19, 7);
+const __listOfGroupInformation = /*@__PURE__*/ __L.at(__c94, 1);
 export interface ListGroupsResponse {
   Groups?: GroupInformation[];
   NextToken?: string;
@@ -1321,8 +1321,8 @@ export const associateRoleToGroup: API.OperationMethod<
   AssociateRoleToGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateRoleToGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateRoleToGroupResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<AssociateRoleToGroupRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<AssociateRoleToGroupResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1342,8 +1342,8 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   AssociateServiceRoleToAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AssociateServiceRoleToAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateServiceRoleToAccountResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<AssociateServiceRoleToAccountRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<AssociateServiceRoleToAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1360,8 +1360,8 @@ export const createConnectorDefinition: API.OperationMethod<
   CreateConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateConnectorDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateConnectorDefinitionResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateConnectorDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1378,8 +1378,8 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   CreateConnectorDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateConnectorDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateConnectorDefinitionVersionResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<CreateConnectorDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateConnectorDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1396,8 +1396,8 @@ export const createCoreDefinition: API.OperationMethod<
   CreateCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateCoreDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCoreDefinitionResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<CreateCoreDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1414,8 +1414,8 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   CreateCoreDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateCoreDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateCoreDefinitionVersionResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<CreateCoreDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateCoreDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1432,8 +1432,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateDeploymentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CreateDeploymentResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<CreateDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1450,8 +1450,8 @@ export const createDeviceDefinition: API.OperationMethod<
   CreateDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateDeviceDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateDeviceDefinitionResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<CreateDeviceDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1468,8 +1468,8 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   CreateDeviceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateDeviceDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateDeviceDefinitionVersionResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateDeviceDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateDeviceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1486,8 +1486,8 @@ export const createFunctionDefinition: API.OperationMethod<
   CreateFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateFunctionDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateFunctionDefinitionResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateFunctionDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1504,8 +1504,8 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   CreateFunctionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateFunctionDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateFunctionDefinitionVersionResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateFunctionDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateFunctionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1522,8 +1522,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateGroupRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateGroupResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1543,8 +1543,8 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   CreateGroupCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateGroupCertificateAuthorityRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CreateGroupCertificateAuthorityResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateGroupCertificateAuthorityRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateGroupCertificateAuthorityResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1561,8 +1561,8 @@ export const createGroupVersion: API.OperationMethod<
   CreateGroupVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateGroupVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateGroupVersionResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateGroupVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateGroupVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1579,8 +1579,8 @@ export const createLoggerDefinition: API.OperationMethod<
   CreateLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateLoggerDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateLoggerDefinitionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateLoggerDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1597,8 +1597,8 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   CreateLoggerDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateLoggerDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateLoggerDefinitionVersionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateLoggerDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateLoggerDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1615,8 +1615,8 @@ export const createResourceDefinition: API.OperationMethod<
   CreateResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateResourceDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateResourceDefinitionResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateResourceDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1633,8 +1633,8 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   CreateResourceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateResourceDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateResourceDefinitionVersionResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateResourceDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateResourceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1654,8 +1654,8 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   CreateSoftwareUpdateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateSoftwareUpdateJobRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateSoftwareUpdateJobResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateSoftwareUpdateJobRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<CreateSoftwareUpdateJobResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1672,8 +1672,8 @@ export const createSubscriptionDefinition: API.OperationMethod<
   CreateSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateSubscriptionDefinitionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateSubscriptionDefinitionResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateSubscriptionDefinitionRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1690,8 +1690,8 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   CreateSubscriptionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateSubscriptionDefinitionVersionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateSubscriptionDefinitionVersionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<CreateSubscriptionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1708,8 +1708,8 @@ export const deleteConnectorDefinition: API.OperationMethod<
   DeleteConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteConnectorDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteConnectorDefinitionResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteConnectorDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1726,8 +1726,8 @@ export const deleteCoreDefinition: API.OperationMethod<
   DeleteCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteCoreDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteCoreDefinitionResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteCoreDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DeleteCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1744,8 +1744,8 @@ export const deleteDeviceDefinition: API.OperationMethod<
   DeleteDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteDeviceDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteDeviceDefinitionResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteDeviceDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DeleteDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1762,8 +1762,8 @@ export const deleteFunctionDefinition: API.OperationMethod<
   DeleteFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteFunctionDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteFunctionDefinitionResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteFunctionDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1780,8 +1780,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1798,8 +1798,8 @@ export const deleteLoggerDefinition: API.OperationMethod<
   DeleteLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteLoggerDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DeleteLoggerDefinitionResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteLoggerDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DeleteLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1816,8 +1816,8 @@ export const deleteResourceDefinition: API.OperationMethod<
   DeleteResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteResourceDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteResourceDefinitionResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteResourceDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1834,8 +1834,8 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   DeleteSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteSubscriptionDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteSubscriptionDefinitionResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteSubscriptionDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<DeleteSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1855,8 +1855,8 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   DisassociateRoleFromGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DisassociateRoleFromGroupRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DisassociateRoleFromGroupResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DisassociateRoleFromGroupRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DisassociateRoleFromGroupResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1873,8 +1873,8 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   DisassociateServiceRoleFromAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DisassociateServiceRoleFromAccountRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>,
   errors: [InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1894,8 +1894,8 @@ export const getAssociatedRole: API.OperationMethod<
   GetAssociatedRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetAssociatedRoleRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetAssociatedRoleResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetAssociatedRoleRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<GetAssociatedRoleResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1912,8 +1912,8 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   GetBulkDeploymentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetBulkDeploymentStatusRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetBulkDeploymentStatusResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetBulkDeploymentStatusRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<GetBulkDeploymentStatusResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1933,8 +1933,8 @@ export const getConnectivityInfo: API.OperationMethod<
   GetConnectivityInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetConnectivityInfoRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GetConnectivityInfoResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetConnectivityInfoRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetConnectivityInfoResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1951,8 +1951,8 @@ export const getConnectorDefinition: API.OperationMethod<
   GetConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetConnectorDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetConnectorDefinitionResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetConnectorDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1969,8 +1969,8 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   GetConnectorDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetConnectorDefinitionVersionRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetConnectorDefinitionVersionResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetConnectorDefinitionVersionRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<GetConnectorDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1987,8 +1987,8 @@ export const getCoreDefinition: API.OperationMethod<
   GetCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetCoreDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetCoreDefinitionResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetCoreDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2005,8 +2005,8 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   GetCoreDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetCoreDefinitionVersionRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetCoreDefinitionVersionResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetCoreDefinitionVersionRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GetCoreDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2023,8 +2023,8 @@ export const getDeploymentStatus: API.OperationMethod<
   GetDeploymentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetDeploymentStatusRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetDeploymentStatusResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetDeploymentStatusRequest>,
+  output: __S(913, __c57, 1) as any as S.Schema<GetDeploymentStatusResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2041,8 +2041,8 @@ export const getDeviceDefinition: API.OperationMethod<
   GetDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetDeviceDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetDeviceDefinitionResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetDeviceDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2059,8 +2059,8 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   GetDeviceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetDeviceDefinitionVersionRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetDeviceDefinitionVersionResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetDeviceDefinitionVersionRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GetDeviceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2077,8 +2077,8 @@ export const getFunctionDefinition: API.OperationMethod<
   GetFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetFunctionDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetFunctionDefinitionResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetFunctionDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2095,8 +2095,8 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   GetFunctionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetFunctionDefinitionVersionRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetFunctionDefinitionVersionResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetFunctionDefinitionVersionRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<GetFunctionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2113,8 +2113,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetGroupRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GetGroupResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetGroupRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<GetGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2134,8 +2134,8 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   GetGroupCertificateAuthorityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetGroupCertificateAuthorityRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetGroupCertificateAuthorityResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetGroupCertificateAuthorityRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<GetGroupCertificateAuthorityResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2155,8 +2155,8 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   GetGroupCertificateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetGroupCertificateConfigurationRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetGroupCertificateConfigurationResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetGroupCertificateConfigurationRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<GetGroupCertificateConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2173,8 +2173,8 @@ export const getGroupVersion: API.OperationMethod<
   GetGroupVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetGroupVersionRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetGroupVersionResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetGroupVersionRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<GetGroupVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2191,8 +2191,8 @@ export const getLoggerDefinition: API.OperationMethod<
   GetLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetLoggerDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetLoggerDefinitionResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<GetLoggerDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2209,8 +2209,8 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   GetLoggerDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetLoggerDefinitionVersionRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<GetLoggerDefinitionVersionResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<GetLoggerDefinitionVersionRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<GetLoggerDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2227,8 +2227,8 @@ export const getResourceDefinition: API.OperationMethod<
   GetResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetResourceDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetResourceDefinitionResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetResourceDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2245,8 +2245,8 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   GetResourceDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetResourceDefinitionVersionRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetResourceDefinitionVersionResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetResourceDefinitionVersionRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<GetResourceDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2263,8 +2263,8 @@ export const getServiceRoleForAccount: API.OperationMethod<
   GetServiceRoleForAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetServiceRoleForAccountRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetServiceRoleForAccountResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetServiceRoleForAccountRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<GetServiceRoleForAccountResponse>,
   errors: [InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2281,8 +2281,8 @@ export const getSubscriptionDefinition: API.OperationMethod<
   GetSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetSubscriptionDefinitionRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetSubscriptionDefinitionResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetSubscriptionDefinitionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2299,8 +2299,8 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   GetSubscriptionDefinitionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetSubscriptionDefinitionVersionRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<GetSubscriptionDefinitionVersionResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetSubscriptionDefinitionVersionRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<GetSubscriptionDefinitionVersionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2320,8 +2320,8 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   GetThingRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetThingRuntimeConfigurationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetThingRuntimeConfigurationResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetThingRuntimeConfigurationRequest>,
+  output: __S(1219, __c76, 3) as any as S.Schema<GetThingRuntimeConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2338,8 +2338,8 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   ListBulkDeploymentDetailedReportsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListBulkDeploymentDetailedReportsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListBulkDeploymentDetailedReportsResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListBulkDeploymentDetailedReportsRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<ListBulkDeploymentDetailedReportsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2356,8 +2356,8 @@ export const listBulkDeployments: API.OperationMethod<
   ListBulkDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListBulkDeploymentsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListBulkDeploymentsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListBulkDeploymentsRequest>,
+  output: __S(1251, __c78, 3) as any as S.Schema<ListBulkDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2374,8 +2374,8 @@ export const listConnectorDefinitions: API.OperationMethod<
   ListConnectorDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListConnectorDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListConnectorDefinitionsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListConnectorDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListConnectorDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2392,8 +2392,8 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   ListConnectorDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListConnectorDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListConnectorDefinitionVersionsResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListConnectorDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListConnectorDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2410,8 +2410,8 @@ export const listCoreDefinitions: API.OperationMethod<
   ListCoreDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListCoreDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListCoreDefinitionsResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListCoreDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListCoreDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2428,8 +2428,8 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   ListCoreDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListCoreDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListCoreDefinitionVersionsResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListCoreDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListCoreDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2446,8 +2446,8 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListDeploymentsResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<ListDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2464,8 +2464,8 @@ export const listDeviceDefinitions: API.OperationMethod<
   ListDeviceDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListDeviceDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListDeviceDefinitionsResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListDeviceDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListDeviceDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2482,8 +2482,8 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   ListDeviceDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListDeviceDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListDeviceDefinitionVersionsResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListDeviceDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListDeviceDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2500,8 +2500,8 @@ export const listFunctionDefinitions: API.OperationMethod<
   ListFunctionDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListFunctionDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListFunctionDefinitionsResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListFunctionDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListFunctionDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2518,8 +2518,8 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   ListFunctionDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListFunctionDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListFunctionDefinitionVersionsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListFunctionDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListFunctionDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2539,8 +2539,8 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   ListGroupCertificateAuthoritiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListGroupCertificateAuthoritiesRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<ListGroupCertificateAuthoritiesResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListGroupCertificateAuthoritiesRequest>,
+  output: __S(1491, __c93, 3) as any as S.Schema<ListGroupCertificateAuthoritiesResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2557,8 +2557,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListGroupsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListGroupsResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2575,8 +2575,8 @@ export const listGroupVersions: API.OperationMethod<
   ListGroupVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListGroupVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListGroupVersionsResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListGroupVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListGroupVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2593,8 +2593,8 @@ export const listLoggerDefinitions: API.OperationMethod<
   ListLoggerDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListLoggerDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListLoggerDefinitionsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListLoggerDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListLoggerDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2611,8 +2611,8 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   ListLoggerDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListLoggerDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListLoggerDefinitionVersionsResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListLoggerDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListLoggerDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2629,8 +2629,8 @@ export const listResourceDefinitions: API.OperationMethod<
   ListResourceDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<ListResourceDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListResourceDefinitionsResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListResourceDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListResourceDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2647,8 +2647,8 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   ListResourceDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListResourceDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListResourceDefinitionVersionsResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListResourceDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListResourceDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2665,8 +2665,8 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   ListSubscriptionDefinitionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListSubscriptionDefinitionsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListSubscriptionDefinitionsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListSubscriptionDefinitionsRequest>,
+  output: __S(1282, __c80, 2) as any as S.Schema<ListSubscriptionDefinitionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2683,8 +2683,8 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   ListSubscriptionDefinitionVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListSubscriptionDefinitionVersionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListSubscriptionDefinitionVersionsRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ListSubscriptionDefinitionVersionsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2701,8 +2701,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2719,8 +2719,8 @@ export const resetDeployments: API.OperationMethod<
   ResetDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ResetDeploymentsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ResetDeploymentsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ResetDeploymentsRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<ResetDeploymentsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2737,8 +2737,8 @@ export const startBulkDeployment: API.OperationMethod<
   StartBulkDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<StartBulkDeploymentRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<StartBulkDeploymentResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<StartBulkDeploymentRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<StartBulkDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2755,8 +2755,8 @@ export const stopBulkDeployment: API.OperationMethod<
   StopBulkDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<StopBulkDeploymentRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<StopBulkDeploymentResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<StopBulkDeploymentRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<StopBulkDeploymentResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2773,8 +2773,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2791,8 +2791,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2812,8 +2812,8 @@ export const updateConnectivityInfo: API.OperationMethod<
   UpdateConnectivityInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UpdateConnectivityInfoRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<UpdateConnectivityInfoResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateConnectivityInfoRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<UpdateConnectivityInfoResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2830,8 +2830,8 @@ export const updateConnectorDefinition: API.OperationMethod<
   UpdateConnectorDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateConnectorDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateConnectorDefinitionResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateConnectorDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateConnectorDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2848,8 +2848,8 @@ export const updateCoreDefinition: API.OperationMethod<
   UpdateCoreDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateCoreDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateCoreDefinitionResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateCoreDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateCoreDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2866,8 +2866,8 @@ export const updateDeviceDefinition: API.OperationMethod<
   UpdateDeviceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateDeviceDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateDeviceDefinitionResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<UpdateDeviceDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateDeviceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2884,8 +2884,8 @@ export const updateFunctionDefinition: API.OperationMethod<
   UpdateFunctionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<UpdateFunctionDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateFunctionDefinitionResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<UpdateFunctionDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateFunctionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2902,8 +2902,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateGroupResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateGroupResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2923,8 +2923,8 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   UpdateGroupCertificateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<UpdateGroupCertificateConfigurationRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<UpdateGroupCertificateConfigurationResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<UpdateGroupCertificateConfigurationRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<UpdateGroupCertificateConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2941,8 +2941,8 @@ export const updateLoggerDefinition: API.OperationMethod<
   UpdateLoggerDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdateLoggerDefinitionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateLoggerDefinitionResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateLoggerDefinitionRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UpdateLoggerDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2959,8 +2959,8 @@ export const updateResourceDefinition: API.OperationMethod<
   UpdateResourceDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UpdateResourceDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateResourceDefinitionResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<UpdateResourceDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateResourceDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2977,8 +2977,8 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   UpdateSubscriptionDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateSubscriptionDefinitionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateSubscriptionDefinitionResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<UpdateSubscriptionDefinitionRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateSubscriptionDefinitionResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2998,8 +2998,8 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   UpdateThingRuntimeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateThingRuntimeConfigurationRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateThingRuntimeConfigurationResponse>,
+  input: __S(1969, __c123, 1) as any as S.Schema<UpdateThingRuntimeConfigurationRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateThingRuntimeConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3012,238 +3012,17 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          GroupId: S.String.pipe(T.HttpLabel("GroupId")),
-          RoleArn: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/greengrass/groups/{GroupId}/role" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateRoleToGroupRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ AssociatedAt: S.optional(S.String) })).annotate({
-        identifier: "AssociateRoleToGroupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ RoleArn: S.optional(S.String) }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/greengrass/servicerole" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateServiceRoleToAccountRequest",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectorArn: S.optional(S.String),
-          Id: S.optional(S.String),
-          Parameters: S.optional(__mapOf__string),
+          DetailedErrorCode: S.optional(S.String),
+          DetailedErrorMessage: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Connector" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Connectors: S.optional(__listOfConnector) })).annotate({
-        identifier: "ConnectorDefinitionVersion",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      ).annotate({ identifier: "ErrorDetail" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(6, __c0, 6)),
-          Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/greengrass/definition/connectors" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateConnectorDefinitionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CreationTimestamp: S.optional(S.String),
-          Id: S.optional(S.String),
-          LastUpdatedTimestamp: S.optional(S.String),
-          LatestVersion: S.optional(S.String),
-          LatestVersionArn: S.optional(S.String),
-          Name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateConnectorDefinitionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
-          Connectors: S.optional(__listOfConnector),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateConnectorDefinitionVersionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CreationTimestamp: S.optional(S.String),
-          Id: S.optional(S.String),
-          Version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateConnectorDefinitionVersionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CertificateArn: S.optional(S.String),
-          Id: S.optional(S.String),
-          SyncShadow: S.optional(S.Boolean),
-          ThingArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Core" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Cores: S.optional(__listOfCore) })).annotate({
-        identifier: "CoreDefinitionVersion",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(14, __c1, 6)),
-          Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/greengrass/definition/cores" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateCoreDefinitionRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")),
-          Cores: S.optional(__listOfCore),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/greengrass/definition/cores/{CoreDefinitionId}/versions",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateCoreDefinitionVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          DeploymentId: S.optional(S.String),
-          DeploymentType: S.optional(S.String),
-          GroupId: S.String.pipe(T.HttpLabel("GroupId")),
-          GroupVersionId: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/greengrass/groups/{GroupId}/deployments" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateDeploymentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DeploymentArn: S.optional(S.String), DeploymentId: S.optional(S.String) }),
-      ).annotate({ identifier: "CreateDeploymentResponse" });
-    case 3:
-      return S.suspend(() => S.Struct({ Devices: S.optional(__listOfDevice) })).annotate({
-        identifier: "DeviceDefinitionVersion",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(19, __c2, 3)),
-          Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/greengrass/definition/devices" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateDeviceDefinitionRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3265,94 +3044,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateDeviceDefinitionVersionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Gid: S.optional(S.Number), Uid: S.optional(S.Number) }),
-      ).annotate({ identifier: "FunctionRunAsConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          IsolationMode: S.optional(S.String),
-          RunAs: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "FunctionDefaultExecutionConfig",
-      });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Execution: S.optional(__S(23, __c2, 7)) })).annotate({
-        identifier: "FunctionDefaultConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IsolationMode: S.optional(S.String),
-          RunAs: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "FunctionExecutionConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Permission: S.optional(S.String), ResourceId: S.optional(S.String) }),
-      ).annotate({ identifier: "ResourceAccessPolicy" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AccessSysfs: S.optional(S.Boolean),
-          Execution: S.optional(__S(25, __c3, 1)),
-          ResourceAccessPolicies: S.optional(__listOfResourceAccessPolicy),
-          Variables: S.optional(__mapOf__string),
-        }),
-      ).annotate({
-        identifier: "FunctionConfigurationEnvironment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EncodingType: S.optional(S.String),
-          Environment: S.optional(__S(28, __c3, 4)),
-          ExecArgs: S.optional(S.String),
-          Executable: S.optional(S.String),
-          MemorySize: S.optional(S.Number),
-          Pinned: S.optional(S.Boolean),
-          Timeout: S.optional(S.Number),
-          FunctionRuntimeOverride: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FunctionConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FunctionArn: S.optional(S.String),
-          FunctionConfiguration: S.optional(__S(29, __c3, 5)),
-          Id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Function" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DefaultConfig: S.optional(__S(24, __c3, 0)),
-          Functions: S.optional(__listOfFunction),
-        }),
-      ).annotate({
-        identifier: "FunctionDefinitionVersion",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(32, __c4, 0)),
+          InitialVersion: S.optional(__S(64, __c4, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/functions" }),
@@ -3366,11 +3068,96 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateFunctionDefinitionRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Gid: S.optional(S.Number), Uid: S.optional(S.Number) }),
+      ).annotate({ identifier: "FunctionRunAsConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsolationMode: S.optional(S.String),
+          RunAs: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "FunctionDefaultExecutionConfig",
+      });
     case 2:
+      return S.suspend(() => S.Struct({ Execution: S.optional(__S(49, __c3, 1)) })).annotate({
+        identifier: "FunctionDefaultConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          IsolationMode: S.optional(S.String),
+          RunAs: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "FunctionExecutionConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Permission: S.optional(S.String), ResourceId: S.optional(S.String) }),
+      ).annotate({ identifier: "ResourceAccessPolicy" });
+    case 5:
+      return S.Array(__S(52, __c3, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AccessSysfs: S.optional(S.Boolean),
+          Execution: S.optional(__S(51, __c3, 3)),
+          ResourceAccessPolicies: S.optional(__listOfResourceAccessPolicy),
+          Variables: S.optional(__mapOf__string),
+        }),
+      ).annotate({
+        identifier: "FunctionConfigurationEnvironment",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EncodingType: S.optional(S.String),
+          Environment: S.optional(__S(54, __c3, 6)),
+          ExecArgs: S.optional(S.String),
+          Executable: S.optional(S.String),
+          MemorySize: S.optional(S.Number),
+          Pinned: S.optional(S.Boolean),
+          Timeout: S.optional(S.Number),
+          FunctionRuntimeOverride: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FunctionConfiguration" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          FunctionArn: S.optional(S.String),
+          FunctionConfiguration: S.optional(__S(55, __c3, 7)),
+          Id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Function" });
+    case 9:
+      return S.Array(__S(56, __c3, 8));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DefaultConfig: S.optional(__S(50, __c3, 2)),
+          Functions: S.optional(__listOfFunction),
+        }),
+      ).annotate({
+        identifier: "FunctionDefinitionVersion",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          DefaultConfig: S.optional(__S(24, __c3, 0)),
+          DefaultConfig: S.optional(__S(50, __c3, 2)),
           FunctionDefinitionId: S.String.pipe(T.HttpLabel("FunctionDefinitionId")),
           Functions: S.optional(__listOfFunction),
         }).pipe(
@@ -3389,25 +3176,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateFunctionDefinitionVersionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectorDefinitionVersionArn: S.optional(S.String),
-          CoreDefinitionVersionArn: S.optional(S.String),
-          DeviceDefinitionVersionArn: S.optional(S.String),
-          FunctionDefinitionVersionArn: S.optional(S.String),
-          LoggerDefinitionVersionArn: S.optional(S.String),
-          ResourceDefinitionVersionArn: S.optional(S.String),
-          SubscriptionDefinitionVersionArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupVersion" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(35, __c4, 3)),
+          InitialVersion: S.optional(__S(112, __c7, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/groups" }),
@@ -3419,7 +3198,27 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateGroupRequest" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectorDefinitionVersionArn: S.optional(S.String),
+          CoreDefinitionVersionArn: S.optional(S.String),
+          DeviceDefinitionVersionArn: S.optional(S.String),
+          FunctionDefinitionVersionArn: S.optional(S.String),
+          LoggerDefinitionVersionArn: S.optional(S.String),
+          ResourceDefinitionVersionArn: S.optional(S.String),
+          SubscriptionDefinitionVersionArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupVersion" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -3431,7 +3230,11 @@ function __c4(j: number): any {
           Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateGroupResponse" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3449,7 +3252,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateGroupCertificateAuthorityRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ GroupCertificateAuthorityArn: S.optional(S.String) }),
       ).annotate({
@@ -3457,7 +3260,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3484,29 +3287,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateGroupVersionRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Component: S.optional(S.String),
-          Id: S.optional(S.String),
-          Level: S.optional(S.String),
-          Space: S.optional(S.Number),
-          Type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Logger" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ Loggers: S.optional(__listOfLogger) })).annotate({
-        identifier: "LoggerDefinitionVersion",
-      });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(43, __c5, 3)),
+          InitialVersion: S.optional(__S(208, __c13, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/loggers" }),
@@ -3520,7 +3311,35 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateLoggerDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Component: S.optional(S.String),
+          Id: S.optional(S.String),
+          Level: S.optional(S.String),
+          Space: S.optional(S.Number),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Logger" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Loggers: S.optional(__listOfLogger) })).annotate({
+        identifier: "LoggerDefinitionVersion",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3542,101 +3361,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateLoggerDefinitionVersionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AutoAddGroupOwner: S.optional(S.Boolean), GroupOwner: S.optional(S.String) }),
-      ).annotate({ identifier: "GroupOwnerSetting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          GroupOwnerSetting: S.optional(__S(46, __c5, 6)),
-          SourcePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalDeviceResourceData" });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationPath: S.optional(S.String),
-          GroupOwnerSetting: S.optional(__S(46, __c5, 6)),
-          SourcePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalVolumeResourceData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ GroupOwner: S.optional(S.String), GroupPermission: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ResourceDownloadOwnerSetting",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationPath: S.optional(S.String),
-          OwnerSetting: S.optional(__S(49, __c6, 1)),
-          S3Uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "S3MachineLearningModelResourceData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationPath: S.optional(S.String),
-          OwnerSetting: S.optional(__S(49, __c6, 1)),
-          SageMakerJobArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SageMakerMachineLearningModelResourceData",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ARN: S.optional(S.String),
-          AdditionalStagingLabelsToDownload: S.optional(__listOf__string),
-        }),
-      ).annotate({
-        identifier: "SecretsManagerSecretResourceData",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          LocalDeviceResourceData: S.optional(__S(47, __c5, 7)),
-          LocalVolumeResourceData: S.optional(__S(48, __c6, 0)),
-          S3MachineLearningModelResourceData: S.optional(__S(50, __c6, 2)),
-          SageMakerMachineLearningModelResourceData: S.optional(__S(51, __c6, 3)),
-          SecretsManagerSecretResourceData: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "ResourceDataContainer" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          ResourceDataContainer: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "Resource" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ Resources: S.optional(__listOfResource) })).annotate({
-        identifier: "ResourceDefinitionVersion",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(57, __c7, 1)),
+          InitialVersion: S.optional(__S(288, __c18, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/resources" }),
@@ -3650,7 +3385,103 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateResourceDefinitionRequest",
       });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AutoAddGroupOwner: S.optional(S.Boolean), GroupOwner: S.optional(S.String) }),
+      ).annotate({ identifier: "GroupOwnerSetting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          GroupOwnerSetting: S.optional(__S(272, __c17, 0)),
+          SourcePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalDeviceResourceData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationPath: S.optional(S.String),
+          GroupOwnerSetting: S.optional(__S(272, __c17, 0)),
+          SourcePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalVolumeResourceData" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({ GroupOwner: S.optional(S.String), GroupPermission: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ResourceDownloadOwnerSetting",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationPath: S.optional(S.String),
+          OwnerSetting: S.optional(__S(275, __c17, 3)),
+          S3Uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "S3MachineLearningModelResourceData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationPath: S.optional(S.String),
+          OwnerSetting: S.optional(__S(275, __c17, 3)),
+          SageMakerJobArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SageMakerMachineLearningModelResourceData",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ARN: S.optional(S.String),
+          AdditionalStagingLabelsToDownload: S.optional(__listOf__string),
+        }),
+      ).annotate({
+        identifier: "SecretsManagerSecretResourceData",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          LocalDeviceResourceData: S.optional(__S(273, __c17, 1)),
+          LocalVolumeResourceData: S.optional(__S(274, __c17, 2)),
+          S3MachineLearningModelResourceData: S.optional(__S(276, __c17, 4)),
+          SageMakerMachineLearningModelResourceData: S.optional(__S(277, __c17, 5)),
+          SecretsManagerSecretResourceData: S.optional(__S(278, __c17, 6)),
+        }),
+      ).annotate({ identifier: "ResourceDataContainer" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          ResourceDataContainer: S.optional(__S(279, __c17, 7)),
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 9:
+      return S.Array(__S(280, __c17, 8));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Resources: S.optional(__listOfResource) })).annotate({
+        identifier: "ResourceDefinitionVersion",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3672,7 +3503,41 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateResourceDefinitionVersionRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GroupId: S.String.pipe(T.HttpLabel("GroupId")),
+          RoleArn: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/greengrass/groups/{GroupId}/role" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateRoleToGroupRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AssociatedAt: S.optional(S.String) })).annotate({
+        identifier: "AssociateRoleToGroupResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3695,7 +3560,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateSoftwareUpdateJobRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IotJobArn: S.optional(S.String),
@@ -3705,34 +3570,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateSoftwareUpdateJobResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Source: S.optional(S.String),
-          Subject: S.optional(S.String),
-          Target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Subscription" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Subscriptions: S.optional(__listOfSubscription) }),
-      ).annotate({
-        identifier: "SubscriptionDefinitionVersion",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
-          InitialVersion: S.optional(__S(64, __c8, 0)),
+          InitialVersion: S.optional(__S(400, __c25, 0)),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/definition/subscriptions" }),
@@ -3746,7 +3594,36 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateSubscriptionDefinitionRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Source: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Subscription" });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Subscriptions: S.optional(__listOfSubscription) }),
+      ).annotate({
+        identifier: "SubscriptionDefinitionVersion",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -3768,7 +3645,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateSubscriptionDefinitionVersionRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
@@ -3788,11 +3669,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteConnectorDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConnectorDefinitionResponse",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")) }).pipe(
           T.all(
@@ -3807,11 +3696,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteCoreDefinitionRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteCoreDefinitionResponse",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DeviceDefinitionId: S.String.pipe(T.HttpLabel("DeviceDefinitionId")) }).pipe(
           T.all(
@@ -3831,7 +3728,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3851,7 +3748,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteFunctionDefinitionRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupId: S.String.pipe(T.HttpLabel("GroupId")) }).pipe(
           T.all(
@@ -3864,7 +3765,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LoggerDefinitionId: S.String.pipe(T.HttpLabel("LoggerDefinitionId")) }).pipe(
           T.all(
@@ -3882,7 +3787,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLoggerDefinitionRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceDefinitionId: S.String.pipe(T.HttpLabel("ResourceDefinitionId")) }).pipe(
           T.all(
@@ -3900,7 +3809,30 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteResourceDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RoleArn: S.optional(S.String) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/greengrass/servicerole" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateServiceRoleToAccountRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionDefinitionId: S.String.pipe(T.HttpLabel("SubscriptionDefinitionId")),
@@ -3920,7 +3852,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteSubscriptionDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupId: S.String.pipe(T.HttpLabel("GroupId")) }).pipe(
           T.all(
@@ -3935,11 +3871,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociateRoleFromGroupRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ DisassociatedAt: S.optional(S.String) })).annotate({
         identifier: "DisassociateRoleFromGroupResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -3956,7 +3900,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3971,13 +3915,21 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAssociatedRoleRequest" });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AssociatedAt: S.optional(S.String), RoleArn: S.optional(S.String) }),
       ).annotate({
         identifier: "GetAssociatedRoleResponse",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BulkDeploymentId: S.String.pipe(T.HttpLabel("BulkDeploymentId")) }).pipe(
           T.all(
@@ -3995,7 +3947,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBulkDeploymentStatusRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           InvalidInputRecords: S.optional(S.Number),
@@ -4003,29 +3955,24 @@ function __c10(j: number): any {
           RetryAttempts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BulkDeploymentMetrics" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DetailedErrorCode: S.optional(S.String),
-          DetailedErrorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BulkDeploymentMetrics: S.optional(__S(83, __c10, 3)),
+          BulkDeploymentMetrics: S.optional(__S(689, __c43, 1)),
           BulkDeploymentStatus: S.optional(S.String),
           CreatedAt: S.optional(S.String),
-          ErrorDetails: S.optional(__S(85, __c10, 5)),
+          ErrorDetails: S.optional(__S(1, __c0, 1)),
           ErrorMessage: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({
         identifier: "GetBulkDeploymentStatusResponse",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ThingName: S.String.pipe(T.HttpLabel("ThingName")) }).pipe(
           T.all(
@@ -4040,9 +3987,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetConnectivityInfoRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectivityInfo: S.optional(__listOfConnectivityInfo),
+          Message: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Message: "message" })),
+      ).annotate({
+        identifier: "GetConnectivityInfoResponse",
+      });
   }
 }
-function __c11(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4054,17 +4010,12 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ConnectivityInfo" });
     case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectivityInfo: S.optional(__listOfConnectivityInfo),
-          Message: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Message: "message" })),
-      ).annotate({
-        identifier: "GetConnectivityInfoResponse",
-      });
-    case 3:
+      return S.Array(__S(720, __c45, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
@@ -4084,7 +4035,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetConnectorDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4094,12 +4049,16 @@ function __c11(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({
         identifier: "GetConnectorDefinitionResponse",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
@@ -4121,12 +4080,12 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetConnectorDefinitionVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(6, __c0, 6)),
+          Definition: S.optional(__S(832, __c52, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4134,7 +4093,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetConnectorDefinitionVersionResponse",
       });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")) }).pipe(
           T.all(
@@ -4149,7 +4112,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetCoreDefinitionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4177,7 +4140,7 @@ function __c12(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(14, __c1, 6)),
+          Definition: S.optional(__S(1312, __c82, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4185,7 +4148,87 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetCoreDefinitionVersionResponse",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          InitialVersion: S.optional(__S(832, __c52, 0)),
+          Name: S.optional(S.String),
+          tags: S.optional(__S(880, __c55, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/definition/connectors" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateConnectorDefinitionRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Connectors: S.optional(__listOfConnector) })).annotate({
+        identifier: "ConnectorDefinitionVersion",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectorArn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Parameters: S.optional(__mapOf__string),
+        }),
+      ).annotate({ identifier: "Connector" });
+    case 1:
+      return S.Array(__S(864, __c54, 0));
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationTimestamp: S.optional(S.String),
+          Id: S.optional(S.String),
+          LastUpdatedTimestamp: S.optional(S.String),
+          LatestVersion: S.optional(S.String),
+          LatestVersionArn: S.optional(S.String),
+          Name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateConnectorDefinitionResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DeploymentId: S.String.pipe(T.HttpLabel("DeploymentId")),
@@ -4206,19 +4249,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDeploymentStatusRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DeploymentStatus: S.optional(S.String),
           DeploymentType: S.optional(S.String),
-          ErrorDetails: S.optional(__S(85, __c10, 5)),
+          ErrorDetails: S.optional(__S(1, __c0, 1)),
           ErrorMessage: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetDeploymentStatusResponse",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DeviceDefinitionId: S.String.pipe(T.HttpLabel("DeviceDefinitionId")) }).pipe(
           T.all(
@@ -4233,7 +4280,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDeviceDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DeviceDefinitionId: S.String.pipe(T.HttpLabel("DeviceDefinitionId")),
@@ -4255,12 +4306,12 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDeviceDefinitionVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(19, __c2, 3)),
+          Definition: S.optional(__S(1904, __c119, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4268,7 +4319,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDeviceDefinitionVersionResponse",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FunctionDefinitionId: S.String.pipe(T.HttpLabel("FunctionDefinitionId")) }).pipe(
           T.all(
@@ -4288,7 +4343,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4317,7 +4372,7 @@ function __c13(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(32, __c4, 0)),
+          Definition: S.optional(__S(64, __c4, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4325,7 +4380,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetFunctionDefinitionVersionResponse",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupId: S.String.pipe(T.HttpLabel("GroupId")) }).pipe(
           T.all(
@@ -4338,7 +4397,7 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGroupRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4348,10 +4407,14 @@ function __c13(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({ identifier: "GetGroupResponse" });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateAuthorityId: S.String.pipe(T.HttpLabel("CertificateAuthorityId")),
@@ -4372,7 +4435,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetGroupCertificateAuthorityRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GroupCertificateAuthorityArn: S.optional(S.String),
@@ -4382,7 +4445,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetGroupCertificateAuthorityResponse",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupId: S.String.pipe(T.HttpLabel("GroupId")) }).pipe(
           T.all(
@@ -4400,7 +4467,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetGroupCertificateConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateAuthorityExpiryInMilliseconds: S.optional(S.String),
@@ -4412,7 +4483,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4438,12 +4509,16 @@ function __c14(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(35, __c4, 3)),
+          Definition: S.optional(__S(112, __c7, 0)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetGroupVersionResponse" });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LoggerDefinitionId: S.String.pipe(T.HttpLabel("LoggerDefinitionId")) }).pipe(
           T.all(
@@ -4458,7 +4533,52 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLoggerDefinitionRequest",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
+          Connectors: S.optional(__listOfConnector),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/greengrass/definition/connectors/{ConnectorDefinitionId}/versions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateConnectorDefinitionVersionRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreationTimestamp: S.optional(S.String),
+          Id: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateConnectorDefinitionVersionResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LoggerDefinitionId: S.String.pipe(T.HttpLabel("LoggerDefinitionId")),
@@ -4480,19 +4600,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetLoggerDefinitionVersionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(43, __c5, 3)),
+          Definition: S.optional(__S(208, __c13, 0)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetLoggerDefinitionVersionResponse",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceDefinitionId: S.String.pipe(T.HttpLabel("ResourceDefinitionId")) }).pipe(
           T.all(
@@ -4510,7 +4634,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetResourceDefinitionRequest",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceDefinitionId: S.String.pipe(T.HttpLabel("ResourceDefinitionId")),
@@ -4531,12 +4659,12 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetResourceDefinitionVersionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(57, __c7, 1)),
+          Definition: S.optional(__S(288, __c18, 0)),
           Id: S.optional(S.String),
           Version: S.optional(S.String),
         }),
@@ -4545,7 +4673,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4562,7 +4690,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetServiceRoleForAccountRequest",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionDefinitionId: S.String.pipe(T.HttpLabel("SubscriptionDefinitionId")),
@@ -4582,7 +4714,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDefinitionRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -4606,12 +4742,12 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDefinitionVersionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationTimestamp: S.optional(S.String),
-          Definition: S.optional(__S(64, __c8, 0)),
+          Definition: S.optional(__S(400, __c25, 0)),
           Id: S.optional(S.String),
           NextToken: S.optional(S.String),
           Version: S.optional(S.String),
@@ -4619,7 +4755,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDefinitionVersionResponse",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ThingName: S.String.pipe(T.HttpLabel("ThingName")) }).pipe(
           T.all(
@@ -4634,26 +4774,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetThingRuntimeConfigurationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSyncStatus: S.optional(S.String),
           Telemetry: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelemetryConfiguration" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ TelemetryConfiguration: S.optional(__S(125, __c15, 5)) }),
+        S.Struct({ TelemetryConfiguration: S.optional(__S(1217, __c76, 1)) }),
       ).annotate({ identifier: "RuntimeConfiguration" });
-    case 7:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ RuntimeConfiguration: S.optional(__S(126, __c15, 6)) }),
+        S.Struct({ RuntimeConfiguration: S.optional(__S(1218, __c76, 2)) }),
       ).annotate({
         identifier: "GetThingRuntimeConfigurationResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4685,23 +4825,24 @@ function __c16(j: number): any {
           DeploymentId: S.optional(S.String),
           DeploymentStatus: S.optional(S.String),
           DeploymentType: S.optional(S.String),
-          ErrorDetails: S.optional(__S(85, __c10, 5)),
+          ErrorDetails: S.optional(__S(1, __c0, 1)),
           ErrorMessage: S.optional(S.String),
           GroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkDeploymentResult" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(1233, __c77, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Deployments: S.optional(__S(130, __c16, 2)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ Deployments: S.optional(__S(1234, __c77, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBulkDeploymentDetailedReportsResponse",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -4719,7 +4860,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListBulkDeploymentsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BulkDeploymentArn: S.optional(S.String),
@@ -4727,12 +4868,12 @@ function __c16(j: number): any {
           CreatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkDeployment" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1249, __c78, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          BulkDeployments: S.optional(__S(134, __c16, 6)),
+          BulkDeployments: S.optional(__S(1250, __c78, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4740,7 +4881,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4760,7 +4901,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListConnectorDefinitionsRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4770,12 +4915,12 @@ function __c17(j: number): any {
           LatestVersion: S.optional(S.String),
           LatestVersionArn: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(__S(7, __c0, 7)),
+          Tags: S.optional(__S(880, __c55, 0)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "DefinitionInformation" });
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
     case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Definitions: S.optional(__listOfDefinitionInformation),
@@ -4784,7 +4929,58 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListConnectorDefinitionsResponse",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          InitialVersion: S.optional(__S(1312, __c82, 0)),
+          Name: S.optional(S.String),
+          tags: S.optional(__S(880, __c55, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/definition/cores" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateCoreDefinitionRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Cores: S.optional(__listOfCore) })).annotate({
+        identifier: "CoreDefinitionVersion",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CertificateArn: S.optional(S.String),
+          Id: S.optional(S.String),
+          SyncShadow: S.optional(S.Boolean),
+          ThingArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Core" });
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
@@ -4806,7 +5002,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListConnectorDefinitionVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -4815,9 +5015,9 @@ function __c17(j: number): any {
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersionInformation" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -4828,7 +5028,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4848,7 +5048,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCoreDefinitionsRequest",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")),
@@ -4870,7 +5074,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCoreDefinitionVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupId: S.String.pipe(T.HttpLabel("GroupId")),
@@ -4887,7 +5095,7 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedAt: S.optional(S.String),
@@ -4897,13 +5105,17 @@ function __c18(j: number): any {
           GroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Deployment" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1409, __c88, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Deployments: S.optional(__S(148, __c18, 4)), NextToken: S.optional(S.String) }),
+        S.Struct({ Deployments: S.optional(__S(1410, __c88, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -4921,7 +5133,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListDeviceDefinitionsRequest",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DeviceDefinitionId: S.String.pipe(T.HttpLabel("DeviceDefinitionId")),
@@ -4945,7 +5161,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4965,7 +5181,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListFunctionDefinitionsRequest",
       });
-    case 1:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FunctionDefinitionId: S.String.pipe(T.HttpLabel("FunctionDefinitionId")),
@@ -4987,7 +5207,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListFunctionDefinitionVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupId: S.String.pipe(T.HttpLabel("GroupId")) }).pipe(
           T.all(
@@ -5002,7 +5226,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListGroupCertificateAuthoritiesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GroupCertificateAuthorityArn: S.optional(S.String),
@@ -5011,9 +5235,9 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GroupCertificateAuthorityProperties",
       });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1489, __c93, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           GroupCertificateAuthorities: S.optional(__listOfGroupCertificateAuthorityProperties),
@@ -5021,7 +5245,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListGroupCertificateAuthoritiesResponse",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5030,17 +5258,43 @@ function __c19(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/greengrass/groups" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 7:
-      return S.Array(__S(37, __c4, 5));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Groups: S.optional(__listOfGroupInformation), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 1:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")),
+          Cores: S.optional(__listOfCore),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/greengrass/definition/cores/{CoreDefinitionId}/versions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateCoreDefinitionVersionRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupId: S.String.pipe(T.HttpLabel("GroupId")),
@@ -5057,7 +5311,11 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListGroupVersionsRequest" });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5075,7 +5333,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListLoggerDefinitionsRequest",
       });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LoggerDefinitionId: S.String.pipe(T.HttpLabel("LoggerDefinitionId")),
@@ -5097,7 +5359,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListLoggerDefinitionVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5115,7 +5381,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListResourceDefinitionsRequest",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5137,7 +5407,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListResourceDefinitionVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5155,7 +5429,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSubscriptionDefinitionsRequest",
       });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.String).pipe(T.HttpQuery("MaxResults")),
@@ -5179,7 +5457,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5197,10 +5475,14 @@ function __c21(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(7, __c0, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(880, __c55, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
@@ -5217,13 +5499,17 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ResetDeploymentsRequest" });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
           ExecutionRoleArn: S.optional(S.String),
           InputFileUri: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/greengrass/bulk/deployments" }),
@@ -5237,7 +5523,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "StartBulkDeploymentRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BulkDeploymentArn: S.optional(S.String),
@@ -5246,7 +5532,42 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "StartBulkDeploymentResponse",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          DeploymentId: S.optional(S.String),
+          DeploymentType: S.optional(S.String),
+          GroupId: S.String.pipe(T.HttpLabel("GroupId")),
+          GroupVersionId: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/groups/{GroupId}/deployments" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateDeploymentRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DeploymentArn: S.optional(S.String), DeploymentId: S.optional(S.String) }),
+      ).annotate({ identifier: "CreateDeploymentResponse" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BulkDeploymentId: S.String.pipe(T.HttpLabel("BulkDeploymentId")) }).pipe(
           T.all(
@@ -5261,11 +5582,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "StopBulkDeploymentRequest",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(880, __c55, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -5277,7 +5602,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -5295,7 +5624,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c22(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5323,7 +5652,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateConnectivityInfoResponse",
       });
-    case 2:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectorDefinitionId: S.String.pipe(T.HttpLabel("ConnectorDefinitionId")),
@@ -5344,7 +5677,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateConnectorDefinitionRequest",
       });
-    case 3:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CoreDefinitionId: S.String.pipe(T.HttpLabel("CoreDefinitionId")),
@@ -5362,7 +5699,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateCoreDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DeviceDefinitionId: S.String.pipe(T.HttpLabel("DeviceDefinitionId")),
@@ -5380,7 +5721,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateDeviceDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FunctionDefinitionId: S.String.pipe(T.HttpLabel("FunctionDefinitionId")),
@@ -5401,7 +5746,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateFunctionDefinitionRequest",
       });
-    case 6:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupId: S.String.pipe(T.HttpLabel("GroupId")),
@@ -5417,7 +5766,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateGroupRequest" });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateExpiryInMilliseconds: S.optional(S.String),
@@ -5440,7 +5793,39 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AmznClientToken: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-Client-Token")),
+          InitialVersion: S.optional(__S(1904, __c119, 0)),
+          Name: S.optional(S.String),
+          tags: S.optional(__S(880, __c55, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/greengrass/definition/devices" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateDeviceDefinitionRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Devices: S.optional(__listOfDevice) })).annotate({
+        identifier: "DeviceDefinitionVersion",
+      });
+  }
+}
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5460,7 +5845,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateLoggerDefinitionRequest",
       });
-    case 1:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -5481,7 +5870,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateResourceDefinitionRequest",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -5502,14 +5895,18 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionDefinitionRequest",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Telemetry: S.optional(S.String) })).annotate({
         identifier: "TelemetryConfigurationUpdate",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TelemetryConfiguration: S.optional(__S(187, __c23, 3)),
+          TelemetryConfiguration: S.optional(__S(1968, __c123, 0)),
           ThingName: S.String.pipe(T.HttpLabel("ThingName")),
         }).pipe(
           T.all(
@@ -5526,7 +5923,6 @@ function __c23(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

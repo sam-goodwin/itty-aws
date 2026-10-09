@@ -319,8 +319,8 @@ export const completeShortTokenRotation: API.OperationMethod<
   CompleteShortTokenRotationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CompleteShortTokenRotationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CompleteShortTokenRotationResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CompleteShortTokenRotationRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<CompleteShortTokenRotationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -334,8 +334,8 @@ export const oauthAccess: API.OperationMethod<
   OauthAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<OauthAccessRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OauthAccessResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<OauthAccessRequest>,
+  output: __S(40, __c2, 8) as any as S.Schema<OauthAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const v2Access: API.OperationMethod<
   V2AccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<V2AccessRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<V2AccessResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<V2AccessRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<V2AccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const v2Exchange: API.OperationMethod<
   V2ExchangeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<V2ExchangeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<V2ExchangeResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<V2ExchangeRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<V2ExchangeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const v2UserAccess: API.OperationMethod<
   V2UserAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<V2UserAccessRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<V2UserAccessResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<V2UserAccessRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<V2UserAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -414,7 +414,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BeginShortTokenRotationResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
@@ -431,7 +435,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteShortTokenRotationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -440,7 +444,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteShortTokenRotationResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.optional(S.String),
@@ -457,7 +465,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OauthAccessRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
@@ -466,26 +474,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "OauthAccessResponseAuthorizingUser",
       });
-    case 6:
+    case 2:
       return S.Array(S.String);
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          app_home: S.optional(__S(6, __c0, 6)),
-          team: S.optional(__S(6, __c0, 6)),
-          channel: S.optional(__S(6, __c0, 6)),
-          group: S.optional(__S(6, __c0, 6)),
-          mpim: S.optional(__S(6, __c0, 6)),
-          im: S.optional(__S(6, __c0, 6)),
+          app_home: S.optional(__S(34, __c2, 2)),
+          team: S.optional(__S(34, __c2, 2)),
+          channel: S.optional(__S(34, __c2, 2)),
+          group: S.optional(__S(34, __c2, 2)),
+          mpim: S.optional(__S(34, __c2, 2)),
+          im: S.optional(__S(34, __c2, 2)),
         }),
       ).annotate({
         identifier: "OauthAccessResponseScopes",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bot_user_id: S.optional(S.String),
@@ -493,7 +497,7 @@ function __c1(j: number): any {
           scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "OauthAccessResponseBot" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -510,7 +514,7 @@ function __c1(j: number): any {
           token_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OauthAccessResponseUser" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -527,7 +531,7 @@ function __c1(j: number): any {
           image_original: S.optional(S.String),
         }),
       ).annotate({ identifier: "OauthAccessResponseTeam" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String),
@@ -538,7 +542,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "OauthAccessResponseIncomingWebhook",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -548,22 +552,26 @@ function __c1(j: number): any {
           team_name: S.optional(S.String),
           team_id: S.String,
           access_token: S.String.pipe(T.SensitiveValue({})),
-          authorizing_user: S.optional(__S(5, __c0, 5)),
-          installer_user: S.optional(__S(5, __c0, 5)),
-          scopes: S.optional(__S(7, __c0, 7)),
+          authorizing_user: S.optional(__S(33, __c2, 1)),
+          installer_user: S.optional(__S(33, __c2, 1)),
+          scopes: S.optional(__S(35, __c2, 3)),
           scope: S.optional(S.String),
           user_id: S.optional(S.String),
-          bot: S.optional(__S(8, __c1, 0)),
+          bot: S.optional(__S(36, __c2, 4)),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_in: S.optional(S.Number),
-          user: S.optional(__S(9, __c1, 1)),
-          team: S.optional(__S(10, __c1, 2)),
+          user: S.optional(__S(37, __c2, 5)),
+          team: S.optional(__S(38, __c2, 6)),
           enterprise_id: S.optional(S.NullOr(S.String)),
-          incoming_webhook: S.optional(__S(11, __c1, 3)),
+          incoming_webhook: S.optional(__S(39, __c2, 7)),
           single_channel_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "OauthAccessResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.optional(S.String),
@@ -583,27 +591,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "V2AccessRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "V2AccessResponseTeam" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "V2AccessResponseEnterprise",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -616,7 +604,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "V2AccessResponseAuthedUser",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -627,7 +615,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "V2AccessResponseIncomingWebhook",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -640,13 +628,37 @@ function __c2(j: number): any {
           is_enterprise_install: S.optional(S.Boolean),
           expires_in: S.optional(S.Number),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          team: S.NullOr(__S(14, __c1, 6)),
-          enterprise: S.NullOr(__S(15, __c1, 7)),
-          authed_user: S.optional(__S(16, __c2, 0)),
-          incoming_webhook: S.optional(__S(17, __c2, 1)),
+          team: S.NullOr(__S(64, __c4, 0)),
+          enterprise: S.NullOr(__S(65, __c4, 1)),
+          authed_user: S.optional(__S(49, __c3, 1)),
+          incoming_webhook: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "V2AccessResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "V2AccessResponseTeam" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "V2AccessResponseEnterprise",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
@@ -660,7 +672,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "V2ExchangeRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -676,7 +688,11 @@ function __c2(j: number): any {
           enterprise: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "V2ExchangeResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.optional(S.String),
@@ -696,7 +712,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "V2UserAccessRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -708,13 +724,12 @@ function __c2(j: number): any {
           is_enterprise_install: S.Boolean,
           expires_in: S.optional(S.Number),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          team: S.NullOr(__S(14, __c1, 6)),
-          enterprise: S.NullOr(__S(15, __c1, 7)),
+          team: S.NullOr(__S(64, __c4, 0)),
+          enterprise: S.NullOr(__S(65, __c4, 1)),
         }),
       ).annotate({ identifier: "V2UserAccessResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

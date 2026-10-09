@@ -136,7 +136,7 @@ export const createFolder: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateFolderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateFolderResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateFolderResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -150,8 +150,8 @@ export const deleteFile: API.OperationMethod<
   DeleteFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteFileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteFileResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteFileRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const downloadFile: API.OperationMethod<
   DownloadFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DownloadFileRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DownloadFileResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DownloadFileRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<DownloadFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -180,8 +180,8 @@ export const downloadFiles: API.OperationMethod<
   DownloadFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DownloadFilesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DownloadFilesResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DownloadFilesRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<DownloadFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const findInFiles: API.OperationMethod<
   FindInFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<FindInFilesRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<FindInFilesResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<FindInFilesRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<FindInFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -210,8 +210,8 @@ export const getFileInfo: API.OperationMethod<
   GetFileInfoError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetFileInfoRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<FileInfo>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetFileInfoRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<FileInfo>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListFilesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListFilesResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<ListFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const moveFile: API.OperationMethod<
   MoveFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<MoveFileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<MoveFileResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<MoveFileRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<MoveFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const replaceInFiles: API.OperationMethod<
   ReplaceInFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ReplaceInFilesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ReplaceInFilesResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ReplaceInFilesRequest>,
+  output: __S(59, __c14, 3) as any as S.Schema<ReplaceInFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -270,8 +270,8 @@ export const searchFiles: API.OperationMethod<
   SearchFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<SearchFilesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<SearchFilesResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<SearchFilesRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<SearchFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const setFilePermissions: API.OperationMethod<
   SetFilePermissionsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<SetFilePermissionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetFilePermissionsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<SetFilePermissionsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SetFilePermissionsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const uploadFile: API.OperationMethod<
   UploadFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UploadFileRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UploadedFile>,
+  input: __S(16, __c4, 0) as any as S.Schema<UploadFileRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<UploadedFile>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const uploadFiles: API.OperationMethod<
   UploadFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UploadFilesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UploadFilesResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<UploadFilesRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UploadFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -332,53 +332,114 @@ function __c0(j: number): any {
           mode: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/files/folder", code: 200 })),
       ).annotate({ identifier: "CreateFolderRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateFolderResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Query()),
           recursive: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/files", code: 200 })),
       ).annotate({ identifier: "DeleteFileRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String.pipe(T.Query()),
+          owner: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          mode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "POST", uri: "/files/permissions", code: 200 })),
+      ).annotate({
+        identifier: "SetFilePermissionsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "POST", uri: "/files/upload-v2", code: 200 })),
+      ).annotate({ identifier: "UploadFileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          path: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "UploadedFile" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/files/bulk-upload", code: 200 })),
+      ).annotate({ identifier: "UploadFilesRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/files/download", code: 200 })),
       ).annotate({ identifier: "DownloadFileRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DownloadFileResponse",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paths: __S(5, __c0, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/files/bulk-download", code: 200 })),
-      ).annotate({ identifier: "DownloadFilesRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() =>
+        S.Struct({
+          paths: __S(32, __c8, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/files/bulk-download", code: 200 })),
+      ).annotate({ identifier: "DownloadFilesRequest" });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() => __S(29, __c7, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "DownloadFilesResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Query()),
           pattern: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/files/find", code: 200 })),
       ).annotate({ identifier: "FindInFilesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
@@ -386,19 +447,27 @@ function __c1(j: number): any {
           line: S.Number,
         }),
       ).annotate({ identifier: "Match" });
+    case 2:
+      return S.Array(__S(37, __c9, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() => __S(11, __c1, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(38, __c9, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "FindInFilesResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/files/info", code: 200 })),
       ).annotate({ identifier: "GetFileInfoRequest" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           group: S.String,
@@ -413,39 +482,47 @@ function __c1(j: number): any {
           size: S.Number,
         }),
       ).annotate({ identifier: "FileInfo" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String.pipe(T.Query())),
           depth: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/files", code: 200 })),
       ).annotate({ identifier: "ListFilesRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(14, __c1, 6));
     case 1:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(44, __c11, 0));
+    case 2:
+      return S.suspend(() => __S(49, __c12, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFilesResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String.pipe(T.Query()),
           destination: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "POST", uri: "/files/move", code: 200 })),
       ).annotate({ identifier: "MoveFileRequest" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          files: __S(5, __c0, 5),
+          files: __S(32, __c8, 0),
           newValue: S.String,
           pattern: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/files/replace", code: 200 })),
       ).annotate({ identifier: "ReplaceInFilesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
@@ -453,61 +530,31 @@ function __c2(j: number): any {
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReplaceResult" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() => __S(21, __c2, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
+      return S.suspend(() => __S(58, __c14, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ReplaceInFilesResponse",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String.pipe(T.Query()),
           pattern: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/files/search", code: 200 })),
       ).annotate({ identifier: "SearchFilesRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          files: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "SearchFilesResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          path: S.String.pipe(T.Query()),
-          owner: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          mode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "POST", uri: "/files/permissions", code: 200 })),
-      ).annotate({
-        identifier: "SetFilePermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "POST", uri: "/files/upload-v2", code: 200 })),
-      ).annotate({ identifier: "UploadFileRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          path: S.String,
-          type: S.String,
+          files: __S(32, __c8, 0),
         }),
-      ).annotate({ identifier: "UploadedFile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/files/bulk-upload", code: 200 })),
-      ).annotate({ identifier: "UploadFilesRequest" });
+      ).annotate({ identifier: "SearchFilesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

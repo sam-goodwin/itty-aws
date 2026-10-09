@@ -700,11 +700,11 @@ export const collectProjectsLocationsCatalogsEventStoresUserEvents: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    0,
-    __c0,
+    384,
+    __c24,
     0,
   ) as any as S.Schema<CollectProjectsLocationsCatalogsEventStoresUserEventsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleApiHttpBody>,
+  output: __S(385, __c24, 1) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const createProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
   CreateProjectsLocationsCatalogsCatalogItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateProjectsLocationsCatalogsCatalogItemsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateProjectsLocationsCatalogsCatalogItemsRequest>,
+  output: __S(485, __c30, 5) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -746,14 +746,14 @@ export const createProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    497,
+    __c31,
+    1,
   ) as any as S.Schema<CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>,
   output: __S(
-    21,
-    __c2,
-    5,
+    512,
+    __c32,
+    0,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
@@ -774,8 +774,8 @@ export const deleteProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
   DeleteProjectsLocationsCatalogsCatalogItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsCatalogItemsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsCatalogItemsRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -796,11 +796,11 @@ export const deleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    26,
-    __c3,
-    2,
+    560,
+    __c35,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(544, __c34, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const getProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
   GetProjectsLocationsCatalogsCatalogItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetProjectsLocationsCatalogsCatalogItemsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsCatalogsCatalogItemsRequest>,
+  output: __S(485, __c30, 5) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,11 +838,11 @@ export const getProjectsLocationsCatalogsEventStoresOperations: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCatalogsEventStoresOperationsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -860,8 +860,8 @@ export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
   GetProjectsLocationsCatalogsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -881,8 +881,8 @@ export const importProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
   ImportProjectsLocationsCatalogsCatalogItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ImportProjectsLocationsCatalogsCatalogItemsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(65, __c4, 1) as any as S.Schema<ImportProjectsLocationsCatalogsCatalogItemsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -903,11 +903,11 @@ export const importProjectsLocationsCatalogsEventStoresUserEvents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    145,
+    __c9,
+    1,
   ) as any as S.Schema<ImportProjectsLocationsCatalogsEventStoresUserEventsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -926,11 +926,11 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
   output: __S(
-    55,
-    __c6,
-    7,
+    162,
+    __c10,
+    2,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
@@ -951,10 +951,10 @@ export const listProjectsLocationsCatalogsCatalogItems: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListProjectsLocationsCatalogsCatalogItemsRequest>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListProjectsLocationsCatalogsCatalogItemsRequest>,
   output: __S(
-    57,
-    __c7,
+    193,
+    __c12,
     1,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
@@ -977,11 +977,11 @@ export const listProjectsLocationsCatalogsEventStoresOperations: API.PaginatedOp
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    208,
+    __c13,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresOperationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(225, __c14, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1002,14 +1002,14 @@ export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    240,
+    __c15,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>,
   output: __S(
-    63,
-    __c7,
-    7,
+    242,
+    __c15,
+    2,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1031,13 +1031,13 @@ export const listProjectsLocationsCatalogsEventStoresUserEvents: API.PaginatedOp
   GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    64,
-    __c8,
+    256,
+    __c16,
     0,
   ) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresUserEventsRequest>,
   output: __S(
-    65,
-    __c8,
+    257,
+    __c16,
     1,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
@@ -1059,8 +1059,8 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1081,8 +1081,8 @@ export const patchProjectsLocationsCatalogs: API.OperationMethod<
   PatchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Catalog>,
+  input: __S(288, __c18, 0) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Catalog>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1102,8 @@ export const patchProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
   PatchProjectsLocationsCatalogsCatalogItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<PatchProjectsLocationsCatalogsCatalogItemsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
+  input: __S(304, __c19, 0) as any as S.Schema<PatchProjectsLocationsCatalogsCatalogItemsRequest>,
+  output: __S(485, __c30, 5) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1124,14 +1124,14 @@ export const predictProjectsLocationsCatalogsEventStoresPlacements: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    322,
+    __c20,
+    2,
   ) as any as S.Schema<PredictProjectsLocationsCatalogsEventStoresPlacementsRequest>,
   output: __S(
-    74,
-    __c9,
-    2,
+    325,
+    __c20,
+    5,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1PredictResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1153,11 +1153,11 @@ export const purgeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    337,
+    __c21,
+    1,
   ) as any as S.Schema<PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,11 +1178,11 @@ export const rejoinProjectsLocationsCatalogsEventStoresUserEvents: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    78,
-    __c9,
-    6,
+    353,
+    __c22,
+    1,
   ) as any as S.Schema<RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1203,11 +1203,11 @@ export const writeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    79,
-    __c9,
-    7,
+    368,
+    __c23,
+    0,
   ) as any as S.Schema<WriteProjectsLocationsCatalogsEventStoresUserEventsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEvent>,
+  output: __S(134, __c8, 6) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1217,234 +1217,6 @@ export const writeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationM
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ets: S.optional(S.String.pipe(T.Query())),
-          uri: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          userEvent: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+parent}/userEvents:collect",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CollectProjectsLocationsCatalogsEventStoresUserEventsRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.optional(S.String),
-          data: S.optional(S.String),
-          extensions: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "GoogleApiHttpBody" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          min: S.optional(S.Number),
-          max: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange",
-      });
-    case 5:
-      return S.Record(S.String, S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1Image",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          originalPrice: S.optional(S.Number),
-          displayPrice: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canonicalProductUri: S.optional(S.String),
-          priceRange: S.optional(__S(4, __c0, 4)),
-          stockState: S.optional(S.String),
-          costs: S.optional(__S(5, __c0, 5)),
-          availableQuantity: S.optional(S.String),
-          images: S.optional(__S(7, __c0, 7)),
-          exactPrice: S.optional(__S(8, __c1, 0)),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItem",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapFloatList",
-      });
-    case 7:
-      return S.Record(S.String, __S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapStringList",
-      });
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numericalFeatures: S.optional(__S(15, __c1, 7)),
-          categoricalFeatures: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMap",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          productMetadata: S.optional(__S(9, __c1, 1)),
-          description: S.optional(S.String),
-          tags: S.optional(__S(10, __c1, 2)),
-          itemGroupId: S.optional(S.String),
-          categoryHierarchies: S.optional(__S(12, __c1, 4)),
-          title: S.optional(S.String),
-          itemAttributes: S.optional(__S(18, __c2, 2)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1CatalogItem",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/catalogItems",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCatalogsCatalogItemsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          predictionApiKeyRegistration: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/predictionApiKeyRegistrations",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCatalogsCatalogItemsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1458,7 +1230,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsCatalogItemsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1472,27 +1248,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsEventStoresOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(2, __c0, 2)),
+          details: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(1, __c0, 1)),
-          metadata: S.optional(__S(1, __c0, 1)),
-          error: S.optional(__S(29, __c3, 5)),
+          response: S.optional(__S(400, __c25, 0)),
+          metadata: S.optional(__S(400, __c25, 0)),
+          error: S.optional(__S(32, __c2, 0)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1513,6 +1297,36 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          requestId: S.optional(S.String),
+          updateMask: S.optional(S.String),
+          inputConfig: S.optional(__S(84, __c5, 4)),
+          errorsConfig: S.optional(__S(85, __c5, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/catalogItems:import",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsCatalogsCatalogItemsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           tableId: S.optional(S.String),
           gcsStagingDir: S.optional(S.String),
           dataSchema: S.optional(S.String),
@@ -1525,7 +1339,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputUris: S.optional(__S(10, __c1, 2)),
+          inputUris: S.optional(__S(448, __c28, 0)),
           jsonSchema: S.optional(S.String),
         }),
       ).annotate({
@@ -1534,19 +1348,70 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          revenue: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-          id: S.optional(S.String),
-          taxes: S.optional(__S(5, __c0, 5)),
-          costs: S.optional(__S(5, __c0, 5)),
+          userEvents: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1PurchaseTransaction",
+        identifier: "GoogleCloudRecommendationengineV1beta1UserEventInlineSource",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          itemAttributes: S.optional(__S(18, __c2, 2)),
+          catalogItems: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1CatalogInlineSource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          bigQuerySource: S.optional(__S(80, __c5, 0)),
+          gcsSource: S.optional(__S(81, __c5, 1)),
+          userEventInlineSource: S.optional(__S(82, __c5, 2)),
+          catalogInlineSource: S.optional(__S(83, __c5, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1InputConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ImportErrorsConfig",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(485, __c30, 5));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(134, __c8, 6));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          revenue: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+          id: S.optional(S.String),
+          taxes: S.optional(__S(464, __c29, 0)),
+          costs: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1PurchaseTransaction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          itemAttributes: S.optional(__S(472, __c29, 8)),
           stockState: S.optional(S.String),
           quantity: S.optional(S.Number),
           currencyCode: S.optional(S.String),
@@ -1558,22 +1423,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1ProductDetail",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          purchaseTransaction: S.optional(__S(34, __c4, 2)),
+          purchaseTransaction: S.optional(__S(128, __c8, 0)),
           searchQuery: S.optional(S.String),
-          productDetails: S.optional(__S(36, __c4, 4)),
-          pageCategories: S.optional(__S(12, __c1, 4)),
+          productDetails: S.optional(__S(130, __c8, 2)),
+          pageCategories: S.optional(__S(466, __c29, 2)),
           listId: S.optional(S.String),
           cartId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1ProductEventDetail",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           directUserRequest: S.optional(S.Boolean),
@@ -1585,120 +1450,51 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1UserInfo",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           pageViewId: S.optional(S.String),
           referrerUri: S.optional(S.String),
           recommendationToken: S.optional(S.String),
-          eventAttributes: S.optional(__S(18, __c2, 2)),
+          eventAttributes: S.optional(__S(472, __c29, 8)),
           uri: S.optional(S.String),
-          experimentIds: S.optional(__S(10, __c1, 2)),
+          experimentIds: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1EventDetail",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          productEventDetail: S.optional(__S(37, __c4, 5)),
+          productEventDetail: S.optional(__S(131, __c8, 3)),
           eventTime: S.optional(S.String),
           eventSource: S.optional(S.String),
-          userInfo: S.optional(__S(38, __c4, 6)),
-          eventDetail: S.optional(__S(39, __c4, 7)),
+          userInfo: S.optional(__S(132, __c8, 4)),
+          eventDetail: S.optional(__S(133, __c8, 5)),
           eventType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1UserEvent",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userEvents: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1UserEventInlineSource",
-      });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          catalogItems: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1CatalogInlineSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bigQuerySource: S.optional(__S(32, __c4, 0)),
-          gcsSource: S.optional(__S(33, __c4, 1)),
-          userEventInlineSource: S.optional(__S(42, __c5, 2)),
-          catalogInlineSource: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1InputConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gcsPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ImportErrorsConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          updateMask: S.optional(S.String),
-          inputConfig: S.optional(__S(45, __c5, 5)),
-          errorsConfig: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest",
-      });
   }
 }
-function __c6(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(47, __c5, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/catalogItems:import",
-            baseUrl: "https://recommendationengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsCatalogsCatalogItemsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           requestId: S.optional(S.String),
-          errorsConfig: S.optional(__S(46, __c5, 6)),
-          inputConfig: S.optional(__S(45, __c5, 5)),
+          errorsConfig: S.optional(__S(85, __c5, 5)),
+          inputConfig: S.optional(__S(84, __c5, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1709,7 +1505,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsCatalogsEventStoresUserEventsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1725,7 +1525,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(177, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          catalogs: S.optional(__S(161, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ListCatalogsResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           predictItemLevel: S.optional(S.String),
@@ -1734,31 +1549,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          catalogItemLevelConfig: S.optional(__S(52, __c6, 4)),
+          catalogItemLevelConfig: S.optional(__S(176, __c11, 0)),
           defaultEventStoreId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1Catalog",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          catalogs: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRecommendationengineV1beta1ListCatalogsResponse",
-      });
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1780,13 +1584,17 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          catalogItems: S.optional(__S(43, __c5, 3)),
+          catalogItems: S.optional(__S(96, __c6, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1804,19 +1612,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsEventStoresOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(30, __c3, 6));
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(33, __c2, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(10, __c1, 2)),
-          operations: S.optional(__S(59, __c7, 3)),
+          unreachable: S.optional(__S(448, __c28, 0)),
+          operations: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1832,13 +1648,13 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          predictionApiKeyRegistrations: S.optional(__S(62, __c7, 6)),
+          predictionApiKeyRegistrations: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({
         identifier:
@@ -1846,7 +1662,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1869,12 +1685,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          userEvents: S.optional(__S(41, __c5, 1)),
+          userEvents: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1ListUserEventsResponse",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1892,12 +1712,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(177, __c11, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1908,12 +1732,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(485, __c30, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1924,27 +1752,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsCatalogItemsRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number),
-          params: S.optional(__S(1, __c0, 1)),
+          params: S.optional(__S(400, __c25, 0)),
           filter: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
-          labels: S.optional(__S(69, __c8, 5)),
-          userEvent: S.optional(__S(40, __c5, 0)),
+          labels: S.optional(__S(320, __c20, 0)),
+          userEvent: S.optional(__S(134, __c8, 6)),
           pageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1PredictRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(321, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1955,35 +1787,35 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PredictProjectsLocationsCatalogsEventStoresPlacementsRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          itemMetadata: S.optional(__S(1, __c0, 1)),
+          itemMetadata: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(323, __c20, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          itemsMissingInCatalog: S.optional(__S(10, __c1, 2)),
+          itemsMissingInCatalog: S.optional(__S(448, __c28, 0)),
           dryRun: S.optional(S.Boolean),
-          metadata: S.optional(__S(1, __c0, 1)),
+          metadata: S.optional(__S(400, __c25, 0)),
           recommendationToken: S.optional(S.String),
-          results: S.optional(__S(73, __c9, 1)),
+          results: S.optional(__S(324, __c20, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1PredictResponse",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
@@ -1992,11 +1824,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2007,7 +1839,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userEventRejoinScope: S.optional(S.String),
@@ -2015,11 +1851,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2030,11 +1866,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(134, __c8, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2047,7 +1887,270 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ets: S.optional(S.String.pipe(T.Query())),
+          uri: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          userEvent: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+parent}/userEvents:collect",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CollectProjectsLocationsCatalogsEventStoresUserEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String),
+          data: S.optional(S.String),
+          extensions: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "GoogleApiHttpBody" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(400, __c25, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(485, __c30, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/catalogItems",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCatalogsCatalogItemsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy",
+      });
+    case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(467, __c29, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapFloatList",
+      });
+    case 5:
+      return S.Record(S.String, __S(468, __c29, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapStringList",
+      });
+    case 7:
+      return S.Record(S.String, __S(470, __c29, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          numericalFeatures: S.optional(__S(469, __c29, 5)),
+          categoricalFeatures: S.optional(__S(471, __c29, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1FeatureMap",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          min: S.optional(S.Number),
+          max: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1Image",
+      });
+    case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          originalPrice: S.optional(S.Number),
+          displayPrice: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          canonicalProductUri: S.optional(S.String),
+          priceRange: S.optional(__S(480, __c30, 0)),
+          stockState: S.optional(S.String),
+          costs: S.optional(__S(464, __c29, 0)),
+          availableQuantity: S.optional(S.String),
+          images: S.optional(__S(482, __c30, 2)),
+          exactPrice: S.optional(__S(483, __c30, 3)),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItem",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          productMetadata: S.optional(__S(484, __c30, 4)),
+          description: S.optional(S.String),
+          tags: S.optional(__S(448, __c28, 0)),
+          itemGroupId: S.optional(S.String),
+          categoryHierarchies: S.optional(__S(466, __c29, 2)),
+          title: S.optional(S.String),
+          itemAttributes: S.optional(__S(472, __c29, 8)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1CatalogItem",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          predictionApiKeyRegistration: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(496, __c31, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/predictionApiKeyRegistrations",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCatalogsCatalogItemsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://recommendationengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

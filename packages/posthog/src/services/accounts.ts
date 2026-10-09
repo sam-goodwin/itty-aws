@@ -570,8 +570,8 @@ export const createAccount: API.OperationMethod<
   CreateAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateAccountRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -584,8 +584,8 @@ export const createAccountsPresence: API.OperationMethod<
   CreateAccountsPresenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateAccountsPresenceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAccountsPresenceResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateAccountsPresenceRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateAccountsPresenceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -598,8 +598,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const getAccountsByExternalId: API.OperationMethod<
   GetAccountsByExternalIdError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAccountsByExternalIdRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetAccountsByExternalIdRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const listAccounts: API.OperationMethod<
   ListAccountsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListAccountsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PaginatedAccountList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<PaginatedAccountList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const listAccountsEmailThreadMessages: API.OperationMethod<
   ListAccountsEmailThreadMessagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListAccountsEmailThreadMessagesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PaginatedAccountEmailThreadMessageList>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAccountsEmailThreadMessagesRequest>,
+  output: __S(125, __c15, 5) as any as S.Schema<PaginatedAccountEmailThreadMessageList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -654,8 +654,8 @@ export const listAccountsEmailThreads: API.OperationMethod<
   ListAccountsEmailThreadsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAccountsEmailThreadsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PaginatedAccountEmailThreadList>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAccountsEmailThreadsRequest>,
+  output: __S(133, __c16, 5) as any as S.Schema<PaginatedAccountEmailThreadList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const listAccountsMeetings: API.OperationMethod<
   ListAccountsMeetingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAccountsMeetingsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<PaginatedMeetingList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListAccountsMeetingsRequest>,
+  output: __S(149, __c18, 5) as any as S.Schema<PaginatedMeetingList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -682,8 +682,8 @@ export const listAccountsPresence: API.OperationMethod<
   ListAccountsPresenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListAccountsPresenceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListAccountsPresenceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListAccountsPresenceRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<ListAccountsPresenceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -696,8 +696,8 @@ export const listAccountsSummaries: API.OperationMethod<
   ListAccountsSummariesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAccountsSummariesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<PaginatedAccountChannelSummaryList>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAccountsSummariesRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<PaginatedAccountChannelSummaryList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -710,8 +710,8 @@ export const listAccountsSupportTicketMessages: API.OperationMethod<
   ListAccountsSupportTicketMessagesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListAccountsSupportTicketMessagesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PaginatedAccountSupportTicketMessageList>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListAccountsSupportTicketMessagesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<PaginatedAccountSupportTicketMessageList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const listAccountsSupportTickets: API.OperationMethod<
   ListAccountsSupportTicketsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListAccountsSupportTicketsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListAccountsSupportTicketsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListAccountsSupportTicketsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListAccountsSupportTicketsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -738,8 +738,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -752,8 +752,8 @@ export const updateAccountsPartial: API.OperationMethod<
   UpdateAccountsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateAccountsPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Account>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateAccountsPartialRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<Account>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -775,14 +775,32 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AccountsDestroyResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          external_id: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(16, __c2, 0))),
+          tags: S.optional(__S(32, __c4, 0)),
+          slack_summary_cadence: S.optional(S.NullOr(S.String)),
+          churned_at: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
+      ).annotate({ identifier: "CreateAccountRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(__S(2, __c0, 2)),
-          known_emails: S.optional(__S(2, __c0, 2)),
+          email_domains: S.optional(__S(32, __c4, 0)),
+          known_emails: S.optional(__S(32, __c4, 0)),
           stripe_customer_id: S.optional(S.NullOr(S.String)),
           hubspot_deal_id: S.optional(S.NullOr(S.String)),
           billing_id: S.optional(S.NullOr(S.String)),
@@ -795,24 +813,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAccountRequestProperties",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
-          tags: S.optional(__S(2, __c0, 2)),
-          slack_summary_cadence: S.optional(S.NullOr(S.String)),
-          churned_at: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
-      ).annotate({ identifier: "CreateAccountRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(__S(2, __c0, 2)),
-          known_emails: S.optional(__S(2, __c0, 2)),
+          email_domains: S.optional(__S(32, __c4, 0)),
+          known_emails: S.optional(__S(32, __c4, 0)),
           stripe_customer_id: S.optional(S.NullOr(S.String)),
           hubspot_deal_id: S.optional(S.NullOr(S.String)),
           billing_id: S.optional(S.NullOr(S.String)),
@@ -823,17 +833,17 @@ function __c0(j: number): any {
           metabase_link: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AccountProperties" });
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(5, __c0, 5))),
-          tags: S.optional(__S(6, __c0, 6)),
-          notebooks: __S(2, __c0, 2),
+          properties: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(__S(25, __c3, 1)),
+          notebooks: __S(32, __c4, 0),
           slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
           ignored_at: S.NullOr(S.String),
@@ -844,319 +854,15 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Account" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/{id}/presence/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsPresenceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number,
-          display_name: S.String,
-        }),
-      ).annotate({ identifier: "AccountPresenceViewer" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateAccountsPresenceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/accounts/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetAccountRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          external_id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/accounts/by_external_id/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsByExternalIdRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          all_roles_unassigned: S.optional(S.Boolean.pipe(T.Query())),
-          include_churned: S.optional(S.Boolean.pipe(T.Query())),
-          include_ignored: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
-      ).annotate({ identifier: "ListAccountsRequest" });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "PaginatedAccountList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          thread_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/accounts/{id}/email_threads/{thread_id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsEmailThreadMessagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          email: S.String,
-        }),
-      ).annotate({
-        identifier: "AccountEmailThreadAddress",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          sent_at: S.String,
-          sender: __S(18, __c2, 2),
-          to_recipients: __S(19, __c2, 3),
-          cc_recipients: __S(19, __c2, 3),
-          sender_authenticated: S.Boolean,
-          direction: S.String,
-          content: S.String,
-        }),
-      ).annotate({
-        identifier: "AccountEmailThreadMessage",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedAccountEmailThreadMessageList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/accounts/{id}/email_threads/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsEmailThreadsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          email: S.NullOr(S.String),
-          person_id: S.NullOr(S.String),
-          distinct_id: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ConversationMessageSender",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sender: __S(24, __c3, 0),
-          sent_at: S.String,
-          direction: S.String,
-        }),
-      ).annotate({
-        identifier: "ConversationMessageSummary",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          display_name: S.String,
-          kind: S.String,
-          person_id: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountEmailThreadParticipant",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          subject: S.String,
-          preview: S.String,
-          first_message_at: S.NullOr(S.String),
-          first_message: S.NullOr(__S(25, __c3, 1)),
-          last_message_at: S.NullOr(S.String),
-          last_message: S.NullOr(__S(25, __c3, 1)),
-          message_count: S.Number,
-          participants: __S(27, __c3, 3),
-        }),
-      ).annotate({ identifier: "AccountEmailThread" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedAccountEmailThreadList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/accounts/{id}/meetings/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsMeetingsRequest",
-      });
-  }
-}
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          display_name: S.String,
-          response_status: S.String,
-          is_organizer: S.Boolean,
-          person_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "MeetingParticipant" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-          gong_url: S.NullOr(S.String),
-          start_time: S.String,
-          end_time: S.NullOr(S.String),
-          organizer_email: S.String,
-          status: S.String,
-          participants: __S(33, __c4, 1),
-        }),
-      ).annotate({ identifier: "Meeting" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(35, __c4, 3),
-        }),
-      ).annotate({ identifier: "PaginatedMeetingList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_ids: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/presence_list/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsPresenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          viewers: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "AccountPresence" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
+      return S.Array(S.String);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAccountsPresenceResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1173,7 +879,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAccountsSummariesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           author: S.String,
@@ -1181,9 +887,9 @@ function __c5(j: number): any {
           permalink: S.String,
         }),
       ).annotate({ identifier: "ChannelSummaryMessage" });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1193,24 +899,28 @@ function __c5(j: number): any {
           period_end: S.String,
           content: S.String,
           message_count: S.Number,
-          messages: __S(43, __c5, 3),
+          messages: __S(42, __c5, 2),
           generated_at: S.String,
         }),
       ).annotate({ identifier: "AccountChannelSummary" });
+    case 4:
+      return S.Array(__S(43, __c5, 3));
     case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(45, __c5, 5),
+          results: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "PaginatedAccountChannelSummaryList",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1228,11 +938,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAccountsSupportTicketMessagesRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1245,20 +951,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "AccountSupportTicketMessage",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(49, __c6, 1),
+          results: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "PaginatedAccountSupportTicketMessageList",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1273,7 +983,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAccountsSupportTicketsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1281,28 +991,32 @@ function __c6(j: number): any {
           status: S.String,
           last_message_at: S.NullOr(S.String),
           last_message_text: S.NullOr(S.String),
-          last_message: S.NullOr(__S(25, __c3, 1)),
+          last_message: S.NullOr(__S(137, __c17, 1)),
           deep_link: S.String,
           created_at: S.String,
           started_by: S.String,
           distinct_id: S.String,
         }),
       ).annotate({ identifier: "SupportTicket" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() => __S(53, __c6, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
+      return S.suspend(() => __S(58, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountsSupportTicketsResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.String,
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
-          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(S.NullOr(__S(16, __c2, 0))),
+          tags: S.optional(__S(32, __c4, 0)),
           slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -1311,7 +1025,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateAccountRequest" });
   }
 }
-function __c7(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1320,8 +1034,8 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           external_id: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(3, __c0, 3))),
-          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(S.NullOr(__S(16, __c2, 0))),
+          tags: S.optional(__S(32, __c4, 0)),
           slack_summary_cadence: S.optional(S.NullOr(S.String)),
           churned_at: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -1332,7 +1046,340 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/{id}/presence/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsPresenceRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(89, __c11, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateAccountsPresenceResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number,
+          display_name: S.String,
+        }),
+      ).annotate({ identifier: "AccountPresenceViewer" });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/accounts/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetAccountRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          external_id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/accounts/by_external_id/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountsByExternalIdRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          all_roles_unassigned: S.optional(S.Boolean.pipe(T.Query())),
+          include_churned: S.optional(S.Boolean.pipe(T.Query())),
+          include_ignored: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          ordering: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          tags: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/accounts/", code: 200 })),
+      ).annotate({ identifier: "ListAccountsRequest" });
+    case 1:
+      return S.Array(__S(26, __c3, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(113, __c14, 1),
+        }),
+      ).annotate({ identifier: "PaginatedAccountList" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          thread_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/accounts/{id}/email_threads/{thread_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsEmailThreadMessagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          email: S.String,
+        }),
+      ).annotate({
+        identifier: "AccountEmailThreadAddress",
+      });
+    case 2:
+      return S.Array(__S(121, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          sent_at: S.String,
+          sender: __S(121, __c15, 1),
+          to_recipients: __S(122, __c15, 2),
+          cc_recipients: __S(122, __c15, 2),
+          sender_authenticated: S.Boolean,
+          direction: S.String,
+          content: S.String,
+        }),
+      ).annotate({
+        identifier: "AccountEmailThreadMessage",
+      });
+    case 4:
+      return S.Array(__S(123, __c15, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(124, __c15, 4),
+        }),
+      ).annotate({
+        identifier: "PaginatedAccountEmailThreadMessageList",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/accounts/{id}/email_threads/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsEmailThreadsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          display_name: S.String,
+          kind: S.String,
+          person_id: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountEmailThreadParticipant",
+      });
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          subject: S.String,
+          preview: S.String,
+          first_message_at: S.NullOr(S.String),
+          first_message: S.NullOr(__S(137, __c17, 1)),
+          last_message_at: S.NullOr(S.String),
+          last_message: S.NullOr(__S(137, __c17, 1)),
+          message_count: S.Number,
+          participants: __S(130, __c16, 2),
+        }),
+      ).annotate({ identifier: "AccountEmailThread" });
+    case 4:
+      return S.Array(__S(131, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(132, __c16, 4),
+        }),
+      ).annotate({
+        identifier: "PaginatedAccountEmailThreadList",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          email: S.NullOr(S.String),
+          person_id: S.NullOr(S.String),
+          distinct_id: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ConversationMessageSender",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sender: __S(136, __c17, 0),
+          sent_at: S.String,
+          direction: S.String,
+        }),
+      ).annotate({
+        identifier: "ConversationMessageSummary",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/accounts/{id}/meetings/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsMeetingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          display_name: S.String,
+          response_status: S.String,
+          is_organizer: S.Boolean,
+          person_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "MeetingParticipant" });
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+          gong_url: S.NullOr(S.String),
+          start_time: S.String,
+          end_time: S.NullOr(S.String),
+          organizer_email: S.String,
+          status: S.String,
+          participants: __S(146, __c18, 2),
+        }),
+      ).annotate({ identifier: "Meeting" });
+    case 4:
+      return S.Array(__S(147, __c18, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(148, __c18, 4),
+        }),
+      ).annotate({ identifier: "PaginatedMeetingList" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_ids: __S(32, __c4, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/presence_list/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsPresenceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          viewers: __S(89, __c11, 1),
+        }),
+      ).annotate({ identifier: "AccountPresence" });
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
+      return S.suspend(() => __S(154, __c19, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAccountsPresenceResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

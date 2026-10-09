@@ -483,7 +483,7 @@ export const getDmarcReport: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetDmarcReportRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetDmarcReportResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetDmarcReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const getSpfInspect: API.OperationMethod<
   GetSpfInspectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetSpfInspectRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetSpfInspectResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetSpfInspectRequest>,
+  output: __S(36, __c2, 4) as any as S.Schema<GetSpfInspectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const patchDmarcReport: API.OperationMethod<
   PatchDmarcReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<PatchDmarcReportRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PatchDmarcReportResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<PatchDmarcReportRequest>,
+  output: __S(52, __c3, 4) as any as S.Schema<PatchDmarcReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -533,14 +533,56 @@ function __c0(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDmarcReportRequest" });
     case 1:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          bimiRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("bimi_records"))),
+          cnameDkimRecords: S.optional(
+            S.NullOr(__S(20, __c1, 4)).pipe(T.Body("cname_dkim_records")),
+          ),
+          cnameDmarcRecords: S.optional(
+            S.NullOr(__S(23, __c1, 7)).pipe(T.Body("cname_dmarc_records")),
+          ),
+          cnameSpfRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("cname_spf_records"))),
+          dkimRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("dkim_records"))),
+          dmarcRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("dmarc_records"))),
+          resolvedDmarcRecords: S.optional(
+            S.NullOr(__S(25, __c1, 9)).pipe(T.Body("resolved_dmarc_records")),
+          ),
+          spfRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("spf_records"))),
+        }),
+      ).annotate({
+        identifier: "DmarcReportsGetResponseRecords",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          approvedSources: S.optional(S.NullOr(__S(18, __c1, 2)).pipe(T.Body("approved_sources"))),
+          created: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          modified: S.optional(S.NullOr(S.String)),
+          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+          records: S.optional(S.NullOr(__S(1, __c0, 1))),
+          ruaPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("rua_prefix"))),
+          skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
+          status: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.NullOr(S.String)),
+          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDmarcReportResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           domain: S.optional(S.NullOr(S.String)),
-          ips: S.optional(S.NullOr(__S(1, __c0, 1))),
+          ips: S.optional(S.NullOr(__S(16, __c1, 0))),
           modified: S.optional(S.NullOr(S.String)),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           name: S.optional(S.NullOr(S.String)),
@@ -550,45 +592,41 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DmarcReportsGetResponseApprovedSourcesItem",
       });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           content: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          resolved: S.optional(S.NullOr(__S(1, __c0, 1))),
+          resolved: S.optional(S.NullOr(__S(16, __c1, 0))),
           ttl: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DmarcReportsGetResponseRecordsBimiRecordsItem",
       });
+    case 4:
+      return S.Array(__S(19, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.Array(S.String);
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           content: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          resolved: S.optional(S.NullOr(__S(6, __c0, 6))),
+          resolved: S.optional(S.NullOr(__S(21, __c1, 5))),
           ttl: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DmarcReportsGetResponseRecordsCnameDmarcRecordsItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.NullOr(S.String)),
@@ -597,47 +635,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DmarcReportsGetResponseRecordsResolvedDmarcRecordsItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bimiRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("bimi_records"))),
-          cnameDkimRecords: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("cname_dkim_records")),
-          ),
-          cnameDmarcRecords: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("cname_dmarc_records")),
-          ),
-          cnameSpfRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("cname_spf_records"))),
-          dkimRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("dkim_records"))),
-          dmarcRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("dmarc_records"))),
-          resolvedDmarcRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("resolved_dmarc_records")),
-          ),
-          spfRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("spf_records"))),
-        }),
-      ).annotate({
-        identifier: "DmarcReportsGetResponseRecords",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          approvedSources: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("approved_sources"))),
-          created: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          modified: S.optional(S.NullOr(S.String)),
-          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-          records: S.optional(S.NullOr(__S(11, __c1, 3))),
-          ruaPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("rua_prefix"))),
-          skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
-          status: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.NullOr(S.String)),
-          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetDmarcReportResponse" });
-    case 5:
+    case 9:
+      return S.Array(__S(24, __c1, 8));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -648,9 +652,9 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSpfInspectRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -661,23 +665,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SpfInspectGetResponseErrorsItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(34, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          components: __S(14, __c1, 6),
+          components: __S(33, __c2, 1),
           domain: S.String,
           record: S.String,
           totalLookups: S.Number.pipe(T.Body("total_lookups")),
-          errors: S.optional(S.NullOr(__S(16, __c2, 0))),
+          errors: S.optional(S.NullOr(__S(35, __c2, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSpfInspectResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -693,52 +697,52 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchDmarcReportRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           content: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          resolved: S.optional(S.NullOr(__S(6, __c0, 6))),
+          resolved: S.optional(S.NullOr(__S(21, __c1, 5))),
           ttl: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DmarcReportsEditResponseRecordsCnameDmarcRecordsItem",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          bimiRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("bimi_records"))),
+          bimiRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("bimi_records"))),
           cnameDkimRecords: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("cname_dkim_records")),
+            S.NullOr(__S(23, __c1, 7)).pipe(T.Body("cname_dkim_records")),
           ),
           cnameDmarcRecords: S.optional(
-            S.NullOr(__S(20, __c2, 4)).pipe(T.Body("cname_dmarc_records")),
+            S.NullOr(__S(50, __c3, 2)).pipe(T.Body("cname_dmarc_records")),
           ),
-          cnameSpfRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("cname_spf_records"))),
-          dkimRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("dkim_records"))),
-          dmarcRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("dmarc_records"))),
+          cnameSpfRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("cname_spf_records"))),
+          dkimRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("dkim_records"))),
+          dmarcRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("dmarc_records"))),
           resolvedDmarcRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("resolved_dmarc_records")),
+            S.NullOr(__S(25, __c1, 9)).pipe(T.Body("resolved_dmarc_records")),
           ),
-          spfRecords: S.optional(S.NullOr(__S(5, __c0, 5)).pipe(T.Body("spf_records"))),
+          spfRecords: S.optional(S.NullOr(__S(20, __c1, 4)).pipe(T.Body("spf_records"))),
         }),
       ).annotate({
         identifier: "DmarcReportsEditResponseRecords",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          approvedSources: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("approved_sources"))),
+          approvedSources: S.optional(S.NullOr(__S(18, __c1, 2)).pipe(T.Body("approved_sources"))),
           created: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           modified: S.optional(S.NullOr(S.String)),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-          records: S.optional(S.NullOr(__S(21, __c2, 5))),
+          records: S.optional(S.NullOr(__S(51, __c3, 3))),
           ruaPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("rua_prefix"))),
           skipWizard: S.optional(S.NullOr(S.Boolean).pipe(T.Body("skip_wizard"))),
           status: S.optional(S.NullOr(S.String)),
@@ -748,7 +752,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PatchDmarcReportResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

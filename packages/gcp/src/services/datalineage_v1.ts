@@ -657,11 +657,11 @@ export const batchSearchLinkProcessesProjectsLocations: API.OperationMethod<
   BatchSearchLinkProcessesProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchSearchLinkProcessesProjectsLocationsRequest>,
+  input: __S(401, __c25, 1) as any as S.Schema<BatchSearchLinkProcessesProjectsLocationsRequest>,
   output: __S(
-    7,
-    __c0,
-    7,
+    406,
+    __c25,
+    6,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -681,8 +681,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(433, __c27, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -701,8 +701,8 @@ export const createProjectsLocationsProcesses: API.OperationMethod<
   CreateProjectsLocationsProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsLocationsProcessesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateProjectsLocationsProcessesRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -721,8 +721,8 @@ export const createProjectsLocationsProcessesRuns: API.OperationMethod<
   CreateProjectsLocationsProcessesRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateProjectsLocationsProcessesRunsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateProjectsLocationsProcessesRunsRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -742,11 +742,11 @@ export const createProjectsLocationsProcessesRunsLineageEvents: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22,
-    __c2,
-    6,
+    544,
+    __c34,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsProcessesRunsLineageEventsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>,
+  output: __S(562, __c35, 2) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const deleteProjectsLocationsProcesses: API.OperationMethod<
   DeleteProjectsLocationsProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteProjectsLocationsProcessesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsProcessesRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const deleteProjectsLocationsProcessesRuns: API.OperationMethod<
   DeleteProjectsLocationsProcessesRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteProjectsLocationsProcessesRunsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteProjectsLocationsProcessesRunsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -826,11 +826,11 @@ export const deleteProjectsLocationsProcessesRunsLineageEvents: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    29,
+    48,
     __c3,
-    5,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsProcessesRunsLineageEventsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(448, __c28, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -844,11 +844,11 @@ export const getFoldersLocationsConfig: API.OperationMethod<
   GetFoldersLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetFoldersLocationsConfigRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetFoldersLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -863,11 +863,11 @@ export const getOrganizationsLocationsConfig: API.OperationMethod<
   GetOrganizationsLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetOrganizationsLocationsConfigRequest>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetOrganizationsLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -882,11 +882,11 @@ export const getProjectsLocationsConfig: API.OperationMethod<
   GetProjectsLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetProjectsLocationsConfigRequest>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetProjectsLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -901,8 +901,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -916,8 +916,8 @@ export const getProjectsLocationsProcesses: API.OperationMethod<
   GetProjectsLocationsProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsLocationsProcessesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsLocationsProcessesRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const getProjectsLocationsProcessesRuns: API.OperationMethod<
   GetProjectsLocationsProcessesRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetProjectsLocationsProcessesRunsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetProjectsLocationsProcessesRunsRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,12 @@ export const getProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod
   GetProjectsLocationsProcessesRunsLineageEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>,
+  input: __S(
+    176,
+    __c11,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsProcessesRunsLineageEventsRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -962,8 +966,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -979,8 +983,12 @@ export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogLineageV1ListProcessesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListProjectsLocationsProcessesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListProjectsLocationsProcessesRequest>,
+  output: __S(
+    210,
+    __c13,
+    2,
+  ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -996,8 +1004,8 @@ export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogLineageV1ListRunsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListProjectsLocationsProcessesRunsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListProjectsLocationsProcessesRunsRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1017,14 +1025,14 @@ export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOpera
   GoogleCloudDatacatalogLineageV1ListLineageEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    240,
+    __c15,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProcessesRunsLineageEventsRequest>,
   output: __S(
-    54,
-    __c6,
-    6,
+    242,
+    __c15,
+    2,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1045,11 +1053,11 @@ export const patchFoldersLocationsConfig: API.OperationMethod<
   PatchFoldersLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<PatchFoldersLocationsConfigRequest>,
+  input: __S(256, __c16, 0) as any as S.Schema<PatchFoldersLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1069,11 +1077,11 @@ export const patchOrganizationsLocationsConfig: API.OperationMethod<
   PatchOrganizationsLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<PatchOrganizationsLocationsConfigRequest>,
+  input: __S(272, __c17, 0) as any as S.Schema<PatchOrganizationsLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1093,11 +1101,11 @@ export const patchProjectsLocationsConfig: API.OperationMethod<
   PatchProjectsLocationsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PatchProjectsLocationsConfigRequest>,
+  input: __S(288, __c18, 0) as any as S.Schema<PatchProjectsLocationsConfigRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    85,
+    __c5,
+    5,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1117,8 +1125,8 @@ export const patchProjectsLocationsProcesses: API.OperationMethod<
   PatchProjectsLocationsProcessesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<PatchProjectsLocationsProcessesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
+  input: __S(304, __c19, 0) as any as S.Schema<PatchProjectsLocationsProcessesRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GoogleCloudDatacatalogLineageV1Process>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1137,8 +1145,8 @@ export const patchProjectsLocationsProcessesRuns: API.OperationMethod<
   PatchProjectsLocationsProcessesRunsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<PatchProjectsLocationsProcessesRunsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
+  input: __S(320, __c20, 0) as any as S.Schema<PatchProjectsLocationsProcessesRunsRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<GoogleCloudDatacatalogLineageV1Run>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1157,11 +1165,11 @@ export const processOpenLineageRunEventProjectsLocations: API.OperationMethod<
   ProcessOpenLineageRunEventProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ProcessOpenLineageRunEventProjectsLocationsRequest>,
+  input: __S(336, __c21, 0) as any as S.Schema<ProcessOpenLineageRunEventProjectsLocationsRequest>,
   output: __S(
-    61,
-    __c7,
-    5,
+    337,
+    __c21,
+    1,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1181,11 +1189,11 @@ export const searchLineageStreamingProjectsLocations: API.OperationMethod<
   SearchLineageStreamingProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<SearchLineageStreamingProjectsLocationsRequest>,
+  input: __S(358, __c22, 6) as any as S.Schema<SearchLineageStreamingProjectsLocationsRequest>,
   output: __S(
-    77,
-    __c9,
-    5,
+    365,
+    __c22,
+    13,
   ) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1205,8 +1213,8 @@ export const searchLinksProjectsLocations: API.OperationMethod<
   SearchLinksProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<SearchLinksProjectsLocationsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse>,
+  input: __S(385, __c24, 1) as any as S.Schema<SearchLinksProjectsLocationsRequest>,
+  output: __S(389, __c24, 5) as any as S.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1214,237 +1222,6 @@ export const searchLinksProjectsLocations: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-          links: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:batchSearchLinkProcesses",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchSearchLinkProcessesProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          link: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(4, __c0, 4)),
-          process: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          processLinks: S.optional(__S(6, __c0, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleLongrunningCancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          sourceType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1Origin",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
-          origin: S.optional(__S(12, __c1, 4)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1Process",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/processes",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsProcessesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-          attributes: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1Run",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/runs",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsProcessesRunsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fullyQualifiedName: S.optional(S.String),
-          field: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1EntityReference",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dependencyType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1DependencyInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(__S(17, __c2, 1)),
-          dependencyInfo: S.optional(__S(18, __c2, 2)),
-          source: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1EventLink",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          links: S.optional(__S(20, __c2, 4)),
-          name: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1LineageEvent",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/lineageEvents",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsProcessesRunsLineageEventsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://datalineage.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1461,29 +1238,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProcessesRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(496, __c31, 0));
     case 1:
-      return S.Array(__S(11, __c1, 3));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(25, __c3, 1)),
+          details: S.optional(__S(16, __c1, 0)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          response: S.optional(__S(11, __c1, 3)),
+          response: S.optional(__S(496, __c31, 0)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(__S(11, __c1, 3)),
-          error: S.optional(__S(26, __c3, 2)),
+          metadata: S.optional(__S(496, __c31, 0)),
+          error: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -1498,7 +1283,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProcessesRunsRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1513,7 +1302,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProcessesRunsLineageEventsRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1527,7 +1320,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetFoldersLocationsConfigRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -1536,11 +1333,7 @@ function __c3(j: number): any {
         identifier:
           "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integration: S.optional(S.String),
@@ -1549,36 +1342,40 @@ function __c4(j: number): any {
         identifier:
           "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          lineageEnablement: S.optional(__S(31, __c3, 7)),
-          integrationSelector: S.optional(__S(32, __c4, 0)),
+          lineageEnablement: S.optional(__S(80, __c5, 0)),
+          integrationSelector: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
     case 3:
+      return S.Array(__S(82, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(34, __c4, 2)),
+          rules: S.optional(__S(83, __c5, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ingestion: S.optional(__S(35, __c4, 3)),
+          ingestion: S.optional(__S(84, __c5, 4)),
           name: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1Config",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1592,7 +1389,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsConfigRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1606,7 +1407,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConfigRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1622,7 +1427,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1638,7 +1443,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProcessesRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1652,7 +1461,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProcessesRunsRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1666,7 +1479,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProcessesRunsLineageEventsRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1684,19 +1501,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(18, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(44, __c5, 4)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          operations: S.optional(__S(193, __c12, 1)),
+          unreachable: S.optional(__S(416, __c26, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1712,22 +1533,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProcessesRequest",
       });
-    case 7:
-      return S.Array(__S(13, __c1, 5));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(481, __c30, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          processes: S.optional(__S(47, __c5, 7)),
+          processes: S.optional(__S(209, __c13, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1ListProcessesResponse",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1743,18 +1564,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProcessesRunsRequest",
       });
+    case 1:
+      return S.Array(__S(528, __c33, 0));
     case 2:
-      return S.Array(__S(15, __c1, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          runs: S.optional(__S(50, __c6, 2)),
+          runs: S.optional(__S(225, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1ListRunsResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1770,22 +1595,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProcessesRunsLineageEventsRequest",
       });
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(562, __c35, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          lineageEvents: S.optional(__S(53, __c6, 5)),
+          lineageEvents: S.optional(__S(241, __c15, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(85, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1798,13 +1627,13 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(85, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1815,11 +1644,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsLocationsConfigRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(85, __c5, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1830,14 +1663,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConfigRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(481, __c30, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1848,13 +1685,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProcessesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1865,7 +1706,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProcessesRunsRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -1880,40 +1725,40 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProcessOpenLineageRunEventProjectsLocationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          lineageEvents: S.optional(__S(0, __c0, 0)),
+          lineageEvents: S.optional(__S(416, __c26, 0)),
           process: S.optional(S.String),
           run: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeInterval" });
-    case 7:
+    case 1:
       return S.Array(S.String);
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           entitySet: S.optional(S.String),
-          timeRange: S.optional(__S(62, __c7, 6)),
-          dependencyTypes: S.optional(__S(63, __c7, 7)),
+          timeRange: S.optional(__S(352, __c22, 0)),
+          dependencyTypes: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchFilters",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -1923,20 +1768,10 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestSearchLimits",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          entities: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
-      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(67, __c8, 3)),
+          entities: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingRequestRootCriteria",
@@ -1944,10 +1779,10 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(64, __c8, 0)),
-          locations: S.optional(__S(0, __c0, 0)),
-          limits: S.optional(__S(65, __c8, 1)),
-          rootCriteria: S.optional(__S(68, __c8, 4)),
+          filters: S.optional(__S(354, __c22, 2)),
+          locations: S.optional(__S(416, __c26, 0)),
+          limits: S.optional(__S(355, __c22, 3)),
+          rootCriteria: S.optional(__S(356, __c22, 4)),
           direction: S.optional(S.String),
         }),
       ).annotate({
@@ -1957,7 +1792,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(357, __c22, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1971,18 +1806,14 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          process: S.optional(__S(13, __c1, 5)),
+          process: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1LineageLinkLineageProcess",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(359, __c22, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           dependencyType: S.optional(S.String),
@@ -1990,50 +1821,68 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1LineageLinkDependencyInfo",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(361, __c22, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          processes: S.optional(__S(72, __c9, 0)),
-          source: S.optional(__S(17, __c2, 1)),
+          processes: S.optional(__S(360, __c22, 8)),
+          source: S.optional(__S(576, __c36, 0)),
           location: S.optional(S.String),
           depth: S.optional(S.Number),
-          target: S.optional(__S(17, __c2, 1)),
-          dependencyInfo: S.optional(__S(74, __c9, 2)),
+          target: S.optional(__S(576, __c36, 0)),
+          dependencyInfo: S.optional(__S(362, __c22, 10)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1LineageLink",
       });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(363, __c22, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(76, __c9, 4)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          links: S.optional(__S(364, __c22, 12)),
+          unreachable: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLineageStreamingResponse",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(576, __c36, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(17, __c2, 1)),
+          entities: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1MultipleEntityReference",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(576, __c36, 0)),
           pageToken: S.optional(S.String),
-          sources: S.optional(__S(67, __c8, 3)),
-          targets: S.optional(__S(67, __c8, 3)),
+          sources: S.optional(__S(369, __c23, 1)),
+          targets: S.optional(__S(369, __c23, 1)),
           pageSize: S.optional(S.Number),
-          target: S.optional(__S(17, __c2, 1)),
+          target: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLinksRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2044,39 +1893,309 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SearchLinksProjectsLocationsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(18, __c2, 2));
-    case 1:
+    case 2:
+      return S.Array(__S(592, __c37, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
-          dependencyInfo: S.optional(__S(80, __c10, 0)),
-          target: S.optional(__S(17, __c2, 1)),
-          source: S.optional(__S(17, __c2, 1)),
+          dependencyInfo: S.optional(__S(386, __c24, 2)),
+          target: S.optional(__S(576, __c36, 0)),
+          source: S.optional(__S(576, __c36, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1Link",
       });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(387, __c24, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          links: S.optional(__S(82, __c10, 2)),
+          links: S.optional(__S(388, __c24, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogLineageV1SearchLinksResponse",
       });
   }
 }
-
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+          links: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(400, __c25, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:batchSearchLinkProcesses",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchSearchLinkProcessesProjectsLocationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          link: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo",
+      });
+    case 3:
+      return S.Array(__S(402, __c25, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(403, __c25, 3)),
+          process: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks",
+      });
+    case 5:
+      return S.Array(__S(404, __c25, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          processLinks: S.optional(__S(405, __c25, 5)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleLongrunningCancelOperationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(481, __c30, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/processes",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsProcessesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          sourceType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1Origin",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(496, __c31, 0)),
+          name: S.optional(S.String),
+          origin: S.optional(__S(480, __c30, 0)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1Process",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/runs",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsProcessesRunsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+          attributes: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1Run",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(562, __c35, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/lineageEvents",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsProcessesRunsLineageEventsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(__S(576, __c36, 0)),
+          dependencyInfo: S.optional(__S(592, __c37, 0)),
+          source: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1EventLink",
+      });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          links: S.optional(__S(561, __c35, 1)),
+          name: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1LineageEvent",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fullyQualifiedName: S.optional(S.String),
+          field: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1EntityReference",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dependencyType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogLineageV1DependencyInfo",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://datalineage.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

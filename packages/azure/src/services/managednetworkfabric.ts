@@ -10554,7 +10554,7 @@ export const AccessControlListsResync: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AccessControlListsResyncRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccessControlListsResyncResponse>,
+  output: __S(64, __c2, 0) as any as S.Schema<AccessControlListsResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10568,8 +10568,8 @@ export const CommitL2IsolationDomainConfiguration: API.OperationMethod<
   CommitL2IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CommitL2IsolationDomainConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CommitL2IsolationDomainConfigurationResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CommitL2IsolationDomainConfigurationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CommitL2IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10583,8 +10583,8 @@ export const CommitL3IsolationDomainConfiguration: API.OperationMethod<
   CommitL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CommitL3IsolationDomainConfigurationResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CommitL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10598,8 +10598,8 @@ export const CommitNetworkFabricBatchStatus: API.OperationMethod<
   CommitNetworkFabricBatchStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CommitBatchStatusOperationResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>,
+  output: __S(6403, __c200, 3) as any as S.Schema<CommitBatchStatusOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10613,8 +10613,8 @@ export const CommitNetworkFabricConfiguration: API.OperationMethod<
   CommitNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CommitNetworkFabricConfigurationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CommitConfigurationResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<CommitNetworkFabricConfigurationRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<CommitConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10628,8 +10628,8 @@ export const CommitRoutePolicyConfiguration: API.OperationMethod<
   CommitRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CommitRoutePolicyConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CommitRoutePolicyConfigurationResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<CommitRoutePolicyConfigurationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CommitRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10643,8 +10643,8 @@ export const CreateAccessControlList: API.OperationMethod<
   CreateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateAccessControlListRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CreateAccessControlListResponse>,
+  input: __S(7777, __c243, 1) as any as S.Schema<CreateAccessControlListRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<CreateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10658,8 +10658,8 @@ export const CreateExternalNetwork: API.OperationMethod<
   CreateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreateExternalNetworkRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<CreateExternalNetworkResponse>,
+  input: __S(8482, __c265, 2) as any as S.Schema<CreateExternalNetworkRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<CreateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10673,8 +10673,8 @@ export const CreateInternalNetwork: API.OperationMethod<
   CreateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateInternalNetworkRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CreateInternalNetworkResponse>,
+  input: __S(9219, __c288, 3) as any as S.Schema<CreateInternalNetworkRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<CreateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10688,8 +10688,8 @@ export const CreateInternetGateway: API.OperationMethod<
   CreateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateInternetGatewayRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<CreateInternetGatewayResponse>,
+  input: __S(9889, __c309, 1) as any as S.Schema<CreateInternetGatewayRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<CreateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10703,8 +10703,8 @@ export const CreateInternetGatewayRule: API.OperationMethod<
   CreateInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CreateInternetGatewayRuleRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<CreateInternetGatewayRuleResponse>,
+  input: __S(129, __c4, 1) as any as S.Schema<CreateInternetGatewayRuleRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<CreateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10718,8 +10718,8 @@ export const CreateIpCommunity: API.OperationMethod<
   CreateIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateIpCommunityRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<CreateIpCommunityResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<CreateIpCommunityRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<CreateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10733,8 +10733,8 @@ export const CreateIpExtendedCommunity: API.OperationMethod<
   CreateIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateIpExtendedCommunityRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<CreateIpExtendedCommunityResponse>,
+  input: __S(1217, __c38, 1) as any as S.Schema<CreateIpExtendedCommunityRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CreateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10748,8 +10748,8 @@ export const CreateIpPrefix: API.OperationMethod<
   CreateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateIpPrefixRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<CreateIpPrefixResponse>,
+  input: __S(1793, __c56, 1) as any as S.Schema<CreateIpPrefixRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<CreateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10763,8 +10763,8 @@ export const CreateL2IsolationDomain: API.OperationMethod<
   CreateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreateL2IsolationDomainRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<CreateL2IsolationDomainResponse>,
+  input: __S(2241, __c70, 1) as any as S.Schema<CreateL2IsolationDomainRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<CreateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10778,8 +10778,8 @@ export const CreateL3IsolationDomain: API.OperationMethod<
   CreateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreateL3IsolationDomainRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<CreateL3IsolationDomainResponse>,
+  input: __S(2817, __c88, 1) as any as S.Schema<CreateL3IsolationDomainRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<CreateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10793,8 +10793,8 @@ export const CreateNeighborGroup: API.OperationMethod<
   CreateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateNeighborGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<CreateNeighborGroupResponse>,
+  input: __S(3425, __c107, 1) as any as S.Schema<CreateNeighborGroupRequest>,
+  output: __S(3456, __c108, 0) as any as S.Schema<CreateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10808,8 +10808,8 @@ export const CreateNetworkBootstrapDevice: API.OperationMethod<
   CreateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>,
+  input: __S(3905, __c122, 1) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10823,8 +10823,8 @@ export const CreateNetworkBootstrapInterface: API.OperationMethod<
   CreateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>,
+  input: __S(4353, __c136, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10838,8 +10838,8 @@ export const CreateNetworkDevice: API.OperationMethod<
   CreateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateNetworkDeviceRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<CreateNetworkDeviceResponse>,
+  input: __S(4737, __c148, 1) as any as S.Schema<CreateNetworkDeviceRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<CreateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10853,8 +10853,8 @@ export const CreateNetworkFabric: API.OperationMethod<
   CreateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<CreateNetworkFabricRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<CreateNetworkFabricResponse>,
+  input: __S(5254, __c164, 6) as any as S.Schema<CreateNetworkFabricRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<CreateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10868,8 +10868,8 @@ export const CreateNetworkFabricController: API.OperationMethod<
   CreateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<CreateNetworkFabricControllerRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<CreateNetworkFabricControllerResponse>,
+  input: __S(5569, __c174, 1) as any as S.Schema<CreateNetworkFabricControllerRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<CreateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10883,8 +10883,8 @@ export const CreateNetworkInterface: API.OperationMethod<
   CreateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<CreateNetworkInterfaceRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<CreateNetworkInterfaceResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<CreateNetworkInterfaceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<CreateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10898,8 +10898,8 @@ export const CreateNetworkMonitor: API.OperationMethod<
   CreateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<CreateNetworkMonitorRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<CreateNetworkMonitorResponse>,
+  input: __S(5793, __c181, 1) as any as S.Schema<CreateNetworkMonitorRequest>,
+  output: __S(5856, __c183, 0) as any as S.Schema<CreateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10913,8 +10913,8 @@ export const CreateNetworkPacketBroker: API.OperationMethod<
   CreateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<CreateNetworkPacketBrokerRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<CreateNetworkPacketBrokerResponse>,
+  input: __S(5889, __c184, 1) as any as S.Schema<CreateNetworkPacketBrokerRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<CreateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10928,8 +10928,8 @@ export const CreateNetworkRack: API.OperationMethod<
   CreateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<CreateNetworkRackRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<CreateNetworkRackResponse>,
+  input: __S(5985, __c187, 1) as any as S.Schema<CreateNetworkRackRequest>,
+  output: __S(6016, __c188, 0) as any as S.Schema<CreateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10943,8 +10943,8 @@ export const CreateNetworkTap: API.OperationMethod<
   CreateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<CreateNetworkTapRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<CreateNetworkTapResponse>,
+  input: __S(6081, __c190, 1) as any as S.Schema<CreateNetworkTapRequest>,
+  output: __S(6116, __c191, 4) as any as S.Schema<CreateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10958,8 +10958,8 @@ export const CreateNetworkTapRule: API.OperationMethod<
   CreateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<CreateNetworkTapRuleRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<CreateNetworkTapRuleResponse>,
+  input: __S(6145, __c192, 1) as any as S.Schema<CreateNetworkTapRuleRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<CreateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10973,8 +10973,8 @@ export const CreateNetworkToNetworkInterconnect: API.OperationMethod<
   CreateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>,
+  input: __S(6242, __c195, 2) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>,
+  output: __S(6281, __c196, 9) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10988,8 +10988,8 @@ export const CreateRoutePolicy: API.OperationMethod<
   CreateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<CreateRoutePolicyRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<CreateRoutePolicyResponse>,
+  input: __S(6305, __c197, 1) as any as S.Schema<CreateRoutePolicyRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<CreateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11003,8 +11003,8 @@ export const DeleteAccessControlList: API.OperationMethod<
   DeleteAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<DeleteAccessControlListRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<DeleteAccessControlListResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<DeleteAccessControlListRequest>,
+  output: __S(6656, __c208, 0) as any as S.Schema<DeleteAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11018,8 +11018,8 @@ export const DeleteExternalNetwork: API.OperationMethod<
   DeleteExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<DeleteExternalNetworkRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteExternalNetworkResponse>,
+  input: __S(6688, __c209, 0) as any as S.Schema<DeleteExternalNetworkRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11033,8 +11033,8 @@ export const DeleteInternalNetwork: API.OperationMethod<
   DeleteInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<DeleteInternalNetworkRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteInternalNetworkResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<DeleteInternalNetworkRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11048,8 +11048,8 @@ export const DeleteInternetGateway: API.OperationMethod<
   DeleteInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<DeleteInternetGatewayRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteInternetGatewayResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<DeleteInternetGatewayRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11063,8 +11063,8 @@ export const DeleteInternetGatewayRule: API.OperationMethod<
   DeleteInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<DeleteInternetGatewayRuleRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteInternetGatewayRuleResponse>,
+  input: __S(6784, __c212, 0) as any as S.Schema<DeleteInternetGatewayRuleRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11078,8 +11078,8 @@ export const DeleteIpCommunity: API.OperationMethod<
   DeleteIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DeleteIpCommunityRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteIpCommunityResponse>,
+  input: __S(6848, __c214, 0) as any as S.Schema<DeleteIpCommunityRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11093,8 +11093,8 @@ export const DeleteIpExtendedCommunity: API.OperationMethod<
   DeleteIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<DeleteIpExtendedCommunityRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteIpExtendedCommunityResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<DeleteIpExtendedCommunityRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11108,8 +11108,8 @@ export const DeleteIpPrefix: API.OperationMethod<
   DeleteIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<DeleteIpPrefixRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteIpPrefixResponse>,
+  input: __S(6912, __c216, 0) as any as S.Schema<DeleteIpPrefixRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11123,8 +11123,8 @@ export const DeleteL2IsolationDomain: API.OperationMethod<
   DeleteL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeleteL2IsolationDomainRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<DeleteL2IsolationDomainResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<DeleteL2IsolationDomainRequest>,
+  output: __S(6656, __c208, 0) as any as S.Schema<DeleteL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11138,8 +11138,8 @@ export const DeleteL3IsolationDomain: API.OperationMethod<
   DeleteL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<DeleteL3IsolationDomainRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<DeleteL3IsolationDomainResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<DeleteL3IsolationDomainRequest>,
+  output: __S(6656, __c208, 0) as any as S.Schema<DeleteL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11153,8 +11153,8 @@ export const DeleteNeighborGroup: API.OperationMethod<
   DeleteNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<DeleteNeighborGroupRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNeighborGroupResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<DeleteNeighborGroupRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11168,8 +11168,8 @@ export const DeleteNetworkBootstrapDevice: API.OperationMethod<
   DeleteNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>,
+  input: __S(7104, __c222, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11183,8 +11183,8 @@ export const DeleteNetworkBootstrapInterface: API.OperationMethod<
   DeleteNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11198,8 +11198,8 @@ export const DeleteNetworkDevice: API.OperationMethod<
   DeleteNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteNetworkDeviceRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkDeviceResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<DeleteNetworkDeviceRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11213,8 +11213,8 @@ export const DeleteNetworkFabric: API.OperationMethod<
   DeleteNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DeleteNetworkFabricRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkFabricResponse>,
+  input: __S(7200, __c225, 0) as any as S.Schema<DeleteNetworkFabricRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11228,8 +11228,8 @@ export const DeleteNetworkFabricController: API.OperationMethod<
   DeleteNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<DeleteNetworkFabricControllerRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteNetworkFabricControllerResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<DeleteNetworkFabricControllerRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11243,8 +11243,8 @@ export const DeleteNetworkInterface: API.OperationMethod<
   DeleteNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<DeleteNetworkInterfaceRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkInterfaceResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<DeleteNetworkInterfaceRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11258,8 +11258,8 @@ export const DeleteNetworkMonitor: API.OperationMethod<
   DeleteNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DeleteNetworkMonitorRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkMonitorResponse>,
+  input: __S(7296, __c228, 0) as any as S.Schema<DeleteNetworkMonitorRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11273,8 +11273,8 @@ export const DeleteNetworkPacketBroker: API.OperationMethod<
   DeleteNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<DeleteNetworkPacketBrokerRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteNetworkPacketBrokerResponse>,
+  input: __S(7328, __c229, 0) as any as S.Schema<DeleteNetworkPacketBrokerRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11288,8 +11288,8 @@ export const DeleteNetworkRack: API.OperationMethod<
   DeleteNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<DeleteNetworkRackRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkRackResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<DeleteNetworkRackRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11303,8 +11303,8 @@ export const DeleteNetworkTap: API.OperationMethod<
   DeleteNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<DeleteNetworkTapRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkTapResponse>,
+  input: __S(7424, __c232, 0) as any as S.Schema<DeleteNetworkTapRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11318,8 +11318,8 @@ export const DeleteNetworkTapRule: API.OperationMethod<
   DeleteNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DeleteNetworkTapRuleRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteNetworkTapRuleResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<DeleteNetworkTapRuleRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11333,8 +11333,8 @@ export const DeleteNetworkToNetworkInterconnect: API.OperationMethod<
   DeleteNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>,
+  input: __S(7488, __c234, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>,
+  output: __S(6816, __c213, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11348,8 +11348,8 @@ export const DeleteRoutePolicy: API.OperationMethod<
   DeleteRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<DeleteRoutePolicyRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DeleteRoutePolicyResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<DeleteRoutePolicyRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeleteRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11363,8 +11363,8 @@ export const GetAccessControlList: API.OperationMethod<
   GetAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetAccessControlListRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetAccessControlListResponse>,
+  input: __S(7552, __c236, 0) as any as S.Schema<GetAccessControlListRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<GetAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11378,8 +11378,8 @@ export const GetExternalNetwork: API.OperationMethod<
   GetExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetExternalNetworkRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetExternalNetworkResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetExternalNetworkRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<GetExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11393,8 +11393,8 @@ export const GetInternalNetwork: API.OperationMethod<
   GetInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetInternalNetworkRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetInternalNetworkResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<GetInternalNetworkRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<GetInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11408,8 +11408,8 @@ export const GetInternetGateway: API.OperationMethod<
   GetInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<GetInternetGatewayRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetInternetGatewayResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetInternetGatewayRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<GetInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11423,8 +11423,8 @@ export const GetInternetGatewayRule: API.OperationMethod<
   GetInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetInternetGatewayRuleRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetInternetGatewayRuleResponse>,
+  input: __S(7680, __c240, 0) as any as S.Schema<GetInternetGatewayRuleRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<GetInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11438,8 +11438,8 @@ export const GetIpCommunity: API.OperationMethod<
   GetIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetIpCommunityRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GetIpCommunityResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<GetIpCommunityRequest>,
+  output: __S(7744, __c242, 0) as any as S.Schema<GetIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11453,8 +11453,8 @@ export const GetIpExtendedCommunity: API.OperationMethod<
   GetIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetIpExtendedCommunityRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GetIpExtendedCommunityResponse>,
+  input: __S(8032, __c251, 0) as any as S.Schema<GetIpExtendedCommunityRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<GetIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11468,8 +11468,8 @@ export const GetIpPrefix: API.OperationMethod<
   GetIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<GetIpPrefixRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GetIpPrefixResponse>,
+  input: __S(8064, __c252, 0) as any as S.Schema<GetIpPrefixRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<GetIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11483,8 +11483,8 @@ export const GetL2IsolationDomain: API.OperationMethod<
   GetL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetL2IsolationDomainRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetL2IsolationDomainResponse>,
+  input: __S(8096, __c253, 0) as any as S.Schema<GetL2IsolationDomainRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<GetL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11498,8 +11498,8 @@ export const GetL3IsolationDomain: API.OperationMethod<
   GetL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetL3IsolationDomainRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetL3IsolationDomainResponse>,
+  input: __S(8128, __c254, 0) as any as S.Schema<GetL3IsolationDomainRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<GetL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11513,8 +11513,8 @@ export const GetNeighborGroup: API.OperationMethod<
   GetNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetNeighborGroupRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<GetNeighborGroupResponse>,
+  input: __S(8160, __c255, 0) as any as S.Schema<GetNeighborGroupRequest>,
+  output: __S(8192, __c256, 0) as any as S.Schema<GetNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11528,8 +11528,8 @@ export const GetNetworkBootstrapDevice: API.OperationMethod<
   GetNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<GetNetworkBootstrapDeviceRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetNetworkBootstrapDeviceResponse>,
+  input: __S(8224, __c257, 0) as any as S.Schema<GetNetworkBootstrapDeviceRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<GetNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11543,8 +11543,8 @@ export const GetNetworkBootstrapInterface: API.OperationMethod<
   GetNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetNetworkBootstrapInterfaceResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<GetNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11558,8 +11558,8 @@ export const GetNetworkDevice: API.OperationMethod<
   GetNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetNetworkDeviceRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<GetNetworkDeviceResponse>,
+  input: __S(8288, __c259, 0) as any as S.Schema<GetNetworkDeviceRequest>,
+  output: __S(8320, __c260, 0) as any as S.Schema<GetNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11573,8 +11573,8 @@ export const GetNetworkDeviceSkus: API.OperationMethod<
   GetNetworkDeviceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetNetworkDeviceSkusRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<GetNetworkDeviceSkusResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<GetNetworkDeviceSkusRequest>,
+  output: __S(8353, __c261, 1) as any as S.Schema<GetNetworkDeviceSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11588,8 +11588,8 @@ export const GetNetworkFabric: API.OperationMethod<
   GetNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetNetworkFabricRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<GetNetworkFabricResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<GetNetworkFabricRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11603,8 +11603,8 @@ export const GetNetworkFabricController: API.OperationMethod<
   GetNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetNetworkFabricControllerRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetNetworkFabricControllerResponse>,
+  input: __S(8832, __c276, 0) as any as S.Schema<GetNetworkFabricControllerRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<GetNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11618,8 +11618,8 @@ export const GetNetworkFabricSkus: API.OperationMethod<
   GetNetworkFabricSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetNetworkFabricSkusRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<GetNetworkFabricSkusResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<GetNetworkFabricSkusRequest>,
+  output: __S(8865, __c277, 1) as any as S.Schema<GetNetworkFabricSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11633,8 +11633,8 @@ export const GetNetworkFabricTopology: API.OperationMethod<
   GetNetworkFabricTopologyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<GetNetworkFabricTopologyRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<GetTopologyResponse>,
+  input: __S(8928, __c279, 0) as any as S.Schema<GetNetworkFabricTopologyRequest>,
+  output: __S(8931, __c279, 3) as any as S.Schema<GetTopologyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11648,8 +11648,8 @@ export const GetNetworkInterface: API.OperationMethod<
   GetNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<GetNetworkInterfaceRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetNetworkInterfaceResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<GetNetworkInterfaceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<GetNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11663,8 +11663,8 @@ export const GetNetworkMonitor: API.OperationMethod<
   GetNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetNetworkMonitorRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetNetworkMonitorResponse>,
+  input: __S(8992, __c281, 0) as any as S.Schema<GetNetworkMonitorRequest>,
+  output: __S(5856, __c183, 0) as any as S.Schema<GetNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11678,8 +11678,8 @@ export const GetNetworkPacketBroker: API.OperationMethod<
   GetNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetNetworkPacketBrokerRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetNetworkPacketBrokerResponse>,
+  input: __S(9024, __c282, 0) as any as S.Schema<GetNetworkPacketBrokerRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<GetNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11693,8 +11693,8 @@ export const GetNetworkRack: API.OperationMethod<
   GetNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<GetNetworkRackRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<GetNetworkRackResponse>,
+  input: __S(9056, __c283, 0) as any as S.Schema<GetNetworkRackRequest>,
+  output: __S(9088, __c284, 0) as any as S.Schema<GetNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11708,8 +11708,8 @@ export const GetNetworkTap: API.OperationMethod<
   GetNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<GetNetworkTapRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GetNetworkTapResponse>,
+  input: __S(9120, __c285, 0) as any as S.Schema<GetNetworkTapRequest>,
+  output: __S(6116, __c191, 4) as any as S.Schema<GetNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11723,8 +11723,8 @@ export const GetNetworkTapRule: API.OperationMethod<
   GetNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<GetNetworkTapRuleRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GetNetworkTapRuleResponse>,
+  input: __S(9152, __c286, 0) as any as S.Schema<GetNetworkTapRuleRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<GetNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11738,8 +11738,8 @@ export const GetNetworkToNetworkInterconnect: API.OperationMethod<
   GetNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetNetworkToNetworkInterconnectResponse>,
+  input: __S(9184, __c287, 0) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>,
+  output: __S(6281, __c196, 9) as any as S.Schema<GetNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11753,8 +11753,8 @@ export const GetRoutePolicy: API.OperationMethod<
   GetRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<GetRoutePolicyRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<GetRoutePolicyResponse>,
+  input: __S(9408, __c294, 0) as any as S.Schema<GetRoutePolicyRequest>,
+  output: __S(9440, __c295, 0) as any as S.Schema<GetRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11768,8 +11768,8 @@ export const ListAccessControlListByResourceGroup: API.OperationMethod<
   ListAccessControlListByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ListAccessControlListByResourceGroupRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<AccessControlListsListResult>,
+  input: __S(9472, __c296, 0) as any as S.Schema<ListAccessControlListByResourceGroupRequest>,
+  output: __S(9506, __c297, 2) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11783,8 +11783,8 @@ export const ListAccessControlListBySubscription: API.OperationMethod<
   ListAccessControlListBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<ListAccessControlListBySubscriptionRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<AccessControlListsListResult>,
+  input: __S(9536, __c298, 0) as any as S.Schema<ListAccessControlListBySubscriptionRequest>,
+  output: __S(9506, __c297, 2) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11798,8 +11798,8 @@ export const ListExternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListExternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ExternalNetworksList>,
+  input: __S(9568, __c299, 0) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>,
+  output: __S(9571, __c299, 3) as any as S.Schema<ExternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11813,8 +11813,8 @@ export const ListInternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListInternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<InternalNetworksList>,
+  input: __S(9600, __c300, 0) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>,
+  output: __S(9603, __c300, 3) as any as S.Schema<InternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11828,8 +11828,8 @@ export const ListInternetGatewayByResourceGroup: API.OperationMethod<
   ListInternetGatewayByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<InternetGatewaysListResult>,
+  input: __S(9632, __c301, 0) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>,
+  output: __S(9666, __c302, 2) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11843,8 +11843,8 @@ export const ListInternetGatewayBySubscription: API.OperationMethod<
   ListInternetGatewayBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<InternetGatewaysListResult>,
+  input: __S(9696, __c303, 0) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>,
+  output: __S(9666, __c302, 2) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11858,8 +11858,8 @@ export const ListInternetGatewayRuleByResourceGroup: API.OperationMethod<
   ListInternetGatewayRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<InternetGatewayRulesListResult>,
+  input: __S(9728, __c304, 0) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>,
+  output: __S(9762, __c305, 2) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11873,8 +11873,8 @@ export const ListInternetGatewayRuleBySubscription: API.OperationMethod<
   ListInternetGatewayRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<InternetGatewayRulesListResult>,
+  input: __S(9792, __c306, 0) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>,
+  output: __S(9762, __c305, 2) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11888,8 +11888,8 @@ export const ListIpCommunityByResourceGroup: API.OperationMethod<
   ListIpCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListIpCommunityByResourceGroupRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<IpCommunitiesListResult>,
+  input: __S(9824, __c307, 0) as any as S.Schema<ListIpCommunityByResourceGroupRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11903,8 +11903,8 @@ export const ListIpCommunityBySubscription: API.OperationMethod<
   ListIpCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<ListIpCommunityBySubscriptionRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<IpCommunitiesListResult>,
+  input: __S(9984, __c312, 0) as any as S.Schema<ListIpCommunityBySubscriptionRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11918,8 +11918,8 @@ export const ListIpExtendedCommunityByResourceGroup: API.OperationMethod<
   ListIpExtendedCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<IpExtendedCommunityListResult>,
+  input: __S(10016, __c313, 0) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>,
+  output: __S(10050, __c314, 2) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11933,8 +11933,8 @@ export const ListIpExtendedCommunityBySubscription: API.OperationMethod<
   ListIpExtendedCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<IpExtendedCommunityListResult>,
+  input: __S(10080, __c315, 0) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>,
+  output: __S(10050, __c314, 2) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11948,8 +11948,8 @@ export const ListIpPrefixByResourceGroup: API.OperationMethod<
   ListIpPrefixByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<ListIpPrefixByResourceGroupRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<IpPrefixesListResult>,
+  input: __S(10112, __c316, 0) as any as S.Schema<ListIpPrefixByResourceGroupRequest>,
+  output: __S(10145, __c317, 1) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11963,8 +11963,8 @@ export const ListIpPrefixBySubscription: API.OperationMethod<
   ListIpPrefixBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<ListIpPrefixBySubscriptionRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<IpPrefixesListResult>,
+  input: __S(10176, __c318, 0) as any as S.Schema<ListIpPrefixBySubscriptionRequest>,
+  output: __S(10145, __c317, 1) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11978,8 +11978,8 @@ export const ListL2IsolationDomainByResourceGroup: API.OperationMethod<
   ListL2IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(373, __c46, 5) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<L2IsolationDomainsListResult>,
+  input: __S(10208, __c319, 0) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>,
+  output: __S(10242, __c320, 2) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11993,8 +11993,8 @@ export const ListL2IsolationDomainBySubscription: API.OperationMethod<
   ListL2IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<L2IsolationDomainsListResult>,
+  input: __S(10272, __c321, 0) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>,
+  output: __S(10242, __c320, 2) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12008,8 +12008,8 @@ export const ListL3IsolationDomainByResourceGroup: API.OperationMethod<
   ListL3IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<L3IsolationDomainsListResult>,
+  input: __S(10304, __c322, 0) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>,
+  output: __S(10338, __c323, 2) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12023,8 +12023,8 @@ export const ListL3IsolationDomainBySubscription: API.OperationMethod<
   ListL3IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<L3IsolationDomainsListResult>,
+  input: __S(10368, __c324, 0) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>,
+  output: __S(10338, __c323, 2) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12038,8 +12038,8 @@ export const ListNeighborGroupByResourceGroup: API.OperationMethod<
   ListNeighborGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<NeighborGroupsListResult>,
+  input: __S(10400, __c325, 0) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>,
+  output: __S(10433, __c326, 1) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12053,8 +12053,8 @@ export const ListNeighborGroupBySubscription: API.OperationMethod<
   ListNeighborGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListNeighborGroupBySubscriptionRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<NeighborGroupsListResult>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListNeighborGroupBySubscriptionRequest>,
+  output: __S(10433, __c326, 1) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12068,8 +12068,8 @@ export const ListNetworkBootstrapDeviceByResourceGroup: API.OperationMethod<
   ListNetworkBootstrapDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListNetworkBootstrapDeviceByResourceGroupRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<NetworkBootstrapDeviceListResult>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListNetworkBootstrapDeviceByResourceGroupRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<NetworkBootstrapDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12083,8 +12083,8 @@ export const ListNetworkBootstrapDeviceBySubscription: API.OperationMethod<
   ListNetworkBootstrapDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListNetworkBootstrapDeviceBySubscriptionRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<NetworkBootstrapDeviceListResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListNetworkBootstrapDeviceBySubscriptionRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<NetworkBootstrapDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12099,11 +12099,11 @@ export const ListNetworkBootstrapInterfaceByNetworkBootstrapDevice: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    392,
-    __c49,
+    352,
+    __c11,
     0,
   ) as any as S.Schema<ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<NetworkBootstrapInterfaceListResult>,
+  output: __S(354, __c11, 2) as any as S.Schema<NetworkBootstrapInterfaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12117,8 +12117,8 @@ export const ListNetworkDeviceByResourceGroup: API.OperationMethod<
   ListNetworkDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ListNetworkDeviceByResourceGroupRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<NetworkDevicesListResult>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListNetworkDeviceByResourceGroupRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<NetworkDevicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12132,8 +12132,8 @@ export const ListNetworkDeviceBySubscription: API.OperationMethod<
   ListNetworkDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ListNetworkDeviceBySubscriptionRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<NetworkDevicesListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListNetworkDeviceBySubscriptionRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<NetworkDevicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12147,8 +12147,8 @@ export const ListNetworkDeviceSkusBySubscription: API.OperationMethod<
   ListNetworkDeviceSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<ListNetworkDeviceSkusBySubscriptionRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<NetworkDeviceSkusListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListNetworkDeviceSkusBySubscriptionRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<NetworkDeviceSkusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12162,8 +12162,8 @@ export const ListNetworkFabricByResourceGroup: API.OperationMethod<
   ListNetworkFabricByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ListNetworkFabricByResourceGroupRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<NetworkFabricsListResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListNetworkFabricByResourceGroupRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<NetworkFabricsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12177,8 +12177,8 @@ export const ListNetworkFabricBySubscription: API.OperationMethod<
   ListNetworkFabricBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListNetworkFabricBySubscriptionRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<NetworkFabricsListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListNetworkFabricBySubscriptionRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<NetworkFabricsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12192,8 +12192,8 @@ export const ListNetworkFabricControllerByResourceGroup: API.OperationMethod<
   ListNetworkFabricControllerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListNetworkFabricControllerByResourceGroupRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<NetworkFabricControllersListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListNetworkFabricControllerByResourceGroupRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<NetworkFabricControllersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12207,8 +12207,8 @@ export const ListNetworkFabricControllerBySubscription: API.OperationMethod<
   ListNetworkFabricControllerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ListNetworkFabricControllerBySubscriptionRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<NetworkFabricControllersListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListNetworkFabricControllerBySubscriptionRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<NetworkFabricControllersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12222,8 +12222,8 @@ export const ListNetworkFabricSkusBySubscription: API.OperationMethod<
   ListNetworkFabricSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ListNetworkFabricSkusBySubscriptionRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<NetworkFabricSkusListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListNetworkFabricSkusBySubscriptionRequest>,
+  output: __S(803, __c25, 3) as any as S.Schema<NetworkFabricSkusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12237,8 +12237,8 @@ export const ListNetworkInterfaceByNetworkDevice: API.OperationMethod<
   ListNetworkInterfaceByNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListNetworkInterfaceByNetworkDeviceRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<NetworkInterfacesList>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListNetworkInterfaceByNetworkDeviceRequest>,
+  output: __S(835, __c26, 3) as any as S.Schema<NetworkInterfacesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12252,8 +12252,8 @@ export const ListNetworkMonitorByResourceGroup: API.OperationMethod<
   ListNetworkMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ListNetworkMonitorByResourceGroupRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<NetworkMonitorListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListNetworkMonitorByResourceGroupRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<NetworkMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12267,8 +12267,8 @@ export const ListNetworkMonitorBySubscription: API.OperationMethod<
   ListNetworkMonitorBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListNetworkMonitorBySubscriptionRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<NetworkMonitorListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListNetworkMonitorBySubscriptionRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<NetworkMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12282,8 +12282,8 @@ export const ListNetworkPacketBrokerByResourceGroup: API.OperationMethod<
   ListNetworkPacketBrokerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<ListNetworkPacketBrokerByResourceGroupRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<NetworkPacketBrokersListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListNetworkPacketBrokerByResourceGroupRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<NetworkPacketBrokersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12297,8 +12297,8 @@ export const ListNetworkPacketBrokerBySubscription: API.OperationMethod<
   ListNetworkPacketBrokerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<ListNetworkPacketBrokerBySubscriptionRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<NetworkPacketBrokersListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListNetworkPacketBrokerBySubscriptionRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<NetworkPacketBrokersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12312,8 +12312,8 @@ export const ListNetworkRackByResourceGroup: API.OperationMethod<
   ListNetworkRackByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<ListNetworkRackByResourceGroupRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<NetworkRacksListResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListNetworkRackByResourceGroupRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<NetworkRacksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12327,8 +12327,8 @@ export const ListNetworkRackBySubscription: API.OperationMethod<
   ListNetworkRackBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ListNetworkRackBySubscriptionRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<NetworkRacksListResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListNetworkRackBySubscriptionRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<NetworkRacksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12342,8 +12342,8 @@ export const ListNetworkTapByResourceGroup: API.OperationMethod<
   ListNetworkTapByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<ListNetworkTapByResourceGroupRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<NetworkTapsListResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListNetworkTapByResourceGroupRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<NetworkTapsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12357,8 +12357,8 @@ export const ListNetworkTapBySubscription: API.OperationMethod<
   ListNetworkTapBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ListNetworkTapBySubscriptionRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<NetworkTapsListResult>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListNetworkTapBySubscriptionRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<NetworkTapsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12372,8 +12372,8 @@ export const ListNetworkTapRuleByResourceGroup: API.OperationMethod<
   ListNetworkTapRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ListNetworkTapRuleByResourceGroupRequest>,
-  output: __S(441, __c55, 1) as any as S.Schema<NetworkTapRulesListResult>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListNetworkTapRuleByResourceGroupRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<NetworkTapRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12387,8 +12387,8 @@ export const ListNetworkTapRuleBySubscription: API.OperationMethod<
   ListNetworkTapRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<ListNetworkTapRuleBySubscriptionRequest>,
-  output: __S(441, __c55, 1) as any as S.Schema<NetworkTapRulesListResult>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListNetworkTapRuleBySubscriptionRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<NetworkTapRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12403,11 +12403,11 @@ export const ListNetworkToNetworkInterconnectByNetworkFabric: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    443,
-    __c55,
-    3,
+    1440,
+    __c45,
+    0,
   ) as any as S.Schema<ListNetworkToNetworkInterconnectByNetworkFabricRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<NetworkToNetworkInterconnectsList>,
+  output: __S(1442, __c45, 2) as any as S.Schema<NetworkToNetworkInterconnectsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12421,8 +12421,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(450, __c56, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1476, __c46, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12436,8 +12436,8 @@ export const ListRoutePolicyByResourceGroup: API.OperationMethod<
   ListRoutePolicyByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<ListRoutePolicyByResourceGroupRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<RoutePoliciesListResult>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListRoutePolicyByResourceGroupRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<RoutePoliciesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12451,8 +12451,8 @@ export const ListRoutePolicyBySubscription: API.OperationMethod<
   ListRoutePolicyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<ListRoutePolicyBySubscriptionRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<RoutePoliciesListResult>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListRoutePolicyBySubscriptionRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<RoutePoliciesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12466,8 +12466,8 @@ export const LockNetworkFabricFabric: API.OperationMethod<
   LockNetworkFabricFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<LockNetworkFabricFabricRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<LockNetworkFabricFabricResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<LockNetworkFabricFabricRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<LockNetworkFabricFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12481,8 +12481,8 @@ export const NeighborGroupsResync: API.OperationMethod<
   NeighborGroupsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<NeighborGroupsResyncRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<NeighborGroupResyncResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<NeighborGroupsResyncRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<NeighborGroupResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12496,8 +12496,8 @@ export const NetworkBootstrapDevicesResyncPasswords: API.OperationMethod<
   NetworkBootstrapDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>,
-  output: __S(463, __c57, 7) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>,
+  output: __S(1763, __c55, 3) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12511,8 +12511,8 @@ export const NetworkBootstrapDevicesUpgrade: API.OperationMethod<
   NetworkBootstrapDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12526,8 +12526,8 @@ export const NetworkDevicesResyncCertificates: API.OperationMethod<
   NetworkDevicesResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12541,8 +12541,8 @@ export const NetworkDevicesResyncPasswords: API.OperationMethod<
   NetworkDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkDeviceResyncPasswordsResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12556,8 +12556,8 @@ export const NetworkDevicesUpgrade: API.OperationMethod<
   NetworkDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<NetworkDevicesUpgradeRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<NetworkDeviceUpgradeResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<NetworkDevicesUpgradeRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<NetworkDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12571,8 +12571,8 @@ export const NetworkFabricsArmConfigurationDiff: API.OperationMethod<
   NetworkFabricsArmConfigurationDiffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ArmConfigurationDiffOperationResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ArmConfigurationDiffOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12586,8 +12586,8 @@ export const NetworkFabricsDeprovision: API.OperationMethod<
   NetworkFabricsDeprovisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<NetworkFabricsDeprovisionRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<NetworkFabricsDeprovisionResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<NetworkFabricsDeprovisionRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<NetworkFabricsDeprovisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12601,8 +12601,8 @@ export const NetworkFabricsDiscardCommitBatch: API.OperationMethod<
   NetworkFabricsDiscardCommitBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>,
-  output: __S(477, __c59, 5) as any as S.Schema<DiscardCommitBatchOperationResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<DiscardCommitBatchOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12616,8 +12616,8 @@ export const NetworkFabricsResyncCertificates: API.OperationMethod<
   NetworkFabricsResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12631,8 +12631,8 @@ export const NetworkFabricsResyncPasswords: API.OperationMethod<
   NetworkFabricsResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkFabricResyncPasswordsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12646,8 +12646,8 @@ export const NetworkFabricsUpgrade: API.OperationMethod<
   NetworkFabricsUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<NetworkFabricsUpgradeRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<NetworkFabricsUpgradeResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<NetworkFabricsUpgradeRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<NetworkFabricsUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12661,8 +12661,8 @@ export const NetworkFabricsViewDeviceConfiguration: API.OperationMethod<
   NetworkFabricsViewDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>,
-  output: __S(484, __c60, 4) as any as S.Schema<ViewDeviceConfigurationOperationResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ViewDeviceConfigurationOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12676,8 +12676,8 @@ export const NetworkTapRulesResync: API.OperationMethod<
   NetworkTapRulesResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<NetworkTapRulesResyncRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<NetworkTapRuleResyncResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<NetworkTapRulesResyncRequest>,
+  output: __S(7040, __c220, 0) as any as S.Schema<NetworkTapRuleResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12691,8 +12691,8 @@ export const NetworkTapsResync: API.OperationMethod<
   NetworkTapsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<NetworkTapsResyncRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<NetworkTapResyncResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<NetworkTapsResyncRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<NetworkTapResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12706,8 +12706,8 @@ export const ProvisionNetworkFabric: API.OperationMethod<
   ProvisionNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ProvisionNetworkFabricRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ProvisionNetworkFabricResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ProvisionNetworkFabricRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<ProvisionNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12721,8 +12721,8 @@ export const RebootNetworkBootstrapDevice: API.OperationMethod<
   RebootNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkBootstrapDeviceRebootResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkBootstrapDeviceRebootResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12736,8 +12736,8 @@ export const RebootNetworkDevice: API.OperationMethod<
   RebootNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<RebootNetworkDeviceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RebootNetworkDeviceResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<RebootNetworkDeviceRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<RebootNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12751,8 +12751,12 @@ export const RefreshNetworkBootstrapDeviceConfiguration: API.OperationMethod<
   RefreshNetworkBootstrapDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>,
-  output: __S(496, __c62, 0) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>,
+  output: __S(
+    2658,
+    __c83,
+    2,
+  ) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12766,8 +12770,8 @@ export const RefreshNetworkDeviceConfiguration: API.OperationMethod<
   RefreshNetworkDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>,
-  output: __S(498, __c62, 2) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12781,8 +12785,8 @@ export const RefreshNetworkFabricConfiguration: API.OperationMethod<
   RefreshNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RefreshNetworkFabricConfigurationResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<RefreshNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12796,8 +12800,8 @@ export const RotateNetworkFabricCertificates: API.OperationMethod<
   RotateNetworkFabricCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<RotateNetworkFabricCertificatesRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkFabricRotateCertificatesResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<RotateNetworkFabricCertificatesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricRotateCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12811,8 +12815,8 @@ export const RotateNetworkFabricPasswords: API.OperationMethod<
   RotateNetworkFabricPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<RotateNetworkFabricPasswordsRequest>,
-  output: __S(467, __c58, 3) as any as S.Schema<NetworkFabricRotatePasswordsResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<RotateNetworkFabricPasswordsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricRotatePasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12826,8 +12830,8 @@ export const RunNetworkDeviceRoCommand: API.OperationMethod<
   RunNetworkDeviceRoCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<RunNetworkDeviceRoCommandRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<RunNetworkDeviceRoCommandResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<RunNetworkDeviceRoCommandRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<RunNetworkDeviceRoCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12841,8 +12845,8 @@ export const RunNetworkDeviceRwCommand: API.OperationMethod<
   RunNetworkDeviceRwCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<RunNetworkDeviceRwCommandRequest>,
-  output: __S(507, __c63, 3) as any as S.Schema<NetworkDeviceRunRwCommandResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<RunNetworkDeviceRwCommandRequest>,
+  output: __S(2978, __c93, 2) as any as S.Schema<NetworkDeviceRunRwCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12856,8 +12860,8 @@ export const UpdateAccessControlList: API.OperationMethod<
   UpdateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<UpdateAccessControlListRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateAccessControlListResponse>,
+  input: __S(3014, __c94, 6) as any as S.Schema<UpdateAccessControlListRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<UpdateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12871,8 +12875,8 @@ export const UpdateAccessControlListAdministrativeState: API.OperationMethod<
   UpdateAccessControlListAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12886,8 +12890,8 @@ export const UpdateExternalNetwork: API.OperationMethod<
   UpdateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<UpdateExternalNetworkRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<UpdateExternalNetworkResponse>,
+  input: __S(3139, __c98, 3) as any as S.Schema<UpdateExternalNetworkRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<UpdateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12901,8 +12905,8 @@ export const UpdateExternalNetworkAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(530, __c66, 2) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12916,11 +12920,15 @@ export const UpdateExternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>,
+  input: __S(
+    3296,
+    __c103,
+    0,
+  ) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>,
   output: __S(
-    534,
-    __c66,
-    6,
+    3298,
+    __c103,
+    2,
   ) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12936,11 +12944,11 @@ export const UpdateExternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    535,
-    __c66,
-    7,
+    3360,
+    __c105,
+    0,
   ) as any as S.Schema<UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12954,8 +12962,8 @@ export const UpdateInternalNetwork: API.OperationMethod<
   UpdateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<UpdateInternalNetworkRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<UpdateInternalNetworkResponse>,
+  input: __S(3395, __c106, 3) as any as S.Schema<UpdateInternalNetworkRequest>,
+  output: __S(9344, __c292, 0) as any as S.Schema<UpdateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12969,8 +12977,8 @@ export const UpdateInternalNetworkAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12984,10 +12992,14 @@ export const UpdateInternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>,
+  input: __S(
+    3552,
+    __c111,
+    0,
+  ) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>,
   output: __S(
-    545,
-    __c68,
+    3553,
+    __c111,
     1,
   ) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
@@ -13003,11 +13015,15 @@ export const UpdateInternalNetworkBgpAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBgpAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(546, __c68, 2) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>,
+  input: __S(
+    3616,
+    __c113,
+    0,
+  ) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>,
   output: __S(
-    547,
-    __c68,
-    3,
+    3617,
+    __c113,
+    1,
   ) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13023,11 +13039,11 @@ export const UpdateInternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    548,
-    __c68,
-    4,
+    3648,
+    __c114,
+    0,
   ) as any as S.Schema<UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13041,8 +13057,8 @@ export const UpdateInternetGateway: API.OperationMethod<
   UpdateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<UpdateInternetGatewayRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UpdateInternetGatewayResponse>,
+  input: __S(3681, __c115, 1) as any as S.Schema<UpdateInternetGatewayRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<UpdateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13056,8 +13072,8 @@ export const UpdateInternetGatewayRule: API.OperationMethod<
   UpdateInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<UpdateInternetGatewayRuleRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdateInternetGatewayRuleResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<UpdateInternetGatewayRuleRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<UpdateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13071,8 +13087,8 @@ export const UpdateIpCommunity: API.OperationMethod<
   UpdateIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<UpdateIpCommunityRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<UpdateIpCommunityResponse>,
+  input: __S(3745, __c117, 1) as any as S.Schema<UpdateIpCommunityRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<UpdateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13086,8 +13102,8 @@ export const UpdateIpExtendedCommunity: API.OperationMethod<
   UpdateIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(555, __c69, 3) as any as S.Schema<UpdateIpExtendedCommunityRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<UpdateIpExtendedCommunityResponse>,
+  input: __S(3777, __c118, 1) as any as S.Schema<UpdateIpExtendedCommunityRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UpdateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13101,8 +13117,8 @@ export const UpdateIpPrefix: API.OperationMethod<
   UpdateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(557, __c69, 5) as any as S.Schema<UpdateIpPrefixRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<UpdateIpPrefixResponse>,
+  input: __S(3809, __c119, 1) as any as S.Schema<UpdateIpPrefixRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<UpdateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13116,8 +13132,8 @@ export const UpdateL2IsolationDomain: API.OperationMethod<
   UpdateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<UpdateL2IsolationDomainRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<UpdateL2IsolationDomainResponse>,
+  input: __S(3841, __c120, 1) as any as S.Schema<UpdateL2IsolationDomainRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<UpdateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13131,8 +13147,8 @@ export const UpdateL2IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL2IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562, __c70, 2) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13146,8 +13162,8 @@ export const UpdateL3IsolationDomain: API.OperationMethod<
   UpdateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<UpdateL3IsolationDomainRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateL3IsolationDomainResponse>,
+  input: __S(4033, __c126, 1) as any as S.Schema<UpdateL3IsolationDomainRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<UpdateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13161,8 +13177,8 @@ export const UpdateL3IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL3IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(565, __c70, 5) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13176,8 +13192,8 @@ export const UpdateNeighborGroup: API.OperationMethod<
   UpdateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<UpdateNeighborGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<UpdateNeighborGroupResponse>,
+  input: __S(4098, __c128, 2) as any as S.Schema<UpdateNeighborGroupRequest>,
+  output: __S(3456, __c108, 0) as any as S.Schema<UpdateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13191,8 +13207,8 @@ export const UpdateNetworkBootstrapDevice: API.OperationMethod<
   UpdateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>,
+  input: __S(4129, __c129, 1) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>,
+  output: __S(3968, __c124, 0) as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13207,14 +13223,14 @@ export const UpdateNetworkBootstrapDeviceAdministrativeState: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    571,
-    __c71,
-    3,
+    4160,
+    __c130,
+    0,
   ) as any as S.Schema<UpdateNetworkBootstrapDeviceAdministrativeStateRequest>,
   output: __S(
-    572,
-    __c71,
-    4,
+    4161,
+    __c130,
+    1,
   ) as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13229,8 +13245,8 @@ export const UpdateNetworkBootstrapInterface: API.OperationMethod<
   UpdateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>,
+  input: __S(4193, __c131, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13245,14 +13261,14 @@ export const UpdateNetworkBootstrapInterfaceAdministrativeState: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    575,
-    __c71,
-    7,
+    4224,
+    __c132,
+    0,
   ) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateRequest>,
   output: __S(
-    576,
-    __c72,
-    0,
+    4225,
+    __c132,
+    1,
   ) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13267,8 +13283,8 @@ export const UpdateNetworkDevice: API.OperationMethod<
   UpdateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<UpdateNetworkDeviceRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<UpdateNetworkDeviceResponse>,
+  input: __S(4257, __c133, 1) as any as S.Schema<UpdateNetworkDeviceRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<UpdateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13282,8 +13298,8 @@ export const UpdateNetworkDeviceAdministrativeState: API.OperationMethod<
   UpdateNetworkDeviceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>,
-  output: __S(463, __c57, 7) as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>,
+  output: __S(1763, __c55, 3) as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13297,8 +13313,8 @@ export const UpdateNetworkFabric: API.OperationMethod<
   UpdateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<UpdateNetworkFabricRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<UpdateNetworkFabricResponse>,
+  input: __S(4424, __c138, 8) as any as S.Schema<UpdateNetworkFabricRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<UpdateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13312,8 +13328,8 @@ export const UpdateNetworkFabricController: API.OperationMethod<
   UpdateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<UpdateNetworkFabricControllerRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<UpdateNetworkFabricControllerResponse>,
+  input: __S(4449, __c139, 1) as any as S.Schema<UpdateNetworkFabricControllerRequest>,
+  output: __S(5632, __c176, 0) as any as S.Schema<UpdateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13328,11 +13344,11 @@ export const UpdateNetworkFabricInfraManagementBfdConfiguration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    592,
-    __c74,
+    4480,
+    __c140,
     0,
   ) as any as S.Schema<UpdateNetworkFabricInfraManagementBfdConfigurationRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13347,11 +13363,11 @@ export const UpdateNetworkFabricWorkloadManagementBfdConfiguration: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    593,
-    __c74,
-    1,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13365,8 +13381,8 @@ export const UpdateNetworkInterface: API.OperationMethod<
   UpdateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<UpdateNetworkInterfaceRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<UpdateNetworkInterfaceResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<UpdateNetworkInterfaceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<UpdateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13380,8 +13396,8 @@ export const UpdateNetworkInterfaceAdministrativeState: API.OperationMethod<
   UpdateNetworkInterfaceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(595, __c74, 3) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13395,8 +13411,8 @@ export const UpdateNetworkMonitor: API.OperationMethod<
   UpdateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<UpdateNetworkMonitorRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<UpdateNetworkMonitorResponse>,
+  input: __S(4610, __c144, 2) as any as S.Schema<UpdateNetworkMonitorRequest>,
+  output: __S(5856, __c183, 0) as any as S.Schema<UpdateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13410,8 +13426,8 @@ export const UpdateNetworkMonitorAdministrativeState: API.OperationMethod<
   UpdateNetworkMonitorAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>,
-  output: __S(600, __c75, 0) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13425,8 +13441,8 @@ export const UpdateNetworkPacketBroker: API.OperationMethod<
   UpdateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<UpdateNetworkPacketBrokerRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<UpdateNetworkPacketBrokerResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<UpdateNetworkPacketBrokerRequest>,
+  output: __S(5952, __c186, 0) as any as S.Schema<UpdateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13440,8 +13456,8 @@ export const UpdateNetworkRack: API.OperationMethod<
   UpdateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<UpdateNetworkRackRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<UpdateNetworkRackResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<UpdateNetworkRackRequest>,
+  output: __S(6016, __c188, 0) as any as S.Schema<UpdateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13455,8 +13471,8 @@ export const UpdateNetworkTap: API.OperationMethod<
   UpdateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<UpdateNetworkTapRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<UpdateNetworkTapResponse>,
+  input: __S(4899, __c153, 3) as any as S.Schema<UpdateNetworkTapRequest>,
+  output: __S(6116, __c191, 4) as any as S.Schema<UpdateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13470,8 +13486,8 @@ export const UpdateNetworkTapAdministrativeState: API.OperationMethod<
   UpdateNetworkTapAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(607, __c75, 7) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13485,8 +13501,8 @@ export const UpdateNetworkTapRule: API.OperationMethod<
   UpdateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<UpdateNetworkTapRuleRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<UpdateNetworkTapRuleResponse>,
+  input: __S(4966, __c155, 6) as any as S.Schema<UpdateNetworkTapRuleRequest>,
+  output: __S(6208, __c194, 0) as any as S.Schema<UpdateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13500,8 +13516,8 @@ export const UpdateNetworkTapRuleAdministrativeState: API.OperationMethod<
   UpdateNetworkTapRuleAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(615, __c76, 7) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13515,8 +13531,8 @@ export const UpdateNetworkToNetworkInterconnect: API.OperationMethod<
   UpdateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>,
+  input: __S(5027, __c157, 3) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>,
+  output: __S(6281, __c196, 9) as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13531,11 +13547,11 @@ export const UpdateNetworkToNetworkInterconnectAdministrativeState: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    620,
-    __c77,
-    4,
+    5056,
+    __c158,
+    0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13550,11 +13566,11 @@ export const UpdateNetworkToNetworkInterconnectBfdAdministrativeState: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    621,
-    __c77,
-    5,
+    5088,
+    __c159,
+    0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest>,
-  output: __S(623, __c77, 7) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>,
+  output: __S(5090, __c159, 2) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13570,11 +13586,11 @@ export const UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeSt
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    624,
-    __c78,
+    5120,
+    __c160,
     0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13588,8 +13604,8 @@ export const UpdateRoutePolicy: API.OperationMethod<
   UpdateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(629, __c78, 5) as any as S.Schema<UpdateRoutePolicyRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<UpdateRoutePolicyResponse>,
+  input: __S(5156, __c161, 4) as any as S.Schema<UpdateRoutePolicyRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<UpdateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13603,8 +13619,8 @@ export const UpdateRoutePolicyAdministrativeState: API.OperationMethod<
   UpdateRoutePolicyAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(630, __c78, 6) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13618,8 +13634,8 @@ export const ValidateAccessControlListConfiguration: API.OperationMethod<
   ValidateAccessControlListConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(631, __c78, 7) as any as S.Schema<ValidateAccessControlListConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateAccessControlListConfigurationResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<ValidateAccessControlListConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateAccessControlListConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13633,8 +13649,8 @@ export const ValidateL2IsolationDomainConfiguration: API.OperationMethod<
   ValidateL2IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(633, __c79, 1) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>,
+  input: __S(5408, __c169, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13648,8 +13664,8 @@ export const ValidateL3IsolationDomainConfiguration: API.OperationMethod<
   ValidateL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(634, __c79, 2) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13663,8 +13679,8 @@ export const ValidateNetworkFabricConfiguration: API.OperationMethod<
   ValidateNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(635, __c79, 3) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateNetworkFabricConfigurationResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13678,8 +13694,8 @@ export const ValidateNetworkTapRuleConfiguration: API.OperationMethod<
   ValidateNetworkTapRuleConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(636, __c79, 4) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13693,8 +13709,8 @@ export const ValidateRoutePolicyConfiguration: API.OperationMethod<
   ValidateRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(637, __c79, 5) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>,
-  output: __S(632, __c79, 0) as any as S.Schema<ValidateRoutePolicyConfigurationResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>,
+  output: __S(5376, __c168, 0) as any as S.Schema<ValidateRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13720,37 +13736,49 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccessControlListsResyncRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(35, __c1, 3)));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4, __c0, 4)));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 2:
+      return S.Array(__S(33, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(1, __c0, 1)),
-          additionalInfo: S.optional(__S(3, __c0, 3)),
+          details: S.optional(__S(32, __c1, 0)),
+          additionalInfo: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
+          error: S.optional(__S(35, __c1, 3)),
           configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccessControlListsResyncResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13767,264 +13795,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CommitL2IsolationDomainConfigurationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/commitConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitL3IsolationDomainConfigurationRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          commitBatchId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitBatchStatus",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitNetworkFabricBatchStatusRequest",
-      });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(10, __c1, 2)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(9, __c1, 1)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(11, __c1, 3)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "CommitBatchStatusOperationResponseOperationsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(14, __c1, 6)),
-          additionalInfo: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CommitBatchStatusOperationResponseError",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          failedDevices: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "CommitBatchDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          commitBatchId: S.optional(S.String),
-          commitBatchState: S.optional(S.String),
-          commitBatchDetails: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CommitBatchStatusResponseProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "CommitBatchStatusOperationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          commitStage: S.optional(S.String),
-          commitPolicy: S.optional(S.String),
-          devices: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitNetworkFabricConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommitConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          routePolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/commitConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CommitRoutePolicyConfigurationRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vlans: S.optional(__S(16, __c2, 0)),
-          innerVlans: S.optional(__S(16, __c2, 0)),
-          vlanGroupNames: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "VlanMatchCondition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          prefixType: S.optional(S.String),
-          ipPrefixValues: S.optional(__S(16, __c2, 0)),
-          ipGroupNames: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "IpMatchCondition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          portType: S.optional(S.String),
-          layer4Protocol: S.String,
-          ports: S.optional(__S(16, __c2, 0)),
-          portGroupNames: S.optional(__S(16, __c2, 0)),
-          flags: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListPortCondition",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          icmpTypes: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "IcmpConfigurationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          protocolTypes: S.optional(__S(16, __c2, 0)),
-          vlanMatchCondition: S.optional(__S(24, __c3, 0)),
-          ipCondition: S.optional(__S(25, __c3, 1)),
-          etherTypes: S.optional(__S(16, __c2, 0)),
-          fragments: S.optional(__S(16, __c2, 0)),
-          ipLengths: S.optional(__S(16, __c2, 0)),
-          ttlValues: S.optional(__S(16, __c2, 0)),
-          dscpMarkings: S.optional(__S(16, __c2, 0)),
-          protocolNeighbors: S.optional(__S(16, __c2, 0)),
-          portCondition: S.optional(__S(26, __c3, 2)),
-          icmpConfiguration: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListMatchCondition",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rate: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BitRate" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(S.Number),
-          unit: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BurstSize" });
   }
 }
 function __c4(j: number): any {
@@ -14032,791 +13802,21 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bitRate: S.optional(__S(30, __c3, 6)),
-          burstSize: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "PoliceRateConfigurationProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          counterName: S.optional(S.String),
-          remarkComment: S.optional(S.String),
-          policeRateConfiguration: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "AccessControlListAction" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchConfigurationName: S.optional(S.String),
-          sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(29, __c3, 5)),
-          actions: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListMatchConfiguration",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ipAddressType: S.optional(S.String),
-          ipPrefixes: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "IpGroupProperties" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          vlans: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "VlanGroupProperties" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ports: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "PortGroupProperties" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipGroups: S.optional(__S(38, __c4, 6)),
-          vlanGroups: S.optional(__S(40, __c5, 0)),
-          portGroups: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "CommonDynamicMatchConfiguration",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enableCount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GlobalAccessControlListActionProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceIpPrefix: S.optional(S.String),
-          destinationIpPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ControlPlanAclIpMatchCondition",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ttlValue: S.optional(S.String),
-          ttlMatchType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclTtlMatchCondition",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ports: S.optional(__S(16, __c2, 0)),
-          portMatchType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclPortCondition",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourcePorts: S.optional(__S(48, __c6, 0)),
-          destinationPorts: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclPortMatchCondition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          protocolTypes: S.optional(S.String),
-          ipCondition: S.optional(__S(46, __c5, 6)),
-          ttlMatchCondition: S.optional(__S(47, __c5, 7)),
-          portCondition: S.optional(__S(49, __c6, 1)),
-          flags: S.optional(__S(16, __c2, 0)),
-          icmpConfiguration: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclMatchCondition",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          remarkComment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ControlPlaneAclAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          matchConfigurationName: S.optional(S.String),
-          sequenceNumber: S.optional(S.Number),
-          matchCondition: S.optional(__S(50, __c6, 2)),
-          action: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclMatchConfigurationProperties",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddressType: S.optional(S.String),
-          matchConfigurations: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "ControlPlaneAclProperties",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           annotation: S.optional(S.String),
-          configurationType: S.String,
-          aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(36, __c4, 4)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
-          aclType: S.optional(S.String),
-          deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(45, __c5, 5)),
-          controlPlaneAclConfiguration: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(56, __c7, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccessControlListRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LastOperationProperties" });
-    case 4:
-      return S.Array(__S(54, __c6, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          configurationType: S.String,
-          aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(36, __c4, 4)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
-          lastSyncedTime: S.optional(S.String),
-          aclType: S.optional(S.String),
-          deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(45, __c5, 5)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          networkFabricIds: S.optional(__S(16, __c2, 0)),
-          controlPlaneAclConfiguration: S.optional(__S(60, __c7, 4)),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccessControlListProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(61, __c7, 5),
-        }),
-      ).annotate({
-        identifier: "CreateAccessControlListResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          importIpv4RoutePolicyId: S.optional(S.String),
-          importIpv6RoutePolicyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportRoutePolicy" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          exportIpv4RoutePolicyId: S.optional(S.String),
-          exportIpv6RoutePolicyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportRoutePolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          importIpv4RouteTargets: S.optional(__S(16, __c2, 0)),
-          importIpv6RouteTargets: S.optional(__S(16, __c2, 0)),
-          exportIpv4RouteTargets: S.optional(__S(16, __c2, 0)),
-          exportIpv6RouteTargets: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "RouteTargetInformation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          importRouteTargets: S.optional(__S(16, __c2, 0)),
-          exportRouteTargets: S.optional(__S(16, __c2, 0)),
-          routeTargets: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "L3OptionBProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          intervalInMilliSeconds: S.optional(S.Number),
-          multiplier: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BfdConfigurationInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkBmpProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maximumRoutes: S.optional(S.Number),
-          threshold: S.optional(S.Number),
-          idleTimeExpiry: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PrefixLimitProperties" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prefixLimits: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "NativeIpv4PrefixLimitProperties",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          vlanId: S.Number,
-          peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(68, __c8, 4)),
-          egressAclId: S.optional(S.String),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(71, __c8, 7)),
-          nativeIpv6PrefixLimit: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkPropertiesOptionAPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.String,
-          nextHop: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "StaticRouteProperties" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          ipv4Routes: S.optional(__S(74, __c9, 2)),
-          ipv6Routes: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkStaticRouteConfigurationInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          peeringOption: S.String,
-          optionBProperties: S.optional(__S(66, __c8, 2)),
-          optionAProperties: S.optional(__S(72, __c9, 0)),
-          staticRouteConfiguration: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          externalNetworkName: S.String.pipe(T.Label()),
-          properties: __S(76, __c9, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalNetworkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          administrativeState: S.optional(S.String),
-          intervalInMilliSeconds: S.optional(S.Number),
-          multiplier: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BfdConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          vlanId: S.Number,
-          fabricASN: S.optional(S.Number),
-          peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(78, __c9, 6)),
-          ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(68, __c8, 4)),
-          egressAclId: S.optional(S.String),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(71, __c8, 7)),
-          nativeIpv6PrefixLimit: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkPropertiesOptionAProperties",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bfdConfiguration: S.optional(__S(78, __c9, 6)),
-          ipv4Routes: S.optional(__S(74, __c9, 2)),
-          ipv6Routes: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkStaticRouteConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          peeringOption: S.String,
-          optionBProperties: S.optional(__S(66, __c8, 2)),
-          optionAProperties: S.optional(__S(79, __c9, 7)),
-          staticRouteConfiguration: S.optional(__S(80, __c10, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          networkFabricId: S.optional(S.String),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(81, __c10, 1),
-        }),
-      ).annotate({
-        identifier: "CreateExternalNetworkResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          prefix: S.String,
-        }),
-      ).annotate({ identifier: "ConnectedSubnet" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NeighborAddressInput" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          exportPolicies: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "BmpExportPolicyProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          neighborIpExclusions: S.optional(__S(16, __c2, 0)),
-          bmpConfigurationState: S.optional(S.String),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkBmpProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          defaultRouteOriginate: S.optional(S.String),
-          allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(S.String),
-          peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv4NeighborAddress: S.optional(__S(86, __c10, 6)),
-          ipv6NeighborAddress: S.optional(__S(86, __c10, 6)),
-          bmpConfiguration: S.optional(__S(89, __c11, 1)),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BgpConfigurationInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          ipv4Routes: S.optional(__S(74, __c9, 2)),
-          ipv6Routes: S.optional(__S(74, __c9, 2)),
-          extension: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StaticRouteConfigurationInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          extension: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(84, __c10, 4)),
-          connectedIPv6Subnets: S.optional(__S(84, __c10, 4)),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          ingressAclId: S.optional(S.String),
-          egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(S.String),
-          vlanId: S.Number,
-          bgpConfiguration: S.optional(__S(90, __c11, 2)),
-          staticRouteConfiguration: S.optional(__S(91, __c11, 3)),
-          nativeIpv4PrefixLimit: S.optional(__S(71, __c8, 7)),
-          nativeIpv6PrefixLimit: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          properties: __S(92, __c11, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInternalNetworkRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          bfdAdministrativeState: S.optional(S.String),
-          bgpAdministrativeState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NeighborAddress" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(78, __c9, 6)),
-          defaultRouteOriginate: S.optional(S.String),
-          allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(S.String),
-          fabricASN: S.optional(S.Number),
-          peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv4NeighborAddress: S.optional(__S(95, __c11, 7)),
-          ipv6NeighborAddress: S.optional(__S(95, __c11, 7)),
-          bmpConfiguration: S.optional(__S(89, __c11, 1)),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BgpConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bfdConfiguration: S.optional(__S(78, __c9, 6)),
-          ipv4Routes: S.optional(__S(74, __c9, 2)),
-          ipv6Routes: S.optional(__S(74, __c9, 2)),
-          extension: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StaticRouteConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          extension: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(84, __c10, 4)),
-          connectedIPv6Subnets: S.optional(__S(84, __c10, 4)),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          ingressAclId: S.optional(S.String),
-          egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(S.String),
-          vlanId: S.Number,
-          bgpConfiguration: S.optional(__S(96, __c12, 0)),
-          staticRouteConfiguration: S.optional(__S(97, __c12, 1)),
-          nativeIpv4PrefixLimit: S.optional(__S(71, __c8, 7)),
-          nativeIpv6PrefixLimit: S.optional(__S(71, __c8, 7)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          networkFabricId: S.optional(S.String),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(98, __c12, 2),
-        }),
-      ).annotate({
-        identifier: "CreateInternalNetworkResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          internetGatewayRuleId: S.optional(S.String),
-          type: S.optional(S.String),
-          internetGatewayType: S.optional(S.String),
-          networkFabricControllerId: S.String,
-        }),
-      ).annotate({
-        identifier: "InternetGatewayPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(100, __c12, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInternetGatewayRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          internetGatewayRuleId: S.optional(S.String),
-          ipv4Address: S.optional(S.String),
-          port: S.optional(S.Number),
-          type: S.optional(S.String),
-          internetGatewayType: S.optional(S.String),
-          networkFabricControllerId: S.String,
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternetGatewayProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(102, __c12, 6),
-        }),
-      ).annotate({
-        identifier: "CreateInternetGatewayResponse",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          headerName: S.optional(S.String),
-          addressList: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "HeaderAddressProperties" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          addressList: S.optional(__S(16, __c2, 0)),
-          condition: S.optional(S.String),
-          destinationAddressList: S.optional(__S(16, __c2, 0)),
-          sourceAddressList: S.optional(__S(16, __c2, 0)),
-          headerAddressList: S.optional(__S(105, __c13, 1)),
-        }),
-      ).annotate({ identifier: "RuleProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ruleProperties: __S(106, __c13, 2),
+          ruleProperties: __S(194, __c6, 2),
         }),
       ).annotate({
         identifier: "InternetGatewayRulePropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(107, __c13, 3),
+          properties: __S(128, __c4, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14828,118 +13828,229 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateInternetGatewayRuleRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ruleProperties: __S(106, __c13, 2),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          provisioningState: S.optional(S.String),
-          internetGatewayIds: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "InternetGatewayRuleProperties",
-      });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(109, __c13, 5),
+          properties: __S(195, __c6, 3),
         }),
       ).annotate({
         identifier: "CreateInternetGatewayRuleResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          headerName: S.optional(S.String),
+          addressList: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "HeaderAddressProperties" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          sequenceNumber: S.Number,
-          wellKnownCommunities: S.optional(__S(87, __c10, 7)),
-          communityMembers: __S(16, __c2, 0),
+          addressList: S.optional(__S(6464, __c202, 0)),
+          condition: S.optional(S.String),
+          destinationAddressList: S.optional(__S(6464, __c202, 0)),
+          sourceAddressList: S.optional(__S(6464, __c202, 0)),
+          headerAddressList: S.optional(__S(193, __c6, 1)),
         }),
-      ).annotate({ identifier: "IpCommunityRule" });
+      ).annotate({ identifier: "RuleProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          ruleProperties: __S(194, __c6, 2),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          provisioningState: S.optional(S.String),
+          internetGatewayIds: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "InternetGatewayRuleProperties",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/neighborGroups",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNeighborGroupBySubscriptionRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkBootstrapDeviceByResourceGroupRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(3936, __c123, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "NetworkBootstrapDevice" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(289, __c9, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceListResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkBootstrapDeviceBySubscriptionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest",
+      });
+    case 1:
+      return S.Array(__S(4385, __c137, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(353, __c11, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapInterfaceListResult",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkDeviceByResourceGroupRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8320, __c260, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(416, __c13, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkDevicesListResult" });
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ipCommunityRules: __S(112, __c14, 0),
-        }),
-      ).annotate({
-        identifier: "IpCommunityPropertiesInput",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(113, __c14, 1),
         }).pipe(
           T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
             code: 200,
             apiVersion: "2025-07-15",
           }),
         ),
-      ).annotate({ identifier: "CreateIpCommunityRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkFabricId: S.optional(S.String),
-          ipCommunityRules: __S(112, __c14, 0),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpCommunityProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(115, __c14, 3),
-        }),
       ).annotate({
-        identifier: "CreateIpCommunityResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          sequenceNumber: S.Number,
-          routeTargets: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "IpExtendedCommunityRule" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ipExtendedCommunityRules: __S(118, __c14, 6),
-        }),
-      ).annotate({
-        identifier: "IpExtendedCommunityPropertiesInput",
+        identifier: "ListNetworkDeviceBySubscriptionRequest",
       });
   }
 }
@@ -14949,11 +14060,552 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDeviceSkus",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkDeviceSkusBySubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8390, __c262, 6),
+        }),
+      ).annotate({ identifier: "NetworkDeviceSku" });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(482, __c15, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkDeviceSkusListResult",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkFabricByResourceGroupRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8448, __c264, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(544, __c17, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkFabricsListResult" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkFabricBySubscriptionRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkFabricControllerByResourceGroupRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(5604, __c175, 4),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "NetworkFabricController" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(641, __c20, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkFabricControllersListResult",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          ipCommunityRules: __S(737, __c23, 1),
+        }),
+      ).annotate({
+        identifier: "IpCommunityPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ipCommunityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(672, __c21, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "CreateIpCommunityRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(738, __c23, 2),
+        }),
+      ).annotate({
+        identifier: "CreateIpCommunityResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          sequenceNumber: S.Number,
+          wellKnownCommunities: S.optional(__S(9248, __c289, 0)),
+          communityMembers: __S(6464, __c202, 0),
+        }),
+      ).annotate({ identifier: "IpCommunityRule" });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          networkFabricId: S.optional(S.String),
+          ipCommunityRules: __S(737, __c23, 1),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpCommunityProperties" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkFabricControllerBySubscriptionRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricSkus",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkFabricSkusBySubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8896, __c278, 0),
+        }),
+      ).annotate({ identifier: "NetworkFabricSku" });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(802, __c25, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkFabricSkusListResult",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkInterfaceByNetworkDeviceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(5728, __c179, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(834, __c26, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkInterfacesList" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkMonitorByResourceGroupRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(5826, __c182, 2),
+        }),
+      ).annotate({ identifier: "NetworkMonitor" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(897, __c28, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkMonitorListResult" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkMonitorBySubscriptionRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkPacketBrokerByResourceGroupRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(5920, __c185, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "NetworkPacketBroker" });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(993, __c31, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkPacketBrokersListResult",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkPacketBrokerBySubscriptionRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkRackByResourceGroupRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9088, __c284, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1088, __c34, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkRacksListResult" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkRackBySubscriptionRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkTapByResourceGroupRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6116, __c191, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1184, __c37, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTapsListResult" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          ipExtendedCommunityRules: __S(1281, __c40, 1),
+        }),
+      ).annotate({
+        identifier: "IpExtendedCommunityPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(119, __c14, 7),
+          properties: __S(1216, __c38, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14965,13 +14617,45 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateIpExtendedCommunityRequest",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(1282, __c40, 2),
+        }),
+      ).annotate({
+        identifier: "CreateIpExtendedCommunityResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          sequenceNumber: S.Number,
+          routeTargets: __S(6464, __c202, 0),
+        }),
+      ).annotate({ identifier: "IpExtendedCommunityRule" });
     case 1:
+      return S.Array(__S(1280, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipExtendedCommunityRules: __S(118, __c14, 6),
+          ipExtendedCommunityRules: __S(1281, __c40, 1),
           networkFabricId: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
@@ -14979,48 +14663,366 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "IpExtendedCommunityProperties",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkTapBySubscriptionRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkTapRuleByResourceGroupRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(121, __c15, 1),
+          properties: __S(6184, __c193, 8),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({ identifier: "NetworkTapRule" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1377, __c43, 1),
+          nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreateIpExtendedCommunityResponse",
+        identifier: "NetworkTapRulesListResult",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkTapRuleBySubscriptionRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListNetworkToNetworkInterconnectByNetworkFabricRequest",
+      });
+    case 1:
+      return S.Array(__S(6281, __c196, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1441, __c45, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkToNetworkInterconnectsList",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ManagedNetworkFabric/operations",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(1473, __c46, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1475, __c46, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRoutePolicyByResourceGroupRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9440, __c295, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1536, __c48, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoutePoliciesListResult" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRoutePolicyBySubscriptionRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          lockType: S.optional(S.String),
+          action: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/lockFabric",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "LockNetworkFabricFabricRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          neighborGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NeighborGroupsResyncRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkBootstrapDevicesResyncPasswordsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6497, __c203, 1));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(33, __c1, 1));
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1696, __c53, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem",
+      });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(6560, __c205, 0)),
+          additionalInfo: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceResyncPasswordsResponseError",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.String,
-          sequenceNumber: S.Number,
-          networkPrefix: S.String,
-          condition: S.optional(S.String),
-          subnetMaskLength: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1761, __c55, 1)),
+          error: S.optional(__S(1762, __c55, 2)),
+          resourceId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "IpPrefixRule" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceResyncPasswordsResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipPrefixRules: __S(124, __c15, 4),
+          ipPrefixRules: __S(1825, __c57, 1),
         }),
       ).annotate({ identifier: "IpPrefixPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(125, __c15, 5),
+          properties: __S(1792, __c56, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15030,35 +15032,359 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIpPrefixRequest" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          sequenceNumber: S.Number,
+          networkPrefix: S.String,
+          condition: S.optional(S.String),
+          subnetMaskLength: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpPrefixRule" });
+    case 1:
+      return S.Array(__S(1824, __c57, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           networkFabricId: S.optional(S.String),
-          ipPrefixRules: __S(124, __c15, 4),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          ipPrefixRules: __S(1825, __c57, 1),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(1826, __c57, 2),
+        }),
+      ).annotate({ identifier: "CreateIpPrefixResponse" });
   }
 }
-function __c16(j: number): any {
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+          version: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/upgrade",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkBootstrapDevicesUpgradeRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1696, __c53, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceUpgradeResponseOperationsItem",
+      });
+    case 1:
+      return S.Array(__S(1888, __c59, 0));
+  }
+}
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(127, __c15, 7),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateIpPrefixResponse" });
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceUpgradeResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncCertificates",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkDevicesResyncCertificatesRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncPasswords",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkDevicesResyncPasswordsRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          version: S.String,
+          rwDeviceConfigUrl: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/upgrade",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkDevicesUpgradeRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsArmConfigurationDiffRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configurationDiffUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ArmConfigurationDiffResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(2049, __c64, 1)),
+        }),
+      ).annotate({
+        identifier: "ArmConfigurationDiffOperationResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsDeprovisionRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          commitBatchId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/discardCommitBatch",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsDiscardCommitBatchRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          commitBatchId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiscardCommitBatchResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(2113, __c66, 1)),
+        }),
+      ).annotate({
+        identifier: "DiscardCommitBatchOperationResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsResyncCertificatesRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsResyncPasswordsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          version: S.optional(S.String),
+          action: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/upgrade",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsUpgradeRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -15071,31 +15397,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "L2IsolationDomainPropertiesInput",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(130, __c16, 2)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateL2IsolationDomainRequestIdentity",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(129, __c16, 1),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(2240, __c70, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15107,7 +15418,77 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateL2IsolationDomainRequest",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2304, __c72, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2272, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateL2IsolationDomainRequestIdentity",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2336, __c73, 0)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2337, __c73, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateL2IsolationDomainResponseIdentity",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(2400, __c75, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateL2IsolationDomainResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -15116,7 +15497,7 @@ function __c16(j: number): any {
           mtu: S.optional(S.Number),
           extendedVlan: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
@@ -15124,82 +15505,341 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "L2IsolationDomainProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
   }
 }
-function __c17(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(135, __c16, 7)));
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkFabricsViewDeviceConfigurationRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(136, __c17, 0)),
+          deviceConfigurationUrl: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreateL2IsolationDomainResponseIdentity",
+        identifier: "ViewDeviceConfigurationResponseProperties",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(134, __c16, 6),
-          identity: S.optional(__S(137, __c17, 1)),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(2464, __c77, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(2433, __c76, 1)),
         }),
       ).annotate({
-        identifier: "CreateL2IsolationDomainResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.String,
-        }),
-      ).annotate({ identifier: "AggregateRoute" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ipv4Routes: S.optional(__S(140, __c17, 4)),
-          ipv6Routes: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({
-        identifier: "AggregateRouteConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ConnectedSubnetRoutePolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hardLimit: S.optional(S.Number),
-          threshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RoutePrefixLimitProperties",
+        identifier: "ViewDeviceConfigurationOperationResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(6560, __c205, 0)),
+          additionalInfo: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "ViewDeviceConfigurationOperationResponseError",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/resync",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkTapRulesResyncRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "NetworkTapsResyncRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTapResyncResponse" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionNetworkFabricRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RebootNetworkBootstrapDeviceRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          rebootType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/reboot",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RebootNetworkDeviceRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshNetworkBootstrapDeviceConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(2690, __c84, 2)),
+          additionalInfo: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseError",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(2689, __c84, 1)),
+          error: S.optional(__S(2657, __c83, 1)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1696, __c53, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem",
+      });
+    case 1:
+      return S.Array(__S(2688, __c84, 0));
+    case 2:
+      return S.Array(__S(35, __c1, 3));
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/refreshConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshNetworkDeviceConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(2464, __c77, 0)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkDeviceRefreshConfigurationResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/refreshConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshNetworkFabricConfigurationRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RotateNetworkFabricCertificatesRequest",
+      });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15207,14 +15847,14 @@ function __c18(j: number): any {
           annotation: S.optional(S.String),
           redistributeConnectedSubnets: S.optional(S.String),
           redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(141, __c17, 5)),
-          connectedSubnetRoutePolicy: S.optional(__S(142, __c17, 6)),
+          aggregateRouteConfiguration: S.optional(__S(2882, __c90, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2883, __c90, 3)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(__S(142, __c17, 6)),
-          uniqueRdConfiguration: S.optional(__S(130, __c16, 2)),
-          v4routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          v6routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
+          staticRouteRoutePolicy: S.optional(__S(2883, __c90, 3)),
+          uniqueRdConfiguration: S.optional(__S(2304, __c72, 0)),
+          v4routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          v6routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
         }),
       ).annotate({
         identifier: "L3IsolationDomainPropertiesInput",
@@ -15225,10 +15865,10 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(144, __c18, 0),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(2816, __c88, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15240,29 +15880,86 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateL3IsolationDomainRequest",
       });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(2886, __c90, 6),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateL3IsolationDomainResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.String,
+        }),
+      ).annotate({ identifier: "AggregateRoute" });
+    case 1:
+      return S.Array(__S(2880, __c90, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          uniqueRds: S.optional(__S(16, __c2, 0)),
+          ipv4Routes: S.optional(__S(2881, __c90, 1)),
+          ipv6Routes: S.optional(__S(2881, __c90, 1)),
+        }),
+      ).annotate({
+        identifier: "AggregateRouteConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectedSubnetRoutePolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hardLimit: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RoutePrefixLimitProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueRds: S.optional(__S(6464, __c202, 0)),
         }),
       ).annotate({
         identifier: "L3UniqueRouteDistinguisherProperties",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           redistributeConnectedSubnets: S.optional(S.String),
           redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(141, __c17, 5)),
-          connectedSubnetRoutePolicy: S.optional(__S(142, __c17, 6)),
+          aggregateRouteConfiguration: S.optional(__S(2882, __c90, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2883, __c90, 3)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(__S(142, __c17, 6)),
-          uniqueRdConfiguration: S.optional(__S(146, __c18, 2)),
-          v4routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          v6routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
+          staticRouteRoutePolicy: S.optional(__S(2883, __c90, 3)),
+          uniqueRdConfiguration: S.optional(__S(2885, __c90, 5)),
+          v4routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          v6routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
@@ -15270,47 +15967,609 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "L3IsolationDomainProperties",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RotateNetworkFabricPasswordsRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          command: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRoCommand",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunNetworkDeviceRoCommandRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configurationState: S.optional(S.String),
+          outputUrl: S.optional(S.String),
+          deviceConfigurationPreview: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommonPostActionResponseForDeviceROCommands",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(35, __c1, 3)),
+          endTime: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(2945, __c92, 1)),
+          resourceId: S.optional(S.String),
+          startTime: S.optional(S.String),
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "RunNetworkDeviceRoCommandResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          command: S.optional(S.String),
+          commandUrl: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRwCommand",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunNetworkDeviceRwCommandRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configurationState: S.optional(S.String),
+          outputUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkDeviceRwCommandResponseProperties",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(147, __c18, 3),
-          identity: S.optional(__S(137, __c17, 1)),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(2977, __c93, 1)),
         }),
       ).annotate({
-        identifier: "CreateL3IsolationDomainResponse",
+        identifier: "NetworkDeviceRunRwCommandResponse",
       });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portType: S.optional(S.String),
+          layer4Protocol: S.optional(S.String),
+          ports: S.optional(__S(6464, __c202, 0)),
+          portGroupNames: S.optional(__S(6464, __c202, 0)),
+          flags: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListPortConditionPatch",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocolTypes: S.optional(__S(6464, __c202, 0)),
+          vlanMatchCondition: S.optional(__S(7840, __c245, 0)),
+          ipCondition: S.optional(__S(7841, __c245, 1)),
+          etherTypes: S.optional(__S(6464, __c202, 0)),
+          fragments: S.optional(__S(6464, __c202, 0)),
+          ipLengths: S.optional(__S(6464, __c202, 0)),
+          ttlValues: S.optional(__S(6464, __c202, 0)),
+          dscpMarkings: S.optional(__S(6464, __c202, 0)),
+          portCondition: S.optional(__S(3008, __c94, 0)),
+          protocolNeighbors: S.optional(__S(6464, __c202, 0)),
+          icmpConfiguration: S.optional(__S(7905, __c247, 1)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListMatchConditionPatch",
+      });
+    case 2:
+      return S.Array(__S(3009, __c94, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchConfigurationName: S.optional(S.String),
+          sequenceNumber: S.optional(S.Number),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(3010, __c94, 2)),
+          actions: S.optional(__S(7912, __c247, 8)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListMatchConfigurationPatch",
+      });
+    case 4:
+      return S.Array(__S(3011, __c94, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipv4Addresses: S.optional(__S(16, __c2, 0)),
-          ipv6Addresses: S.optional(__S(16, __c2, 0)),
+          configurationType: S.optional(S.String),
+          aclsUrl: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(3012, __c94, 4)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
+          controlPlaneAclConfiguration: S.optional(__S(7808, __c244, 0)),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(7915, __c247, 11)),
+          annotation: S.optional(S.String),
         }),
-      ).annotate({ identifier: "NeighborGroupDestination" });
+      ).annotate({
+        identifier: "AccessControlListPatchProperties",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accessControlListName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3013, __c94, 5)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAccessControlListRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accessControlListName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAccessControlListAdministrativeStateRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          successfulResources: S.optional(__S(3072, __c96, 0)),
+          failedResources: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateAdministrativeStateResponseProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateAdministrativeStateResponse",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importRouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportRouteTargets: S.optional(__S(6464, __c202, 0)),
+          routeTargets: S.optional(__S(3232, __c101, 0)),
+        }),
+      ).annotate({ identifier: "L3OptionBPatchProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          vlanId: S.optional(S.Number),
+          peerASN: S.optional(S.Number),
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          ingressAclId: S.optional(S.String),
+          egressAclId: S.optional(S.String),
+          bmpConfiguration: S.optional(__S(8640, __c270, 0)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(3170, __c99, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(3170, __c99, 2)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkPatchPropertiesOptionAPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           annotation: S.optional(S.String),
-          destination: __S(149, __c18, 5),
+          networkToNetworkInterconnectId: S.optional(S.String),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          peeringOption: S.optional(S.String),
+          optionBProperties: S.optional(__S(3136, __c98, 0)),
+          optionAProperties: S.optional(__S(3137, __c98, 1)),
+          staticRouteConfiguration: S.optional(__S(3202, __c100, 2)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkPatchPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          externalNetworkName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3138, __c98, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateExternalNetworkRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maximumRoutes: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+          idleTimeExpiry: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PrefixLimitPatchProperties",
+      });
+    case 1:
+      return S.Array(__S(3168, __c99, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prefixLimits: S.optional(__S(3169, __c99, 1)),
+        }),
+      ).annotate({
+        identifier: "NativeIpv4PrefixLimitPatchProperties",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.String,
+          nextHop: __S(6464, __c202, 0),
+        }),
+      ).annotate({
+        identifier: "StaticRoutePatchProperties",
+      });
+    case 1:
+      return S.Array(__S(3200, __c100, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          ipv4Routes: S.optional(__S(3201, __c100, 1)),
+          ipv6Routes: S.optional(__S(3201, __c100, 1)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkStaticRoutePatchConfiguration",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importIpv4RouteTargets: S.optional(__S(6464, __c202, 0)),
+          importIpv6RouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportIpv4RouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportIpv6RouteTargets: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "RouteTargetPatchInformation",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          externalNetworkName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateExternalNetworkAdministrativeStateRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          externalNetworkName: S.String.pipe(T.Label()),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateExternalNetworkBfdAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(2689, __c84, 1)),
+          error: S.optional(__S(3328, __c104, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(2690, __c84, 2)),
+          additionalInfo: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseError",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          externalNetworkName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateStaticRouteBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          neighborIpExclusions: S.optional(__S(6464, __c202, 0)),
+          bmpConfigurationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkBmpPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          defaultRouteOriginate: S.optional(S.String),
+          allowAS: S.optional(S.Number),
+          allowASOverride: S.optional(S.String),
+          peerASN: S.optional(S.Number),
+          ipv4ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv4NeighborAddress: S.optional(__S(9313, __c291, 1)),
+          ipv6NeighborAddress: S.optional(__S(9313, __c291, 1)),
+          bmpConfiguration: S.optional(__S(3392, __c106, 0)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BgpPatchConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          connectedIPv4Subnets: S.optional(__S(9377, __c293, 1)),
+          connectedIPv6Subnets: S.optional(__S(9377, __c293, 1)),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          ingressAclId: S.optional(S.String),
+          egressAclId: S.optional(S.String),
+          isMonitoringEnabled: S.optional(S.String),
+          bgpConfiguration: S.optional(__S(3393, __c106, 1)),
+          staticRouteConfiguration: S.optional(__S(3202, __c100, 2)),
+          nativeIpv4PrefixLimit: S.optional(__S(3170, __c99, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(3170, __c99, 2)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkPatchPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3394, __c106, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternalNetworkRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          destination: __S(3488, __c109, 0),
         }),
       ).annotate({
         identifier: "NeighborGroupPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(150, __c18, 6),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(3424, __c107, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15324,37 +16583,399 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          destination: __S(149, __c18, 5),
-          networkTapIds: S.optional(__S(16, __c2, 0)),
-          networkTapRuleIds: S.optional(__S(16, __c2, 0)),
-          networkFabricIds: S.optional(__S(16, __c2, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          provisioningState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NeighborGroupProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(152, __c19, 0),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(3489, __c109, 1),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNeighborGroupResponse",
       });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipv4Addresses: S.optional(__S(6464, __c202, 0)),
+          ipv6Addresses: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "NeighborGroupDestination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          destination: __S(3488, __c109, 0),
+          networkTapIds: S.optional(__S(6464, __c202, 0)),
+          networkTapRuleIds: S.optional(__S(6464, __c202, 0)),
+          networkFabricIds: S.optional(__S(6464, __c202, 0)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NeighborGroupProperties" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternalNetworkAdministrativeStateRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          routeType: S.optional(S.String),
+          neighborAddress: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternalNetworkBfdAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(2689, __c84, 1)),
+          error: S.optional(__S(3328, __c104, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(3586, __c112, 2)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkUpdateBfdAdministrativeStateResponse",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          neighborAddress: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+          error: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NeighborAddressBfdAdministrativeStatus",
+      });
+    case 1:
+      return S.Array(__S(3584, __c112, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          neighborAddressAdministrativeStatus: S.optional(__S(3585, __c112, 1)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkUpdateBfdAdministrativeStateResponseProperties",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          neighborAddress: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBgpAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternalNetworkBgpAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(2689, __c84, 1)),
+          error: S.optional(__S(3328, __c104, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(3586, __c112, 2)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkUpdateBgpAdministrativeStateResponse",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateStaticRouteBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          internetGatewayRuleId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternetGatewayPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          internetGatewayName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3680, __c115, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternetGatewayRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          internetGatewayRuleName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInternetGatewayRuleRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipCommunityRules: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "IpCommunityPatchableProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ipCommunityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3744, __c117, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateIpCommunityRequest" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          ipExtendedCommunityRules: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({
+        identifier: "IpExtendedCommunityPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ipExtendedCommunityName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3776, __c118, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateIpExtendedCommunityRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          ipPrefixRules: S.optional(__S(1825, __c57, 1)),
+        }),
+      ).annotate({ identifier: "IpPrefixPatchProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ipPrefixName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3808, __c119, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateIpPrefixRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          extendedVlan: S.optional(S.String),
+          networkToNetworkInterconnectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "L2IsolationDomainPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2IsolationDomainName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(3840, __c120, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateL2IsolationDomainRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(2304, __c72, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(3872, __c121, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagedServiceIdentityPatchInput",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -15365,16 +16986,16 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "NetworkBootstrapDevicePropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(154, __c19, 2),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(3904, __c122, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15386,7 +17007,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateNetworkBootstrapDeviceRequest",
       });
-    case 4:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -15407,22 +17032,366 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "NetworkBootstrapDeviceProperties",
       });
-    case 5:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(156, __c19, 4),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(3936, __c123, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNetworkBootstrapDeviceResponse",
       });
-    case 6:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2IsolationDomainName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateL2IsolationDomainAdministrativeStateRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          redistributeConnectedSubnets: S.optional(S.String),
+          redistributeStaticRoutes: S.optional(S.String),
+          aggregateRouteConfiguration: S.optional(__S(2882, __c90, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2883, __c90, 3)),
+          staticRouteRoutePolicy: S.optional(__S(2883, __c90, 3)),
+          v4routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          v6routePrefixLimit: S.optional(__S(2884, __c90, 4)),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
+        }),
+      ).annotate({
+        identifier: "L3IsolationDomainPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4032, __c126, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateL3IsolationDomainRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateL3IsolationDomainAdministrativeStateRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipv4Addresses: S.optional(__S(6464, __c202, 0)),
+          ipv6Addresses: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "NeighborGroupDestinationPatch",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          destination: S.optional(__S(4096, __c128, 0)),
+        }),
+      ).annotate({
+        identifier: "NeighborGroupPatchProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          neighborGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4097, __c128, 1)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNeighborGroupRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          hostName: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDevicePatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4128, __c129, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkBootstrapDeviceRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkBootstrapDeviceAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(2689, __c84, 1)),
+          error: S.optional(__S(3328, __c104, 0)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapDeviceUpdateAdministrativeStateResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          additionalDescription: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkBootstrapInterfacePatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+          networkBootstrapInterfaceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4192, __c131, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkBootstrapInterfaceRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkBootstrapDeviceName: S.String.pipe(T.Label()),
+          networkBootstrapInterfaceName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(35, __c1, 3)),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateResponse",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          hostName: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          identitySelector: S.optional(__S(4288, __c134, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkDevicePatchParametersProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4256, __c133, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkDeviceRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.optional(S.String),
+          userAssignedIdentityResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentitySelectorPatch" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkDeviceAdministrativeStateRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -15432,14 +17401,14 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "NetworkBootstrapInterfacePropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: __S(158, __c19, 6),
+          properties: __S(4352, __c136, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15453,7 +17422,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15480,41 +17449,416 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(160, __c20, 0),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(4384, __c137, 0),
         }),
       ).annotate({
         identifier: "CreateNetworkBootstrapInterfaceResponse",
       });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          serialNumber: S.optional(S.String),
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TerminalServerPatchConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          importRouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportRouteTargets: S.optional(__S(6464, __c202, 0)),
+          routeTargets: S.optional(__S(3232, __c101, 0)),
+        }),
+      ).annotate({
+        identifier: "VpnOptionBPatchProperties",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.String,
-          userAssignedIdentityResourceId: S.optional(S.String),
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          vlanId: S.optional(S.Number),
+          peerASN: S.optional(S.Number),
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
         }),
-      ).annotate({ identifier: "IdentitySelector" });
+      ).annotate({
+        identifier: "VpnOptionAPatchProperties",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          annotation: S.optional(S.String),
-          hostName: S.optional(S.String),
-          serialNumber: S.String,
-          identitySelector: S.optional(__S(162, __c20, 2)),
-          networkDeviceSku: S.optional(S.String),
+          networkToNetworkInterconnectId: S.optional(S.String),
+          peeringOption: S.optional(S.String),
+          optionBProperties: S.optional(__S(4417, __c138, 1)),
+          optionAProperties: S.optional(__S(4418, __c138, 2)),
         }),
       ).annotate({
-        identifier: "NetworkDevicePropertiesInput",
+        identifier: "VpnConfigurationPatchableProperties",
       });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureVpnConfiguration: S.optional(__S(4419, __c138, 3)),
+          workloadVpnConfiguration: S.optional(__S(4419, __c138, 3)),
+        }),
+      ).annotate({
+        identifier: "ManagementNetworkPatchConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountId: S.optional(S.String),
+          storageAccountIdentity: S.optional(__S(4288, __c134, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageAccountPatchConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueRdConfigurationState: S.optional(S.String),
+          nniDerivedUniqueRdConfigurationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UniqueRouteDistinguisherPatchProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          rackCount: S.optional(S.Number),
+          serverCountPerRack: S.optional(S.Number),
+          ipv4Prefix: S.optional(S.String),
+          ipv6Prefix: S.optional(S.String),
+          fabricASN: S.optional(S.Number),
+          terminalServerConfiguration: S.optional(__S(4416, __c138, 0)),
+          managementNetworkConfiguration: S.optional(__S(4420, __c138, 4)),
+          storageAccountConfiguration: S.optional(__S(4421, __c138, 5)),
+          hardwareAlertThreshold: S.optional(S.Number),
+          controlPlaneAcls: S.optional(__S(6464, __c202, 0)),
+          trustedIpPrefixes: S.optional(__S(6464, __c202, 0)),
+          uniqueRdConfiguration: S.optional(__S(4422, __c138, 6)),
+          qosConfiguration: S.optional(__S(5316, __c166, 4)),
+          featureFlags: S.optional(__S(5314, __c166, 2)),
+          authorizedTransceiver: S.optional(__S(5315, __c166, 3)),
+        }),
+      ).annotate({
+        identifier: "NetworkFabricPatchProperties",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4423, __c138, 7)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkFabricRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+        }),
+      ).annotate({
+        identifier: "NetworkFabricControllerPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricControllerName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4448, __c139, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkFabricControllerRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateInfraManagementBfdConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkFabricInfraManagementBfdConfigurationRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateWorkloadManagementBfdConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          networkInterfaceName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5696, __c178, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkInterfaceRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          networkInterfaceName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkInterfaceAdministrativeStateRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stationConfigurationState: S.optional(S.String),
+          scopeResourceId: S.optional(S.String),
+          stationName: S.optional(S.String),
+          stationIp: S.optional(S.String),
+          stationPort: S.optional(S.Number),
+          stationConnectionMode: S.optional(S.String),
+          stationConnectionProperties: S.optional(__S(5824, __c182, 0)),
+          stationNetwork: S.optional(S.String),
+          monitoredNetworks: S.optional(__S(6464, __c202, 0)),
+          exportPolicy: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
+          monitoredAddressFamilies: S.optional(__S(9248, __c289, 0)),
+        }),
+      ).annotate({
+        identifier: "BmpConfigurationPatchProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bmpConfiguration: S.optional(__S(4608, __c144, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkMonitorPatchProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkMonitorName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4609, __c144, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkMonitorRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkMonitorName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkMonitorAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(35, __c1, 3)),
+          configurationState: S.optional(S.String),
+          successfulDevices: S.optional(__S(3072, __c96, 0)),
+          failedDevices: S.optional(__S(3072, __c96, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateNetworkMonitorAdministrativeStateResponse",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkPacketBrokerName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkPacketBrokerRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkRackName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateNetworkRackRequest" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          hostName: S.optional(S.String),
+          serialNumber: S.String,
+          identitySelector: S.optional(__S(4800, __c150, 0)),
+          networkDeviceSku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkDevicePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(163, __c20, 3),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(4736, __c148, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15526,7 +17870,41 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateNetworkDeviceRequest",
       });
-    case 5:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(4867, __c152, 3),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateNetworkDeviceResponse",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.String,
+          userAssignedIdentityResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentitySelector" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyVaultUri: S.optional(S.String),
@@ -15535,20 +17913,20 @@ function __c20(j: number): any {
           secretVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretArchiveReference" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lastRotationTime: S.optional(S.String),
           synchronizationStatus: S.optional(S.String),
-          secretArchiveReference: S.optional(__S(165, __c20, 5)),
+          secretArchiveReference: S.optional(__S(4832, __c151, 0)),
           secretType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretRotationStatus" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
+    case 2:
+      return S.Array(__S(4833, __c151, 1));
   }
 }
-function __c21(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15567,21 +17945,21 @@ function __c21(j: number): any {
           expireTime: S.optional(S.String),
           lastRotationTime: S.optional(S.String),
           synchronizationStatus: S.optional(S.String),
-          certificateArchiveReference: S.optional(__S(168, __c21, 0)),
+          certificateArchiveReference: S.optional(__S(4864, __c152, 0)),
           certificateType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CertificateRotationStatus",
       });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(4865, __c152, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.String,
-          identitySelector: S.optional(__S(162, __c20, 2)),
+          identitySelector: S.optional(__S(4800, __c150, 0)),
           version: S.optional(S.String),
           networkDeviceSku: S.optional(S.String),
           networkDeviceRole: S.optional(S.String),
@@ -15589,40 +17967,444 @@ function __c21(j: number): any {
           managementIpv4Address: S.optional(S.String),
           managementIpv6Address: S.optional(S.String),
           rwDeviceConfig: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
-          secretRotationStatus: S.optional(__S(167, __c20, 7)),
-          certificateRotationStatus: S.optional(__S(170, __c21, 2)),
+          secretRotationStatus: S.optional(__S(4834, __c151, 2)),
+          certificateRotationStatus: S.optional(__S(4866, __c152, 2)),
           networkFabricId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDeviceProperties" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          destinationType: S.optional(S.String),
+          destinationId: S.optional(S.String),
+          isolationDomainProperties: S.optional(__S(6112, __c191, 0)),
+          destinationTapRuleId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DestinationPatchProperties",
+      });
+    case 1:
+      return S.Array(__S(4896, __c153, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          pollingType: S.optional(S.String),
+          destinations: S.optional(__S(4897, __c153, 1)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapPatchProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4898, __c153, 2)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateNetworkTapRequest" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkTapAdministrativeStateRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portType: S.optional(S.String),
+          layer4Protocol: S.optional(S.String),
+          ports: S.optional(__S(6464, __c202, 0)),
+          portGroupNames: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "PortConditionPatch" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocolTypes: S.optional(__S(6464, __c202, 0)),
+          vlanMatchCondition: S.optional(__S(7840, __c245, 0)),
+          ipCondition: S.optional(__S(7841, __c245, 1)),
+          encapsulationType: S.optional(S.String),
+          portCondition: S.optional(__S(4960, __c155, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapRuleMatchConditionPatch",
+      });
+    case 2:
+      return S.Array(__S(4961, __c155, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchConfigurationName: S.optional(S.String),
+          sequenceNumber: S.optional(S.Number),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(4962, __c155, 2)),
+          actions: S.optional(__S(6180, __c193, 4)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapRuleMatchConfigurationPatch",
+      });
     case 4:
+      return S.Array(__S(4963, __c155, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          configurationType: S.optional(S.String),
+          tapRulesUrl: S.optional(S.String),
+          matchConfigurations: S.optional(__S(4964, __c155, 4)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
+          identitySelector: S.optional(__S(4288, __c134, 0)),
+          globalNetworkTapRuleActions: S.optional(__S(6183, __c193, 7)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapRulePatchProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapRuleName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(4965, __c155, 5)),
+          identity: S.optional(__S(3873, __c121, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkTapRuleRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapRuleName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkTapRuleAdministrativeStateRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NniBmpPatchProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          peerASN: S.optional(S.Number),
+          vlanId: S.optional(S.Number),
+          peLoopbackIpAddress: S.optional(__S(3072, __c96, 0)),
+          bmpConfiguration: S.optional(__S(5024, __c157, 0)),
+          prefixLimits: S.optional(__S(6275, __c196, 3)),
+        }),
+      ).annotate({
+        identifier: "OptionBLayer3ConfigurationPatchPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          layer2Configuration: S.optional(__S(6272, __c196, 0)),
+          optionBLayer3Configuration: S.optional(__S(5025, __c157, 1)),
+          npbStaticRouteConfiguration: S.optional(__S(3202, __c100, 2)),
+          staticRouteConfiguration: S.optional(__S(3202, __c100, 2)),
+          importRoutePolicy: S.optional(__S(6276, __c196, 4)),
+          exportRoutePolicy: S.optional(__S(6277, __c196, 5)),
+          egressAclId: S.optional(S.String),
+          ingressAclId: S.optional(S.String),
+          microBfdState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkToNetworkInterconnectPatchPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5026, __c157, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkToNetworkInterconnectRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkToNetworkInterconnectAdministrativeStateRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NniUpdateBfdAdministrativeStateResponseProperties",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(171, __c21, 3),
-          identity: S.optional(__S(137, __c17, 1)),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(1889, __c59, 1)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(5089, __c159, 1)),
         }),
       ).annotate({
-        identifier: "CreateNetworkDeviceResponse",
+        identifier: "NniUpdateBfdAdministrativeStateResponse",
       });
-    case 5:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(162, __c20, 2)),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(3072, __c96, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateNpbStaticRouteBfdAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipCommunityIds: S.optional(__S(6464, __c202, 0)),
+          ipExtendedCommunityIds: S.optional(__S(6464, __c202, 0)),
+          type: S.optional(S.String),
+          ipPrefixId: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "StorageAccountConfiguration",
+        identifier: "StatementConditionPatchProperties",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          sequenceNumber: S.Number,
+          condition: __S(5152, __c161, 0),
+          action: __S(6373, __c199, 5),
+        }),
+      ).annotate({
+        identifier: "RoutePolicyStatementPatchProperties",
+      });
+    case 2:
+      return S.Array(__S(5153, __c161, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAction: S.optional(S.String),
+          statements: S.optional(__S(5154, __c161, 2)),
+        }),
+      ).annotate({
+        identifier: "RoutePolicyPatchableProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          routePolicyName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          properties: S.optional(__S(5155, __c161, 3)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRoutePolicyRequest" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          routePolicyName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(6464, __c202, 0)),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/updateAdministrativeState",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRoutePolicyAdministrativeStateRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/commitConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitL3IsolationDomainConfigurationRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
@@ -15636,7 +18418,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "TerminalServerConfigurationInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primaryIpv4Prefix: S.optional(S.String),
@@ -15646,44 +18428,31 @@ function __c21(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
         }),
       ).annotate({
         identifier: "VpnOptionAPropertiesInput",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(66, __c8, 2)),
-          optionAProperties: S.optional(__S(175, __c21, 7)),
+          optionBProperties: S.optional(__S(8513, __c266, 1)),
+          optionAProperties: S.optional(__S(5249, __c164, 1)),
         }),
       ).annotate({
         identifier: "VpnConfigurationPropertiesInput",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: __S(176, __c22, 0),
-          workloadVpnConfiguration: __S(176, __c22, 0),
+          infrastructureVpnConfiguration: __S(5250, __c164, 2),
+          workloadVpnConfiguration: __S(5250, __c164, 2),
         }),
       ).annotate({
         identifier: "ManagementNetworkConfigurationPropertiesInput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          featureFlagName: S.optional(S.String),
-          featureFlagValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FeatureFlagProperties" });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -15696,59 +18465,40 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          vendor: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizedTransceiverProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          qosConfigurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QosProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          storageAccountConfiguration: S.optional(__S(173, __c21, 5)),
+          storageAccountConfiguration: S.optional(__S(5312, __c166, 0)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: __S(174, __c21, 6),
-          managementNetworkConfiguration: __S(177, __c22, 1),
+          terminalServerConfiguration: __S(5248, __c164, 0),
+          managementNetworkConfiguration: __S(5251, __c164, 3),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(16, __c2, 0)),
-          featureFlags: S.optional(__S(179, __c22, 3)),
-          trustedIpPrefixes: S.optional(__S(16, __c2, 0)),
-          uniqueRdConfiguration: S.optional(__S(180, __c22, 4)),
+          controlPlaneAcls: S.optional(__S(6464, __c202, 0)),
+          featureFlags: S.optional(__S(5314, __c166, 2)),
+          trustedIpPrefixes: S.optional(__S(6464, __c202, 0)),
+          uniqueRdConfiguration: S.optional(__S(5252, __c164, 4)),
           storageArrayCount: S.optional(S.Number),
-          authorizedTransceiver: S.optional(__S(181, __c22, 5)),
-          qosConfiguration: S.optional(__S(182, __c22, 6)),
+          authorizedTransceiver: S.optional(__S(5315, __c166, 3)),
+          qosConfiguration: S.optional(__S(5316, __c166, 4)),
         }),
       ).annotate({
         identifier: "NetworkFabricPropertiesInput",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(183, __c22, 7),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(5253, __c164, 5),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15760,16 +18510,72 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "CreateNetworkFabricRequest",
       });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(5325, __c166, 13),
+          identity: S.optional(__S(2338, __c73, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateNetworkFabricResponse",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountId: S.optional(S.String),
+          storageAccountIdentity: S.optional(__S(4800, __c150, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageAccountConfiguration",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          featureFlagName: S.optional(S.String),
+          featureFlagValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FeatureFlagProperties" });
+    case 2:
+      return S.Array(__S(5313, __c166, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          vendor: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizedTransceiverProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          qosConfigurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QosProperties" });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           lockState: S.optional(S.String),
           lockType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricLockProperties" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(5317, __c166, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
@@ -15780,12 +18586,12 @@ function __c23(j: number): any {
           secondaryIpv4Prefix: S.String,
           secondaryIpv6Prefix: S.optional(S.String),
           networkDeviceId: S.optional(S.String),
-          secretRotationStatus: S.optional(__S(167, __c20, 7)),
+          secretRotationStatus: S.optional(__S(4834, __c151, 2)),
         }),
       ).annotate({
         identifier: "TerminalServerConfiguration",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           primaryIpv4Prefix: S.optional(S.String),
@@ -15795,128 +18601,234 @@ function __c23(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(78, __c9, 6)),
+          bfdConfiguration: S.optional(__S(8736, __c273, 0)),
         }),
       ).annotate({ identifier: "VpnOptionAProperties" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
           administrativeState: S.optional(S.String),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(66, __c8, 2)),
-          optionAProperties: S.optional(__S(188, __c23, 4)),
+          optionBProperties: S.optional(__S(8513, __c266, 1)),
+          optionAProperties: S.optional(__S(5320, __c166, 8)),
         }),
       ).annotate({
         identifier: "VpnConfigurationProperties",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: __S(189, __c23, 5),
-          workloadVpnConfiguration: __S(189, __c23, 5),
+          infrastructureVpnConfiguration: __S(5321, __c166, 9),
+          workloadVpnConfiguration: __S(5321, __c166, 9),
         }),
       ).annotate({
         identifier: "ManagementNetworkConfigurationProperties",
       });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           uniqueRdConfigurationState: S.optional(S.String),
-          uniqueRds: S.optional(__S(16, __c2, 0)),
+          uniqueRds: S.optional(__S(6464, __c202, 0)),
           nniDerivedUniqueRdConfigurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UniqueRouteDistinguisherProperties",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           activePasswordSetCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SecretRotationSummary" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          routerIds: S.optional(__S(16, __c2, 0)),
-          storageAccountConfiguration: S.optional(__S(173, __c21, 5)),
-          fabricLocks: S.optional(__S(186, __c23, 2)),
+          routerIds: S.optional(__S(6464, __c202, 0)),
+          storageAccountConfiguration: S.optional(__S(5312, __c166, 0)),
+          fabricLocks: S.optional(__S(5318, __c166, 6)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: __S(187, __c23, 3),
-          managementNetworkConfiguration: __S(190, __c23, 6),
-          racks: S.optional(__S(16, __c2, 0)),
-          l2IsolationDomains: S.optional(__S(16, __c2, 0)),
-          l3IsolationDomains: S.optional(__S(16, __c2, 0)),
+          terminalServerConfiguration: __S(5319, __c166, 7),
+          managementNetworkConfiguration: __S(5322, __c166, 10),
+          racks: S.optional(__S(6464, __c202, 0)),
+          l2IsolationDomains: S.optional(__S(6464, __c202, 0)),
+          l3IsolationDomains: S.optional(__S(6464, __c202, 0)),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(16, __c2, 0)),
-          featureFlags: S.optional(__S(179, __c22, 3)),
-          trustedIpPrefixes: S.optional(__S(16, __c2, 0)),
-          uniqueRdConfiguration: S.optional(__S(191, __c23, 7)),
+          controlPlaneAcls: S.optional(__S(6464, __c202, 0)),
+          featureFlags: S.optional(__S(5314, __c166, 2)),
+          trustedIpPrefixes: S.optional(__S(6464, __c202, 0)),
+          uniqueRdConfiguration: S.optional(__S(5323, __c166, 11)),
           storageArrayCount: S.optional(S.Number),
-          activeCommitBatches: S.optional(__S(16, __c2, 0)),
-          secretRotationSummary: S.optional(__S(192, __c24, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          authorizedTransceiver: S.optional(__S(181, __c22, 5)),
+          activeCommitBatches: S.optional(__S(6464, __c202, 0)),
+          secretRotationSummary: S.optional(__S(5324, __c166, 12)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          authorizedTransceiver: S.optional(__S(5315, __c166, 3)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
-          qosConfiguration: S.optional(__S(182, __c22, 6)),
+          qosConfiguration: S.optional(__S(5316, __c166, 4)),
         }),
       ).annotate({ identifier: "NetworkFabricProperties" });
-    case 2:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(193, __c24, 1),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accessControlListName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
       ).annotate({
-        identifier: "CreateNetworkFabricResponse",
+        identifier: "ValidateAccessControlListConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          expressRouteCircuitId: S.String,
-          expressRouteAuthorizationKey: S.String,
+          error: S.optional(__S(35, __c1, 3)),
+          configurationState: S.optional(S.String),
+          url: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ExpressRouteConnectionInformation",
+        identifier: "ValidateAccessControlListConfigurationResponse",
       });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2IsolationDomainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
       ).annotate({
-        identifier: "ManagedResourceGroupConfiguration",
+        identifier: "ValidateL2IsolationDomainConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateL3IsolationDomainConfigurationRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          validateAction: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateNetworkFabricConfigurationRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkTapRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateNetworkTapRuleConfigurationRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          routePolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/validateConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateRoutePolicyConfigurationRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-          workloadExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-          managedResourceGroupConfiguration: S.optional(__S(197, __c24, 5)),
+          infrastructureExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+          managedResourceGroupConfiguration: S.optional(__S(5602, __c175, 2)),
           isWorkloadManagementNetworkEnabled: S.optional(S.String),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
@@ -15925,16 +18837,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "NetworkFabricControllerPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(198, __c24, 6),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(5568, __c174, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15948,69 +18860,88 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipv4AddressSpaces: S.optional(__S(16, __c2, 0)),
-          ipv6AddressSpaces: S.optional(__S(16, __c2, 0)),
+          expressRouteCircuitId: S.String,
+          expressRouteAuthorizationKey: S.String,
+        }),
+      ).annotate({
+        identifier: "ExpressRouteConnectionInformation",
+      });
+    case 1:
+      return S.Array(__S(5600, __c175, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagedResourceGroupConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ipv4AddressSpaces: S.optional(__S(6464, __c202, 0)),
+          ipv6AddressSpaces: S.optional(__S(6464, __c202, 0)),
         }),
       ).annotate({ identifier: "ControllerServices" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-          workloadExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-          infrastructureServices: S.optional(__S(200, __c25, 0)),
-          workloadServices: S.optional(__S(200, __c25, 0)),
-          managedResourceGroupConfiguration: S.optional(__S(197, __c24, 5)),
-          networkFabricIds: S.optional(__S(16, __c2, 0)),
+          infrastructureExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5601, __c175, 1)),
+          infrastructureServices: S.optional(__S(5603, __c175, 3)),
+          workloadServices: S.optional(__S(5603, __c175, 3)),
+          managedResourceGroupConfiguration: S.optional(__S(5602, __c175, 2)),
+          networkFabricIds: S.optional(__S(6464, __c202, 0)),
           isWorkloadManagementNetworkEnabled: S.optional(S.String),
-          tenantInternetGatewayIds: S.optional(__S(16, __c2, 0)),
+          tenantInternetGatewayIds: S.optional(__S(6464, __c202, 0)),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
           nfcSku: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFabricControllerProperties",
       });
-    case 2:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(201, __c25, 1),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(5604, __c175, 4),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNetworkFabricControllerResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          additionalDescription: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkInterfacePropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          properties: __S(203, __c25, 3),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(5696, __c178, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16022,7 +18953,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "CreateNetworkInterfaceRequest",
       });
-    case 5:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          additionalDescription: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NetworkInterfacePropertiesInput",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -16033,7 +18981,7 @@ function __c25(j: number): any {
           ipv6Address: S.optional(S.String),
           description: S.optional(S.String),
           additionalDescription: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           networkFabricId: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
@@ -16042,70 +18990,45 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "NetworkInterfaceProperties",
       });
-    case 6:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(205, __c25, 5),
-          identity: S.optional(__S(137, __c17, 1)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(5728, __c179, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNetworkInterfaceResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keepaliveIdleTime: S.optional(S.Number),
-          probeInterval: S.optional(S.Number),
-          probeCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "StationConnectionProperties",
-      });
   }
 }
-function __c26(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stationConfigurationState: S.optional(S.String),
-          scopeResourceId: S.optional(S.String),
-          stationName: S.optional(S.String),
-          stationIp: S.optional(S.String),
-          stationPort: S.optional(S.Number),
-          stationConnectionMode: S.optional(S.String),
-          stationConnectionProperties: S.optional(__S(207, __c25, 7)),
-          stationNetwork: S.optional(S.String),
-          monitoredNetworks: S.optional(__S(16, __c2, 0)),
-          exportPolicy: S.optional(S.String),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
-          monitoredAddressFamilies: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "BmpConfigurationProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(208, __c26, 0)),
+          bmpConfiguration: S.optional(__S(5825, __c182, 1)),
         }),
       ).annotate({
         identifier: "NetworkMonitorPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(209, __c26, 1),
+          properties: __S(5792, __c181, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16117,32 +19040,73 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "CreateNetworkMonitorRequest",
       });
-    case 3:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keepaliveIdleTime: S.optional(S.Number),
+          probeInterval: S.optional(S.Number),
+          probeCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "StationConnectionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stationConfigurationState: S.optional(S.String),
+          scopeResourceId: S.optional(S.String),
+          stationName: S.optional(S.String),
+          stationIp: S.optional(S.String),
+          stationPort: S.optional(S.Number),
+          stationConnectionMode: S.optional(S.String),
+          stationConnectionProperties: S.optional(__S(5824, __c182, 0)),
+          stationNetwork: S.optional(S.String),
+          monitoredNetworks: S.optional(__S(6464, __c202, 0)),
+          exportPolicy: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
+          monitoredAddressFamilies: S.optional(__S(9248, __c289, 0)),
+        }),
+      ).annotate({
+        identifier: "BmpConfigurationProperties",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(208, __c26, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          bmpConfiguration: S.optional(__S(5825, __c182, 1)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkMonitorProperties" });
-    case 4:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(211, __c26, 3),
+          properties: __S(5826, __c182, 2),
         }),
       ).annotate({
         identifier: "CreateNetworkMonitorResponse",
       });
-    case 5:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           networkFabricId: S.String,
@@ -16150,16 +19114,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "NetworkPacketBrokerPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(213, __c26, 5),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(5888, __c184, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16171,15 +19135,19 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "CreateNetworkPacketBrokerRequest",
       });
-    case 7:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           networkFabricId: S.String,
-          networkDeviceIds: S.optional(__S(16, __c2, 0)),
-          sourceInterfaceIds: S.optional(__S(16, __c2, 0)),
-          networkTapIds: S.optional(__S(16, __c2, 0)),
-          neighborGroupIds: S.optional(__S(16, __c2, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          networkDeviceIds: S.optional(__S(6464, __c202, 0)),
+          sourceInterfaceIds: S.optional(__S(6464, __c202, 0)),
+          networkTapIds: S.optional(__S(6464, __c202, 0)),
+          neighborGroupIds: S.optional(__S(6464, __c202, 0)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           provisioningState: S.optional(S.String),
           configurationState: S.optional(S.String),
         }),
@@ -16188,7 +19156,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16196,16 +19164,20 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(215, __c26, 7),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(5920, __c185, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNetworkPacketBrokerResponse",
       });
-    case 1:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
@@ -16215,15 +19187,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "NetworkRackPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(217, __c27, 1),
+          properties: __S(5984, __c187, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16233,63 +19205,50 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkRackRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkRackType: S.optional(S.String),
-          networkFabricId: S.String,
-          networkDevices: S.optional(__S(16, __c2, 0)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          provisioningState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkRackProperties" });
-    case 4:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(219, __c27, 3),
+          properties: __S(6048, __c189, 0),
         }),
       ).annotate({
         identifier: "CreateNetworkRackResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          encapsulation: S.optional(S.String),
-          neighborGroupIds: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "IsolationDomainProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          destinationType: S.String,
-          destinationId: S.String,
-          isolationDomainProperties: S.optional(__S(221, __c27, 5)),
-          destinationTapRuleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DestinationProperties" });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
   }
 }
-function __c28(j: number): any {
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          networkRackType: S.optional(S.String),
+          networkFabricId: S.String,
+          networkDevices: S.optional(__S(6464, __c202, 0)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkRackProperties" });
+  }
+}
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           networkPacketBrokerId: S.String,
-          destinations: __S(223, __c27, 7),
+          destinations: __S(6114, __c191, 2),
           pollingType: S.optional(S.String),
         }),
       ).annotate({
@@ -16301,10 +19260,10 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(224, __c28, 0),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(6080, __c190, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16314,121 +19273,88 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkTapRequest" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encapsulation: S.optional(S.String),
+          neighborGroupIds: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "IsolationDomainProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          destinationType: S.String,
+          destinationId: S.String,
+          isolationDomainProperties: S.optional(__S(6112, __c191, 0)),
+          destinationTapRuleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DestinationProperties" });
     case 2:
+      return S.Array(__S(6113, __c191, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           networkPacketBrokerId: S.String,
           sourceTapRuleId: S.optional(S.String),
-          networkFabricIds: S.optional(__S(16, __c2, 0)),
-          destinations: __S(223, __c27, 7),
+          networkFabricIds: S.optional(__S(6464, __c202, 0)),
+          destinations: __S(6114, __c191, 2),
           pollingType: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapProperties" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(226, __c28, 2),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(6115, __c191, 3),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "CreateNetworkTapResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          portType: S.optional(S.String),
-          layer4Protocol: S.String,
-          ports: S.optional(__S(16, __c2, 0)),
-          portGroupNames: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "PortCondition" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protocolTypes: S.optional(__S(16, __c2, 0)),
-          vlanMatchCondition: S.optional(__S(24, __c3, 0)),
-          ipCondition: S.optional(__S(25, __c3, 1)),
-          encapsulationType: S.optional(S.String),
-          portCondition: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRuleMatchCondition",
-      });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          truncate: S.optional(S.String),
-          isTimestampEnabled: S.optional(S.String),
-          destinationId: S.optional(S.String),
-          matchConfigurationName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTapRuleAction" });
   }
 }
-function __c29(j: number): any {
+function __c192(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matchConfigurationName: S.optional(S.String),
-          sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(230, __c28, 6)),
-          actions: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRuleMatchConfiguration",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableCount: S.optional(S.String),
-          truncate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GlobalNetworkTapRuleActionProperties",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(__S(162, __c20, 2)),
-          matchConfigurations: S.optional(__S(234, __c29, 2)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
+          identitySelector: S.optional(__S(4800, __c150, 0)),
+          matchConfigurations: S.optional(__S(6182, __c193, 6)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
           pollingIntervalInSeconds: S.optional(S.Number),
-          globalNetworkTapRuleActions: S.optional(__S(235, __c29, 3)),
+          globalNetworkTapRuleActions: S.optional(__S(6183, __c193, 7)),
         }),
       ).annotate({
         identifier: "NetworkTapRulePropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(236, __c29, 4),
-          identity: S.optional(__S(132, __c16, 4)),
+          properties: __S(6144, __c192, 0),
+          identity: S.optional(__S(2273, __c71, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16440,51 +19366,176 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "CreateNetworkTapRuleRequest",
       });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portType: S.optional(S.String),
+          layer4Protocol: S.String,
+          ports: S.optional(__S(6464, __c202, 0)),
+          portGroupNames: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "PortCondition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocolTypes: S.optional(__S(6464, __c202, 0)),
+          vlanMatchCondition: S.optional(__S(7840, __c245, 0)),
+          ipCondition: S.optional(__S(7841, __c245, 1)),
+          encapsulationType: S.optional(S.String),
+          portCondition: S.optional(__S(6176, __c193, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapRuleMatchCondition",
+      });
+    case 2:
+      return S.Array(__S(6177, __c193, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          truncate: S.optional(S.String),
+          isTimestampEnabled: S.optional(S.String),
+          destinationId: S.optional(S.String),
+          matchConfigurationName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTapRuleAction" });
+    case 4:
+      return S.Array(__S(6179, __c193, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          matchConfigurationName: S.optional(S.String),
+          sequenceNumber: S.optional(S.Number),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(6178, __c193, 2)),
+          actions: S.optional(__S(6180, __c193, 4)),
+        }),
+      ).annotate({
+        identifier: "NetworkTapRuleMatchConfiguration",
+      });
     case 6:
+      return S.Array(__S(6181, __c193, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          enableCount: S.optional(S.String),
+          truncate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GlobalNetworkTapRuleActionProperties",
+      });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(__S(162, __c20, 2)),
-          matchConfigurations: S.optional(__S(234, __c29, 2)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
+          identitySelector: S.optional(__S(4800, __c150, 0)),
+          matchConfigurations: S.optional(__S(6182, __c193, 6)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
           networkTapId: S.optional(S.String),
-          networkTapIds: S.optional(__S(16, __c2, 0)),
+          networkTapIds: S.optional(__S(6464, __c202, 0)),
           pollingIntervalInSeconds: S.optional(S.Number),
           lastSyncedTime: S.optional(S.String),
-          globalNetworkTapRuleActions: S.optional(__S(235, __c29, 3)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          networkFabricIds: S.optional(__S(16, __c2, 0)),
+          globalNetworkTapRuleActions: S.optional(__S(6183, __c193, 7)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          networkFabricIds: S.optional(__S(6464, __c202, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapRuleProperties" });
-    case 7:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(238, __c29, 6),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(6184, __c193, 8),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({
         identifier: "CreateNetworkTapRuleResponse",
       });
   }
 }
-function __c30(j: number): any {
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          peerASN: S.Number,
+          vlanId: S.Number,
+          peLoopbackIpAddress: S.optional(__S(6464, __c202, 0)),
+          bmpConfiguration: S.optional(__S(6273, __c196, 1)),
+          prefixLimits: S.optional(__S(6275, __c196, 3)),
+        }),
+      ).annotate({
+        identifier: "OptionBLayer3ConfigurationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nniType: S.optional(S.String),
+          isManagementType: S.optional(S.String),
+          useOptionB: S.String,
+          layer2Configuration: S.optional(__S(6272, __c196, 0)),
+          optionBLayer3Configuration: S.optional(__S(6240, __c195, 0)),
+          npbStaticRouteConfiguration: S.optional(__S(8544, __c267, 0)),
+          staticRouteConfiguration: S.optional(__S(8544, __c267, 0)),
+          importRoutePolicy: S.optional(__S(6276, __c196, 4)),
+          exportRoutePolicy: S.optional(__S(6277, __c196, 5)),
+          egressAclId: S.optional(S.String),
+          ingressAclId: S.optional(S.String),
+          microBfdState: S.optional(S.String),
+          conditionalDefaultRouteConfiguration: S.optional(__S(6278, __c196, 6)),
+        }),
+      ).annotate({
+        identifier: "NetworkToNetworkInterconnectPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
+          properties: __S(6241, __c195, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkToNetworkInterconnectRequest",
+      });
+  }
+}
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mtu: S.optional(S.Number),
-          interfaces: S.optional(__S(16, __c2, 0)),
+          interfaces: S.optional(__S(6464, __c202, 0)),
         }),
       ).annotate({ identifier: "Layer2Configuration" });
     case 1:
@@ -16502,24 +19553,8 @@ function __c30(j: number): any {
         identifier: "OptionBLayer3PrefixLimitProperties",
       });
     case 3:
-      return S.Array(__S(242, __c30, 2));
+      return S.Array(__S(6274, __c196, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          peerASN: S.Number,
-          vlanId: S.Number,
-          peLoopbackIpAddress: S.optional(__S(16, __c2, 0)),
-          bmpConfiguration: S.optional(__S(241, __c30, 1)),
-          prefixLimits: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({
-        identifier: "OptionBLayer3ConfigurationInput",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           importIpv4RoutePolicyId: S.optional(S.String),
@@ -16528,7 +19563,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ImportRoutePolicyInformation",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           exportIpv4RoutePolicyId: S.optional(S.String),
@@ -16537,59 +19572,16 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ExportRoutePolicyInformation",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          ipv4Routes: S.optional(__S(74, __c9, 2)),
-          ipv6Routes: S.optional(__S(74, __c9, 2)),
+          ipv4Routes: S.optional(__S(8769, __c274, 1)),
+          ipv6Routes: S.optional(__S(8769, __c274, 1)),
         }),
       ).annotate({
         identifier: "ConditionalDefaultRouteProperties",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nniType: S.optional(S.String),
-          isManagementType: S.optional(S.String),
-          useOptionB: S.String,
-          layer2Configuration: S.optional(__S(240, __c30, 0)),
-          optionBLayer3Configuration: S.optional(__S(244, __c30, 4)),
-          npbStaticRouteConfiguration: S.optional(__S(75, __c9, 3)),
-          staticRouteConfiguration: S.optional(__S(75, __c9, 3)),
-          importRoutePolicy: S.optional(__S(245, __c30, 5)),
-          exportRoutePolicy: S.optional(__S(246, __c30, 6)),
-          egressAclId: S.optional(S.String),
-          ingressAclId: S.optional(S.String),
-          microBfdState: S.optional(S.String),
-          conditionalDefaultRouteConfiguration: S.optional(__S(247, __c30, 7)),
-        }),
-      ).annotate({
-        identifier: "NetworkToNetworkInterconnectPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: __S(248, __c31, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkToNetworkInterconnectRequest",
-      });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           primaryIpv4Prefix: S.optional(S.String),
@@ -16599,30 +19591,30 @@ function __c31(j: number): any {
           peerASN: S.Number,
           vlanId: S.Number,
           fabricASN: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(__S(16, __c2, 0)),
-          bmpConfiguration: S.optional(__S(241, __c30, 1)),
-          prefixLimits: S.optional(__S(243, __c30, 3)),
+          peLoopbackIpAddress: S.optional(__S(6464, __c202, 0)),
+          bmpConfiguration: S.optional(__S(6273, __c196, 1)),
+          prefixLimits: S.optional(__S(6275, __c196, 3)),
         }),
       ).annotate({
         identifier: "OptionBLayer3Configuration",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           nniType: S.optional(S.String),
           isManagementType: S.optional(S.String),
           useOptionB: S.String,
-          layer2Configuration: S.optional(__S(240, __c30, 0)),
-          optionBLayer3Configuration: S.optional(__S(250, __c31, 2)),
-          npbStaticRouteConfiguration: S.optional(__S(80, __c10, 0)),
-          staticRouteConfiguration: S.optional(__S(80, __c10, 0)),
-          importRoutePolicy: S.optional(__S(245, __c30, 5)),
-          exportRoutePolicy: S.optional(__S(246, __c30, 6)),
+          layer2Configuration: S.optional(__S(6272, __c196, 0)),
+          optionBLayer3Configuration: S.optional(__S(6279, __c196, 7)),
+          npbStaticRouteConfiguration: S.optional(__S(8576, __c268, 0)),
+          staticRouteConfiguration: S.optional(__S(8576, __c268, 0)),
+          importRoutePolicy: S.optional(__S(6276, __c196, 4)),
+          exportRoutePolicy: S.optional(__S(6277, __c196, 5)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
           microBfdState: S.optional(S.String),
-          conditionalDefaultRouteConfiguration: S.optional(__S(247, __c30, 7)),
-          lastOperation: S.optional(__S(59, __c7, 3)),
+          conditionalDefaultRouteConfiguration: S.optional(__S(6278, __c196, 6)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
@@ -16630,112 +19622,43 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "NetworkToNetworkInterconnectProperties",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(251, __c31, 3),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(6280, __c196, 8),
         }),
       ).annotate({
         identifier: "CreateNetworkToNetworkInterconnectResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ipCommunityIds: S.optional(__S(16, __c2, 0)),
-          ipExtendedCommunityIds: S.optional(__S(16, __c2, 0)),
-          type: S.optional(S.String),
-          ipPrefixId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StatementConditionProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ipCommunityIds: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "IpCommunityIdList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          add: S.optional(__S(254, __c31, 6)),
-          delete: S.optional(__S(254, __c31, 6)),
-          set: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({
-        identifier: "ActionIpCommunityProperties",
-      });
   }
 }
-function __c32(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipExtendedCommunityIds: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "IpExtendedCommunityIdList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          add: S.optional(__S(256, __c32, 0)),
-          delete: S.optional(__S(256, __c32, 0)),
-          set: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({
-        identifier: "ActionIpExtendedCommunityProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          localPreference: S.optional(S.Number),
-          actionType: S.String,
-          ipCommunityProperties: S.optional(__S(255, __c31, 7)),
-          ipExtendedCommunityProperties: S.optional(__S(257, __c32, 1)),
-        }),
-      ).annotate({
-        identifier: "StatementActionProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          sequenceNumber: S.Number,
-          condition: __S(253, __c31, 5),
-          action: __S(258, __c32, 2),
-        }),
-      ).annotate({
-        identifier: "RoutePolicyStatementProperties",
-      });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           annotation: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          statements: __S(260, __c32, 4),
+          statements: __S(6375, __c199, 7),
           networkFabricId: S.String,
           addressFamilyType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RoutePolicyPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(261, __c32, 5),
+          properties: __S(6304, __c197, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16745,23 +19668,9 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRoutePolicyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          statements: __S(260, __c32, 4),
-          networkFabricId: S.String,
-          addressFamilyType: S.optional(S.String),
-          lastOperation: S.optional(__S(59, __c7, 3)),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoutePolicyProperties" });
   }
 }
-function __c33(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16769,15 +19678,237 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(263, __c32, 7),
+          properties: __S(6376, __c199, 8),
         }),
       ).annotate({
         identifier: "CreateRoutePolicyResponse",
       });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipCommunityIds: S.optional(__S(6464, __c202, 0)),
+          ipExtendedCommunityIds: S.optional(__S(6464, __c202, 0)),
+          type: S.optional(S.String),
+          ipPrefixId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StatementConditionProperties",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ipCommunityIds: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "IpCommunityIdList" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          add: S.optional(__S(6369, __c199, 1)),
+          delete: S.optional(__S(6369, __c199, 1)),
+          set: S.optional(__S(6369, __c199, 1)),
+        }),
+      ).annotate({
+        identifier: "ActionIpCommunityProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ipExtendedCommunityIds: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "IpExtendedCommunityIdList",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          add: S.optional(__S(6371, __c199, 3)),
+          delete: S.optional(__S(6371, __c199, 3)),
+          set: S.optional(__S(6371, __c199, 3)),
+        }),
+      ).annotate({
+        identifier: "ActionIpExtendedCommunityProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          localPreference: S.optional(S.Number),
+          actionType: S.String,
+          ipCommunityProperties: S.optional(__S(6370, __c199, 2)),
+          ipExtendedCommunityProperties: S.optional(__S(6372, __c199, 4)),
+        }),
+      ).annotate({
+        identifier: "StatementActionProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          sequenceNumber: S.Number,
+          condition: __S(6368, __c199, 0),
+          action: __S(6373, __c199, 5),
+        }),
+      ).annotate({
+        identifier: "RoutePolicyStatementProperties",
+      });
+    case 7:
+      return S.Array(__S(6374, __c199, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          statements: __S(6375, __c199, 7),
+          networkFabricId: S.String,
+          addressFamilyType: S.optional(S.String),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoutePolicyProperties" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          commitBatchId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitBatchStatus",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitNetworkFabricBatchStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          failedDevices: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "CommitBatchDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          commitBatchId: S.optional(S.String),
+          commitBatchState: S.optional(S.String),
+          commitBatchDetails: S.optional(__S(6401, __c200, 1)),
+        }),
+      ).annotate({
+        identifier: "CommitBatchStatusResponseProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+          properties: S.optional(__S(6402, __c200, 2)),
+        }),
+      ).annotate({
+        identifier: "CommitBatchStatusOperationResponse",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(6560, __c205, 0)),
+          additionalInfo: S.optional(__S(34, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "CommitBatchStatusOperationResponseError",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(6497, __c203, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6496, __c203, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6497, __c203, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6528, __c204, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "CommitBatchStatusOperationResponseOperationsItem",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(35, __c1, 3));
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6529, __c204, 1));
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16794,11 +19925,19 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeleteAccessControlListRequest",
       });
-    case 2:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessControlListResponse",
       });
-    case 3:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16816,7 +19955,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeleteExternalNetworkRequest",
       });
-    case 4:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16834,7 +19977,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeleteInternalNetworkRequest",
       });
-    case 5:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16851,7 +19998,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeleteInternetGatewayRequest",
       });
-    case 6:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16868,13 +20019,17 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DeleteInternetGatewayRuleRequest",
       });
-    case 7:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteInternetGatewayRuleResponse",
       });
   }
 }
-function __c34(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16891,7 +20046,11 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIpCommunityRequest" });
-    case 1:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16908,7 +20067,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteIpExtendedCommunityRequest",
       });
-    case 2:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16923,7 +20086,11 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIpPrefixRequest" });
-    case 3:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16940,7 +20107,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteL2IsolationDomainRequest",
       });
-    case 4:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16957,7 +20128,55 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteL3IsolationDomainRequest",
       });
-    case 5:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkFabricName: S.String.pipe(T.Label()),
+          commitStage: S.optional(S.String),
+          commitPolicy: S.optional(S.String),
+          devices: S.optional(__S(6464, __c202, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitNetworkFabricConfigurationRequest",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(6432, __c201, 0)),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommitConfigurationResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16974,7 +20193,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteNeighborGroupRequest",
       });
-    case 6:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16991,7 +20214,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkBootstrapDeviceRequest",
       });
-    case 7:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17011,7 +20238,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17030,7 +20257,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkDeviceRequest",
       });
-    case 1:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17047,7 +20278,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkFabricRequest",
       });
-    case 2:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17064,7 +20299,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkFabricControllerRequest",
       });
-    case 3:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17082,7 +20321,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkInterfaceRequest",
       });
-    case 4:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17099,7 +20342,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkMonitorRequest",
       });
-    case 5:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17116,7 +20363,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkPacketBrokerRequest",
       });
-    case 6:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17131,7 +20382,32 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteNetworkRackRequest" });
-    case 7:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          routePolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/commitConfiguration",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CommitRoutePolicyConfigurationRequest",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17148,7 +20424,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "DeleteNetworkTapRequest" });
   }
 }
-function __c36(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17167,7 +20443,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkTapRuleRequest",
       });
-    case 1:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17185,7 +20465,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkToNetworkInterconnectRequest",
       });
-    case 2:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17200,7 +20484,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRoutePolicyRequest" });
-    case 3:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17217,7 +20505,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetAccessControlListRequest",
       });
-    case 4:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17235,7 +20527,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetExternalNetworkRequest",
       });
-    case 5:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17253,7 +20549,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetInternalNetworkRequest",
       });
-    case 6:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17270,7 +20570,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetInternetGatewayRequest",
       });
-    case 7:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17289,7 +20593,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17306,19 +20610,387 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIpCommunityRequest" });
-    case 1:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(115, __c14, 3),
+          properties: __S(738, __c23, 2),
         }),
       ).annotate({ identifier: "GetIpCommunityResponse" });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          configurationType: S.String,
+          aclsUrl: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(7914, __c247, 10)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(7915, __c247, 11)),
+          controlPlaneAclConfiguration: S.optional(__S(7808, __c244, 0)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accessControlListName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(7776, __c243, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccessControlListRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7924, __c247, 20));
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vlans: S.optional(__S(6464, __c202, 0)),
+          innerVlans: S.optional(__S(6464, __c202, 0)),
+          vlanGroupNames: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "VlanMatchCondition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          prefixType: S.optional(S.String),
+          ipPrefixValues: S.optional(__S(6464, __c202, 0)),
+          ipGroupNames: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "IpMatchCondition" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ipAddressType: S.optional(S.String),
+          ipPrefixes: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "IpGroupProperties" });
+    case 3:
+      return S.Array(__S(7842, __c245, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          vlans: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "VlanGroupProperties" });
+    case 5:
+      return S.Array(__S(7844, __c245, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ports: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "PortGroupProperties" });
+    case 7:
+      return S.Array(__S(7846, __c245, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          ipGroups: S.optional(__S(7843, __c245, 3)),
+          vlanGroups: S.optional(__S(7845, __c245, 5)),
+          portGroups: S.optional(__S(7847, __c245, 7)),
+        }),
+      ).annotate({
+        identifier: "CommonDynamicMatchConfiguration",
+      });
+    case 9:
+      return S.Array(__S(7848, __c245, 8));
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(7926, __c247, 22),
+        }),
+      ).annotate({
+        identifier: "CreateAccessControlListResponse",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portType: S.optional(S.String),
+          layer4Protocol: S.String,
+          ports: S.optional(__S(6464, __c202, 0)),
+          portGroupNames: S.optional(__S(6464, __c202, 0)),
+          flags: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListPortCondition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          icmpTypes: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({
+        identifier: "IcmpConfigurationProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          protocolTypes: S.optional(__S(6464, __c202, 0)),
+          vlanMatchCondition: S.optional(__S(7840, __c245, 0)),
+          ipCondition: S.optional(__S(7841, __c245, 1)),
+          etherTypes: S.optional(__S(6464, __c202, 0)),
+          fragments: S.optional(__S(6464, __c202, 0)),
+          ipLengths: S.optional(__S(6464, __c202, 0)),
+          ttlValues: S.optional(__S(6464, __c202, 0)),
+          dscpMarkings: S.optional(__S(6464, __c202, 0)),
+          protocolNeighbors: S.optional(__S(6464, __c202, 0)),
+          portCondition: S.optional(__S(7904, __c247, 0)),
+          icmpConfiguration: S.optional(__S(7905, __c247, 1)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListMatchCondition",
+      });
+    case 3:
+      return S.Array(__S(7906, __c247, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rate: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BitRate" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BurstSize" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bitRate: S.optional(__S(7908, __c247, 4)),
+          burstSize: S.optional(__S(7909, __c247, 5)),
+        }),
+      ).annotate({
+        identifier: "PoliceRateConfigurationProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          counterName: S.optional(S.String),
+          remarkComment: S.optional(S.String),
+          policeRateConfiguration: S.optional(__S(7910, __c247, 6)),
+        }),
+      ).annotate({ identifier: "AccessControlListAction" });
+    case 8:
+      return S.Array(__S(7911, __c247, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          matchConfigurationName: S.optional(S.String),
+          sequenceNumber: S.optional(S.Number),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(7907, __c247, 3)),
+          actions: S.optional(__S(7912, __c247, 8)),
+        }),
+      ).annotate({
+        identifier: "AccessControlListMatchConfiguration",
+      });
+    case 10:
+      return S.Array(__S(7913, __c247, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          enableCount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GlobalAccessControlListActionProperties",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          sourceIpPrefix: S.optional(S.String),
+          destinationIpPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ControlPlanAclIpMatchCondition",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          ttlValue: S.optional(S.String),
+          ttlMatchType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclTtlMatchCondition",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          ports: S.optional(__S(6464, __c202, 0)),
+          portMatchType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclPortCondition",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          sourcePorts: S.optional(__S(7918, __c247, 14)),
+          destinationPorts: S.optional(__S(7918, __c247, 14)),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclPortMatchCondition",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          protocolTypes: S.optional(S.String),
+          ipCondition: S.optional(__S(7916, __c247, 12)),
+          ttlMatchCondition: S.optional(__S(7917, __c247, 13)),
+          portCondition: S.optional(__S(7919, __c247, 15)),
+          flags: S.optional(__S(6464, __c202, 0)),
+          icmpConfiguration: S.optional(__S(7905, __c247, 1)),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclMatchCondition",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          remarkComment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ControlPlaneAclAction" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          matchConfigurationName: S.optional(S.String),
+          sequenceNumber: S.optional(S.Number),
+          matchCondition: S.optional(__S(7920, __c247, 16)),
+          action: S.optional(__S(7921, __c247, 17)),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclMatchConfigurationProperties",
+      });
+    case 19:
+      return S.Array(__S(7922, __c247, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddressType: S.optional(S.String),
+          matchConfigurations: S.optional(__S(7923, __c247, 19)),
+        }),
+      ).annotate({
+        identifier: "ControlPlaneAclProperties",
+      });
+    case 21:
+      return S.Array(__S(7924, __c247, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          configurationType: S.String,
+          aclsUrl: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(7914, __c247, 10)),
+          dynamicMatchConfigurations: S.optional(__S(7849, __c245, 9)),
+          lastSyncedTime: S.optional(S.String),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(7915, __c247, 11)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          networkFabricIds: S.optional(__S(6464, __c202, 0)),
+          controlPlaneAclConfiguration: S.optional(__S(7925, __c247, 21)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccessControlListProperties",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LastOperationProperties" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17335,7 +21007,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetIpExtendedCommunityRequest",
       });
-    case 3:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17350,7 +21026,11 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIpPrefixRequest" });
-    case 4:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17367,7 +21047,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetL2IsolationDomainRequest",
       });
-    case 5:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17384,7 +21068,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetL3IsolationDomainRequest",
       });
-    case 6:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17399,22 +21087,26 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNeighborGroupRequest" });
-    case 7:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(152, __c19, 0),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(3489, __c109, 1),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "GetNeighborGroupResponse" });
   }
 }
-function __c38(j: number): any {
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17433,7 +21125,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetNetworkBootstrapDeviceRequest",
       });
-    case 1:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17451,7 +21147,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetNetworkBootstrapInterfaceRequest",
       });
-    case 2:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17466,20 +21166,28 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkDeviceRequest" });
-    case 3:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(171, __c21, 3),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(4867, __c152, 3),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "GetNetworkDeviceResponse" });
-    case 4:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17495,7 +21203,23 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetNetworkDeviceSkusRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8390, __c262, 6),
+        }),
+      ).annotate({
+        identifier: "GetNetworkDeviceSkusResponse",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -17506,9 +21230,9 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "SupportedVersionProperties",
       });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(8384, __c262, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           connectorType: S.optional(S.String),
@@ -17517,50 +21241,38 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "SupportedConnectorProperties",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(311, __c38, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(8386, __c262, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
           interfaceType: S.optional(S.String),
-          supportedConnectorTypes: S.optional(__S(312, __c39, 0)),
+          supportedConnectorTypes: S.optional(__S(8387, __c262, 3)),
         }),
       ).annotate({
         identifier: "DeviceInterfaceProperties",
       });
-    case 2:
-      return S.Array(__S(313, __c39, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(8388, __c262, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           model: S.String,
           manufacturer: S.optional(S.String),
-          supportedVersions: S.optional(__S(310, __c38, 6)),
-          supportedRoleTypes: S.optional(__S(87, __c10, 7)),
-          interfaces: S.optional(__S(314, __c39, 2)),
+          supportedVersions: S.optional(__S(8385, __c262, 1)),
+          supportedRoleTypes: S.optional(__S(9248, __c289, 0)),
+          interfaces: S.optional(__S(8389, __c262, 5)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkDeviceSkuProperties",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(315, __c39, 3),
-        }),
-      ).annotate({
-        identifier: "GetNetworkDeviceSkusResponse",
-      });
-    case 5:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17575,20 +21287,284 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkFabricRequest" });
-    case 6:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(193, __c24, 1),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(5325, __c166, 13),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "GetNetworkFabricResponse" });
-    case 7:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          vlanId: S.Number,
+          peerASN: S.Number,
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          ingressAclId: S.optional(S.String),
+          bmpConfiguration: S.optional(__S(8640, __c270, 0)),
+          egressAclId: S.optional(S.String),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(8803, __c275, 3)),
+          nativeIpv6PrefixLimit: S.optional(__S(8803, __c275, 3)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkPropertiesOptionAPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          networkToNetworkInterconnectId: S.optional(S.String),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(8513, __c266, 1)),
+          optionAProperties: S.optional(__S(8480, __c265, 0)),
+          staticRouteConfiguration: S.optional(__S(8544, __c267, 0)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          externalNetworkName: S.String.pipe(T.Label()),
+          properties: __S(8481, __c265, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalNetworkRequest",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importIpv4RouteTargets: S.optional(__S(6464, __c202, 0)),
+          importIpv6RouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportIpv4RouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportIpv6RouteTargets: S.optional(__S(6464, __c202, 0)),
+        }),
+      ).annotate({ identifier: "RouteTargetInformation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          importRouteTargets: S.optional(__S(6464, __c202, 0)),
+          exportRouteTargets: S.optional(__S(6464, __c202, 0)),
+          routeTargets: S.optional(__S(8512, __c266, 0)),
+        }),
+      ).annotate({ identifier: "L3OptionBProperties" });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          ipv4Routes: S.optional(__S(8769, __c274, 1)),
+          ipv6Routes: S.optional(__S(8769, __c274, 1)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkStaticRouteConfigurationInput",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bfdConfiguration: S.optional(__S(8736, __c273, 0)),
+          ipv4Routes: S.optional(__S(8769, __c274, 1)),
+          ipv6Routes: S.optional(__S(8769, __c274, 1)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkStaticRouteConfiguration",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8642, __c270, 2),
+        }),
+      ).annotate({
+        identifier: "CreateExternalNetworkResponse",
+      });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkBmpProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primaryIpv4Prefix: S.optional(S.String),
+          primaryIpv6Prefix: S.optional(S.String),
+          secondaryIpv4Prefix: S.optional(S.String),
+          secondaryIpv6Prefix: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          vlanId: S.Number,
+          fabricASN: S.optional(S.Number),
+          peerASN: S.Number,
+          bfdConfiguration: S.optional(__S(8736, __c273, 0)),
+          ingressAclId: S.optional(S.String),
+          bmpConfiguration: S.optional(__S(8640, __c270, 0)),
+          egressAclId: S.optional(S.String),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(8803, __c275, 3)),
+          nativeIpv6PrefixLimit: S.optional(__S(8803, __c275, 3)),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkPropertiesOptionAProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          networkToNetworkInterconnectId: S.optional(S.String),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(8513, __c266, 1)),
+          optionAProperties: S.optional(__S(8641, __c270, 1)),
+          staticRouteConfiguration: S.optional(__S(8576, __c268, 0)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          networkFabricId: S.optional(S.String),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExternalNetworkProperties",
+      });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exportIpv4RoutePolicyId: S.optional(S.String),
+          exportIpv6RoutePolicyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportRoutePolicy" });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          intervalInMilliSeconds: S.optional(S.Number),
+          multiplier: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BfdConfigurationInput" });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          administrativeState: S.optional(S.String),
+          intervalInMilliSeconds: S.optional(S.Number),
+          multiplier: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BfdConfiguration" });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.String,
+          nextHop: __S(6464, __c202, 0),
+        }),
+      ).annotate({ identifier: "StaticRouteProperties" });
+    case 1:
+      return S.Array(__S(8768, __c274, 0));
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          importIpv4RoutePolicyId: S.optional(S.String),
+          importIpv6RoutePolicyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportRoutePolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maximumRoutes: S.optional(S.Number),
+          threshold: S.optional(S.Number),
+          idleTimeExpiry: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PrefixLimitProperties" });
+    case 2:
+      return S.Array(__S(8801, __c275, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          prefixLimits: S.optional(__S(8802, __c275, 2)),
+        }),
+      ).annotate({
+        identifier: "NativeIpv4PrefixLimitProperties",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17607,7 +21583,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17628,29 +21604,37 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8896, __c278, 0),
+        }),
+      ).annotate({
+        identifier: "GetNetworkFabricSkusResponse",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           type: S.optional(S.String),
           maxComputeRacks: S.optional(S.Number),
           maximumServerCount: S.optional(S.Number),
-          supportedVersions: S.optional(__S(16, __c2, 0)),
+          supportedVersions: S.optional(__S(6464, __c202, 0)),
           details: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFabricSkuProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(321, __c40, 1),
-        }),
-      ).annotate({
-        identifier: "GetNetworkFabricSkusResponse",
-      });
-    case 3:
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17667,17 +21651,17 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetNetworkFabricTopologyRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(14, __c1, 6)),
-          additionalInfo: S.optional(__S(3, __c0, 3)),
+          details: S.optional(__S(6560, __c205, 0)),
+          additionalInfo: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "GetTopologyResponseError" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -17685,7 +21669,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetTopologyResponseProperties",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -17694,13 +21678,17 @@ function __c40(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(324, __c40, 4)),
+          operations: S.optional(__S(6592, __c206, 0)),
+          error: S.optional(__S(8929, __c279, 1)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(325, __c40, 5)),
+          properties: S.optional(__S(8930, __c279, 2)),
         }),
       ).annotate({ identifier: "GetTopologyResponse" });
-    case 7:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17720,7 +21708,7 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c281(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17737,7 +21725,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkMonitorRequest" });
-    case 1:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17754,7 +21746,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetNetworkPacketBrokerRequest",
       });
-    case 2:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17769,19 +21765,27 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkRackRequest" });
-    case 3:
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(219, __c27, 3),
+          properties: __S(6048, __c189, 0),
         }),
       ).annotate({ identifier: "GetNetworkRackResponse" });
-    case 4:
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17796,7 +21800,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkTapRequest" });
-    case 5:
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17811,7 +21819,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNetworkTapRuleRequest" });
-    case 6:
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17829,7 +21841,220 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetNetworkToNetworkInterconnectRequest",
       });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          defaultRouteOriginate: S.optional(S.String),
+          allowAS: S.optional(S.Number),
+          allowASOverride: S.optional(S.String),
+          peerASN: S.Number,
+          ipv4ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv4NeighborAddress: S.optional(__S(9313, __c291, 1)),
+          ipv6NeighborAddress: S.optional(__S(9313, __c291, 1)),
+          bmpConfiguration: S.optional(__S(9378, __c293, 2)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BgpConfigurationInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bfdConfiguration: S.optional(__S(8704, __c272, 0)),
+          ipv4Routes: S.optional(__S(8769, __c274, 1)),
+          ipv6Routes: S.optional(__S(8769, __c274, 1)),
+          extension: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StaticRouteConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          extension: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          connectedIPv4Subnets: S.optional(__S(9377, __c293, 1)),
+          connectedIPv6Subnets: S.optional(__S(9377, __c293, 1)),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          ingressAclId: S.optional(S.String),
+          egressAclId: S.optional(S.String),
+          isMonitoringEnabled: S.optional(S.String),
+          vlanId: S.Number,
+          bgpConfiguration: S.optional(__S(9216, __c288, 0)),
+          staticRouteConfiguration: S.optional(__S(9217, __c288, 1)),
+          nativeIpv4PrefixLimit: S.optional(__S(8803, __c275, 3)),
+          nativeIpv6PrefixLimit: S.optional(__S(8803, __c275, 3)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l3IsolationDomainName: S.String.pipe(T.Label()),
+          internalNetworkName: S.String.pipe(T.Label()),
+          properties: __S(9218, __c288, 2),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInternalNetworkRequest",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exportPolicies: S.optional(__S(9248, __c289, 0)),
+        }),
+      ).annotate({
+        identifier: "BmpExportPolicyProperties",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NeighborAddressInput" });
+    case 1:
+      return S.Array(__S(9312, __c291, 0));
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(9383, __c293, 7),
+        }),
+      ).annotate({
+        identifier: "CreateInternalNetworkResponse",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          prefix: S.String,
+        }),
+      ).annotate({ identifier: "ConnectedSubnet" });
+    case 1:
+      return S.Array(__S(9376, __c293, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          neighborIpExclusions: S.optional(__S(6464, __c202, 0)),
+          bmpConfigurationState: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(9280, __c290, 0)),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkBmpProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          bfdAdministrativeState: S.optional(S.String),
+          bgpAdministrativeState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NeighborAddress" });
+    case 4:
+      return S.Array(__S(9379, __c293, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          bfdConfiguration: S.optional(__S(8736, __c273, 0)),
+          defaultRouteOriginate: S.optional(S.String),
+          allowAS: S.optional(S.Number),
+          allowASOverride: S.optional(S.String),
+          fabricASN: S.optional(S.Number),
+          peerASN: S.Number,
+          ipv4ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(6464, __c202, 0)),
+          ipv4NeighborAddress: S.optional(__S(9380, __c293, 4)),
+          ipv6NeighborAddress: S.optional(__S(9380, __c293, 4)),
+          bmpConfiguration: S.optional(__S(9378, __c293, 2)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BgpConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bfdConfiguration: S.optional(__S(8736, __c273, 0)),
+          ipv4Routes: S.optional(__S(8769, __c274, 1)),
+          ipv6Routes: S.optional(__S(8769, __c274, 1)),
+          extension: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StaticRouteConfiguration" });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          extension: S.optional(S.String),
+          mtu: S.optional(S.Number),
+          connectedIPv4Subnets: S.optional(__S(9377, __c293, 1)),
+          connectedIPv6Subnets: S.optional(__S(9377, __c293, 1)),
+          importRoutePolicy: S.optional(__S(8800, __c275, 0)),
+          exportRoutePolicy: S.optional(__S(8672, __c271, 0)),
+          ingressAclId: S.optional(S.String),
+          egressAclId: S.optional(S.String),
+          isMonitoringEnabled: S.optional(S.String),
+          vlanId: S.Number,
+          bgpConfiguration: S.optional(__S(9381, __c293, 5)),
+          staticRouteConfiguration: S.optional(__S(9382, __c293, 6)),
+          nativeIpv4PrefixLimit: S.optional(__S(8803, __c275, 3)),
+          nativeIpv6PrefixLimit: S.optional(__S(8803, __c275, 3)),
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          networkFabricId: S.optional(S.String),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternalNetworkProperties",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17846,7 +22071,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetRoutePolicyRequest" });
   }
 }
-function __c42(j: number): any {
+function __c295(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17854,13 +22079,17 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(263, __c32, 7),
+          properties: __S(6376, __c199, 8),
         }),
       ).annotate({ identifier: "GetRoutePolicyResponse" });
-    case 1:
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17876,30 +22105,38 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListAccessControlListByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(61, __c7, 5),
+          properties: __S(7926, __c247, 22),
         }),
       ).annotate({ identifier: "AccessControlList" });
-    case 3:
-      return S.Array(__S(338, __c42, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(9504, __c297, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(339, __c42, 3),
+          value: __S(9505, __c297, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccessControlListsListResult",
       });
-    case 5:
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17914,7 +22151,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListAccessControlListBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17931,30 +22172,30 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListExternalNetworkByL3IsolationDomainRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(81, __c10, 1),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(8642, __c270, 2),
         }),
       ).annotate({ identifier: "ExternalNetwork" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(9569, __c299, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(344, __c43, 0),
+          value: __S(9570, __c299, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalNetworksList" });
-    case 2:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17971,26 +22212,30 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListInternalNetworkByL3IsolationDomainRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(98, __c12, 2),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          properties: __S(9383, __c293, 7),
         }),
       ).annotate({ identifier: "InternalNetwork" });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(9601, __c300, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(348, __c43, 4),
+          value: __S(9602, __c300, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalNetworksList" });
-    case 6:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18006,34 +22251,38 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListInternetGatewayByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(102, __c12, 6),
+          properties: __S(9952, __c311, 0),
         }),
       ).annotate({ identifier: "InternetGateway" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
     case 1:
+      return S.Array(__S(9664, __c302, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(352, __c44, 0),
+          value: __S(9665, __c302, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InternetGatewaysListResult",
       });
-    case 2:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18048,7 +22297,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListInternetGatewayBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18064,30 +22317,38 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListInternetGatewayRuleByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(109, __c13, 5),
+          properties: __S(195, __c6, 3),
         }),
       ).annotate({ identifier: "InternetGatewayRule" });
-    case 5:
-      return S.Array(__S(356, __c44, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(9760, __c305, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(357, __c44, 5),
+          value: __S(9761, __c305, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InternetGatewayRulesListResult",
       });
-    case 7:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18104,7 +22365,7 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c307(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18122,16 +22383,98 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListIpCommunityByResourceGroupRequest",
       });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7744, __c242, 0));
     case 1:
-      return S.Array(__S(297, __c37, 1));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(361, __c45, 1),
+          value: __S(9856, __c308, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCommunitiesListResult" });
-    case 3:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          internetGatewayRuleId: S.optional(S.String),
+          type: S.optional(S.String),
+          internetGatewayType: S.optional(S.String),
+          networkFabricControllerId: S.String,
+        }),
+      ).annotate({
+        identifier: "InternetGatewayPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          internetGatewayName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(9888, __c309, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInternetGatewayRequest",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
+          location: S.String,
+          properties: __S(9952, __c311, 0),
+        }),
+      ).annotate({
+        identifier: "CreateInternetGatewayResponse",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          internetGatewayRuleId: S.optional(S.String),
+          ipv4Address: S.optional(S.String),
+          port: S.optional(S.Number),
+          type: S.optional(S.String),
+          internetGatewayType: S.optional(S.String),
+          networkFabricControllerId: S.String,
+          lastOperation: S.optional(__S(7968, __c249, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InternetGatewayProperties",
+      });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18146,7 +22489,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListIpCommunityBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18162,24 +22509,28 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListIpExtendedCommunityByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(121, __c15, 1),
+          properties: __S(1282, __c40, 2),
         }),
       ).annotate({ identifier: "IpExtendedCommunity" });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(10048, __c314, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(366, __c45, 6),
+          value: __S(10049, __c314, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -18187,7 +22538,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c315(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18204,7 +22555,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListIpExtendedCommunityBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18220,16 +22575,24 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListIpPrefixByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(128, __c16, 0));
-    case 3:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1827, __c57, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(370, __c46, 2),
+          value: __S(10144, __c317, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixesListResult" });
-    case 4:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18244,7 +22607,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListIpPrefixBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18260,35 +22627,39 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListL2IsolationDomainByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(134, __c16, 6),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(2400, __c75, 0),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "L2IsolationDomain" });
-    case 7:
-      return S.Array(__S(374, __c46, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(10240, __c320, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(375, __c46, 7),
+          value: __S(10241, __c320, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "L2IsolationDomainsListResult",
       });
-    case 1:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18303,7 +22674,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListL2IsolationDomainBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18319,31 +22694,39 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListL3IsolationDomainByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(7936, __c248, 0)),
+          tags: S.optional(__S(8000, __c250, 0)),
           location: S.String,
-          properties: __S(147, __c18, 3),
-          identity: S.optional(__S(137, __c17, 1)),
+          properties: __S(2886, __c90, 6),
+          identity: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "L3IsolationDomain" });
-    case 4:
-      return S.Array(__S(379, __c47, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(10336, __c323, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(380, __c47, 4),
+          value: __S(10337, __c323, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "L3IsolationDomainsListResult",
       });
-    case 6:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18358,7 +22741,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListL3IsolationDomainBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18376,3403 +22763,19 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c326(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303, __c37, 7));
+      return S.Array(__S(8192, __c256, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(384, __c48, 0),
+          value: __S(10432, __c326, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NeighborGroupsListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/neighborGroups",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNeighborGroupBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkBootstrapDeviceByResourceGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(156, __c19, 4),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "NetworkBootstrapDevice" });
-    case 5:
-      return S.Array(__S(388, __c48, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(389, __c48, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkBootstrapDeviceBySubscriptionRequest",
-      });
   }
 }
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest",
-      });
-    case 1:
-      return S.Array(__S(161, __c20, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(393, __c49, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapInterfaceListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkDeviceByResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(396, __c49, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkDevicesListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDevices",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkDeviceBySubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkDeviceSkus",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkDeviceSkusBySubscriptionRequest",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(315, __c39, 3),
-        }),
-      ).annotate({ identifier: "NetworkDeviceSku" });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(401, __c50, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkDeviceSkusListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkFabricByResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(318, __c39, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(404, __c50, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkFabricsListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabrics",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkFabricBySubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkFabricControllerByResourceGroupRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(201, __c25, 1),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "NetworkFabricController" });
-    case 1:
-      return S.Array(__S(408, __c51, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(409, __c51, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkFabricControllersListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkFabricControllerBySubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkFabricSkus",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkFabricSkusBySubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(321, __c40, 1),
-        }),
-      ).annotate({ identifier: "NetworkFabricSku" });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(414, __c51, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkFabricSkusListResult",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkInterfaceByNetworkDeviceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          properties: __S(205, __c25, 5),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 2:
-      return S.Array(__S(417, __c52, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(418, __c52, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkInterfacesList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkMonitorByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(211, __c26, 3),
-        }),
-      ).annotate({ identifier: "NetworkMonitor" });
-    case 6:
-      return S.Array(__S(421, __c52, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(422, __c52, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkMonitorListResult" });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkMonitors",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkMonitorBySubscriptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkPacketBrokerByResourceGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(215, __c26, 7),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "NetworkPacketBroker" });
-    case 3:
-      return S.Array(__S(426, __c53, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(427, __c53, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkPacketBrokersListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkPacketBrokerBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkRackByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(331, __c41, 3));
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(431, __c53, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkRacksListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkRackBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkTapByResourceGroupRequest",
-      });
-    case 3:
-      return S.Array(__S(227, __c28, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(435, __c54, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTapsListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTaps",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkTapBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkTapRuleByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(23, __c2, 7)),
-          location: S.String,
-          properties: __S(238, __c29, 6),
-          identity: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "NetworkTapRule" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(439, __c54, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(440, __c55, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRulesListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/networkTapRules",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkTapRuleBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListNetworkToNetworkInterconnectByNetworkFabricRequest",
-      });
-    case 4:
-      return S.Array(__S(252, __c31, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(444, __c55, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkToNetworkInterconnectsList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ManagedNetworkFabric/operations",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(447, __c55, 7)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(448, __c56, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(449, __c56, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRoutePolicyByResourceGroupRequest",
-      });
-    case 4:
-      return S.Array(__S(336, __c42, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(452, __c56, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoutePoliciesListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ManagedNetworkFabric/routePolicies",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRoutePolicyBySubscriptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          lockType: S.optional(S.String),
-          action: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/lockFabric",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "LockNetworkFabricFabricRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          neighborGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NeighborGroupsResyncRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkBootstrapDevicesResyncPasswordsRequest",
-      });
-    case 2:
-      return S.Array(__S(10, __c1, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(458, __c57, 2)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem",
-      });
-    case 4:
-      return S.Array(__S(459, __c57, 3));
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(14, __c1, 6)),
-          additionalInfo: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceResyncPasswordsResponseError",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(460, __c57, 4)),
-          error: S.optional(__S(462, __c57, 6)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceResyncPasswordsResponse",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          version: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/upgrade",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkBootstrapDevicesUpgradeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(458, __c57, 2)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceUpgradeResponseOperationsItem",
-      });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceUpgradeResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncCertificates",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkDevicesResyncCertificatesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncPasswords",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkDevicesResyncPasswordsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          version: S.String,
-          rwDeviceConfigUrl: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/upgrade",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkDevicesUpgradeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsArmConfigurationDiffRequest",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configurationDiffUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ArmConfigurationDiffResponseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(472, __c59, 0)),
-        }),
-      ).annotate({
-        identifier: "ArmConfigurationDiffOperationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsDeprovisionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          commitBatchId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/discardCommitBatch",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsDiscardCommitBatchRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          commitBatchId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiscardCommitBatchResponseProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(476, __c59, 4)),
-        }),
-      ).annotate({
-        identifier: "DiscardCommitBatchOperationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsResyncCertificatesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsResyncPasswordsRequest",
-      });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          version: S.optional(S.String),
-          action: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/upgrade",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsUpgradeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkFabricsViewDeviceConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(14, __c1, 6)),
-          additionalInfo: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({
-        identifier: "ViewDeviceConfigurationOperationResponseError",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deviceConfigurationUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ViewDeviceConfigurationResponseProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(482, __c60, 2)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(483, __c60, 3)),
-        }),
-      ).annotate({
-        identifier: "ViewDeviceConfigurationOperationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/resync",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkTapRulesResyncRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "NetworkTapsResyncRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTapResyncResponse" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionNetworkFabricRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RebootNetworkBootstrapDeviceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          rebootType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/reboot",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RebootNetworkDeviceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshNetworkBootstrapDeviceConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(458, __c57, 2)),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem",
-      });
-    case 5:
-      return S.Array(__S(492, __c61, 4));
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(494, __c61, 6)),
-          additionalInfo: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseError",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(493, __c61, 5)),
-          error: S.optional(__S(495, __c61, 7)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceRefreshConfigurationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/refreshConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshNetworkDeviceConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(482, __c60, 2)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkDeviceRefreshConfigurationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/refreshConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshNetworkFabricConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RotateNetworkFabricCertificatesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RotateNetworkFabricPasswordsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          command: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRoCommand",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunNetworkDeviceRoCommandRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          configurationState: S.optional(S.String),
-          outputUrl: S.optional(S.String),
-          deviceConfigurationPreview: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommonPostActionResponseForDeviceROCommands",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          endTime: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(503, __c62, 7)),
-          resourceId: S.optional(S.String),
-          startTime: S.optional(S.String),
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "RunNetworkDeviceRoCommandResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          command: S.optional(S.String),
-          commandUrl: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRwCommand",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunNetworkDeviceRwCommandRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configurationState: S.optional(S.String),
-          outputUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkDeviceRwCommandResponseProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(506, __c63, 2)),
-        }),
-      ).annotate({
-        identifier: "NetworkDeviceRunRwCommandResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          portType: S.optional(S.String),
-          layer4Protocol: S.optional(S.String),
-          ports: S.optional(__S(16, __c2, 0)),
-          portGroupNames: S.optional(__S(16, __c2, 0)),
-          flags: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListPortConditionPatch",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protocolTypes: S.optional(__S(16, __c2, 0)),
-          vlanMatchCondition: S.optional(__S(24, __c3, 0)),
-          ipCondition: S.optional(__S(25, __c3, 1)),
-          etherTypes: S.optional(__S(16, __c2, 0)),
-          fragments: S.optional(__S(16, __c2, 0)),
-          ipLengths: S.optional(__S(16, __c2, 0)),
-          ttlValues: S.optional(__S(16, __c2, 0)),
-          dscpMarkings: S.optional(__S(16, __c2, 0)),
-          portCondition: S.optional(__S(508, __c63, 4)),
-          protocolNeighbors: S.optional(__S(16, __c2, 0)),
-          icmpConfiguration: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListMatchConditionPatch",
-      });
-    case 6:
-      return S.Array(__S(509, __c63, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchConfigurationName: S.optional(S.String),
-          sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(510, __c63, 6)),
-          actions: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "AccessControlListMatchConfigurationPatch",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(511, __c63, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          configurationType: S.optional(S.String),
-          aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(512, __c64, 0)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
-          controlPlaneAclConfiguration: S.optional(__S(55, __c6, 7)),
-          aclType: S.optional(S.String),
-          deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(45, __c5, 5)),
-          annotation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccessControlListPatchProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(513, __c64, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAccessControlListRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accessControlListName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAccessControlListAdministrativeStateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          successfulResources: S.optional(__S(515, __c64, 3)),
-          failedResources: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateAdministrativeStateResponseProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(517, __c64, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateAdministrativeStateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          importIpv4RouteTargets: S.optional(__S(16, __c2, 0)),
-          importIpv6RouteTargets: S.optional(__S(16, __c2, 0)),
-          exportIpv4RouteTargets: S.optional(__S(16, __c2, 0)),
-          exportIpv6RouteTargets: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "RouteTargetPatchInformation",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          importRouteTargets: S.optional(__S(16, __c2, 0)),
-          exportRouteTargets: S.optional(__S(16, __c2, 0)),
-          routeTargets: S.optional(__S(519, __c64, 7)),
-        }),
-      ).annotate({ identifier: "L3OptionBPatchProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maximumRoutes: S.optional(S.Number),
-          threshold: S.optional(S.Number),
-          idleTimeExpiry: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PrefixLimitPatchProperties",
-      });
-    case 2:
-      return S.Array(__S(521, __c65, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          prefixLimits: S.optional(__S(522, __c65, 2)),
-        }),
-      ).annotate({
-        identifier: "NativeIpv4PrefixLimitPatchProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          vlanId: S.optional(S.Number),
-          peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          ingressAclId: S.optional(S.String),
-          egressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(68, __c8, 4)),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(523, __c65, 3)),
-          nativeIpv6PrefixLimit: S.optional(__S(523, __c65, 3)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkPatchPropertiesOptionAPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.String,
-          nextHop: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "StaticRoutePatchProperties",
-      });
-    case 6:
-      return S.Array(__S(525, __c65, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          ipv4Routes: S.optional(__S(526, __c65, 6)),
-          ipv6Routes: S.optional(__S(526, __c65, 6)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkStaticRoutePatchConfiguration",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          peeringOption: S.optional(S.String),
-          optionBProperties: S.optional(__S(520, __c65, 0)),
-          optionAProperties: S.optional(__S(524, __c65, 4)),
-          staticRouteConfiguration: S.optional(__S(527, __c65, 7)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkPatchPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          externalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(528, __c66, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateExternalNetworkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateExternalNetworkAdministrativeStateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          externalNetworkName: S.String.pipe(T.Label()),
-          routeType: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateExternalNetworkBfdAdministrativeStateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(494, __c61, 6)),
-          additionalInfo: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseError",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          routeType: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(493, __c61, 5)),
-          error: S.optional(__S(532, __c66, 4)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(533, __c66, 5)),
-        }),
-      ).annotate({
-        identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateStaticRouteBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          neighborIpExclusions: S.optional(__S(16, __c2, 0)),
-          bmpConfigurationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkBmpPatchProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-          defaultRouteOriginate: S.optional(S.String),
-          allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(S.String),
-          peerASN: S.optional(S.Number),
-          ipv4ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(16, __c2, 0)),
-          ipv4NeighborAddress: S.optional(__S(86, __c10, 6)),
-          ipv6NeighborAddress: S.optional(__S(86, __c10, 6)),
-          bmpConfiguration: S.optional(__S(536, __c67, 0)),
-          v4OverV6BgpSession: S.optional(S.String),
-          v6OverV4BgpSession: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BgpPatchConfigurationInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(84, __c10, 4)),
-          connectedIPv6Subnets: S.optional(__S(84, __c10, 4)),
-          importRoutePolicy: S.optional(__S(63, __c7, 7)),
-          exportRoutePolicy: S.optional(__S(64, __c8, 0)),
-          ingressAclId: S.optional(S.String),
-          egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(S.String),
-          bgpConfiguration: S.optional(__S(537, __c67, 1)),
-          staticRouteConfiguration: S.optional(__S(527, __c65, 7)),
-          nativeIpv4PrefixLimit: S.optional(__S(523, __c65, 3)),
-          nativeIpv6PrefixLimit: S.optional(__S(523, __c65, 3)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkPatchPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(538, __c67, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternalNetworkRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternalNetworkAdministrativeStateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          routeType: S.optional(S.String),
-          neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternalNetworkBfdAdministrativeStateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-          error: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NeighborAddressBfdAdministrativeStatus",
-      });
-    case 7:
-      return S.Array(__S(542, __c67, 6));
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          neighborAddressAdministrativeStatus: S.optional(__S(543, __c67, 7)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkUpdateBfdAdministrativeStateResponseProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(493, __c61, 5)),
-          error: S.optional(__S(532, __c66, 4)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(544, __c68, 0)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkUpdateBfdAdministrativeStateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBgpAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternalNetworkBgpAdministrativeStateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(493, __c61, 5)),
-          error: S.optional(__S(532, __c66, 4)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(544, __c68, 0)),
-        }),
-      ).annotate({
-        identifier: "InternalNetworkUpdateBgpAdministrativeStateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateStaticRouteBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          internetGatewayRuleId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InternetGatewayPatchProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(549, __c68, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternetGatewayRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInternetGatewayRuleRequest",
-      });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ipCommunityRules: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "IpCommunityPatchableProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(552, __c69, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateIpCommunityRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ipExtendedCommunityRules: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({
-        identifier: "IpExtendedCommunityPatchProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(554, __c69, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateIpExtendedCommunityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          ipPrefixRules: S.optional(__S(124, __c15, 4)),
-        }),
-      ).annotate({ identifier: "IpPrefixPatchProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(556, __c69, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateIpPrefixRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          extendedVlan: S.optional(S.String),
-          networkToNetworkInterconnectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "L2IsolationDomainPatchProperties",
-      });
-    case 7:
-      return S.Record(S.String, __S(130, __c16, 2));
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(559, __c69, 7)),
-        }),
-      ).annotate({
-        identifier: "ManagedServiceIdentityPatchInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(558, __c69, 6)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateL2IsolationDomainRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateL2IsolationDomainAdministrativeStateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          redistributeConnectedSubnets: S.optional(S.String),
-          redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(141, __c17, 5)),
-          connectedSubnetRoutePolicy: S.optional(__S(142, __c17, 6)),
-          staticRouteRoutePolicy: S.optional(__S(142, __c17, 6)),
-          v4routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          v6routePrefixLimit: S.optional(__S(143, __c17, 7)),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "L3IsolationDomainPatchProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(563, __c70, 3)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateL3IsolationDomainRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateL3IsolationDomainAdministrativeStateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ipv4Addresses: S.optional(__S(16, __c2, 0)),
-          ipv6Addresses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "NeighborGroupDestinationPatch",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          destination: S.optional(__S(566, __c70, 6)),
-        }),
-      ).annotate({
-        identifier: "NeighborGroupPatchProperties",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(567, __c70, 7)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNeighborGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          hostName: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDevicePatchProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(569, __c71, 1)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkBootstrapDeviceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkBootstrapDeviceAdministrativeStateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(493, __c61, 5)),
-          error: S.optional(__S(532, __c66, 4)),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapDeviceUpdateAdministrativeStateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          additionalDescription: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkBootstrapInterfacePatchProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(573, __c71, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkBootstrapInterfaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateRequest",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identityType: S.optional(S.String),
-          userAssignedIdentityResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentitySelectorPatch" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          hostName: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          identitySelector: S.optional(__S(577, __c72, 1)),
-        }),
-      ).annotate({
-        identifier: "NetworkDevicePatchParametersProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(578, __c72, 2)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkDeviceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkDeviceAdministrativeStateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          serialNumber: S.optional(S.String),
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TerminalServerPatchConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          importRouteTargets: S.optional(__S(16, __c2, 0)),
-          exportRouteTargets: S.optional(__S(16, __c2, 0)),
-          routeTargets: S.optional(__S(519, __c64, 7)),
-        }),
-      ).annotate({
-        identifier: "VpnOptionBPatchProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          mtu: S.optional(S.Number),
-          vlanId: S.optional(S.Number),
-          peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "VpnOptionAPatchProperties",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          networkToNetworkInterconnectId: S.optional(S.String),
-          peeringOption: S.optional(S.String),
-          optionBProperties: S.optional(__S(582, __c72, 6)),
-          optionAProperties: S.optional(__S(583, __c72, 7)),
-        }),
-      ).annotate({
-        identifier: "VpnConfigurationPatchableProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureVpnConfiguration: S.optional(__S(584, __c73, 0)),
-          workloadVpnConfiguration: S.optional(__S(584, __c73, 0)),
-        }),
-      ).annotate({
-        identifier: "ManagementNetworkPatchConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(577, __c72, 1)),
-        }),
-      ).annotate({
-        identifier: "StorageAccountPatchConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueRdConfigurationState: S.optional(S.String),
-          nniDerivedUniqueRdConfigurationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UniqueRouteDistinguisherPatchProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          rackCount: S.optional(S.Number),
-          serverCountPerRack: S.optional(S.Number),
-          ipv4Prefix: S.optional(S.String),
-          ipv6Prefix: S.optional(S.String),
-          fabricASN: S.optional(S.Number),
-          terminalServerConfiguration: S.optional(__S(581, __c72, 5)),
-          managementNetworkConfiguration: S.optional(__S(585, __c73, 1)),
-          storageAccountConfiguration: S.optional(__S(586, __c73, 2)),
-          hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(16, __c2, 0)),
-          trustedIpPrefixes: S.optional(__S(16, __c2, 0)),
-          uniqueRdConfiguration: S.optional(__S(587, __c73, 3)),
-          qosConfiguration: S.optional(__S(182, __c22, 6)),
-          featureFlags: S.optional(__S(179, __c22, 3)),
-          authorizedTransceiver: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({
-        identifier: "NetworkFabricPatchProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(588, __c73, 4)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkFabricRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-          workloadExpressRouteConnections: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkFabricControllerPatchProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(590, __c73, 6)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkFabricControllerRequest",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateInfraManagementBfdConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkFabricInfraManagementBfdConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateWorkloadManagementBfdConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          networkInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(203, __c25, 3)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkInterfaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          networkInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkInterfaceAdministrativeStateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          stationConfigurationState: S.optional(S.String),
-          scopeResourceId: S.optional(S.String),
-          stationName: S.optional(S.String),
-          stationIp: S.optional(S.String),
-          stationPort: S.optional(S.Number),
-          stationConnectionMode: S.optional(S.String),
-          stationConnectionProperties: S.optional(__S(207, __c25, 7)),
-          stationNetwork: S.optional(S.String),
-          monitoredNetworks: S.optional(__S(16, __c2, 0)),
-          exportPolicy: S.optional(S.String),
-          exportPolicyConfiguration: S.optional(__S(88, __c11, 0)),
-          monitoredAddressFamilies: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "BmpConfigurationPatchProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bmpConfiguration: S.optional(__S(596, __c74, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkMonitorPatchProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(597, __c74, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkMonitorRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkMonitorName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkMonitorAdministrativeStateRequest",
-      });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          configurationState: S.optional(S.String),
-          successfulDevices: S.optional(__S(515, __c64, 3)),
-          failedDevices: S.optional(__S(515, __c64, 3)),
-        }),
-      ).annotate({
-        identifier: "UpdateNetworkMonitorAdministrativeStateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkPacketBrokerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateNetworkRackRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          destinationType: S.optional(S.String),
-          destinationId: S.optional(S.String),
-          isolationDomainProperties: S.optional(__S(221, __c27, 5)),
-          destinationTapRuleId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DestinationPatchProperties",
-      });
-    case 4:
-      return S.Array(__S(603, __c75, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          pollingType: S.optional(S.String),
-          destinations: S.optional(__S(604, __c75, 4)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapPatchProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(605, __c75, 5)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateNetworkTapRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkTapAdministrativeStateRequest",
-      });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          portType: S.optional(S.String),
-          layer4Protocol: S.optional(S.String),
-          ports: S.optional(__S(16, __c2, 0)),
-          portGroupNames: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "PortConditionPatch" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          protocolTypes: S.optional(__S(16, __c2, 0)),
-          vlanMatchCondition: S.optional(__S(24, __c3, 0)),
-          ipCondition: S.optional(__S(25, __c3, 1)),
-          encapsulationType: S.optional(S.String),
-          portCondition: S.optional(__S(608, __c76, 0)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRuleMatchConditionPatch",
-      });
-    case 2:
-      return S.Array(__S(609, __c76, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchConfigurationName: S.optional(S.String),
-          sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(610, __c76, 2)),
-          actions: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRuleMatchConfigurationPatch",
-      });
-    case 4:
-      return S.Array(__S(611, __c76, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          configurationType: S.optional(S.String),
-          tapRulesUrl: S.optional(S.String),
-          matchConfigurations: S.optional(__S(612, __c76, 4)),
-          dynamicMatchConfigurations: S.optional(__S(44, __c5, 4)),
-          identitySelector: S.optional(__S(577, __c72, 1)),
-          globalNetworkTapRuleActions: S.optional(__S(235, __c29, 3)),
-        }),
-      ).annotate({
-        identifier: "NetworkTapRulePatchProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(613, __c76, 5)),
-          identity: S.optional(__S(560, __c70, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkTapRuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapRuleName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkTapRuleAdministrativeStateRequest",
-      });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NniBmpPatchProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          primaryIpv4Prefix: S.optional(S.String),
-          primaryIpv6Prefix: S.optional(S.String),
-          secondaryIpv4Prefix: S.optional(S.String),
-          secondaryIpv6Prefix: S.optional(S.String),
-          peerASN: S.optional(S.Number),
-          vlanId: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(__S(515, __c64, 3)),
-          bmpConfiguration: S.optional(__S(616, __c77, 0)),
-          prefixLimits: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({
-        identifier: "OptionBLayer3ConfigurationPatchPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          layer2Configuration: S.optional(__S(240, __c30, 0)),
-          optionBLayer3Configuration: S.optional(__S(617, __c77, 1)),
-          npbStaticRouteConfiguration: S.optional(__S(527, __c65, 7)),
-          staticRouteConfiguration: S.optional(__S(527, __c65, 7)),
-          importRoutePolicy: S.optional(__S(245, __c30, 5)),
-          exportRoutePolicy: S.optional(__S(246, __c30, 6)),
-          egressAclId: S.optional(S.String),
-          ingressAclId: S.optional(S.String),
-          microBfdState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkToNetworkInterconnectPatchPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(618, __c77, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkToNetworkInterconnectRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkToNetworkInterconnectAdministrativeStateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          routeType: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          routeType: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NniUpdateBfdAdministrativeStateResponseProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(466, __c58, 2)),
-          error: S.optional(__S(15, __c1, 7)),
-          resourceId: S.optional(S.String),
-          properties: S.optional(__S(622, __c77, 6)),
-        }),
-      ).annotate({
-        identifier: "NniUpdateBfdAdministrativeStateResponse",
-      });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(515, __c64, 3)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateNpbStaticRouteBfdAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipCommunityIds: S.optional(__S(16, __c2, 0)),
-          ipExtendedCommunityIds: S.optional(__S(16, __c2, 0)),
-          type: S.optional(S.String),
-          ipPrefixId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StatementConditionPatchProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          sequenceNumber: S.Number,
-          condition: __S(625, __c78, 1),
-          action: __S(258, __c32, 2),
-        }),
-      ).annotate({
-        identifier: "RoutePolicyStatementPatchProperties",
-      });
-    case 3:
-      return S.Array(__S(626, __c78, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAction: S.optional(S.String),
-          statements: S.optional(__S(627, __c78, 3)),
-        }),
-      ).annotate({
-        identifier: "RoutePolicyPatchableProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(628, __c78, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRoutePolicyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          routePolicyName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(16, __c2, 0)),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/updateAdministrativeState",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRoutePolicyAdministrativeStateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accessControlListName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateAccessControlListConfigurationRequest",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          configurationState: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ValidateAccessControlListConfigurationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2IsolationDomainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateL2IsolationDomainConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l3IsolationDomainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateL3IsolationDomainConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkFabricName: S.String.pipe(T.Label()),
-          validateAction: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateNetworkFabricConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkTapRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateNetworkTapRuleConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          routePolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/validateConfiguration",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateRoutePolicyConfigurationRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

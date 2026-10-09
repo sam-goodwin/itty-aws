@@ -2933,8 +2933,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAppRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAppResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateAppRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateAppResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2951,8 +2951,8 @@ export const createAppFlag: API.OperationMethod<
   CreateAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateAppFlagRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateAppFlagResponse>,
+  input: __S(116, __c7, 4) as any as S.Schema<CreateAppFlagRequest>,
+  output: __S(121, __c7, 9) as any as S.Schema<CreateAppFlagResponse>,
   errors: [FlagshipFlagAlreadyExists, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2966,8 +2966,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteAppRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAppResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2981,8 +2981,8 @@ export const deleteAppFlag: API.OperationMethod<
   DeleteAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAppFlagRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAppFlagResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteAppFlagRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DeleteAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2996,8 +2996,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAppRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetAppResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetAppRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3011,8 +3011,8 @@ export const getAppEvaluate: API.OperationMethod<
   GetAppEvaluateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetAppEvaluateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetAppEvaluateResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetAppEvaluateRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<GetAppEvaluateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3026,8 +3026,8 @@ export const getAppFlag: API.OperationMethod<
   GetAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetAppFlagRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetAppFlagResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetAppFlagRequest>,
+  output: __S(229, __c14, 5) as any as S.Schema<GetAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3043,8 +3043,8 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
   AppsFlagsChangelogListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(29, __c3, 5) as any as S.Schema<ListAppFlagChangelogsRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<ListAppFlagChangelogsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListAppFlagChangelogsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListAppFlagChangelogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3068,8 +3068,8 @@ export const listAppFlags: API.PaginatedOperationMethod<
   AppsFlagsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListAppFlagsRequest>,
-    output: __S(40, __c5, 0) as any as S.Schema<ListAppFlagsResponse>,
+    input: __S(16, __c1, 0) as any as S.Schema<ListAppFlagsRequest>,
+    output: __S(23, __c1, 7) as any as S.Schema<ListAppFlagsResponse>,
     errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3093,8 +3093,8 @@ export const listApps: API.PaginatedOperationMethod<
   AppsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(41, __c5, 1) as any as S.Schema<ListAppsRequest>,
-    output: __S(44, __c5, 4) as any as S.Schema<ListAppsResponse>,
+    input: __S(32, __c2, 0) as any as S.Schema<ListAppsRequest>,
+    output: __S(35, __c2, 3) as any as S.Schema<ListAppsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3111,8 +3111,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateAppRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAppResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<UpdateAppRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3126,8 +3126,8 @@ export const updateAppFlag: API.OperationMethod<
   UpdateAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<UpdateAppFlagRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateAppFlagResponse>,
+  input: __S(68, __c4, 4) as any as S.Schema<UpdateAppFlagRequest>,
+  output: __S(73, __c4, 9) as any as S.Schema<UpdateAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3137,275 +3137,6 @@ export const updateAppFlag: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String,
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/flagship/apps", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          name: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          updatedBy: S.String.pipe(T.Body("updated_by")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppResponse" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["attribute", "operator", "value"],
-          ["clauses", "logicalOperator"],
-        ]),
-      );
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.Number,
-          attribute: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AppsFlagsCreateRequestRulesItemRollout",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(3, __c0, 3),
-          priority: S.Number,
-          serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "AppsFlagsCreateRequestRulesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          defaultVariation: S.String.pipe(T.Body("default_variation")),
-          enabled: S.Boolean,
-          key: S.String,
-          rules: __S(6, __c0, 6),
-          variations: __S(7, __c0, 7),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppFlagRequest" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["attribute", "operator", "value"],
-          ["clauses", "logicalOperator"],
-        ]),
-      );
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.Number,
-          attribute: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AppsFlagsCreateResponseRulesItemRollout",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(10, __c1, 2),
-          priority: S.Number,
-          serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }),
-      ).annotate({
-        identifier: "AppsFlagsCreateResponseRulesItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          defaultVariation: S.String.pipe(T.Body("default_variation")),
-          enabled: S.Boolean,
-          key: S.String,
-          rules: __S(13, __c1, 5),
-          type: S.String,
-          variations: __S(7, __c0, 7),
-          description: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAppFlagResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          flagKey: S.String.pipe(T.Label("flag_key")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppFlagRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteAppFlagResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          flagKey: S.String.pipe(T.Query()),
-          targetingKey: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppEvaluateRequest" });
-    case 5:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          flagKey: S.String,
-          reason: S.String,
-          variant: S.String,
-          value: S.optional(S.NullOr(__S(21, __c2, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppEvaluateResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          appId: S.String.pipe(T.Label("app_id")),
-          flagKey: S.String.pipe(T.Label("flag_key")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppFlagRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["attribute", "operator", "value"],
-          ["clauses", "logicalOperator"],
-        ]),
-      );
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(25, __c3, 1),
-          priority: S.Number,
-          serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }),
-      ).annotate({
-        identifier: "AppsFlagsGetResponseRulesItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultVariation: S.String.pipe(T.Body("default_variation")),
-          enabled: S.Boolean,
-          key: S.String,
-          rules: __S(27, __c3, 3),
-          type: S.String,
-          variations: __S(7, __c0, 7),
-          description: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAppFlagResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3425,7 +3156,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAppFlagChangelogsRequest",
       });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -3436,22 +3167,22 @@ function __c3(j: number): any {
           { key: "event", values: ["create", "delete", "update"] },
         ),
       );
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(31, __c3, 7).pipe(T.EnvelopePayload()),
+          result: __S(2, __c0, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAppFlagChangelogsResponse",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3468,56 +3199,56 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppFlagsRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["attribute", "operator", "value"],
           ["clauses", "logicalOperator"],
         ]),
       );
+    case 2:
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(35, __c4, 3),
+          conditions: __S(18, __c1, 2),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(__S(11, __c1, 3))),
+          rollout: S.optional(S.NullOr(__S(145, __c9, 1))),
         }),
       ).annotate({
         identifier: "AppsFlagsListResultItemRulesItem",
       });
+    case 4:
+      return S.Array(__S(19, __c1, 3));
     case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: __S(37, __c4, 5),
+          rules: __S(20, __c1, 4),
           type: S.String,
-          variations: __S(7, __c0, 7),
+          variations: __S(144, __c9, 0),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
         }),
       ).annotate({ identifier: "AppsFlagsListResultItem" });
+    case 6:
+      return S.Array(__S(21, __c1, 5));
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(39, __c4, 7).pipe(T.EnvelopePayload()),
+          result: __S(22, __c1, 6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppFlagsResponse" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3525,7 +3256,7 @@ function __c5(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/flagship/apps", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -3535,16 +3266,20 @@ function __c5(j: number): any {
           updatedBy: S.String.pipe(T.Body("updated_by")),
         }),
       ).annotate({ identifier: "AppsListResultItem" });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(43, __c5, 3).pipe(T.EnvelopePayload()),
+          result: __S(34, __c2, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppsResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3560,33 +3295,33 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAppRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["attribute", "operator", "value"],
           ["clauses", "logicalOperator"],
         ]),
       );
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(47, __c5, 7),
+          conditions: __S(65, __c4, 1),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(__S(4, __c0, 4)),
+          rollout: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({
         identifier: "AppsFlagsUpdateRequestRulesItem",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3595,8 +3330,8 @@ function __c6(j: number): any {
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: __S(49, __c6, 1),
-          variations: __S(7, __c0, 7),
+          rules: __S(67, __c4, 3),
+          variations: __S(144, __c9, 0),
           description: S.optional(S.String),
           type: S.optional(S.String),
         })
@@ -3609,37 +3344,37 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAppFlagRequest" });
-    case 3:
+    case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["attribute", "operator", "value"],
           ["clauses", "logicalOperator"],
         ]),
       );
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(69, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(52, __c6, 4),
+          conditions: __S(70, __c4, 6),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(__S(11, __c1, 3))),
+          rollout: S.optional(S.NullOr(__S(145, __c9, 1))),
         }),
       ).annotate({
         identifier: "AppsFlagsUpdateResponseRulesItem",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(71, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: __S(54, __c6, 6),
+          rules: __S(72, __c4, 8),
           type: S.String,
-          variations: __S(7, __c0, 7),
+          variations: __S(144, __c9, 0),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
@@ -3647,7 +3382,303 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateAppFlagResponse" });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/flagship/apps", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          name: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          updatedBy: S.String.pipe(T.Body("updated_by")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["attribute", "operator", "value"],
+          ["clauses", "logicalOperator"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(113, __c7, 1),
+          priority: S.Number,
+          serveVariation: S.String.pipe(T.Body("serve_variation")),
+          rollout: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "AppsFlagsCreateRequestRulesItem",
+      });
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          defaultVariation: S.String.pipe(T.Body("default_variation")),
+          enabled: S.Boolean,
+          key: S.String,
+          rules: __S(115, __c7, 3),
+          variations: __S(144, __c9, 0),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppFlagRequest" });
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["attribute", "operator", "value"],
+          ["clauses", "logicalOperator"],
+        ]),
+      );
+    case 6:
+      return S.Array(__S(117, __c7, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(118, __c7, 6),
+          priority: S.Number,
+          serveVariation: S.String.pipe(T.Body("serve_variation")),
+          rollout: S.optional(S.NullOr(__S(145, __c9, 1))),
+        }),
+      ).annotate({
+        identifier: "AppsFlagsCreateResponseRulesItem",
+      });
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          defaultVariation: S.String.pipe(T.Body("default_variation")),
+          enabled: S.Boolean,
+          key: S.String,
+          rules: __S(120, __c7, 8),
+          type: S.String,
+          variations: __S(144, __c9, 0),
+          description: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+          updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAppFlagResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.Number,
+          attribute: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AppsFlagsCreateRequestRulesItemRollout",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.Number,
+          attribute: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AppsFlagsCreateResponseRulesItemRollout",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          flagKey: S.String.pipe(T.Label("flag_key")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppFlagRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteAppFlagResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          flagKey: S.String.pipe(T.Query()),
+          targetingKey: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppEvaluateRequest" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          flagKey: S.String,
+          reason: S.String,
+          variant: S.String,
+          value: S.optional(S.NullOr(__S(209, __c13, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppEvaluateResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          appId: S.String.pipe(T.Label("app_id")),
+          flagKey: S.String.pipe(T.Label("flag_key")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppFlagRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["attribute", "operator", "value"],
+          ["clauses", "logicalOperator"],
+        ]),
+      );
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(226, __c14, 2),
+          priority: S.Number,
+          serveVariation: S.String.pipe(T.Body("serve_variation")),
+          rollout: S.optional(S.NullOr(__S(145, __c9, 1))),
+        }),
+      ).annotate({
+        identifier: "AppsFlagsGetResponseRulesItem",
+      });
+    case 4:
+      return S.Array(__S(227, __c14, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          defaultVariation: S.String.pipe(T.Body("default_variation")),
+          enabled: S.Boolean,
+          key: S.String,
+          rules: __S(228, __c14, 4),
+          type: S.String,
+          variations: __S(144, __c9, 0),
+          description: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+          updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAppFlagResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

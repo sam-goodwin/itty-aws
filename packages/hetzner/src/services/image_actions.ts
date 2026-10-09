@@ -259,7 +259,7 @@ export const changeImageProtection: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ChangeImageProtectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ChangeImageProtectionResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<ChangeImageProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -273,8 +273,8 @@ export const getImagesAction: API.OperationMethod<
   GetImagesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetImagesActionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetImagesActionResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetImagesActionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetImagesActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const listImageActions: API.PaginatedOperationMethod<
   ListImageActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ListImageActionsRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListImageActionsResponse>,
+    input: __S(24, __c3, 0) as any as S.Schema<ListImageActionsRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListImageActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const listImagesActions: API.PaginatedOperationMethod<
   ListImagesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListImagesActionsRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListImagesActionsResponse>,
+    input: __S(41, __c5, 1) as any as S.Schema<ListImagesActionsRequest>,
+    output: __S(44, __c5, 4) as any as S.Schema<ListImagesActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -350,65 +350,24 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ChangeImageProtectionResponseActionResourcesItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "ChangeImageProtectionResponseActionError",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
           command: S.String,
           status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeImageProtectionResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(4, __c0, 4),
+          action: __S(1, __c0, 1),
         }),
       ).annotate({
         identifier: "ChangeImageProtectionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/images/actions/{id}", code: 200 })),
-      ).annotate({ identifier: "GetImagesActionRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetImagesActionResponseAction",
       });
   }
 }
@@ -417,22 +376,34 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: __S(7, __c0, 7),
+          id: S.Number,
+          type: S.String,
         }),
-      ).annotate({ identifier: "GetImagesActionResponse" });
+      ).annotate({
+        identifier: "ChangeImageProtectionResponseActionResourcesItem",
+      });
     case 1:
-      return S.Array(S.String);
+      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "ChangeImageProtectionResponseActionError",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          status: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/images/{id}/actions", code: 200 })),
-      ).annotate({ identifier: "ListImageActionsRequest" });
-    case 3:
+        }).pipe(T.Http({ method: "GET", uri: "/images/actions/{id}", code: 200 })),
+      ).annotate({ identifier: "GetImagesActionRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -441,15 +412,63 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "GetImagesActionResponseAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(17, __c2, 1),
+        }),
+      ).annotate({ identifier: "GetImagesActionResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          status: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/images/{id}/actions", code: 200 })),
+      ).annotate({ identifier: "ListImageActionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListImageActionsResponseActionsItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(26, __c3, 2),
+          meta: __S(34, __c4, 2),
+        }),
+      ).annotate({ identifier: "ListImageActionsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -462,33 +481,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListImageActionsResponseMetaPagination",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(13, __c1, 5),
+          pagination: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "ListImageActionsResponseMeta",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(12, __c1, 4),
-          meta: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "ListImageActionsResponse" });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(16, __c2, 0).pipe(T.Query())),
-          sort: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          status: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          id: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          status: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/images/actions", code: 200 })),
@@ -502,26 +514,25 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(2, __c0, 2),
-          error: S.NullOr(__S(3, __c0, 3)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListImagesActionsResponseActionsItem",
       });
     case 3:
-      return S.Array(__S(18, __c2, 2));
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(19, __c2, 3),
-          meta: __S(14, __c1, 6),
+          actions: __S(43, __c5, 3),
+          meta: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "ListImagesActionsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -791,7 +791,7 @@ export const CancelVirtualMachineImageTemplate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelVirtualMachineImageTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelVirtualMachineImageTemplateResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelVirtualMachineImageTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteTriggerRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteTriggerResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -820,8 +820,8 @@ export const DeleteVirtualMachineImageTemplate: API.OperationMethod<
   DeleteVirtualMachineImageTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteVirtualMachineImageTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteVirtualMachineImageTemplateResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteVirtualMachineImageTemplateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineImageTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -835,8 +835,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetTriggerRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetTriggerResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetTriggerRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const GetVirtualMachineImageTemplate: API.OperationMethod<
   GetVirtualMachineImageTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetVirtualMachineImageTemplateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetVirtualMachineImageTemplateResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetVirtualMachineImageTemplateRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GetVirtualMachineImageTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -865,8 +865,8 @@ export const GetVirtualMachineImageTemplateRunOutput: API.OperationMethod<
   GetVirtualMachineImageTemplateRunOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetVirtualMachineImageTemplateRunOutputRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetVirtualMachineImageTemplateRunOutputResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetVirtualMachineImageTemplateRunOutputRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetVirtualMachineImageTemplateRunOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<OperationListResult>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(644, __c20, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -895,8 +895,8 @@ export const ListTriggerByImageTemplate: API.OperationMethod<
   ListTriggerByImageTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListTriggerByImageTemplateRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<TriggerCollection>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListTriggerByImageTemplateRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<TriggerCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,12 @@ export const ListVirtualMachineImageTemplateByResourceGroup: API.OperationMethod
   ListVirtualMachineImageTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListVirtualMachineImageTemplateByResourceGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ImageTemplateListResult>,
+  input: __S(
+    704,
+    __c22,
+    0,
+  ) as any as S.Schema<ListVirtualMachineImageTemplateByResourceGroupRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ImageTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -925,8 +929,8 @@ export const ListVirtualMachineImageTemplateRunOutputs: API.OperationMethod<
   ListVirtualMachineImageTemplateRunOutputsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListVirtualMachineImageTemplateRunOutputsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<RunOutputCollection>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListVirtualMachineImageTemplateRunOutputsRequest>,
+  output: __S(771, __c24, 3) as any as S.Schema<RunOutputCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -940,8 +944,8 @@ export const ListVirtualMachineImageTemplates: API.OperationMethod<
   ListVirtualMachineImageTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListVirtualMachineImageTemplatesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ImageTemplateListResult>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListVirtualMachineImageTemplatesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ImageTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -955,8 +959,8 @@ export const RunVirtualMachineImageTemplate: API.OperationMethod<
   RunVirtualMachineImageTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<RunVirtualMachineImageTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RunVirtualMachineImageTemplateResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<RunVirtualMachineImageTemplateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RunVirtualMachineImageTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -970,8 +974,8 @@ export const TriggersCreateOrUpdate: API.OperationMethod<
   TriggersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<TriggersCreateOrUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<TriggersCreateOrUpdateResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<TriggersCreateOrUpdateRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<TriggersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -985,8 +989,8 @@ export const UpdateVirtualMachineImageTemplate: API.OperationMethod<
   UpdateVirtualMachineImageTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateVirtualMachineImageTemplateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateVirtualMachineImageTemplateResponse>,
+  input: __S(225, __c7, 1) as any as S.Schema<UpdateVirtualMachineImageTemplateRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<UpdateVirtualMachineImageTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1000,8 +1004,8 @@ export const VirtualMachineImageTemplatesCreateOrUpdate: API.OperationMethod<
   VirtualMachineImageTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1027,11 +1031,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelVirtualMachineImageTemplateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelVirtualMachineImageTemplateResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1047,11 +1059,192 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTriggerRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteTriggerResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImageTemplatesRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          imageTemplateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunVirtualMachineImageTemplateRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "TriggerPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          imageTemplateName: S.String.pipe(T.Label()),
+          triggerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(192, __c6, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "TriggersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          distribute: S.optional(__S(555, __c17, 11)),
+          vmProfile: S.optional(__S(561, __c17, 17)),
+        }),
+      ).annotate({
+        identifier: "ImageTemplateUpdateParametersProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          imageTemplateName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(257, __c8, 1)),
+          tags: S.optional(__S(544, __c17, 0)),
+          properties: S.optional(__S(224, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineImageTemplateRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(96, __c3, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "ImageTemplateIdentityInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: __S(545, __c17, 1),
+          customize: S.optional(__S(547, __c17, 3)),
+          optimize: S.optional(__S(550, __c17, 6)),
+          validate: S.optional(__S(553, __c17, 9)),
+          distribute: __S(555, __c17, 11),
+          errorHandling: S.optional(__S(556, __c17, 12)),
+          buildTimeoutInMinutes: S.optional(S.Number),
+          vmProfile: S.optional(__S(561, __c17, 17)),
+          additionalDataDisks: S.optional(__S(563, __c17, 19)),
+          stagingResourceGroup: S.optional(S.String),
+          autoRun: S.optional(__S(564, __c17, 20)),
+          managedResourceTags: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "ImageTemplatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          imageTemplateName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(544, __c17, 0)),
+          location: S.String,
+          properties: S.optional(__S(288, __c9, 0)),
+          identity: __S(257, __c8, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineImageTemplatesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1068,7 +1261,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineImageTemplateRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1084,7 +1281,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTriggerRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1095,7 +1296,25 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({ identifier: "GetTriggerResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -1103,29 +1322,19 @@ function __c0(j: number): any {
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerStatus" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          status: S.optional(__S(7, __c0, 7)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TriggerProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(8, __c1, 0)),
+          kind: S.String,
+          status: S.optional(__S(448, __c14, 0)),
+          provisioningState: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GetTriggerResponse" });
-    case 2:
+      ).annotate({ identifier: "TriggerProperties" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1142,9 +1351,32 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineImageTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(384, __c12, 0)),
+          tags: S.optional(__S(544, __c17, 0)),
+          location: S.String,
+          properties: S.optional(__S(565, __c17, 21)),
+          identity: __S(568, __c17, 24),
+        }),
+      ).annotate({
+        identifier: "GetVirtualMachineImageTemplateResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1158,7 +1390,7 @@ function __c1(j: number): any {
           imageVersionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTemplateSource" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1179,9 +1411,9 @@ function __c1(j: number): any {
           destination: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTemplateCustomizer" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(546, __c17, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1189,11 +1421,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ImageTemplatePropertiesOptimizeVmBoot",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1203,16 +1431,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImageTemplatePropertiesOptimizeWorkload",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          vmBoot: S.optional(__S(15, __c1, 7)),
-          workload: S.optional(__S(16, __c2, 0)),
+          vmBoot: S.optional(__S(548, __c17, 4)),
+          workload: S.optional(__S(549, __c17, 5)),
         }),
       ).annotate({
         identifier: "ImageTemplatePropertiesOptimize",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1229,24 +1457,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImageTemplateInVMValidator",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(551, __c17, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           continueDistributeOnFailure: S.optional(S.Boolean),
           sourceValidationOnly: S.optional(S.Boolean),
-          inVMValidations: S.optional(__S(19, __c2, 3)),
+          inVMValidations: S.optional(__S(552, __c17, 8)),
         }),
       ).annotate({
         identifier: "ImageTemplatePropertiesValidate",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           runOutputName: S.String,
-          artifactTags: S.optional(__S(11, __c1, 3)),
+          artifactTags: S.optional(__S(544, __c17, 0)),
           imageId: S.optional(S.String),
           location: S.optional(S.String),
           galleryImageId: S.optional(S.String),
@@ -1258,9 +1486,9 @@ function __c2(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTemplateDistributor" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(554, __c17, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           onCustomizerError: S.optional(S.String),
@@ -1269,18 +1497,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImageTemplatePropertiesErrorHandling",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           provisioningErrorCode: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisioningError" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -1292,9 +1516,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ImageTemplateLastRunStatus",
       });
-    case 2:
+    case 15:
       return S.Array(S.String);
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           subnetId: S.optional(S.String),
@@ -1302,86 +1526,71 @@ function __c3(j: number): any {
           proxyVmSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkConfig" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           vmSize: S.optional(S.String),
           osDiskSizeGB: S.optional(S.Number),
-          userAssignedIdentities: S.optional(__S(26, __c3, 2)),
-          vnetConfig: S.optional(__S(27, __c3, 3)),
+          userAssignedIdentities: S.optional(__S(559, __c17, 15)),
+          vnetConfig: S.optional(__S(560, __c17, 16)),
         }),
       ).annotate({ identifier: "ImageTemplateVmProfile" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           sizeGB: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DataDisk" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(562, __c17, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTemplateAutoRun" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          source: __S(12, __c1, 4),
-          customize: S.optional(__S(14, __c1, 6)),
-          optimize: S.optional(__S(17, __c2, 1)),
-          validate: S.optional(__S(20, __c2, 4)),
-          distribute: __S(22, __c2, 6),
-          errorHandling: S.optional(__S(23, __c2, 7)),
+          source: __S(545, __c17, 1),
+          customize: S.optional(__S(547, __c17, 3)),
+          optimize: S.optional(__S(550, __c17, 6)),
+          validate: S.optional(__S(553, __c17, 9)),
+          distribute: __S(555, __c17, 11),
+          errorHandling: S.optional(__S(556, __c17, 12)),
           provisioningState: S.optional(S.String),
-          provisioningError: S.optional(__S(24, __c3, 0)),
-          lastRunStatus: S.optional(__S(25, __c3, 1)),
+          provisioningError: S.optional(__S(557, __c17, 13)),
+          lastRunStatus: S.optional(__S(558, __c17, 14)),
           buildTimeoutInMinutes: S.optional(S.Number),
-          vmProfile: S.optional(__S(28, __c3, 4)),
-          additionalDataDisks: S.optional(__S(30, __c3, 6)),
+          vmProfile: S.optional(__S(561, __c17, 17)),
+          additionalDataDisks: S.optional(__S(563, __c17, 19)),
           stagingResourceGroup: S.optional(S.String),
           exactStagingResourceGroup: S.optional(S.String),
-          autoRun: S.optional(__S(31, __c3, 7)),
-          managedResourceTags: S.optional(__S(11, __c1, 3)),
+          autoRun: S.optional(__S(564, __c17, 20)),
+          managedResourceTags: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "ImageTemplateProperties" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 2:
-      return S.Record(S.String, __S(33, __c4, 1));
-    case 3:
+    case 23:
+      return S.Record(S.String, __S(566, __c17, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(34, __c4, 2)),
+          userAssignedIdentities: S.optional(__S(567, __c17, 23)),
         }),
       ).annotate({ identifier: "ImageTemplateIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(11, __c1, 3)),
-          location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
-          identity: __S(35, __c4, 3),
-        }),
-      ).annotate({
-        identifier: "GetVirtualMachineImageTemplateResponse",
-      });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1399,7 +1608,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineImageTemplateRunOutputRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualMachineImageTemplateRunOutputResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           artifactId: S.optional(S.String),
@@ -1407,21 +1632,9 @@ function __c4(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunOutputProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GetVirtualMachineImageTemplateRunOutputResponse",
-      });
   }
 }
-function __c5(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1447,22 +1660,26 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(41, __c5, 1)),
+          display: S.optional(__S(641, __c20, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(642, __c20, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(43, __c5, 3),
+          value: __S(643, __c20, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1479,18 +1696,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTriggerByImageTemplateRequest",
       });
-    case 6:
-      return S.Array(__S(9, __c1, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(46, __c5, 6),
+          value: __S(673, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerCollection" });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1508,29 +1725,37 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListVirtualMachineImageTemplateByResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(384, __c12, 0)),
+          tags: S.optional(__S(544, __c17, 0)),
           location: S.String,
-          properties: S.optional(__S(32, __c4, 0)),
-          identity: __S(35, __c4, 3),
+          properties: S.optional(__S(565, __c17, 21)),
+          identity: __S(568, __c17, 24),
         }),
       ).annotate({ identifier: "ImageTemplate" });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(50, __c6, 2),
+          value: __S(737, __c23, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageTemplateListResult" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1547,185 +1772,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListVirtualMachineImageTemplateRunOutputsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(38, __c4, 6)),
+          systemData: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
         }),
       ).annotate({ identifier: "RunOutput" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(54, __c6, 6),
+          value: __S(770, __c24, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunOutputCollection" });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.VirtualMachineImages/imageTemplates",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImageTemplatesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          imageTemplateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunVirtualMachineImageTemplateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "TriggerPropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          imageTemplateName: S.String.pipe(T.Label()),
-          triggerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(58, __c7, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/triggers/{triggerName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggersCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "TriggersCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "ImageTemplateIdentityInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          distribute: S.optional(__S(22, __c2, 6)),
-          vmProfile: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "ImageTemplateUpdateParametersProperties",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          imageTemplateName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(62, __c7, 6)),
-          tags: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(63, __c7, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineImageTemplateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          source: __S(12, __c1, 4),
-          customize: S.optional(__S(14, __c1, 6)),
-          optimize: S.optional(__S(17, __c2, 1)),
-          validate: S.optional(__S(20, __c2, 4)),
-          distribute: __S(22, __c2, 6),
-          errorHandling: S.optional(__S(23, __c2, 7)),
-          buildTimeoutInMinutes: S.optional(S.Number),
-          vmProfile: S.optional(__S(28, __c3, 4)),
-          additionalDataDisks: S.optional(__S(30, __c3, 6)),
-          stagingResourceGroup: S.optional(S.String),
-          autoRun: S.optional(__S(31, __c3, 7)),
-          managedResourceTags: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ImageTemplatePropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          imageTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(11, __c1, 3)),
-          location: S.String,
-          properties: S.optional(__S(65, __c8, 1)),
-          identity: __S(62, __c7, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineImageTemplatesCreateOrUpdateRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

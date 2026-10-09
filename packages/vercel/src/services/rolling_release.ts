@@ -829,8 +829,8 @@ export const approveRollingReleaseStage: API.OperationMethod<
   ApproveRollingReleaseStageError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ApproveRollingReleaseStageRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApproveRollingReleaseStageResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ApproveRollingReleaseStageRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<ApproveRollingReleaseStageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const completeRollingRelease: API.OperationMethod<
   CompleteRollingReleaseError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CompleteRollingReleaseRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CompleteRollingReleaseResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CompleteRollingReleaseRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<CompleteRollingReleaseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const deleteRollingReleaseConfig: API.OperationMethod<
   DeleteRollingReleaseConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteRollingReleaseConfigRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteRollingReleaseConfigResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteRollingReleaseConfigRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<DeleteRollingReleaseConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const getRollingRelease: API.OperationMethod<
   GetRollingReleaseError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetRollingReleaseRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetRollingReleaseResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetRollingReleaseRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<GetRollingReleaseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -889,8 +889,8 @@ export const getRollingReleaseBillingStatus: API.OperationMethod<
   GetRollingReleaseBillingStatusError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetRollingReleaseBillingStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetRollingReleaseBillingStatusResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetRollingReleaseBillingStatusRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetRollingReleaseBillingStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -904,8 +904,8 @@ export const getRollingReleaseConfig: API.OperationMethod<
   GetRollingReleaseConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetRollingReleaseConfigRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetRollingReleaseConfigResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<GetRollingReleaseConfigRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<GetRollingReleaseConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -925,8 +925,8 @@ export const startRollingRelease: API.OperationMethod<
   StartRollingReleaseError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<StartRollingReleaseRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StartRollingReleaseResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<StartRollingReleaseRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<StartRollingReleaseResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -940,8 +940,8 @@ export const updateRollingReleaseConfig: API.OperationMethod<
   UpdateRollingReleaseConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateRollingReleaseConfigRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateRollingReleaseConfigResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<UpdateRollingReleaseConfigRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<UpdateRollingReleaseConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -951,262 +951,8 @@ export const updateRollingReleaseConfig: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          nextStageIndex: S.Number,
-          canaryDeploymentId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{idOrName}/rolling-release/approve-stage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveRollingReleaseStageRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.NullOr(S.Number),
-          index: S.Number,
-          isFinalStage: S.Boolean,
-          linearShift: S.optional(S.Boolean),
-          requireApproval: S.Boolean,
-          targetPercentage: S.Number,
-        }),
-      ).annotate({
-        identifier: "ApproveRollingReleaseStageResponseRollingReleaseActiveStage",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          id: S.String,
-          name: S.String,
-          readyState: S.String,
-          readyStateAt: S.optional(S.Number),
-          source: S.optional(S.String),
-          target: S.optional(S.NullOr(S.String)),
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment",
-      });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activeStage: S.NullOr(__S(1, __c0, 1)),
-          advancementType: S.String,
-          canaryDeployment: S.NullOr(__S(2, __c0, 2)),
-          currentCanaryPercentage: S.optional(S.Number),
-          currentDeployment: S.NullOr(__S(2, __c0, 2)),
-          nextStage: S.NullOr(__S(1, __c0, 1)),
-          queuedDeploymentId: S.NullOr(S.String),
-          stages: __S(3, __c0, 3),
-          startedAt: S.Number,
-          state: S.String,
-          substate: S.NullOr(S.String),
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "ApproveRollingReleaseStageResponseRollingRelease",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rollingRelease: S.NullOr(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ApproveRollingReleaseStageResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          canaryDeploymentId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{idOrName}/rolling-release/complete",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteRollingReleaseRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          id: S.String,
-          name: S.String,
-          readyState: S.String,
-          readyStateAt: S.optional(S.Number),
-          source: S.optional(S.String),
-          target: S.optional(S.NullOr(S.String)),
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "CompleteRollingReleaseResponseRollingReleaseCanaryDeployment",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          activeStage: S.NullOr(__S(1, __c0, 1)),
-          advancementType: S.String,
-          canaryDeployment: S.NullOr(__S(7, __c0, 7)),
-          currentCanaryPercentage: S.optional(S.Number),
-          currentDeployment: S.NullOr(__S(2, __c0, 2)),
-          nextStage: S.NullOr(__S(1, __c0, 1)),
-          queuedDeploymentId: S.NullOr(S.String),
-          stages: __S(3, __c0, 3),
-          startedAt: S.Number,
-          state: S.String,
-          substate: S.NullOr(S.String),
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "CompleteRollingReleaseResponseRollingRelease",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rollingRelease: S.NullOr(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CompleteRollingReleaseResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{idOrName}/rolling-release/config",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRollingReleaseConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rollingRelease: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "DeleteRollingReleaseConfigResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          state: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/projects/{idOrName}/rolling-release", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetRollingReleaseRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          id: S.String,
-          name: S.String,
-          readyState: S.String,
-          readyStateAt: S.optional(S.Number),
-          source: S.optional(S.String),
-          target: S.optional(S.NullOr(S.String)),
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "GetRollingReleaseResponseRollingReleaseCanaryDeployment",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          id: S.String,
-          name: S.String,
-          readyState: S.String,
-          readyStateAt: S.optional(S.Number),
-          source: S.optional(S.String),
-          target: S.optional(S.NullOr(S.String)),
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "GetRollingReleaseResponseRollingReleaseCurrentDeployment",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activeStage: S.NullOr(__S(1, __c0, 1)),
-          advancementType: S.String,
-          canaryDeployment: S.NullOr(__S(13, __c1, 5)),
-          currentCanaryPercentage: S.optional(S.Number),
-          currentDeployment: S.NullOr(__S(14, __c1, 6)),
-          nextStage: S.NullOr(__S(1, __c0, 1)),
-          queuedDeploymentId: S.NullOr(S.String),
-          stages: __S(3, __c0, 3),
-          startedAt: S.Number,
-          state: S.String,
-          substate: S.NullOr(S.String),
-          updatedAt: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetRollingReleaseResponseRollingRelease",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rollingRelease: S.NullOr(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "GetRollingReleaseResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/projects/{idOrName}/rolling-release/billing",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRollingReleaseBillingStatusRequest",
-      });
-    case 2:
       return S.Array(S.String);
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetRollingReleaseBillingStatusResponse",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1222,13 +968,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetRollingReleaseConfigRequest",
       });
-    case 5:
+    case 2:
       return S.Array(S.Number);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(18, __c2, 2)),
-          excludeStatusCodes: S.optional(__S(21, __c2, 5)),
+          excludePaths: S.optional(__S(0, __c0, 0)),
+          excludeStatusCodes: S.optional(__S(2, __c0, 2)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -1236,17 +982,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetRollingReleaseConfigResponseRollingReleaseGateChecksItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(23, __c2, 7),
+          checks: __S(4, __c0, 4),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -1255,7 +997,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRollingReleaseConfigResponseRollingReleaseGate",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.Number),
@@ -1266,28 +1008,32 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRollingReleaseConfigResponseRollingReleaseStagesItem",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(24, __c3, 0)),
-          stages: S.optional(S.NullOr(__S(26, __c3, 2))),
+          gate: S.optional(__S(5, __c0, 5)),
+          stages: S.optional(S.NullOr(__S(7, __c0, 7))),
           target: S.String,
         }),
       ).annotate({
         identifier: "GetRollingReleaseConfigResponseRollingRelease",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          rollingRelease: S.NullOr(__S(27, __c3, 3)),
+          rollingRelease: S.NullOr(__S(8, __c0, 8)),
         }),
       ).annotate({
         identifier: "GetRollingReleaseConfigResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
@@ -1304,17 +1050,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "StartRollingReleaseRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          activeStage: S.NullOr(__S(1, __c0, 1)),
+          activeStage: S.NullOr(__S(80, __c5, 0)),
           advancementType: S.String,
-          canaryDeployment: S.NullOr(__S(14, __c1, 6)),
+          canaryDeployment: S.NullOr(__S(160, __c10, 0)),
           currentCanaryPercentage: S.optional(S.Number),
-          currentDeployment: S.NullOr(__S(7, __c0, 7)),
-          nextStage: S.NullOr(__S(1, __c0, 1)),
+          currentDeployment: S.NullOr(__S(112, __c7, 0)),
+          nextStage: S.NullOr(__S(80, __c5, 0)),
           queuedDeploymentId: S.NullOr(S.String),
-          stages: __S(3, __c0, 3),
+          stages: __S(81, __c5, 1),
           startedAt: S.Number,
           state: S.String,
           substate: S.NullOr(S.String),
@@ -1323,17 +1069,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "StartRollingReleaseResponseRollingRelease",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rollingRelease: S.NullOr(__S(30, __c3, 6)),
+          rollingRelease: S.NullOr(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "StartRollingReleaseResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1357,7 +1103,288 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          nextStageIndex: S.Number,
+          canaryDeploymentId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{idOrName}/rolling-release/approve-stage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveRollingReleaseStageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activeStage: S.NullOr(__S(80, __c5, 0)),
+          advancementType: S.String,
+          canaryDeployment: S.NullOr(__S(64, __c4, 0)),
+          currentCanaryPercentage: S.optional(S.Number),
+          currentDeployment: S.NullOr(__S(64, __c4, 0)),
+          nextStage: S.NullOr(__S(80, __c5, 0)),
+          queuedDeploymentId: S.NullOr(S.String),
+          stages: __S(81, __c5, 1),
+          startedAt: S.Number,
+          state: S.String,
+          substate: S.NullOr(S.String),
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "ApproveRollingReleaseStageResponseRollingRelease",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rollingRelease: S.NullOr(__S(49, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "ApproveRollingReleaseStageResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          id: S.String,
+          name: S.String,
+          readyState: S.String,
+          readyStateAt: S.optional(S.Number),
+          source: S.optional(S.String),
+          target: S.optional(S.NullOr(S.String)),
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.NullOr(S.Number),
+          index: S.Number,
+          isFinalStage: S.Boolean,
+          linearShift: S.optional(S.Boolean),
+          requireApproval: S.Boolean,
+          targetPercentage: S.Number,
+        }),
+      ).annotate({
+        identifier: "ApproveRollingReleaseStageResponseRollingReleaseActiveStage",
+      });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          canaryDeploymentId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{idOrName}/rolling-release/complete",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteRollingReleaseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activeStage: S.NullOr(__S(80, __c5, 0)),
+          advancementType: S.String,
+          canaryDeployment: S.NullOr(__S(112, __c7, 0)),
+          currentCanaryPercentage: S.optional(S.Number),
+          currentDeployment: S.NullOr(__S(64, __c4, 0)),
+          nextStage: S.NullOr(__S(80, __c5, 0)),
+          queuedDeploymentId: S.NullOr(S.String),
+          stages: __S(81, __c5, 1),
+          startedAt: S.Number,
+          state: S.String,
+          substate: S.NullOr(S.String),
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "CompleteRollingReleaseResponseRollingRelease",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rollingRelease: S.NullOr(__S(97, __c6, 1)),
+        }),
+      ).annotate({
+        identifier: "CompleteRollingReleaseResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          id: S.String,
+          name: S.String,
+          readyState: S.String,
+          readyStateAt: S.optional(S.Number),
+          source: S.optional(S.String),
+          target: S.optional(S.NullOr(S.String)),
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "CompleteRollingReleaseResponseRollingReleaseCanaryDeployment",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{idOrName}/rolling-release/config",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRollingReleaseConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rollingRelease: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "DeleteRollingReleaseConfigResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          state: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/projects/{idOrName}/rolling-release", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetRollingReleaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          id: S.String,
+          name: S.String,
+          readyState: S.String,
+          readyStateAt: S.optional(S.Number),
+          source: S.optional(S.String),
+          target: S.optional(S.NullOr(S.String)),
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "GetRollingReleaseResponseRollingReleaseCanaryDeployment",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          activeStage: S.NullOr(__S(80, __c5, 0)),
+          advancementType: S.String,
+          canaryDeployment: S.NullOr(__S(145, __c9, 1)),
+          currentCanaryPercentage: S.optional(S.Number),
+          currentDeployment: S.NullOr(__S(160, __c10, 0)),
+          nextStage: S.NullOr(__S(80, __c5, 0)),
+          queuedDeploymentId: S.NullOr(S.String),
+          stages: __S(81, __c5, 1),
+          startedAt: S.Number,
+          state: S.String,
+          substate: S.NullOr(S.String),
+          updatedAt: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetRollingReleaseResponseRollingRelease",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rollingRelease: S.NullOr(__S(146, __c9, 2)),
+        }),
+      ).annotate({
+        identifier: "GetRollingReleaseResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          id: S.String,
+          name: S.String,
+          readyState: S.String,
+          readyStateAt: S.optional(S.Number),
+          source: S.optional(S.String),
+          target: S.optional(S.NullOr(S.String)),
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "GetRollingReleaseResponseRollingReleaseCurrentDeployment",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/projects/{idOrName}/rolling-release/billing",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRollingReleaseBillingStatusRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetRollingReleaseBillingStatusResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

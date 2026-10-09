@@ -631,8 +631,8 @@ export const clearOrgPolicyFolders: API.OperationMethod<
   ClearOrgPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ClearOrgPolicyFoldersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(328, __c41, 0) as any as S.Schema<ClearOrgPolicyFoldersRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const clearOrgPolicyOrganizations: API.OperationMethod<
   ClearOrgPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ClearOrgPolicyOrganizationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(368, __c46, 0) as any as S.Schema<ClearOrgPolicyOrganizationsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const clearOrgPolicyProjects: API.OperationMethod<
   ClearOrgPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ClearOrgPolicyProjectsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(376, __c47, 0) as any as S.Schema<ClearOrgPolicyProjectsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -681,8 +681,8 @@ export const createLiens: API.OperationMethod<
   CreateLiensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateLiensRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Lien>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateLiensRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<Lien>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -696,8 +696,8 @@ export const createProjects: API.OperationMethod<
   CreateProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateProjectsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateProjectsRequest>,
+  output: __S(427, __c53, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -711,8 +711,8 @@ export const deleteLiens: API.OperationMethod<
   DeleteLiensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteLiensRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(440, __c55, 0) as any as S.Schema<DeleteLiensRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -726,8 +726,8 @@ export const deleteProjects: API.OperationMethod<
   DeleteProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -741,8 +741,8 @@ export const getAncestryProjects: API.OperationMethod<
   GetAncestryProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetAncestryProjectsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetAncestryResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetAncestryProjectsRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetAncestryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -761,8 +761,8 @@ export const getEffectiveOrgPolicyFolders: API.OperationMethod<
   GetEffectiveOrgPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetEffectiveOrgPolicyFoldersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetEffectiveOrgPolicyFoldersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const getEffectiveOrgPolicyOrganizations: API.OperationMethod<
   GetEffectiveOrgPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetEffectiveOrgPolicyOrganizationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetEffectiveOrgPolicyOrganizationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const getEffectiveOrgPolicyProjects: API.OperationMethod<
   GetEffectiveOrgPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetEffectiveOrgPolicyProjectsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetEffectiveOrgPolicyProjectsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -821,8 +821,8 @@ export const getIamPolicyOrganizations: API.OperationMethod<
   GetIamPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetIamPolicyOrganizationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Policy>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetIamPolicyOrganizationsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -836,8 +836,8 @@ export const getIamPolicyProjects: API.OperationMethod<
   GetIamPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetIamPolicyProjectsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Policy>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetIamPolicyProjectsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +847,8 @@ export type GetLiensError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get` */
 export const getLiens: API.OperationMethod<GetLiensRequest, Lien, GetLiensError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(41, __c5, 1) as any as S.Schema<GetLiensRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<Lien>,
+    input: __S(88, __c11, 0) as any as S.Schema<GetLiensRequest>,
+    output: __S(392, __c49, 0) as any as S.Schema<Lien>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -862,8 +862,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetOperationsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(427, __c53, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -877,8 +877,8 @@ export const getOrganizations: API.OperationMethod<
   GetOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetOrganizationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetOrganizationsRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<Organization>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -892,8 +892,8 @@ export const getOrgPolicyFolders: API.OperationMethod<
   GetOrgPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetOrgPolicyFoldersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetOrgPolicyFoldersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -912,8 +912,8 @@ export const getOrgPolicyOrganizations: API.OperationMethod<
   GetOrgPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetOrgPolicyOrganizationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetOrgPolicyOrganizationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +927,8 @@ export const getOrgPolicyProjects: API.OperationMethod<
   GetOrgPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetOrgPolicyProjectsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetOrgPolicyProjectsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -942,8 +942,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetProjectsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Project>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<Project>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -962,8 +962,8 @@ export const listAvailableOrgPolicyConstraintsFolders: API.OperationMethod<
   ListAvailableOrgPolicyConstraintsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListAvailableOrgPolicyConstraintsFoldersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListAvailableOrgPolicyConstraintsFoldersRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -982,8 +982,12 @@ export const listAvailableOrgPolicyConstraintsOrganizations: API.OperationMethod
   ListAvailableOrgPolicyConstraintsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListAvailableOrgPolicyConstraintsOrganizationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
+  input: __S(
+    176,
+    __c22,
+    0,
+  ) as any as S.Schema<ListAvailableOrgPolicyConstraintsOrganizationsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1002,8 +1006,8 @@ export const listAvailableOrgPolicyConstraintsProjects: API.OperationMethod<
   ListAvailableOrgPolicyConstraintsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListAvailableOrgPolicyConstraintsProjectsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListAvailableOrgPolicyConstraintsProjectsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListAvailableOrgPolicyConstraintsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1018,8 +1022,8 @@ export const listLiens: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLiensResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListLiensRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListLiensResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListLiensRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListLiensResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1038,8 @@ export const listOrgPoliciesFolders: API.OperationMethod<
   ListOrgPoliciesFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListOrgPoliciesFoldersRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListOrgPoliciesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListOrgPoliciesFoldersRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListOrgPoliciesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1058,8 @@ export const listOrgPoliciesOrganizations: API.OperationMethod<
   ListOrgPoliciesOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListOrgPoliciesOrganizationsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListOrgPoliciesResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ListOrgPoliciesOrganizationsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListOrgPoliciesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1078,8 @@ export const listOrgPoliciesProjects: API.OperationMethod<
   ListOrgPoliciesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListOrgPoliciesProjectsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListOrgPoliciesResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<ListOrgPoliciesProjectsRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<ListOrgPoliciesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1094,8 @@ export const listProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListProjectsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListProjectsResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<ListProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1106,8 +1110,8 @@ export const searchOrganizations: API.OperationMethod<
   SearchOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<SearchOrganizationsRequest_>,
-  output: __S(74, __c9, 2) as any as S.Schema<SearchOrganizationsResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<SearchOrganizationsRequest_>,
+  output: __S(243, __c30, 3) as any as S.Schema<SearchOrganizationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1126,8 +1130,8 @@ export const setIamPolicyOrganizations: API.OperationMethod<
   SetIamPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<SetIamPolicyOrganizationsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Policy>,
+  input: __S(248, __c31, 0) as any as S.Schema<SetIamPolicyOrganizationsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1141,8 +1145,8 @@ export const setIamPolicyProjects: API.OperationMethod<
   SetIamPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SetIamPolicyProjectsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Policy>,
+  input: __S(264, __c33, 0) as any as S.Schema<SetIamPolicyProjectsRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1156,8 +1160,8 @@ export const setOrgPolicyFolders: API.OperationMethod<
   SetOrgPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<SetOrgPolicyFoldersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(272, __c34, 0) as any as S.Schema<SetOrgPolicyFoldersRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1180,8 @@ export const setOrgPolicyOrganizations: API.OperationMethod<
   SetOrgPolicyOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<SetOrgPolicyOrganizationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(288, __c36, 0) as any as S.Schema<SetOrgPolicyOrganizationsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1195,8 @@ export const setOrgPolicyProjects: API.OperationMethod<
   SetOrgPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<SetOrgPolicyProjectsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<OrgPolicy>,
+  input: __S(296, __c37, 0) as any as S.Schema<SetOrgPolicyProjectsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<OrgPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1215,8 @@ export const testIamPermissionsOrganizations: API.OperationMethod<
   TestIamPermissionsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<TestIamPermissionsOrganizationsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<TestIamPermissionsOrganizationsRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1231,8 +1235,8 @@ export const testIamPermissionsProjects: API.OperationMethod<
   TestIamPermissionsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<TestIamPermissionsProjectsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<TestIamPermissionsProjectsRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1246,8 +1250,8 @@ export const undeleteProjects: API.OperationMethod<
   UndeleteProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UndeleteProjectsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(352, __c44, 0) as any as S.Schema<UndeleteProjectsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1265,8 @@ export const updateProjects: API.OperationMethod<
   UpdateProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UpdateProjectsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Project>,
+  input: __S(360, __c45, 0) as any as S.Schema<UpdateProjectsRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<Project>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1274,165 +1278,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          constraint: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClearOrgPolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:clearOrgPolicy",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearOrgPolicyFoldersRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:clearOrgPolicy",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearOrgPolicyOrganizationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:clearOrgPolicy",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearOrgPolicyProjectsRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          restrictions: S.optional(__S(5, __c0, 5)),
-          origin: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          parent: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Lien" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/liens",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateLiensRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceId" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(8, __c1, 0)),
-          labels: S.optional(__S(8, __c1, 0)),
-          lifecycleState: S.optional(S.String),
-          projectId: S.optional(S.String),
-          projectNumber: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          configuredCapabilities: S.optional(__S(5, __c0, 5)),
-          parent: S.optional(__S(9, __c1, 1)),
-          isManagementProject: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Project" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateProjectsRequest" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(14, __c1, 6)),
-          response: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLiensRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1442,11 +1287,15 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteProjectsRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(344, __c43, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1457,33 +1306,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAncestryProjectsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(__S(416, __c52, 0)),
+        }),
+      ).annotate({ identifier: "Ancestor" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceId: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Ancestor" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ancestor: S.optional(__S(20, __c2, 4)),
+          ancestor: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "GetAncestryResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetEffectiveOrgPolicyRequest",
-      });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1501,36 +1346,52 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          constraint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetEffectiveOrgPolicyRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           enforced: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BooleanPolicy" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deniedValues: S.optional(__S(5, __c0, 5)),
+          deniedValues: S.optional(__S(400, __c50, 0)),
           allValues: S.optional(S.String),
           suggestedValue: S.optional(S.String),
-          allowedValues: S.optional(__S(5, __c0, 5)),
+          allowedValues: S.optional(__S(400, __c50, 0)),
           inheritFromParent: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListPolicy" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          booleanPolicy: S.optional(__S(24, __c3, 0)),
+          booleanPolicy: S.optional(__S(32, __c4, 0)),
           constraint: S.optional(S.String),
           updateTime: S.optional(S.String),
-          listPolicy: S.optional(__S(25, __c3, 1)),
-          restoreDefault: S.optional(__S(2, __c0, 2)),
+          listPolicy: S.optional(__S(33, __c4, 1)),
+          restoreDefault: S.optional(__S(344, __c43, 0)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OrgPolicy" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1541,11 +1402,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEffectiveOrgPolicyOrganizationsRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1556,23 +1421,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEffectiveOrgPolicyProjectsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1585,7 +1442,23 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(64, __c8, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1599,49 +1472,49 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(32, __c4, 0)),
+          condition: S.optional(__S(72, __c9, 0)),
           role: S.optional(S.String),
-          members: S.optional(__S(5, __c0, 5)),
+          members: S.optional(__S(400, __c50, 0)),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(73, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(5, __c0, 5)),
+          exemptedMembers: S.optional(__S(400, __c50, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(75, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(36, __c4, 4)),
+          auditLogConfigs: S.optional(__S(76, __c9, 4)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 6:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(77, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          bindings: S.optional(__S(34, __c4, 2)),
-          auditConfigs: S.optional(__S(38, __c4, 6)),
+          bindings: S.optional(__S(74, __c9, 2)),
+          auditConfigs: S.optional(__S(78, __c9, 6)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1652,7 +1525,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1664,7 +1541,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLiensRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1676,7 +1557,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1688,33 +1573,35 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrganizationsRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           directoryCustomerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrganizationOwner" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lifecycleState: S.optional(S.String),
-          owner: S.optional(__S(44, __c5, 4)),
+          owner: S.optional(__S(112, __c14, 0)),
           creationTime: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Organization" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetOrgPolicyRequest" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1727,13 +1614,23 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetOrgPolicyRequest" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1744,11 +1641,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOrgPolicyOrganizationsRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1759,7 +1660,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetOrgPolicyProjectsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1771,20 +1676,15 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAvailableOrgPolicyConstraintsRequest",
-      });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1795,45 +1695,58 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAvailableOrgPolicyConstraintsFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAvailableOrgPolicyConstraintsRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           supportsUnder: S.optional(S.Boolean),
           suggestedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConstraint" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          booleanConstraint: S.optional(__S(2, __c0, 2)),
+          booleanConstraint: S.optional(__S(344, __c43, 0)),
           version: S.optional(S.Number),
           description: S.optional(S.String),
-          listConstraint: S.optional(__S(53, __c6, 5)),
+          listConstraint: S.optional(__S(169, __c21, 1)),
           constraintDefault: S.optional(S.String),
         }),
       ).annotate({ identifier: "Constraint" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          constraints: S.optional(__S(55, __c6, 7)),
+          constraints: S.optional(__S(171, __c21, 3)),
         }),
       ).annotate({
         identifier: "ListAvailableOrgPolicyConstraintsResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1844,11 +1757,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAvailableOrgPolicyConstraintsOrganizationsRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1859,7 +1776,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAvailableOrgPolicyConstraintsProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1873,27 +1794,24 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLiensRequest" });
-    case 4:
-      return S.Array(__S(6, __c0, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(392, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          liens: S.optional(__S(60, __c7, 4)),
+          liens: S.optional(__S(193, __c24, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLiensResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ListOrgPoliciesRequest" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1906,22 +1824,33 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(26, __c3, 2));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          nextPageToken: S.optional(S.String),
-          policies: S.optional(__S(64, __c8, 0)),
+          pageToken: S.optional(S.String),
+          pageSize: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ListOrgPoliciesResponse" });
+      ).annotate({ identifier: "ListOrgPoliciesRequest" });
+    case 1:
+      return S.Array(__S(34, __c4, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          nextPageToken: S.optional(S.String),
+          policies: S.optional(__S(209, __c26, 1)),
+        }),
+      ).annotate({ identifier: "ListOrgPoliciesResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1932,11 +1861,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrgPoliciesOrganizationsRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1947,7 +1880,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListOrgPoliciesProjectsRequest",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1961,16 +1898,20 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(433, __c54, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          projects: S.optional(__S(69, __c8, 5)),
+          projects: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
@@ -1980,14 +1921,10 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SearchOrganizationsRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1998,29 +1935,26 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SearchOrganizationsRequest_",
       });
-    case 1:
-      return S.Array(__S(45, __c5, 5));
     case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          organizations: S.optional(__S(73, __c9, 1)),
+          organizations: S.optional(__S(242, __c30, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchOrganizationsResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(39, __c4, 7)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2031,11 +1965,26 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyOrganizationsRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(79, __c9, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2046,17 +1995,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "SetOrgPolicyRequest" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2069,13 +2016,23 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(34, __c4, 2)),
+        }),
+      ).annotate({ identifier: "SetOrgPolicyRequest" });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2086,11 +2043,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SetOrgPolicyOrganizationsRequest",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2101,19 +2062,15 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SetOrgPolicyProjectsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2124,11 +2081,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsOrganizationsRequest",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(400, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2139,11 +2112,53 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:clearOrgPolicy",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearOrgPolicyFoldersRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClearOrgPolicyRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(344, __c43, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2152,11 +2167,15 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UndeleteProjectsRequest" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(433, __c54, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2167,7 +2186,171 @@ function __c10(j: number): any {
       ).annotate({ identifier: "UpdateProjectsRequest" });
   }
 }
-
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:clearOrgPolicy",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearOrgPolicyOrganizationsRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c42, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:clearOrgPolicy",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearOrgPolicyProjectsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(392, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/liens",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateLiensRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restrictions: S.optional(__S(400, __c50, 0)),
+          origin: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          parent: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Lien" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(433, __c54, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateProjectsRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceId" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(424, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(425, __c53, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(426, __c53, 2)),
+          response: S.optional(__S(424, __c53, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(424, __c53, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(432, __c54, 0)),
+          labels: S.optional(__S(432, __c54, 0)),
+          lifecycleState: S.optional(S.String),
+          projectId: S.optional(S.String),
+          projectNumber: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          configuredCapabilities: S.optional(__S(400, __c50, 0)),
+          parent: S.optional(__S(416, __c52, 0)),
+          isManagementProject: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Project" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLiensRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

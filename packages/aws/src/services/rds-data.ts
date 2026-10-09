@@ -580,8 +580,8 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchExecuteStatementRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BatchExecuteStatementResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<BatchExecuteStatementRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<BatchExecuteStatementResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -636,8 +636,8 @@ export const beginTransaction: API.OperationMethod<
   BeginTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BeginTransactionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BeginTransactionResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BeginTransactionRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<BeginTransactionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -686,8 +686,8 @@ export const commitTransaction: API.OperationMethod<
   CommitTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CommitTransactionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CommitTransactionResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CommitTransactionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<CommitTransactionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -728,8 +728,8 @@ export const executeSql: API.OperationMethod<
   ExecuteSqlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ExecuteSqlRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ExecuteSqlResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ExecuteSqlRequest>,
+  output: __S(91, __c5, 11) as any as S.Schema<ExecuteSqlResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -773,8 +773,8 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ExecuteStatementRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ExecuteStatementResponse>,
+  input: __S(113, __c7, 1) as any as S.Schema<ExecuteStatementRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<ExecuteStatementResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -824,8 +824,8 @@ export const rollbackTransaction: API.OperationMethod<
   RollbackTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<RollbackTransactionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RollbackTransactionResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<RollbackTransactionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<RollbackTransactionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -852,6 +852,38 @@ export const rollbackTransaction: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(23, __c1, 7));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String,
+          secretArn: S.String,
+          sql: S.String,
+          database: S.optional(S.String),
+          schema: S.optional(S.String),
+          parameterSets: S.optional(__S(0, __c0, 0)),
+          transactionId: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchExecute" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchExecuteStatementRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ generatedFields: S.optional(__S(24, __c1, 8)) })).annotate({
+        identifier: "UpdateResult",
+      });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ updateResults: S.optional(__S(3, __c0, 3)) })).annotate({
+        identifier: "BatchExecuteStatementResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Boolean).pipe(/*@__PURE__*/ T.Sparse());
     case 1:
       return S.Array(S.Number).pipe(/*@__PURE__*/ T.Sparse());
@@ -859,16 +891,16 @@ function __c0(j: number): any {
       return S.Array(S.String).pipe(/*@__PURE__*/ T.Sparse());
     case 3:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(4, __c0, 4)).annotate({ identifier: "ArrayValue" }),
+        /*@__PURE__*/ S.suspend(() => __S(20, __c1, 4)).annotate({ identifier: "ArrayValue" }),
       ).pipe(/*@__PURE__*/ T.Sparse());
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ booleanValues: __S(0, __c0, 0) }),
-        /*@__PURE__*/ S.Struct({ longValues: __S(1, __c0, 1) }),
-        /*@__PURE__*/ S.Struct({ doubleValues: __S(1, __c0, 1) }),
-        /*@__PURE__*/ S.Struct({ stringValues: __S(2, __c0, 2) }),
+        /*@__PURE__*/ S.Struct({ booleanValues: __S(16, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ longValues: __S(17, __c1, 1) }),
+        /*@__PURE__*/ S.Struct({ doubleValues: __S(17, __c1, 1) }),
+        /*@__PURE__*/ S.Struct({ stringValues: __S(18, __c1, 2) }),
         /*@__PURE__*/ S.Struct({
-          arrayValues: /*@__PURE__*/ S.suspend(() => __S(3, __c0, 3)).annotate({
+          arrayValues: /*@__PURE__*/ S.suspend(() => __S(19, __c1, 3)).annotate({
             identifier: "ArrayOfArray",
           }),
         }),
@@ -881,53 +913,25 @@ function __c0(j: number): any {
         /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
         /*@__PURE__*/ S.Struct({ stringValue: S.String }),
         /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
-        /*@__PURE__*/ S.Struct({ arrayValue: __S(4, __c0, 4) }),
+        /*@__PURE__*/ S.Struct({ arrayValue: __S(20, __c1, 4) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(__S(5, __c0, 5)),
+          value: S.optional(__S(21, __c1, 5)),
           typeHint: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlParameter" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
+      return S.Array(__S(22, __c1, 6));
+    case 8:
+      return S.Array(__S(21, __c1, 5));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String,
-          secretArn: S.String,
-          sql: S.String,
-          database: S.optional(S.String),
-          schema: S.optional(S.String),
-          parameterSets: S.optional(__S(8, __c1, 0)),
-          transactionId: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/BatchExecute" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchExecuteStatementRequest",
-      });
-    case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
-      return S.suspend(() => S.Struct({ generatedFields: S.optional(__S(10, __c1, 2)) })).annotate({
-        identifier: "UpdateResult",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ updateResults: S.optional(__S(12, __c1, 4)) })).annotate({
-        identifier: "BatchExecuteStatementResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
@@ -938,13 +942,13 @@ function __c1(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/BeginTransaction" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BeginTransactionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ transactionId: S.optional(S.String) })).annotate({
         identifier: "BeginTransactionResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -959,11 +963,19 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CommitTransactionRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ transactionStatus: S.optional(S.String) })).annotate({
         identifier: "CommitTransactionResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dbClusterOrInstanceArn: S.String,
@@ -975,7 +987,83 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ExecuteSql" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ExecuteSqlRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          columnCount: S.optional(S.Number),
+          columnMetadata: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "ResultSetMetadata" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => __S(84, __c5, 4)).annotate({ identifier: "Value" }),
+      );
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(
+            S.suspend(() => __S(82, __c5, 2)).annotate({ identifier: "ArrayValueList" }),
+          ),
+        }),
+      ).annotate({ identifier: "StructValue" });
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ bitValue: S.Boolean }),
+        /*@__PURE__*/ S.Struct({ bigIntValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ intValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ realValue: S.Number }),
+        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
+        /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
+        /*@__PURE__*/ S.Struct({
+          arrayValues: /*@__PURE__*/ S.suspend(() => __S(82, __c5, 2)).annotate({
+            identifier: "ArrayValueList",
+          }),
+        }),
+        /*@__PURE__*/ S.Struct({
+          structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> =>
+            __S(83, __c5, 3),
+          ).annotate({
+            identifier: "StructValue",
+          }),
+        }),
+      ]);
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend(() => __S(84, __c5, 4)).annotate({ identifier: "Value" }),
+      );
+    case 6:
+      return S.suspend(() => S.Struct({ values: S.optional(__S(85, __c5, 5)) })).annotate({
+        identifier: "Record",
+      });
+    case 7:
+      return S.Array(__S(86, __c5, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          resultSetMetadata: S.optional(__S(81, __c5, 1)),
+          records: S.optional(__S(87, __c5, 7)),
+        }),
+      ).annotate({ identifier: "ResultFrame" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          resultFrame: S.optional(__S(88, __c5, 8)),
+          numberOfRecordsUpdated: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SqlStatementResult" });
+    case 10:
+      return S.Array(__S(89, __c5, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ sqlStatementResults: S.optional(__S(90, __c5, 10)) }),
+      ).annotate({ identifier: "ExecuteSqlResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -994,87 +1082,11 @@ function __c2(j: number): any {
           arrayBaseColumnType: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ColumnMetadata" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          columnCount: S.optional(S.Number),
-          columnMetadata: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ResultSetMetadata" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(24, __c3, 0)).annotate({ identifier: "Value" }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(
-            S.suspend(() => __S(22, __c2, 6)).annotate({ identifier: "ArrayValueList" }),
-          ),
-        }),
-      ).annotate({ identifier: "StructValue" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ isNull: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ bitValue: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ bigIntValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ intValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ doubleValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ realValue: S.Number }),
-        /*@__PURE__*/ S.Struct({ stringValue: S.String }),
-        /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
-        /*@__PURE__*/ S.Struct({
-          arrayValues: /*@__PURE__*/ S.suspend(() => __S(22, __c2, 6)).annotate({
-            identifier: "ArrayValueList",
-          }),
-        }),
-        /*@__PURE__*/ S.Struct({
-          structValue: /*@__PURE__*/ S.suspend((): S.Schema<StructValue> =>
-            __S(23, __c2, 7),
-          ).annotate({
-            identifier: "StructValue",
-          }),
-        }),
-      ]);
     case 1:
-      return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(24, __c3, 0)).annotate({ identifier: "Value" }),
-      );
-    case 2:
-      return S.suspend(() => S.Struct({ values: S.optional(__S(25, __c3, 1)) })).annotate({
-        identifier: "Record",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resultSetMetadata: S.optional(__S(21, __c2, 5)),
-          records: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "ResultFrame" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resultFrame: S.optional(__S(28, __c3, 4)),
-          numberOfRecordsUpdated: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SqlStatementResult" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ sqlStatementResults: S.optional(__S(30, __c3, 6)) }),
-      ).annotate({ identifier: "ExecuteSqlResponse" });
+      return S.Array(__S(96, __c6, 0));
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1091,27 +1103,31 @@ function __c4(j: number): any {
           sql: S.String,
           database: S.optional(S.String),
           schema: S.optional(S.String),
-          parameters: S.optional(__S(7, __c0, 7)),
+          parameters: S.optional(__S(23, __c1, 7)),
           transactionId: S.optional(S.String),
           includeResultMetadata: S.optional(S.Boolean),
           continueAfterTimeout: S.optional(S.Boolean),
-          resultSetOptions: S.optional(__S(32, __c4, 0)),
+          resultSetOptions: S.optional(__S(112, __c7, 0)),
           formatRecordsAs: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/Execute" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ExecuteStatementRequest" });
     case 2:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(24, __c1, 8));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(34, __c4, 2)),
-          columnMetadata: S.optional(__S(20, __c2, 4)),
+          records: S.optional(__S(114, __c7, 2)),
+          columnMetadata: S.optional(__S(97, __c6, 1)),
           numberOfRecordsUpdated: S.optional(S.Number),
-          generatedFields: S.optional(__S(10, __c1, 2)),
+          generatedFields: S.optional(__S(24, __c1, 8)),
           formattedRecords: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecuteStatementResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String, secretArn: S.String, transactionId: S.String }).pipe(
           T.all(
@@ -1128,7 +1144,6 @@ function __c4(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

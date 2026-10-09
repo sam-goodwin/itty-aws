@@ -2389,14 +2389,14 @@ export const BookshelfPrivateEndpointConnectionsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
+    0,
     __c0,
-    3,
+    0,
   ) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    8,
-    __c1,
-    0,
+    42,
+    __c5,
+    2,
   ) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2411,8 +2411,8 @@ export const BookshelvesCreateOrUpdate: API.OperationMethod<
   BookshelvesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BookshelvesCreateOrUpdateRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BookshelvesCreateOrUpdateResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<BookshelvesCreateOrUpdateRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<BookshelvesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2426,8 +2426,8 @@ export const ChatModelDeploymentsCreateOrUpdate: API.OperationMethod<
   ChatModelDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateResponse>,
+  input: __S(249, __c31, 1) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2441,8 +2441,8 @@ export const DeleteBookshelfPrivateEndpointConnection: API.OperationMethod<
   DeleteBookshelfPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<DeleteBookshelfPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2456,8 +2456,8 @@ export const DeleteBookshelve: API.OperationMethod<
   DeleteBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteBookshelveRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteBookshelveResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<DeleteBookshelveRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteBookshelveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2471,8 +2471,8 @@ export const DeleteChatModelDeployment: API.OperationMethod<
   DeleteChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteChatModelDeploymentRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteChatModelDeploymentResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<DeleteChatModelDeploymentRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<DeleteChatModelDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2486,8 +2486,8 @@ export const DeleteNodePool: API.OperationMethod<
   DeleteNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteNodePoolRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteNodePoolResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<DeleteNodePoolRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteNodePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2501,8 +2501,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2516,8 +2516,8 @@ export const DeleteStorageAsset: API.OperationMethod<
   DeleteStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteStorageAssetRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteStorageAssetResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<DeleteStorageAssetRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteStorageAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2531,8 +2531,8 @@ export const DeleteStorageContainer: API.OperationMethod<
   DeleteStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteStorageContainerRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteStorageContainerResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<DeleteStorageContainerRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteStorageContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2546,8 +2546,8 @@ export const DeleteSupercomputer: API.OperationMethod<
   DeleteSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteSupercomputerRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteSupercomputerResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteSupercomputerRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteSupercomputerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2561,8 +2561,8 @@ export const DeleteTool: API.OperationMethod<
   DeleteToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteToolRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteToolResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteToolRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteToolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2576,8 +2576,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2591,8 +2591,8 @@ export const DeleteWorkspacePrivateEndpointConnection: API.OperationMethod<
   DeleteWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<DeleteWorkspacePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2606,8 +2606,8 @@ export const GetBookshelfPrivateEndpointConnection: API.OperationMethod<
   GetBookshelfPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetBookshelfPrivateEndpointConnectionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetBookshelfPrivateEndpointConnectionRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetBookshelfPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2621,8 +2621,8 @@ export const GetBookshelfPrivateLinkResource: API.OperationMethod<
   GetBookshelfPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetBookshelfPrivateLinkResourceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetBookshelfPrivateLinkResourceResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetBookshelfPrivateLinkResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetBookshelfPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2636,8 +2636,8 @@ export const GetBookshelve: API.OperationMethod<
   GetBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetBookshelveRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetBookshelveResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetBookshelveRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<GetBookshelveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2651,8 +2651,8 @@ export const GetChatModelDeployment: API.OperationMethod<
   GetChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetChatModelDeploymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetChatModelDeploymentResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetChatModelDeploymentRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetChatModelDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2666,8 @@ export const GetNodePool: API.OperationMethod<
   GetNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetNodePoolRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetNodePoolResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetNodePoolRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<GetNodePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2681,8 +2681,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetProjectResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2696,8 +2696,8 @@ export const GetStorageAsset: API.OperationMethod<
   GetStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetStorageAssetRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetStorageAssetResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetStorageAssetRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetStorageAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2711,8 @@ export const GetStorageContainer: API.OperationMethod<
   GetStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetStorageContainerRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GetStorageContainerResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetStorageContainerRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetStorageContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2726,8 @@ export const GetSupercomputer: API.OperationMethod<
   GetSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetSupercomputerRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetSupercomputerResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetSupercomputerRequest>,
+  output: __S(336, __c42, 0) as any as S.Schema<GetSupercomputerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2741,8 +2741,8 @@ export const GetTool: API.OperationMethod<
   GetToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetToolRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetToolResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetToolRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<GetToolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2756,8 +2756,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2771,8 @@ export const GetWorkspacePrivateEndpointConnection: API.OperationMethod<
   GetWorkspacePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetWorkspacePrivateEndpointConnectionRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetWorkspacePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2786,8 +2786,8 @@ export const GetWorkspacePrivateLinkResource: API.OperationMethod<
   GetWorkspacePrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetWorkspacePrivateLinkResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetWorkspacePrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2802,11 +2802,11 @@ export const ListBookshelfPrivateEndpointConnectionByBookshelf: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    416,
+    __c52,
     0,
   ) as any as S.Schema<ListBookshelfPrivateEndpointConnectionByBookshelfRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<BookshelfPrivateEndpointConnectionListResult>,
+  output: __S(424, __c53, 0) as any as S.Schema<BookshelfPrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2820,8 @@ export const ListBookshelfPrivateLinkResourceByBookshelf: API.OperationMethod<
   ListBookshelfPrivateLinkResourceByBookshelfError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListBookshelfPrivateLinkResourceByBookshelfRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<BookshelfPrivateLinkResourceListResult>,
+  input: __S(432, __c54, 0) as any as S.Schema<ListBookshelfPrivateLinkResourceByBookshelfRequest>,
+  output: __S(443, __c55, 3) as any as S.Schema<BookshelfPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2835,8 @@ export const ListBookshelveByResourceGroup: API.OperationMethod<
   ListBookshelveByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListBookshelveByResourceGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<BookshelfListResult>,
+  input: __S(448, __c56, 0) as any as S.Schema<ListBookshelveByResourceGroupRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<BookshelfListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2850,8 @@ export const ListBookshelveBySubscription: API.OperationMethod<
   ListBookshelveBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListBookshelveBySubscriptionRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<BookshelfListResult>,
+  input: __S(480, __c60, 0) as any as S.Schema<ListBookshelveBySubscriptionRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<BookshelfListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2865,8 @@ export const ListChatModelDeploymentByWorkspace: API.OperationMethod<
   ListChatModelDeploymentByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListChatModelDeploymentByWorkspaceRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ChatModelDeploymentListResult>,
+  input: __S(488, __c61, 0) as any as S.Schema<ListChatModelDeploymentByWorkspaceRequest>,
+  output: __S(491, __c61, 3) as any as S.Schema<ChatModelDeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2880,8 @@ export const ListNodePoolBySupercomputer: API.OperationMethod<
   ListNodePoolBySupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListNodePoolBySupercomputerRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<NodePoolListResult>,
+  input: __S(496, __c62, 0) as any as S.Schema<ListNodePoolBySupercomputerRequest>,
+  output: __S(498, __c62, 2) as any as S.Schema<NodePoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2895,8 +2895,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(508, __c63, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2910,8 @@ export const ListProjectByWorkspace: API.OperationMethod<
   ListProjectByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListProjectByWorkspaceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ProjectListResult>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListProjectByWorkspaceRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2925,8 +2925,8 @@ export const ListStorageAssetByStorageContainer: API.OperationMethod<
   ListStorageAssetByStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListStorageAssetByStorageContainerRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StorageAssetListResult>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListStorageAssetByStorageContainerRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<StorageAssetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2940,8 +2940,8 @@ export const ListStorageContainerByResourceGroup: API.OperationMethod<
   ListStorageContainerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListStorageContainerByResourceGroupRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<StorageContainerListResult>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListStorageContainerByResourceGroupRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<StorageContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2955,8 +2955,8 @@ export const ListStorageContainerBySubscription: API.OperationMethod<
   ListStorageContainerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListStorageContainerBySubscriptionRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<StorageContainerListResult>,
+  input: __S(544, __c68, 0) as any as S.Schema<ListStorageContainerBySubscriptionRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<StorageContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2970,8 +2970,8 @@ export const ListSupercomputerByResourceGroup: API.OperationMethod<
   ListSupercomputerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListSupercomputerByResourceGroupRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SupercomputerListResult>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListSupercomputerByResourceGroupRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<SupercomputerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2985,8 +2985,8 @@ export const ListSupercomputerBySubscription: API.OperationMethod<
   ListSupercomputerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListSupercomputerBySubscriptionRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SupercomputerListResult>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListSupercomputerBySubscriptionRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<SupercomputerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3000,8 +3000,8 @@ export const ListToolByResourceGroup: API.OperationMethod<
   ListToolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListToolByResourceGroupRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ToolListResult>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListToolByResourceGroupRequest>,
+  output: __S(593, __c74, 1) as any as S.Schema<ToolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3015,8 +3015,8 @@ export const ListToolBySubscription: API.OperationMethod<
   ListToolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListToolBySubscriptionRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ToolListResult>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListToolBySubscriptionRequest>,
+  output: __S(593, __c74, 1) as any as S.Schema<ToolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3030,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<WorkspaceListResult>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(617, __c77, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3045,8 +3045,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<WorkspaceListResult>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(617, __c77, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3061,11 +3061,11 @@ export const ListWorkspacePrivateEndpointConnectionByWorkspace: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    126,
-    __c15,
-    6,
+    632,
+    __c79,
+    0,
   ) as any as S.Schema<ListWorkspacePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<WorkspacePrivateEndpointConnectionListResult>,
+  output: __S(424, __c53, 0) as any as S.Schema<WorkspacePrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3079,8 @@ export const ListWorkspacePrivateLinkResourceByWorkspace: API.OperationMethod<
   ListWorkspacePrivateLinkResourceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<WorkspacePrivateLinkResourceListResult>,
+  input: __S(640, __c80, 0) as any as S.Schema<ListWorkspacePrivateLinkResourceByWorkspaceRequest>,
+  output: __S(443, __c55, 3) as any as S.Schema<WorkspacePrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3094,8 +3094,8 @@ export const NodePoolsCreateOrUpdate: API.OperationMethod<
   NodePoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<NodePoolsCreateOrUpdateRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<NodePoolsCreateOrUpdateResponse>,
+  input: __S(649, __c81, 1) as any as S.Schema<NodePoolsCreateOrUpdateRequest>,
+  output: __S(650, __c81, 2) as any as S.Schema<NodePoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3109,8 +3109,8 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   ProjectsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
+  output: __S(657, __c82, 1) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const StorageAssetsCreateOrUpdate: API.OperationMethod<
   StorageAssetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<StorageAssetsCreateOrUpdateRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<StorageAssetsCreateOrUpdateResponse>,
+  input: __S(673, __c84, 1) as any as S.Schema<StorageAssetsCreateOrUpdateRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<StorageAssetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const StorageContainersCreateOrUpdate: API.OperationMethod<
   StorageContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<StorageContainersCreateOrUpdateRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<StorageContainersCreateOrUpdateResponse>,
+  input: __S(689, __c86, 1) as any as S.Schema<StorageContainersCreateOrUpdateRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<StorageContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const SupercomputersCreateOrUpdate: API.OperationMethod<
   SupercomputersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<SupercomputersCreateOrUpdateRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<SupercomputersCreateOrUpdateResponse>,
+  input: __S(707, __c88, 3) as any as S.Schema<SupercomputersCreateOrUpdateRequest>,
+  output: __S(712, __c89, 0) as any as S.Schema<SupercomputersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3169,8 @@ export const ToolsCreateOrUpdate: API.OperationMethod<
   ToolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ToolsCreateOrUpdateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ToolsCreateOrUpdateResponse>,
+  input: __S(721, __c90, 1) as any as S.Schema<ToolsCreateOrUpdateRequest>,
+  output: __S(722, __c90, 2) as any as S.Schema<ToolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3184,8 +3184,8 @@ export const UpdateBookshelve: API.OperationMethod<
   UpdateBookshelveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<UpdateBookshelveRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateBookshelveResponse>,
+  input: __S(729, __c91, 1) as any as S.Schema<UpdateBookshelveRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<UpdateBookshelveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3199,8 +3199,8 @@ export const UpdateChatModelDeployment: API.OperationMethod<
   UpdateChatModelDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<UpdateChatModelDeploymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateChatModelDeploymentResponse>,
+  input: __S(745, __c93, 1) as any as S.Schema<UpdateChatModelDeploymentRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<UpdateChatModelDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3214,8 +3214,8 @@ export const UpdateNodePool: API.OperationMethod<
   UpdateNodePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<UpdateNodePoolRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<UpdateNodePoolResponse>,
+  input: __S(753, __c94, 1) as any as S.Schema<UpdateNodePoolRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<UpdateNodePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3229,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3244,8 +3244,8 @@ export const UpdateStorageAsset: API.OperationMethod<
   UpdateStorageAssetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<UpdateStorageAssetRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<UpdateStorageAssetResponse>,
+  input: __S(769, __c96, 1) as any as S.Schema<UpdateStorageAssetRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<UpdateStorageAssetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3259,8 +3259,8 @@ export const UpdateStorageContainer: API.OperationMethod<
   UpdateStorageContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<UpdateStorageContainerRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UpdateStorageContainerResponse>,
+  input: __S(776, __c97, 0) as any as S.Schema<UpdateStorageContainerRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<UpdateStorageContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3274,8 +3274,8 @@ export const UpdateSupercomputer: API.OperationMethod<
   UpdateSupercomputerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<UpdateSupercomputerRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<UpdateSupercomputerResponse>,
+  input: __S(787, __c98, 3) as any as S.Schema<UpdateSupercomputerRequest>,
+  output: __S(712, __c89, 0) as any as S.Schema<UpdateSupercomputerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3289,8 +3289,8 @@ export const UpdateTool: API.OperationMethod<
   UpdateToolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<UpdateToolRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateToolResponse>,
+  input: __S(793, __c99, 1) as any as S.Schema<UpdateToolRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UpdateToolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3304,8 +3304,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(809, __c101, 1) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3320,14 +3320,14 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    166,
-    __c20,
-    6,
+    816,
+    __c102,
+    0,
   ) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest>,
   output: __S(
-    8,
-    __c1,
-    0,
+    42,
+    __c5,
+    2,
   ) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3342,8 +3342,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(825, __c103, 1) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(826, __c103, 2) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3353,36 +3353,13 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(0, __c0, 0)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3394,7 +3371,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3405,77 +3406,81 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
+          privateEndpoint: S.optional(__S(24, __c3, 0)),
+          privateLinkServiceConnectionState: __S(8, __c1, 0),
         }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 7:
+      ).annotate({
+        identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(5, __c0, 5)),
-          privateEndpoint: S.optional(__S(6, __c0, 6)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
+          groupIds: S.optional(__S(32, __c4, 0)),
+          privateEndpoint: S.optional(__S(9, __c1, 1)),
+          privateLinkServiceConnectionState: __S(8, __c1, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateResponseProperties",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(7, __c0, 7)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionsCreateOrUpdateResponse",
       });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          keyVaultUri: S.String,
-          keyName: S.String,
-          keyVersion: S.optional(S.String),
-          identityClientId: S.String,
-        }),
-      ).annotate({
-        identifier: "BookshelfKeyVaultProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workloadIdentities: S.optional(__S(10, __c1, 2)),
+          workloadIdentities: S.optional(__S(104, __c13, 0)),
           customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(11, __c1, 3)),
+          keyVaultProperties: S.optional(__S(88, __c11, 0)),
           logAnalyticsClusterId: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           privateEndpointSubnetId: S.optional(S.String),
           searchSubnetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookshelfPropertiesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(48, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3487,7 +3492,51 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BookshelvesCreateOrUpdateRequest",
       });
-    case 6:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(89, __c11, 1)),
+        }),
+      ).annotate({
+        identifier: "BookshelvesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WithMoboBrokerResourcesMoboBrokerResourcesItem",
+      });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          moboBrokerResources: S.optional(__S(65, __c8, 1)),
+        }),
+      ).annotate({ identifier: "WithMoboBrokerResources" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -3496,277 +3545,86 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BookshelfPropertiesWorkloadIdentitiesValue",
       });
-    case 7:
-      return S.Record(S.String, __S(14, __c1, 6));
+    case 1:
+      return S.Record(S.String, __S(72, __c9, 0));
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(16, __c2, 0)),
-          privateEndpoint: S.optional(__S(6, __c0, 6)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
+          groupIds: S.optional(__S(56, __c7, 0)),
+          privateEndpoint: S.optional(__S(9, __c1, 1)),
+          privateLinkServiceConnectionState: __S(8, __c1, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(17, __c2, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "BookshelfPropertiesPrivateEndpointConnectionsItem",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
+          keyVaultUri: S.String,
+          keyName: S.String,
+          keyVersion: S.optional(S.String),
+          identityClientId: S.String,
         }),
       ).annotate({
-        identifier: "WithMoboBrokerResourcesMoboBrokerResourcesItem",
+        identifier: "BookshelfKeyVaultProperties",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          moboBrokerResources: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "WithMoboBrokerResources" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          workloadIdentities: S.optional(__S(15, __c1, 7)),
+          workloadIdentities: S.optional(__S(73, __c9, 1)),
           customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(11, __c1, 3)),
+          keyVaultProperties: S.optional(__S(88, __c11, 0)),
           logAnalyticsClusterId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(19, __c2, 3)),
+          privateEndpointConnections: S.optional(__S(82, __c10, 2)),
           publicNetworkAccess: S.optional(S.String),
           privateEndpointSubnetId: S.optional(S.String),
           searchSubnetId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22, __c2, 6)),
+          managedOnBehalfOfConfiguration: S.optional(__S(66, __c8, 2)),
           bookshelfUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookshelfProperties" });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "BookshelvesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          modelFormat: S.String,
-          modelName: S.String,
-          modelVersion: S.optional(S.String),
-          skuName: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ChatModelDeploymentPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          chatModelDeploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(25, __c3, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/chatModelDeployments/{chatModelDeploymentName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ChatModelDeploymentsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          modelFormat: S.String,
-          modelName: S.String,
-          modelVersion: S.optional(S.String),
-          skuName: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ChatModelDeploymentProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "ChatModelDeploymentsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          bookshelfName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBookshelfPrivateEndpointConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteBookshelfPrivateEndpointConnectionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          bookshelfName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBookshelveRequest" });
+      return S.Record(S.String, S.String);
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          chatModelDeploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/chatModelDeployments/{chatModelDeploymentName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteChatModelDeploymentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          supercomputerName: S.String.pipe(T.Label()),
-          nodePoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}/nodePools/{nodePoolName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteNodePoolRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/projects/{projectName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProjectRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageContainerName: S.String.pipe(T.Label()),
-          storageAssetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers/{storageContainerName}/storageAssets/{storageAssetName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageAssetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          storageContainerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers/{storageContainerName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStorageContainerRequest",
-      });
-    case 5:
+      return S.Record(S.String, __S(24, __c3, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3783,7 +3641,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteSupercomputerRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3798,7 +3660,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteToolRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3815,7 +3681,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3835,7 +3701,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteWorkspacePrivateEndpointConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3853,30 +3723,38 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBookshelfPrivateEndpointConnectionRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(5, __c0, 5)),
-          privateEndpoint: S.optional(__S(6, __c0, 6)),
-          privateLinkServiceConnectionState: __S(1, __c0, 1),
+          groupIds: S.optional(__S(32, __c4, 0)),
+          privateEndpoint: S.optional(__S(9, __c1, 1)),
+          privateLinkServiceConnectionState: __S(8, __c1, 0),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateEndpointConnectionResponseProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(42, __c5, 2)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateEndpointConnectionResponse",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3894,29 +3772,37 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetBookshelfPrivateLinkResourceRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(5, __c0, 5)),
-          requiredZoneNames: S.optional(__S(5, __c0, 5)),
+          requiredMembers: S.optional(__S(32, __c4, 0)),
+          requiredZoneNames: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateLinkResourceResponseProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(45, __c5, 5)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(168, __c21, 0)),
         }),
       ).annotate({
         identifier: "GetBookshelfPrivateLinkResourceResponse",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3933,7 +3819,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetBookshelveRequest" });
   }
 }
-function __c6(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3941,13 +3827,17 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({ identifier: "GetBookshelveResponse" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3965,7 +3855,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetChatModelDeploymentRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3981,7 +3875,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNodePoolRequest" });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -3995,19 +3893,27 @@ function __c6(j: number): any {
           imageCacheUpperThreshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NodePoolProperties" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(51, __c6, 3)),
+          properties: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "GetNodePoolResponse" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4023,24 +3929,28 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           behaviorPreferences: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectSettings" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           foundryProjectEndpoint: S.optional(S.String),
-          storageContainerIds: S.optional(__S(16, __c2, 0)),
-          settings: S.optional(__S(54, __c6, 6)),
+          storageContainerIds: S.optional(__S(56, __c7, 0)),
+          settings: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({ identifier: "ProjectProperties" });
   }
 }
-function __c7(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4048,13 +3958,89 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(55, __c6, 7)),
+          properties: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          modelFormat: S.String,
+          modelName: S.String,
+          modelVersion: S.optional(S.String),
+          skuName: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ChatModelDeploymentPropertiesInput",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          chatModelDeploymentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(248, __c31, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/chatModelDeployments/{chatModelDeploymentName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChatModelDeploymentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          modelFormat: S.String,
+          modelName: S.String,
+          modelVersion: S.optional(S.String),
+          skuName: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ChatModelDeploymentProperties",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(256, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "ChatModelDeploymentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4070,7 +4056,27 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStorageAssetRequest" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(288, __c36, 0)),
+        }),
+      ).annotate({ identifier: "GetStorageAssetResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -4078,19 +4084,11 @@ function __c7(j: number): any {
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAssetProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "GetStorageAssetResponse" });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4107,7 +4105,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetStorageContainerRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -4116,32 +4118,36 @@ function __c7(j: number): any {
           mountProtocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageStore" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          storageStore: __S(61, __c7, 5),
+          storageStore: __S(304, __c38, 0),
         }),
       ).annotate({
         identifier: "StorageContainerProperties",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(62, __c7, 6)),
+          properties: S.optional(__S(305, __c38, 1)),
         }),
       ).annotate({
         identifier: "GetStorageContainerResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4158,7 +4164,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSupercomputerRequest" });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4166,15 +4176,36 @@ function __c8(j: number): any {
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterIdentity: __S(65, __c8, 1),
-          kubeletIdentity: __S(65, __c8, 1),
-          workloadIdentities: S.optional(__S(15, __c1, 7)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(345, __c43, 1)),
+          identity: S.optional(__S(346, __c43, 2)),
+        }),
+      ).annotate({ identifier: "GetSupercomputerResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentity: __S(328, __c41, 0),
+          kubeletIdentity: __S(328, __c41, 0),
+          workloadIdentities: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({ identifier: "SupercomputerIdentities" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -4182,15 +4213,15 @@ function __c8(j: number): any {
           managementSubnetId: S.optional(S.String),
           outboundType: S.optional(S.String),
           systemSku: S.optional(S.String),
-          identities: __S(66, __c8, 2),
+          identities: __S(344, __c43, 0),
           customerManagedKeys: S.optional(S.String),
           diskEncryptionSetId: S.optional(S.String),
           logAnalyticsClusterId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22, __c2, 6)),
+          managedOnBehalfOfConfiguration: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "SupercomputerProperties" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -4200,20 +4231,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetSupercomputerResponseIdentity",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(67, __c8, 3)),
-          identity: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "GetSupercomputerResponse" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4228,34 +4250,42 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetToolRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c9(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           version: S.String,
-          environmentVariables: S.optional(__S(9, __c1, 1)),
-          definitionContent: __S(71, __c8, 7),
+          environmentVariables: S.optional(__S(96, __c12, 0)),
+          definitionContent: __S(360, __c45, 0),
         }),
       ).annotate({ identifier: "ToolProperties" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(361, __c45, 1)),
         }),
       ).annotate({ identifier: "GetToolResponse" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4270,7 +4300,27 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(393, __c49, 1)),
+        }),
+      ).annotate({ identifier: "GetWorkspaceResponse" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyVaultUri: S.String,
@@ -4278,39 +4328,31 @@ function __c9(j: number): any {
           keyVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyVaultProperties" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          supercomputerIds: S.optional(__S(16, __c2, 0)),
+          supercomputerIds: S.optional(__S(56, __c7, 0)),
           workspaceApiUri: S.optional(S.String),
           workspaceUiUri: S.optional(S.String),
-          workspaceIdentity: __S(65, __c8, 1),
+          workspaceIdentity: __S(328, __c41, 0),
           customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(75, __c9, 3)),
+          keyVaultProperties: S.optional(__S(392, __c49, 0)),
           logAnalyticsClusterId: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(19, __c2, 3)),
+          privateEndpointConnections: S.optional(__S(82, __c10, 2)),
           publicNetworkAccess: S.optional(S.String),
           agentSubnetId: S.optional(S.String),
           privateEndpointSubnetId: S.optional(S.String),
           workspaceSubnetId: S.optional(S.String),
           managedResourceGroup: S.optional(S.String),
-          managedOnBehalfOfConfiguration: S.optional(__S(22, __c2, 6)),
+          managedOnBehalfOfConfiguration: S.optional(__S(66, __c8, 2)),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
-          location: S.String,
-          properties: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "GetWorkspaceResponse" });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4328,7 +4370,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetWorkspacePrivateEndpointConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4348,7 +4394,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4367,16 +4413,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListBookshelfPrivateEndpointConnectionByBookshelfRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(19, __c2, 3),
+          value: __S(82, __c10, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BookshelfPrivateEndpointConnectionListResult",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4393,40 +4447,48 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListBookshelfPrivateLinkResourceByBookshelfRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(16, __c2, 0)),
-          requiredZoneNames: S.optional(__S(16, __c2, 0)),
+          requiredMembers: S.optional(__S(56, __c7, 0)),
+          requiredZoneNames: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "BookshelfPrivateLinkResourceProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(83, __c10, 3)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(440, __c55, 0)),
         }),
       ).annotate({
         identifier: "BookshelfPrivateLinkResource",
       });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(441, __c55, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(85, __c10, 5),
+          value: __S(442, __c55, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BookshelfPrivateLinkResourceListResult",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4444,18 +4506,52 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(184, __c23, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(88, __c11, 0),
+          value: __S(456, __c57, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookshelfListResult" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          bookshelfName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBookshelfPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteBookshelfPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4470,7 +4566,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListBookshelveBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4487,30 +4587,34 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListChatModelDeploymentByWorkspaceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(27, __c3, 3)),
+          properties: S.optional(__S(256, __c32, 0)),
         }),
       ).annotate({ identifier: "ChatModelDeployment" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(489, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(93, __c11, 5),
+          value: __S(490, __c61, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChatModelDeploymentListResult",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4527,20 +4631,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListNodePoolBySupercomputerRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(52, __c6, 4));
     case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(96, __c12, 0),
+          value: __S(497, __c62, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodePoolListResult" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4551,7 +4655,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -4560,26 +4664,30 @@ function __c12(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(99, __c12, 3)),
+          display: S.optional(__S(505, __c63, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(506, __c63, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(101, __c12, 5)),
+          value: S.optional(__S(507, __c63, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4596,20 +4704,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectByWorkspaceRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(56, __c7, 0));
     case 1:
+      return S.Array(__S(240, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104, __c13, 0),
+          value: __S(513, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectListResult" });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4626,16 +4734,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListStorageAssetByStorageContainerRequest",
       });
-    case 3:
-      return S.Array(__S(59, __c7, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(280, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107, __c13, 3),
+          value: __S(521, __c65, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAssetListResult" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4651,34 +4763,38 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListStorageContainerByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(62, __c7, 6)),
+          properties: S.optional(__S(305, __c38, 1)),
         }),
       ).annotate({ identifier: "StorageContainer" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(536, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(111, __c13, 7),
+          value: __S(537, __c67, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageContainerListResult",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4693,7 +4809,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListStorageContainerBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4709,16 +4829,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListSupercomputerByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(69, __c8, 5));
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(336, __c42, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(115, __c14, 3),
+          value: __S(560, __c70, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupercomputerListResult" });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4733,7 +4861,30 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListSupercomputerBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          bookshelfName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/bookshelves/{bookshelfName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBookshelveRequest" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4749,20 +4900,24 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListToolByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(73, __c9, 1));
   }
 }
-function __c15(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(368, __c46, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(119, __c14, 7),
+          value: __S(592, __c74, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolListResult" });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4777,7 +4932,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListToolBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4793,16 +4952,24 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(77, __c9, 5));
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c48, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123, __c15, 3),
+          value: __S(616, __c77, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4817,7 +4984,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4834,7 +5005,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListWorkspacePrivateEndpointConnectionByWorkspaceRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4853,7 +5028,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4875,9 +5050,9 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
           nodePoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(648, __c81, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4895,31 +5070,28 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(51, __c6, 3)),
+          properties: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({
         identifier: "NodePoolsCreateOrUpdateResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storageContainerIds: S.optional(__S(16, __c2, 0)),
-          settings: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "ProjectPropertiesInput" });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(131, __c16, 3)),
+          properties: S.optional(__S(664, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4931,21 +5103,36 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ProjectsCreateOrUpdateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(55, __c6, 7)),
+          properties: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({
         identifier: "ProjectsCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageContainerIds: S.optional(__S(56, __c7, 0)),
+          settings: S.optional(__S(232, __c29, 0)),
+        }),
+      ).annotate({ identifier: "ProjectPropertiesInput" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -4954,16 +5141,16 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "StorageAssetPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
           storageAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(134, __c16, 6)),
+          properties: S.optional(__S(672, __c84, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4977,7 +5164,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4985,31 +5172,35 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(288, __c36, 0)),
         }),
       ).annotate({
         identifier: "StorageAssetsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          storageStore: __S(61, __c7, 5),
+          storageStore: __S(304, __c38, 0),
         }),
       ).annotate({
         identifier: "StorageContainerPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(137, __c17, 1)),
+          properties: S.optional(__S(688, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5021,24 +5212,50 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "StorageContainersCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterIdentity: __S(65, __c8, 1),
-          kubeletIdentity: __S(65, __c8, 1),
-          workloadIdentities: S.optional(__S(10, __c1, 2)),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          chatModelDeploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/chatModelDeployments/{chatModelDeploymentName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteChatModelDeploymentRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterIdentity: __S(328, __c41, 0),
+          kubeletIdentity: __S(328, __c41, 0),
+          workloadIdentities: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({
         identifier: "SupercomputerIdentitiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subnetId: S.String,
           managementSubnetId: S.optional(S.String),
           outboundType: S.optional(S.String),
           systemSku: S.optional(S.String),
-          identities: __S(139, __c17, 3),
+          identities: __S(704, __c88, 0),
           customerManagedKeys: S.optional(S.String),
           diskEncryptionSetId: S.optional(S.String),
           logAnalyticsClusterId: S.optional(S.String),
@@ -5046,7 +5263,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SupercomputerPropertiesInput",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -5054,16 +5271,16 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SupercomputersCreateOrUpdateRequestIdentity",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(140, __c17, 4)),
-          identity: S.optional(__S(141, __c17, 5)),
+          properties: S.optional(__S(705, __c88, 1)),
+          identity: S.optional(__S(706, __c88, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5075,31 +5292,35 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SupercomputersCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(67, __c8, 3)),
-          identity: S.optional(__S(68, __c8, 4)),
+          properties: S.optional(__S(345, __c43, 1)),
+          identity: S.optional(__S(346, __c43, 2)),
         }),
       ).annotate({
         identifier: "SupercomputersCreateOrUpdateResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
-          environmentVariables: S.optional(__S(9, __c1, 1)),
-          definitionContent: __S(71, __c8, 7),
+          environmentVariables: S.optional(__S(96, __c12, 0)),
+          definitionContent: __S(360, __c45, 0),
         }),
       ).annotate({ identifier: "ToolPropertiesInput" });
     case 1:
@@ -5108,9 +5329,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           toolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(144, __c18, 0)),
+          properties: S.optional(__S(720, __c90, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5128,40 +5349,35 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(361, __c45, 1)),
         }),
       ).annotate({
         identifier: "ToolsCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          keyName: S.optional(S.String),
-          keyVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BookshelfKeyVaultPropertiesUpdate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyVaultProperties: S.optional(__S(147, __c18, 3)),
+          keyVaultProperties: S.optional(__S(736, __c92, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BookshelfPropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           bookshelfName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(148, __c18, 4)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(728, __c91, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5171,7 +5387,24 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBookshelveRequest" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyName: S.optional(S.String),
+          keyVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BookshelfKeyVaultPropertiesUpdate",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           capacity: S.optional(S.Number),
@@ -5179,15 +5412,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ChatModelDeploymentPropertiesUpdate",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           chatModelDeploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(150, __c18, 6)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(744, __c93, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5201,7 +5434,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5217,8 +5450,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
           nodePoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(152, __c19, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(752, __c94, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5228,15 +5461,19 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNodePoolRequest" });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(131, __c16, 3)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(664, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5246,7 +5483,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 3:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5254,15 +5495,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "StorageAssetPropertiesUpdate",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
           storageAssetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(155, __c19, 3)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(768, __c96, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5274,13 +5515,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateStorageAssetRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageContainerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -5293,27 +5538,27 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "UpdateStorageContainerRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentities: S.optional(__S(10, __c1, 2)),
+          workloadIdentities: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({
         identifier: "SupercomputerIdentitiesUpdateInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(158, __c19, 6)),
+          identities: S.optional(__S(784, __c98, 0)),
         }),
       ).annotate({
         identifier: "SupercomputerPropertiesUpdateInput",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5321,15 +5566,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           supercomputerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(159, __c19, 7)),
-          identity: S.optional(__S(160, __c20, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(785, __c98, 1)),
+          identity: S.optional(__S(786, __c98, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5341,22 +5586,26 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateSupercomputerRequest",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          environmentVariables: S.optional(__S(9, __c1, 1)),
-          definitionContent: S.optional(__S(71, __c8, 7)),
+          environmentVariables: S.optional(__S(96, __c12, 0)),
+          definitionContent: S.optional(__S(360, __c45, 0)),
         }),
       ).annotate({ identifier: "ToolPropertiesUpdate" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           toolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(162, __c20, 2)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(792, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5366,24 +5615,48 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateToolRequest" });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          supercomputerIds: S.optional(__S(16, __c2, 0)),
-          keyVaultProperties: S.optional(__S(147, __c18, 3)),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          supercomputerName: S.String.pipe(T.Label()),
+          nodePoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/supercomputers/{supercomputerName}/nodePools/{nodePoolName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteNodePoolRequest" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          supercomputerIds: S.optional(__S(56, __c7, 0)),
+          keyVaultProperties: S.optional(__S(736, __c92, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkspacePropertiesUpdate",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(164, __c20, 4)),
+          tags: S.optional(__S(96, __c12, 0)),
+          properties: S.optional(__S(808, __c101, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5393,14 +5666,18 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5412,13 +5689,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          supercomputerIds: S.optional(__S(16, __c2, 0)),
-          workspaceIdentity: __S(65, __c8, 1),
+          supercomputerIds: S.optional(__S(56, __c7, 0)),
+          workspaceIdentity: __S(328, __c41, 0),
           customerManagedKeys: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(75, __c9, 3)),
+          keyVaultProperties: S.optional(__S(392, __c49, 0)),
           logAnalyticsClusterId: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           agentSubnetId: S.optional(S.String),
@@ -5426,19 +5707,15 @@ function __c20(j: number): any {
           workspaceSubnetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(167, __c20, 7)),
+          properties: S.optional(__S(824, __c103, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5450,23 +5727,85 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(9, __c1, 1)),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(96, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(76, __c9, 4)),
+          properties: S.optional(__S(393, __c49, 1)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
   }
 }
-
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/workspaces/{workspaceName}/projects/{projectName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProjectRequest" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageContainerName: S.String.pipe(T.Label()),
+          storageAssetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers/{storageContainerName}/storageAssets/{storageAssetName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageAssetRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          storageContainerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Discovery/storageContainers/{storageContainerName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStorageContainerRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

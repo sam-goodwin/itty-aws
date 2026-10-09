@@ -998,7 +998,7 @@ export const createMeetingNote: API.OperationMethod<
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(3, __c0, 3) as any as S.Schema<CreateMeetingNoteRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateMeetingNoteResponse>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateMeetingNoteResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1012,8 +1012,8 @@ export const queryMeetingNotes: API.OperationMethod<
   QueryMeetingNotesError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<QueryMeetingNotesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<QueryMeetingNotesResponse>,
+  input: __S(46, __c1, 14) as any as S.Schema<QueryMeetingNotesRequest>,
+  output: __S(51, __c1, 19) as any as S.Schema<QueryMeetingNotesResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1059,6 +1059,14 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v1/blocks/meeting_notes", code: 200 })),
       ).annotate({ identifier: "CreateMeetingNoteRequest" });
     case 4:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateMeetingNoteResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bold: S.Boolean,
@@ -1069,7 +1077,7 @@ function __c0(j: number): any {
           color: S.String,
         }),
       ).annotate({ identifier: "AnnotationResponse" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1077,14 +1085,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RichTextItemResponseTextLink",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.NullOr(__S(5, __c0, 5)),
+          link: S.NullOr(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "RichTextItemResponseText" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1093,11 +1101,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PartialUserObjectResponse",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
@@ -1105,21 +1109,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RichTextItemResponseEquation",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           plain_text: S.String.pipe(T.SensitiveValue({})),
           href: S.NullOr(S.String),
-          annotations: __S(4, __c0, 4),
+          annotations: __S(32, __c1, 0),
           type: S.optional(S.String),
-          text: S.optional(__S(6, __c0, 6)),
+          text: S.optional(__S(34, __c1, 2)),
           mention: S.optional(S.Unknown),
-          equation: S.optional(__S(8, __c1, 0)),
+          equation: S.optional(__S(36, __c1, 4)),
         }),
       ).annotate({ identifier: "RichTextItemResponse" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(37, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           summary_block_id: S.optional(S.String),
@@ -1129,9 +1133,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateMeetingNoteResponseBodyCase1MeetingNotesChildren",
       });
-    case 4:
+    case 8:
       return S.Array(S.String);
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           start_time: S.optional(S.String),
@@ -1140,26 +1144,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateMeetingNoteResponseBodyCase1MeetingNotesRecording",
       });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateMeetingNoteResponse",
-      });
-    case 7:
+    case 10:
       return S.Array(S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           operator: S.String,
-          filters: S.optional(__S(15, __c1, 7)),
+          filters: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesRequestFilter",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           property: S.String,
@@ -1168,65 +1164,61 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "QueryMeetingNotesRequestSortItem",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(44, __c1, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(16, __c2, 0)),
-          sort: S.optional(__S(18, __c2, 2)),
+          filter: S.optional(__S(43, __c1, 11)),
+          sort: S.optional(__S(45, __c1, 13)),
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/blocks/meeting_notes/query", code: 200 })),
       ).annotate({ identifier: "QueryMeetingNotesRequest" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           start_time: S.String,
           end_time: S.String,
-          attendees: S.optional(__S(12, __c1, 4)),
+          attendees: S.optional(__S(40, __c1, 8)),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponseResultsItemMeetingNotesCalendarEvent",
       });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(__S(10, __c1, 2)),
+          title: S.optional(__S(38, __c1, 6)),
           status: S.optional(S.String),
-          children: S.optional(__S(11, __c1, 3)),
-          calendar_event: S.optional(__S(20, __c2, 4)),
-          recording: S.optional(__S(13, __c1, 5)),
+          children: S.optional(__S(39, __c1, 7)),
+          calendar_event: S.optional(__S(47, __c1, 15)),
+          recording: S.optional(__S(41, __c1, 9)),
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponseResultsItemMeetingNotes",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
           type: S.String,
-          meeting_notes: __S(21, __c2, 5),
+          meeting_notes: __S(48, __c1, 16),
           created_time: S.String,
           last_edited_time: S.String,
-          created_by: __S(7, __c0, 7),
-          last_edited_by: __S(7, __c0, 7),
+          created_by: __S(35, __c1, 3),
+          last_edited_by: __S(35, __c1, 3),
           has_children: S.Boolean,
           in_trash: S.Boolean,
         }),
       ).annotate({
         identifier: "QueryMeetingNotesResponseResultsItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
+      return S.Array(__S(49, __c1, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          results: __S(23, __c2, 7),
+          results: __S(50, __c1, 18),
           has_more: S.Boolean,
         }),
       ).annotate({
@@ -1234,7 +1226,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

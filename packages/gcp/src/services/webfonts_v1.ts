@@ -123,7 +123,7 @@ export const listWebfonts: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<ListWebfontsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<WebfontList>,
+  output: __S(10, __c0, 10) as any as S.Schema<WebfontList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -173,11 +173,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Tag" });
     case 7:
       return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           axes: S.optional(__S(4, __c0, 4)),
@@ -194,18 +190,17 @@ function __c1(j: number): any {
           variants: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "Webfont" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(9, __c1, 1)),
+          items: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "WebfontList" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

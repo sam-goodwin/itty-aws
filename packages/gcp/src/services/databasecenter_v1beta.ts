@@ -1645,8 +1645,8 @@ export const aggregateFleetV1beta: API.PaginatedOperationMethod<
   GcpOpContext,
   AggregateFleetResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AggregateFleetV1betaRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AggregateFleetResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<AggregateFleetV1betaRequest>,
+  output: __S(69, __c2, 5) as any as S.Schema<AggregateFleetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const aggregateIssueStatsV1beta: API.OperationMethod<
   AggregateIssueStatsV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AggregateIssueStatsV1betaRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AggregateIssueStatsResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<AggregateIssueStatsV1betaRequest>,
+  output: __S(166, __c5, 6) as any as S.Schema<AggregateIssueStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const aggregateQueryStatsFolders: API.OperationMethod<
   AggregateQueryStatsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<AggregateQueryStatsFoldersRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<AggregateQueryStatsFoldersRequest>,
+  output: __S(296, __c9, 8) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const aggregateQueryStatsOrganizations: API.OperationMethod<
   AggregateQueryStatsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<AggregateQueryStatsOrganizationsRequest>,
+  output: __S(296, __c9, 8) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const aggregateQueryStatsProjects: API.OperationMethod<
   AggregateQueryStatsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<AggregateQueryStatsProjectsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AggregateQueryStatsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<AggregateQueryStatsProjectsRequest>,
+  output: __S(296, __c9, 8) as any as S.Schema<AggregateQueryStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1746,8 @@ export const queryDatabaseResourceGroupsV1beta: API.OperationMethod<
   QueryDatabaseResourceGroupsV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<QueryDatabaseResourceGroupsResponse>,
+  input: __S(419, __c13, 3) as any as S.Schema<QueryDatabaseResourceGroupsV1betaRequest>,
+  output: __S(424, __c13, 8) as any as S.Schema<QueryDatabaseResourceGroupsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1761,8 @@ export const queryIssuesV1beta: API.OperationMethod<
   QueryIssuesV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<QueryIssuesV1betaRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<QueryIssuesResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<QueryIssuesV1betaRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<QueryIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1777,8 +1777,8 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
   GcpOpContext,
   QueryProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<QueryProductsV1betaRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<QueryProductsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<QueryProductsV1betaRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<QueryProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1787,6 +1787,78 @@ export const queryProductsV1beta: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String),
+          parent: S.optional(S.String),
+          filter: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+          pageToken: S.optional(S.String),
+          signalProductsFilters: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({ identifier: "QueryIssuesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta:queryIssues",
+            baseUrl: "https://databasecenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "QueryIssuesV1betaRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          signal: S.optional(__S(480, __c15, 0)),
+          resource: S.optional(__S(488, __c15, 8)),
+        }),
+      ).annotate({ identifier: "DatabaseResourceIssue" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceIssues: S.optional(__S(3, __c0, 3)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "QueryIssuesResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta:queryProducts",
+            baseUrl: "https://databasecenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "QueryProductsV1betaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          products: S.optional(__S(512, __c16, 0)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "QueryProductsResponse" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1835,8 +1907,56 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(65, __c2, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourcesCount: S.optional(S.Number),
+          dimension: S.optional(__S(66, __c2, 2)),
+          resourceGroupsCount: S.optional(S.Number),
+          deltaDetails: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({ identifier: "AggregateFleetRow" });
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          totalSize: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          rows: S.optional(__S(68, __c2, 4)),
+          resourceGroupsTotalCount: S.optional(S.Number),
+          unreachable: S.optional(__S(129, __c4, 1)),
+          resourceTotalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AggregateFleetResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          product: S.optional(__S(128, __c4, 0)),
+          fullResourceName: S.optional(S.String),
+          container: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceDetails" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          decreasedResources: S.optional(__S(97, __c3, 1)),
+          increasedResources: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({ identifier: "DeltaDetails" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           engine: S.optional(S.String),
@@ -1845,90 +1965,27 @@ function __c0(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          product: S.optional(__S(3, __c0, 3)),
-          fullResourceName: S.optional(S.String),
-          container: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceDetails" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          decreasedResources: S.optional(__S(5, __c0, 5)),
-          increasedResources: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "DeltaDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourcesCount: S.optional(S.Number),
-          dimension: S.optional(__S(2, __c0, 2)),
-          resourceGroupsCount: S.optional(S.Number),
-          deltaDetails: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AggregateFleetRow" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          totalSize: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          rows: S.optional(__S(8, __c1, 0)),
-          resourceGroupsTotalCount: S.optional(S.Number),
-          unreachable: S.optional(__S(9, __c1, 1)),
-          resourceTotalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AggregateFleetResponse" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          signalTypes: S.optional(__S(11, __c1, 3)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignalTypeGroup" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Databasecenter_Date" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          signalTypeGroups: S.optional(__S(13, __c1, 5)),
+          signalTypeGroups: S.optional(__S(193, __c6, 1)),
           parent: S.optional(S.String),
           filter: S.optional(S.String),
-          baselineDate: S.optional(__S(14, __c1, 6)),
+          baselineDate: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "AggregateIssueStatsRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c5, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1939,57 +1996,77 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AggregateIssueStatsV1betaRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           issueSeverity: S.optional(S.String),
           signalType: S.optional(S.String),
           resourceCount: S.optional(S.Number),
-          deltaDetails: S.optional(__S(6, __c0, 6)),
+          deltaDetails: S.optional(__S(98, __c3, 2)),
         }),
       ).annotate({ identifier: "IssueStats" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(162, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           resourcesCount: S.optional(S.Number),
           displayName: S.optional(S.String),
-          issueStats: S.optional(__S(18, __c2, 2)),
+          issueStats: S.optional(__S(163, __c5, 3)),
           healthyResourcesCount: S.optional(S.Number),
           resourceGroupsCount: S.optional(S.Number),
           healthyResourceGroupsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IssueGroupStats" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
     case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           totalResourcesCount: S.optional(S.Number),
           totalResourceGroupsCount: S.optional(S.Number),
-          unreachable: S.optional(__S(9, __c1, 1)),
-          issueGroupStats: S.optional(__S(20, __c2, 4)),
+          unreachable: S.optional(__S(129, __c4, 1)),
+          issueGroupStats: S.optional(__S(165, __c5, 5)),
         }),
       ).annotate({
         identifier: "AggregateIssueStatsResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          pageSize: S.optional(S.Number),
-          filter: S.optional(S.String),
-          pageToken: S.optional(S.String),
-          orderBy: S.optional(S.String),
+          signalTypes: S.optional(__S(224, __c7, 0)),
+          displayName: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "AggregateQueryStatsRequest",
-      });
-    case 7:
+      ).annotate({ identifier: "SignalTypeGroup" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Databasecenter_Date" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2002,19 +2079,30 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(__S(3, __c0, 3)),
+          pageSize: S.optional(S.Number),
+          filter: S.optional(S.String),
+          pageToken: S.optional(S.String),
+          orderBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AggregateQueryStatsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(__S(128, __c4, 0)),
           resourceType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceId" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           avgCpuTime: S.optional(S.String),
@@ -2024,7 +2112,43 @@ function __c3(j: number): any {
           metricsWindow: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryMetrics" });
-    case 3:
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          queryHash: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          resourceIds: S.optional(__S(290, __c9, 2)),
+          queryMetrics: S.optional(__S(291, __c9, 3)),
+          inefficientQueryInfo: S.optional(__S(320, __c10, 0)),
+          normalizedQuery: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryStats" });
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          aggregatedQueryStats: S.optional(__S(292, __c9, 4)),
+          queryStats: S.optional(__S(293, __c9, 5)),
+        }),
+      ).annotate({ identifier: "QueryStatsInfo" });
+    case 7:
+      return S.Array(__S(294, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(129, __c4, 1)),
+          queryStats: S.optional(__S(295, __c9, 7)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AggregateQueryStatsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sqlIndexStatement: S.optional(S.String),
@@ -2034,47 +2158,15 @@ function __c3(j: number): any {
           database: S.optional(S.String),
         }),
       ).annotate({ identifier: "InefficientQueryInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          queryHash: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceIds: S.optional(__S(25, __c3, 1)),
-          queryMetrics: S.optional(__S(26, __c3, 2)),
-          inefficientQueryInfo: S.optional(__S(27, __c3, 3)),
-          normalizedQuery: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryStats" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aggregatedQueryStats: S.optional(__S(28, __c3, 4)),
-          queryStats: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "QueryStatsInfo" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(9, __c1, 1)),
-          queryStats: S.optional(__S(31, __c3, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AggregateQueryStatsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2085,11 +2177,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AggregateQueryStatsOrganizationsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2100,31 +2196,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AggregateQueryStatsProjectsRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           signalType: S.optional(S.String),
           signalStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalFilter" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          signalType: S.optional(S.String),
-          products: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "SignalProductsFilters" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String),
@@ -2132,17 +2217,17 @@ function __c5(j: number): any {
           filter: S.optional(S.String),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          signalFilters: S.optional(__S(36, __c4, 4)),
-          signalTypeGroups: S.optional(__S(13, __c1, 5)),
-          signalProductsFilters: S.optional(__S(39, __c4, 7)),
+          signalFilters: S.optional(__S(417, __c13, 1)),
+          signalTypeGroups: S.optional(__S(193, __c6, 1)),
+          signalProductsFilters: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({
         identifier: "QueryDatabaseResourceGroupsRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(418, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2153,6 +2238,48 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "QueryDatabaseResourceGroupsV1betaRequest",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          issueCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IssueCount" });
+    case 5:
+      return S.Array(__S(420, __c13, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          rootResources: S.optional(__S(489, __c15, 9)),
+          signalGroups: S.optional(__S(421, __c13, 5)),
+        }),
+      ).annotate({ identifier: "DatabaseResourceGroup" });
+    case 7:
+      return S.Array(__S(422, __c13, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          totalSize: S.optional(S.String),
+          resourceGroups: S.optional(__S(423, __c13, 7)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "QueryDatabaseResourceGroupsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signalType: S.optional(S.String),
+          products: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "SignalProductsFilters" });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2165,7 +2292,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(__S(42, __c5, 2)),
+          startTime: S.optional(__S(450, __c14, 2)),
           day: S.optional(S.String),
           phase: S.optional(S.String),
         }),
@@ -2175,15 +2302,15 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          time: S.optional(__S(42, __c5, 2)),
-          endDate: S.optional(__S(14, __c1, 6)),
-          startDate: S.optional(__S(14, __c1, 6)),
+          time: S.optional(__S(450, __c14, 2)),
+          endDate: S.optional(__S(225, __c7, 1)),
+          startDate: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "ResourceMaintenanceDenySchedule",
       });
     case 5:
-      return S.Array(__S(44, __c5, 4));
+      return S.Array(__S(452, __c14, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2194,21 +2321,17 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          possibleFailureReasons: S.optional(__S(11, __c1, 3)),
-          maintenanceSchedule: S.optional(__S(43, __c5, 3)),
-          denyMaintenanceSchedules: S.optional(__S(45, __c5, 5)),
+          possibleFailureReasons: S.optional(__S(224, __c7, 0)),
+          maintenanceSchedule: S.optional(__S(451, __c14, 3)),
+          denyMaintenanceSchedules: S.optional(__S(453, __c14, 5)),
           previousMaintenanceVersion: S.optional(S.String),
           state: S.optional(S.String),
-          upcomingMaintenance: S.optional(__S(46, __c5, 6)),
+          upcomingMaintenance: S.optional(__S(454, __c14, 6)),
           maintenanceVersion: S.optional(S.String),
-          currentVersionReleaseDate: S.optional(__S(14, __c1, 6)),
+          currentVersionReleaseDate: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "MaintenanceInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           inherited: S.optional(S.Boolean),
@@ -2217,43 +2340,43 @@ function __c6(j: number): any {
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tag" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(456, __c14, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           backupdrManaged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BackupDRConfig" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           int64Value: S.optional(S.String),
           doubleValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TypedValue" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(51, __c6, 3)),
+          value: S.optional(__S(459, __c14, 11)),
           observationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricData" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          nodeCount: S.optional(__S(52, __c6, 4)),
-          peakStorageUtilization: S.optional(__S(52, __c6, 4)),
-          processingUnitCount: S.optional(__S(52, __c6, 4)),
-          p95CpuUtilization: S.optional(__S(52, __c6, 4)),
-          peakNumberConnections: S.optional(__S(52, __c6, 4)),
-          p99CpuUtilization: S.optional(__S(52, __c6, 4)),
-          currentStorageUsedBytes: S.optional(__S(52, __c6, 4)),
-          currentMemoryUsedBytes: S.optional(__S(52, __c6, 4)),
-          peakMemoryUtilization: S.optional(__S(52, __c6, 4)),
+          nodeCount: S.optional(__S(460, __c14, 12)),
+          peakStorageUtilization: S.optional(__S(460, __c14, 12)),
+          processingUnitCount: S.optional(__S(460, __c14, 12)),
+          p95CpuUtilization: S.optional(__S(460, __c14, 12)),
+          peakNumberConnections: S.optional(__S(460, __c14, 12)),
+          p99CpuUtilization: S.optional(__S(460, __c14, 12)),
+          currentStorageUsedBytes: S.optional(__S(460, __c14, 12)),
+          currentMemoryUsedBytes: S.optional(__S(460, __c14, 12)),
+          peakMemoryUtilization: S.optional(__S(460, __c14, 12)),
         }),
       ).annotate({ identifier: "Metrics" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           maxReservationSlotCount: S.optional(S.String),
@@ -2263,7 +2386,7 @@ function __c6(j: number): any {
           shardCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MachineConfig" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
@@ -2271,88 +2394,80 @@ function __c6(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Label" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(463, __c14, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           standard: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegulatoryStandard" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 18:
+      return S.Array(__S(465, __c14, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           externalUri: S.optional(S.String),
-          regulatoryStandards: S.optional(__S(58, __c7, 2)),
+          regulatoryStandards: S.optional(__S(466, __c14, 18)),
           category: S.optional(S.String),
           signal: S.optional(S.String),
         }),
       ).annotate({ identifier: "SCCInfo" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           container: S.optional(S.String),
-          product: S.optional(__S(3, __c0, 3)),
+          product: S.optional(__S(128, __c4, 0)),
           fullResourceName: S.optional(S.String),
           resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubResource" });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           quantityBasedRetention: S.optional(S.Number),
           durationBasedRetention: S.optional(S.String),
           timestampBasedRetentionTime: S.optional(S.String),
-          subResource: S.optional(__S(60, __c7, 4)),
+          subResource: S.optional(__S(468, __c14, 20)),
         }),
       ).annotate({ identifier: "RetentionSettingsInfo" });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           deletionProtectionEnabled: S.optional(S.Boolean),
-          subResource: S.optional(__S(60, __c7, 4)),
+          subResource: S.optional(__S(468, __c14, 20)),
         }),
       ).annotate({ identifier: "DeletionProtectionInfo" });
-    case 7:
-      return S.Array(__S(43, __c5, 3));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
+      return S.Array(__S(451, __c14, 3));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          resourceMaintenanceSchedules: S.optional(__S(63, __c7, 7)),
+          resourceMaintenanceSchedules: S.optional(__S(471, __c14, 23)),
         }),
       ).annotate({
         identifier: "MaintenanceRecommendationInfo",
       });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           resourceSuspended: S.optional(S.Boolean),
           suspensionReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSuspensionInfo" });
-    case 2:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           operationErrorType: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          subResource: S.optional(__S(60, __c7, 4)),
+          subResource: S.optional(__S(468, __c14, 20)),
           state: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupRunInfo" });
-    case 3:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           recommender: S.optional(S.String),
@@ -2360,44 +2475,44 @@ function __c8(j: number): any {
           recommenderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationInfo" });
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           recommendedMinorVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutdatedMinorVersionInfo" });
-    case 5:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          subResource: S.optional(__S(60, __c7, 4)),
+          subResource: S.optional(__S(468, __c14, 20)),
           isEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "AutomatedBackupPolicyInfo",
       });
-    case 6:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          inefficientQueryInfo: S.optional(__S(27, __c3, 3)),
-          sccInfo: S.optional(__S(59, __c7, 3)),
+          inefficientQueryInfo: S.optional(__S(320, __c10, 0)),
+          sccInfo: S.optional(__S(467, __c14, 19)),
           signalEventTime: S.optional(S.String),
-          shortBackupRetentionInfo: S.optional(__S(61, __c7, 5)),
-          deletionProtectionInfo: S.optional(__S(62, __c7, 6)),
+          shortBackupRetentionInfo: S.optional(__S(469, __c14, 21)),
+          deletionProtectionInfo: S.optional(__S(470, __c14, 22)),
           signalType: S.optional(S.String),
           signalSource: S.optional(S.String),
-          maintenanceRecommendationInfo: S.optional(__S(64, __c8, 0)),
-          resourceSuspensionInfo: S.optional(__S(65, __c8, 1)),
-          backupRunInfo: S.optional(__S(66, __c8, 2)),
-          recommendationInfo: S.optional(__S(67, __c8, 3)),
-          outdatedMinorVersionInfo: S.optional(__S(68, __c8, 4)),
-          automatedBackupPolicyInfo: S.optional(__S(69, __c8, 5)),
+          maintenanceRecommendationInfo: S.optional(__S(472, __c14, 24)),
+          resourceSuspensionInfo: S.optional(__S(473, __c14, 25)),
+          backupRunInfo: S.optional(__S(474, __c14, 26)),
+          recommendationInfo: S.optional(__S(475, __c14, 27)),
+          outdatedMinorVersionInfo: S.optional(__S(476, __c14, 28)),
+          automatedBackupPolicyInfo: S.optional(__S(477, __c14, 29)),
         }),
       ).annotate({ identifier: "AdditionalDetail" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 31:
+      return S.Array(__S(478, __c14, 30));
   }
 }
-function __c9(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2405,22 +2520,22 @@ function __c9(j: number): any {
           signalStatus: S.optional(S.String),
           issueSeverity: S.optional(S.String),
           signalType: S.optional(S.String),
-          additionalDetails: S.optional(__S(71, __c8, 7)),
+          additionalDetails: S.optional(__S(479, __c14, 31)),
           issueCreateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Signal" });
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(480, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           issueCount: S.optional(S.Number),
-          signals: S.optional(__S(73, __c9, 1)),
+          signals: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({ identifier: "SignalGroup" });
     case 3:
-      return S.Array(__S(74, __c9, 2));
+      return S.Array(__S(482, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2431,146 +2546,50 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Lineage" });
     case 5:
-      return S.Array(__S(76, __c9, 4));
+      return S.Array(__S(484, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          lineages: S.optional(__S(77, __c9, 5)),
+          lineages: S.optional(__S(485, __c15, 5)),
           fullResourceName: S.optional(S.String),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Affiliation" });
     case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(486, __c15, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          maintenanceInfo: S.optional(__S(47, __c5, 7)),
-          product: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(49, __c6, 1)),
-          backupdrConfig: S.optional(__S(50, __c6, 2)),
+          maintenanceInfo: S.optional(__S(455, __c14, 7)),
+          product: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(457, __c14, 9)),
+          backupdrConfig: S.optional(__S(458, __c14, 10)),
           container: S.optional(S.String),
-          metrics: S.optional(__S(53, __c6, 5)),
+          metrics: S.optional(__S(461, __c14, 13)),
           location: S.optional(S.String),
-          machineConfig: S.optional(__S(54, __c6, 6)),
+          machineConfig: S.optional(__S(462, __c14, 14)),
           resourceName: S.optional(S.String),
           resourceCategory: S.optional(S.String),
           subResourceType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
-          childResources: S.optional(S.suspend(() => __S(81, __c10, 1))),
-          labels: S.optional(__S(56, __c7, 0)),
-          signalGroups: S.optional(__S(75, __c9, 3)),
+          childResources: S.optional(S.suspend(() => __S(489, __c15, 9))),
+          labels: S.optional(__S(464, __c14, 16)),
+          signalGroups: S.optional(__S(483, __c15, 3)),
           resourceType: S.optional(S.String),
           edition: S.optional(S.String),
-          affiliations: S.optional(__S(79, __c9, 7)),
+          affiliations: S.optional(__S(487, __c15, 7)),
         }),
       ).annotate({ identifier: "DatabaseResource" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          issueCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IssueCount" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rootResources: S.optional(__S(81, __c10, 1)),
-          signalGroups: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "DatabaseResourceGroup" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          totalSize: S.optional(S.String),
-          resourceGroups: S.optional(__S(85, __c10, 5)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "QueryDatabaseResourceGroupsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String),
-          parent: S.optional(S.String),
-          filter: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-          pageToken: S.optional(S.String),
-          signalProductsFilters: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "QueryIssuesRequest" });
+    case 9:
+      return S.Array(__S(488, __c15, 8));
   }
 }
-function __c11(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta:queryIssues",
-            baseUrl: "https://databasecenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "QueryIssuesV1betaRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          signal: S.optional(__S(72, __c9, 0)),
-          resource: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "DatabaseResourceIssue" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceIssues: S.optional(__S(90, __c11, 2)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "QueryIssuesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta:queryProducts",
-            baseUrl: "https://databasecenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "QueryProductsV1betaRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          products: S.optional(__S(37, __c4, 5)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "QueryProductsResponse" });
+      return S.Array(__S(128, __c4, 0));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

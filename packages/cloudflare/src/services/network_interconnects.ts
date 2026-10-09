@@ -422,8 +422,8 @@ export const createCni: API.OperationMethod<
   CreateCniError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateCniRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateCniResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCniRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateCniResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -437,8 +437,8 @@ export const createInterconnect: API.OperationMethod<
   CreateInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateInterconnectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateInterconnectResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateInterconnectRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<CreateInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -452,8 +452,8 @@ export const deleteCni: API.OperationMethod<
   DeleteCniError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteCniRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteCniResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteCniRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<DeleteCniResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -467,8 +467,8 @@ export const deleteInterconnect: API.OperationMethod<
   DeleteInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteInterconnectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteInterconnectResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteInterconnectRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<DeleteInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -482,8 +482,8 @@ export const getCni: API.OperationMethod<
   GetCniError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetCniRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetCniResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetCniRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetCniResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const getInterconnect: API.OperationMethod<
   GetInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetInterconnectRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetInterconnectResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetInterconnectRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetSettingRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetSettingResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const getSlot: API.OperationMethod<
   GetSlotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetSlotRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetSlotResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetSlotRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<GetSlotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const listCnis: API.OperationMethod<
   ListCnisError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListCnisRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListCnisResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListCnisRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListCnisResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -557,8 +557,8 @@ export const listInterconnects: API.OperationMethod<
   ListInterconnectsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListInterconnectsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListInterconnectsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListInterconnectsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListInterconnectsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -572,8 +572,8 @@ export const listSlots: API.OperationMethod<
   ListSlotsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListSlotsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListSlotsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListSlotsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListSlotsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -587,8 +587,8 @@ export const loaInterconnect: API.OperationMethod<
   LoaInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<LoaInterconnectRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<LoaInterconnectResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<LoaInterconnectRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<LoaInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<PutSettingRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PutSettingResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<PutSettingRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<PutSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const statusInterconnect: API.OperationMethod<
   StatusInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<StatusInterconnectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<StatusInterconnectResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<StatusInterconnectRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<StatusInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -632,8 +632,8 @@ export const updateCni: API.OperationMethod<
   UpdateCniError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UpdateCniRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateCniResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateCniRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<UpdateCniResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -645,76 +645,28 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          conduitName: S.String.pipe(T.Body("conduit_name")),
-          description: S.String,
-          mtu: S.Number,
-        }),
-      ).annotate({ identifier: "CnisCreateRequestMagic" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customerAsn: S.Number.pipe(T.Body("customer_asn")),
-          extraPrefixes: __S(1, __c0, 1).pipe(T.Body("extra_prefixes")),
-          md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-        }),
-      ).annotate({ identifier: "CnisCreateRequestBgp" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           account: S.String,
           interconnect: S.String,
-          magic: __S(0, __c0, 0),
-          bgp: S.optional(__S(2, __c0, 2)),
+          magic: __S(32, __c4, 0),
+          bgp: S.optional(__S(8, __c1, 0)),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/cni/cnis", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateCniRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customerAsn: S.Number.pipe(T.Body("customer_asn")),
-          extraPrefixes: __S(1, __c0, 1).pipe(T.Body("extra_prefixes")),
-          md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
-        }),
-      ).annotate({ identifier: "CnisCreateResponseBgp" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           account: S.String,
           custIp: S.String.pipe(T.Body("cust_ip")),
           interconnect: S.String,
-          magic: __S(0, __c0, 0),
+          magic: __S(32, __c4, 0),
           p2pIp: S.String.pipe(T.Body("p2p_ip")),
-          bgp: S.optional(S.NullOr(__S(4, __c0, 4))),
+          bgp: S.optional(S.NullOr(__S(16, __c2, 0))),
           bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateCniResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          account: S.String,
-          slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
-          type: S.String,
-          speed: S.optional(S.String),
-          bandwidth: S.optional(S.String),
-          pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/accounts/{account_id}/cni/interconnects", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateInterconnectRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "CreateInterconnectResponse",
-      });
   }
 }
 function __c1(j: number): any {
@@ -722,86 +674,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cni: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({ method: "DELETE", uri: "/accounts/{account_id}/cni/cnis/{cni}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteCniRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteCniResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          icon: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/cni/interconnects/{icon}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteInterconnectRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cni: S.String.pipe(T.Label()),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/cnis/{cni}", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCniRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          account: S.String,
-          custIp: S.String.pipe(T.Body("cust_ip")),
-          interconnect: S.String,
-          magic: __S(0, __c0, 0),
-          p2pIp: S.String.pipe(T.Body("p2p_ip")),
-          bgp: S.optional(S.NullOr(__S(4, __c0, 4))),
-          bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCniResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          icon: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cni/interconnects/{icon}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetInterconnectRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/settings", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSettingRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAsn: S.Number.pipe(T.Body("default_asn")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSettingResponse" });
+          customerAsn: S.Number.pipe(T.Body("customer_asn")),
+          extraPrefixes: __S(24, __c3, 0).pipe(T.Body("extra_prefixes")),
+          md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+        }),
+      ).annotate({ identifier: "CnisCreateRequestBgp" });
   }
 }
 function __c2(j: number): any {
@@ -809,82 +686,32 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          slot: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/slots/{slot}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSlotRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          address: __S(1, __c0, 1),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "SlotsGetResponseFacility" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          facility: __S(17, __c2, 1),
-          occupied: S.Boolean,
-          site: S.String,
-          speed: S.String,
-          account: S.optional(S.NullOr(S.String)),
-          ccrDeviceName: S.optional(S.NullOr(S.String).pipe(T.Body("ccr_device_name"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSlotResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cursor: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          slot: S.optional(S.String.pipe(T.Query())),
-          tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/cnis", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListCnisRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           customerAsn: S.Number.pipe(T.Body("customer_asn")),
-          extraPrefixes: __S(1, __c0, 1).pipe(T.Body("extra_prefixes")),
+          extraPrefixes: __S(24, __c3, 0).pipe(T.Body("extra_prefixes")),
           md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
         }),
-      ).annotate({
-        identifier: "CnisListResponseItemsItemBgp",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          account: S.String,
-          custIp: S.String.pipe(T.Body("cust_ip")),
-          interconnect: S.String,
-          magic: __S(0, __c0, 0),
-          p2pIp: S.String.pipe(T.Body("p2p_ip")),
-          bgp: S.optional(S.NullOr(__S(20, __c2, 4))),
-          bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
-        }),
-      ).annotate({
-        identifier: "CnisListResponseItemsItem",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(22, __c2, 6),
-          next: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListCnisResponse" });
+      ).annotate({ identifier: "CnisCreateResponseBgp" });
   }
 }
 function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conduitName: S.String.pipe(T.Body("conduit_name")),
+          description: S.String,
+          mtu: S.Number,
+        }),
+      ).annotate({ identifier: "CnisCreateRequestMagic" });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -919,17 +746,21 @@ function __c3(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(26, __c3, 2),
+          items: __S(42, __c5, 2),
           next: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListInterconnectsResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -943,20 +774,20 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/slots", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSlotsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          address: __S(1, __c0, 1),
+          address: __S(24, __c3, 0),
           name: S.String,
         }),
       ).annotate({
         identifier: "SlotsListResponseItemsItemFacility",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          facility: __S(29, __c3, 5),
+          facility: __S(49, __c6, 1),
           occupied: S.Boolean,
           site: S.String,
           speed: S.String,
@@ -966,20 +797,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SlotsListResponseItemsItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(31, __c3, 7),
+          items: __S(51, __c6, 3),
           next: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSlotsResponse" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -995,7 +826,11 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LoaInterconnectRequest" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1004,7 +839,11 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/cni/settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSettingRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1021,7 +860,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StatusInterconnectRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1030,30 +873,254 @@ function __c4(j: number): any {
           account: S.String,
           custIp: S.String.pipe(T.Body("cust_ip")),
           interconnect: S.String,
-          magic: __S(0, __c0, 0),
+          magic: __S(32, __c4, 0),
           p2pIp: S.String.pipe(T.Body("p2p_ip")),
-          bgp: S.optional(__S(2, __c0, 2)),
+          bgp: S.optional(__S(8, __c1, 0)),
           bgpMode: S.optional(S.String.pipe(T.Body("bgp_mode"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/cni/cnis/{cni}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateCniRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           account: S.String,
           custIp: S.String.pipe(T.Body("cust_ip")),
           interconnect: S.String,
-          magic: __S(0, __c0, 0),
+          magic: __S(32, __c4, 0),
           p2pIp: S.String.pipe(T.Body("p2p_ip")),
-          bgp: S.optional(S.NullOr(__S(4, __c0, 4))),
+          bgp: S.optional(S.NullOr(__S(16, __c2, 0))),
           bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateCniResponse" });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          account: S.String,
+          slotId: S.optional(S.String.pipe(T.Body("slot_id"))),
+          type: S.String,
+          speed: S.optional(S.String),
+          bandwidth: S.optional(S.String),
+          pairingKey: S.optional(S.String.pipe(T.Body("pairing_key"))),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/accounts/{account_id}/cni/interconnects", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateInterconnectRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "CreateInterconnectResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cni: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({ method: "DELETE", uri: "/accounts/{account_id}/cni/cnis/{cni}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteCniRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteCniResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          icon: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/cni/interconnects/{icon}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteInterconnectRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cni: S.String.pipe(T.Label()),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/cnis/{cni}", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCniRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account: S.String,
+          custIp: S.String.pipe(T.Body("cust_ip")),
+          interconnect: S.String,
+          magic: __S(32, __c4, 0),
+          p2pIp: S.String.pipe(T.Body("p2p_ip")),
+          bgp: S.optional(S.NullOr(__S(16, __c2, 0))),
+          bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCniResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          icon: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cni/interconnects/{icon}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetInterconnectRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/settings", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSettingRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAsn: S.Number.pipe(T.Body("default_asn")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSettingResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          slot: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/slots/{slot}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSlotRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: __S(24, __c3, 0),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "SlotsGetResponseFacility" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          facility: __S(161, __c20, 1),
+          occupied: S.Boolean,
+          site: S.String,
+          speed: S.String,
+          account: S.optional(S.NullOr(S.String)),
+          ccrDeviceName: S.optional(S.NullOr(S.String).pipe(T.Body("ccr_device_name"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSlotResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cursor: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          slot: S.optional(S.String.pipe(T.Query())),
+          tunnelId: S.optional(S.String.pipe(T.Query("tunnel_id"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/cni/cnis", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListCnisRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerAsn: S.Number.pipe(T.Body("customer_asn")),
+          extraPrefixes: __S(24, __c3, 0).pipe(T.Body("extra_prefixes")),
+          md5Key: S.optional(S.NullOr(S.String).pipe(T.Body("md5_key"))),
+        }),
+      ).annotate({
+        identifier: "CnisListResponseItemsItemBgp",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account: S.String,
+          custIp: S.String.pipe(T.Body("cust_ip")),
+          interconnect: S.String,
+          magic: __S(32, __c4, 0),
+          p2pIp: S.String.pipe(T.Body("p2p_ip")),
+          bgp: S.optional(S.NullOr(__S(169, __c21, 1))),
+          bgpMode: S.optional(S.NullOr(S.String).pipe(T.Body("bgp_mode"))),
+        }),
+      ).annotate({
+        identifier: "CnisListResponseItemsItem",
+      });
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(171, __c21, 3),
+          next: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListCnisResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

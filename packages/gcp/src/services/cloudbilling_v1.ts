@@ -898,8 +898,8 @@ export const cancelTasks: API.OperationMethod<
   CancelTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelTasksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Task>,
+  input: __S(865, __c27, 1) as any as S.Schema<CancelTasksRequest>,
+  output: __S(937, __c29, 9) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -913,8 +913,8 @@ export const createBillingAccounts: API.OperationMethod<
   CreateBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,8 @@ export const createBillingAccountsSubAccounts: API.OperationMethod<
   CreateBillingAccountsSubAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateBillingAccountsSubAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const createOrganizationsBillingAccounts: API.OperationMethod<
   CreateOrganizationsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateOrganizationsBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +973,8 @@ export const createTasksPushNotificationConfigs: API.OperationMethod<
   CreateTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<TaskPushNotificationConfig>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateTasksPushNotificationConfigsRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<TaskPushNotificationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const deleteTasksPushNotificationConfigs: API.OperationMethod<
   DeleteTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Empty>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteTasksPushNotificationConfigsRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const getBillingAccounts: API.OperationMethod<
   GetBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const getBillingInfoProjects: API.OperationMethod<
   GetBillingInfoProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetBillingInfoProjectsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ProjectBillingInfo>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetBillingInfoProjectsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProjectBillingInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1038,8 @@ export const getCardV1: API.OperationMethod<
   GetCardV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetCardV1Request>,
-  output: __S(55, __c6, 7) as any as S.Schema<AgentCard>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetCardV1Request>,
+  output: __S(124, __c3, 28) as any as S.Schema<AgentCard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1053,8 @@ export const getIamPolicyBillingAccounts: API.OperationMethod<
   GetIamPolicyBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIamPolicyBillingAccountsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Policy>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetIamPolicyBillingAccountsRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1064,8 @@ export type GetTasksError = NotFound | Forbidden | GcpOpError;
 /** Get the current state of a task from the agent. */
 export const getTasks: API.OperationMethod<GetTasksRequest, Task, GetTasksError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(65, __c8, 1) as any as S.Schema<GetTasksRequest>,
-    output: __S(13, __c1, 5) as any as S.Schema<Task>,
+    input: __S(192, __c6, 0) as any as S.Schema<GetTasksRequest>,
+    output: __S(937, __c29, 9) as any as S.Schema<Task>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const getTasksPushNotificationConfigs: API.OperationMethod<
   GetTasksPushNotificationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetTasksPushNotificationConfigsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<TaskPushNotificationConfig>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetTasksPushNotificationConfigsRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<TaskPushNotificationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1095,8 +1095,8 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListBillingAccountsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListBillingAccountsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListBillingAccountsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<ListBillingAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1112,8 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProjectBillingInfoResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListBillingAccountsProjectsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListProjectBillingInfoResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListBillingAccountsProjectsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListProjectBillingInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1129,8 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListBillingAccountsSubAccountsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListBillingAccountsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListBillingAccountsSubAccountsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<ListBillingAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1146,8 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBillingAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListOrganizationsBillingAccountsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListBillingAccountsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListOrganizationsBillingAccountsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<ListBillingAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1163,8 @@ export const listServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListServicesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListServicesResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1180,8 @@ export const listServicesSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListServicesSkusRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListSkusResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListServicesSkusRequest>,
+  output: __S(460, __c14, 12) as any as S.Schema<ListSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1197,8 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTaskPushNotificationConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListTasksPushNotificationConfigsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListTaskPushNotificationConfigResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListTasksPushNotificationConfigsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<ListTaskPushNotificationConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1213,8 @@ export const moveBillingAccounts: API.OperationMethod<
   MoveBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<MoveBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(513, __c16, 1) as any as S.Schema<MoveBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1228,8 @@ export const moveOrganizationsBillingAccounts: API.OperationMethod<
   MoveOrganizationsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(544, __c17, 0) as any as S.Schema<MoveOrganizationsBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1243,8 @@ export const patchBillingAccounts: API.OperationMethod<
   PatchBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<PatchBillingAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BillingAccount>,
+  input: __S(576, __c18, 0) as any as S.Schema<PatchBillingAccountsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<BillingAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1258,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<SendMessageRequest_>,
-  output: __S(102, __c12, 6) as any as S.Schema<SendMessageResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<SendMessageRequest_>,
+  output: __S(609, __c19, 1) as any as S.Schema<SendMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1278,8 @@ export const setIamPolicyBillingAccounts: API.OperationMethod<
   SetIamPolicyBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<SetIamPolicyBillingAccountsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Policy>,
+  input: __S(673, __c21, 1) as any as S.Schema<SetIamPolicyBillingAccountsRequest>,
+  output: __S(167, __c5, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1293,8 @@ export const streamMessage: API.OperationMethod<
   StreamMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<StreamMessageRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StreamResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<StreamMessageRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<StreamResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1308,8 +1308,8 @@ export const subscribeTasks: API.OperationMethod<
   SubscribeTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<SubscribeTasksRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StreamResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<SubscribeTasksRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<StreamResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1328,8 @@ export const testIamPermissionsBillingAccounts: API.OperationMethod<
   TestIamPermissionsBillingAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(801, __c25, 1) as any as S.Schema<TestIamPermissionsBillingAccountsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1348,8 @@ export const updateBillingInfoProjects: API.OperationMethod<
   UpdateBillingInfoProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UpdateBillingInfoProjectsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ProjectBillingInfo>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdateBillingInfoProjectsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProjectBillingInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1357,230 +1357,6 @@ export const updateBillingInfoProjects: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CancelTaskRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelTasksRequest" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          fileWithUri: S.optional(S.String),
-          name: S.optional(S.String),
-          fileWithBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FilePart" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DataPart" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          file: S.optional(__S(4, __c0, 4)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          data: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Part" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          extensions: S.optional(__S(3, __c0, 3)),
-          content: S.optional(__S(7, __c0, 7)),
-          contextId: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          role: S.optional(S.String),
-          messageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(8, __c1, 0)),
-          timestamp: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(3, __c0, 3)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          parts: S.optional(__S(7, __c0, 7)),
-          artifactId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Artifact" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(2, __c0, 2)),
-          history: S.optional(__S(9, __c1, 1)),
-          status: S.optional(__S(10, __c1, 2)),
-          id: S.optional(S.String),
-          contextId: S.optional(S.String),
-          artifacts: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Task" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          name: S.optional(S.String),
-          open: S.optional(S.Boolean),
-          parent: S.optional(S.String),
-          masterBillingAccount: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BillingAccount" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/billingAccounts",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBillingAccountsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/subAccounts",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBillingAccountsSubAccountsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/billingAccounts",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsBillingAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          schemes: S.optional(__S(3, __c0, 3)),
-          credentials: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthenticationInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          authentication: S.optional(__S(18, __c2, 2)),
-          url: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PushNotificationConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          pushNotificationConfig: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "TaskPushNotificationConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          configId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTasksPushNotificationConfigsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          tenant: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTasksPushNotificationConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1596,7 +1372,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1610,7 +1390,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetBillingInfoProjectsRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           billingEnabled: S.optional(S.Boolean),
@@ -1619,7 +1403,11 @@ function __c3(j: number): any {
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectBillingInfo" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.optional(S.String.pipe(T.Query())),
@@ -1631,14 +1419,14 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCardV1Request" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           organization: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentProvider" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           transport: S.optional(S.String),
@@ -1646,67 +1434,59 @@ function __c3(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentInterface" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(98, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           required: S.optional(S.Boolean),
           uri: S.optional(S.String),
-          params: S.optional(__S(2, __c0, 2)),
+          params: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "AgentExtension" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          extensions: S.optional(__S(32, __c4, 0)),
+          extensions: S.optional(__S(101, __c3, 5)),
           streaming: S.optional(S.Boolean),
           pushNotifications: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AgentCapabilities" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          list: S.optional(__S(3, __c0, 3)),
+          list: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "StringList" });
-    case 3:
-      return S.Record(S.String, __S(34, __c4, 2));
-    case 4:
+    case 8:
+      return S.Record(S.String, __S(103, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          schemes: S.optional(__S(35, __c4, 3)),
+          schemes: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({ identifier: "Security" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(105, __c3, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          inputModes: S.optional(__S(3, __c0, 3)),
-          examples: S.optional(__S(3, __c0, 3)),
-          outputModes: S.optional(__S(3, __c0, 3)),
-          security: S.optional(__S(37, __c4, 5)),
+          inputModes: S.optional(__S(960, __c30, 0)),
+          examples: S.optional(__S(960, __c30, 0)),
+          outputModes: S.optional(__S(960, __c30, 0)),
+          security: S.optional(__S(106, __c3, 10)),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(960, __c30, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentSkill" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(107, __c3, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1714,73 +1494,69 @@ function __c5(j: number): any {
           scheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "HTTPAuthSecurityScheme" });
-    case 1:
+    case 14:
       return S.Record(S.String, S.String);
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41, __c5, 1)),
+          scopes: S.optional(__S(110, __c3, 14)),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClientCredentialsOAuthFlow",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           authorizationUrl: S.optional(S.String),
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41, __c5, 1)),
+          scopes: S.optional(__S(110, __c3, 14)),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthorizationCodeOAuthFlow",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(41, __c5, 1)),
+          scopes: S.optional(__S(110, __c3, 14)),
           refreshUrl: S.optional(S.String),
           tokenUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "PasswordOAuthFlow" });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           authorizationUrl: S.optional(S.String),
           refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(41, __c5, 1)),
+          scopes: S.optional(__S(110, __c3, 14)),
         }),
       ).annotate({ identifier: "ImplicitOAuthFlow" });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          clientCredentials: S.optional(__S(42, __c5, 2)),
-          authorizationCode: S.optional(__S(43, __c5, 3)),
-          password: S.optional(__S(44, __c5, 4)),
-          implicit: S.optional(__S(45, __c5, 5)),
+          clientCredentials: S.optional(__S(111, __c3, 15)),
+          authorizationCode: S.optional(__S(112, __c3, 16)),
+          password: S.optional(__S(113, __c3, 17)),
+          implicit: S.optional(__S(114, __c3, 18)),
         }),
       ).annotate({ identifier: "OAuthFlows" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           oauth2MetadataUrl: S.optional(S.String),
-          flows: S.optional(__S(46, __c5, 6)),
+          flows: S.optional(__S(115, __c3, 19)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OAuth2SecurityScheme" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "MutualTlsSecurityScheme" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1789,7 +1565,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "OpenIdConnectSecurityScheme",
       });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -1797,54 +1573,54 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "APIKeySecurityScheme" });
-    case 3:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          httpAuthSecurityScheme: S.optional(__S(40, __c5, 0)),
-          oauth2SecurityScheme: S.optional(__S(47, __c5, 7)),
-          mtlsSecurityScheme: S.optional(__S(48, __c6, 0)),
-          openIdConnectSecurityScheme: S.optional(__S(49, __c6, 1)),
-          apiKeySecurityScheme: S.optional(__S(50, __c6, 2)),
+          httpAuthSecurityScheme: S.optional(__S(109, __c3, 13)),
+          oauth2SecurityScheme: S.optional(__S(116, __c3, 20)),
+          mtlsSecurityScheme: S.optional(__S(117, __c3, 21)),
+          openIdConnectSecurityScheme: S.optional(__S(118, __c3, 22)),
+          apiKeySecurityScheme: S.optional(__S(119, __c3, 23)),
         }),
       ).annotate({ identifier: "SecurityScheme" });
-    case 4:
-      return S.Record(S.String, __S(51, __c6, 3));
-    case 5:
+    case 25:
+      return S.Record(S.String, __S(120, __c3, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          header: S.optional(__S(2, __c0, 2)),
+          header: S.optional(__S(896, __c28, 0)),
           protected: S.optional(S.String),
           signature: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentCardSignature" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 27:
+      return S.Array(__S(122, __c3, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(__S(28, __c3, 4)),
-          defaultOutputModes: S.optional(__S(3, __c0, 3)),
+          provider: S.optional(__S(97, __c3, 1)),
+          defaultOutputModes: S.optional(__S(960, __c30, 0)),
           description: S.optional(S.String),
-          additionalInterfaces: S.optional(__S(30, __c3, 6)),
-          capabilities: S.optional(__S(33, __c4, 1)),
+          additionalInterfaces: S.optional(__S(99, __c3, 3)),
+          capabilities: S.optional(__S(102, __c3, 6)),
           protocolVersion: S.optional(S.String),
           name: S.optional(S.String),
-          skills: S.optional(__S(39, __c4, 7)),
-          defaultInputModes: S.optional(__S(3, __c0, 3)),
-          securitySchemes: S.optional(__S(52, __c6, 4)),
+          skills: S.optional(__S(108, __c3, 12)),
+          defaultInputModes: S.optional(__S(960, __c30, 0)),
+          securitySchemes: S.optional(__S(121, __c3, 25)),
           supportsAuthenticatedExtendedCard: S.optional(S.Boolean),
           url: S.optional(S.String),
           preferredTransport: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          security: S.optional(__S(37, __c4, 5)),
-          signatures: S.optional(__S(54, __c6, 6)),
+          security: S.optional(__S(106, __c3, 10)),
+          signatures: S.optional(__S(123, __c3, 27)),
           version: S.optional(S.String),
           documentationUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentCard" });
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1861,7 +1637,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyBillingAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1870,48 +1650,48 @@ function __c7(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(57, __c7, 1)),
-          members: S.optional(__S(3, __c0, 3)),
+          condition: S.optional(__S(160, __c5, 0)),
+          members: S.optional(__S(960, __c30, 0)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(3, __c0, 3)),
+          exemptedMembers: S.optional(__S(960, __c30, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
+    case 4:
+      return S.Array(__S(163, __c5, 3));
     case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(61, __c7, 5)),
+          auditLogConfigs: S.optional(__S(164, __c5, 4)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
+    case 6:
+      return S.Array(__S(165, __c5, 5));
     case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(__S(59, __c7, 3)),
+          bindings: S.optional(__S(162, __c5, 2)),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(63, __c7, 7)),
+          auditConfigs: S.optional(__S(166, __c5, 6)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.optional(S.String.pipe(T.Query())),
@@ -1925,7 +1705,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTasksRequest" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.optional(S.String.pipe(T.Query())),
@@ -1940,7 +1724,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetTasksPushNotificationConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1957,18 +1745,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsRequest",
       });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1024, __c32, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          billingAccounts: S.optional(__S(68, __c8, 4)),
+          billingAccounts: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "ListBillingAccountsResponse",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1984,22 +1780,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsProjectsRequest",
       });
-    case 7:
-      return S.Array(__S(26, __c3, 2));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          projectBillingInfo: S.optional(__S(71, __c8, 7)),
+          projectBillingInfo: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
         identifier: "ListProjectBillingInfoResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2016,7 +1812,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListBillingAccountsSubAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2033,7 +1833,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsBillingAccountsRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2046,7 +1850,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -2055,16 +1859,20 @@ function __c9(j: number): any {
           serviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Service" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          services: S.optional(__S(77, __c9, 5)),
+          services: S.optional(__S(418, __c13, 2)),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2081,11 +1889,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesSkusRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nanos: S.optional(S.Number),
@@ -2093,20 +1897,20 @@ function __c10(j: number): any {
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Money" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           startUsageAmount: S.optional(S.Number),
-          unitPrice: S.optional(__S(80, __c10, 0)),
+          unitPrice: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "TierRate" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
     case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           usageUnit: S.optional(S.String),
-          tieredRates: S.optional(__S(82, __c10, 2)),
+          tieredRates: S.optional(__S(451, __c14, 3)),
           baseUnitConversionFactor: S.optional(S.Number),
           baseUnitDescription: S.optional(S.String),
           usageUnitDescription: S.optional(S.String),
@@ -2114,7 +1918,7 @@ function __c10(j: number): any {
           baseUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingExpression" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           aggregationLevel: S.optional(S.String),
@@ -2122,30 +1926,26 @@ function __c10(j: number): any {
           aggregationInterval: S.optional(S.String),
         }),
       ).annotate({ identifier: "AggregationInfo" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          pricingExpression: S.optional(__S(83, __c10, 3)),
+          pricingExpression: S.optional(__S(452, __c14, 4)),
           currencyConversionRate: S.optional(S.Number),
-          aggregationInfo: S.optional(__S(84, __c10, 4)),
+          aggregationInfo: S.optional(__S(453, __c14, 5)),
           summary: S.optional(S.String),
           effectiveTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingInfo" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
     case 7:
+      return S.Array(__S(454, __c14, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          regions: S.optional(__S(3, __c0, 3)),
+          regions: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "GeoTaxonomy" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           serviceDisplayName: S.optional(S.String),
@@ -2154,29 +1954,33 @@ function __c11(j: number): any {
           usageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Category" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
           serviceProviderName: S.optional(S.String),
-          serviceRegions: S.optional(__S(3, __c0, 3)),
-          pricingInfo: S.optional(__S(86, __c10, 6)),
-          geoTaxonomy: S.optional(__S(87, __c10, 7)),
+          serviceRegions: S.optional(__S(960, __c30, 0)),
+          pricingInfo: S.optional(__S(455, __c14, 7)),
+          geoTaxonomy: S.optional(__S(456, __c14, 8)),
           skuId: S.optional(S.String),
-          category: S.optional(__S(88, __c11, 0)),
+          category: S.optional(__S(457, __c14, 9)),
         }),
       ).annotate({ identifier: "Sku" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(458, __c14, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          skus: S.optional(__S(90, __c11, 2)),
+          skus: S.optional(__S(459, __c14, 11)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSkusResponse" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2193,18 +1997,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListTasksPushNotificationConfigsRequest",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          configs: S.optional(__S(93, __c11, 5)),
+          configs: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({
         identifier: "ListTaskPushNotificationConfigResponse",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationParent: S.optional(S.String),
@@ -2212,15 +2020,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "MoveBillingAccountRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(95, __c11, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2231,7 +2035,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "MoveBillingAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationParent: S.String.pipe(T.Label()),
@@ -2246,12 +2054,16 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "MoveOrganizationsBillingAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2262,28 +2074,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PatchBillingAccountsRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          historyLength: S.optional(S.Number),
-          acceptedOutputModes: S.optional(__S(3, __c0, 3)),
-          pushNotification: S.optional(__S(19, __c2, 3)),
-          blocking: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SendMessageConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(8, __c1, 0)),
-          tenant: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
-          configuration: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "SendMessageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(641, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2292,29 +2090,51 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SendMessageRequest_" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8, __c1, 0)),
-          task: S.optional(__S(13, __c1, 5)),
+          message: S.optional(__S(932, __c29, 4)),
+          task: S.optional(__S(937, __c29, 9)),
         }),
       ).annotate({ identifier: "SendMessageResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
   }
 }
-function __c13(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          historyLength: S.optional(S.Number),
+          acceptedOutputModes: S.optional(__S(960, __c30, 0)),
+          pushNotification: S.optional(__S(1185, __c37, 1)),
+          blocking: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SendMessageConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(932, __c29, 4)),
+          tenant: S.optional(S.String),
+          metadata: S.optional(__S(896, __c28, 0)),
+          configuration: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({ identifier: "SendMessageRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(167, __c5, 7)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2325,10 +2145,14 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyBillingAccountsRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(641, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2337,37 +2161,45 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StreamMessageRequest" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          artifact: S.optional(__S(11, __c1, 3)),
+          artifact: S.optional(__S(935, __c29, 7)),
           append: S.optional(S.Boolean),
-          metadata: S.optional(__S(2, __c0, 2)),
+          metadata: S.optional(__S(896, __c28, 0)),
           taskId: S.optional(S.String),
           lastChunk: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TaskArtifactUpdateEvent" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           final: S.optional(S.Boolean),
-          status: S.optional(__S(10, __c1, 2)),
+          status: S.optional(__S(934, __c29, 6)),
           contextId: S.optional(S.String),
-          metadata: S.optional(__S(2, __c0, 2)),
+          metadata: S.optional(__S(896, __c28, 0)),
           taskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskStatusUpdateEvent" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(8, __c1, 0)),
-          task: S.optional(__S(13, __c1, 5)),
-          artifactUpdate: S.optional(__S(106, __c13, 2)),
-          statusUpdate: S.optional(__S(107, __c13, 3)),
+          message: S.optional(__S(932, __c29, 4)),
+          task: S.optional(__S(937, __c29, 9)),
+          artifactUpdate: S.optional(__S(736, __c23, 0)),
+          statusUpdate: S.optional(__S(737, __c23, 1)),
         }),
       ).annotate({ identifier: "StreamResponse" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2380,19 +2212,23 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SubscribeTasksRequest" });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2405,13 +2241,13 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2424,7 +2260,266 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CancelTaskRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelTasksRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          fileWithUri: S.optional(S.String),
+          name: S.optional(S.String),
+          fileWithBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FilePart" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "DataPart" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          file: S.optional(__S(928, __c29, 0)),
+          metadata: S.optional(__S(896, __c28, 0)),
+          data: S.optional(__S(929, __c29, 1)),
+        }),
+      ).annotate({ identifier: "Part" });
+    case 3:
+      return S.Array(__S(930, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          extensions: S.optional(__S(960, __c30, 0)),
+          content: S.optional(__S(931, __c29, 3)),
+          contextId: S.optional(S.String),
+          metadata: S.optional(__S(896, __c28, 0)),
+          role: S.optional(S.String),
+          messageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 5:
+      return S.Array(__S(932, __c29, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(932, __c29, 4)),
+          timestamp: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(960, __c30, 0)),
+          metadata: S.optional(__S(896, __c28, 0)),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          parts: S.optional(__S(931, __c29, 3)),
+          artifactId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Artifact" });
+    case 8:
+      return S.Array(__S(935, __c29, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(896, __c28, 0)),
+          history: S.optional(__S(933, __c29, 5)),
+          status: S.optional(__S(934, __c29, 6)),
+          id: S.optional(S.String),
+          contextId: S.optional(S.String),
+          artifacts: S.optional(__S(936, __c29, 8)),
+        }),
+      ).annotate({ identifier: "Task" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/billingAccounts",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBillingAccountsRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          name: S.optional(S.String),
+          open: S.optional(S.Boolean),
+          parent: S.optional(S.String),
+          masterBillingAccount: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BillingAccount" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/subAccounts",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBillingAccountsSubAccountsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/billingAccounts",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsBillingAccountsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          configId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTasksPushNotificationConfigsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          pushNotificationConfig: S.optional(__S(1185, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "TaskPushNotificationConfig",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemes: S.optional(__S(960, __c30, 0)),
+          credentials: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthenticationInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          authentication: S.optional(__S(1184, __c37, 0)),
+          url: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PushNotificationConfig" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          tenant: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTasksPushNotificationConfigsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

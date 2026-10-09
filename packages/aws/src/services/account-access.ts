@@ -276,8 +276,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(90, __c11, 2) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     AccessDeniedException,
     AlreadyCreatedException,
@@ -309,8 +309,8 @@ export const createEntitlement: API.OperationMethod<
   CreateEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateEntitlementRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateEntitlementResponse>,
+  input: __S(106, __c13, 2) as any as S.Schema<CreateEntitlementRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<CreateEntitlementResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -342,8 +342,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -374,8 +374,8 @@ export const deleteEntitlement: API.OperationMethod<
   DeleteEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteEntitlementRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteEntitlementResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteEntitlementRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEntitlementResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -405,8 +405,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetApplicationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetApplicationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -435,8 +435,8 @@ export const getEntitlement: API.OperationMethod<
   GetEntitlementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetEntitlementRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetEntitlementResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetEntitlementRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<GetEntitlementResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -465,8 +465,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -496,8 +496,8 @@ export const listEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EntitlementsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListEntitlementsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListEntitlementsResponse>,
+  input: __S(58, __c7, 2) as any as S.Schema<ListEntitlementsRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListEntitlementsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -526,8 +526,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -554,8 +554,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -582,8 +582,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -599,51 +599,6 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ instanceArn: S.String })).annotate({
-        identifier: "IdentityCenter",
-      });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(0, __c0, 0) })]);
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ identitySource: __S(1, __c0, 1), tags: S.optional(__S(2, __c0, 2)) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ applicationArn: S.String })).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ userId: S.String }),
-        /*@__PURE__*/ S.Struct({ groupId: S.String }),
-      ]);
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(5, __c0, 5) })]);
-    case 7:
-      return S.suspend(() => S.Struct({ principal: __S(6, __c0, 6), roleArn: S.String })).annotate({
-        identifier: "PrincipalRoleEntitlement",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(7, __c0, 7) })]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ applicationArn: S.String, entitlement: __S(8, __c1, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/entitlements" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateEntitlementRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ entitlementId: S.String })).annotate({
-        identifier: "CreateEntitlementResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({ applicationArn: S.String.pipe(T.HttpLabel("applicationArn")) }).pipe(
           T.all(
@@ -656,11 +611,19 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteApplicationResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String.pipe(T.HttpQuery("applicationArn")),
@@ -676,7 +639,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEntitlementRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationArn: S.String.pipe(T.HttpLabel("applicationArn")) }).pipe(
           T.all(
@@ -689,33 +656,33 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ instanceArn: S.String, applicationArn: S.optional(S.String) }),
       ).annotate({ identifier: "IdentityCenterDetails" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(15, __c1, 7) })]);
-    case 1:
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(25, __c3, 1) })]);
+    case 3:
       return S.suspend(() => S.Struct({ code: S.String, message: S.String })).annotate({
         identifier: "ErrorDetails",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          identitySource: __S(16, __c2, 0),
+          identitySource: __S(26, __c3, 2),
           status: S.String,
           tenantId: S.optional(S.String),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: S.optional(__S(2, __c0, 2)),
-          error: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(96, __c12, 0)),
+          error: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String.pipe(T.HttpQuery("applicationArn")),
@@ -731,10 +698,23 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEntitlementRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          principal: __S(6, __c0, 6),
+          applicationArn: S.String,
+          entitlementId: S.String,
+          entitlement: __S(41, __c5, 1),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "GetEntitlementResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principal: __S(113, __c14, 1),
           roleArn: S.String,
           account: S.String,
           accountName: S.optional(S.String),
@@ -742,18 +722,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PrincipalRoleEntitlementDetails",
       });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(20, __c2, 4) })]);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationArn: S.String,
-          entitlementId: S.String,
-          entitlement: __S(21, __c2, 5),
-          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
-      ).annotate({ identifier: "GetEntitlementResponse" });
-    case 7:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(40, __c5, 0) })]);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -766,11 +741,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String,
@@ -779,31 +750,35 @@ function __c3(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ applications: __S(25, __c3, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListApplicationsResponse" });
+      return S.Array(__S(49, __c6, 1));
     case 3:
       return S.suspend(() =>
+        S.Struct({ applications: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
-          principal: S.optional(__S(6, __c0, 6)),
+          principal: S.optional(__S(113, __c14, 1)),
           roleArn: S.optional(S.String),
           account: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrincipalRoleEntitlementFilter",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ principalRole: S.optional(__S(27, __c3, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ principalRole: S.optional(__S(56, __c7, 0)) })).annotate({
         identifier: "EntitlementFilter",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.String,
-          filter: __S(28, __c3, 4),
+          filter: __S(57, __c7, 1),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -817,25 +792,25 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListEntitlementsRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           entitlementId: S.String,
-          entitlement: __S(21, __c2, 5),
+          entitlement: __S(41, __c5, 1),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "EntitlementsListMember" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+    case 4:
+      return S.Array(__S(59, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ entitlements: __S(60, __c7, 4), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListEntitlementsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ entitlements: __S(31, __c3, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListEntitlementsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -850,15 +825,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(96, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(2, __c0, 2),
+          tags: __S(96, __c12, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -870,13 +849,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(36, __c4, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(80, __c10, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -890,7 +873,63 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ instanceArn: S.String })).annotate({
+        identifier: "IdentityCenter",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(88, __c11, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ identitySource: __S(89, __c11, 1), tags: S.optional(__S(96, __c12, 0)) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ applicationArn: S.String })).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ principal: __S(113, __c14, 1), roleArn: S.String }),
+      ).annotate({ identifier: "PrincipalRoleEntitlement" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ principalRole: __S(104, __c13, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applicationArn: S.String, entitlement: __S(105, __c13, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/entitlements" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEntitlementRequest" });
+    case 3:
+      return S.suspend(() => S.Struct({ entitlementId: S.String })).annotate({
+        identifier: "CreateEntitlementResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ userId: S.String }),
+        /*@__PURE__*/ S.Struct({ groupId: S.String }),
+      ]);
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ identityCenter: __S(112, __c14, 0) })]);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

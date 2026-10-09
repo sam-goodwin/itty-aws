@@ -257,8 +257,8 @@ export const CreateController: API.OperationMethod<
   CreateControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateControllerRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateControllerResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateControllerRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const DeleteController: API.OperationMethod<
   DeleteControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteControllerRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteControllerResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteControllerRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -287,8 +287,8 @@ export const GetContainerHostMappingContainerHostMapping: API.OperationMethod<
   GetContainerHostMappingContainerHostMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetContainerHostMappingContainerHostMappingRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ContainerHostMapping>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetContainerHostMappingContainerHostMappingRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ContainerHostMapping>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -302,8 +302,8 @@ export const GetController: API.OperationMethod<
   GetControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetControllerRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetControllerResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetControllerRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -317,8 +317,8 @@ export const ListControllerByResourceGroup: API.OperationMethod<
   ListControllerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListControllerByResourceGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ControllerList>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListControllerByResourceGroupRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ControllerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -332,8 +332,8 @@ export const ListControllerConnectionDetails: API.OperationMethod<
   ListControllerConnectionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListControllerConnectionDetailsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ControllerConnectionDetailsList>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListControllerConnectionDetailsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ControllerConnectionDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -347,8 +347,8 @@ export const ListControllers: API.OperationMethod<
   ListControllersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListControllersRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ControllerList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListControllersRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ControllerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -362,8 +362,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ResourceProviderOperationList>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<ResourceProviderOperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -377,8 +377,8 @@ export const UpdateController: API.OperationMethod<
   UpdateControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateControllerRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateControllerResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<UpdateControllerRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<UpdateControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,6 @@ export const UpdateController: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           targetContainerHostResourceId: S.String,
@@ -398,23 +396,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ControllerPropertiesInput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: __S(1, __c0, 1),
-          sku: __S(2, __c0, 2),
+          properties: __S(0, __c0, 0),
+          sku: __S(9, __c1, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -424,7 +415,20 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateControllerRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -435,19 +439,23 @@ function __c0(j: number): any {
           targetContainerHostCredentialsBase64: S.String,
         }),
       ).annotate({ identifier: "ControllerProperties" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           location: S.String,
-          properties: __S(4, __c0, 4),
-          sku: __S(2, __c0, 2),
+          properties: __S(10, __c1, 2),
+          sku: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "CreateControllerResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -462,13 +470,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteControllerRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteControllerResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -495,7 +503,11 @@ function __c1(j: number): any {
           mappedControllerResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerHostMapping" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -510,7 +522,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetControllerRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -526,16 +542,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListControllerByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(5, __c0, 5));
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(11, __c1, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(12, __c1, 4)),
+          value: S.optional(__S(48, __c6, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ControllerList" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -553,7 +577,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListControllerConnectionDetailsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.optional(S.String),
@@ -561,29 +585,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "OrchestratorSpecificConnectionDetails",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          orchestratorSpecificConnectionDetails: S.optional(__S(15, __c1, 7)),
+          orchestratorSpecificConnectionDetails: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({
         identifier: "ControllerConnectionDetails",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          connectionDetailsList: S.optional(__S(17, __c2, 1)),
+          connectionDetailsList: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({
         identifier: "ControllerConnectionDetailsList",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -596,7 +620,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListControllersRequest" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -607,7 +635,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -618,31 +646,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ResourceProviderOperationDisplay",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(21, __c2, 5)),
+          display: S.optional(__S(73, __c9, 1)),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationDefinition",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(23, __c2, 7)),
+          value: S.optional(__S(75, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationList",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetContainerHostCredentialsBase64: S.optional(S.String),
@@ -650,14 +678,14 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ControllerUpdateParametersProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(25, __c3, 1)),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -669,7 +697,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateControllerRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

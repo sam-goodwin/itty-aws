@@ -1118,7 +1118,7 @@ export const activateEventSource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateEventSourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateEventSourceResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<ActivateEventSourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1146,8 +1146,8 @@ export const cancelReplay: API.OperationMethod<
   CancelReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelReplayRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelReplayResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CancelReplayRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<CancelReplayResponse>,
   errors: [
     ConcurrentModificationException,
     IllegalStatusException,
@@ -1175,8 +1175,8 @@ export const createApiDestination: API.OperationMethod<
   CreateApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateApiDestinationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateApiDestinationResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateApiDestinationRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CreateApiDestinationResponse>,
   errors: [
     InternalException,
     LimitExceededException,
@@ -1209,8 +1209,8 @@ export const createArchive: API.OperationMethod<
   CreateArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateArchiveRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateArchiveResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateArchiveRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<CreateArchiveResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1239,8 +1239,8 @@ export const createConnection: API.OperationMethod<
   CreateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateConnectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateConnectionResponse>,
+  input: __S(229, __c7, 5) as any as S.Schema<CreateConnectionRequest>,
+  output: __S(230, __c7, 6) as any as S.Schema<CreateConnectionResponse>,
   errors: [InternalException, LimitExceededException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1267,8 +1267,8 @@ export const createEventBus: API.OperationMethod<
   CreateEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateEventBusRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateEventBusResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<CreateEventBusRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<CreateEventBusResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1323,8 +1323,8 @@ export const createPartnerEventSource: API.OperationMethod<
   CreatePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreatePartnerEventSourceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreatePartnerEventSourceResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreatePartnerEventSourceRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<CreatePartnerEventSourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1359,8 +1359,8 @@ export const deactivateEventSource: API.OperationMethod<
   DeactivateEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeactivateEventSourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeactivateEventSourceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeactivateEventSourceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeactivateEventSourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1388,8 +1388,8 @@ export const deauthorizeConnection: API.OperationMethod<
   DeauthorizeConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeauthorizeConnectionRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeauthorizeConnectionResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeauthorizeConnectionRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<DeauthorizeConnectionResponse>,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1410,8 +1410,8 @@ export const deleteApiDestination: API.OperationMethod<
   DeleteApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteApiDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteApiDestinationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteApiDestinationRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteApiDestinationResponse>,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1432,8 +1432,8 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteArchiveRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteArchiveResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteArchiveRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<DeleteArchiveResponse>,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1454,8 +1454,8 @@ export const deleteConnection: API.OperationMethod<
   DeleteConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteConnectionResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<DeleteConnectionResponse>,
   errors: [ConcurrentModificationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1476,8 +1476,8 @@ export const deleteEventBus: API.OperationMethod<
   DeleteEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteEventBusRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteEventBusResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteEventBusRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<DeleteEventBusResponse>,
   errors: [ConcurrentModificationException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1502,8 +1502,8 @@ export const deletePartnerEventSource: API.OperationMethod<
   DeletePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeletePartnerEventSourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePartnerEventSourceResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeletePartnerEventSourceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeletePartnerEventSourceResponse>,
   errors: [ConcurrentModificationException, InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1539,8 +1539,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1565,8 +1565,8 @@ export const describeApiDestination: API.OperationMethod<
   DescribeApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DescribeApiDestinationRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DescribeApiDestinationResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DescribeApiDestinationRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<DescribeApiDestinationResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1587,8 +1587,8 @@ export const describeArchive: API.OperationMethod<
   DescribeArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DescribeArchiveRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DescribeArchiveResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DescribeArchiveRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<DescribeArchiveResponse>,
   errors: [InternalException, ResourceAlreadyExistsException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1605,8 +1605,8 @@ export const describeConnection: API.OperationMethod<
   DescribeConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DescribeConnectionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DescribeConnectionResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DescribeConnectionRequest>,
+  output: __S(774, __c24, 6) as any as S.Schema<DescribeConnectionResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1631,8 +1631,8 @@ export const describeEventBus: API.OperationMethod<
   DescribeEventBusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DescribeEventBusRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeEventBusResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DescribeEventBusRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<DescribeEventBusResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1654,8 +1654,8 @@ export const describeEventSource: API.OperationMethod<
   DescribeEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DescribeEventSourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DescribeEventSourceResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DescribeEventSourceRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<DescribeEventSourceResponse>,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1679,8 +1679,8 @@ export const describePartnerEventSource: API.OperationMethod<
   DescribePartnerEventSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DescribePartnerEventSourceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DescribePartnerEventSourceResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DescribePartnerEventSourceRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<DescribePartnerEventSourceResponse>,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1705,8 +1705,8 @@ export const describeReplay: API.OperationMethod<
   DescribeReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DescribeReplayRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DescribeReplayResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DescribeReplayRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<DescribeReplayResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1726,8 +1726,8 @@ export const describeRule: API.OperationMethod<
   DescribeRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DescribeRuleRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<DescribeRuleResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DescribeRuleRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<DescribeRuleResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1753,8 +1753,8 @@ export const disableRule: API.OperationMethod<
   DisableRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DisableRuleRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DisableRuleResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DisableRuleRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<DisableRuleResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1784,8 +1784,8 @@ export const enableRule: API.OperationMethod<
   EnableRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<EnableRuleRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<EnableRuleResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<EnableRuleRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<EnableRuleResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -1807,8 +1807,8 @@ export const listApiDestinations: API.OperationMethod<
   ListApiDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListApiDestinationsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListApiDestinationsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListApiDestinationsRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<ListApiDestinationsResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1826,8 +1826,8 @@ export const listArchives: API.OperationMethod<
   ListArchivesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListArchivesRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListArchivesResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListArchivesRequest>,
+  output: __S(1123, __c35, 3) as any as S.Schema<ListArchivesResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1844,8 +1844,8 @@ export const listConnections: API.OperationMethod<
   ListConnectionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListConnectionsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListConnectionsRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<ListConnectionsResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1863,8 +1863,8 @@ export const listEventBuses: API.OperationMethod<
   ListEventBusesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListEventBusesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListEventBusesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListEventBusesRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<ListEventBusesResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1882,8 +1882,8 @@ export const listEventSources: API.OperationMethod<
   ListEventSourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListEventSourcesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListEventSourcesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListEventSourcesRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<ListEventSourcesResponse>,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1906,8 +1906,8 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
   ListPartnerEventSourceAccountsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListPartnerEventSourceAccountsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListPartnerEventSourceAccountsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListPartnerEventSourceAccountsRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<ListPartnerEventSourceAccountsResponse>,
   errors: [InternalException, OperationDisabledException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1928,8 +1928,8 @@ export const listPartnerEventSources: API.OperationMethod<
   ListPartnerEventSourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListPartnerEventSourcesRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListPartnerEventSourcesResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListPartnerEventSourcesRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<ListPartnerEventSourcesResponse>,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1947,8 +1947,8 @@ export const listReplays: API.OperationMethod<
   ListReplaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListReplaysRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListReplaysResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListReplaysRequest>,
+  output: __S(1315, __c41, 3) as any as S.Schema<ListReplaysResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1969,8 +1969,8 @@ export const listRuleNamesByTarget: API.OperationMethod<
   ListRuleNamesByTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListRuleNamesByTargetRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListRuleNamesByTargetResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListRuleNamesByTargetRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<ListRuleNamesByTargetResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1991,8 +1991,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListRulesRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListRulesResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListRulesRequest>,
+  output: __S(1379, __c43, 3) as any as S.Schema<ListRulesResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2010,8 +2010,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2028,8 +2028,8 @@ export const listTargetsByRule: API.OperationMethod<
   ListTargetsByRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListTargetsByRuleRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListTargetsByRuleResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListTargetsByRuleRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<ListTargetsByRuleResponse>,
   errors: [InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2046,8 +2046,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<PutEventsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<PutEventsResponse>,
+  input: __S(1506, __c47, 2) as any as S.Schema<PutEventsRequest>,
+  output: __S(1509, __c47, 5) as any as S.Schema<PutEventsResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2065,8 +2065,8 @@ export const putPartnerEvents: API.OperationMethod<
   PutPartnerEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<PutPartnerEventsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<PutPartnerEventsResponse>,
+  input: __S(1538, __c48, 2) as any as S.Schema<PutPartnerEventsRequest>,
+  output: __S(1541, __c48, 5) as any as S.Schema<PutPartnerEventsResponse>,
   errors: [InternalException, OperationDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2109,8 +2109,8 @@ export const putPermission: API.OperationMethod<
   PutPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<PutPermissionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PutPermissionResponse>,
+  input: __S(1569, __c49, 1) as any as S.Schema<PutPermissionRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<PutPermissionResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2189,8 +2189,8 @@ export const putRule: API.OperationMethod<
   PutRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PutRuleRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<PutRuleResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<PutRuleRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<PutRuleResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2348,8 +2348,8 @@ export const putTargets: API.OperationMethod<
   PutTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PutTargetsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<PutTargetsResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<PutTargetsRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<PutTargetsResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2380,8 +2380,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<RemovePermissionRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<RemovePermissionResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<RemovePermissionRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<RemovePermissionResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2416,8 +2416,8 @@ export const removeTargets: API.OperationMethod<
   RemoveTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<RemoveTargetsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<RemoveTargetsResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<RemoveTargetsRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<RemoveTargetsResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2453,8 +2453,8 @@ export const startReplay: API.OperationMethod<
   StartReplayError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<StartReplayRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<StartReplayResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<StartReplayRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<StartReplayResponse>,
   errors: [
     InternalException,
     InvalidEventPatternException,
@@ -2495,8 +2495,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2523,8 +2523,8 @@ export const testEventPattern: API.OperationMethod<
   TestEventPatternError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<TestEventPatternRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<TestEventPatternResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<TestEventPatternRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<TestEventPatternResponse>,
   errors: [InternalException, InvalidEventPatternException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2547,8 +2547,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2575,8 +2575,8 @@ export const updateApiDestination: API.OperationMethod<
   UpdateApiDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<UpdateApiDestinationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateApiDestinationResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<UpdateApiDestinationRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<UpdateApiDestinationResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2604,8 +2604,8 @@ export const updateArchive: API.OperationMethod<
   UpdateArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<UpdateArchiveRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateArchiveResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<UpdateArchiveRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateArchiveResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2633,8 +2633,8 @@ export const updateConnection: API.OperationMethod<
   UpdateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateConnectionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateConnectionResponse>,
+  input: __S(1957, __c61, 5) as any as S.Schema<UpdateConnectionRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<UpdateConnectionResponse>,
   errors: [
     ConcurrentModificationException,
     InternalException,
@@ -2657,17 +2657,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateEventSourceRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "ActivateEventSourceResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ReplayName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelReplayRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReplayArn: S.optional(S.String),
@@ -2675,7 +2683,11 @@ function __c0(j: number): any {
           StateReason: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "CancelReplayResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -2688,7 +2700,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateApiDestinationRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApiDestinationArn: S.optional(S.String),
@@ -2699,7 +2715,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateApiDestinationResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ArchiveName: S.String,
@@ -2709,7 +2729,11 @@ function __c0(j: number): any {
           RetentionDays: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateArchiveRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ArchiveArn: S.optional(S.String),
@@ -2720,7 +2744,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateArchiveResponse" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Username: S.String, Password: SensitiveString })).annotate({
@@ -2735,77 +2759,41 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Key: S.optional(S.String),
-          Value: S.optional(SensitiveString),
-          IsValueSecret: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ConnectionHeaderParameter",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(S.String),
-          Value: S.optional(SensitiveString),
-          IsValueSecret: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ConnectionBodyParameter" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          HeaderParameters: S.optional(__S(11, __c1, 3)),
-          QueryStringParameters: S.optional(__S(12, __c1, 4)),
-          BodyParameters: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ConnectionHttpParameters" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ClientParameters: __S(9, __c1, 1),
+          ClientParameters: __S(225, __c7, 1),
           AuthorizationEndpoint: S.String,
           HttpMethod: S.String,
-          OAuthHttpParameters: S.optional(__S(15, __c1, 7)),
+          OAuthHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "CreateConnectionOAuthRequestParameters",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({ ApiKeyName: S.String, ApiKeyValue: SensitiveString }),
       ).annotate({
         identifier: "CreateConnectionApiKeyAuthRequestParameters",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(8, __c1, 0)),
-          OAuthParameters: S.optional(__S(16, __c2, 0)),
-          ApiKeyAuthParameters: S.optional(__S(17, __c2, 1)),
-          InvocationHttpParameters: S.optional(__S(15, __c1, 7)),
+          BasicAuthParameters: S.optional(__S(224, __c7, 0)),
+          OAuthParameters: S.optional(__S(226, __c7, 2)),
+          ApiKeyAuthParameters: S.optional(__S(227, __c7, 3)),
+          InvocationHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "CreateConnectionAuthRequestParameters",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
           AuthorizationType: S.String,
-          AuthParameters: __S(18, __c2, 2),
+          AuthParameters: __S(228, __c7, 4),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConnectionRequest" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
@@ -2814,29 +2802,73 @@ function __c2(j: number): any {
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "CreateConnectionResponse" });
-    case 5:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(SensitiveString),
+          IsValueSecret: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ConnectionHeaderParameter",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.Array(__S(256, __c8, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(SensitiveString),
+          IsValueSecret: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ConnectionBodyParameter" });
+    case 4:
+      return S.Array(__S(259, __c8, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          HeaderParameters: S.optional(__S(257, __c8, 1)),
+          QueryStringParameters: S.optional(__S(258, __c8, 2)),
+          BodyParameters: S.optional(__S(260, __c8, 4)),
+        }),
+      ).annotate({ identifier: "ConnectionHttpParameters" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           EventSourceName: S.optional(S.String),
-          Tags: S.optional(__S(22, __c2, 6)),
+          Tags: S.optional(__S(321, __c10, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEventBusRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ EventBusArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreateEventBusResponse",
       });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
     case 1:
+      return S.Array(__S(320, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Account: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2844,11 +2876,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreatePartnerEventSourceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ EventSourceArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "CreatePartnerEventSourceResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2856,7 +2892,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeactivateEventSourceRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2864,7 +2904,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeauthorizeConnectionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
@@ -2876,7 +2916,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeauthorizeConnectionResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2884,7 +2928,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteApiDestinationRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ArchiveName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2892,19 +2940,27 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteArchiveRequest" });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteArchiveResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteConnectionRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
@@ -2914,17 +2970,25 @@ function __c4(j: number): any {
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "DeleteConnectionResponse" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteEventBusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteEventBusResponse",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Account: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2932,7 +2996,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeletePartnerEventSourceRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -2940,7 +3008,11 @@ function __c4(j: number): any {
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteRuleRequest" });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2948,11 +3020,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeApiDestinationRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApiDestinationArn: S.optional(S.String),
@@ -2969,13 +3037,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeApiDestinationResponse",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ArchiveName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeArchiveRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ArchiveArn: S.optional(S.String),
@@ -2991,7 +3063,11 @@ function __c5(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeArchiveResponse" });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2999,45 +3075,41 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeConnectionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Username: S.optional(S.String) })).annotate({
         identifier: "ConnectionBasicAuthResponseParameters",
       });
-    case 5:
+    case 2:
       return S.suspend(() => S.Struct({ ClientID: S.optional(S.String) })).annotate({
         identifier: "ConnectionOAuthClientResponseParameters",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ClientParameters: S.optional(__S(45, __c5, 5)),
+          ClientParameters: S.optional(__S(770, __c24, 2)),
           AuthorizationEndpoint: S.optional(S.String),
           HttpMethod: S.optional(S.String),
-          OAuthHttpParameters: S.optional(__S(15, __c1, 7)),
+          OAuthHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "ConnectionOAuthResponseParameters",
       });
-    case 7:
+    case 4:
       return S.suspend(() => S.Struct({ ApiKeyName: S.optional(S.String) })).annotate({
         identifier: "ConnectionApiKeyAuthResponseParameters",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(44, __c5, 4)),
-          OAuthParameters: S.optional(__S(46, __c5, 6)),
-          ApiKeyAuthParameters: S.optional(__S(47, __c5, 7)),
-          InvocationHttpParameters: S.optional(__S(15, __c1, 7)),
+          BasicAuthParameters: S.optional(__S(769, __c24, 1)),
+          OAuthParameters: S.optional(__S(771, __c24, 3)),
+          ApiKeyAuthParameters: S.optional(__S(772, __c24, 4)),
+          InvocationHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "ConnectionAuthResponseParameters",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ConnectionArn: S.optional(S.String),
@@ -3047,7 +3119,7 @@ function __c6(j: number): any {
           StateReason: S.optional(S.String),
           AuthorizationType: S.optional(S.String),
           SecretArn: S.optional(S.String),
-          AuthParameters: S.optional(__S(48, __c6, 0)),
+          AuthParameters: S.optional(__S(773, __c24, 5)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAuthorizedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3055,13 +3127,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeConnectionResponse",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeEventBusRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3069,7 +3145,11 @@ function __c6(j: number): any {
           Policy: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeEventBusResponse" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3077,7 +3157,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeEventSourceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -3090,7 +3170,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeEventSourceResponse",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3098,7 +3182,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribePartnerEventSourceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -3106,7 +3190,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3115,12 +3199,6 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "DescribeReplayRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.String, FilterArns: S.optional(__S(57, __c7, 1)) }),
-      ).annotate({ identifier: "ReplayDestination" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ReplayName: S.optional(S.String),
@@ -3129,7 +3207,7 @@ function __c7(j: number): any {
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
           EventSourceArn: S.optional(S.String),
-          Destination: S.optional(__S(58, __c7, 2)),
+          Destination: S.optional(__S(960, __c30, 0)),
           EventStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EventLastReplayedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3137,13 +3215,31 @@ function __c7(j: number): any {
           ReplayEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeReplayResponse" });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String, FilterArns: S.optional(__S(928, __c29, 0)) }),
+      ).annotate({ identifier: "ReplayDestination" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, EventBusName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeRuleRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3158,13 +3254,21 @@ function __c7(j: number): any {
           CreatedBy: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeRuleResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, EventBusName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DisableRuleRequest" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, EventBusName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3172,7 +3276,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "EnableRuleRequest" });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3200,17 +3304,21 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "ApiDestination" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(1089, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApiDestinations: S.optional(__S(66, __c8, 2)),
+          ApiDestinations: S.optional(__S(1090, __c34, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListApiDestinationsResponse",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
@@ -3220,7 +3328,7 @@ function __c8(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListArchivesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ArchiveName: S.optional(S.String),
@@ -3233,18 +3341,18 @@ function __c8(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Archive" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Archives: S.optional(__S(70, __c8, 6)),
+          Archives: S.optional(__S(1122, __c35, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListArchivesResponse" });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3269,15 +3377,19 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Connection" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(1153, __c36, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Connections: S.optional(__S(74, __c9, 2)),
+          Connections: S.optional(__S(1154, __c36, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
@@ -3285,7 +3397,7 @@ function __c9(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEventBusesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3293,18 +3405,18 @@ function __c9(j: number): any {
           Policy: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventBus" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          EventBuses: S.optional(__S(78, __c9, 6)),
+          EventBuses: S.optional(__S(1186, __c37, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListEventBusesResponse" });
   }
 }
-function __c10(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3326,15 +3438,19 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "EventSource" });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EventSources: S.optional(__S(82, __c10, 2)),
+          EventSources: S.optional(__S(1218, __c38, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListEventSourcesResponse" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EventSourceName: S.String,
@@ -3344,7 +3460,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPartnerEventSourceAccountsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Account: S.optional(S.String),
@@ -3355,12 +3471,12 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PartnerEventSourceAccount",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          PartnerEventSourceAccounts: S.optional(__S(86, __c10, 6)),
+          PartnerEventSourceAccounts: S.optional(__S(1250, __c39, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -3368,7 +3484,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3385,17 +3501,21 @@ function __c11(j: number): any {
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "PartnerEventSource" });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(1281, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PartnerEventSources: S.optional(__S(90, __c11, 2)),
+          PartnerEventSources: S.optional(__S(1282, __c40, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListPartnerEventSourcesResponse",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
@@ -3405,7 +3525,7 @@ function __c11(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListReplaysRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReplayName: S.optional(S.String),
@@ -3419,17 +3539,18 @@ function __c11(j: number): any {
           ReplayEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Replay" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1313, __c41, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Replays: S.optional(__S(94, __c11, 6)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Replays: S.optional(__S(1314, __c41, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListReplaysResponse" });
   }
 }
-function __c12(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3444,13 +3565,18 @@ function __c12(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ RuleNames: S.optional(__S(57, __c7, 1)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          RuleNames: S.optional(__S(928, __c29, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "ListRuleNamesByTargetResponse",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NamePrefix: S.optional(S.String),
@@ -3459,7 +3585,7 @@ function __c12(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRulesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3473,15 +3599,19 @@ function __c12(j: number): any {
           EventBusName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Rule" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1377, __c43, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Rules: S.optional(__S(100, __c12, 4)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Rules: S.optional(__S(1378, __c43, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListRulesResponse" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -3489,13 +3619,13 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(22, __c2, 6)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(321, __c10, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3507,42 +3637,51 @@ function __c13(j: number): any {
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTargetsByRuleRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
-        S.Struct({ InputPathsMap: S.optional(__S(105, __c13, 1)), InputTemplate: S.String }),
+        S.Struct({
+          Targets: S.optional(__S(1499, __c46, 27)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListTargetsByRuleResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ InputPathsMap: S.optional(__S(1472, __c46, 0)), InputTemplate: S.String }),
       ).annotate({ identifier: "InputTransformer" });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({ PartitionKeyPath: S.String })).annotate({
         identifier: "KinesisParameters",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(57, __c7, 1) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ Key: S.String, Values: __S(928, __c29, 0) })).annotate({
         identifier: "RunCommandTarget",
       });
+    case 4:
+      return S.Array(__S(1475, __c46, 3));
     case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ RunCommandTargets: __S(109, __c13, 5) })).annotate({
+      return S.suspend(() => S.Struct({ RunCommandTargets: __S(1476, __c46, 4) })).annotate({
         identifier: "RunCommandParameters",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          Subnets: __S(57, __c7, 1),
-          SecurityGroups: S.optional(__S(57, __c7, 1)),
+          Subnets: __S(928, __c29, 0),
+          SecurityGroups: S.optional(__S(928, __c29, 0)),
           AssignPublicIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsVpcConfiguration" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
-        S.Struct({ awsvpcConfiguration: S.optional(__S(111, __c13, 7)) }),
+        S.Struct({ awsvpcConfiguration: S.optional(__S(1478, __c46, 6)) }),
       ).annotate({ identifier: "NetworkConfiguration" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           capacityProvider: S.String,
@@ -3552,73 +3691,69 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CapacityProviderStrategyItem",
       });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(1480, __c46, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), expression: S.optional(S.String) }),
       ).annotate({ identifier: "PlacementConstraint" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(1482, __c46, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), field: S.optional(S.String) }),
       ).annotate({ identifier: "PlacementStrategy" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 13:
+      return S.Array(__S(1484, __c46, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           TaskDefinitionArn: S.String,
           TaskCount: S.optional(S.Number),
           LaunchType: S.optional(S.String),
-          NetworkConfiguration: S.optional(__S(112, __c14, 0)),
+          NetworkConfiguration: S.optional(__S(1479, __c46, 7)),
           PlatformVersion: S.optional(S.String),
           Group: S.optional(S.String),
-          CapacityProviderStrategy: S.optional(__S(114, __c14, 2)),
+          CapacityProviderStrategy: S.optional(__S(1481, __c46, 9)),
           EnableECSManagedTags: S.optional(S.Boolean),
           EnableExecuteCommand: S.optional(S.Boolean),
-          PlacementConstraints: S.optional(__S(116, __c14, 4)),
-          PlacementStrategy: S.optional(__S(118, __c14, 6)),
+          PlacementConstraints: S.optional(__S(1483, __c46, 11)),
+          PlacementStrategy: S.optional(__S(1485, __c46, 13)),
           PropagateTags: S.optional(S.String),
           ReferenceId: S.optional(S.String),
-          Tags: S.optional(__S(22, __c2, 6)),
+          Tags: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "EcsParameters" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() => S.Struct({ Size: S.optional(S.Number) })).annotate({
         identifier: "BatchArrayProperties",
       });
-    case 1:
+    case 16:
       return S.suspend(() => S.Struct({ Attempts: S.optional(S.Number) })).annotate({
         identifier: "BatchRetryStrategy",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           JobDefinition: S.String,
           JobName: S.String,
-          ArrayProperties: S.optional(__S(120, __c15, 0)),
-          RetryStrategy: S.optional(__S(121, __c15, 1)),
+          ArrayProperties: S.optional(__S(1487, __c46, 15)),
+          RetryStrategy: S.optional(__S(1488, __c46, 16)),
         }),
       ).annotate({ identifier: "BatchParameters" });
-    case 3:
+    case 18:
       return S.suspend(() => S.Struct({ MessageGroupId: S.optional(S.String) })).annotate({
         identifier: "SqsParameters",
       });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          PathParameterValues: S.optional(__S(57, __c7, 1)),
-          HeaderParameters: S.optional(__S(105, __c13, 1)),
-          QueryStringParameters: S.optional(__S(105, __c13, 1)),
+          PathParameterValues: S.optional(__S(928, __c29, 0)),
+          HeaderParameters: S.optional(__S(1472, __c46, 0)),
+          QueryStringParameters: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({ identifier: "HttpParameters" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           SecretManagerArn: S.optional(S.String),
@@ -3629,34 +3764,30 @@ function __c15(j: number): any {
           WithEvent: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RedshiftDataParameters" });
-    case 6:
+    case 21:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
         identifier: "SageMakerPipelineParameter",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
+      return S.Array(__S(1493, __c46, 21));
+    case 23:
       return S.suspend(() =>
-        S.Struct({ PipelineParameterList: S.optional(__S(127, __c15, 7)) }),
+        S.Struct({ PipelineParameterList: S.optional(__S(1494, __c46, 22)) }),
       ).annotate({
         identifier: "SageMakerPipelineParameters",
       });
-    case 1:
+    case 24:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "DeadLetterConfig",
       });
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           MaximumRetryAttempts: S.optional(S.Number),
           MaximumEventAgeInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RetryPolicy" });
-    case 3:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -3664,54 +3795,46 @@ function __c16(j: number): any {
           RoleArn: S.optional(S.String),
           Input: S.optional(S.String),
           InputPath: S.optional(S.String),
-          InputTransformer: S.optional(__S(106, __c13, 2)),
-          KinesisParameters: S.optional(__S(107, __c13, 3)),
-          RunCommandParameters: S.optional(__S(110, __c13, 6)),
-          EcsParameters: S.optional(__S(119, __c14, 7)),
-          BatchParameters: S.optional(__S(122, __c15, 2)),
-          SqsParameters: S.optional(__S(123, __c15, 3)),
-          HttpParameters: S.optional(__S(124, __c15, 4)),
-          RedshiftDataParameters: S.optional(__S(125, __c15, 5)),
-          SageMakerPipelineParameters: S.optional(__S(128, __c16, 0)),
-          DeadLetterConfig: S.optional(__S(129, __c16, 1)),
-          RetryPolicy: S.optional(__S(130, __c16, 2)),
+          InputTransformer: S.optional(__S(1473, __c46, 1)),
+          KinesisParameters: S.optional(__S(1474, __c46, 2)),
+          RunCommandParameters: S.optional(__S(1477, __c46, 5)),
+          EcsParameters: S.optional(__S(1486, __c46, 14)),
+          BatchParameters: S.optional(__S(1489, __c46, 17)),
+          SqsParameters: S.optional(__S(1490, __c46, 18)),
+          HttpParameters: S.optional(__S(1491, __c46, 19)),
+          RedshiftDataParameters: S.optional(__S(1492, __c46, 20)),
+          SageMakerPipelineParameters: S.optional(__S(1495, __c46, 23)),
+          DeadLetterConfig: S.optional(__S(1496, __c46, 24)),
+          RetryPolicy: S.optional(__S(1497, __c46, 25)),
         }),
       ).annotate({ identifier: "Target" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Targets: S.optional(__S(132, __c16, 4)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "ListTargetsByRuleResponse",
-      });
-    case 6:
+    case 27:
+      return S.Array(__S(1498, __c46, 26));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Source: S.optional(S.String),
-          Resources: S.optional(__S(57, __c7, 1)),
+          Resources: S.optional(__S(928, __c29, 0)),
           DetailType: S.optional(S.String),
           Detail: S.optional(S.String),
           EventBusName: S.optional(S.String),
           TraceHeader: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutEventsRequestEntry" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Entries: __S(135, __c16, 7) }).pipe(
+        S.Struct({ Entries: __S(1505, __c47, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutEventsRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EventId: S.optional(S.String),
@@ -3719,36 +3842,40 @@ function __c17(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutEventsResultEntry" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1507, __c47, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          Entries: S.optional(__S(138, __c17, 2)),
+          Entries: S.optional(__S(1508, __c47, 4)),
         }).pipe(ns),
       ).annotate({ identifier: "PutEventsResponse" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Source: S.optional(S.String),
-          Resources: S.optional(__S(57, __c7, 1)),
+          Resources: S.optional(__S(928, __c29, 0)),
           DetailType: S.optional(S.String),
           Detail: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PutPartnerEventsRequestEntry",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Entries: __S(141, __c17, 5) }).pipe(
+        S.Struct({ Entries: __S(1537, __c48, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutPartnerEventsRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           EventId: S.optional(S.String),
@@ -3758,35 +3885,39 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PutPartnerEventsResultEntry",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          Entries: S.optional(__S(144, __c18, 0)),
+          Entries: S.optional(__S(1540, __c48, 4)),
         }).pipe(ns),
       ).annotate({ identifier: "PutPartnerEventsResponse" });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Type: S.String, Key: S.String, Value: S.String })).annotate(
         { identifier: "Condition" },
       );
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventBusName: S.optional(S.String),
           Action: S.optional(S.String),
           Principal: S.optional(S.String),
           StatementId: S.optional(S.String),
-          Condition: S.optional(__S(146, __c18, 2)),
+          Condition: S.optional(__S(1568, __c49, 0)),
           Policy: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutPermissionRequest" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3795,23 +3926,31 @@ function __c18(j: number): any {
           State: S.optional(S.String),
           Description: S.optional(S.String),
           RoleArn: S.optional(S.String),
-          Tags: S.optional(__S(22, __c2, 6)),
+          Tags: S.optional(__S(321, __c10, 1)),
           EventBusName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutRuleRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ RuleArn: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "PutRuleResponse",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Rule: S.String,
           EventBusName: S.optional(S.String),
-          Targets: __S(132, __c16, 4),
+          Targets: __S(1499, __c46, 27),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutTargetsRequest" });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TargetId: S.optional(S.String),
@@ -3819,20 +3958,20 @@ function __c18(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutTargetsResultEntry" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
     case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           FailedEntryCount: S.optional(S.Number),
-          FailedEntries: S.optional(__S(152, __c19, 0)),
+          FailedEntries: S.optional(__S(1665, __c52, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "PutTargetsResponse" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StatementId: S.optional(S.String),
@@ -3840,20 +3979,28 @@ function __c19(j: number): any {
           EventBusName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RemovePermissionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemovePermissionResponse",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Rule: S.String,
           EventBusName: S.optional(S.String),
-          Ids: __S(57, __c7, 1),
+          Ids: __S(928, __c29, 0),
           Force: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RemoveTargetsRequest" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReplayName: S.String,
@@ -3861,10 +4008,10 @@ function __c19(j: number): any {
           EventSourceArn: S.String,
           EventStartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EventEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Destination: __S(58, __c7, 2),
+          Destination: __S(960, __c30, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartReplayRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReplayArn: S.optional(S.String),
@@ -3873,15 +4020,19 @@ function __c19(j: number): any {
           ReplayStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({ identifier: "StartReplayResponse" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(22, __c2, 6) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(321, __c10, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3893,13 +4044,21 @@ function __c20(j: number): any {
       return S.suspend(() => S.Struct({ Result: S.optional(S.Boolean) }).pipe(ns)).annotate({
         identifier: "TestEventPatternResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(57, __c7, 1) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(928, __c29, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3912,7 +4071,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateApiDestinationRequest",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ArchiveName: S.String,
@@ -3921,62 +4084,61 @@ function __c20(j: number): any {
           RetentionDays: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateArchiveRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Username: S.optional(S.String), Password: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "UpdateConnectionBasicAuthRequestParameters",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ClientID: S.optional(S.String), ClientSecret: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "UpdateConnectionOAuthClientRequestParameters",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ClientParameters: S.optional(__S(166, __c20, 6)),
+          ClientParameters: S.optional(__S(1953, __c61, 1)),
           AuthorizationEndpoint: S.optional(S.String),
           HttpMethod: S.optional(S.String),
-          OAuthHttpParameters: S.optional(__S(15, __c1, 7)),
+          OAuthHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "UpdateConnectionOAuthRequestParameters",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({ ApiKeyName: S.optional(S.String), ApiKeyValue: S.optional(SensitiveString) }),
       ).annotate({
         identifier: "UpdateConnectionApiKeyAuthRequestParameters",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          BasicAuthParameters: S.optional(__S(165, __c20, 5)),
-          OAuthParameters: S.optional(__S(167, __c20, 7)),
-          ApiKeyAuthParameters: S.optional(__S(168, __c21, 0)),
-          InvocationHttpParameters: S.optional(__S(15, __c1, 7)),
+          BasicAuthParameters: S.optional(__S(1952, __c61, 0)),
+          OAuthParameters: S.optional(__S(1954, __c61, 2)),
+          ApiKeyAuthParameters: S.optional(__S(1955, __c61, 3)),
+          InvocationHttpParameters: S.optional(__S(261, __c8, 5)),
         }),
       ).annotate({
         identifier: "UpdateConnectionAuthRequestParameters",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
           AuthorizationType: S.optional(S.String),
-          AuthParameters: S.optional(__S(169, __c21, 1)),
+          AuthParameters: S.optional(__S(1956, __c61, 4)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateConnectionRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

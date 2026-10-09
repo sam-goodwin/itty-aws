@@ -558,8 +558,8 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
   CreateAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(120, __c30, 0) as any as S.Schema<CreateAppsAuthorizedCertificatesRequest>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -578,8 +578,8 @@ export const createAppsDomainMappings: API.OperationMethod<
   CreateAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(132, __c33, 0) as any as S.Schema<CreateAppsDomainMappingsRequest>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -599,11 +599,11 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14,
-    __c1,
-    6,
+    148,
+    __c37,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -623,11 +623,11 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    15,
-    __c1,
-    7,
+    152,
+    __c38,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -646,8 +646,8 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
   DeleteAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
+  input: __S(156, __c39, 0) as any as S.Schema<DeleteAppsAuthorizedCertificatesRequest>,
+  output: __S(160, __c40, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const deleteAppsDomainMappings: API.OperationMethod<
   DeleteAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(164, __c41, 0) as any as S.Schema<DeleteAppsDomainMappingsRequest>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -687,11 +687,11 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    19,
-    __c2,
-    3,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Empty>,
+  output: __S(160, __c40, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -711,11 +711,11 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20,
-    __c2,
     4,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const getAppsAuthorizedCertificates: API.OperationMethod<
   GetAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetAppsAuthorizedCertificatesRequest>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const getAppsDomainMappings: API.OperationMethod<
   GetAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAppsDomainMappingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DomainMapping>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetAppsDomainMappingsRequest>,
+  output: __S(139, __c34, 3) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -759,8 +759,8 @@ export const getAppsLocations: API.OperationMethod<
   GetAppsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetAppsLocationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Location>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetAppsLocationsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -774,8 +774,8 @@ export const getAppsOperations: API.OperationMethod<
   GetAppsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAppsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetAppsOperationsRequest>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +789,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Location>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -808,11 +808,11 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    32,
+    __c8,
+    0,
   ) as any as S.Schema<GetProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -826,8 +826,8 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
   GetProjectsLocationsApplicationsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DomainMapping>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetProjectsLocationsApplicationsDomainMappingsRequest>,
+  output: __S(139, __c34, 3) as any as S.Schema<DomainMapping>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -841,8 +841,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -857,8 +857,8 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -874,8 +874,8 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListAppsAuthorizedDomainsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ListAppsAuthorizedDomainsRequest>,
+  output: __S(58, __c14, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -891,8 +891,8 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListAppsDomainMappingsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListDomainMappingsResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListAppsDomainMappingsRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const listAppsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAppsLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListLocationsResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListAppsLocationsRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -925,8 +925,8 @@ export const listAppsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListAppsOperationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListAppsOperationsRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -942,8 +942,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListLocationsResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -963,11 +963,11 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
   ListAuthorizedCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    48,
-    __c6,
+    88,
+    __c22,
     0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
+  output: __S(49, __c12, 1) as any as S.Schema<ListAuthorizedCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -987,11 +987,11 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
   ListAuthorizedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    92,
+    __c23,
+    0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsAuthorizedDomainsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListAuthorizedDomainsResponse>,
+  output: __S(58, __c14, 2) as any as S.Schema<ListAuthorizedDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1011,11 +1011,11 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
   ListDomainMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    96,
+    __c24,
+    0,
   ) as any as S.Schema<ListProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListDomainMappingsResponse>,
+  output: __S(65, __c16, 1) as any as S.Schema<ListDomainMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1031,8 +1031,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1052,8 +1052,8 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
   PatchAppsAuthorizedCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  input: __S(104, __c26, 0) as any as S.Schema<PatchAppsAuthorizedCertificatesRequest>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1072,8 @@ export const patchAppsDomainMappings: API.OperationMethod<
   PatchAppsDomainMappingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<PatchAppsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  input: __S(108, __c27, 0) as any as S.Schema<PatchAppsDomainMappingsRequest>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1093,11 +1093,11 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    112,
+    __c28,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AuthorizedCertificate>,
+  output: __S(130, __c32, 2) as any as S.Schema<AuthorizedCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1117,11 +1117,11 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    116,
+    __c29,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsApplicationsDomainMappingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Operation>,
+  output: __S(146, __c36, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1131,194 +1131,6 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lastRenewalTime: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedCertificate" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateKey: S.optional(S.String),
-          publicCertificate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateRawData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          managedCertificate: S.optional(__S(0, __c0, 0)),
-          id: S.optional(S.String),
-          domainNames: S.optional(__S(1, __c0, 1)),
-          expireTime: S.optional(S.String),
-          name: S.optional(S.String),
-          certificateRawData: S.optional(__S(2, __c0, 2)),
-          domainMappingsCount: S.optional(S.Number),
-          visibleDomainMappings: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AuthorizedCertificate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/apps/{appsId}/authorizedCertificates",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsAuthorizedCertificatesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          rrdata: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceRecord" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isManagedCertificate: S.optional(S.Boolean),
-          certificateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SslSettings" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceRecords: S.optional(__S(6, __c0, 6)),
-          id: S.optional(S.String),
-          sslSettings: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainMapping" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          overrideStrategy: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/apps/{appsId}/domainMappings",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAppsDomainMappingsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(11, __c1, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(10, __c1, 2)),
-          error: S.optional(__S(12, __c1, 4)),
-          response: S.optional(__S(10, __c1, 2)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectsId: S.String.pipe(T.Label()),
-          locationsId: S.String.pipe(T.Label()),
-          applicationsId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          locationsId: S.String.pipe(T.Label()),
-          applicationsId: S.String.pipe(T.Label()),
-          noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          projectsId: S.String.pipe(T.Label()),
-          overrideStrategy: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appsId: S.String.pipe(T.Label()),
-          authorizedCertificatesId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAppsAuthorizedCertificatesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domainMappingsId: S.String.pipe(T.Label()),
-          appsId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
-            baseUrl: "https://appengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAppsDomainMappingsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           authorizedCertificatesId: S.String.pipe(T.Label()),
@@ -1335,7 +1147,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainMappingsId: S.String.pipe(T.Label()),
@@ -1352,7 +1168,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1368,7 +1188,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAppsAuthorizedCertificatesRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -1383,7 +1207,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAppsDomainMappingsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -1398,7 +1226,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetAppsLocationsRequest" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -1406,13 +1234,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(10, __c1, 2)),
+          metadata: S.optional(__S(140, __c35, 0)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(__S(24, __c3, 0)),
+          labels: S.optional(__S(20, __c5, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
@@ -1425,7 +1257,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppsOperationsRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectsId: S.String.pipe(T.Label()),
@@ -1440,7 +1276,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationsId: S.String.pipe(T.Label()),
@@ -1458,7 +1298,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationsId: S.String.pipe(T.Label()),
@@ -1475,7 +1319,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           operationsId: S.String.pipe(T.Label()),
@@ -1491,7 +1339,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1510,20 +1362,24 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(130, __c32, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(32, __c4, 0)),
+          certificates: S.optional(__S(48, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAuthorizedCertificatesResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1539,25 +1395,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAppsAuthorizedDomainsRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizedDomain" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(36, __c4, 4)),
+          domains: S.optional(__S(57, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAuthorizedDomainsResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1573,29 +1437,33 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAppsDomainMappingsRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
   }
 }
-function __c5(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(139, __c34, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          domainMappings: S.optional(__S(39, __c4, 7)),
+          domainMappings: S.optional(__S(64, __c16, 0)),
         }),
       ).annotate({
         identifier: "ListDomainMappingsResponse",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           appsId: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(124, __c31, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1604,16 +1472,24 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAppsLocationsRequest" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(21, __c5, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(42, __c5, 2)),
+          locations: S.optional(__S(72, __c18, 0)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1631,23 +1507,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAppsOperationsRequest",
       });
-    case 5:
-      return S.Array(__S(13, __c1, 5));
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(146, __c36, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(45, __c5, 5)),
-          unreachable: S.optional(__S(1, __c0, 1)),
+          operations: S.optional(__S(80, __c20, 0)),
+          unreachable: S.optional(__S(124, __c31, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(124, __c31, 0).pipe(T.Query())),
           projectsId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1661,7 +1545,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1682,7 +1566,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1700,7 +1588,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApplicationsAuthorizedDomainsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationsId: S.String.pipe(T.Label()),
@@ -1718,7 +1610,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApplicationsDomainMappingsRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1737,13 +1633,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appsId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           authorizedCertificatesId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(130, __c32, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1754,14 +1654,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchAppsAuthorizedCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           domainMappingsId: S.String.pipe(T.Label()),
           appsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(139, __c34, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1772,7 +1676,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchAppsDomainMappingsRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationsId: S.String.pipe(T.Label()),
@@ -1780,7 +1688,7 @@ function __c6(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           applicationsId: S.String.pipe(T.Label()),
           authorizedCertificatesId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(130, __c32, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1791,7 +1699,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainMappingsId: S.String.pipe(T.Label()),
@@ -1800,7 +1712,7 @@ function __c6(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           locationsId: S.String.pipe(T.Label()),
           noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(139, __c34, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1813,7 +1725,234 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(130, __c32, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/apps/{appsId}/authorizedCertificates",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAppsAuthorizedCertificatesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastRenewalTime: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedCertificate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateKey: S.optional(S.String),
+          publicCertificate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateRawData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          managedCertificate: S.optional(__S(128, __c32, 0)),
+          id: S.optional(S.String),
+          domainNames: S.optional(__S(124, __c31, 0)),
+          expireTime: S.optional(S.String),
+          name: S.optional(S.String),
+          certificateRawData: S.optional(__S(129, __c32, 1)),
+          domainMappingsCount: S.optional(S.Number),
+          visibleDomainMappings: S.optional(__S(124, __c31, 0)),
+        }),
+      ).annotate({ identifier: "AuthorizedCertificate" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+          overrideStrategy: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(139, __c34, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/apps/{appsId}/domainMappings",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAppsDomainMappingsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          rrdata: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceRecord" });
+    case 1:
+      return S.Array(__S(136, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isManagedCertificate: S.optional(S.Boolean),
+          certificateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SslSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceRecords: S.optional(__S(137, __c34, 1)),
+          id: S.optional(S.String),
+          sslSettings: S.optional(__S(138, __c34, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainMapping" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(140, __c35, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(144, __c36, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(140, __c35, 0)),
+          error: S.optional(__S(145, __c36, 1)),
+          response: S.optional(__S(140, __c35, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectsId: S.String.pipe(T.Label()),
+          locationsId: S.String.pipe(T.Label()),
+          applicationsId: S.String.pipe(T.Label()),
+          body: S.optional(__S(130, __c32, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationsId: S.String.pipe(T.Label()),
+          applicationsId: S.String.pipe(T.Label()),
+          noManagedCertificate: S.optional(S.Boolean.pipe(T.Query())),
+          projectsId: S.String.pipe(T.Label()),
+          overrideStrategy: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(139, __c34, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsApplicationsDomainMappingsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsId: S.String.pipe(T.Label()),
+          authorizedCertificatesId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAppsAuthorizedCertificatesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainMappingsId: S.String.pipe(T.Label()),
+          appsId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}",
+            baseUrl: "https://appengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAppsDomainMappingsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

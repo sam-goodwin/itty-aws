@@ -3906,8 +3906,8 @@ export const getMicrofrontendsConfig: API.OperationMethod<
   GetMicrofrontendsConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetMicrofrontendsConfigRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetMicrofrontendsConfigResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetMicrofrontendsConfigRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<GetMicrofrontendsConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3925,8 +3925,8 @@ export const getMicrofrontendsConfigForProject: API.OperationMethod<
   GetMicrofrontendsConfigForProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetMicrofrontendsConfigForProjectRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetMicrofrontendsConfigForProjectResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetMicrofrontendsConfigForProjectRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<GetMicrofrontendsConfigForProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3940,8 +3940,8 @@ export const getMicrofrontendsGroups: API.OperationMethod<
   GetMicrofrontendsGroupsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetMicrofrontendsGroupsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetMicrofrontendsGroupsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetMicrofrontendsGroupsRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<GetMicrofrontendsGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3955,8 +3955,8 @@ export const getMicrofrontendsInGroup: API.OperationMethod<
   GetMicrofrontendsInGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetMicrofrontendsInGroupRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<GetMicrofrontendsInGroupResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<GetMicrofrontendsInGroupRequest>,
+  output: __S(269, __c8, 13) as any as S.Schema<GetMicrofrontendsInGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4019,7 +4019,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateMicrofrontendsGroupWithApplicationsResponse",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String.pipe(T.Label()),
@@ -4031,29 +4035,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsConfigRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disableOverrides: S.optional(S.Boolean),
-          localProxyPort: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetMicrofrontendsConfigResponseConfigOptions",
-      });
+      return S.Record(S.String, S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           _schema: S.optional(S.String.pipe(T.Body("$schema"))),
-          applications: __S(8, __c1, 0),
-          options: S.optional(__S(9, __c1, 1)),
+          applications: __S(33, __c1, 1),
+          options: S.optional(__S(64, __c2, 0)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -4062,12 +4051,29 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: S.NullOr(__S(10, __c1, 2)),
+          config: S.NullOr(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsConfigResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disableOverrides: S.optional(S.Boolean),
+          localProxyPort: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetMicrofrontendsConfigResponseConfigOptions",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4083,30 +4089,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsConfigForProjectRequest",
       });
-    case 5:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _schema: S.optional(S.String.pipe(T.Body("$schema"))),
-          applications: __S(13, __c1, 5),
-          options: S.optional(__S(9, __c1, 1)),
+          applications: __S(97, __c3, 1),
+          options: S.optional(__S(64, __c2, 0)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsConfigForProjectResponseConfig",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          config: S.NullOr(__S(14, __c1, 6)),
+          config: S.NullOr(__S(98, __c3, 2)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsConfigForProjectResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4121,7 +4127,13 @@ function __c2(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetMicrofrontendsGroupsResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.String.pipe(T.Label()),
@@ -4133,7 +4145,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -4142,7 +4154,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentAliasError",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           pattern: S.String,
@@ -4151,7 +4163,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBranchMatcher",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           dest: S.optional(S.String),
@@ -4161,9 +4173,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentBuildsItem",
       });
+    case 5:
+      return S.Array(__S(164, __c5, 4));
     case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -4175,13 +4187,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentCreator",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Record(S.String, S.String);
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           aud: S.String,
@@ -4189,7 +4197,7 @@ function __c3(j: number): any {
           deployment_id: S.optional(S.String),
           environment: S.String,
           iss: S.String,
-          mfe_group_ids: S.optional(__S(7, __c0, 7)),
+          mfe_group_ids: S.optional(__S(160, __c5, 0)),
           owner: S.String,
           owner_id: S.String,
           plan: S.optional(S.String),
@@ -4202,32 +4210,32 @@ function __c3(j: number): any {
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeploymentOidcTokenClaims",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(7, __c0, 7)),
+          alias: S.optional(__S(160, __c5, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(19, __c2, 3))),
+          aliasError: S.optional(S.NullOr(__S(162, __c5, 2))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(7, __c0, 7)),
-          branchMatcher: S.optional(__S(20, __c2, 4)),
+          automaticAliases: S.optional(__S(160, __c5, 0)),
+          branchMatcher: S.optional(__S(163, __c5, 3)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(22, __c2, 6)),
+          builds: S.optional(__S(165, __c5, 5)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(23, __c2, 7)),
+          creator: S.NullOr(__S(166, __c5, 6)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(24, __c3, 0)),
+          meta: S.optional(__S(167, __c5, 7)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(25, __c3, 1)),
+          oidcTokenClaims: S.optional(__S(168, __c5, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -4245,13 +4253,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItemDeployment",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           configuredBy: S.optional(S.NullOr(S.String)),
           configuredChangedAt: S.optional(S.NullOr(S.Number)),
           createdAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.NullOr(__S(26, __c3, 2)),
+          deployment: S.NullOr(__S(169, __c5, 9)),
           domain: S.String,
           environment: S.String,
           gitBranch: S.optional(S.NullOr(S.String)),
@@ -4262,9 +4270,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAliasItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(170, __c5, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           canceledAt: S.optional(S.NullOr(S.Number)),
@@ -4278,7 +4286,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemAnalytics",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           isDefaultApp: S.optional(S.Boolean),
@@ -4286,23 +4294,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemBlobs",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           securityGroupId: S.optional(S.String),
-          subnetIds: __S(7, __c0, 7),
+          subnetIds: __S(160, __c5, 0),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItemAws",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          aws: S.optional(__S(31, __c3, 7)),
+          aws: S.optional(__S(174, __c5, 14)),
           buildsEnabled: S.Boolean,
           connectConfigurationId: S.String,
           createdAt: S.Number,
@@ -4314,9 +4318,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemConnectConfigurationsItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 16:
+      return S.Array(__S(175, __c5, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4329,12 +4333,12 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemCronsDefinitionsItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 18:
+      return S.Array(__S(177, __c5, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          definitions: __S(35, __c4, 3),
+          definitions: __S(178, __c5, 18),
           deploymentId: S.NullOr(S.String),
           disabledAt: S.NullOr(S.Number),
           enabledAt: S.Number,
@@ -4343,7 +4347,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemCrons",
       });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -4355,9 +4359,9 @@ function __c4(j: number): any {
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemDomainsItemVerificationItem",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 21:
+      return S.Array(__S(180, __c5, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           apexName: S.String,
@@ -4369,26 +4373,22 @@ function __c4(j: number): any {
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(38, __c4, 6)),
+          verification: S.optional(__S(181, __c5, 21)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItemDomainsItem",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 23:
+      return S.Array(__S(182, __c5, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          branchMatcher: S.optional(__S(20, __c2, 4)),
+          branchMatcher: S.optional(__S(163, __c5, 3)),
           createdAt: S.Number,
-          currentDeploymentAliases: S.optional(__S(7, __c0, 7)),
+          currentDeploymentAliases: S.optional(__S(160, __c5, 0)),
           description: S.optional(S.String),
-          domains: S.optional(__S(40, __c5, 0)),
+          domains: S.optional(__S(183, __c5, 23)),
           id: S.String,
           slug: S.String,
           type: S.String,
@@ -4397,9 +4397,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemCustomEnvironmentsItem",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 25:
+      return S.Array(__S(184, __c5, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           storageSizeBytes: S.optional(S.NullOr(S.Number)),
@@ -4409,7 +4409,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDataCache",
       });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           algorithmVersion: S.String,
@@ -4420,7 +4420,7 @@ function __c5(j: number): any {
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigBuildMachineElasticTransition",
       });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           configuration: S.optional(S.String),
@@ -4428,20 +4428,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfigBuildQueue",
       });
-    case 6:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(44, __c5, 4)),
+          buildMachineElasticTransition: S.optional(__S(187, __c5, 27)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(45, __c5, 5)),
+          buildQueue: S.optional(__S(188, __c5, 28)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(7, __c0, 7),
+          functionDefaultRegions: __S(160, __c5, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -4449,7 +4449,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDefaultResourceConfig",
       });
-    case 7:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           deploymentsToKeep: S.optional(S.Number),
@@ -4461,57 +4461,53 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDeploymentExpiration",
       });
+    case 31:
+      return S.Array(S.Unknown);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(48, __c6, 0),
-          sources: __S(49, __c6, 1),
+          environments: __S(191, __c5, 31),
+          sources: __S(192, __c6, 0),
         }),
       ).annotate({
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyDeploymentSourcesItem",
       });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(S.Unknown);
     case 4:
       return S.Array(S.Unknown);
     case 5:
-      return S.Array(S.Unknown);
-    case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(52, __c6, 4),
-          sources: __S(53, __c6, 5),
+          environments: __S(195, __c6, 3),
+          sources: __S(196, __c6, 4),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicyGitSourcesItem",
       });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
     case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(S.NullOr(__S(51, __c6, 3))),
-          gitSources: S.optional(S.NullOr(__S(55, __c6, 7))),
+          deploymentSources: S.optional(S.NullOr(__S(194, __c6, 2))),
+          gitSources: S.optional(S.NullOr(__S(198, __c6, 6))),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDeploymentPolicy",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -4522,9 +4518,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemDismissedToastsItem",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           encryptedValue: S.String,
@@ -4533,7 +4529,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItemInternalContentHint",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.String),
@@ -4541,13 +4537,13 @@ function __c7(j: number): any {
           contentHint: S.optional(S.NullOr(S.Unknown)),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.NullOr(S.String)),
-          customEnvironmentIds: S.optional(__S(7, __c0, 7)),
+          customEnvironmentIds: S.optional(__S(160, __c5, 0)),
           decrypted: S.optional(S.Boolean),
           edgeConfigId: S.optional(S.NullOr(S.String)),
           edgeConfigTokenId: S.optional(S.NullOr(S.String)),
           gitBranch: S.optional(S.String),
           id: S.optional(S.String),
-          internalContentHint: S.optional(S.NullOr(__S(59, __c7, 3))),
+          internalContentHint: S.optional(S.NullOr(__S(202, __c6, 10))),
           key: S.String,
           legacyValue: S.optional(S.String),
           sunsetSecretId: S.optional(S.String),
@@ -4562,9 +4558,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemEnvItem",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(203, __c6, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           webAnalytics: S.optional(S.Boolean),
@@ -4572,7 +4568,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemFeatures",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           onCommit: S.Boolean,
@@ -4581,11 +4577,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemGitComments",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -4595,10 +4587,10 @@ function __c8(j: number): any {
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptionsConsolidatedGitCommitStatus",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          consolidatedGitCommitStatus: S.optional(__S(64, __c8, 0)),
+          consolidatedGitCommitStatus: S.optional(__S(207, __c6, 15)),
           createDeployments: S.String,
           disableRepositoryDispatchEvents: S.optional(S.Boolean),
           gitCommitStatus: S.optional(S.Boolean),
@@ -4607,9 +4599,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemGitProviderOptions",
       });
-    case 2:
+    case 17:
       return S.Array(S.Unknown);
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String,
@@ -4619,50 +4611,46 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemIpBucketsItem",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 19:
+      return S.Array(__S(210, __c6, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(7, __c0, 7),
+          targets: __S(160, __c5, 0),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemJobsFlagDefinitionsPresent",
       });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(7, __c0, 7),
+          targets: __S(160, __c5, 0),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemJobsLint",
       });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(7, __c0, 7),
+          targets: __S(160, __c5, 0),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemJobsTypecheck",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           flag_definitions_present: S.optional(
-            __S(69, __c8, 5).pipe(T.Body("flag-definitions-present")),
+            __S(212, __c6, 20).pipe(T.Body("flag-definitions-present")),
           ),
-          lint: S.optional(__S(70, __c8, 6)),
-          mfe_config_present: S.optional(__S(69, __c8, 5).pipe(T.Body("mfe-config-present"))),
-          typecheck: S.optional(__S(71, __c8, 7)),
+          lint: S.optional(__S(213, __c6, 21)),
+          mfe_config_present: S.optional(__S(212, __c6, 20).pipe(T.Body("mfe-config-present"))),
+          typecheck: S.optional(__S(214, __c6, 22)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemJobs",
       });
-    case 1:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           fromDeploymentId: S.NullOr(S.String),
@@ -4675,32 +4663,32 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemLastAliasRequest",
       });
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(7, __c0, 7)),
+          alias: S.optional(__S(160, __c5, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(19, __c2, 3))),
+          aliasError: S.optional(S.NullOr(__S(162, __c5, 2))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(7, __c0, 7)),
-          branchMatcher: S.optional(__S(20, __c2, 4)),
+          automaticAliases: S.optional(__S(160, __c5, 0)),
+          branchMatcher: S.optional(__S(163, __c5, 3)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(22, __c2, 6)),
+          builds: S.optional(__S(165, __c5, 5)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(23, __c2, 7)),
+          creator: S.NullOr(__S(166, __c5, 6)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(24, __c3, 0)),
+          meta: S.optional(__S(167, __c5, 7)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(25, __c3, 1)),
+          oidcTokenClaims: S.optional(__S(168, __c5, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -4718,9 +4706,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemLatestDeploymentsItem",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 26:
+      return S.Array(__S(217, __c6, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4729,7 +4717,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemOidcTokenConfig",
       });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -4737,21 +4725,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlistPathsItem",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 29:
+      return S.Array(__S(220, __c6, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          paths: __S(78, __c9, 6),
+          paths: __S(221, __c6, 29),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemOptionsAllowlist",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           connectorId: S.String,
@@ -4760,307 +4744,311 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemPassport",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accessGroup: S.optional(__S(49, __c6, 1)),
-          agent: S.optional(__S(49, __c6, 1)),
-          aiGatewayApiKey: S.optional(__S(49, __c6, 1)),
-          aiGatewayApiKeyBypassAll: S.optional(__S(49, __c6, 1)),
-          aiGatewayApiKeyOwnedBySelf: S.optional(__S(49, __c6, 1)),
-          aiGatewayApiKeySpendAttribution: S.optional(__S(49, __c6, 1)),
-          aiGatewayApiKeyZdrExemption: S.optional(__S(49, __c6, 1)),
-          aiGatewayBudget: S.optional(__S(49, __c6, 1)),
-          aiGatewayCredits: S.optional(__S(49, __c6, 1)),
-          aiGatewayGuardrails: S.optional(__S(49, __c6, 1)),
-          aiGatewayPrivateModels: S.optional(__S(49, __c6, 1)),
-          aiGatewayRules: S.optional(__S(49, __c6, 1)),
-          aiGatewaySettings: S.optional(__S(49, __c6, 1)),
-          aiGatewayTranscripts: S.optional(__S(49, __c6, 1)),
-          aiGatewayTranscriptsSettings: S.optional(__S(49, __c6, 1)),
-          aiGatewayUsage: S.optional(__S(49, __c6, 1)),
-          aiGatewayVirtualModelConfigs: S.optional(__S(49, __c6, 1)),
-          alertRules: S.optional(__S(49, __c6, 1)),
-          alerts: S.optional(__S(49, __c6, 1)),
-          aliasGlobal: S.optional(__S(49, __c6, 1)),
-          aliasProject: S.optional(__S(49, __c6, 1)),
-          aliasProtectionBypass: S.optional(__S(49, __c6, 1)),
-          analytics: S.optional(__S(49, __c6, 1)),
-          analyticsSampling: S.optional(__S(49, __c6, 1)),
-          analyticsUsage: S.optional(__S(49, __c6, 1)),
-          apiKey: S.optional(__S(49, __c6, 1)),
-          apiKeyAiGateway: S.optional(__S(49, __c6, 1)),
-          apiKeyOwnedBySelf: S.optional(__S(49, __c6, 1)),
-          auditLog: S.optional(__S(49, __c6, 1)),
-          automation: S.optional(__S(49, __c6, 1)),
-          billingAddress: S.optional(__S(49, __c6, 1)),
-          billingInformation: S.optional(__S(49, __c6, 1)),
-          billingInvoice: S.optional(__S(49, __c6, 1)),
-          billingInvoiceEmailRecipient: S.optional(__S(49, __c6, 1)),
-          billingInvoiceLanguage: S.optional(__S(49, __c6, 1)),
-          billingPlan: S.optional(__S(49, __c6, 1)),
-          billingPurchaseOrder: S.optional(__S(49, __c6, 1)),
-          billingRefund: S.optional(__S(49, __c6, 1)),
-          billingTaxId: S.optional(__S(49, __c6, 1)),
-          blob: S.optional(__S(49, __c6, 1)),
-          blobStoreTokenSet: S.optional(__S(49, __c6, 1)),
-          budget: S.optional(__S(49, __c6, 1)),
-          buildMachine: S.optional(__S(49, __c6, 1)),
-          buildMachineDefault: S.optional(__S(49, __c6, 1)),
-          bulkRedirects: S.optional(__S(49, __c6, 1)),
-          cacheArtifact: S.optional(__S(49, __c6, 1)),
-          cacheArtifactUsageEvent: S.optional(__S(49, __c6, 1)),
-          ciInvocations: S.optional(__S(49, __c6, 1)),
-          ciLogs: S.optional(__S(49, __c6, 1)),
-          codeChecks: S.optional(__S(49, __c6, 1)),
-          codeOwners: S.optional(__S(49, __c6, 1)),
-          concurrentBuilds: S.optional(__S(49, __c6, 1)),
-          connect: S.optional(__S(49, __c6, 1)),
-          connectConfiguration: S.optional(__S(49, __c6, 1)),
-          connectConfigurationLink: S.optional(__S(49, __c6, 1)),
-          connectLogs: S.optional(__S(49, __c6, 1)),
-          connexClient: S.optional(__S(49, __c6, 1)),
-          connexClientProject: S.optional(__S(49, __c6, 1)),
-          connexContact: S.optional(__S(49, __c6, 1)),
-          connexInstallation: S.optional(__S(49, __c6, 1)),
-          connexToken: S.optional(__S(49, __c6, 1)),
-          cursorOriginInstallation: S.optional(__S(49, __c6, 1)),
-          dataCacheBillingSettings: S.optional(__S(49, __c6, 1)),
-          dataCacheNamespace: S.optional(__S(49, __c6, 1)),
-          defaultDeploymentProtection: S.optional(__S(49, __c6, 1)),
-          deployment: S.optional(__S(49, __c6, 1)),
-          deploymentBuildLogs: S.optional(__S(49, __c6, 1)),
-          deploymentCheck: S.optional(__S(49, __c6, 1)),
-          deploymentCheckPreview: S.optional(__S(49, __c6, 1)),
-          deploymentCheckReRunFromProductionBranch: S.optional(__S(49, __c6, 1)),
-          deploymentPolicy: S.optional(__S(49, __c6, 1)),
-          deploymentPreview: S.optional(__S(49, __c6, 1)),
-          deploymentPrivate: S.optional(__S(49, __c6, 1)),
-          deploymentProductionGit: S.optional(__S(49, __c6, 1)),
-          deploymentPromote: S.optional(__S(49, __c6, 1)),
-          deploymentProtectionException: S.optional(__S(49, __c6, 1)),
-          deploymentRollback: S.optional(__S(49, __c6, 1)),
-          deploymentV0: S.optional(__S(49, __c6, 1)),
-          domain: S.optional(__S(49, __c6, 1)),
-          domainAcceptDelegation: S.optional(__S(49, __c6, 1)),
-          domainAuthCodes: S.optional(__S(49, __c6, 1)),
-          domainCertificate: S.optional(__S(49, __c6, 1)),
-          domainCheckConfig: S.optional(__S(49, __c6, 1)),
-          domainMove: S.optional(__S(49, __c6, 1)),
-          domainPurchase: S.optional(__S(49, __c6, 1)),
-          domainRecord: S.optional(__S(49, __c6, 1)),
-          domainTransferIn: S.optional(__S(49, __c6, 1)),
-          drain: S.optional(__S(49, __c6, 1)),
-          edgeCacheNamespace: S.optional(__S(49, __c6, 1)),
-          edgeConfig: S.optional(__S(49, __c6, 1)),
-          edgeConfigItem: S.optional(__S(49, __c6, 1)),
-          edgeConfigSchema: S.optional(__S(49, __c6, 1)),
-          edgeConfigToken: S.optional(__S(49, __c6, 1)),
-          endpointVerification: S.optional(__S(49, __c6, 1)),
-          environments: S.optional(__S(49, __c6, 1)),
-          event: S.optional(__S(49, __c6, 1)),
-          fileUpload: S.optional(__S(49, __c6, 1)),
-          flagsExplorerSubscription: S.optional(__S(49, __c6, 1)),
-          gitCredentialGrant: S.optional(__S(49, __c6, 1)),
-          gitRepository: S.optional(__S(49, __c6, 1)),
-          imageOptimizationNewPrice: S.optional(__S(49, __c6, 1)),
-          integration: S.optional(__S(49, __c6, 1)),
-          integrationAccount: S.optional(__S(49, __c6, 1)),
-          integrationConfiguration: S.optional(__S(49, __c6, 1)),
-          integrationConfigurationProjects: S.optional(__S(49, __c6, 1)),
-          integrationConfigurationRole: S.optional(__S(49, __c6, 1)),
-          integrationConfigurationTransfer: S.optional(__S(49, __c6, 1)),
-          integrationDeploymentAction: S.optional(__S(49, __c6, 1)),
-          integrationEvent: S.optional(__S(49, __c6, 1)),
-          integrationLog: S.optional(__S(49, __c6, 1)),
-          integrationPullRequest: S.optional(__S(49, __c6, 1)),
-          integrationResource: S.optional(__S(49, __c6, 1)),
-          integrationResourceData: S.optional(__S(49, __c6, 1)),
-          integrationResourceReplCommand: S.optional(__S(49, __c6, 1)),
-          integrationResourceSecrets: S.optional(__S(49, __c6, 1)),
-          integrationSSOSession: S.optional(__S(49, __c6, 1)),
-          integrationStoreTokenSet: S.optional(__S(49, __c6, 1)),
-          integrationStrict: S.optional(__S(49, __c6, 1)),
-          integrationVercelConfigurationOverride: S.optional(__S(49, __c6, 1)),
-          ipBlocking: S.optional(__S(49, __c6, 1)),
-          job: S.optional(__S(81, __c10, 1)),
-          jobGlobal: S.optional(__S(49, __c6, 1)),
-          kmsIssuer: S.optional(__S(49, __c6, 1)),
-          kmsProjectGrant: S.optional(__S(49, __c6, 1)),
-          logDrain: S.optional(__S(49, __c6, 1)),
-          logs: S.optional(__S(49, __c6, 1)),
-          logsPreset: S.optional(__S(49, __c6, 1)),
-          marketplaceBillingData: S.optional(__S(49, __c6, 1)),
-          marketplaceExperimentationEdgeConfigData: S.optional(__S(49, __c6, 1)),
-          marketplaceExperimentationItem: S.optional(__S(49, __c6, 1)),
-          marketplaceFlexCommit: S.optional(__S(49, __c6, 1)),
-          marketplaceInstallationMember: S.optional(__S(49, __c6, 1)),
-          marketplaceInvoice: S.optional(__S(49, __c6, 1)),
-          marketplaceSettings: S.optional(__S(49, __c6, 1)),
-          messageboard: S.optional(__S(49, __c6, 1)),
-          messageboardSpace: S.optional(__S(49, __c6, 1)),
-          messageboardTask: S.optional(__S(49, __c6, 1)),
-          Monitoring: S.optional(__S(49, __c6, 1)),
-          monitoringAlert: S.optional(__S(49, __c6, 1)),
-          monitoringChart: S.optional(__S(49, __c6, 1)),
-          monitoringQuery: S.optional(__S(49, __c6, 1)),
-          monitoringSettings: S.optional(__S(49, __c6, 1)),
-          notificationCustomerBudget: S.optional(__S(49, __c6, 1)),
-          notificationDeploymentFailed: S.optional(__S(49, __c6, 1)),
-          notificationDomainConfiguration: S.optional(__S(49, __c6, 1)),
-          notificationDomainExpire: S.optional(__S(49, __c6, 1)),
-          notificationDomainMoved: S.optional(__S(49, __c6, 1)),
-          notificationDomainPurchase: S.optional(__S(49, __c6, 1)),
-          notificationDomainRenewal: S.optional(__S(49, __c6, 1)),
-          notificationDomainTransfer: S.optional(__S(49, __c6, 1)),
-          notificationDomainUnverified: S.optional(__S(49, __c6, 1)),
-          NotificationMonitoringAlert: S.optional(__S(49, __c6, 1)),
-          notificationPaymentFailed: S.optional(__S(49, __c6, 1)),
-          notificationPreferences: S.optional(__S(49, __c6, 1)),
-          notificationStatementOfReasons: S.optional(__S(49, __c6, 1)),
-          notificationUsageAlert: S.optional(__S(49, __c6, 1)),
-          oauth2Application: S.optional(__S(49, __c6, 1)),
-          oauth2Connection: S.optional(__S(49, __c6, 1)),
-          observabilityConfiguration: S.optional(__S(49, __c6, 1)),
-          observabilityData: S.optional(__S(49, __c6, 1)),
-          observabilityFunnel: S.optional(__S(49, __c6, 1)),
-          observabilityNotebook: S.optional(__S(49, __c6, 1)),
-          oidcFederationPolicy: S.optional(__S(49, __c6, 1)),
-          onDemandBuild: S.optional(__S(49, __c6, 1)),
-          onDemandConcurrency: S.optional(__S(49, __c6, 1)),
-          openTelemetryEndpoint: S.optional(__S(49, __c6, 1)),
-          optionsAllowlist: S.optional(__S(49, __c6, 1)),
-          organization: S.optional(__S(49, __c6, 1)),
-          organizationDomain: S.optional(__S(49, __c6, 1)),
-          organizationTeam: S.optional(__S(49, __c6, 1)),
-          ownEvent: S.optional(__S(49, __c6, 1)),
-          pageIntegrity: S.optional(__S(49, __c6, 1)),
-          passwordProtection: S.optional(__S(49, __c6, 1)),
-          passwordProtectionInvoiceItem: S.optional(__S(49, __c6, 1)),
-          paymentMethod: S.optional(__S(49, __c6, 1)),
-          permissions: S.optional(__S(49, __c6, 1)),
-          postgres: S.optional(__S(49, __c6, 1)),
-          postgresStoreTokenSet: S.optional(__S(49, __c6, 1)),
-          previewDeploymentSuffix: S.optional(__S(49, __c6, 1)),
-          privateCloudAccount: S.optional(__S(49, __c6, 1)),
-          privateLinkEndpoint: S.optional(__S(49, __c6, 1)),
-          productionAliasProtectionBypass: S.optional(__S(49, __c6, 1)),
-          productionShareableLink: S.optional(__S(49, __c6, 1)),
-          project: S.optional(__S(49, __c6, 1)),
-          projectAccessGroup: S.optional(__S(49, __c6, 1)),
-          projectAnalyticsSampling: S.optional(__S(49, __c6, 1)),
-          projectAnalyticsUsage: S.optional(__S(49, __c6, 1)),
-          projectCheck: S.optional(__S(49, __c6, 1)),
-          projectCheckRun: S.optional(__S(49, __c6, 1)),
-          projectDeploymentExpiration: S.optional(__S(49, __c6, 1)),
-          projectDeploymentHook: S.optional(__S(49, __c6, 1)),
-          projectDeploymentProtectionStrict: S.optional(__S(49, __c6, 1)),
-          projectDomain: S.optional(__S(49, __c6, 1)),
-          projectDomainCheckConfig: S.optional(__S(49, __c6, 1)),
-          projectDomainMove: S.optional(__S(49, __c6, 1)),
-          projectDomainVerify: S.optional(__S(49, __c6, 1)),
-          projectEnvVars: S.optional(__S(49, __c6, 1)),
-          projectEnvVarsProduction: S.optional(__S(49, __c6, 1)),
-          projectEnvVarsUnownedByIntegration: S.optional(__S(49, __c6, 1)),
-          projectEvent: S.optional(__S(49, __c6, 1)),
-          projectFlags: S.optional(__S(49, __c6, 1)),
-          projectFlagsProduction: S.optional(__S(49, __c6, 1)),
-          projectFlagsSdkKey: S.optional(__S(49, __c6, 1)),
-          projectFromV0: S.optional(__S(49, __c6, 1)),
-          projectId: S.optional(__S(49, __c6, 1)),
-          projectIntegrationConfiguration: S.optional(__S(49, __c6, 1)),
-          projectLink: S.optional(__S(49, __c6, 1)),
-          projectMember: S.optional(__S(49, __c6, 1)),
-          projectMonitoring: S.optional(__S(49, __c6, 1)),
-          projectOIDCToken: S.optional(__S(49, __c6, 1)),
-          projectPermissions: S.optional(__S(49, __c6, 1)),
-          projectProductionBranch: S.optional(__S(49, __c6, 1)),
-          projectProtectionBypass: S.optional(__S(49, __c6, 1)),
-          projectRollingRelease: S.optional(__S(49, __c6, 1)),
-          projectRoutes: S.optional(__S(49, __c6, 1)),
-          projectSetting: S.optional(__S(49, __c6, 1)),
-          projectSupportCase: S.optional(__S(49, __c6, 1)),
-          projectSupportCaseComment: S.optional(__S(49, __c6, 1)),
-          projectTier: S.optional(__S(49, __c6, 1)),
-          projectTransfer: S.optional(__S(49, __c6, 1)),
-          projectTransferIn: S.optional(__S(49, __c6, 1)),
-          projectTransferOut: S.optional(__S(49, __c6, 1)),
-          projectTransferRequest: S.optional(__S(49, __c6, 1)),
-          projectUsage: S.optional(__S(49, __c6, 1)),
-          proTrialOnboarding: S.optional(__S(49, __c6, 1)),
-          rateLimit: S.optional(__S(49, __c6, 1)),
-          redis: S.optional(__S(49, __c6, 1)),
-          redisStoreTokenSet: S.optional(__S(49, __c6, 1)),
-          remoteCaching: S.optional(__S(49, __c6, 1)),
-          repository: S.optional(__S(49, __c6, 1)),
-          samlConfig: S.optional(__S(49, __c6, 1)),
-          schedule: S.optional(__S(49, __c6, 1)),
-          seawallConfig: S.optional(__S(49, __c6, 1)),
-          secret: S.optional(__S(49, __c6, 1)),
-          securityConfig: S.optional(__S(49, __c6, 1)),
-          securityPlusConfiguration: S.optional(__S(49, __c6, 1)),
-          sensitiveEnvironmentVariablePolicy: S.optional(__S(49, __c6, 1)),
-          setting: S.optional(__S(49, __c6, 1)),
-          shareableLink: S.optional(__S(49, __c6, 1)),
-          shareableLinkStrict: S.optional(__S(49, __c6, 1)),
-          sharedEnvVarConnection: S.optional(__S(49, __c6, 1)),
-          sharedEnvVars: S.optional(__S(49, __c6, 1)),
-          sharedEnvVarsProduction: S.optional(__S(49, __c6, 1)),
-          skewProtection: S.optional(__S(49, __c6, 1)),
-          space: S.optional(__S(49, __c6, 1)),
-          spaceRun: S.optional(__S(49, __c6, 1)),
-          storeIsLocked: S.optional(__S(49, __c6, 1)),
-          storeTokenSetSensitive: S.optional(__S(49, __c6, 1)),
-          storeTransfer: S.optional(__S(49, __c6, 1)),
-          supportCase: S.optional(__S(49, __c6, 1)),
-          supportCaseComment: S.optional(__S(49, __c6, 1)),
-          team: S.optional(__S(49, __c6, 1)),
-          teamAccessRequest: S.optional(__S(49, __c6, 1)),
-          teamFellowMembership: S.optional(__S(49, __c6, 1)),
-          teamGitExclusivity: S.optional(__S(49, __c6, 1)),
-          teamInvite: S.optional(__S(49, __c6, 1)),
-          teamInviteCode: S.optional(__S(49, __c6, 1)),
-          teamInviteLink: S.optional(__S(49, __c6, 1)),
-          teamJoin: S.optional(__S(49, __c6, 1)),
-          teamMemberMfaStatus: S.optional(__S(49, __c6, 1)),
-          teamMicrofrontends: S.optional(__S(49, __c6, 1)),
-          teamOwnMembership: S.optional(__S(49, __c6, 1)),
-          teamOwnMembershipDisconnectSAML: S.optional(__S(49, __c6, 1)),
-          teamSudo: S.optional(__S(49, __c6, 1)),
-          teamTokenInvalidation: S.optional(__S(49, __c6, 1)),
-          token: S.optional(__S(49, __c6, 1)),
-          toolbarComment: S.optional(__S(49, __c6, 1)),
-          trustedIps: S.optional(__S(49, __c6, 1)),
-          trustedSources: S.optional(__S(49, __c6, 1)),
-          usage: S.optional(__S(49, __c6, 1)),
-          usageCycle: S.optional(__S(49, __c6, 1)),
-          user: S.optional(__S(49, __c6, 1)),
-          userConnection: S.optional(__S(49, __c6, 1)),
-          userMfaConfiguration: S.optional(__S(49, __c6, 1)),
-          userPreference: S.optional(__S(49, __c6, 1)),
-          userSudo: S.optional(__S(49, __c6, 1)),
-          v0Chat: S.optional(__S(49, __c6, 1)),
-          vcrRepository: S.optional(__S(49, __c6, 1)),
-          vercelAppInstallation: S.optional(__S(49, __c6, 1)),
-          vercelAppInstallationRequest: S.optional(__S(49, __c6, 1)),
-          vercelAuth: S.optional(__S(49, __c6, 1)),
-          vercelRun: S.optional(__S(49, __c6, 1)),
-          vpcPeeringConnection: S.optional(__S(49, __c6, 1)),
-          webAnalytics: S.optional(__S(49, __c6, 1)),
-          webAnalyticsPlan: S.optional(__S(49, __c6, 1)),
-          webAuthn: S.optional(__S(49, __c6, 1)),
-          webhook: S.optional(__S(49, __c6, 1)),
-          webhook_event: S.optional(__S(49, __c6, 1).pipe(T.Body("webhook-event"))),
-          workflowRunData: S.optional(__S(49, __c6, 1)),
+          accessGroup: S.optional(__S(192, __c6, 0)),
+          agent: S.optional(__S(192, __c6, 0)),
+          aiGatewayApiKey: S.optional(__S(192, __c6, 0)),
+          aiGatewayApiKeyBypassAll: S.optional(__S(192, __c6, 0)),
+          aiGatewayApiKeyOwnedBySelf: S.optional(__S(192, __c6, 0)),
+          aiGatewayApiKeySpendAttribution: S.optional(__S(192, __c6, 0)),
+          aiGatewayApiKeyZdrExemption: S.optional(__S(192, __c6, 0)),
+          aiGatewayBudget: S.optional(__S(192, __c6, 0)),
+          aiGatewayCredits: S.optional(__S(192, __c6, 0)),
+          aiGatewayGuardrails: S.optional(__S(192, __c6, 0)),
+          aiGatewayPrivateModels: S.optional(__S(192, __c6, 0)),
+          aiGatewayRules: S.optional(__S(192, __c6, 0)),
+          aiGatewaySettings: S.optional(__S(192, __c6, 0)),
+          aiGatewayTranscripts: S.optional(__S(192, __c6, 0)),
+          aiGatewayTranscriptsSettings: S.optional(__S(192, __c6, 0)),
+          aiGatewayUsage: S.optional(__S(192, __c6, 0)),
+          aiGatewayVirtualModelConfigs: S.optional(__S(192, __c6, 0)),
+          alertRules: S.optional(__S(192, __c6, 0)),
+          alerts: S.optional(__S(192, __c6, 0)),
+          aliasGlobal: S.optional(__S(192, __c6, 0)),
+          aliasProject: S.optional(__S(192, __c6, 0)),
+          aliasProtectionBypass: S.optional(__S(192, __c6, 0)),
+          analytics: S.optional(__S(192, __c6, 0)),
+          analyticsSampling: S.optional(__S(192, __c6, 0)),
+          analyticsUsage: S.optional(__S(192, __c6, 0)),
+          apiKey: S.optional(__S(192, __c6, 0)),
+          apiKeyAiGateway: S.optional(__S(192, __c6, 0)),
+          apiKeyOwnedBySelf: S.optional(__S(192, __c6, 0)),
+          auditLog: S.optional(__S(192, __c6, 0)),
+          automation: S.optional(__S(192, __c6, 0)),
+          billingAddress: S.optional(__S(192, __c6, 0)),
+          billingInformation: S.optional(__S(192, __c6, 0)),
+          billingInvoice: S.optional(__S(192, __c6, 0)),
+          billingInvoiceEmailRecipient: S.optional(__S(192, __c6, 0)),
+          billingInvoiceLanguage: S.optional(__S(192, __c6, 0)),
+          billingPlan: S.optional(__S(192, __c6, 0)),
+          billingPurchaseOrder: S.optional(__S(192, __c6, 0)),
+          billingRefund: S.optional(__S(192, __c6, 0)),
+          billingTaxId: S.optional(__S(192, __c6, 0)),
+          blob: S.optional(__S(192, __c6, 0)),
+          blobStoreTokenSet: S.optional(__S(192, __c6, 0)),
+          budget: S.optional(__S(192, __c6, 0)),
+          buildMachine: S.optional(__S(192, __c6, 0)),
+          buildMachineDefault: S.optional(__S(192, __c6, 0)),
+          bulkRedirects: S.optional(__S(192, __c6, 0)),
+          cacheArtifact: S.optional(__S(192, __c6, 0)),
+          cacheArtifactUsageEvent: S.optional(__S(192, __c6, 0)),
+          ciInvocations: S.optional(__S(192, __c6, 0)),
+          ciLogs: S.optional(__S(192, __c6, 0)),
+          codeChecks: S.optional(__S(192, __c6, 0)),
+          codeOwners: S.optional(__S(192, __c6, 0)),
+          concurrentBuilds: S.optional(__S(192, __c6, 0)),
+          connect: S.optional(__S(192, __c6, 0)),
+          connectConfiguration: S.optional(__S(192, __c6, 0)),
+          connectConfigurationLink: S.optional(__S(192, __c6, 0)),
+          connectLogs: S.optional(__S(192, __c6, 0)),
+          connexClient: S.optional(__S(192, __c6, 0)),
+          connexClientProject: S.optional(__S(192, __c6, 0)),
+          connexContact: S.optional(__S(192, __c6, 0)),
+          connexInstallation: S.optional(__S(192, __c6, 0)),
+          connexToken: S.optional(__S(192, __c6, 0)),
+          cursorOriginInstallation: S.optional(__S(192, __c6, 0)),
+          dataCacheBillingSettings: S.optional(__S(192, __c6, 0)),
+          dataCacheNamespace: S.optional(__S(192, __c6, 0)),
+          defaultDeploymentProtection: S.optional(__S(192, __c6, 0)),
+          deployment: S.optional(__S(192, __c6, 0)),
+          deploymentBuildLogs: S.optional(__S(192, __c6, 0)),
+          deploymentCheck: S.optional(__S(192, __c6, 0)),
+          deploymentCheckPreview: S.optional(__S(192, __c6, 0)),
+          deploymentCheckReRunFromProductionBranch: S.optional(__S(192, __c6, 0)),
+          deploymentPolicy: S.optional(__S(192, __c6, 0)),
+          deploymentPreview: S.optional(__S(192, __c6, 0)),
+          deploymentPrivate: S.optional(__S(192, __c6, 0)),
+          deploymentProductionGit: S.optional(__S(192, __c6, 0)),
+          deploymentPromote: S.optional(__S(192, __c6, 0)),
+          deploymentProtectionException: S.optional(__S(192, __c6, 0)),
+          deploymentRollback: S.optional(__S(192, __c6, 0)),
+          deploymentV0: S.optional(__S(192, __c6, 0)),
+          domain: S.optional(__S(192, __c6, 0)),
+          domainAcceptDelegation: S.optional(__S(192, __c6, 0)),
+          domainAuthCodes: S.optional(__S(192, __c6, 0)),
+          domainCertificate: S.optional(__S(192, __c6, 0)),
+          domainCheckConfig: S.optional(__S(192, __c6, 0)),
+          domainMove: S.optional(__S(192, __c6, 0)),
+          domainPurchase: S.optional(__S(192, __c6, 0)),
+          domainRecord: S.optional(__S(192, __c6, 0)),
+          domainTransferIn: S.optional(__S(192, __c6, 0)),
+          drain: S.optional(__S(192, __c6, 0)),
+          edgeCacheNamespace: S.optional(__S(192, __c6, 0)),
+          edgeConfig: S.optional(__S(192, __c6, 0)),
+          edgeConfigItem: S.optional(__S(192, __c6, 0)),
+          edgeConfigSchema: S.optional(__S(192, __c6, 0)),
+          edgeConfigToken: S.optional(__S(192, __c6, 0)),
+          endpointVerification: S.optional(__S(192, __c6, 0)),
+          environments: S.optional(__S(192, __c6, 0)),
+          event: S.optional(__S(192, __c6, 0)),
+          fileUpload: S.optional(__S(192, __c6, 0)),
+          flagsExplorerSubscription: S.optional(__S(192, __c6, 0)),
+          gitCredentialGrant: S.optional(__S(192, __c6, 0)),
+          gitRepository: S.optional(__S(192, __c6, 0)),
+          imageOptimizationNewPrice: S.optional(__S(192, __c6, 0)),
+          integration: S.optional(__S(192, __c6, 0)),
+          integrationAccount: S.optional(__S(192, __c6, 0)),
+          integrationConfiguration: S.optional(__S(192, __c6, 0)),
+          integrationConfigurationProjects: S.optional(__S(192, __c6, 0)),
+          integrationConfigurationRole: S.optional(__S(192, __c6, 0)),
+          integrationConfigurationTransfer: S.optional(__S(192, __c6, 0)),
+          integrationDeploymentAction: S.optional(__S(192, __c6, 0)),
+          integrationEvent: S.optional(__S(192, __c6, 0)),
+          integrationLog: S.optional(__S(192, __c6, 0)),
+          integrationPullRequest: S.optional(__S(192, __c6, 0)),
+          integrationResource: S.optional(__S(192, __c6, 0)),
+          integrationResourceData: S.optional(__S(192, __c6, 0)),
+          integrationResourceReplCommand: S.optional(__S(192, __c6, 0)),
+          integrationResourceSecrets: S.optional(__S(192, __c6, 0)),
+          integrationSSOSession: S.optional(__S(192, __c6, 0)),
+          integrationStoreTokenSet: S.optional(__S(192, __c6, 0)),
+          integrationStrict: S.optional(__S(192, __c6, 0)),
+          integrationVercelConfigurationOverride: S.optional(__S(192, __c6, 0)),
+          ipBlocking: S.optional(__S(192, __c6, 0)),
+          job: S.optional(__S(224, __c7, 0)),
+          jobGlobal: S.optional(__S(192, __c6, 0)),
+          kmsIssuer: S.optional(__S(192, __c6, 0)),
+          kmsProjectGrant: S.optional(__S(192, __c6, 0)),
+          logDrain: S.optional(__S(192, __c6, 0)),
+          logs: S.optional(__S(192, __c6, 0)),
+          logsPreset: S.optional(__S(192, __c6, 0)),
+          marketplaceBillingData: S.optional(__S(192, __c6, 0)),
+          marketplaceExperimentationEdgeConfigData: S.optional(__S(192, __c6, 0)),
+          marketplaceExperimentationItem: S.optional(__S(192, __c6, 0)),
+          marketplaceFlexCommit: S.optional(__S(192, __c6, 0)),
+          marketplaceInstallationMember: S.optional(__S(192, __c6, 0)),
+          marketplaceInvoice: S.optional(__S(192, __c6, 0)),
+          marketplaceSettings: S.optional(__S(192, __c6, 0)),
+          messageboard: S.optional(__S(192, __c6, 0)),
+          messageboardSpace: S.optional(__S(192, __c6, 0)),
+          messageboardTask: S.optional(__S(192, __c6, 0)),
+          Monitoring: S.optional(__S(192, __c6, 0)),
+          monitoringAlert: S.optional(__S(192, __c6, 0)),
+          monitoringChart: S.optional(__S(192, __c6, 0)),
+          monitoringQuery: S.optional(__S(192, __c6, 0)),
+          monitoringSettings: S.optional(__S(192, __c6, 0)),
+          notificationCustomerBudget: S.optional(__S(192, __c6, 0)),
+          notificationDeploymentFailed: S.optional(__S(192, __c6, 0)),
+          notificationDomainConfiguration: S.optional(__S(192, __c6, 0)),
+          notificationDomainExpire: S.optional(__S(192, __c6, 0)),
+          notificationDomainMoved: S.optional(__S(192, __c6, 0)),
+          notificationDomainPurchase: S.optional(__S(192, __c6, 0)),
+          notificationDomainRenewal: S.optional(__S(192, __c6, 0)),
+          notificationDomainTransfer: S.optional(__S(192, __c6, 0)),
+          notificationDomainUnverified: S.optional(__S(192, __c6, 0)),
+          NotificationMonitoringAlert: S.optional(__S(192, __c6, 0)),
+          notificationPaymentFailed: S.optional(__S(192, __c6, 0)),
+          notificationPreferences: S.optional(__S(192, __c6, 0)),
+          notificationStatementOfReasons: S.optional(__S(192, __c6, 0)),
+          notificationUsageAlert: S.optional(__S(192, __c6, 0)),
+          oauth2Application: S.optional(__S(192, __c6, 0)),
+          oauth2Connection: S.optional(__S(192, __c6, 0)),
+          observabilityConfiguration: S.optional(__S(192, __c6, 0)),
+          observabilityData: S.optional(__S(192, __c6, 0)),
+          observabilityFunnel: S.optional(__S(192, __c6, 0)),
+          observabilityNotebook: S.optional(__S(192, __c6, 0)),
+          oidcFederationPolicy: S.optional(__S(192, __c6, 0)),
+          onDemandBuild: S.optional(__S(192, __c6, 0)),
+          onDemandConcurrency: S.optional(__S(192, __c6, 0)),
+          openTelemetryEndpoint: S.optional(__S(192, __c6, 0)),
+          optionsAllowlist: S.optional(__S(192, __c6, 0)),
+          organization: S.optional(__S(192, __c6, 0)),
+          organizationDomain: S.optional(__S(192, __c6, 0)),
+          organizationTeam: S.optional(__S(192, __c6, 0)),
+          ownEvent: S.optional(__S(192, __c6, 0)),
+          pageIntegrity: S.optional(__S(192, __c6, 0)),
+          passwordProtection: S.optional(__S(192, __c6, 0)),
+          passwordProtectionInvoiceItem: S.optional(__S(192, __c6, 0)),
+          paymentMethod: S.optional(__S(192, __c6, 0)),
+          permissions: S.optional(__S(192, __c6, 0)),
+          postgres: S.optional(__S(192, __c6, 0)),
+          postgresStoreTokenSet: S.optional(__S(192, __c6, 0)),
+          previewDeploymentSuffix: S.optional(__S(192, __c6, 0)),
+          privateCloudAccount: S.optional(__S(192, __c6, 0)),
+          privateLinkEndpoint: S.optional(__S(192, __c6, 0)),
+          productionAliasProtectionBypass: S.optional(__S(192, __c6, 0)),
+          productionShareableLink: S.optional(__S(192, __c6, 0)),
+          project: S.optional(__S(192, __c6, 0)),
+          projectAccessGroup: S.optional(__S(192, __c6, 0)),
+          projectAnalyticsSampling: S.optional(__S(192, __c6, 0)),
+          projectAnalyticsUsage: S.optional(__S(192, __c6, 0)),
+          projectCheck: S.optional(__S(192, __c6, 0)),
+          projectCheckRun: S.optional(__S(192, __c6, 0)),
+          projectDeploymentExpiration: S.optional(__S(192, __c6, 0)),
+          projectDeploymentHook: S.optional(__S(192, __c6, 0)),
+          projectDeploymentProtectionStrict: S.optional(__S(192, __c6, 0)),
+          projectDomain: S.optional(__S(192, __c6, 0)),
+          projectDomainCheckConfig: S.optional(__S(192, __c6, 0)),
+          projectDomainMove: S.optional(__S(192, __c6, 0)),
+          projectDomainVerify: S.optional(__S(192, __c6, 0)),
+          projectEnvVars: S.optional(__S(192, __c6, 0)),
+          projectEnvVarsProduction: S.optional(__S(192, __c6, 0)),
+          projectEnvVarsUnownedByIntegration: S.optional(__S(192, __c6, 0)),
+          projectEvent: S.optional(__S(192, __c6, 0)),
+          projectFlags: S.optional(__S(192, __c6, 0)),
+          projectFlagsProduction: S.optional(__S(192, __c6, 0)),
+          projectFlagsSdkKey: S.optional(__S(192, __c6, 0)),
+          projectFromV0: S.optional(__S(192, __c6, 0)),
+          projectId: S.optional(__S(192, __c6, 0)),
+          projectIntegrationConfiguration: S.optional(__S(192, __c6, 0)),
+          projectLink: S.optional(__S(192, __c6, 0)),
+          projectMember: S.optional(__S(192, __c6, 0)),
+          projectMonitoring: S.optional(__S(192, __c6, 0)),
+          projectOIDCToken: S.optional(__S(192, __c6, 0)),
+          projectPermissions: S.optional(__S(192, __c6, 0)),
+          projectProductionBranch: S.optional(__S(192, __c6, 0)),
+          projectProtectionBypass: S.optional(__S(192, __c6, 0)),
+          projectRollingRelease: S.optional(__S(192, __c6, 0)),
+          projectRoutes: S.optional(__S(192, __c6, 0)),
+          projectSetting: S.optional(__S(192, __c6, 0)),
+          projectSupportCase: S.optional(__S(192, __c6, 0)),
+          projectSupportCaseComment: S.optional(__S(192, __c6, 0)),
+          projectTier: S.optional(__S(192, __c6, 0)),
+          projectTransfer: S.optional(__S(192, __c6, 0)),
+          projectTransferIn: S.optional(__S(192, __c6, 0)),
+          projectTransferOut: S.optional(__S(192, __c6, 0)),
+          projectTransferRequest: S.optional(__S(192, __c6, 0)),
+          projectUsage: S.optional(__S(192, __c6, 0)),
+          proTrialOnboarding: S.optional(__S(192, __c6, 0)),
+          rateLimit: S.optional(__S(192, __c6, 0)),
+          redis: S.optional(__S(192, __c6, 0)),
+          redisStoreTokenSet: S.optional(__S(192, __c6, 0)),
+          remoteCaching: S.optional(__S(192, __c6, 0)),
+          repository: S.optional(__S(192, __c6, 0)),
+          samlConfig: S.optional(__S(192, __c6, 0)),
+          schedule: S.optional(__S(192, __c6, 0)),
+          seawallConfig: S.optional(__S(192, __c6, 0)),
+          secret: S.optional(__S(192, __c6, 0)),
+          securityConfig: S.optional(__S(192, __c6, 0)),
+          securityPlusConfiguration: S.optional(__S(192, __c6, 0)),
+          sensitiveEnvironmentVariablePolicy: S.optional(__S(192, __c6, 0)),
+          setting: S.optional(__S(192, __c6, 0)),
+          shareableLink: S.optional(__S(192, __c6, 0)),
+          shareableLinkStrict: S.optional(__S(192, __c6, 0)),
+          sharedEnvVarConnection: S.optional(__S(192, __c6, 0)),
+          sharedEnvVars: S.optional(__S(192, __c6, 0)),
+          sharedEnvVarsProduction: S.optional(__S(192, __c6, 0)),
+          skewProtection: S.optional(__S(192, __c6, 0)),
+          space: S.optional(__S(192, __c6, 0)),
+          spaceRun: S.optional(__S(192, __c6, 0)),
+          storeIsLocked: S.optional(__S(192, __c6, 0)),
+          storeTokenSetSensitive: S.optional(__S(192, __c6, 0)),
+          storeTransfer: S.optional(__S(192, __c6, 0)),
+          supportCase: S.optional(__S(192, __c6, 0)),
+          supportCaseComment: S.optional(__S(192, __c6, 0)),
+          team: S.optional(__S(192, __c6, 0)),
+          teamAccessRequest: S.optional(__S(192, __c6, 0)),
+          teamFellowMembership: S.optional(__S(192, __c6, 0)),
+          teamGitExclusivity: S.optional(__S(192, __c6, 0)),
+          teamInvite: S.optional(__S(192, __c6, 0)),
+          teamInviteCode: S.optional(__S(192, __c6, 0)),
+          teamInviteLink: S.optional(__S(192, __c6, 0)),
+          teamJoin: S.optional(__S(192, __c6, 0)),
+          teamMemberMfaStatus: S.optional(__S(192, __c6, 0)),
+          teamMicrofrontends: S.optional(__S(192, __c6, 0)),
+          teamOwnMembership: S.optional(__S(192, __c6, 0)),
+          teamOwnMembershipDisconnectSAML: S.optional(__S(192, __c6, 0)),
+          teamSudo: S.optional(__S(192, __c6, 0)),
+          teamTokenInvalidation: S.optional(__S(192, __c6, 0)),
+          token: S.optional(__S(192, __c6, 0)),
+          toolbarComment: S.optional(__S(192, __c6, 0)),
+          trustedIps: S.optional(__S(192, __c6, 0)),
+          trustedSources: S.optional(__S(192, __c6, 0)),
+          usage: S.optional(__S(192, __c6, 0)),
+          usageCycle: S.optional(__S(192, __c6, 0)),
+          user: S.optional(__S(192, __c6, 0)),
+          userConnection: S.optional(__S(192, __c6, 0)),
+          userMfaConfiguration: S.optional(__S(192, __c6, 0)),
+          userPreference: S.optional(__S(192, __c6, 0)),
+          userSudo: S.optional(__S(192, __c6, 0)),
+          v0Chat: S.optional(__S(192, __c6, 0)),
+          vcrRepository: S.optional(__S(192, __c6, 0)),
+          vercelAppInstallation: S.optional(__S(192, __c6, 0)),
+          vercelAppInstallationRequest: S.optional(__S(192, __c6, 0)),
+          vercelAuth: S.optional(__S(192, __c6, 0)),
+          vercelRun: S.optional(__S(192, __c6, 0)),
+          vpcPeeringConnection: S.optional(__S(192, __c6, 0)),
+          webAnalytics: S.optional(__S(192, __c6, 0)),
+          webAnalyticsPlan: S.optional(__S(192, __c6, 0)),
+          webAuthn: S.optional(__S(192, __c6, 0)),
+          webhook: S.optional(__S(192, __c6, 0)),
+          webhook_event: S.optional(__S(192, __c6, 0).pipe(T.Body("webhook-event"))),
+          workflowRunData: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemPermissions",
       });
-    case 3:
+    case 2:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           inheritDeploymentProtection: S.optional(S.Boolean),
@@ -5068,28 +5056,28 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemProtectionConfigSandboxUrls",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          sandboxUrls: S.optional(__S(84, __c10, 4)),
+          sandboxUrls: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemProtectionConfig",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           buildMachineElasticLastUpdated: S.optional(S.Number),
           buildMachineElasticReason: S.optional(S.String),
-          buildMachineElasticTransition: S.optional(__S(44, __c5, 4)),
+          buildMachineElasticTransition: S.optional(__S(187, __c5, 27)),
           buildMachineSelection: S.optional(S.String),
           buildMachineType: S.optional(S.String),
-          buildQueue: S.optional(__S(45, __c5, 5)),
+          buildQueue: S.optional(__S(188, __c5, 28)),
           elasticConcurrencyEnabled: S.optional(S.Boolean),
           enableFunctionsBeta: S.optional(S.Boolean),
           fluid: S.optional(S.Boolean),
           functionDefaultMemoryType: S.optional(S.String),
-          functionDefaultRegions: __S(7, __c0, 7),
+          functionDefaultRegions: __S(160, __c5, 0),
           functionDefaultTimeout: S.optional(S.Number),
           functionZeroConfigFailover: S.optional(S.Boolean),
           isNSNBDisabled: S.optional(S.Boolean),
@@ -5097,7 +5085,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemResourceConfig",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
@@ -5108,17 +5096,13 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemRollbackDescription",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Array(S.Number);
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          excludePaths: S.optional(__S(7, __c0, 7)),
-          excludeStatusCodes: S.optional(__S(88, __c11, 0)),
+          excludePaths: S.optional(__S(160, __c5, 0)),
+          excludeStatusCodes: S.optional(__S(231, __c7, 7)),
           ingestWatermarkSeconds: S.optional(S.Number),
           minSampleSize: S.optional(S.Number),
           type: S.String,
@@ -5126,13 +5110,13 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGateChecksItem",
       });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(232, __c7, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          checks: __S(90, __c11, 2),
+          checks: __S(233, __c7, 9),
           dryRun: S.Boolean,
           enabled: S.Boolean,
           failureThreshold: S.optional(S.Number),
@@ -5141,7 +5125,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseGate",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.Number),
@@ -5152,33 +5136,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemRollingReleaseStagesItem",
       });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(235, __c7, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           canaryResponseHeader: S.optional(S.Boolean),
-          gate: S.optional(__S(91, __c11, 3)),
-          stages: S.optional(S.NullOr(__S(93, __c11, 5))),
+          gate: S.optional(__S(234, __c7, 10)),
+          stages: S.optional(S.NullOr(__S(236, __c7, 12))),
           target: S.String,
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemRollingRelease",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          failoverRegions: S.optional(__S(49, __c6, 1)),
+          failoverRegions: S.optional(__S(192, __c6, 0)),
           region: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSandbox",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -5187,31 +5167,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRulesAiBots",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          ai_bots: __S(96, __c12, 0),
-          bot_filter: __S(96, __c12, 0),
-          owasp: __S(96, __c12, 0),
-          traffic_sources: __S(96, __c12, 0),
-          vercel_ruleset: __S(96, __c12, 0),
+          ai_bots: __S(239, __c7, 15),
+          bot_filter: __S(239, __c7, 15),
+          owasp: __S(239, __c7, 15),
+          traffic_sources: __S(239, __c7, 15),
+          vercel_ruleset: __S(239, __c7, 15),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityManagedRules",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
           algo: S.String,
-          keys: __S(7, __c0, 7),
+          keys: __S(160, __c5, 0),
           limit: S.Number,
           window: S.Number,
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRateLimit",
       });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
@@ -5220,29 +5200,29 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValueRedirect",
       });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           actionDuration: S.optional(S.NullOr(S.String)),
           bypassSystem: S.optional(S.NullOr(S.Boolean)),
           logHeaders: S.optional(S.Unknown),
-          rateLimit: S.optional(S.NullOr(__S(98, __c12, 2))),
-          redirect: S.optional(S.NullOr(__S(99, __c12, 3))),
+          rateLimit: S.optional(S.NullOr(__S(241, __c7, 17))),
+          redirect: S.optional(S.NullOr(__S(242, __c7, 18))),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurityRulesetsValue",
       });
-    case 5:
-      return S.Record(S.String, __S(100, __c12, 4));
-    case 6:
+    case 20:
+      return S.Record(S.String, __S(243, __c7, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           attackModeActiveUntil: S.optional(S.NullOr(S.Number)),
           attackModeEnabled: S.optional(S.Boolean),
           attackModeUpdatedAt: S.optional(S.Number),
           botIdEnabled: S.optional(S.Boolean),
-          firewallBypassIps: S.optional(__S(7, __c0, 7)),
+          firewallBypassIps: S.optional(__S(160, __c5, 0)),
           firewallConfigVersion: S.optional(S.Number),
           firewallEnabled: S.optional(S.Boolean),
           firewallSeawallEnabled: S.optional(S.Boolean),
@@ -5250,14 +5230,14 @@ function __c12(j: number): any {
           ja3Enabled: S.optional(S.Boolean),
           ja4Enabled: S.optional(S.Boolean),
           log_headers: S.optional(S.Unknown),
-          managedRules: S.optional(S.NullOr(__S(97, __c12, 1))),
+          managedRules: S.optional(S.NullOr(__S(240, __c7, 16))),
           pageIntegrityEnabled: S.optional(S.Boolean),
-          rulesets: S.optional(__S(101, __c12, 5)),
+          rulesets: S.optional(__S(244, __c7, 20)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSecurity",
       });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           framework: S.optional(S.String),
@@ -5268,13 +5248,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemServicesItem",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 23:
+      return S.Array(__S(246, __c7, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           canceledAt: S.optional(S.Number),
@@ -5288,7 +5264,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSpeedInsights",
       });
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           april2026SecurityIncidentMigrationAppliedFrom: S.optional(S.NullOr(S.String)),
@@ -5298,42 +5274,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemSsoProtection",
       });
-    case 3:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           builds: S.Boolean,
           enabled: S.Boolean,
-          regions: __S(7, __c0, 7),
+          regions: __S(160, __c5, 0),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemStaticIps",
       });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(__S(7, __c0, 7)),
+          alias: S.optional(__S(160, __c5, 0)),
           aliasAssigned: S.optional(S.NullOr(S.Unknown)),
-          aliasError: S.optional(S.NullOr(__S(19, __c2, 3))),
+          aliasError: S.optional(S.NullOr(__S(162, __c5, 2))),
           aliasFinal: S.optional(S.NullOr(S.String)),
-          automaticAliases: S.optional(__S(7, __c0, 7)),
-          branchMatcher: S.optional(__S(20, __c2, 4)),
+          automaticAliases: S.optional(__S(160, __c5, 0)),
+          branchMatcher: S.optional(__S(163, __c5, 3)),
           buildingAt: S.optional(S.Number),
-          builds: S.optional(__S(22, __c2, 6)),
+          builds: S.optional(__S(165, __c5, 5)),
           checksConclusion: S.optional(S.String),
           checksState: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.String),
           createdAt: S.Number,
           createdIn: S.String,
-          creator: S.NullOr(__S(23, __c2, 7)),
+          creator: S.NullOr(__S(166, __c5, 6)),
           deletedAt: S.optional(S.Number),
           deploymentHostname: S.String,
           forced: S.optional(S.Boolean),
           id: S.String,
-          meta: S.optional(__S(24, __c3, 0)),
+          meta: S.optional(__S(167, __c5, 7)),
           monorepoManager: S.optional(S.NullOr(S.String)),
           name: S.String,
-          oidcTokenClaims: S.optional(__S(25, __c3, 1)),
+          oidcTokenClaims: S.optional(__S(168, __c5, 8)),
           plan: S.String,
           previewCommentsEnabled: S.optional(S.Boolean),
           private: S.Boolean,
@@ -5351,9 +5327,9 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemTargetsValue",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(108, __c13, 4)));
-    case 6:
+    case 28:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(251, __c7, 27)));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           destination: S.optional(S.String),
@@ -5364,40 +5340,40 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemTracingSamplingRulesItem",
       });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
+      return S.Array(__S(253, __c7, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           domains: S.optional(S.String),
-          ignorePaths: S.optional(__S(7, __c0, 7)),
-          samplingRules: S.optional(__S(111, __c13, 7)),
+          ignorePaths: S.optional(__S(160, __c5, 0)),
+          samplingRules: S.optional(__S(254, __c7, 30)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemTracing",
       });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(160, __c5, 0));
     case 1:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           to: S.Unknown,
-          claims: __S(113, __c14, 1),
+          claims: __S(256, __c8, 0),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesOidcProvidersValueItem",
       });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
     case 3:
-      return S.Array(__S(114, __c14, 2));
+      return S.Record(S.String, __S(258, __c8, 2));
     case 4:
-      return S.Record(S.String, __S(115, __c14, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           from: S.Unknown,
@@ -5407,34 +5383,30 @@ function __c14(j: number): any {
         identifier:
           "GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValueCustomAllowItem",
       });
+    case 5:
+      return S.Array(__S(260, __c8, 4));
     case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          customAllow: S.optional(__S(118, __c14, 6)),
+          customAllow: S.optional(__S(261, __c8, 5)),
           label: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemTrustedSourcesProjectsValue",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(119, __c14, 7));
-    case 1:
+    case 7:
+      return S.Record(S.String, __S(262, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enableVercelCiSameRepository: S.optional(S.Boolean),
-          oidcProviders: S.optional(__S(116, __c14, 4)),
-          projects: S.optional(__S(120, __c15, 0)),
+          oidcProviders: S.optional(__S(259, __c8, 3)),
+          projects: S.optional(__S(263, __c8, 7)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemTrustedSources",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           bypassThrottleUntil: S.optional(S.Number),
@@ -5446,7 +5418,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemUsageStatus",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           canceledAt: S.optional(S.Number),
@@ -5458,122 +5430,121 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItemWebAnalytics",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String,
-          alias: __S(28, __c3, 4),
-          analytics: S.optional(__S(29, __c3, 5)),
+          alias: __S(171, __c5, 11),
+          analytics: S.optional(__S(172, __c5, 12)),
           appliedCve55182Migration: S.optional(S.Boolean),
           autoAssignCustomDomains: S.optional(S.Boolean),
           autoAssignCustomDomainsUpdatedBy: S.optional(S.String),
           autoExposeSystemEnvs: S.optional(S.Boolean),
           avatar: S.optional(S.NullOr(S.String)),
-          blobs: S.optional(__S(30, __c3, 6)),
+          blobs: S.optional(__S(173, __c5, 13)),
           buildCommand: S.optional(S.NullOr(S.String)),
           commandForIgnoringBuildStep: S.optional(S.NullOr(S.String)),
           concurrencyBucketName: S.optional(S.String),
           connectBuildsEnabled: S.optional(S.Boolean),
           connectConfigurationId: S.optional(S.NullOr(S.String)),
-          connectConfigurations: S.optional(S.NullOr(__S(33, __c4, 1))),
+          connectConfigurations: S.optional(S.NullOr(__S(176, __c5, 16))),
           createdAt: S.optional(S.Number),
           creator: S.optional(S.Unknown),
-          crons: S.optional(__S(36, __c4, 4)),
-          customEnvironments: S.optional(__S(42, __c5, 2)),
+          crons: S.optional(__S(179, __c5, 19)),
+          customEnvironments: S.optional(__S(185, __c5, 25)),
           customerSupportCodeVisibility: S.optional(S.Boolean),
-          dataCache: S.optional(__S(43, __c5, 3)),
-          defaultResourceConfig: __S(46, __c5, 6),
-          deploymentExpiration: __S(47, __c5, 7),
-          deploymentPolicy: S.optional(S.NullOr(__S(56, __c7, 0))),
+          dataCache: S.optional(__S(186, __c5, 26)),
+          defaultResourceConfig: __S(189, __c5, 29),
+          deploymentExpiration: __S(190, __c5, 30),
+          deploymentPolicy: S.optional(S.NullOr(__S(199, __c6, 7))),
           devCommand: S.optional(S.NullOr(S.String)),
           directoryListing: S.Boolean,
-          dismissedToasts: S.optional(__S(58, __c7, 2)),
+          dismissedToasts: S.optional(__S(201, __c6, 9)),
           enableAffectedProjectsDeployments: S.optional(S.Boolean),
           enableExternalRewriteCaching: S.optional(S.Boolean),
           enablePreviewFeedback: S.optional(S.NullOr(S.Boolean)),
           enableProductionFeedback: S.optional(S.NullOr(S.Boolean)),
-          env: S.optional(__S(61, __c7, 5)),
+          env: S.optional(__S(204, __c6, 12)),
           expiration: S.optional(S.Unknown),
-          features: S.optional(__S(62, __c7, 6)),
+          features: S.optional(__S(205, __c6, 13)),
           framework: S.optional(S.NullOr(S.String)),
-          gitComments: S.optional(__S(63, __c7, 7)),
+          gitComments: S.optional(__S(206, __c6, 14)),
           gitForkProtection: S.optional(S.Boolean),
           gitLFS: S.optional(S.Boolean),
-          gitProviderOptions: S.optional(__S(65, __c8, 1)),
+          gitProviderOptions: S.optional(__S(208, __c6, 16)),
           hasActiveBranches: S.optional(S.Boolean),
           hasDeployments: S.optional(S.Boolean),
           id: S.String,
           installCommand: S.optional(S.NullOr(S.String)),
-          internalRoutes: S.optional(__S(66, __c8, 2)),
-          ipBuckets: S.optional(__S(68, __c8, 4)),
-          jobs: S.optional(__S(72, __c9, 0)),
-          lastAliasRequest: S.optional(S.NullOr(__S(73, __c9, 1))),
+          internalRoutes: S.optional(__S(209, __c6, 17)),
+          ipBuckets: S.optional(__S(211, __c6, 19)),
+          jobs: S.optional(__S(215, __c6, 23)),
+          lastAliasRequest: S.optional(S.NullOr(__S(216, __c6, 24))),
           lastRollbackTarget: S.optional(S.NullOr(S.Unknown)),
-          latestDeployments: S.optional(__S(75, __c9, 3)),
+          latestDeployments: S.optional(__S(218, __c6, 26)),
           link: S.optional(S.Unknown),
           live: S.optional(S.Boolean),
           microfrontends: S.optional(S.Unknown),
           name: S.String,
           nodeVersion: S.String,
-          oidcTokenConfig: S.optional(__S(76, __c9, 4)),
-          optionsAllowlist: S.optional(S.NullOr(__S(79, __c9, 7))),
+          oidcTokenConfig: S.optional(__S(219, __c6, 27)),
+          optionsAllowlist: S.optional(S.NullOr(__S(222, __c6, 30))),
           outputDirectory: S.optional(S.NullOr(S.String)),
           passiveConnectConfigurationId: S.optional(S.NullOr(S.String)),
-          passport: S.optional(S.NullOr(__S(80, __c10, 0))),
+          passport: S.optional(S.NullOr(__S(223, __c6, 31))),
           passwordProtection: S.optional(S.NullOr(S.Unknown)),
           paused: S.optional(S.Boolean),
-          permissions: S.optional(__S(82, __c10, 2)),
+          permissions: S.optional(__S(225, __c7, 1)),
           productionDeploymentsFastLane: S.optional(S.Boolean),
           protectedSourcemaps: S.optional(S.Boolean),
-          protectionBypass: S.optional(__S(83, __c10, 3)),
-          protectionConfig: S.optional(__S(85, __c10, 5)),
-          resourceConfig: __S(86, __c10, 6),
-          rollbackDescription: S.optional(__S(87, __c10, 7)),
-          rollingRelease: S.optional(S.NullOr(__S(94, __c11, 6))),
+          protectionBypass: S.optional(__S(226, __c7, 2)),
+          protectionConfig: S.optional(__S(228, __c7, 4)),
+          resourceConfig: __S(229, __c7, 5),
+          rollbackDescription: S.optional(__S(230, __c7, 6)),
+          rollingRelease: S.optional(S.NullOr(__S(237, __c7, 13))),
           rootDirectory: S.optional(S.NullOr(S.String)),
-          sandbox: S.optional(__S(95, __c11, 7)),
-          security: S.optional(__S(102, __c12, 6)),
+          sandbox: S.optional(__S(238, __c7, 14)),
+          security: S.optional(__S(245, __c7, 21)),
           serverlessFunctionZeroConfigFailover: S.optional(S.Boolean),
-          services: S.optional(__S(104, __c13, 0)),
-          skewProtectionAllowedDomains: S.optional(__S(7, __c0, 7)),
+          services: S.optional(__S(247, __c7, 23)),
+          skewProtectionAllowedDomains: S.optional(__S(160, __c5, 0)),
           skewProtectionBoundaryAt: S.optional(S.Number),
           skewProtectionMaxAge: S.optional(S.Number),
           skipGitConnectDuringLink: S.optional(S.Boolean),
           sourceFilesOutsideRootDirectory: S.optional(S.Boolean),
-          speedInsights: S.optional(__S(105, __c13, 1)),
-          ssoProtection: S.optional(S.NullOr(__S(106, __c13, 2))),
-          staticIps: S.optional(__S(107, __c13, 3)),
-          targets: S.optional(__S(109, __c13, 5)),
+          speedInsights: S.optional(__S(248, __c7, 24)),
+          ssoProtection: S.optional(S.NullOr(__S(249, __c7, 25))),
+          staticIps: S.optional(__S(250, __c7, 26)),
+          targets: S.optional(__S(252, __c7, 28)),
           tier: S.optional(S.String),
-          tracing: S.optional(__S(112, __c14, 0)),
+          tracing: S.optional(__S(255, __c7, 31)),
           transferCompletedAt: S.optional(S.Number),
           transferredFromAccountId: S.optional(S.String),
           transferStartedAt: S.optional(S.Number),
           transferToAccountId: S.optional(S.String),
           trustedIps: S.optional(S.NullOr(S.Unknown)),
-          trustedSources: S.optional(S.NullOr(__S(121, __c15, 1))),
+          trustedSources: S.optional(S.NullOr(__S(264, __c8, 8))),
           updatedAt: S.optional(S.Number),
-          usageStatus: S.optional(__S(122, __c15, 2)),
+          usageStatus: S.optional(__S(265, __c8, 9)),
           v0: S.optional(S.Boolean),
           v0Created: S.optional(S.Boolean),
-          webAnalytics: S.optional(__S(123, __c15, 3)),
+          webAnalytics: S.optional(__S(266, __c8, 10)),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponseProjectsItem",
       });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(267, __c8, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          projects: __S(125, __c15, 5),
+          projects: __S(268, __c8, 12),
         }),
       ).annotate({
         identifier: "GetMicrofrontendsInGroupResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

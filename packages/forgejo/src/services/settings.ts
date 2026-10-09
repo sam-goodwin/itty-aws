@@ -69,8 +69,8 @@ export const getGeneralAttachmentSettings: API.OperationMethod<
   GetGeneralAttachmentSettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetGeneralAttachmentSettingsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GeneralAttachmentSettings>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetGeneralAttachmentSettingsRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<GeneralAttachmentSettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -84,8 +84,8 @@ export const getGeneralRepositorySettings: API.OperationMethod<
   GetGeneralRepositorySettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetGeneralRepositorySettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GeneralRepoSettings>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetGeneralRepositorySettingsRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GeneralRepoSettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -99,8 +99,8 @@ export const getGeneralUISettings: API.OperationMethod<
   GetGeneralUISettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetGeneralUISettingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GeneralUISettings>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetGeneralUISettingsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GeneralUISettings>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -124,13 +124,17 @@ function __c0(j: number): any {
           max_response_items: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GeneralAPISettings" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/attachment", code: 200 })),
       ).annotate({
         identifier: "GetGeneralAttachmentSettingsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowed_types: S.optional(S.String),
@@ -141,13 +145,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GeneralAttachmentSettings",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/repository", code: 200 })),
       ).annotate({
         identifier: "GetGeneralRepositorySettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           forks_disabled: S.optional(S.Boolean),
@@ -159,29 +167,28 @@ function __c0(j: number): any {
           time_tracking_disabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GeneralRepoSettings" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/settings/ui", code: 200 })),
       ).annotate({
         identifier: "GetGeneralUISettingsRequest",
       });
-    case 7:
+    case 1:
       return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allowed_reactions: S.optional(__S(7, __c0, 7)),
-          custom_emojis: S.optional(__S(7, __c0, 7)),
+          allowed_reactions: S.optional(__S(13, __c3, 1)),
+          custom_emojis: S.optional(__S(13, __c3, 1)),
           default_theme: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeneralUISettings" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

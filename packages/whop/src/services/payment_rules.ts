@@ -336,8 +336,8 @@ export const activatePaymentRule: API.OperationMethod<
   ActivatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivatePaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(24, __c3, 0) as any as S.Schema<ActivatePaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -351,8 +351,8 @@ export const createPaymentRule: API.OperationMethod<
   CreatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreatePaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreatePaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const deactivatePaymentRule: API.OperationMethod<
   DeactivatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeactivatePaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeactivatePaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const deletePaymentRule: API.OperationMethod<
   DeletePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeletePaymentRuleRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeletePaymentRuleResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeletePaymentRuleRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeletePaymentRuleResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const getPaymentRule: API.OperationMethod<
   GetPaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetPaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetPaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const listPaymentRuleFields: API.OperationMethod<
   ListPaymentRuleFieldsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListPaymentRuleFieldsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListPaymentRuleFieldsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListPaymentRuleFieldsRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<ListPaymentRuleFieldsResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -428,8 +428,8 @@ export const listPaymentRules: API.PaginatedOperationMethod<
   PaymentRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListPaymentRulesRequest>,
-    output: __S(24, __c3, 0) as any as S.Schema<ListPaymentRulesResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListPaymentRulesRequest>,
+    output: __S(2, __c0, 2) as any as S.Schema<ListPaymentRulesResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const replacePaymentRule: API.OperationMethod<
   ReplacePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ReplacePaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(8, __c1, 0) as any as S.Schema<ReplacePaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -468,8 +468,8 @@ export const updatePaymentRule: API.OperationMethod<
   UpdatePaymentRuleError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdatePaymentRuleRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PaymentRule>,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdatePaymentRuleRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<PaymentRule>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -479,162 +479,6 @@ export const updatePaymentRule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/activate", code: 200 })),
-      ).annotate({
-        identifier: "ActivatePaymentRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          operator: S.String,
-          value: S.Unknown,
-        }),
-      ).annotate({ identifier: "PaymentRuleCondition" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          all: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "PaymentRuleConditions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          action: S.String,
-          conditions: __S(3, __c0, 3),
-          created_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          id: S.String,
-          metadata: S.Unknown,
-          name: S.String,
-          status: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "PaymentRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          operator: S.String,
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreatePaymentRuleRequestConditionsAllItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          all: __S(6, __c0, 6),
-        }),
-      ).annotate({
-        identifier: "CreatePaymentRuleRequestConditions",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String),
-          action: S.String,
-          conditions: __S(7, __c0, 7),
-          metadata: S.optional(__S(8, __c1, 0)),
-          name: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payment_rules", code: 200 })),
-      ).annotate({ identifier: "CreatePaymentRuleRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/deactivate", code: 200 })),
-      ).annotate({
-        identifier: "DeactivatePaymentRuleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/payment_rules/{id}", code: 200 })),
-      ).annotate({ identifier: "DeletePaymentRuleRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeletePaymentRuleResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/payment_rules/{id}", code: 200 })),
-      ).annotate({ identifier: "GetPaymentRuleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/payment_rules/fields", code: 200 })),
-      ).annotate({
-        identifier: "ListPaymentRuleFieldsRequest",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "PaymentRuleFieldOption" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          maximum: S.NullOr(S.Number),
-          minimum: S.NullOr(S.Number),
-          operators: __S(15, __c1, 7),
-          options: S.NullOr(__S(17, __c2, 1)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "PaymentRuleField" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListPaymentRuleFieldsResponsePageInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(19, __c2, 3),
-          page_info: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "ListPaymentRuleFieldsResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -648,8 +492,42 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/payment_rules", code: 200 })),
       ).annotate({ identifier: "ListPaymentRulesRequest" });
-    case 7:
-      return S.Array(__S(4, __c0, 4));
+    case 1:
+      return S.Array(__S(35, __c4, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1, __c0, 1),
+          page_info: __S(96, __c12, 0),
+        }),
+      ).annotate({ identifier: "ListPaymentRulesResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          action: S.String,
+          conditions: __S(50, __c6, 2),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/replace", code: 200 })),
+      ).annotate({
+        identifier: "ReplacePaymentRuleRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          metadata: S.optional(__S(56, __c7, 0)),
+          name: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/payment_rules/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdatePaymentRuleRequest" });
   }
 }
 function __c3(j: number): any {
@@ -657,32 +535,189 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(23, __c2, 7),
-          page_info: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "ListPaymentRulesResponse" });
-    case 1:
+          id: S.String.pipe(T.Label()),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/activate", code: 200 })),
+      ).annotate({
+        identifier: "ActivatePaymentRuleRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String.pipe(T.Label()),
-          action: S.String,
-          conditions: __S(7, __c0, 7),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/replace", code: 200 })),
-      ).annotate({
-        identifier: "ReplacePaymentRuleRequest",
-      });
+          field: S.String,
+          operator: S.String,
+          value: S.Unknown,
+        }),
+      ).annotate({ identifier: "PaymentRuleCondition" });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(8, __c1, 0)),
-          name: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/payment_rules/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdatePaymentRuleRequest" });
+          all: __S(33, __c4, 1),
+        }),
+      ).annotate({ identifier: "PaymentRuleConditions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          action: S.String,
+          conditions: __S(34, __c4, 2),
+          created_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          id: S.String,
+          metadata: S.Unknown,
+          name: S.String,
+          status: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "PaymentRule" });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String),
+          action: S.String,
+          conditions: __S(50, __c6, 2),
+          metadata: S.optional(__S(56, __c7, 0)),
+          name: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payment_rules", code: 200 })),
+      ).annotate({ identifier: "CreatePaymentRuleRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          operator: S.String,
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreatePaymentRuleRequestConditionsAllItem",
+      });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          all: __S(49, __c6, 1),
+        }),
+      ).annotate({
+        identifier: "CreatePaymentRuleRequestConditions",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payment_rules/{id}/deactivate", code: 200 })),
+      ).annotate({
+        identifier: "DeactivatePaymentRuleRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/payment_rules/{id}", code: 200 })),
+      ).annotate({ identifier: "DeletePaymentRuleRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeletePaymentRuleResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/payment_rules/{id}", code: 200 })),
+      ).annotate({ identifier: "GetPaymentRuleRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/payment_rules/fields", code: 200 })),
+      ).annotate({
+        identifier: "ListPaymentRuleFieldsRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "PaymentRuleFieldOption" });
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          maximum: S.NullOr(S.Number),
+          minimum: S.NullOr(S.Number),
+          operators: __S(89, __c11, 1),
+          options: S.NullOr(__S(91, __c11, 3)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "PaymentRuleField" });
+    case 5:
+      return S.Array(__S(92, __c11, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(93, __c11, 5),
+          page_info: __S(96, __c12, 0),
+        }),
+      ).annotate({
+        identifier: "ListPaymentRuleFieldsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListPaymentRuleFieldsResponsePageInfo",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

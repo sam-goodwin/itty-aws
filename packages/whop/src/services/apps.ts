@@ -648,8 +648,8 @@ export type CreateAppError = BadRequest | Forbidden | NotFound | Conflict | Whop
 /** Create App Registers a new app on the Whop developer platform. Apps provide custom experiences that can be added to products. */
 export const createApp: API.OperationMethod<CreateAppRequest, App, CreateAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(2, __c0, 2) as any as S.Schema<CreateAppRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<App>,
+    input: __S(80, __c5, 0) as any as S.Schema<CreateAppRequest>,
+    output: __S(152, __c9, 8) as any as S.Schema<App>,
     errors: [BadRequest, Forbidden, NotFound, Conflict],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAppRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteAppResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DeleteAppResponse>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const deployApp: API.OperationMethod<
   DeployAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeployAppRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AppDeployment>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeployAppRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<AppDeployment>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -689,8 +689,8 @@ export type GetAppError = NotFound | WhopOpError;
 /** Retrieve App Retrieves an app by ID, claimed route, active verified custom hostname, or proxy domain id. Custom hostnames return 404 for inactive assignments, suspended accounts, or deleted apps. Credential fields (api_key, default_api_key, secrets) render `null` unless the caller has the corresponding developer permission on the owning account. */
 export const getApp: API.OperationMethod<GetAppRequest, App, GetAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(22, __c2, 6) as any as S.Schema<GetAppRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<App>,
+    input: __S(192, __c12, 0) as any as S.Schema<GetAppRequest>,
+    output: __S(152, __c9, 8) as any as S.Schema<App>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -706,8 +706,8 @@ export const listAppLogs: API.PaginatedOperationMethod<
   ListAppLogsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23, __c2, 7) as any as S.Schema<ListAppLogsRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListAppLogsResponse>,
+    input: __S(208, __c13, 0) as any as S.Schema<ListAppLogsRequest>,
+    output: __S(212, __c13, 4) as any as S.Schema<ListAppLogsResponse>,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -733,8 +733,8 @@ export const listApps: API.PaginatedOperationMethod<
   AppListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListAppsRequest>,
-    output: __S(33, __c4, 1) as any as S.Schema<ListAppsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListAppsRequest>,
+    output: __S(5, __c0, 5) as any as S.Schema<ListAppsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -754,8 +754,8 @@ export type UpdateAppError = BadRequest | Forbidden | NotFound | WhopOpError;
 /** Update App Updates the settings, metadata, or status of an app. Fields that are omitted keep their current value. */
 export const updateApp: API.OperationMethod<UpdateAppRequest, App, UpdateAppError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(34, __c4, 2) as any as S.Schema<UpdateAppRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<App>,
+    input: __S(16, __c1, 0) as any as S.Schema<UpdateAppRequest>,
+    output: __S(152, __c9, 8) as any as S.Schema<App>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const updateAppPermissions: API.OperationMethod<
   UpdateAppPermissionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateAppPermissionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<App>,
+  input: __S(32, __c2, 0) as any as S.Schema<UpdateAppPermissionsRequest>,
+  output: __S(152, __c9, 8) as any as S.Schema<App>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -789,8 +789,8 @@ export const updatePermissionsApp: API.OperationMethod<
   UpdatePermissionsAppError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdatePermissionsAppRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdatePermissionsAppResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<UpdatePermissionsAppRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<UpdatePermissionsAppResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -802,57 +802,70 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          direct_upload_id: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateAppRequestIcon" });
+          account_id: S.optional(S.String.pipe(T.Query())),
+          app_type: S.optional(S.String.pipe(T.Query())),
+          view_type: S.optional(S.String.pipe(T.Query())),
+          verified: S.optional(S.Boolean.pipe(T.Query())),
+          verified_apps_only: S.optional(S.Boolean.pipe(T.Query())),
+          recommended: S.optional(S.Boolean.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/apps", code: 200 })),
+      ).annotate({ identifier: "ListAppsRequest" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(__S(134, __c8, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          account_id: S.optional(S.String),
-          app_type: S.optional(S.String),
-          base_url: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(0, __c0, 0)),
+          account: __S(131, __c8, 3),
+          app_type: S.String,
+          banner_image: S.NullOr(__S(132, __c8, 4)),
+          base_url: S.NullOr(S.String),
+          businesses_created_count: S.Number,
+          businesses_created_logo_urls: __S(128, __c8, 0),
+          creator: __S(133, __c8, 5),
+          dashboard_path: S.NullOr(S.String),
+          description: S.NullOr(S.String),
+          discover_path: S.NullOr(S.String),
+          domain_id: S.String,
+          domains: S.NullOr(__S(1, __c0, 1)),
+          experience_path: S.NullOr(S.String),
+          hosted_url: S.NullOr(S.String),
+          icon: __S(132, __c8, 4),
+          id: S.String,
           name: S.String,
-          redirect_uris: S.optional(__S(1, __c0, 1)),
-          route: S.optional(S.NullOr(S.String)),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/apps", code: 200 })),
-      ).annotate({ identifier: "CreateAppRequest" });
+          openapi_path: S.NullOr(S.String),
+          origin: S.NullOr(S.String),
+          previous_hosted_urls: __S(128, __c8, 0),
+          route: S.NullOr(S.String),
+          skills_path: S.NullOr(S.String),
+          status: S.String,
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "AppListItem" });
     case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          fixed_fee_usd: S.Number,
-          percentage_fee: S.Number,
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
         }),
-      ).annotate({ identifier: "AccountParentFeesValue" });
-    case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
+      ).annotate({ identifier: "ListAppsResponsePageInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fees: S.optional(__S(4, __c0, 4)),
-          id: S.String,
-          logo_url: S.NullOr(S.String),
-          route: S.String,
-          title: S.String,
+          data: __S(3, __c0, 3),
+          page_info: __S(4, __c0, 4),
         }),
-      ).annotate({ identifier: "AccountParent" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          token: S.String,
-        }),
-      ).annotate({ identifier: "AppApiKey" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({ identifier: "AppBannerImage" });
+      ).annotate({ identifier: "ListAppsResponse" });
   }
 }
 function __c1(j: number): any {
@@ -860,21 +873,108 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.NullOr(S.String),
-          username: S.String,
-        }),
-      ).annotate({ identifier: "AppCreator" });
-    case 1:
+          id: S.String.pipe(T.Label()),
+          app_store_description: S.optional(S.String),
+          app_type: S.optional(S.String),
+          base_url: S.optional(S.NullOr(S.String)),
+          dashboard_path: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          discover_path: S.optional(S.NullOr(S.String)),
+          experience_path: S.optional(S.NullOr(S.String)),
+          icon: S.optional(__S(96, __c6, 0)),
+          name: S.optional(S.String),
+          oauth_client_type: S.optional(S.String),
+          openapi_path: S.optional(S.NullOr(S.String)),
+          production_android_build_id: S.optional(S.NullOr(S.String)),
+          production_ios_build_id: S.optional(S.NullOr(S.String)),
+          production_web_build_id: S.optional(S.NullOr(S.String)),
+          redirect_uris: S.optional(__S(128, __c8, 0)),
+          required_scopes: S.optional(__S(128, __c8, 0)),
+          route: S.optional(S.String),
+          secrets: S.optional(S.Unknown),
+          skills_path: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAppRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.NullOr(S.String),
-          obfuscated_secret_key: S.String.pipe(T.SensitiveValue({})),
-          secret_key: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+          id: S.String.pipe(T.Label()),
+          requested_permissions: __S(49, __c3, 1),
+        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}/permissions", code: 200 })),
+      ).annotate({
+        identifier: "UpdateAppPermissionsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          is_required: S.Boolean,
+          justification: S.String,
         }),
-      ).annotate({ identifier: "AppDefaultApiKey" });
-    case 2:
+      ).annotate({
+        identifier: "UpdateAppPermissionsRequestRequestedPermissionsItem",
+      });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_id: S.String.pipe(T.Label()),
+          requested_permissions: __S(49, __c3, 1),
+        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{app_id}/permissions", code: 200 })),
+      ).annotate({
+        identifier: "UpdatePermissionsAppRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UpdatePermissionsAppResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String),
+          app_type: S.optional(S.String),
+          base_url: S.optional(S.NullOr(S.String)),
+          icon: S.optional(__S(96, __c6, 0)),
+          name: S.String,
+          redirect_uris: S.optional(__S(128, __c8, 0)),
+          route: S.optional(S.NullOr(S.String)),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/apps", code: 200 })),
+      ).annotate({ identifier: "CreateAppRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          direct_upload_id: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAppRequestIcon" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -891,7 +991,46 @@ function __c1(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AppDeployment" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fixed_fee_usd: S.Number,
+          percentage_fee: S.Number,
+        }),
+      ).annotate({ identifier: "AccountParentFeesValue" });
+    case 2:
+      return S.Record(S.String, __S(129, __c8, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fees: S.optional(__S(130, __c8, 2)),
+          id: S.String,
+          logo_url: S.NullOr(S.String),
+          route: S.String,
+          title: S.String,
+        }),
+      ).annotate({ identifier: "AccountParent" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({ identifier: "AppBannerImage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.NullOr(S.String),
+          username: S.String,
+        }),
+      ).annotate({ identifier: "AppCreator" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -899,11 +1038,31 @@ function __c1(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "AppDomain" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          token: S.String,
+        }),
+      ).annotate({ identifier: "AppApiKey" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.NullOr(S.String),
+          obfuscated_secret_key: S.String.pipe(T.SensitiveValue({})),
+          secret_key: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "AppDefaultApiKey" });
+    case 2:
+      return S.Array(__S(134, __c8, 6));
+    case 3:
       return S.Array(S.String);
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.NullOr(S.String),
@@ -913,7 +1072,7 @@ function __c1(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "AppProductionBuild" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -922,43 +1081,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AppRequestedPermissionAction",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           is_required: S.Boolean,
           justification: S.NullOr(S.String),
-          permission_action: __S(15, __c1, 7),
+          permission_action: __S(149, __c9, 5),
         }),
       ).annotate({ identifier: "AppRequestedPermission" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          account: __S(5, __c0, 5),
-          api_key: S.NullOr(__S(6, __c0, 6)),
+          account: __S(131, __c8, 3),
+          api_key: S.NullOr(__S(144, __c9, 0)),
           app_store_description: S.NullOr(S.String),
           app_type: S.String,
-          banner_image: S.NullOr(__S(7, __c0, 7)),
+          banner_image: S.NullOr(__S(132, __c8, 4)),
           base_url: S.NullOr(S.String),
           businesses_created_count: S.Number,
-          businesses_created_logo_urls: __S(1, __c0, 1),
-          creator: __S(8, __c1, 0),
+          businesses_created_logo_urls: __S(128, __c8, 0),
+          creator: __S(133, __c8, 5),
           dashboard_path: S.NullOr(S.String),
-          default_api_key: S.NullOr(__S(9, __c1, 1)),
-          deployment: S.NullOr(__S(10, __c1, 2)),
+          default_api_key: S.NullOr(__S(145, __c9, 1)),
+          deployment: S.NullOr(__S(112, __c7, 0)),
           description: S.NullOr(S.String),
           discover_path: S.NullOr(S.String),
           domain_id: S.String,
-          domains: S.NullOr(__S(12, __c1, 4)),
-          elements_used: __S(13, __c1, 5),
+          domains: S.NullOr(__S(146, __c9, 2)),
+          elements_used: __S(147, __c9, 3),
           experience_path: S.NullOr(S.String),
           hosted_url: S.NullOr(S.String),
-          icon: __S(7, __c0, 7),
+          icon: __S(132, __c8, 4),
           id: S.String,
           marketplace_status: S.NullOr(S.String),
           name: S.String,
@@ -966,14 +1121,14 @@ function __c2(j: number): any {
           openapi_path: S.NullOr(S.String),
           origin: S.NullOr(S.String),
           preview_token: S.NullOr(S.String),
-          previous_hosted_urls: __S(1, __c0, 1),
+          previous_hosted_urls: __S(128, __c8, 0),
           product_id: S.NullOr(S.String),
-          production_android_build: S.NullOr(__S(14, __c1, 6)),
-          production_ios_build: S.NullOr(__S(14, __c1, 6)),
-          production_web_build: S.NullOr(__S(14, __c1, 6)),
-          redirect_uris: __S(1, __c0, 1),
-          requested_permissions: __S(17, __c2, 1),
-          required_scopes: __S(13, __c1, 5),
+          production_android_build: S.NullOr(__S(148, __c9, 4)),
+          production_ios_build: S.NullOr(__S(148, __c9, 4)),
+          production_web_build: S.NullOr(__S(148, __c9, 4)),
+          redirect_uris: __S(128, __c8, 0),
+          requested_permissions: __S(151, __c9, 7),
+          required_scopes: __S(147, __c9, 3),
           route: S.NullOr(S.String),
           secrets: S.NullOr(S.Unknown),
           skills_path: S.NullOr(S.String),
@@ -981,20 +1136,28 @@ function __c2(j: number): any {
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "App" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/apps/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAppRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
           id: S.String,
         }),
       ).annotate({ identifier: "DeleteAppResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1002,13 +1165,21 @@ function __c2(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/apps/{id}/deploy", code: 200 })),
       ).annotate({ identifier: "DeployAppRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/apps/{id}", code: 200 })),
       ).annotate({ identifier: "GetAppRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1022,11 +1193,7 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/apps/{id}/logs", code: 200 })),
       ).annotate({ identifier: "ListAppLogsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           app_build_id: S.String,
@@ -1048,9 +1215,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAppLogsResponseDataItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.optional(S.NullOr(S.String)),
@@ -1061,147 +1228,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAppLogsResponsePageInfo",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(25, __c3, 1),
-          page_info: __S(26, __c3, 2),
+          data: __S(210, __c13, 2),
+          page_info: __S(211, __c13, 3),
         }),
       ).annotate({ identifier: "ListAppLogsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String.pipe(T.Query())),
-          app_type: S.optional(S.String.pipe(T.Query())),
-          view_type: S.optional(S.String.pipe(T.Query())),
-          verified: S.optional(S.Boolean.pipe(T.Query())),
-          verified_apps_only: S.optional(S.Boolean.pipe(T.Query())),
-          recommended: S.optional(S.Boolean.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/apps", code: 200 })),
-      ).annotate({ identifier: "ListAppsRequest" });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account: __S(5, __c0, 5),
-          app_type: S.String,
-          banner_image: S.NullOr(__S(7, __c0, 7)),
-          base_url: S.NullOr(S.String),
-          businesses_created_count: S.Number,
-          businesses_created_logo_urls: __S(1, __c0, 1),
-          creator: __S(8, __c1, 0),
-          dashboard_path: S.NullOr(S.String),
-          description: S.NullOr(S.String),
-          discover_path: S.NullOr(S.String),
-          domain_id: S.String,
-          domains: S.NullOr(__S(29, __c3, 5)),
-          experience_path: S.NullOr(S.String),
-          hosted_url: S.NullOr(S.String),
-          icon: __S(7, __c0, 7),
-          id: S.String,
-          name: S.String,
-          openapi_path: S.NullOr(S.String),
-          origin: S.NullOr(S.String),
-          previous_hosted_urls: __S(1, __c0, 1),
-          route: S.NullOr(S.String),
-          skills_path: S.NullOr(S.String),
-          status: S.String,
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "AppListItem" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ListAppsResponsePageInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(31, __c3, 7),
-          page_info: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "ListAppsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          app_store_description: S.optional(S.String),
-          app_type: S.optional(S.String),
-          base_url: S.optional(S.NullOr(S.String)),
-          dashboard_path: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          discover_path: S.optional(S.NullOr(S.String)),
-          experience_path: S.optional(S.NullOr(S.String)),
-          icon: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          oauth_client_type: S.optional(S.String),
-          openapi_path: S.optional(S.NullOr(S.String)),
-          production_android_build_id: S.optional(S.NullOr(S.String)),
-          production_ios_build_id: S.optional(S.NullOr(S.String)),
-          production_web_build_id: S.optional(S.NullOr(S.String)),
-          redirect_uris: S.optional(__S(1, __c0, 1)),
-          required_scopes: S.optional(__S(1, __c0, 1)),
-          route: S.optional(S.String),
-          secrets: S.optional(S.Unknown),
-          skills_path: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAppRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          is_required: S.Boolean,
-          justification: S.String,
-        }),
-      ).annotate({
-        identifier: "UpdateAppPermissionsRequestRequestedPermissionsItem",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          requested_permissions: __S(36, __c4, 4),
-        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{id}/permissions", code: 200 })),
-      ).annotate({
-        identifier: "UpdateAppPermissionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.String.pipe(T.Label()),
-          requested_permissions: __S(36, __c4, 4),
-        }).pipe(T.Http({ method: "PATCH", uri: "/apps/{app_id}/permissions", code: 200 })),
-      ).annotate({
-        identifier: "UpdatePermissionsAppRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UpdatePermissionsAppResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -802,8 +802,8 @@ export const checkRegistrar: API.OperationMethod<
   CheckRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CheckRegistrarRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CheckRegistrarResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CheckRegistrarRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<CheckRegistrarResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -817,8 +817,8 @@ export const createRegistration: API.OperationMethod<
   CreateRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateRegistrationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateRegistrationResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateRegistrationRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<CreateRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -832,8 +832,8 @@ export const createTransferIn: API.OperationMethod<
   CreateTransferInError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateTransferInRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateTransferInResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateTransferInRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<CreateTransferInResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -847,8 +847,8 @@ export const editRegistration: API.OperationMethod<
   EditRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<EditRegistrationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<EditRegistrationResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<EditRegistrationRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<EditRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -862,8 +862,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDomainResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetDomainResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -877,8 +877,8 @@ export const getExtension: API.OperationMethod<
   GetExtensionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetExtensionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetExtensionResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetExtensionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<GetExtensionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -892,8 +892,8 @@ export const getRegistration: API.OperationMethod<
   GetRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetRegistrationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetRegistrationResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetRegistrationRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<GetRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -907,8 +907,8 @@ export const getRegistrationStatus: API.OperationMethod<
   GetRegistrationStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetRegistrationStatusRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetRegistrationStatusResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRegistrationStatusRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetRegistrationStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -922,8 +922,8 @@ export const getTransferInStatus: API.OperationMethod<
   GetTransferInStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetTransferInStatusRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetTransferInStatusResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetTransferInStatusRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<GetTransferInStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -937,8 +937,8 @@ export const getUpdateStatus: API.OperationMethod<
   GetUpdateStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetUpdateStatusRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetUpdateStatusResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetUpdateStatusRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<GetUpdateStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const listDomains: API.PaginatedOperationMethod<
   DomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32, __c4, 0) as any as S.Schema<ListDomainsRequest>,
-    output: __S(37, __c4, 5) as any as S.Schema<ListDomainsResponse>,
+    input: __S(24, __c3, 0) as any as S.Schema<ListDomainsRequest>,
+    output: __S(29, __c3, 5) as any as S.Schema<ListDomainsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -972,8 +972,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListExtensionsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListExtensionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -987,8 +987,8 @@ export const listRegistrations: API.OperationMethod<
   ListRegistrationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListRegistrationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListRegistrationsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListRegistrationsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListRegistrationsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1006,8 +1006,8 @@ export const putDomain: API.OperationMethod<
   PutDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<PutDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutDomainResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<PutDomainRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutDomainResponse>,
   errors: [
     RegistrarDomainNotOwned,
     RegistrarUpdateNotAllowed,
@@ -1027,8 +1027,8 @@ export const searchRegistrar: API.OperationMethod<
   SearchRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<SearchRegistrarRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<SearchRegistrarResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<SearchRegistrarRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<SearchRegistrarResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1042,8 @@ export const transferCheck: API.OperationMethod<
   TransferCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<TransferCheckRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<TransferCheckResponse>,
+  input: __S(66, __c8, 2) as any as S.Schema<TransferCheckRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<TransferCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1053,305 +1053,6 @@ export const transferCheck: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          domains: __S(0, __c0, 0),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/registrar/domain-check",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CheckRegistrarRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.String,
-          registrationCost: S.String.pipe(T.Body("registration_cost")),
-          renewalCost: S.String.pipe(T.Body("renewal_cost")),
-        }),
-      ).annotate({
-        identifier: "CheckResponseDomainsItemPricing",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          registrable: S.Boolean,
-          pricing: S.optional(S.NullOr(__S(2, __c0, 2))),
-          reason: S.optional(S.NullOr(S.String)),
-          tier: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CheckResponseDomainsItem" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domains: __S(4, __c0, 4),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CheckRegistrarResponse" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.String,
-          countryCode: S.String.pipe(T.Body("country_code")),
-          postalCode: S.String.pipe(T.Body("postal_code")),
-          state: S.String,
-          street: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: __S(7, __c0, 7),
-          name: S.String,
-          organization: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationRequestContactsAdministratorPostalInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          phone: S.String,
-          postalInfo: __S(8, __c1, 0).pipe(T.Body("postal_info")),
-          fax: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationRequestContactsAdministrator",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          administrator: S.optional(__S(9, __c1, 1)),
-          billing: S.optional(__S(9, __c1, 1)),
-          registrant: S.optional(__S(9, __c1, 1)),
-          technical: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationRequestContacts",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          domainName: S.String.pipe(T.Body("domain_name")),
-          acknowledgements: S.optional(__S(6, __c0, 6)),
-          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-          contactExtensions: S.optional(__S(6, __c0, 6).pipe(T.Body("contact_extensions"))),
-          contacts: S.optional(__S(10, __c1, 2)),
-          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
-          years: S.optional(S.Number),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/registrar/registrations",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRegistrationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          self: S.String,
-          resource: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationResponseLinks",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateRegistrationResponseError",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completed: S.Boolean,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
-          state: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRegistrationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          domainName: S.String.pipe(T.Label("domain_name")),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          authCode: S.optional(S.String.pipe(T.Body("auth_code"))),
-          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-          contactExtensions: S.optional(__S(6, __c0, 6).pipe(T.Body("contact_extensions"))),
-          contacts: S.optional(__S(10, __c1, 2)),
-          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateTransferInRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          completed: S.Boolean,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
-          state: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateTransferInResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          domainName: S.String.pipe(T.Label("domain_name")),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditRegistrationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          completed: S.Boolean,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
-          state: S.String,
-          updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditRegistrationResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          domainName: S.String.pipe(T.Label("domain_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetDomainRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetDomainResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          extension: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/registrar/extensions/{extension}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetExtensionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tld: S.String,
-        }),
-      ).annotate({
-        identifier: "GetExtensionResponseMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(22, __c2, 6),
-          registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
-          transferSchema: S.Unknown.pipe(T.Body("transfer_schema")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetExtensionResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          domainName: S.String.pipe(T.Label("domain_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRegistrationRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
-          createdAt: S.String.pipe(T.Body("created_at")),
-          domainName: S.String.pipe(T.Body("domain_name")),
-          expiresAt: S.String.pipe(T.Body("expires_at")),
-          locked: S.Boolean,
-          privacyMode: S.String.pipe(T.Body("privacy_mode")),
-          status: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRegistrationResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1368,21 +1069,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRegistrationStatusRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
+          links: __S(105, __c13, 1),
           state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetRegistrationStatusResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1399,21 +1104,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetTransferInStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
+          links: __S(105, __c13, 1),
           state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetTransferInStatusResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1428,21 +1137,21 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUpdateStatusRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: __S(12, __c1, 4),
+          links: __S(105, __c13, 1),
           state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(__S(6, __c0, 6))),
-          error: S.optional(S.NullOr(__S(13, __c1, 5))),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUpdateStatusResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1498,11 +1207,11 @@ function __c4(j: number): any {
           expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           locked: S.optional(S.NullOr(S.Boolean)),
           registrantContact: S.optional(
-            S.NullOr(__S(33, __c4, 1)).pipe(T.Body("registrant_contact")),
+            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("registrant_contact")),
           ),
           registryStatuses: S.optional(S.NullOr(S.String).pipe(T.Body("registry_statuses"))),
           supportedTld: S.optional(S.NullOr(S.Boolean).pipe(T.Body("supported_tld"))),
-          transferIn: S.optional(S.NullOr(__S(34, __c4, 2)).pipe(T.Body("transfer_in"))),
+          transferIn: S.optional(S.NullOr(__S(26, __c3, 2)).pipe(T.Body("transfer_in"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           name: S.optional(S.NullOr(S.String)),
           autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
@@ -1510,15 +1219,19 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DomainsListResultItem" });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(27, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(36, __c4, 4).pipe(T.EnvelopePayload()),
+          result: __S(28, __c3, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1537,25 +1250,25 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListExtensionsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(22, __c2, 6),
+          metadata: __S(152, __c19, 0),
           registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
           transferSchema: S.Unknown.pipe(T.Body("transfer_schema")),
         }),
       ).annotate({ identifier: "ListExtensionsResultItem" });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(34, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListExtensionsResponse" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        __S(40, __c5, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListExtensionsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1573,7 +1286,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRegistrationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
@@ -1587,15 +1300,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRegistrationsResultItem",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        __S(44, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(42, __c5, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListRegistrationsResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1613,12 +1330,16 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutDomainRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           q: S.String.pipe(T.Query()),
-          extensions: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          extensions: S.optional(__S(80, __c10, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         })
           .pipe(
@@ -1630,31 +1351,31 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchRegistrarRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           registrable: S.Boolean,
-          pricing: S.optional(S.NullOr(__S(2, __c0, 2))),
+          pricing: S.optional(S.NullOr(__S(81, __c10, 1))),
           reason: S.optional(S.NullOr(S.String)),
           tier: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "SearchResponseDomainsItem",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(49, __c6, 1),
+          domains: __S(58, __c7, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchRegistrarResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String.pipe(T.Body("domain_name")),
@@ -1663,13 +1384,13 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "TransferCheckRequestDomainsItem",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          domains: __S(52, __c6, 4),
+          domains: __S(65, __c8, 1),
         })
           .pipe(
             T.Http({
@@ -1680,28 +1401,358 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TransferCheckRequest" });
-    case 6:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["pricing", "transferable", "name", "reasons"],
           ["transferable", "name", "pricing", "reasons"],
         ]),
       );
-    case 7:
-      return S.Record(S.String, __S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Record(S.String, __S(67, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(55, __c6, 7),
+          domains: __S(68, __c8, 4),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TransferCheckResponse" });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domains: __S(80, __c10, 0),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/registrar/domain-check",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CheckRegistrarRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          registrable: S.Boolean,
+          pricing: S.optional(S.NullOr(__S(81, __c10, 1))),
+          reason: S.optional(S.NullOr(S.String)),
+          tier: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CheckResponseDomainsItem" });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domains: __S(74, __c9, 2),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CheckRegistrarResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.String,
+          registrationCost: S.String.pipe(T.Body("registration_cost")),
+          renewalCost: S.String.pipe(T.Body("renewal_cost")),
+        }),
+      ).annotate({
+        identifier: "CheckResponseDomainsItemPricing",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          domainName: S.String.pipe(T.Body("domain_name")),
+          acknowledgements: S.optional(__S(104, __c13, 0)),
+          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+          contactExtensions: S.optional(__S(104, __c13, 0).pipe(T.Body("contact_extensions"))),
+          contacts: S.optional(__S(99, __c12, 3)),
+          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
+          years: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/registrar/registrations",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRegistrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completed: S.Boolean,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          links: __S(105, __c13, 1),
+          state: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRegistrationResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.String,
+          countryCode: S.String.pipe(T.Body("country_code")),
+          postalCode: S.String.pipe(T.Body("postal_code")),
+          state: S.String,
+          street: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: __S(96, __c12, 0),
+          name: S.String,
+          organization: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationRequestContactsAdministratorPostalInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          phone: S.String,
+          postalInfo: __S(97, __c12, 1).pipe(T.Body("postal_info")),
+          fax: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationRequestContactsAdministrator",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          administrator: S.optional(__S(98, __c12, 2)),
+          billing: S.optional(__S(98, __c12, 2)),
+          registrant: S.optional(__S(98, __c12, 2)),
+          technical: S.optional(__S(98, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationRequestContacts",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          self: S.String,
+          resource: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationResponseLinks",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateRegistrationResponseError",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainName: S.String.pipe(T.Label("domain_name")),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          authCode: S.optional(S.String.pipe(T.Body("auth_code"))),
+          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+          contactExtensions: S.optional(__S(104, __c13, 0).pipe(T.Body("contact_extensions"))),
+          contacts: S.optional(__S(99, __c12, 3)),
+          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/transfer-in",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateTransferInRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completed: S.Boolean,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          links: __S(105, __c13, 1),
+          state: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateTransferInResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainName: S.String.pipe(T.Label("domain_name")),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditRegistrationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completed: S.Boolean,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          links: __S(105, __c13, 1),
+          state: S.String,
+          updatedAt: S.String.pipe(T.Body("updated_at")),
+          context: S.optional(S.NullOr(__S(104, __c13, 0))),
+          error: S.optional(S.NullOr(__S(106, __c13, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditRegistrationResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainName: S.String.pipe(T.Label("domain_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/registrar/domains/{domain_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDomainRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDomainResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          extension: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/registrar/extensions/{extension}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetExtensionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(152, __c19, 0),
+          registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
+          transferSchema: S.Unknown.pipe(T.Body("transfer_schema")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetExtensionResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tld: S.String,
+        }),
+      ).annotate({
+        identifier: "GetExtensionResponseMetadata",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainName: S.String.pipe(T.Label("domain_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/registrar/registrations/{domain_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRegistrationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
+          createdAt: S.String.pipe(T.Body("created_at")),
+          domainName: S.String.pipe(T.Body("domain_name")),
+          expiresAt: S.String.pipe(T.Body("expires_at")),
+          locked: S.Boolean,
+          privacyMode: S.String.pipe(T.Body("privacy_mode")),
+          status: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRegistrationResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

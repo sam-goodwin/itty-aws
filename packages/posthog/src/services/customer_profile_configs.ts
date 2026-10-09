@@ -83,7 +83,7 @@ export const createCustomerProfileConfig: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateCustomerProfileConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CustomerProfileConfig>,
+  output: __S(4, __c1, 0) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -96,8 +96,8 @@ export const customerProfileConfigsDestroy: API.OperationMethod<
   CustomerProfileConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CustomerProfileConfigsDestroyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerProfileConfigsDestroyResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CustomerProfileConfigsDestroyRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<CustomerProfileConfigsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -110,8 +110,8 @@ export const getCustomerProfileConfig: API.OperationMethod<
   GetCustomerProfileConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetCustomerProfileConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CustomerProfileConfig>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetCustomerProfileConfigRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -124,8 +124,8 @@ export const listCustomerProfileConfigs: API.OperationMethod<
   ListCustomerProfileConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListCustomerProfileConfigsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PaginatedCustomerProfileConfigList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListCustomerProfileConfigsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedCustomerProfileConfigList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -138,8 +138,8 @@ export const updateCustomerProfileConfig: API.OperationMethod<
   UpdateCustomerProfileConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateCustomerProfileConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CustomerProfileConfig>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateCustomerProfileConfigRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -152,8 +152,8 @@ export const updateCustomerProfileConfigsPartial: API.OperationMethod<
   UpdateCustomerProfileConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UpdateCustomerProfileConfigsPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CustomerProfileConfig>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateCustomerProfileConfigsPartialRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,7 +179,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCustomerProfileConfigRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -190,7 +194,11 @@ function __c0(j: number): any {
           updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CustomerProfileConfig" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -205,11 +213,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomerProfileConfigsDestroyRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CustomerProfileConfigsDestroyResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -224,7 +236,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCustomerProfileConfigRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -240,22 +256,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListCustomerProfileConfigsRequest",
       });
-    case 6:
-      return S.Array(__S(1, __c0, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(6, __c0, 6)),
+          results: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedCustomerProfileConfigList",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -275,7 +291,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateCustomerProfileConfigRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -295,7 +315,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

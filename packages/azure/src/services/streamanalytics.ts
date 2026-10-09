@@ -1488,8 +1488,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ClustersCreateOrUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ClustersCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const DeleteFunction: API.OperationMethod<
   DeleteFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteFunctionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteFunctionResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const DeleteInput: API.OperationMethod<
   DeleteInputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteInputRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteInputResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteInputRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteInputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const DeleteOutput: API.OperationMethod<
   DeleteOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteOutputRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteOutputResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteOutputRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const DeletePrivateEndpoint: API.OperationMethod<
   DeletePrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeletePrivateEndpointRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeletePrivateEndpointResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DeletePrivateEndpointRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeletePrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const DeleteStreamingJob: API.OperationMethod<
   DeleteStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteStreamingJobRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteStreamingJobResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<DeleteStreamingJobRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1593,8 @@ export const FunctionsCreateOrReplace: API.OperationMethod<
   FunctionsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<FunctionsCreateOrReplaceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<FunctionsCreateOrReplaceResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<FunctionsCreateOrReplaceRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<FunctionsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetClusterRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetClusterResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1623,8 @@ export const GetFunction: API.OperationMethod<
   GetFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetFunctionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetFunctionResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetFunctionRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<GetFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const GetFunctionDefaultDefinition: API.OperationMethod<
   GetFunctionDefaultDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetFunctionDefaultDefinitionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetFunctionDefaultDefinitionResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetFunctionDefaultDefinitionRequest>,
+  output: __S(1104, __c69, 0) as any as S.Schema<GetFunctionDefaultDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const GetInput: API.OperationMethod<
   GetInputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetInputRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetInputResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetInputRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetInputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const GetOutput: API.OperationMethod<
   GetOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetOutputRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetOutputResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetOutputRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1683,8 @@ export const GetPrivateEndpoint: API.OperationMethod<
   GetPrivateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPrivateEndpointRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetPrivateEndpointResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetPrivateEndpointRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetPrivateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1698,8 @@ export const GetStreamingJob: API.OperationMethod<
   GetStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetStreamingJobRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetStreamingJobResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetStreamingJobRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1713,8 @@ export const GetTransformation: API.OperationMethod<
   GetTransformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetTransformationRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetTransformationResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetTransformationRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<GetTransformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1728,8 @@ export const InputsCreateOrReplace: API.OperationMethod<
   InputsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<InputsCreateOrReplaceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<InputsCreateOrReplaceResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<InputsCreateOrReplaceRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<InputsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1743,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ClusterListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1758,8 @@ export const ListClusterBySubscription: API.OperationMethod<
   ListClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListClusterBySubscriptionRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ClusterListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListClusterBySubscriptionRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1773,8 +1773,8 @@ export const ListClusterStreamingJobs: API.OperationMethod<
   ListClusterStreamingJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListClusterStreamingJobsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ClusterJobListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListClusterStreamingJobsRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<ClusterJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1788,8 +1788,8 @@ export const ListFunctionByStreamingJob: API.OperationMethod<
   ListFunctionByStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListFunctionByStreamingJobRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<FunctionListResult>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListFunctionByStreamingJobRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<FunctionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1803,8 @@ export const ListInputByStreamingJob: API.OperationMethod<
   ListInputByStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListInputByStreamingJobRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<InputListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListInputByStreamingJobRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<InputListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1818,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<OperationListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(596, __c37, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1833,8 @@ export const ListOutputByStreamingJob: API.OperationMethod<
   ListOutputByStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListOutputByStreamingJobRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<OutputListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListOutputByStreamingJobRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<OutputListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1848,8 @@ export const ListPrivateEndpointByCluster: API.OperationMethod<
   ListPrivateEndpointByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListPrivateEndpointByClusterRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<PrivateEndpointListResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListPrivateEndpointByClusterRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<PrivateEndpointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1863,8 @@ export const ListStreamingJobByResourceGroup: API.OperationMethod<
   ListStreamingJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListStreamingJobByResourceGroupRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<StreamingJobListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListStreamingJobByResourceGroupRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<StreamingJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1878,8 @@ export const ListStreamingJobs: API.OperationMethod<
   ListStreamingJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListStreamingJobsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<StreamingJobListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListStreamingJobsRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<StreamingJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1893,8 @@ export const ListSubscriptionQuotas: API.OperationMethod<
   ListSubscriptionQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListSubscriptionQuotasRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<SubscriptionQuotasListResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListSubscriptionQuotasRequest>,
+  output: __S(692, __c43, 4) as any as S.Schema<SubscriptionQuotasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1908,8 @@ export const OutputsCreateOrReplace: API.OperationMethod<
   OutputsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<OutputsCreateOrReplaceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<OutputsCreateOrReplaceResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<OutputsCreateOrReplaceRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<OutputsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1923,8 @@ export const PrivateEndpointsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<PrivateEndpointsCreateOrUpdateRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<PrivateEndpointsCreateOrUpdateResponse>,
+  input: __S(740, __c46, 4) as any as S.Schema<PrivateEndpointsCreateOrUpdateRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<PrivateEndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1938,8 @@ export const ScaleStreamingJob: API.OperationMethod<
   ScaleStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ScaleStreamingJobRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ScaleStreamingJobResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<ScaleStreamingJobRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ScaleStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1953,8 @@ export const StartStreamingJob: API.OperationMethod<
   StartStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<StartStreamingJobRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StartStreamingJobResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<StartStreamingJobRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StartStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1968,8 @@ export const StopStreamingJob: API.OperationMethod<
   StopStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<StopStreamingJobRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopStreamingJobResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<StopStreamingJobRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StopStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1983,8 @@ export const StreamingJobsCreateOrReplace: API.OperationMethod<
   StreamingJobsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<StreamingJobsCreateOrReplaceRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<StreamingJobsCreateOrReplaceResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<StreamingJobsCreateOrReplaceRequest>,
+  output: __S(857, __c53, 9) as any as S.Schema<StreamingJobsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1998,8 @@ export const TestFunction: API.OperationMethod<
   TestFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<TestFunctionRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TestFunctionResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<TestFunctionRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<TestFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2013,8 +2013,8 @@ export const TestInput: API.OperationMethod<
   TestInputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<TestInputRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ResourceTestStatus>,
+  input: __S(896, __c56, 0) as any as S.Schema<TestInputRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<ResourceTestStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2028,8 +2028,8 @@ export const TestOutput: API.OperationMethod<
   TestOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<TestOutputRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<TestOutputResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<TestOutputRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<TestOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2043,8 +2043,8 @@ export const TransformationsCreateOrReplace: API.OperationMethod<
   TransformationsCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<TransformationsCreateOrReplaceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<TransformationsCreateOrReplaceResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<TransformationsCreateOrReplaceRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<TransformationsCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2058,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2073,8 +2073,8 @@ export const UpdateFunction: API.OperationMethod<
   UpdateFunctionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<UpdateFunctionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateFunctionResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<UpdateFunctionRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<UpdateFunctionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2088,8 @@ export const UpdateInput: API.OperationMethod<
   UpdateInputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<UpdateInputRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateInputResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<UpdateInputRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UpdateInputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2103,8 @@ export const UpdateOutput: API.OperationMethod<
   UpdateOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UpdateOutputRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateOutputResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<UpdateOutputRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2118,8 @@ export const UpdateStreamingJob: API.OperationMethod<
   UpdateStreamingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UpdateStreamingJobRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<UpdateStreamingJobResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<UpdateStreamingJobRequest>,
+  output: __S(857, __c53, 9) as any as S.Schema<UpdateStreamingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const UpdateTransformation: API.OperationMethod<
   UpdateTransformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<UpdateTransformationRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateTransformationResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UpdateTransformationRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<UpdateTransformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2144,28 +2144,15 @@ export const UpdateTransformation: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClusterSku" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ClusterPropertiesInput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          sku: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2177,7 +2164,47 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ClustersCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.optional(S.String),
+          sku: S.optional(__S(48, __c3, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "ClustersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ClusterPropertiesInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClusterSku" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdDate: S.optional(S.String),
@@ -2187,22 +2214,11 @@ function __c0(j: number): any {
           capacityAssigned: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ClustersCreateOrUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2217,231 +2233,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteClusterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          functionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFunctionRequest" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          inputName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInputRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          outputName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOutputRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-          privateEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteStreamingJobRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-          isConfigurationParameter: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FunctionInput" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FunctionOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "FunctionBinding" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inputs: S.optional(__S(13, __c1, 5)),
-          output: S.optional(__S(14, __c1, 6)),
-          binding: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "FunctionConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          properties: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "FunctionPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          functionName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          properties: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FunctionsCreateOrReplaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          etag: S.optional(S.String),
-          properties: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "FunctionProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "FunctionsCreateOrReplaceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          clusterName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetClusterRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "GetClusterResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          functionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
-            code: 200,
-            apiVersion: "2020-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetFunctionRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "GetFunctionResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2460,7 +2256,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetFunctionDefaultDefinitionRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2476,14 +2276,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInputRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Serialization" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           since: S.optional(S.String),
@@ -2491,15 +2288,20 @@ function __c3(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiagnosticCondition" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(29, __c3, 5)),
+          type: S.String,
+          properties: S.optional(S.Unknown),
         }),
-      ).annotate({ identifier: "Diagnostics" });
-    case 7:
+      ).annotate({ identifier: "Serialization" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2507,30 +2309,44 @@ function __c3(j: number): any {
       ).annotate({ identifier: "Compression" });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          conditions: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "Diagnostics" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           type: S.String,
-          serialization: S.optional(__S(27, __c3, 3)),
-          diagnostics: S.optional(__S(30, __c3, 6)),
+          serialization: S.optional(__S(128, __c8, 0)),
+          diagnostics: S.optional(__S(144, __c9, 0)),
           etag: S.optional(S.String),
-          compression: S.optional(__S(31, __c3, 7)),
+          compression: S.optional(__S(129, __c8, 1)),
           partitionKey: S.optional(S.String),
           datasource: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "InputProperties" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({ identifier: "GetInputResponse" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2546,7 +2362,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOutputRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -2555,35 +2375,47 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OutputPropertiesSerialization",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(29, __c3, 5)),
+          conditions: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({
         identifier: "OutputPropertiesDiagnostics",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          datasource: S.optional(__S(15, __c1, 7)),
+          datasource: S.optional(__S(1136, __c71, 0)),
           timeWindow: S.optional(S.String),
           sizeWindow: S.optional(S.Number),
-          serialization: S.optional(__S(35, __c4, 3)),
-          diagnostics: S.optional(__S(36, __c4, 4)),
+          serialization: S.optional(__S(192, __c12, 0)),
+          diagnostics: S.optional(__S(208, __c13, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutputProperties" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(37, __c4, 5)),
+          properties: S.optional(__S(209, __c13, 1)),
         }),
       ).annotate({ identifier: "GetOutputResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2603,7 +2435,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2621,9 +2453,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           privateLinkServiceId: S.optional(S.String),
-          groupIds: S.optional(__S(40, __c5, 0)),
+          groupIds: S.optional(__S(256, __c16, 0)),
           requestMessage: S.optional(S.String),
-          privateLinkServiceConnectionState: S.optional(__S(41, __c5, 1)),
+          privateLinkServiceConnectionState: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionProperties",
@@ -2631,35 +2463,43 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(42, __c5, 2)),
+          properties: S.optional(__S(258, __c16, 2)),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnection",
       });
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.Array(__S(259, __c16, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           createdDate: S.optional(S.String),
-          manualPrivateLinkServiceConnections: S.optional(__S(44, __c5, 4)),
+          manualPrivateLinkServiceConnections: S.optional(__S(260, __c16, 4)),
         }),
       ).annotate({
         identifier: "PrivateEndpointProperties",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(45, __c5, 5)),
+          properties: S.optional(__S(261, __c16, 5)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointResponse",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2677,7 +2517,97 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetStreamingJobRequest" });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          streamingUnits: S.optional(S.Number),
+          validStreamingUnits: S.optional(__S(304, __c19, 0)),
+          query: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransformationProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(305, __c19, 1)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesTransformation",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInputsItem",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1104, __c69, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(320, __c20, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(209, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesOutputsItem",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(368, __c23, 0));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.optional(S.String),
+          properties: S.optional(__S(419, __c26, 3)),
+          identity: S.optional(__S(420, __c26, 4)),
+        }),
+      ).annotate({ identifier: "GetStreamingJobResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2685,60 +2615,6 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInputsItem",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          streamingUnits: S.optional(S.Number),
-          validStreamingUnits: S.optional(__S(51, __c6, 3)),
-          query: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransformationProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesTransformation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesOutputsItem",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2756,7 +2632,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(48, __c6, 0)),
+          sku: S.optional(__S(416, __c26, 0)),
           jobId: S.optional(S.String),
           provisioningState: S.optional(S.String),
           jobState: S.optional(S.String),
@@ -2771,14 +2647,14 @@ function __c7(j: number): any {
           dataLocale: S.optional(S.String),
           compatibilityLevel: S.optional(S.String),
           createdDate: S.optional(S.String),
-          inputs: S.optional(__S(50, __c6, 2)),
-          transformation: S.optional(__S(53, __c6, 5)),
-          outputs: S.optional(__S(55, __c6, 7)),
-          functions: S.optional(__S(56, __c7, 0)),
+          inputs: S.optional(__S(352, __c22, 0)),
+          transformation: S.optional(__S(306, __c19, 2)),
+          outputs: S.optional(__S(384, __c24, 0)),
+          functions: S.optional(__S(336, __c21, 0)),
           etag: S.optional(S.String),
-          jobStorageAccount: S.optional(__S(57, __c7, 1)),
+          jobStorageAccount: S.optional(__S(417, __c26, 1)),
           contentStoragePolicy: S.optional(S.String),
-          cluster: S.optional(__S(58, __c7, 2)),
+          cluster: S.optional(__S(418, __c26, 2)),
         }),
       ).annotate({ identifier: "StreamingJobProperties" });
     case 4:
@@ -2789,19 +2665,11 @@ function __c7(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.optional(S.String),
-          properties: S.optional(__S(59, __c7, 3)),
-          identity: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "GetStreamingJobResponse" });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2817,19 +2685,9 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTransformationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          serialization: S.optional(__S(27, __c3, 3)),
-          compression: S.optional(__S(31, __c3, 7)),
-          partitionKey: S.optional(S.String),
-          datasource: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "InputPropertiesInput" });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2839,7 +2697,7 @@ function __c8(j: number): any {
           jobName: S.String.pipe(T.Label()),
           inputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2851,7 +2709,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InputsCreateOrReplaceRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          serialization: S.optional(__S(128, __c8, 0)),
+          compression: S.optional(__S(129, __c8, 1)),
+          partitionKey: S.optional(S.String),
+          datasource: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "InputPropertiesInput" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2867,16 +2743,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListClusterByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(22, __c2, 6));
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1200, __c75, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(66, __c8, 2)),
+          value: S.optional(__S(496, __c31, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2891,7 +2775,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListClusterBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2908,7 +2796,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListClusterStreamingJobsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2916,20 +2804,40 @@ function __c8(j: number): any {
           jobState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterJob" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(530, __c33, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterJobListResult" });
   }
 }
-function __c9(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(71, __c8, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterJobListResult" });
-    case 1:
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          functionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFunctionRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2947,14 +2855,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListFunctionByStreamingJobRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(56, __c7, 0)),
+          value: S.optional(__S(336, __c21, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionListResult" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2972,14 +2884,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListInputByStreamingJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(50, __c6, 2)),
+          value: S.optional(__S(352, __c22, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InputListResult" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2990,7 +2906,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2999,28 +2915,28 @@ function __c9(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(78, __c9, 6)),
+          display: S.optional(__S(593, __c37, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(594, __c37, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(80, __c10, 0)),
+          value: S.optional(__S(595, __c37, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3038,14 +2954,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOutputByStreamingJobRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(55, __c6, 7)),
+          value: S.optional(__S(384, __c24, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutputListResult" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3062,22 +2982,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointByClusterRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(45, __c5, 5)),
+          properties: S.optional(__S(261, __c16, 5)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(86, __c10, 6)),
+          value: S.optional(__S(626, __c39, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3085,7 +3005,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3104,16 +3024,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListStreamingJobByResourceGroupRequest",
       });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(400, __c25, 0));
     case 1:
-      return S.Array(__S(61, __c7, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89, __c11, 1)),
+          value: S.optional(__S(656, __c41, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StreamingJobListResult" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3127,7 +3055,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListStreamingJobsRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3143,7 +3075,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListSubscriptionQuotasRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxCount: S.optional(S.Number),
@@ -3152,40 +3084,30 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SubscriptionQuotaProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(93, __c11, 5)),
+          properties: S.optional(__S(689, __c43, 1)),
         }),
       ).annotate({ identifier: "SubscriptionQuota" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(690, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(95, __c11, 7)),
+          value: S.optional(__S(691, __c43, 3)),
         }),
       ).annotate({
         identifier: "SubscriptionQuotasListResult",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          datasource: S.optional(__S(15, __c1, 7)),
-          timeWindow: S.optional(S.String),
-          sizeWindow: S.optional(S.Number),
-          serialization: S.optional(__S(35, __c4, 3)),
-          diagnostics: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "OutputPropertiesInput" });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3193,7 +3115,7 @@ function __c12(j: number): any {
           jobName: S.String.pipe(T.Label()),
           outputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(720, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3205,42 +3127,60 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "OutputsCreateOrReplaceRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasource: S.optional(__S(1136, __c71, 0)),
+          timeWindow: S.optional(S.String),
+          sizeWindow: S.optional(S.Number),
+          serialization: S.optional(__S(192, __c12, 0)),
+          diagnostics: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "OutputPropertiesInput" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privateLinkServiceId: S.optional(S.String),
-          groupIds: S.optional(__S(40, __c5, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(2, __c0, 2)),
+          groupIds: S.optional(__S(256, __c16, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(99, __c12, 3)),
+          properties: S.optional(__S(736, __c46, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionInput",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(737, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          manualPrivateLinkServiceConnections: S.optional(__S(101, __c12, 5)),
+          manualPrivateLinkServiceConnections: S.optional(__S(738, __c46, 2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointPropertiesInput",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(102, __c12, 6)),
+          properties: S.optional(__S(739, __c46, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3254,7 +3194,27 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          inputName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInputRequest" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3272,7 +3232,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ScaleStreamingJobRequest" });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3289,7 +3253,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartStreamingJobRequest" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3304,102 +3272,20 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopStreamingJobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInputInputsItem",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          streamingUnits: S.optional(S.Number),
-          validStreamingUnits: S.optional(__S(51, __c6, 3)),
-          query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransformationPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInputTransformation",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInputOutputsItem",
-      });
   }
 }
-function __c14(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInputFunctionsItem",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(48, __c6, 0)),
-          jobType: S.optional(S.String),
-          outputStartMode: S.optional(S.String),
-          outputStartTime: S.optional(S.String),
-          eventsOutOfOrderPolicy: S.optional(S.String),
-          outputErrorPolicy: S.optional(S.String),
-          eventsOutOfOrderMaxDelayInSeconds: S.optional(S.Number),
-          eventsLateArrivalMaxDelayInSeconds: S.optional(S.Number),
-          dataLocale: S.optional(S.String),
-          compatibilityLevel: S.optional(S.String),
-          inputs: S.optional(__S(108, __c13, 4)),
-          transformation: S.optional(__S(110, __c13, 6)),
-          outputs: S.optional(__S(112, __c14, 0)),
-          functions: S.optional(__S(114, __c14, 2)),
-          jobStorageAccount: S.optional(__S(57, __c7, 1)),
-          contentStoragePolicy: S.optional(S.String),
-          cluster: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "StreamingJobPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(115, __c14, 3)),
-          identity: S.optional(__S(116, __c14, 4)),
+          properties: S.optional(__S(855, __c53, 7)),
+          identity: S.optional(__S(856, __c53, 8)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3411,21 +3297,115 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "StreamingJobsCreateOrReplaceRequest",
       });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          streamingUnits: S.optional(S.Number),
+          validStreamingUnits: S.optional(__S(304, __c19, 0)),
+          query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransformationPropertiesInput",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInputInputsItem",
+      });
+    case 1:
+      return S.Array(__S(848, __c53, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(832, __c52, 0)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInputTransformation",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(720, __c45, 0)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInputOutputsItem",
+      });
+    case 4:
+      return S.Array(__S(851, __c53, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(1120, __c70, 0)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInputFunctionsItem",
+      });
     case 6:
+      return S.Array(__S(853, __c53, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(__S(416, __c26, 0)),
+          jobType: S.optional(S.String),
+          outputStartMode: S.optional(S.String),
+          outputStartTime: S.optional(S.String),
+          eventsOutOfOrderPolicy: S.optional(S.String),
+          outputErrorPolicy: S.optional(S.String),
+          eventsOutOfOrderMaxDelayInSeconds: S.optional(S.Number),
+          eventsLateArrivalMaxDelayInSeconds: S.optional(S.Number),
+          dataLocale: S.optional(S.String),
+          compatibilityLevel: S.optional(S.String),
+          inputs: S.optional(__S(849, __c53, 1)),
+          transformation: S.optional(__S(850, __c53, 2)),
+          outputs: S.optional(__S(852, __c53, 4)),
+          functions: S.optional(__S(854, __c53, 6)),
+          jobStorageAccount: S.optional(__S(417, __c26, 1)),
+          contentStoragePolicy: S.optional(S.String),
+          cluster: S.optional(__S(418, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "StreamingJobPropertiesInput",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(59, __c7, 3)),
-          identity: S.optional(__S(60, __c7, 4)),
+          properties: S.optional(__S(419, __c26, 3)),
+          identity: S.optional(__S(420, __c26, 4)),
         }),
       ).annotate({
         identifier: "StreamingJobsCreateOrReplaceResponse",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3433,7 +3413,7 @@ function __c14(j: number): any {
           jobName: S.String.pipe(T.Label()),
           functionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3445,7 +3425,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "TestFunctionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3458,10 +3438,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          error: S.optional(__S(120, __c15, 0)),
+          error: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({ identifier: "TestFunctionResponse" });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3469,7 +3453,7 @@ function __c15(j: number): any {
           jobName: S.String.pipe(T.Label()),
           inputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3479,7 +3463,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TestInputRequest" });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3487,7 +3475,7 @@ function __c15(j: number): any {
           jobName: S.String.pipe(T.Label()),
           outputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(720, __c45, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3497,7 +3485,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TestOutputRequest" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3505,7 +3497,7 @@ function __c15(j: number): any {
           jobName: S.String.pipe(T.Label()),
           transformationName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(109, __c13, 5)),
+          properties: S.optional(__S(832, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3517,16 +3509,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "TransformationsCreateOrReplaceRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(2, __c0, 2)),
+          sku: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3536,7 +3532,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateClusterRequest" });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3544,7 +3544,7 @@ function __c15(j: number): any {
           jobName: S.String.pipe(T.Label()),
           functionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3554,7 +3554,31 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFunctionRequest" });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          outputName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOutputRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3562,7 +3586,7 @@ function __c15(j: number): any {
           jobName: S.String.pipe(T.Label()),
           inputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3574,7 +3598,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "UpdateInputRequest" });
   }
 }
-function __c16(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3584,7 +3608,7 @@ function __c16(j: number): any {
           jobName: S.String.pipe(T.Label()),
           outputName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(720, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3594,16 +3618,20 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateOutputRequest" });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.optional(S.String),
-          properties: S.optional(__S(115, __c14, 3)),
-          identity: S.optional(__S(116, __c14, 4)),
+          properties: S.optional(__S(855, __c53, 7)),
+          identity: S.optional(__S(856, __c53, 8)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3615,7 +3643,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateStreamingJobRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3623,7 +3655,7 @@ function __c16(j: number): any {
           jobName: S.String.pipe(T.Label()),
           transformationName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(109, __c13, 5)),
+          properties: S.optional(__S(832, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3637,7 +3669,218 @@ function __c16(j: number): any {
       });
   }
 }
-
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+          privateEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteStreamingJobRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          functionName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          properties: S.optional(__S(1120, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "FunctionsCreateOrReplaceRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "FunctionsCreateOrReplaceResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          properties: S.optional(__S(1155, __c72, 3)),
+        }),
+      ).annotate({ identifier: "FunctionPropertiesInput" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          properties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "FunctionBinding" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+          isConfigurationParameter: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FunctionInput" });
+    case 1:
+      return S.Array(__S(1152, __c72, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FunctionOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          inputs: S.optional(__S(1153, __c72, 1)),
+          output: S.optional(__S(1154, __c72, 2)),
+          binding: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({ identifier: "FunctionConfiguration" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          etag: S.optional(S.String),
+          properties: S.optional(__S(1155, __c72, 3)),
+        }),
+      ).annotate({ identifier: "FunctionProperties" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          clusterName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetClusterRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.optional(S.String),
+          sku: S.optional(__S(48, __c3, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({ identifier: "GetClusterResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          functionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}",
+            code: 200,
+            apiVersion: "2020-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetFunctionRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1168, __c73, 0)),
+        }),
+      ).annotate({ identifier: "GetFunctionResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

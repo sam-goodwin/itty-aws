@@ -418,8 +418,8 @@ export const connectSocialAccount: API.OperationMethod<
   ConnectSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ConnectSocialAccountRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ConnectSocialAccountResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ConnectSocialAccountRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<ConnectSocialAccountResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const createSocialAccount: API.OperationMethod<
   CreateSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateSocialAccountRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SocialAccount>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateSocialAccountRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<SocialAccount>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const deleteSocialAccount: API.OperationMethod<
   DeleteSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteSocialAccountRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteSocialAccountResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteSocialAccountRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<DeleteSocialAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const listSocialAccountLeadForms: API.OperationMethod<
   ListSocialAccountLeadFormsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListSocialAccountLeadFormsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListSocialAccountLeadFormsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListSocialAccountLeadFormsRequest>,
+  output: __S(125, __c7, 13) as any as S.Schema<ListSocialAccountLeadFormsResponse>,
   errors: [BadRequest, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -480,8 +480,8 @@ export const listSocialAccountPosts: API.PaginatedOperationMethod<
   SocialAccountPost
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23, __c2, 7) as any as S.Schema<ListSocialAccountPostsRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<ListSocialAccountPostsResponse>,
+    input: __S(128, __c8, 0) as any as S.Schema<ListSocialAccountPostsRequest>,
+    output: __S(132, __c8, 4) as any as S.Schema<ListSocialAccountPostsResponse>,
     errors: [BadRequest, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const listSocialAccounts: API.PaginatedOperationMethod<
   SocialAccount
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListSocialAccountsRequest>,
-    output: __S(31, __c3, 7) as any as S.Schema<ListSocialAccountsResponse>,
+    input: __S(144, __c9, 0) as any as S.Schema<ListSocialAccountsRequest>,
+    output: __S(147, __c9, 3) as any as S.Schema<ListSocialAccountsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -532,8 +532,8 @@ export const refreshSocialAccount: API.OperationMethod<
   RefreshSocialAccountError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<RefreshSocialAccountRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SocialAccount>,
+  input: __S(0, __c0, 0) as any as S.Schema<RefreshSocialAccountRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<SocialAccount>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -541,294 +541,6 @@ export const refreshSocialAccount: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String),
-          platform: S.String,
-          redirect_url: S.String,
-          scopes: S.optional(__S(0, __c0, 0)),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/social_accounts/connect", code: 200 })),
-      ).annotate({
-        identifier: "ConnectSocialAccountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authorize_url: S.String,
-        }),
-      ).annotate({
-        identifier: "ConnectSocialAccountResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String),
-          platform: S.String,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/social_accounts", code: 200 })),
-      ).annotate({
-        identifier: "CreateSocialAccountRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          platform: S.String,
-          profile_picture_url: S.NullOr(S.String),
-          username: S.NullOr(S.String),
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "SocialAccountParent" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.NullOr(S.String),
-          external_id: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          parent_social_account: S.NullOr(__S(4, __c0, 4)),
-          platform: S.String,
-          profile_picture_url: S.NullOr(S.String),
-          scopes: __S(5, __c0, 5),
-          url: S.NullOr(S.String),
-          username: S.NullOr(S.String),
-          verified: S.Boolean,
-        }),
-      ).annotate({ identifier: "SocialAccount" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          account_id: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/social_accounts/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteSocialAccountRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Boolean,
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteSocialAccountResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/social_accounts/{id}/lead_forms", code: 200 })),
-      ).annotate({
-        identifier: "ListSocialAccountLeadFormsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          button_text: S.NullOr(S.String),
-          button_type: S.NullOr(S.String),
-          description: S.NullOr(S.String),
-          file_url: S.NullOr(S.String),
-          headline: S.NullOr(S.String),
-          phone_number: S.NullOr(S.String),
-          url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AdLeadFormCompletion" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          checked_by_default: S.NullOr(S.Boolean),
-          key: S.NullOr(S.String),
-          required: S.NullOr(S.Boolean),
-          text: S.String,
-        }),
-      ).annotate({
-        identifier: "AdLeadFormDisclaimerCheckbox",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.NullOr(S.String),
-          checkboxes: __S(12, __c1, 4),
-          title: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AdLeadFormDisclaimer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.NullOr(S.String),
-          headline: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AdLeadFormIntro" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          target_end_page_index: S.optional(S.Number),
-          target_question_index: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AdLeadFormOptionLogic" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.NullOr(S.String)),
-          logic: S.optional(__S(15, __c1, 7)),
-          value: S.String,
-        }),
-      ).annotate({ identifier: "AdLeadFormQuestionOption" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          label: S.optional(S.String),
-          options: S.optional(__S(17, __c2, 1)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "AdLeadFormQuestion" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          completion: S.NullOr(__S(10, __c1, 2)),
-          created_at: S.NullOr(S.String),
-          disclaimer: S.NullOr(__S(13, __c1, 5)),
-          form_type: S.String,
-          id: S.String,
-          intro: S.NullOr(__S(14, __c1, 6)),
-          locale: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          privacy_policy_link_text: S.NullOr(S.String),
-          privacy_policy_url: S.NullOr(S.String),
-          question_labels: __S(5, __c0, 5),
-          questions: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "SocialAccountLeadForm" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "ListSocialAccountLeadFormsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Query()),
-          post_id: S.optional(S.String.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/social_accounts/{id}/posts", code: 200 })),
-      ).annotate({
-        identifier: "ListSocialAccountPostsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          call_to_action: S.NullOr(S.String),
-          caption: S.NullOr(S.String),
-          destination_url: S.NullOr(S.String),
-          embed_url: S.NullOr(S.String),
-          id: S.String,
-          media_url: S.NullOr(S.String),
-          restrictions: __S(0, __c0, 0),
-          thumbnail_url: S.NullOr(S.String),
-          video_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "SocialAccountPost" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ListSocialAccountPostsResponsePageInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(25, __c3, 1),
-          page_info: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "ListSocialAccountPostsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(S.String.pipe(T.Query())),
-          platform: S.optional(S.String.pipe(T.Query())),
-          verified: S.optional(S.Boolean.pipe(T.Query())),
-          scopes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/social_accounts", code: 200 })),
-      ).annotate({
-        identifier: "ListSocialAccountsRequest",
-      });
-    case 5:
-      return S.Array(__S(6, __c0, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListSocialAccountsResponsePageInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(29, __c3, 5),
-          page_info: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "ListSocialAccountsResponse",
-      });
-  }
-}
-function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -842,7 +554,314 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String),
+          platform: S.String,
+          redirect_url: S.String,
+          scopes: S.optional(__S(32, __c2, 0)),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/social_accounts/connect", code: 200 })),
+      ).annotate({
+        identifier: "ConnectSocialAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authorize_url: S.String,
+        }),
+      ).annotate({
+        identifier: "ConnectSocialAccountResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String),
+          platform: S.String,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/social_accounts", code: 200 })),
+      ).annotate({
+        identifier: "CreateSocialAccountRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          platform: S.String,
+          profile_picture_url: S.NullOr(S.String),
+          username: S.NullOr(S.String),
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "SocialAccountParent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.NullOr(S.String),
+          external_id: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          parent_social_account: S.NullOr(__S(80, __c5, 0)),
+          platform: S.String,
+          profile_picture_url: S.NullOr(S.String),
+          scopes: __S(64, __c4, 0),
+          url: S.NullOr(S.String),
+          username: S.NullOr(S.String),
+          verified: S.Boolean,
+        }),
+      ).annotate({ identifier: "SocialAccount" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          account_id: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/social_accounts/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteSocialAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Boolean,
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteSocialAccountResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/social_accounts/{id}/lead_forms", code: 200 })),
+      ).annotate({
+        identifier: "ListSocialAccountLeadFormsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          button_text: S.NullOr(S.String),
+          button_type: S.NullOr(S.String),
+          description: S.NullOr(S.String),
+          file_url: S.NullOr(S.String),
+          headline: S.NullOr(S.String),
+          phone_number: S.NullOr(S.String),
+          url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AdLeadFormCompletion" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checked_by_default: S.NullOr(S.Boolean),
+          key: S.NullOr(S.String),
+          required: S.NullOr(S.Boolean),
+          text: S.String,
+        }),
+      ).annotate({
+        identifier: "AdLeadFormDisclaimerCheckbox",
+      });
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.NullOr(S.String),
+          checkboxes: __S(115, __c7, 3),
+          title: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AdLeadFormDisclaimer" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.NullOr(S.String),
+          headline: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AdLeadFormIntro" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          target_end_page_index: S.optional(S.Number),
+          target_question_index: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AdLeadFormOptionLogic" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.NullOr(S.String)),
+          logic: S.optional(__S(118, __c7, 6)),
+          value: S.String,
+        }),
+      ).annotate({ identifier: "AdLeadFormQuestionOption" });
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+          label: S.optional(S.String),
+          options: S.optional(__S(120, __c7, 8)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "AdLeadFormQuestion" });
+    case 10:
+      return S.Array(__S(121, __c7, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          completion: S.NullOr(__S(113, __c7, 1)),
+          created_at: S.NullOr(S.String),
+          disclaimer: S.NullOr(__S(116, __c7, 4)),
+          form_type: S.String,
+          id: S.String,
+          intro: S.NullOr(__S(117, __c7, 5)),
+          locale: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          privacy_policy_link_text: S.NullOr(S.String),
+          privacy_policy_url: S.NullOr(S.String),
+          question_labels: __S(64, __c4, 0),
+          questions: __S(122, __c7, 10),
+        }),
+      ).annotate({ identifier: "SocialAccountLeadForm" });
+    case 12:
+      return S.Array(__S(123, __c7, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(124, __c7, 12),
+        }),
+      ).annotate({
+        identifier: "ListSocialAccountLeadFormsResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Query()),
+          post_id: S.optional(S.String.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/social_accounts/{id}/posts", code: 200 })),
+      ).annotate({
+        identifier: "ListSocialAccountPostsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          call_to_action: S.NullOr(S.String),
+          caption: S.NullOr(S.String),
+          destination_url: S.NullOr(S.String),
+          embed_url: S.NullOr(S.String),
+          id: S.String,
+          media_url: S.NullOr(S.String),
+          restrictions: __S(32, __c2, 0),
+          thumbnail_url: S.NullOr(S.String),
+          video_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "SocialAccountPost" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ListSocialAccountPostsResponsePageInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(130, __c8, 2),
+          page_info: __S(131, __c8, 3),
+        }),
+      ).annotate({
+        identifier: "ListSocialAccountPostsResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(S.String.pipe(T.Query())),
+          platform: S.optional(S.String.pipe(T.Query())),
+          verified: S.optional(S.Boolean.pipe(T.Query())),
+          scopes: S.optional(__S(32, __c2, 0).pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/social_accounts", code: 200 })),
+      ).annotate({
+        identifier: "ListSocialAccountsRequest",
+      });
+    case 1:
+      return S.Array(__S(81, __c5, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListSocialAccountsResponsePageInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(145, __c9, 1),
+          page_info: __S(146, __c9, 2),
+        }),
+      ).annotate({
+        identifier: "ListSocialAccountsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

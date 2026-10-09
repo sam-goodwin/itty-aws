@@ -1864,8 +1864,8 @@ export const acceptTermsOfService: API.OperationMethod<
   AcceptTermsOfServiceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptTermsOfServiceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AcceptTermsOfServiceResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<AcceptTermsOfServiceRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<AcceptTermsOfServiceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1884,8 +1884,8 @@ export const approveAccountsServices: API.OperationMethod<
   ApproveAccountsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ApproveAccountsServicesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AccountService>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ApproveAccountsServicesRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<AccountService>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1899,8 +1899,8 @@ export const claimAccountsHomepage: API.OperationMethod<
   ClaimAccountsHomepageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ClaimAccountsHomepageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Homepage>,
+  input: __S(2305, __c72, 1) as any as S.Schema<ClaimAccountsHomepageRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Homepage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1919,8 @@ export const createAccountsOmnichannelSettings: API.OperationMethod<
   CreateAccountsOmnichannelSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateAccountsOmnichannelSettingsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OmnichannelSetting>,
+  input: __S(2688, __c84, 0) as any as S.Schema<CreateAccountsOmnichannelSettingsRequest>,
+  output: __S(2724, __c85, 4) as any as S.Schema<OmnichannelSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1939,8 +1939,8 @@ export const createAccountsOnlineReturnPolicies: API.OperationMethod<
   CreateAccountsOnlineReturnPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateAccountsOnlineReturnPoliciesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<OnlineReturnPolicy>,
+  input: __S(3008, __c94, 0) as any as S.Schema<CreateAccountsOnlineReturnPoliciesRequest>,
+  output: __S(3109, __c97, 5) as any as S.Schema<OnlineReturnPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1959,8 +1959,8 @@ export const createAccountsProgramsCheckoutSettings: API.OperationMethod<
   CreateAccountsProgramsCheckoutSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateAccountsProgramsCheckoutSettingsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CheckoutSettings>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CreateAccountsProgramsCheckoutSettingsRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1974,8 +1974,8 @@ export const createAccountsRegions: API.OperationMethod<
   CreateAccountsRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateAccountsRegionsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Region>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateAccountsRegionsRequest>,
+  output: __S(38, __c1, 6) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1989,8 +1989,8 @@ export const createAccountsUsers: API.OperationMethod<
   CreateAccountsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateAccountsUsersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<User>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateAccountsUsersRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2009,8 +2009,8 @@ export const createAndConfigureAccounts: API.OperationMethod<
   CreateAndConfigureAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateAndConfigureAccountsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Account>,
+  input: __S(138, __c4, 10) as any as S.Schema<CreateAndConfigureAccountsRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2029,8 +2029,8 @@ export const createTestAccountAccounts: API.OperationMethod<
   CreateTestAccountAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateTestAccountAccountsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Account>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateTestAccountAccountsRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2044,8 +2044,8 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteAccountsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteAccountsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2064,8 +2064,8 @@ export const deleteAccountsOnlineReturnPolicies: API.OperationMethod<
   DeleteAccountsOnlineReturnPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteAccountsOnlineReturnPoliciesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteAccountsOnlineReturnPoliciesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2079,8 +2079,8 @@ export const deleteAccountsRegions: API.OperationMethod<
   DeleteAccountsRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteAccountsRegionsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteAccountsRegionsRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2094,8 +2094,8 @@ export const deleteAccountsUsers: API.OperationMethod<
   DeleteAccountsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteAccountsUsersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteAccountsUsersRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2115,11 +2115,11 @@ export const deleteCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    60,
-    __c7,
-    4,
+    352,
+    __c11,
+    0,
   ) as any as S.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2138,8 @@ export const disableAccountsPrograms: API.OperationMethod<
   DisableAccountsProgramsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DisableAccountsProgramsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Program>,
+  input: __S(384, __c12, 0) as any as S.Schema<DisableAccountsProgramsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<Program>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const enableAccountsPrograms: API.OperationMethod<
   EnableAccountsProgramsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<EnableAccountsProgramsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Program>,
+  input: __S(448, __c14, 0) as any as S.Schema<EnableAccountsProgramsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<Program>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2169,8 +2169,8 @@ export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperation
   GcpOpContext,
   FindLfpProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<FindLfpProvidersResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>,
+  output: __S(483, __c15, 3) as any as S.Schema<FindLfpProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2189,11 +2189,11 @@ export const getAccountForGcpRegistrationAccountsDeveloperRegistration: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetAccountForGcpRegistrationResponse>,
+  output: __S(513, __c16, 1) as any as S.Schema<GetAccountForGcpRegistrationResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2207,8 +2207,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetAccountsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Account>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2222,8 +2222,8 @@ export const getAccountsOmnichannelSettings: API.OperationMethod<
   GetAccountsOmnichannelSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetAccountsOmnichannelSettingsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OmnichannelSetting>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetAccountsOmnichannelSettingsRequest>,
+  output: __S(2724, __c85, 4) as any as S.Schema<OmnichannelSetting>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2237,8 +2237,8 @@ export const getAccountsOnlineReturnPolicies: API.OperationMethod<
   GetAccountsOnlineReturnPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetAccountsOnlineReturnPoliciesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<OnlineReturnPolicy>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetAccountsOnlineReturnPoliciesRequest>,
+  output: __S(3109, __c97, 5) as any as S.Schema<OnlineReturnPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export const getAccountsPrograms: API.OperationMethod<
   GetAccountsProgramsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetAccountsProgramsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Program>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetAccountsProgramsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<Program>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2267,8 +2267,8 @@ export const getAccountsRegions: API.OperationMethod<
   GetAccountsRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetAccountsRegionsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Region>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetAccountsRegionsRequest>,
+  output: __S(38, __c1, 6) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2282,8 +2282,8 @@ export const getAccountsRelationships: API.OperationMethod<
   GetAccountsRelationshipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetAccountsRelationshipsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<AccountRelationship>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetAccountsRelationshipsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<AccountRelationship>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2297,8 +2297,8 @@ export const getAccountsServices: API.OperationMethod<
   GetAccountsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetAccountsServicesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AccountService>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetAccountsServicesRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<AccountService>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2312,8 +2312,8 @@ export const getAccountsTermsOfServiceAgreementStates: API.OperationMethod<
   GetAccountsTermsOfServiceAgreementStatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<TermsOfServiceAgreementState>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>,
+  output: __S(1346, __c42, 2) as any as S.Schema<TermsOfServiceAgreementState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2327,8 +2327,8 @@ export const getAccountsUsers: API.OperationMethod<
   GetAccountsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetAccountsUsersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<User>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetAccountsUsersRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2342,8 +2342,8 @@ export const getAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
   GetAutofeedSettingsAccountsAutofeedSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<AutofeedSettings>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>,
+  output: __S(896, __c28, 0) as any as S.Schema<AutofeedSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2361,11 +2361,11 @@ export const getAutomaticImprovementsAccountsAutomaticImprovements: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    84,
-    __c10,
-    4,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AutomaticImprovements>,
+  output: __S(965, __c30, 5) as any as S.Schema<AutomaticImprovements>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2379,8 +2379,8 @@ export const getBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
   GetBusinessIdentityAccountsBusinessIdentityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<BusinessIdentity>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<BusinessIdentity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2394,8 +2394,8 @@ export const getBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   GetBusinessInfoAccountsBusinessInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetBusinessInfoAccountsBusinessInfoRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<BusinessInfo>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetBusinessInfoAccountsBusinessInfoRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<BusinessInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2413,11 +2413,11 @@ export const getCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    100,
-    __c12,
-    4,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CheckoutSettings>,
+  output: __S(3201, __c100, 1) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2435,11 +2435,11 @@ export const getDeveloperRegistrationAccountsDeveloperRegistration: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    101,
-    __c12,
-    5,
+    1152,
+    __c36,
+    0,
   ) as any as S.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<DeveloperRegistration>,
+  output: __S(1184, __c37, 0) as any as S.Schema<DeveloperRegistration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2453,8 +2453,8 @@ export const getEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
   GetEmailPreferencesAccountsEmailPreferencesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<EmailPreferences>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<EmailPreferences>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2472,11 +2472,11 @@ export const getForApplicationAccountsTermsOfServiceAgreementStates: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    105,
-    __c13,
-    1,
+    1280,
+    __c40,
+    0,
   ) as any as S.Schema<GetForApplicationAccountsTermsOfServiceAgreementStatesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<TermsOfServiceAgreementState>,
+  output: __S(1346, __c42, 2) as any as S.Schema<TermsOfServiceAgreementState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2490,8 +2490,8 @@ export const getHomepageAccountsHomepage: API.OperationMethod<
   GetHomepageAccountsHomepageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetHomepageAccountsHomepageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Homepage>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetHomepageAccountsHomepageRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Homepage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2505,8 +2505,8 @@ export const getLatestTermsOfService: API.OperationMethod<
   GetLatestTermsOfServiceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetLatestTermsOfServiceRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<TermsOfService>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetLatestTermsOfServiceRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<TermsOfService>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2520,8 @@ export const getShippingSettingsAccountsShippingSettings: API.OperationMethod<
   GetShippingSettingsAccountsShippingSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetShippingSettingsAccountsShippingSettingsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ShippingSettings>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetShippingSettingsAccountsShippingSettingsRequest>,
+  output: __S(1579, __c49, 11) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2535,8 @@ export const getTermsOfService: API.OperationMethod<
   GetTermsOfServiceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetTermsOfServiceRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<TermsOfService>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetTermsOfServiceRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<TermsOfService>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2555,8 +2555,8 @@ export const insertAccountsShippingSettings: API.OperationMethod<
   InsertAccountsShippingSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<InsertAccountsShippingSettingsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ShippingSettings>,
+  input: __S(1632, __c51, 0) as any as S.Schema<InsertAccountsShippingSettingsRequest>,
+  output: __S(1579, __c49, 11) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2575,8 @@ export const linkGbpAccountAccountsGbpAccounts: API.OperationMethod<
   LinkGbpAccountAccountsGbpAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<LinkGbpAccountAccountsGbpAccountsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LinkGbpAccountResponse>,
+  input: __S(1665, __c52, 1) as any as S.Schema<LinkGbpAccountAccountsGbpAccountsRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<LinkGbpAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2596,11 +2596,11 @@ export const linkLfpProviderAccountsOmnichannelSettingsLfpProviders: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    160,
-    __c20,
-    0,
+    1729,
+    __c54,
+    1,
   ) as any as S.Schema<LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<LinkLfpProviderResponse>,
+  output: __S(1696, __c53, 0) as any as S.Schema<LinkLfpProviderResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2615,8 +2615,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListAccountsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<ListAccountsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2632,8 +2632,8 @@ export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGbpAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<ListAccountsGbpAccountsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ListGbpAccountsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListAccountsGbpAccountsRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<ListGbpAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2649,8 +2649,8 @@ export const listAccountsIssues: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountIssuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListAccountsIssuesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<ListAccountIssuesResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListAccountsIssuesRequest>,
+  output: __S(1863, __c58, 7) as any as S.Schema<ListAccountIssuesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2666,8 @@ export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOmnichannelSettingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListOmnichannelSettingsResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ListOmnichannelSettingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2683,8 +2683,8 @@ export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOnlineReturnPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<ListOnlineReturnPoliciesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<ListOnlineReturnPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const listAccountsPrograms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProgramsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListAccountsProgramsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ListProgramsResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListAccountsProgramsRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ListProgramsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2717,8 @@ export const listAccountsRegions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListAccountsRegionsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ListRegionsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListAccountsRegionsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListRegionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2734,8 +2734,8 @@ export const listAccountsRelationships: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountRelationshipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListAccountsRelationshipsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListAccountRelationshipsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListAccountsRelationshipsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListAccountRelationshipsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2751,8 +2751,8 @@ export const listAccountsServices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListAccountsServicesRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ListAccountServicesResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListAccountsServicesRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListAccountServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const listAccountsUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListAccountsUsersRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ListUsersResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListAccountsUsersRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2785,8 @@ export const listSubaccountsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListSubaccountsAccountsRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListSubAccountsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListSubaccountsAccountsRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<ListSubAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2801,8 +2801,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Account>,
+  input: __S(2240, __c70, 0) as any as S.Schema<PatchAccountsRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2821,8 +2821,8 @@ export const patchAccountsOmnichannelSettings: API.OperationMethod<
   PatchAccountsOmnichannelSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<PatchAccountsOmnichannelSettingsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<OmnichannelSetting>,
+  input: __S(2272, __c71, 0) as any as S.Schema<PatchAccountsOmnichannelSettingsRequest>,
+  output: __S(2724, __c85, 4) as any as S.Schema<OmnichannelSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2841,8 @@ export const patchAccountsOnlineReturnPolicies: API.OperationMethod<
   PatchAccountsOnlineReturnPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PatchAccountsOnlineReturnPoliciesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<OnlineReturnPolicy>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PatchAccountsOnlineReturnPoliciesRequest>,
+  output: __S(3109, __c97, 5) as any as S.Schema<OnlineReturnPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2856,8 @@ export const patchAccountsRegions: API.OperationMethod<
   PatchAccountsRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<PatchAccountsRegionsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Region>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PatchAccountsRegionsRequest>,
+  output: __S(38, __c1, 6) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2876,8 +2876,8 @@ export const patchAccountsRelationships: API.OperationMethod<
   PatchAccountsRelationshipsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<PatchAccountsRelationshipsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<AccountRelationship>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchAccountsRelationshipsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<AccountRelationship>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2891,8 +2891,8 @@ export const patchAccountsUsers: API.OperationMethod<
   PatchAccountsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<PatchAccountsUsersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<User>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchAccountsUsersRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2911,8 +2911,8 @@ export const proposeAccountsServices: API.OperationMethod<
   ProposeAccountsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ProposeAccountsServicesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AccountService>,
+  input: __S(2497, __c78, 1) as any as S.Schema<ProposeAccountsServicesRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<AccountService>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2931,8 +2931,8 @@ export const registerGcpAccountsDeveloperRegistration: API.OperationMethod<
   RegisterGcpAccountsDeveloperRegistrationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<RegisterGcpAccountsDeveloperRegistrationRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<DeveloperRegistration>,
+  input: __S(2529, __c79, 1) as any as S.Schema<RegisterGcpAccountsDeveloperRegistrationRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<DeveloperRegistration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2946,8 @@ export const rejectAccountsServices: API.OperationMethod<
   RejectAccountsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<RejectAccountsServicesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(2560, __c80, 0) as any as S.Schema<RejectAccountsServicesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2967,11 +2967,11 @@ export const requestInventoryVerificationAccountsOmnichannelSettings: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    210,
-    __c26,
-    2,
+    2592,
+    __c81,
+    0,
   ) as any as S.Schema<RequestInventoryVerificationAccountsOmnichannelSettingsRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<RequestInventoryVerificationResponse>,
+  output: __S(2593, __c81, 1) as any as S.Schema<RequestInventoryVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2990,8 @@ export const unclaimAccountsHomepage: API.OperationMethod<
   UnclaimAccountsHomepageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UnclaimAccountsHomepageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Homepage>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UnclaimAccountsHomepageRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Homepage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3010,8 +3010,8 @@ export const unregisterGcpAccountsDeveloperRegistration: API.OperationMethod<
   UnregisterGcpAccountsDeveloperRegistrationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UnregisterGcpAccountsDeveloperRegistrationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(2656, __c83, 0) as any as S.Schema<UnregisterGcpAccountsDeveloperRegistrationRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3031,11 +3031,11 @@ export const updateAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    214,
-    __c26,
-    6,
+    2752,
+    __c86,
+    0,
   ) as any as S.Schema<UpdateAutofeedSettingsAccountsAutofeedSettingsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<AutofeedSettings>,
+  output: __S(896, __c28, 0) as any as S.Schema<AutofeedSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3055,11 +3055,11 @@ export const updateAutomaticImprovementsAccountsAutomaticImprovements: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<AutomaticImprovements>,
+  output: __S(965, __c30, 5) as any as S.Schema<AutomaticImprovements>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3079,11 +3079,11 @@ export const updateBusinessIdentityAccountsBusinessIdentity: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    216,
-    __c27,
+    2816,
+    __c88,
     0,
   ) as any as S.Schema<UpdateBusinessIdentityAccountsBusinessIdentityRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<BusinessIdentity>,
+  output: __S(1025, __c32, 1) as any as S.Schema<BusinessIdentity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3102,8 +3102,8 @@ export const updateBusinessInfoAccountsBusinessInfo: API.OperationMethod<
   UpdateBusinessInfoAccountsBusinessInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<BusinessInfo>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>,
+  output: __S(1092, __c34, 4) as any as S.Schema<BusinessInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3123,11 +3123,11 @@ export const updateCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    218,
-    __c27,
-    2,
+    2880,
+    __c90,
+    0,
   ) as any as S.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CheckoutSettings>,
+  output: __S(3201, __c100, 1) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3147,11 +3147,11 @@ export const updateEmailPreferencesAccountsEmailPreferences: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    219,
-    __c27,
-    3,
+    2912,
+    __c91,
+    0,
   ) as any as S.Schema<UpdateEmailPreferencesAccountsEmailPreferencesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<EmailPreferences>,
+  output: __S(1248, __c39, 0) as any as S.Schema<EmailPreferences>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3170,8 +3170,8 @@ export const updateHomepageAccountsHomepage: API.OperationMethod<
   UpdateHomepageAccountsHomepageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<UpdateHomepageAccountsHomepageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Homepage>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateHomepageAccountsHomepageRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Homepage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3190,8 @@ export const verifySelfAccountsUsersMe: API.OperationMethod<
   VerifySelfAccountsUsersMeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<VerifySelfAccountsUsersMeRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<User>,
+  input: __S(2976, __c93, 0) as any as S.Schema<VerifySelfAccountsUsersMeRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3203,323 +3203,22 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-          regionCode: S.optional(S.String.pipe(T.Query())),
-          account: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          regionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(38, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "accounts/v1beta/{+name}:accept",
+            uri: "accounts/v1beta/{+parent}/regions",
             baseUrl: "https://merchantapi.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "AcceptTermsOfServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Merchantapi_Date" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          acceptedBy: S.optional(S.String),
-          termsOfService: S.optional(S.String),
-          validUntil: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "Accepted" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tosFileUri: S.optional(S.String),
-          termsOfService: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Required" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accepted: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          required: S.optional(__S(3, __c0, 3)),
-          termsOfServiceKind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TermsOfServiceAgreementState",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          termsOfServiceAgreementState: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "AcceptTermsOfServiceResponse",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApproveAccountServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+name}:approve",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveAccountsServicesRequest",
+        identifier: "CreateAccountsRegionsRequest",
       });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actor: S.optional(S.String),
-          approvalState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Handshake" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          externalAccountId: S.optional(S.String),
-          providerDisplayName: S.optional(S.String),
-          localListingManagement: S.optional(__S(6, __c0, 6)),
-          handshake: S.optional(__S(8, __c1, 0)),
-          accountAggregation: S.optional(__S(6, __c0, 6)),
-          productsManagement: S.optional(__S(6, __c0, 6)),
-          comparisonShopping: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          mutability: S.optional(S.String),
-          provider: S.optional(S.String),
-          campaignsManagement: S.optional(__S(6, __c0, 6)),
-          accountManagement: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AccountService" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          overwrite: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ClaimHomepageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+name}:claim",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimAccountsHomepageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          claimed: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Homepage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Pickup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OnDisplayToOrder" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contactEmail: S.optional(S.String),
-          contactState: S.optional(S.String),
-          state: S.optional(S.String),
-          contact: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventoryVerification" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lfpProvider: S.optional(S.String),
-          state: S.optional(S.String),
-          externalAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfpLink" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pickup: S.optional(__S(13, __c1, 5)),
-          odo: S.optional(__S(14, __c1, 6)),
-          name: S.optional(S.String),
-          about: S.optional(__S(14, __c1, 6)),
-          lsfType: S.optional(S.String),
-          inStock: S.optional(__S(13, __c1, 5)),
-          inventoryVerification: S.optional(__S(15, __c1, 7)),
-          lfpLink: S.optional(__S(16, __c2, 0)),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OmnichannelSetting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+parent}/omnichannelSettings",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsOmnichannelSettingsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          days: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amountMicros: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          microPercent: S.optional(S.Number),
-          fixedFee: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "RestockingFee" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          returnUntilDate: S.optional(__S(1, __c0, 1)),
-          endDate: S.optional(__S(1, __c0, 1)),
-          startDate: S.optional(__S(1, __c0, 1)),
-          returnDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SeasonalOverride" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          fixedFee: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ReturnShippingFee" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acceptExchange: S.optional(S.Boolean),
-          policy: S.optional(__S(19, __c2, 3)),
-          returnPolicyId: S.optional(S.String),
-          returnLabelSource: S.optional(S.String),
-          countries: S.optional(__S(20, __c2, 4)),
-          restockingFee: S.optional(__S(22, __c2, 6)),
-          returnPolicyUri: S.optional(S.String),
-          processRefundDays: S.optional(S.Number),
-          itemConditions: S.optional(__S(23, __c2, 7)),
-          acceptDefectiveOnly: S.optional(S.Boolean),
-          seasonalOverrides: S.optional(__S(25, __c3, 1)),
-          returnMethods: S.optional(__S(23, __c2, 7)),
-          returnShippingFee: S.optional(__S(26, __c3, 2)),
-          label: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OnlineReturnPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+parent}/onlineReturnPolicies",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsOnlineReturnPoliciesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          checkoutUriTemplate: S.optional(S.String),
-          cartUriTemplate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UriSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reviewState: S.optional(S.String),
-          eligibleDestinations: S.optional(__S(23, __c2, 7)),
-          effectiveReviewState: S.optional(S.String),
-          name: S.optional(S.String),
-          uriSettings: S.optional(__S(29, __c3, 5)),
-          enrollmentState: S.optional(S.String),
-          effectiveEnrollmentState: S.optional(S.String),
-          effectiveUriSettings: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "CheckoutSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+parent}/checkoutSettings",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsProgramsCheckoutSettingsRequest",
-      });
-  }
-}
-function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3529,12 +3228,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "PostalCodeRange" });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          postalCodes: S.optional(__S(33, __c4, 1)),
+          postalCodes: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "PostalCodeArea" });
     case 3:
@@ -3549,62 +3248,38 @@ function __c4(j: number): any {
         S.Struct({
           radius: S.optional(S.Number),
           radiusUnits: S.optional(S.String),
-          latLng: S.optional(__S(35, __c4, 3)),
+          latLng: S.optional(__S(35, __c1, 3)),
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "RadiusArea" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          geotargetCriteriaIds: S.optional(__S(20, __c2, 4)),
+          geotargetCriteriaIds: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "GeoTargetArea" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          postalCodeArea: S.optional(__S(34, __c4, 2)),
+          postalCodeArea: S.optional(__S(34, __c1, 2)),
           regionalInventoryEligible: S.optional(S.Boolean),
-          radiusArea: S.optional(__S(36, __c4, 4)),
+          radiusArea: S.optional(__S(36, __c1, 4)),
           shippingEligible: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          geotargetArea: S.optional(__S(37, __c4, 5)),
+          geotargetArea: S.optional(__S(37, __c1, 5)),
         }),
       ).annotate({ identifier: "Region" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          regionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "accounts/v1beta/{+parent}/regions",
-            baseUrl: "https://merchantapi.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsRegionsRequest",
-      });
   }
 }
-function __c5(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessRights: S.optional(__S(23, __c2, 7)),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "User" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
           userId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3615,95 +3290,87 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateAccountsUsersRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(__S(40, __c5, 0)),
+          accessRights: S.optional(__S(3136, __c98, 0)),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(__S(96, __c3, 0)),
           parent: S.optional(S.String),
           userId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateUserRequest" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          homePageUri: S.optional(S.String),
-          accountId: S.optional(S.String),
-          timeZone: S.optional(__S(44, __c5, 4)),
-          testAccount: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          adultContent: S.optional(S.Boolean),
-          languageCode: S.optional(S.String),
-          accountName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountManagement: S.optional(__S(6, __c0, 6)),
-          accountAggregation: S.optional(__S(6, __c0, 6)),
+          accountManagement: S.optional(__S(1920, __c60, 0)),
+          accountAggregation: S.optional(__S(1920, __c60, 0)),
           externalAccountId: S.optional(S.String),
-          campaignsManagement: S.optional(__S(6, __c0, 6)),
+          campaignsManagement: S.optional(__S(1920, __c60, 0)),
           provider: S.optional(S.String),
-          comparisonShopping: S.optional(__S(6, __c0, 6)),
-          productsManagement: S.optional(__S(6, __c0, 6)),
+          comparisonShopping: S.optional(__S(1920, __c60, 0)),
+          productsManagement: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({ identifier: "AddAccountService" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           verificationMailMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerificationMailSettings" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(__S(40, __c5, 0)),
+          user: S.optional(__S(96, __c3, 0)),
           userId: S.optional(S.String),
-          verificationMailSettings: S.optional(__S(48, __c6, 0)),
+          verificationMailSettings: S.optional(__S(132, __c4, 4)),
         }),
       ).annotate({ identifier: "AddUser" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(133, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           accountIdAlias: S.optional(S.String),
           provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetAliasForRelationship" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(135, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(__S(43, __c5, 3)),
-          account: S.optional(__S(45, __c5, 5)),
-          service: S.optional(__S(47, __c5, 7)),
-          user: S.optional(__S(50, __c6, 2)),
-          setAlias: S.optional(__S(52, __c6, 4)),
+          users: S.optional(__S(129, __c4, 1)),
+          account: S.optional(__S(161, __c5, 1)),
+          service: S.optional(__S(131, __c4, 3)),
+          user: S.optional(__S(134, __c4, 6)),
+          setAlias: S.optional(__S(136, __c4, 8)),
         }),
       ).annotate({
         identifier: "CreateAndConfigureAccountRequest",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(137, __c4, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3714,11 +3381,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAndConfigureAccountsRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          homePageUri: S.optional(S.String),
+          accountId: S.optional(S.String),
+          timeZone: S.optional(__S(160, __c5, 0)),
+          testAccount: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          adultContent: S.optional(S.Boolean),
+          languageCode: S.optional(S.String),
+          accountName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3746,7 +3441,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccountsRequest" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3760,7 +3459,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsOnlineReturnPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3774,7 +3477,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsRegionsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3788,7 +3495,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsUsersRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3802,11 +3513,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3817,35 +3532,39 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisableAccountsProgramsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          documentationUri: S.optional(S.String),
-          title: S.optional(S.String),
-          affectedRegionCodes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "Requirement" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          documentationUri: S.optional(S.String),
+          title: S.optional(S.String),
+          affectedRegionCodes: S.optional(__S(3040, __c95, 0)),
+        }),
+      ).annotate({ identifier: "Requirement" });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           name: S.optional(S.String),
           documentationUri: S.optional(S.String),
-          unmetRequirements: S.optional(__S(63, __c7, 7)),
-          activeRegionCodes: S.optional(__S(20, __c2, 4)),
+          unmetRequirements: S.optional(__S(417, __c13, 1)),
+          activeRegionCodes: S.optional(__S(3040, __c95, 0)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Program" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3856,7 +3575,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EnableAccountsProgramsRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3872,7 +3595,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "FindAccountsOmnichannelSettingsLfpProvidersRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
@@ -3880,16 +3603,20 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LfpProvider" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(481, __c15, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          lfpProviders: S.optional(__S(68, __c8, 4)),
+          lfpProviders: S.optional(__S(482, __c15, 2)),
         }),
       ).annotate({ identifier: "FindLfpProvidersResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3901,7 +3628,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3911,7 +3638,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3925,7 +3652,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountsRequest" });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3939,7 +3670,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsOmnichannelSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3953,7 +3688,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsOnlineReturnPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3967,7 +3706,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsProgramsRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3981,7 +3724,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsRegionsRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3995,7 +3742,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccountsRelationshipsRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4004,7 +3755,11 @@ function __c9(j: number): any {
           provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountRelationship" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4020,7 +3775,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4036,7 +3791,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAccountsTermsOfServiceAgreementStatesRequest",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4048,7 +3807,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountsUsersRequest" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4062,7 +3825,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAutofeedSettingsAccountsAutofeedSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enableProducts: S.optional(S.Boolean),
@@ -4070,7 +3837,11 @@ function __c10(j: number): any {
           eligible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AutofeedSettings" });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4084,7 +3855,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAutomaticImprovementsAccountsAutomaticImprovementsRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowAvailabilityUpdates: S.optional(S.Boolean),
@@ -4095,17 +3870,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ItemUpdatesAccountLevelSettings",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accountItemUpdatesSettings: S.optional(__S(85, __c10, 5)),
+          accountItemUpdatesSettings: S.optional(__S(960, __c30, 0)),
           effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
           effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
           effectiveAllowPriceUpdates: S.optional(S.Boolean),
           effectiveAllowConditionUpdates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AutomaticItemUpdates" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           allowShippingImprovements: S.optional(S.Boolean),
@@ -4113,11 +3888,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "AutomaticShippingImprovements",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           allowAutomaticImageImprovements: S.optional(S.Boolean),
@@ -4125,25 +3896,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ImageImprovementsAccountLevelSettings",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
-          accountImageImprovementsSettings: S.optional(__S(88, __c11, 0)),
+          accountImageImprovementsSettings: S.optional(__S(963, __c30, 3)),
         }),
       ).annotate({
         identifier: "AutomaticImageImprovements",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          itemUpdates: S.optional(__S(86, __c10, 6)),
-          shippingImprovements: S.optional(__S(87, __c10, 7)),
-          imageImprovements: S.optional(__S(89, __c11, 1)),
+          itemUpdates: S.optional(__S(961, __c30, 1)),
+          shippingImprovements: S.optional(__S(962, __c30, 2)),
+          imageImprovements: S.optional(__S(964, __c30, 4)),
         }),
       ).annotate({ identifier: "AutomaticImprovements" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4157,25 +3932,33 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetBusinessIdentityAccountsBusinessIdentityRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identityDeclaration: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityAttribute" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          blackOwned: S.optional(__S(92, __c11, 4)),
-          latinoOwned: S.optional(__S(92, __c11, 4)),
-          veteranOwned: S.optional(__S(92, __c11, 4)),
+          blackOwned: S.optional(__S(1024, __c32, 0)),
+          latinoOwned: S.optional(__S(1024, __c32, 0)),
+          veteranOwned: S.optional(__S(1024, __c32, 0)),
           promotionsConsent: S.optional(S.String),
-          womenOwned: S.optional(__S(92, __c11, 4)),
-          smallBusiness: S.optional(__S(92, __c11, 4)),
+          womenOwned: S.optional(__S(1024, __c32, 0)),
+          smallBusiness: S.optional(__S(1024, __c32, 0)),
         }),
       ).annotate({ identifier: "BusinessIdentity" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4189,61 +3972,65 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetBusinessInfoAccountsBusinessInfoRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.String),
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShortCode" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          shortCode: S.optional(__S(95, __c11, 7)),
+          shortCode: S.optional(__S(1088, __c34, 0)),
           e164Number: S.optional(S.String),
           extension: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumber" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
           email: S.optional(S.String),
-          phone: S.optional(__S(96, __c12, 0)),
+          phone: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "CustomerService" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
           locality: S.optional(S.String),
           organization: S.optional(S.String),
-          recipients: S.optional(__S(20, __c2, 4)),
+          recipients: S.optional(__S(3040, __c95, 0)),
           revision: S.optional(S.Number),
           sortingCode: S.optional(S.String),
           sublocality: S.optional(S.String),
           regionCode: S.optional(S.String),
           postalCode: S.optional(S.String),
           administrativeArea: S.optional(S.String),
-          addressLines: S.optional(__S(20, __c2, 4)),
+          addressLines: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "PostalAddress" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          customerService: S.optional(__S(97, __c12, 1)),
+          customerService: S.optional(__S(1090, __c34, 2)),
           name: S.optional(S.String),
-          phone: S.optional(__S(96, __c12, 0)),
+          phone: S.optional(__S(1089, __c34, 1)),
           phoneVerificationState: S.optional(S.String),
           koreanBusinessRegistrationNumber: S.optional(S.String),
-          address: S.optional(__S(98, __c12, 2)),
+          address: S.optional(__S(1091, __c34, 3)),
         }),
       ).annotate({ identifier: "BusinessInfo" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4257,7 +4044,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4271,14 +4062,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDeveloperRegistrationAccountsDeveloperRegistrationRequest",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          gcpIds: S.optional(__S(20, __c2, 4)),
+          gcpIds: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "DeveloperRegistration" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4294,7 +4093,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4303,7 +4102,11 @@ function __c13(j: number): any {
           newsAndTips: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailPreferences" });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4317,7 +4120,82 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetForApplicationAccountsTermsOfServiceAgreementStatesRequest",
       });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          regionCode: S.optional(S.String.pipe(T.Query())),
+          account: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+name}:accept",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptTermsOfServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          termsOfServiceAgreementState: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({
+        identifier: "AcceptTermsOfServiceResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acceptedBy: S.optional(S.String),
+          termsOfService: S.optional(S.String),
+          validUntil: S.optional(__S(1376, __c43, 0)),
+        }),
+      ).annotate({ identifier: "Accepted" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tosFileUri: S.optional(S.String),
+          termsOfService: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Required" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accepted: S.optional(__S(1344, __c42, 0)),
+          name: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          required: S.optional(__S(1345, __c42, 1)),
+          termsOfServiceKind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TermsOfServiceAgreementState",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Merchantapi_Date" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4331,7 +4209,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetHomepageAccountsHomepageRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String.pipe(T.Query())),
@@ -4346,7 +4228,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetLatestTermsOfServiceRequest",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4356,7 +4242,11 @@ function __c13(j: number): any {
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "TermsOfService" });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4370,42 +4260,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetShippingSettingsAccountsShippingSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          businessDays: S.optional(__S(23, __c2, 7)),
+          businessDays: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({ identifier: "BusinessDayConfig" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           minTransitDays: S.optional(S.Number),
           maxTransitDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TransitTimeValue" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({ identifier: "TransitTimeRow" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(1537, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          transitTimeLabels: S.optional(__S(20, __c2, 4)),
-          postalCodeGroupNames: S.optional(__S(20, __c2, 4)),
-          rows: S.optional(__S(114, __c14, 2)),
+          values: S.optional(__S(1538, __c48, 2)),
+        }),
+      ).annotate({ identifier: "TransitTimeRow" });
+    case 4:
+      return S.Array(__S(1539, __c48, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          transitTimeLabels: S.optional(__S(3040, __c95, 0)),
+          postalCodeGroupNames: S.optional(__S(3040, __c95, 0)),
+          rows: S.optional(__S(1540, __c48, 4)),
         }),
       ).annotate({ identifier: "TransitTable" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           hour: S.optional(S.Number),
@@ -4413,7 +4303,7 @@ function __c14(j: number): any {
           minute: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CutoffTime" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           carrierService: S.optional(S.String),
@@ -4423,206 +4313,194 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "WarehouseBasedDeliveryTime",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(1543, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          handlingBusinessDayConfig: S.optional(__S(110, __c13, 6)),
+          handlingBusinessDayConfig: S.optional(__S(1536, __c48, 0)),
           minHandlingDays: S.optional(S.Number),
           maxHandlingDays: S.optional(S.Number),
           minTransitDays: S.optional(S.Number),
-          transitBusinessDayConfig: S.optional(__S(110, __c13, 6)),
-          transitTimeTable: S.optional(__S(115, __c14, 3)),
-          cutoffTime: S.optional(__S(116, __c14, 4)),
-          warehouseBasedDeliveryTimes: S.optional(__S(118, __c14, 6)),
+          transitBusinessDayConfig: S.optional(__S(1536, __c48, 0)),
+          transitTimeTable: S.optional(__S(1541, __c48, 5)),
+          cutoffTime: S.optional(__S(1542, __c48, 6)),
+          warehouseBasedDeliveryTimes: S.optional(__S(1544, __c48, 8)),
           maxTransitDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeliveryTime" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(21, __c2, 5)),
-          storeCodes: S.optional(__S(20, __c2, 4)),
+          value: S.optional(__S(3072, __c96, 0)),
+          storeCodes: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "StoreCodeSetWithMov" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(1546, __c48, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          storeCodeSetWithMovs: S.optional(__S(121, __c15, 1)),
+          storeCodeSetWithMovs: S.optional(__S(1547, __c48, 11)),
         }),
       ).annotate({ identifier: "MinimumOrderValueTable" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           tierLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyProgramTiers" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(1549, __c48, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          loyaltyProgramTiers: S.optional(__S(124, __c15, 4)),
+          loyaltyProgramTiers: S.optional(__S(1550, __c48, 14)),
           programLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyProgram" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(1551, __c48, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           hour: S.optional(S.String),
           minute: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalCutoffTime" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           noDeliveryPostCutoff: S.optional(S.Boolean),
           storeCloseOffsetHours: S.optional(S.String),
-          localCutoffTime: S.optional(__S(127, __c15, 7)),
+          localCutoffTime: S.optional(__S(1553, __c48, 17)),
         }),
       ).annotate({ identifier: "CutoffConfig" });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Distance" });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           storeServiceType: S.optional(S.String),
-          cutoffConfig: S.optional(__S(128, __c16, 0)),
-          storeCodes: S.optional(__S(20, __c2, 4)),
-          serviceRadius: S.optional(__S(129, __c16, 1)),
+          cutoffConfig: S.optional(__S(1554, __c48, 18)),
+          storeCodes: S.optional(__S(3040, __c95, 0)),
+          serviceRadius: S.optional(__S(1555, __c48, 19)),
         }),
       ).annotate({ identifier: "StoreConfig" });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           carrierService: S.optional(S.String),
-          flatAdjustment: S.optional(__S(21, __c2, 5)),
+          flatAdjustment: S.optional(__S(3072, __c96, 0)),
           originPostalCode: S.optional(S.String),
           name: S.optional(S.String),
           carrier: S.optional(S.String),
           percentageAdjustment: S.optional(S.String),
         }),
       ).annotate({ identifier: "CarrierRate" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
+    case 22:
+      return S.Array(__S(1557, __c48, 21));
+    case 23:
+      return S.Array(__S(3072, __c96, 0));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          locationIds: S.optional(__S(20, __c2, 4)),
+          locationIds: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "LocationIdSet" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 25:
+      return S.Array(__S(1560, __c48, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
           amountMicros: S.optional(S.String),
         }),
       ).annotate({ identifier: "Weight" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 27:
+      return S.Array(__S(1562, __c48, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          prices: S.optional(__S(133, __c16, 5)),
-          locations: S.optional(__S(135, __c16, 7)),
-          weights: S.optional(__S(137, __c17, 1)),
-          postalCodeGroupNames: S.optional(__S(20, __c2, 4)),
-          numberOfItems: S.optional(__S(20, __c2, 4)),
+          prices: S.optional(__S(1559, __c48, 23)),
+          locations: S.optional(__S(1561, __c48, 25)),
+          weights: S.optional(__S(1563, __c48, 27)),
+          postalCodeGroupNames: S.optional(__S(3040, __c95, 0)),
+          numberOfItems: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "Headers" });
-    case 3:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           subtable: S.optional(S.String),
           carrierRate: S.optional(S.String),
-          flatRate: S.optional(__S(21, __c2, 5)),
+          flatRate: S.optional(__S(3072, __c96, 0)),
           pricePercentage: S.optional(S.String),
           noShipping: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Value" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 30:
+      return S.Array(__S(1565, __c48, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          cells: S.optional(__S(140, __c17, 4)),
+          cells: S.optional(__S(1566, __c48, 30)),
         }),
       ).annotate({ identifier: "Row" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          columnHeaders: S.optional(__S(138, __c17, 2)),
-          rowHeaders: S.optional(__S(138, __c17, 2)),
-          name: S.optional(S.String),
-          rows: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "Table" });
   }
 }
-function __c18(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(143, __c17, 7));
+      return S.Array(__S(1567, __c48, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
+          columnHeaders: S.optional(__S(1564, __c48, 28)),
+          rowHeaders: S.optional(__S(1564, __c48, 28)),
           name: S.optional(S.String),
-          applicableShippingLabels: S.optional(__S(20, __c2, 4)),
-          carrierRates: S.optional(__S(132, __c16, 4)),
-          mainTable: S.optional(__S(143, __c17, 7)),
-          subtables: S.optional(__S(144, __c18, 0)),
-          singleValue: S.optional(__S(139, __c17, 3)),
+          rows: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "Table" });
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          applicableShippingLabels: S.optional(__S(3040, __c95, 0)),
+          carrierRates: S.optional(__S(1558, __c48, 22)),
+          mainTable: S.optional(__S(1569, __c49, 1)),
+          subtables: S.optional(__S(1570, __c49, 2)),
+          singleValue: S.optional(__S(1565, __c48, 29)),
         }),
       ).annotate({ identifier: "RateGroup" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(1571, __c49, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
           active: S.optional(S.Boolean),
-          deliveryCountries: S.optional(__S(20, __c2, 4)),
-          deliveryTime: S.optional(__S(119, __c14, 7)),
-          minimumOrderValueTable: S.optional(__S(122, __c15, 2)),
-          loyaltyPrograms: S.optional(__S(126, __c15, 6)),
-          storeConfig: S.optional(__S(130, __c16, 2)),
-          rateGroups: S.optional(__S(146, __c18, 2)),
-          minimumOrderValue: S.optional(__S(21, __c2, 5)),
+          deliveryCountries: S.optional(__S(3040, __c95, 0)),
+          deliveryTime: S.optional(__S(1545, __c48, 9)),
+          minimumOrderValueTable: S.optional(__S(1548, __c48, 12)),
+          loyaltyPrograms: S.optional(__S(1552, __c48, 16)),
+          storeConfig: S.optional(__S(1556, __c48, 20)),
+          rateGroups: S.optional(__S(1572, __c49, 4)),
+          minimumOrderValue: S.optional(__S(3072, __c96, 0)),
           serviceName: S.optional(S.String),
           shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Service" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(1573, __c49, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           streetAddress: S.optional(S.String),
@@ -4632,39 +4510,39 @@ function __c18(j: number): any {
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Address" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           hour: S.optional(S.Number),
           minute: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WarehouseCutoffTime" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           handlingDays: S.optional(S.String),
-          shippingAddress: S.optional(__S(149, __c18, 5)),
-          cutoffTime: S.optional(__S(150, __c18, 6)),
-          businessDayConfig: S.optional(__S(110, __c13, 6)),
+          shippingAddress: S.optional(__S(1575, __c49, 7)),
+          cutoffTime: S.optional(__S(1576, __c49, 8)),
+          businessDayConfig: S.optional(__S(1536, __c48, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warehouse" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(1577, __c49, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(__S(148, __c18, 4)),
-          warehouses: S.optional(__S(152, __c19, 0)),
+          services: S.optional(__S(1574, __c49, 6)),
+          warehouses: S.optional(__S(1578, __c49, 10)),
           name: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingSettings" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4676,11 +4554,15 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTermsOfServiceRequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(153, __c19, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1579, __c49, 11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4691,17 +4573,21 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "InsertAccountsShippingSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           gbpEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkGbpAccountRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1664, __c52, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4712,27 +4598,31 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "LinkGbpAccountAccountsGbpAccountsRequest",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(6, __c0, 6)),
+          response: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({ identifier: "LinkGbpAccountResponse" });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           externalAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkLfpProviderRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(159, __c19, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1728, __c54, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4743,7 +4633,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4757,16 +4651,24 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 2:
-      return S.Array(__S(45, __c5, 5));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accounts: S.optional(__S(162, __c20, 2)),
+          accounts: S.optional(__S(1792, __c56, 0)),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(161, __c5, 1));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4782,7 +4684,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListAccountsGbpAccountsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4792,18 +4694,18 @@ function __c20(j: number): any {
           gbpAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GbpAccount" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1825, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          gbpAccounts: S.optional(__S(166, __c20, 6)),
+          gbpAccounts: S.optional(__S(1826, __c57, 2)),
         }),
       ).annotate({ identifier: "ListGbpAccountsResponse" });
   }
 }
-function __c21(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4831,20 +4733,20 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "Impact" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(1857, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           reportingContext: S.optional(S.String),
-          impacts: S.optional(__S(170, __c21, 2)),
+          impacts: S.optional(__S(1858, __c58, 2)),
         }),
       ).annotate({ identifier: "ImpactedDestination" });
     case 4:
-      return S.Array(__S(171, __c21, 3));
+      return S.Array(__S(1859, __c58, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          impactedDestinations: S.optional(__S(172, __c21, 4)),
+          impactedDestinations: S.optional(__S(1860, __c58, 4)),
           name: S.optional(S.String),
           title: S.optional(S.String),
           detail: S.optional(S.String),
@@ -4853,11 +4755,11 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AccountIssue" });
     case 6:
-      return S.Array(__S(173, __c21, 5));
+      return S.Array(__S(1861, __c58, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accountIssues: S.optional(__S(174, __c21, 6)),
+          accountIssues: S.optional(__S(1862, __c58, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4865,7 +4767,62 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+name}:approve",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveAccountsServicesRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApproveAccountServiceRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actor: S.optional(S.String),
+          approvalState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Handshake" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalAccountId: S.optional(S.String),
+          providerDisplayName: S.optional(S.String),
+          localListingManagement: S.optional(__S(1920, __c60, 0)),
+          handshake: S.optional(__S(1952, __c61, 0)),
+          accountAggregation: S.optional(__S(1920, __c60, 0)),
+          productsManagement: S.optional(__S(1920, __c60, 0)),
+          comparisonShopping: S.optional(__S(1920, __c60, 0)),
+          name: S.optional(S.String),
+          mutability: S.optional(S.String),
+          provider: S.optional(S.String),
+          campaignsManagement: S.optional(__S(1920, __c60, 0)),
+          accountManagement: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({ identifier: "AccountService" });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4884,17 +4841,21 @@ function __c22(j: number): any {
         identifier: "ListAccountsOmnichannelSettingsRequest",
       });
     case 1:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(2724, __c85, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          omnichannelSettings: S.optional(__S(177, __c22, 1)),
+          omnichannelSettings: S.optional(__S(1985, __c62, 1)),
         }),
       ).annotate({
         identifier: "ListOmnichannelSettingsResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4910,18 +4871,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListAccountsOnlineReturnPoliciesRequest",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3109, __c97, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          onlineReturnPolicies: S.optional(__S(180, __c22, 4)),
+          onlineReturnPolicies: S.optional(__S(2017, __c63, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOnlineReturnPoliciesResponse",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4937,20 +4902,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListAccountsProgramsRequest",
       });
-    case 7:
-      return S.Array(__S(64, __c8, 0));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(418, __c13, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          programs: S.optional(__S(183, __c22, 7)),
+          programs: S.optional(__S(2049, __c64, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProgramsResponse" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4966,16 +4931,20 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListAccountsRegionsRequest",
       });
+    case 1:
+      return S.Array(__S(38, __c1, 6));
     case 2:
-      return S.Array(__S(38, __c4, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          regions: S.optional(__S(186, __c23, 2)),
+          regions: S.optional(__S(2081, __c65, 1)),
         }),
       ).annotate({ identifier: "ListRegionsResponse" });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4991,18 +4960,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListAccountsRelationshipsRequest",
       });
-    case 5:
-      return S.Array(__S(78, __c9, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accountRelationships: S.optional(__S(189, __c23, 5)),
+          accountRelationships: S.optional(__S(2113, __c66, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAccountRelationshipsResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5018,22 +4991,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListAccountsServicesRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(9, __c1, 1));
     case 1:
+      return S.Array(__S(1953, __c61, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accountServices: S.optional(__S(192, __c24, 0)),
+          accountServices: S.optional(__S(2145, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAccountServicesResponse",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5047,16 +5020,20 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountsUsersRequest" });
-    case 3:
-      return S.Array(__S(40, __c5, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          users: S.optional(__S(195, __c24, 3)),
+          users: S.optional(__S(2177, __c68, 1)),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5072,19 +5049,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListSubaccountsAccountsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(162, __c20, 2)),
+          accounts: S.optional(__S(1792, __c56, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSubAccountsResponse" });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5095,14 +5076,14 @@ function __c24(j: number): any {
       ).annotate({ identifier: "PatchAccountsRequest" });
   }
 }
-function __c25(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2724, __c85, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5113,12 +5094,53 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchAccountsOmnichannelSettingsRequest",
       });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overwrite: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ClaimHomepageRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2304, __c72, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+name}:claim",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimAccountsHomepageRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          claimed: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Homepage" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3109, __c97, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5129,12 +5151,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchAccountsOnlineReturnPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(38, __c1, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5145,12 +5171,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchAccountsRegionsRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(78, __c9, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5161,12 +5191,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchAccountsRelationshipsRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5177,20 +5211,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PatchAccountsUsersRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
-          accountService: S.optional(__S(9, __c1, 1)),
+          accountService: S.optional(__S(1953, __c61, 1)),
         }),
       ).annotate({
         identifier: "ProposeAccountServiceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(205, __c25, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2496, __c78, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5201,21 +5239,21 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ProposeAccountsServicesRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           developerEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisterGcpRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(207, __c25, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5226,11 +5264,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RegisterGcpAccountsDeveloperRegistrationRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5241,11 +5283,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RejectAccountsServicesRequest",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5256,19 +5302,23 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RequestInventoryVerificationAccountsOmnichannelSettingsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          omnichannelSetting: S.optional(__S(17, __c2, 1)),
+          omnichannelSetting: S.optional(__S(2724, __c85, 4)),
         }),
       ).annotate({
         identifier: "RequestInventoryVerificationResponse",
       });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5279,11 +5329,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UnclaimAccountsHomepageRequest",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5294,12 +5348,84 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UnregisterGcpAccountsDeveloperRegistrationRequest",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2724, __c85, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+parent}/omnichannelSettings",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsOmnichannelSettingsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Pickup" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OnDisplayToOrder" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contactEmail: S.optional(S.String),
+          contactState: S.optional(S.String),
+          state: S.optional(S.String),
+          contact: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InventoryVerification" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          lfpProvider: S.optional(S.String),
+          state: S.optional(S.String),
+          externalAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfpLink" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pickup: S.optional(__S(2720, __c85, 0)),
+          odo: S.optional(__S(2721, __c85, 1)),
+          name: S.optional(S.String),
+          about: S.optional(__S(2721, __c85, 1)),
+          lsfType: S.optional(S.String),
+          inStock: S.optional(__S(2720, __c85, 0)),
+          inventoryVerification: S.optional(__S(2722, __c85, 2)),
+          lfpLink: S.optional(__S(2723, __c85, 3)),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OmnichannelSetting" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(896, __c28, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5310,12 +5436,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateAutofeedSettingsAccountsAutofeedSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(965, __c30, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5328,14 +5458,14 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(93, __c11, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1025, __c32, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5346,12 +5476,16 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateBusinessIdentityAccountsBusinessIdentityRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(99, __c12, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1092, __c34, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5362,12 +5496,16 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateBusinessInfoAccountsBusinessInfoRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3201, __c100, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5378,12 +5516,16 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(104, __c13, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1248, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5394,12 +5536,16 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateEmailPreferencesAccountsEmailPreferencesRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2336, __c73, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5410,11 +5556,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateHomepageAccountsHomepageRequest",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5427,7 +5577,148 @@ function __c27(j: number): any {
       });
   }
 }
-
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3109, __c97, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+parent}/onlineReturnPolicies",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsOnlineReturnPoliciesRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amountMicros: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Price" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          days: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          microPercent: S.optional(S.Number),
+          fixedFee: S.optional(__S(3072, __c96, 0)),
+        }),
+      ).annotate({ identifier: "RestockingFee" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          returnUntilDate: S.optional(__S(1376, __c43, 0)),
+          endDate: S.optional(__S(1376, __c43, 0)),
+          startDate: S.optional(__S(1376, __c43, 0)),
+          returnDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SeasonalOverride" });
+    case 3:
+      return S.Array(__S(3106, __c97, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          fixedFee: S.optional(__S(3072, __c96, 0)),
+        }),
+      ).annotate({ identifier: "ReturnShippingFee" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          acceptExchange: S.optional(S.Boolean),
+          policy: S.optional(__S(3104, __c97, 0)),
+          returnPolicyId: S.optional(S.String),
+          returnLabelSource: S.optional(S.String),
+          countries: S.optional(__S(3040, __c95, 0)),
+          restockingFee: S.optional(__S(3105, __c97, 1)),
+          returnPolicyUri: S.optional(S.String),
+          processRefundDays: S.optional(S.Number),
+          itemConditions: S.optional(__S(3136, __c98, 0)),
+          acceptDefectiveOnly: S.optional(S.Boolean),
+          seasonalOverrides: S.optional(__S(3107, __c97, 3)),
+          returnMethods: S.optional(__S(3136, __c98, 0)),
+          returnShippingFee: S.optional(__S(3108, __c97, 4)),
+          label: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OnlineReturnPolicy" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3201, __c100, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "accounts/v1beta/{+parent}/checkoutSettings",
+            baseUrl: "https://merchantapi.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsProgramsCheckoutSettingsRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          checkoutUriTemplate: S.optional(S.String),
+          cartUriTemplate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UriSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reviewState: S.optional(S.String),
+          eligibleDestinations: S.optional(__S(3136, __c98, 0)),
+          effectiveReviewState: S.optional(S.String),
+          name: S.optional(S.String),
+          uriSettings: S.optional(__S(3200, __c100, 0)),
+          enrollmentState: S.optional(S.String),
+          effectiveEnrollmentState: S.optional(S.String),
+          effectiveUriSettings: S.optional(__S(3200, __c100, 0)),
+        }),
+      ).annotate({ identifier: "CheckoutSettings" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

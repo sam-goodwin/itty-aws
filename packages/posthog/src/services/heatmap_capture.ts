@@ -77,8 +77,8 @@ export const getHeatmapCaptureSettings: API.OperationMethod<
   GetHeatmapCaptureSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetHeatmapCaptureSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapCaptureSettings>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetHeatmapCaptureSettingsRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<HeatmapCaptureSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -91,8 +91,8 @@ export const updateHeatmapCaptureSettings: API.OperationMethod<
   UpdateHeatmapCaptureSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UpdateHeatmapCaptureSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<HeatmapCaptureSettings>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateHeatmapCaptureSettingsRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<HeatmapCaptureSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -130,7 +130,11 @@ function __c0(j: number): any {
           pages: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "HeatmapCapturePages" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -144,24 +148,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetHeatmapCaptureSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           capture_mode: S.String,
-          url_allowlist: __S(5, __c0, 5),
+          url_allowlist: __S(8, __c2, 0),
           enforcement_enabled: S.Boolean,
           can_capture_all_urls: S.Boolean,
           capture_url_limit: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "HeatmapCaptureSettings" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           capture_mode: S.optional(S.String),
-          url_allowlist: S.optional(__S(5, __c0, 5)),
+          url_allowlist: S.optional(__S(8, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -174,7 +186,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

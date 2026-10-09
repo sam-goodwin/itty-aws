@@ -3281,8 +3281,8 @@ export const AuthorizedApplicationsCreateOrUpdate: API.OperationMethod<
   AuthorizedApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3296,8 +3296,8 @@ export const CheckinManifest: API.OperationMethod<
   CheckinManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CheckinManifestRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CheckinManifestInfo>,
+  input: __S(160, __c5, 0) as any as S.Schema<CheckinManifestRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<CheckinManifestInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3311,8 +3311,8 @@ export const CreateProviderMonitorSettings: API.OperationMethod<
   CreateProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProviderMonitorSettingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateProviderMonitorSettingsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateProviderMonitorSettingsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<CreateProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3326,8 @@ export const CustomRolloutsCreateOrUpdate: API.OperationMethod<
   CustomRolloutsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<CustomRolloutsCreateOrUpdateResponse>,
+  input: __S(1315, __c41, 3) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>,
+  output: __S(1316, __c41, 4) as any as S.Schema<CustomRolloutsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3341,8 +3341,8 @@ export const DefaultRolloutsCreateOrUpdate: API.OperationMethod<
   DefaultRolloutsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<DefaultRolloutsCreateOrUpdateResponse>,
+  input: __S(2115, __c66, 3) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DefaultRolloutsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3356,8 +3356,8 @@ export const DeleteAuthorizedApplication: API.OperationMethod<
   DeleteAuthorizedApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteAuthorizedApplicationRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteAuthorizedApplicationResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteAuthorizedApplicationRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteAuthorizedApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3371,8 +3371,8 @@ export const DeleteCustomRollout: API.OperationMethod<
   DeleteCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteCustomRolloutRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DeleteCustomRolloutResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteCustomRolloutRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3386,8 +3386,8 @@ export const DeleteDefaultRollout: API.OperationMethod<
   DeleteDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeleteDefaultRolloutRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DeleteDefaultRolloutResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteDefaultRolloutRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3401,8 +3401,8 @@ export const DeleteNotificationRegistration: API.OperationMethod<
   DeleteNotificationRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteNotificationRegistrationRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteNotificationRegistrationResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteNotificationRegistrationRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteNotificationRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3416,8 +3416,8 @@ export const DeleteOperation: API.OperationMethod<
   DeleteOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteOperationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DeleteOperationResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeleteOperationRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3431,8 +3431,8 @@ export const DeleteProviderMonitorSettings: API.OperationMethod<
   DeleteProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeleteProviderMonitorSettingsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteProviderMonitorSettingsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteProviderMonitorSettingsRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3446,8 +3446,8 @@ export const DeleteProviderRegistration: API.OperationMethod<
   DeleteProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteProviderRegistrationRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteProviderRegistrationResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteProviderRegistrationRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3461,8 +3461,8 @@ export const DeleteResourceActionResources: API.OperationMethod<
   DeleteResourceActionResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteResourceActionResourcesRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteResourceActionResourcesResponse>,
+  input: __S(290, __c9, 2) as any as S.Schema<DeleteResourceActionResourcesRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteResourceActionResourcesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3476,8 +3476,8 @@ export const DeleteResourceTypeRegistration: API.OperationMethod<
   DeleteResourceTypeRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DeleteResourceTypeRegistrationRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteResourceTypeRegistrationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteResourceTypeRegistrationRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteResourceTypeRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3491,8 +3491,8 @@ export const DeleteSkus: API.OperationMethod<
   DeleteSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<DeleteSkusRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<DeleteSkusResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteSkusRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3506,8 +3506,8 @@ export const DeleteSkusNestedResourceTypeFirst: API.OperationMethod<
   DeleteSkusNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3521,8 +3521,8 @@ export const DeleteSkusNestedResourceTypeSecond: API.OperationMethod<
   DeleteSkusNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3536,8 @@ export const DeleteSkusNestedResourceTypeThird: API.OperationMethod<
   DeleteSkusNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3551,8 +3551,8 @@ export const GenerateManifest: API.OperationMethod<
   GenerateManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GenerateManifestRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ResourceProviderManifest>,
+  input: __S(480, __c15, 0) as any as S.Schema<GenerateManifestRequest>,
+  output: __S(487, __c15, 7) as any as S.Schema<ResourceProviderManifest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3566,8 +3566,8 @@ export const GenerateProviderRegistrationOperations: API.OperationMethod<
   GenerateProviderRegistrationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GenerateProviderRegistrationOperationsRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<GenerateProviderRegistrationOperationsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GenerateProviderRegistrationOperationsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GenerateProviderRegistrationOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3581,8 @@ export const GetAuthorizedApplication: API.OperationMethod<
   GetAuthorizedApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetAuthorizedApplicationRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAuthorizedApplicationResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetAuthorizedApplicationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GetAuthorizedApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3596,8 +3596,8 @@ export const GetCustomRollout: API.OperationMethod<
   GetCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetCustomRolloutRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetCustomRolloutResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetCustomRolloutRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3611,8 +3611,8 @@ export const GetDefaultRollout: API.OperationMethod<
   GetDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetDefaultRolloutRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<GetDefaultRolloutResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetDefaultRolloutRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<GetDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3626,8 +3626,8 @@ export const GetManifest: API.OperationMethod<
   GetManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetManifestRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GetManifestResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetManifestRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<GetManifestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3641,8 +3641,8 @@ export const GetNotificationRegistration: API.OperationMethod<
   GetNotificationRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetNotificationRegistrationRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<GetNotificationRegistrationResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetNotificationRegistrationRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetNotificationRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3656,8 +3656,8 @@ export const GetProviderMonitorSettings: API.OperationMethod<
   GetProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetProviderMonitorSettingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetProviderMonitorSettingsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetProviderMonitorSettingsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3671,8 +3671,8 @@ export const GetProviderRegistration: API.OperationMethod<
   GetProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetProviderRegistrationRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GetProviderRegistrationResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetProviderRegistrationRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GetProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3686,8 +3686,8 @@ export const GetResourceTypeRegistration: API.OperationMethod<
   GetResourceTypeRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetResourceTypeRegistrationRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<GetResourceTypeRegistrationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetResourceTypeRegistrationRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<GetResourceTypeRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3701,8 +3701,8 @@ export const GetSkus: API.OperationMethod<
   GetSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetSkusRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<GetSkusResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetSkusRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<GetSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3716,8 +3716,8 @@ export const GetSkusNestedResourceTypeFirst: API.OperationMethod<
   GetSkusNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<GetSkusNestedResourceTypeFirstRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetSkusNestedResourceTypeFirstResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetSkusNestedResourceTypeFirstRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetSkusNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3731,8 +3731,8 @@ export const GetSkusNestedResourceTypeSecond: API.OperationMethod<
   GetSkusNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetSkusNestedResourceTypeSecondRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetSkusNestedResourceTypeSecondRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3746,8 +3746,8 @@ export const GetSkusNestedResourceTypeThird: API.OperationMethod<
   GetSkusNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetSkusNestedResourceTypeThirdRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetSkusNestedResourceTypeThirdRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3761,8 +3761,12 @@ export const ListAuthorizedApplications: API.OperationMethod<
   ListAuthorizedApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListAuthorizedApplicationsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuation>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListAuthorizedApplicationsRequest>,
+  output: __S(
+    1795,
+    __c56,
+    3,
+  ) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3776,8 +3780,8 @@ export const ListCustomRolloutByProviderRegistration: API.OperationMethod<
   ListCustomRolloutByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3791,8 +3795,8 @@ export const ListDefaultRolloutByProviderRegistration: API.OperationMethod<
   ListDefaultRolloutByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>,
+  output: __S(1859, __c58, 3) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3807,14 +3811,14 @@ export const ListNotificationRegistrationByProviderRegistration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    260,
-    __c32,
-    4,
+    1888,
+    __c59,
+    0,
   ) as any as S.Schema<ListNotificationRegistrationByProviderRegistrationRequest>,
   output: __S(
-    263,
-    __c32,
-    7,
+    1891,
+    __c59,
+    3,
   ) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3829,8 +3833,8 @@ export const ListOperationByProviderRegistration: API.OperationMethod<
   ListOperationByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListOperationByProviderRegistrationRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<ListOperationByProviderRegistrationResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListOperationByProviderRegistrationRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<ListOperationByProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3848,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3859,11 +3863,11 @@ export const ListProviderMonitorSettingsByResourceGroup: API.OperationMethod<
   ListProviderMonitorSettingsByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListProviderMonitorSettingsByResourceGroupRequest>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListProviderMonitorSettingsByResourceGroupRequest>,
   output: __S(
-    275,
-    __c34,
-    3,
+    2050,
+    __c64,
+    2,
   ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3878,11 +3882,11 @@ export const ListProviderMonitorSettingsBySubscription: API.OperationMethod<
   ListProviderMonitorSettingsBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ListProviderMonitorSettingsBySubscriptionRequest>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListProviderMonitorSettingsBySubscriptionRequest>,
   output: __S(
-    275,
-    __c34,
-    3,
+    2050,
+    __c64,
+    2,
   ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3897,8 +3901,8 @@ export const ListProviderRegistrations: API.OperationMethod<
   ListProviderRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListProviderRegistrationsRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListProviderRegistrationsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3913,13 +3917,13 @@ export const ListResourceTypeRegistrationByProviderRegistration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    280,
-    __c35,
+    2240,
+    __c70,
     0,
   ) as any as S.Schema<ListResourceTypeRegistrationByProviderRegistrationRequest>,
   output: __S(
-    281,
-    __c35,
+    2241,
+    __c70,
     1,
   ) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3935,8 +3939,8 @@ export const ListSkusByResourceTypeRegistrations: API.OperationMethod<
   ListSkusByResourceTypeRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>,
+  output: __S(2305, __c72, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3951,11 +3955,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    285,
-    __c35,
-    5,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2305, __c72, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3970,11 +3974,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    286,
-    __c35,
-    6,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2305, __c72, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3989,11 +3993,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeThird: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    287,
-    __c35,
-    7,
+    2400,
+    __c75,
+    0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2305, __c72, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4007,8 +4011,8 @@ export const ManifestsCreateOrUpdate: API.OperationMethod<
   ManifestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ManifestsCreateOrUpdateRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<ManifestsCreateOrUpdateResponse>,
+  input: __S(2433, __c76, 1) as any as S.Schema<ManifestsCreateOrUpdateRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ManifestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4022,8 +4026,8 @@ export const NotificationRegistrationsCreateOrUpdate: API.OperationMethod<
   NotificationRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4037,8 +4041,8 @@ export const OperationsCreateOrUpdate: API.OperationMethod<
   OperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<OperationsCreateOrUpdateRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<OperationsCreateOrUpdateResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<OperationsCreateOrUpdateRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<OperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4052,8 +4056,8 @@ export const ProviderRegistrationsCreateOrUpdate: API.OperationMethod<
   ProviderRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<ProviderRegistrationsCreateOrUpdateRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ProviderRegistrationsCreateOrUpdateRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4067,8 +4071,8 @@ export const ResourceTypeRegistrationsCreateOrUpdate: API.OperationMethod<
   ResourceTypeRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4082,8 +4086,8 @@ export const SkusCreateOrUpdate: API.OperationMethod<
   SkusCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<SkusCreateOrUpdateRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<SkusCreateOrUpdateResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<SkusCreateOrUpdateRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<SkusCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4097,8 +4101,8 @@ export const SkusCreateOrUpdateNestedResourceTypeFirst: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4112,8 +4116,12 @@ export const SkusCreateOrUpdateNestedResourceTypeSecond: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondRequest>,
+  output: __S(
+    1280,
+    __c40,
+    0,
+  ) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4127,8 +4135,8 @@ export const SkusCreateOrUpdateNestedResourceTypeThird: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4142,8 +4150,8 @@ export const StopCustomRollout: API.OperationMethod<
   StopCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<StopCustomRolloutRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<StopCustomRolloutResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<StopCustomRolloutRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<StopCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4157,8 +4165,8 @@ export const StopDefaultRollout: API.OperationMethod<
   StopDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<StopDefaultRolloutRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<StopDefaultRolloutResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<StopDefaultRolloutRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<StopDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4172,8 +4180,8 @@ export const UpdateProviderMonitorSettings: API.OperationMethod<
   UpdateProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<UpdateProviderMonitorSettingsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateProviderMonitorSettingsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdateProviderMonitorSettingsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4185,43 +4193,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          roleDefinitionId: S.optional(S.String),
-          managedByRoleDefinitionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationProviderAuthorization",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.String,
-          resourceTypes: S.optional(__S(1, __c0, 1)),
-          excludeApplicationIdFromManifest: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ApplicationDataAuthorization",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          providerAuthorization: S.optional(__S(0, __c0, 0)),
-          dataAuthorizations: S.optional(__S(3, __c0, 3)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizedApplicationProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           applicationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(99, __c3, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4233,7 +4208,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AuthorizedApplicationsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4244,21 +4223,66 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(99, __c3, 3)),
         }),
       ).annotate({
         identifier: "AuthorizedApplicationsCreateOrUpdateResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleDefinitionId: S.optional(S.String),
+          managedByRoleDefinitionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationProviderAuthorization",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.String,
+          resourceTypes: S.optional(__S(128, __c4, 0)),
+          excludeApplicationIdFromManifest: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ApplicationDataAuthorization",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          providerAuthorization: S.optional(__S(96, __c3, 0)),
+          dataAuthorizations: S.optional(__S(98, __c3, 2)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizedApplicationProperties",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,7 +4300,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CheckinManifestRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isCheckedIn: S.Boolean,
@@ -4285,1543 +4313,11 @@ function __c1(j: number): any {
           commitId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckinManifestInfo" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProviderMonitorSettingProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          providerMonitorSettingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(10, __c1, 2)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProviderMonitorSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(10, __c1, 2)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateProviderMonitorSettingsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storage: S.optional(S.Boolean),
-          resourceGraph: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CustomRolloutSpecificationAutoProvisionConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          regions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "TrafficRegions" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAudiences: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderAuthentication",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.optional(S.String),
-          roleDefinitionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdditionalAuthorization" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          additionalAuthorizations: S.optional(__S(18, __c2, 2)),
-          managedByResourceRoleDefinitionId: S.optional(S.String),
-          allowManagedByInheritance: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderAuthorizationManagedByAuthorization",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThirdPartyExtension" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.optional(S.String),
-          roleDefinitionId: S.optional(S.String),
-          managedByRoleDefinitionId: S.optional(S.String),
-          managedByAuthorization: S.optional(__S(19, __c2, 3)),
-          allowedThirdPartyExtensions: S.optional(__S(21, __c2, 5)),
-          groupingTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderAuthorization",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceProviderService" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requiredFeaturesPolicy: S.String,
-        }),
-      ).annotate({ identifier: "FeaturesRule" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          optInHeaders: S.optional(S.String),
-          optOutHeaders: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RequestHeaderOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedGroupClaims: S.optional(__S(1, __c0, 1)),
-          actions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "ResourceAccessRole" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serverFailureResponseMessageType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManagementErrorResponseMessageOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          expeditedRolloutIntent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManagementExpeditedRolloutMetadata",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schemaOwners: S.optional(__S(1, __c0, 1)),
-          manifestOwners: S.optional(__S(1, __c0, 1)),
-          authorizationOwners: S.optional(__S(1, __c0, 1)),
-          incidentRoutingService: S.optional(S.String),
-          incidentRoutingTeam: S.optional(S.String),
-          incidentContactEmail: S.optional(S.String),
-          resourceAccessPolicy: S.optional(S.String),
-          resourceAccessRoles: S.optional(__S(29, __c3, 5)),
-          expeditedRolloutSubmitters: S.optional(__S(1, __c0, 1)),
-          errorResponseMessageOptions: S.optional(__S(30, __c3, 6)),
-          expeditedRolloutMetadata: S.optional(__S(31, __c3, 7)),
-          canaryManifestOwners: S.optional(__S(1, __c0, 1)),
-          pcCode: S.optional(S.String),
-          profitCenterProgramId: S.optional(S.String),
-          featureManagementOwners: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManagement",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          quotaId: S.String,
-          effect: S.String,
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderCapabilities",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          preflightSupported: S.optional(S.Boolean),
-          preflightOptions: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "TemplateDeploymentOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          apiVersions: S.optional(__S(1, __c0, 1)),
-          endpointUri: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          timeout: S.optional(S.String),
-          endpointType: S.optional(S.String),
-          skuLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceProviderEndpoint" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          notificationType: S.optional(S.String),
-          skipNotifications: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Notification" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          authenticationScheme: S.optional(S.String),
-          signedRequestScope: S.optional(S.String),
-          disableCertificateAuthenticationFallback: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TokenAuthConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tokenAuthConfiguration: S.optional(__S(41, __c5, 1)),
-          actions: S.optional(__S(1, __c0, 1)),
-          endpoints: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "FanoutLinkedNotificationRule",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationActions: S.optional(__S(1, __c0, 1)),
-          additionalOptions: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AsyncOperationPollingRules",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          asyncOperationPollingRules: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderAuthorizationRules",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          maxChildResourceConsistencyJobLimit: S.optional(S.Number),
-          encryptedKey: S.optional(S.String),
-          accountName: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceHydrationAccount" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          endpointType: S.optional(S.String),
-          schemaVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointInformation" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filterQuery: S.optional(S.String),
-          endpointInformation: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "FilterRule" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filterRules: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "SubscriberSetting" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriberSettings: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManifestPropertiesNotificationSettings",
-      });
-    case 7:
-      return S.Array(__S(37, __c4, 5));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          blockActionVerb: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceClientOptionsType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceProviderManifestPropertiesResponseOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.String,
-          roleDefinitionId: S.String,
-        }),
-      ).annotate({ identifier: "LightHouseAuthorization" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authorizations: S.optional(__S(59, __c7, 3)),
-          managedByTenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThirdPartyProviderAuthorization",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          providerAuthorizations: S.optional(__S(23, __c2, 7)),
-          providerAuthentication: S.optional(__S(16, __c2, 0)),
-          thirdPartyProviderAuthorization: S.optional(__S(60, __c7, 4)),
-          directRpRoleDefinitionId: S.optional(S.String),
-          regionalAsyncOperationResourceTypeName: S.optional(S.String),
-          globalAsyncOperationResourceTypeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProviderHubMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          action: S.String,
-        }),
-      ).annotate({
-        identifier: "SubscriptionStateOverrideAction",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionStateOverrideActions: S.optional(__S(63, __c7, 7)),
-          softDeleteTTL: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionLifecycleNotificationSpecifications",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowedSubscriptions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateResourceProviderConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          providerAuthentication: S.optional(__S(16, __c2, 0)),
-          providerAuthorizations: S.optional(__S(23, __c2, 7)),
-          namespace: S.optional(S.String),
-          services: S.optional(__S(25, __c3, 1)),
-          serviceName: S.optional(S.String),
-          providerVersion: S.optional(S.String),
-          providerType: S.optional(S.String),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          requestHeaderOptions: S.optional(__S(27, __c3, 3)),
-          management: S.optional(__S(32, __c4, 0)),
-          capabilities: S.optional(__S(34, __c4, 2)),
-          crossTenantTokenValidation: S.optional(S.String),
-          metadata: S.optional(S.Unknown),
-          templateDeploymentOptions: S.optional(__S(36, __c4, 4)),
-          globalNotificationEndpoints: S.optional(__S(38, __c4, 6)),
-          enableTenantLinkedNotification: S.optional(S.NullOr(S.Boolean)),
-          notifications: S.optional(__S(40, __c5, 0)),
-          linkedNotificationRules: S.optional(__S(43, __c5, 3)),
-          resourceProviderAuthorizationRules: S.optional(__S(45, __c5, 5)),
-          notificationOptions: S.optional(S.String),
-          resourceHydrationAccounts: S.optional(__S(47, __c5, 7)),
-          notificationSettings: S.optional(__S(54, __c6, 6)),
-          managementGroupGlobalNotificationEndpoints: S.optional(__S(55, __c6, 7)),
-          optionalFeatures: S.optional(__S(1, __c0, 1)),
-          resourceGroupLockOptionDuringMove: S.optional(__S(56, __c7, 0)),
-          responseOptions: S.optional(__S(57, __c7, 1)),
-          legacyNamespace: S.optional(S.String),
-          legacyRegistrations: S.optional(__S(1, __c0, 1)),
-          customManifestVersion: S.optional(S.String),
-          providerHubMetadata: S.optional(__S(61, __c7, 5)),
-          provisioningState: S.optional(S.String),
-          subscriptionLifecycleNotificationSpecifications: S.optional(__S(64, __c8, 0)),
-          privateResourceProviderConfiguration: S.optional(__S(65, __c8, 1)),
-          tokenAuthConfiguration: S.optional(__S(41, __c5, 1)),
-          oboSubscriptionId: S.optional(S.String),
-          enablePresetResourceTypes: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ProviderRegistrationProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(66, __c8, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProviderRegistrationInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endpointUri: S.optional(S.String),
-          extensionCategories: S.optional(__S(35, __c4, 3)),
-          timeout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceTypeExtension" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          apiVersions: S.optional(__S(1, __c0, 1)),
-          locations: S.optional(__S(1, __c0, 1)),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          extensions: S.optional(__S(69, __c8, 5)),
-          timeout: S.optional(S.String),
-          endpointType: S.optional(S.String),
-          tokenAuthConfiguration: S.optional(__S(41, __c5, 1)),
-          skuLink: S.optional(S.String),
-          endpointUri: S.optional(S.String),
-          apiVersion: S.optional(S.String),
-          zones: S.optional(__S(1, __c0, 1)),
-          dataBoundary: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceTypeEndpoint" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          request: S.optional(__S(35, __c4, 3)),
-          response: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ExtensionOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceCreationBegin: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeExtensionOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersions: S.optional(__S(1, __c0, 1)),
-          swaggerSpecFolderUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SwaggerSpecification" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-          intent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AllowedUnauthorizedActionsExtension",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          original: S.optional(S.String),
-          desired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AuthorizationActionMapping",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          actionName: S.optional(S.String),
-          linkedProperty: S.optional(S.String),
-          linkedAction: S.optional(S.String),
-          linkedActionVerb: S.optional(S.String),
-          linkedType: S.optional(S.String),
-          options: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkedAccessCheck" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hiddenPathsOnRequest: S.optional(__S(1, __c0, 1)),
-          hiddenPathsOnResponse: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "LoggingHiddenPropertyPath",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          direction: S.String,
-          detailLevel: S.String,
-          hiddenPropertyPaths: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "LoggingRule" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          limit: S.Number,
-          interval: S.optional(S.String),
-          bucketSize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThrottlingMetric" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          metrics: __S(87, __c10, 7),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          applicationId: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "ThrottlingRule" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          applicationId: S.optional(S.String),
-          applicationIds: S.optional(__S(1, __c0, 1)),
-          delegationAppIds: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IdentityManagementProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableDefaultValidation: S.optional(S.Boolean),
-          resourceTypesWithCustomValidation: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "CheckNameAvailabilitySpecifications",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          allowedActions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "SubscriptionStateRule" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          supportedPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExtendedLocationOptions" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          validationRequired: S.optional(S.Boolean),
-          crossResourceGroupMoveEnabled: S.optional(S.Boolean),
-          crossSubscriptionMoveEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ResourceMovePolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minimumRetentionTime: S.optional(S.String),
-          maximumRetentionTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceDeletionPolicyProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policyName: S.optional(S.String),
-          properties: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "ResourceDeletionPolicyAndProperties",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          notActions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "ManagedResourceGroupDenyAssignmentConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          resourceGroupLocationOverride: S.optional(S.String),
-          applicationIds: S.optional(__S(76, __c9, 4)),
-          denyAssignmentConfiguration: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeManagedResourceGroupConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String,
-          requiredMembers: __S(1, __c0, 1),
-          requiredZoneNames: __S(1, __c0, 1),
-          redirectMapId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GroupConnectivityInformation",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minApiVersion: S.String,
-          groupConnectivityInformation: __S(103, __c12, 7),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WriteLockConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceConcurrencyControlOption",
-      });
-    case 3:
-      return S.Record(S.String, __S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          apiVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceGraphConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowNoncompliantCollectionResponse: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OpenApiValidation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          validation: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "OpenApiConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actionName: S.optional(S.String),
-          lifeTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeOnBehalfOfToken",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(S.String),
-          quotaId: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocationQuotaRule" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          quotaPolicy: S.optional(S.String),
-          locationRules: S.optional(__S(114, __c14, 2)),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "QuotaRule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(1, __c0, 1)),
-          actionsOnFailedOperation: S.optional(__S(1, __c0, 1)),
-          fastPathActions: S.optional(__S(1, __c0, 1)),
-          fastPathActionsOnFailedOperation: S.optional(__S(1, __c0, 1)),
-          linkedNotificationTimeout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkedNotificationRule" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          capabilities: S.String,
-          preflightOptions: S.String,
-          preflightNotifications: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TemplateDeploymentPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZonePolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesAvailabilityZoneRule",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionName: S.optional(S.String),
-          timeout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AsyncTimeoutRule" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profileVersion: S.optional(S.String),
-          apiVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiProfile" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          linkedOperation: S.String,
-          linkedAction: S.String,
-          dependsOnTypes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "LinkedOperationRule" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disallowedLegacyOperations: S.optional(__S(35, __c4, 3)),
-          feature: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LegacyDisallowedCondition",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disallowedLegacyOperations: S.optional(__S(126, __c15, 6)),
-          disallowedConditions: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesLegacyPolicy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          capacityPolicy: S.optional(S.String),
-          skuAlias: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesCapacityRule",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          addOnPlanConversionAllowed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesMarketplaceOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          getActionVerb: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AllowedResourceName" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enableResourceCache: S.optional(S.Boolean),
-          resourceCacheExpirationTimespan: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesResourceCache",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filterOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesResourceQueryManagement",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationAction: S.optional(S.String),
-          maxBatchSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActionConfiguration" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          supportedOperations: S.optional(S.String),
-          maxBatchSize: S.optional(S.Number),
-          batchContractVersion: S.optional(S.String),
-          maxNestedBatchSize: S.optional(S.Number),
-          requiredFeatures: S.optional(__S(76, __c9, 4)),
-          actionConfigurations: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({
-        identifier:
-          "ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          linkedProperty: S.optional(S.String),
-          linkedType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteDependency" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimumApiVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          batchProvisioningSupport: S.optional(__S(138, __c17, 2)),
-          deleteDependencies: S.optional(__S(140, __c17, 4)),
-          nestedProvisioningSupport: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesResourceManagementOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          commonApiVersionsMergeMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hostResourceType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationPropertiesRoutingRule",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          routingType: S.optional(S.String),
-          additionalOptions: S.optional(S.String),
-          crossTenantTokenValidation: S.optional(S.String),
-          regionality: S.optional(S.String),
-          endpoints: S.optional(__S(71, __c8, 7)),
-          extensionOptions: S.optional(__S(73, __c9, 1)),
-          marketplaceType: S.optional(S.String),
-          swaggerSpecifications: S.optional(__S(75, __c9, 3)),
-          allowedUnauthorizedActions: S.optional(__S(76, __c9, 4)),
-          allowedUnauthorizedActionsExtensions: S.optional(__S(78, __c9, 6)),
-          authorizationActionMappings: S.optional(__S(80, __c10, 0)),
-          linkedAccessChecks: S.optional(__S(82, __c10, 2)),
-          defaultApiVersion: S.optional(S.String),
-          loggingRules: S.optional(__S(85, __c10, 5)),
-          throttlingRules: S.optional(__S(89, __c11, 1)),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          enableAsyncOperation: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
-          enableThirdPartyS2S: S.optional(S.Boolean),
-          subscriptionLifecycleNotificationSpecifications: S.optional(__S(64, __c8, 0)),
-          isPureProxy: S.optional(S.Boolean),
-          identityManagement: S.optional(__S(90, __c11, 2)),
-          checkNameAvailabilitySpecifications: S.optional(__S(91, __c11, 3)),
-          disallowedActionVerbs: S.optional(__S(1, __c0, 1)),
-          requestHeaderOptions: S.optional(__S(27, __c3, 3)),
-          subscriptionStateRules: S.optional(__S(93, __c11, 5)),
-          templateDeploymentOptions: S.optional(__S(36, __c4, 4)),
-          extendedLocations: S.optional(__S(95, __c11, 7)),
-          resourceMovePolicy: S.optional(__S(96, __c12, 0)),
-          resourceDeletionPolicy: S.optional(S.String),
-          resourceDeletionPolicies: S.optional(__S(99, __c12, 3)),
-          managedResourceGroupConfiguration: S.optional(__S(101, __c12, 5)),
-          privateEndpointConfiguration: S.optional(__S(104, __c13, 0)),
-          writeLock: S.optional(__S(105, __c13, 1)),
-          superScaleEnabled: S.optional(S.Boolean),
-          resourceConcurrencyControlOptions: S.optional(__S(107, __c13, 3)),
-          resourceGraphConfiguration: S.optional(__S(108, __c13, 4)),
-          management: S.optional(__S(32, __c4, 0)),
-          openApiConfiguration: S.optional(__S(110, __c13, 6)),
-          onBehalfOfTokens: S.optional(__S(111, __c13, 7)),
-          category: S.optional(S.String),
-          resourceValidation: S.optional(S.String),
-          disallowedEndUserOperations: S.optional(__S(76, __c9, 4)),
-          metadata: S.optional(__S(112, __c14, 0)),
-          skuLink: S.optional(S.String),
-          quotaRule: S.optional(__S(115, __c14, 3)),
-          notifications: S.optional(__S(40, __c5, 0)),
-          linkedNotificationRules: S.optional(__S(117, __c14, 5)),
-          resourceProviderAuthorizationRules: S.optional(__S(45, __c5, 5)),
-          tokenAuthConfiguration: S.optional(__S(41, __c5, 1)),
-          templateDeploymentPolicy: S.optional(__S(118, __c14, 6)),
-          allowEmptyRoleAssignments: S.optional(S.Boolean),
-          policyExecutionType: S.optional(S.String),
-          availabilityZoneRule: S.optional(__S(119, __c14, 7)),
-          asyncTimeoutRules: S.optional(__S(121, __c15, 1)),
-          commonApiVersions: S.optional(__S(1, __c0, 1)),
-          apiProfiles: S.optional(__S(123, __c15, 3)),
-          linkedOperationRules: S.optional(__S(125, __c15, 5)),
-          legacyName: S.optional(S.String),
-          legacyNames: S.optional(__S(1, __c0, 1)),
-          allowedTemplateDeploymentReferenceActions: S.optional(__S(76, __c9, 4)),
-          legacyPolicy: S.optional(__S(129, __c16, 1)),
-          manifestLink: S.optional(S.String),
-          capacityRule: S.optional(__S(130, __c16, 2)),
-          marketplaceOptions: S.optional(__S(131, __c16, 3)),
-          allowedResourceNames: S.optional(__S(133, __c16, 5)),
-          resourceCache: S.optional(__S(134, __c16, 6)),
-          resourceQueryManagement: S.optional(__S(135, __c16, 7)),
-          supportsTags: S.optional(S.Boolean),
-          resourceManagementOptions: S.optional(__S(142, __c17, 6)),
-          groupingTag: S.optional(S.String),
-          addResourceListTargetLocations: S.optional(S.Boolean),
-          resourceTypeCommonAttributeManagement: S.optional(__S(143, __c17, 7)),
-          routingRule: S.optional(__S(144, __c18, 0)),
-          frontdoorRequestMode: S.optional(S.String),
-          resourceSubType: S.optional(S.String),
-          asyncOperationResourceTypeName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(145, __c18, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceTypeRegistrationInput",
-      });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.String,
-          baselineArmManifestLocation: S.String,
-        }),
-      ).annotate({ identifier: "CheckinManifestParams" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          manifestCheckinOption: S.optional(S.String),
-          manifestCheckinParams: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({
-        identifier: "ManifestCheckinSpecification",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          autoProvisionConfig: S.optional(__S(14, __c1, 6)),
-          canary: S.optional(__S(15, __c1, 7)),
-          releaseScopes: S.optional(__S(1, __c0, 1)),
-          refreshSubscriptionRegistration: S.optional(S.Boolean),
-          skipReleaseScopeValidation: S.optional(S.Boolean),
-          providerRegistration: S.optional(__S(67, __c8, 3)),
-          resourceTypeRegistrations: S.optional(__S(147, __c18, 3)),
-          rolloutId: S.optional(S.String),
-          manifestCheckinSpecification: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "CustomRolloutSpecificationInput",
-      });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(154, __c19, 2)));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-        }),
-      ).annotate({ identifier: "TypedErrorInfoInput" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          target: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(151, __c18, 7)),
-          additionalInfo: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "ExtendedErrorInfoInput" });
-    case 3:
-      return S.Record(S.String, __S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          manifestAppliedAt: S.optional(S.String),
-          previousCommitId: S.optional(S.String),
-          appliedCommitId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppliedManifestInfo" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completedRegions: S.optional(__S(1, __c0, 1)),
-          failedOrSkippedRegions: S.optional(__S(155, __c19, 3)),
-          manifestCheckinStatus: S.optional(__S(9, __c1, 1)),
-          completedRegionsInfo: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({ identifier: "CustomRolloutStatusInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          specification: __S(150, __c18, 6),
-          status: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "CustomRolloutPropertiesInput",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          rolloutName: S.String.pipe(T.Label()),
-          properties: __S(159, __c19, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomRolloutsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(66, __c8, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProviderRegistration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(145, __c18, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceTypeRegistration" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoProvisionConfig: S.optional(__S(14, __c1, 6)),
-          canary: S.optional(__S(15, __c1, 7)),
-          releaseScopes: S.optional(__S(1, __c0, 1)),
-          refreshSubscriptionRegistration: S.optional(S.Boolean),
-          skipReleaseScopeValidation: S.optional(S.Boolean),
-          providerRegistration: S.optional(__S(161, __c20, 1)),
-          resourceTypeRegistrations: S.optional(__S(163, __c20, 3)),
-          rolloutId: S.optional(S.String),
-          manifestCheckinSpecification: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "CustomRolloutSpecification",
-      });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(168, __c21, 0)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "TypedErrorInfo" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          target: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(165, __c20, 5)),
-          additionalInfo: S.optional(__S(167, __c20, 7)),
-        }),
-      ).annotate({ identifier: "ExtendedErrorInfo" });
-    case 1:
-      return S.Record(S.String, __S(168, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          completedRegions: S.optional(__S(1, __c0, 1)),
-          failedOrSkippedRegions: S.optional(__S(169, __c21, 1)),
-          manifestCheckinStatus: S.optional(__S(9, __c1, 1)),
-          completedRegionsInfo: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({ identifier: "CustomRolloutStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          specification: __S(164, __c20, 4),
-          status: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({ identifier: "CustomRolloutProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: __S(171, __c21, 3),
-        }),
-      ).annotate({
-        identifier: "CustomRolloutsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ExpeditedRolloutDefinition",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          skipRegions: S.optional(__S(1, __c0, 1)),
-          regions: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CanaryTrafficRegionRolloutConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          regions: S.optional(__S(1, __c0, 1)),
-          waitDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TrafficRegionRolloutConfiguration",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expeditedRollout: S.optional(__S(173, __c21, 5)),
-          canary: S.optional(__S(174, __c21, 6)),
-          lowTraffic: S.optional(__S(175, __c21, 7)),
-          mediumTraffic: S.optional(__S(175, __c21, 7)),
-          highTraffic: S.optional(__S(175, __c21, 7)),
-          restOfTheWorldGroupOne: S.optional(__S(175, __c21, 7)),
-          restOfTheWorldGroupTwo: S.optional(__S(175, __c21, 7)),
-          providerRegistration: S.optional(__S(67, __c8, 3)),
-          resourceTypeRegistrations: S.optional(__S(147, __c18, 3)),
-          autoProvisionConfig: S.optional(__S(14, __c1, 6)),
-          manifestCheckinSpecification: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "DefaultRolloutSpecificationInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          completedRegions: S.optional(__S(1, __c0, 1)),
-          failedOrSkippedRegions: S.optional(__S(155, __c19, 3)),
-          nextTrafficRegion: S.optional(S.String),
-          nextTrafficRegionScheduledTime: S.optional(S.String),
-          subscriptionReregistrationResult: S.optional(S.String),
-          manifestCheckinStatus: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "DefaultRolloutStatusInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          specification: S.optional(__S(176, __c22, 0)),
-          status: S.optional(__S(177, __c22, 1)),
-        }),
-      ).annotate({
-        identifier: "DefaultRolloutPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          rolloutName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(178, __c22, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DefaultRolloutsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          expeditedRollout: S.optional(__S(173, __c21, 5)),
-          canary: S.optional(__S(174, __c21, 6)),
-          lowTraffic: S.optional(__S(175, __c21, 7)),
-          mediumTraffic: S.optional(__S(175, __c21, 7)),
-          highTraffic: S.optional(__S(175, __c21, 7)),
-          restOfTheWorldGroupOne: S.optional(__S(175, __c21, 7)),
-          restOfTheWorldGroupTwo: S.optional(__S(175, __c21, 7)),
-          providerRegistration: S.optional(__S(161, __c20, 1)),
-          resourceTypeRegistrations: S.optional(__S(163, __c20, 3)),
-          autoProvisionConfig: S.optional(__S(14, __c1, 6)),
-          manifestCheckinSpecification: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({
-        identifier: "DefaultRolloutSpecification",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          completedRegions: S.optional(__S(1, __c0, 1)),
-          failedOrSkippedRegions: S.optional(__S(169, __c21, 1)),
-          nextTrafficRegion: S.optional(S.String),
-          nextTrafficRegionScheduledTime: S.optional(S.String),
-          subscriptionReregistrationResult: S.optional(S.String),
-          manifestCheckinStatus: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "DefaultRolloutStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          specification: S.optional(__S(180, __c22, 4)),
-          status: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({ identifier: "DefaultRolloutProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({
-        identifier: "DefaultRolloutsCreateOrUpdateResponse",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          applicationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAuthorizedApplicationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAuthorizedApplicationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          rolloutName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCustomRolloutRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCustomRolloutResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          rolloutName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDefaultRolloutRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-          notificationRegistrationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteNotificationRegistrationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          providerNamespace: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
-            code: 200,
-            apiVersion: "2025-10-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOperationRequest" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5840,7 +4336,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5858,7 +4354,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteProviderRegistrationRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
@@ -5868,15 +4368,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ResourceManagementEntityInput",
       });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
     case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceActionName: S.String.pipe(T.Label()),
-          resources: S.optional(__S(194, __c24, 2)),
+          resources: S.optional(__S(289, __c9, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5888,7 +4388,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteResourceActionResourcesRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5905,7 +4409,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteResourceTypeRegistrationRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5921,7 +4429,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSkusRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5940,7 +4452,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteSkusNestedResourceTypeFirstRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5962,7 +4478,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5985,7 +4501,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteSkusNestedResourceTypeThirdRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5999,17 +4519,17 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GenerateManifestRequest" });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
     case 2:
-      return S.Array(__S(77, __c9, 5));
+      return S.Array(__S(1473, __c46, 1));
     case 3:
-      return S.Array(__S(79, __c9, 7));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityManagement" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6017,37 +4537,37 @@ function __c25(j: number): any {
           additionalOptions: S.optional(S.String),
           crossTenantTokenValidation: S.optional(S.String),
           resourceValidation: S.optional(S.String),
-          allowedUnauthorizedActions: S.optional(__S(1, __c0, 1)),
-          allowedUnauthorizedActionsExtensions: S.optional(__S(202, __c25, 2)),
-          authorizationActionMappings: S.optional(__S(203, __c25, 3)),
-          linkedAccessChecks: S.optional(__S(82, __c10, 2)),
+          allowedUnauthorizedActions: S.optional(__S(128, __c4, 0)),
+          allowedUnauthorizedActionsExtensions: S.optional(__S(481, __c15, 1)),
+          authorizationActionMappings: S.optional(__S(482, __c15, 2)),
+          linkedAccessChecks: S.optional(__S(1475, __c46, 3)),
           defaultApiVersion: S.optional(S.String),
-          loggingRules: S.optional(__S(85, __c10, 5)),
-          throttlingRules: S.optional(__S(89, __c11, 1)),
-          endpoints: S.optional(__S(38, __c4, 6)),
+          loggingRules: S.optional(__S(1478, __c46, 6)),
+          throttlingRules: S.optional(__S(1482, __c46, 10)),
+          endpoints: S.optional(__S(1453, __c45, 13)),
           marketplaceType: S.optional(S.String),
-          identityManagement: S.optional(__S(204, __c25, 4)),
+          identityManagement: S.optional(__S(483, __c15, 3)),
           metadata: S.optional(S.Unknown),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          subscriptionStateRules: S.optional(__S(93, __c11, 5)),
-          requestHeaderOptions: S.optional(__S(27, __c3, 3)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          subscriptionStateRules: S.optional(__S(1484, __c46, 12)),
+          requestHeaderOptions: S.optional(__S(1409, __c44, 1)),
           skuLink: S.optional(S.String),
-          disallowedActionVerbs: S.optional(__S(1, __c0, 1)),
-          templateDeploymentPolicy: S.optional(__S(118, __c14, 6)),
-          extendedLocations: S.optional(__S(95, __c11, 7)),
-          linkedOperationRules: S.optional(__S(125, __c15, 5)),
+          disallowedActionVerbs: S.optional(__S(128, __c4, 0)),
+          templateDeploymentPolicy: S.optional(__S(1495, __c46, 23)),
+          extendedLocations: S.optional(__S(1486, __c46, 14)),
+          linkedOperationRules: S.optional(__S(1497, __c46, 25)),
           resourceDeletionPolicy: S.optional(S.String),
-          resourceDeletionPolicies: S.optional(__S(99, __c12, 3)),
-          quotaRule: S.optional(__S(115, __c14, 3)),
-          notifications: S.optional(__S(40, __c5, 0)),
-          linkedNotificationRules: S.optional(__S(117, __c14, 5)),
-          resourceProviderAuthorizationRules: S.optional(__S(45, __c5, 5)),
+          resourceDeletionPolicies: S.optional(__S(1489, __c46, 17)),
+          quotaRule: S.optional(__S(1492, __c46, 20)),
+          notifications: S.optional(__S(1416, __c44, 8)),
+          linkedNotificationRules: S.optional(__S(1494, __c46, 22)),
+          resourceProviderAuthorizationRules: S.optional(__S(1419, __c44, 11)),
         }),
       ).annotate({ identifier: "ResourceType" });
+    case 5:
+      return S.Array(__S(484, __c15, 4));
     case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -6056,38 +4576,38 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ReRegisterSubscriptionMetadata",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          providerAuthentication: S.optional(__S(16, __c2, 0)),
-          providerAuthorizations: S.optional(__S(23, __c2, 7)),
+          providerAuthentication: S.optional(__S(1440, __c45, 0)),
+          providerAuthorizations: S.optional(__S(1447, __c45, 7)),
           namespace: S.optional(S.String),
-          services: S.optional(__S(25, __c3, 1)),
+          services: S.optional(__S(1449, __c45, 9)),
           serviceName: S.optional(S.String),
           providerVersion: S.optional(S.String),
           providerType: S.optional(S.String),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          featuresRule: S.optional(__S(26, __c3, 2)),
-          requestHeaderOptions: S.optional(__S(27, __c3, 3)),
-          resourceTypes: S.optional(__S(206, __c25, 6)),
-          management: S.optional(__S(32, __c4, 0)),
-          capabilities: S.optional(__S(34, __c4, 2)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          requestHeaderOptions: S.optional(__S(1409, __c44, 1)),
+          resourceTypes: S.optional(__S(485, __c15, 5)),
+          management: S.optional(__S(1414, __c44, 6)),
+          capabilities: S.optional(__S(1451, __c45, 11)),
           crossTenantTokenValidation: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          globalNotificationEndpoints: S.optional(__S(38, __c4, 6)),
-          reRegisterSubscriptionMetadata: S.optional(__S(207, __c25, 7)),
+          globalNotificationEndpoints: S.optional(__S(1453, __c45, 13)),
+          reRegisterSubscriptionMetadata: S.optional(__S(486, __c15, 6)),
           enableTenantLinkedNotification: S.optional(S.NullOr(S.Boolean)),
-          notifications: S.optional(__S(40, __c5, 0)),
-          linkedNotificationRules: S.optional(__S(43, __c5, 3)),
-          resourceProviderAuthorizationRules: S.optional(__S(45, __c5, 5)),
-          tokenAuthConfiguration: S.optional(__S(41, __c5, 1)),
+          notifications: S.optional(__S(1416, __c44, 8)),
+          linkedNotificationRules: S.optional(__S(1455, __c45, 15)),
+          resourceProviderAuthorizationRules: S.optional(__S(1419, __c44, 11)),
+          tokenAuthConfiguration: S.optional(__S(1417, __c44, 9)),
         }),
       ).annotate({ identifier: "ResourceProviderManifest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6103,7 +4623,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GenerateProviderRegistrationOperationsRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() => __S(577, __c18, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GenerateProviderRegistrationOperationsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -6114,24 +4642,84 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "OperationsDisplayDefinition",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          display: __S(210, __c26, 2),
+          display: __S(544, __c17, 0),
           actionType: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationsDefinition" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() => __S(212, __c26, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GenerateProviderRegistrationOperationsResponse",
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          providerMonitorSettingName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(640, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(641, __c20, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProviderMonitorSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProviderMonitorSettingProperties",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(640, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateProviderMonitorSettingsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6148,7 +4736,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetAuthorizedApplicationRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6165,7 +4757,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetCustomRolloutRequest" });
   }
 }
-function __c27(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6173,11 +4765,15 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: __S(171, __c21, 3),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(1349, __c42, 5),
         }),
       ).annotate({ identifier: "GetCustomRolloutResponse" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6192,7 +4788,11 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDefaultRolloutRequest" });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6207,7 +4807,21 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetManifestRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "GetManifestResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           manifest: S.optional(S.String),
@@ -6215,17 +4829,11 @@ function __c27(j: number): any {
           commitId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManifestInfoProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(219, __c27, 3)),
-        }),
-      ).annotate({ identifier: "GetManifestResponse" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6242,44 +4850,52 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetNotificationRegistrationRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          notificationDestination: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "NotificationEndpoint" });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          notificationDestination: S.optional(S.String),
+          locations: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "NotificationEndpoint" });
+    case 1:
+      return S.Array(__S(928, __c29, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           notificationMode: S.optional(S.String),
           messageScope: S.optional(S.String),
-          includedEvents: S.optional(__S(1, __c0, 1)),
-          notificationEndpoints: S.optional(__S(223, __c27, 7)),
+          includedEvents: S.optional(__S(128, __c4, 0)),
+          notificationEndpoints: S.optional(__S(929, __c29, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NotificationRegistrationProperties",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(224, __c28, 0)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(930, __c29, 2)),
         }),
       ).annotate({
         identifier: "GetNotificationRegistrationResponse",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6296,7 +4912,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProviderMonitorSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6312,20 +4932,28 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProviderRegistrationRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(66, __c8, 2)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1553, __c48, 17)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProviderRegistrationResponse",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6342,20 +4970,28 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetResourceTypeRegistrationRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(145, __c18, 1)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1619, __c50, 19)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetResourceTypeRegistrationResponse",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6373,7 +5009,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetSkusRequest" });
   }
 }
-function __c29(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6383,28 +5019,28 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(1184, __c37, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(1, __c0, 1)),
-          capabilities: S.optional(__S(233, __c29, 1)),
+          name: S.optional(__S(128, __c4, 0)),
+          capabilities: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({ identifier: "SkuZoneDetail" });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(1186, __c37, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          zones: S.optional(__S(1, __c0, 1)),
-          zoneDetails: S.optional(__S(235, __c29, 3)),
-          extendedLocations: S.optional(__S(1, __c0, 1)),
+          zones: S.optional(__S(128, __c4, 0)),
+          zoneDetails: S.optional(__S(1187, __c37, 3)),
+          extendedLocations: S.optional(__S(128, __c4, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 5:
-      return S.Array(__S(236, __c29, 4));
+      return S.Array(__S(1188, __c37, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6422,13 +5058,9 @@ function __c29(j: number): any {
           extendedUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCost" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(1191, __c37, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6436,35 +5068,43 @@ function __c30(j: number): any {
           size: S.optional(S.String),
           family: S.optional(S.String),
           kind: S.optional(S.String),
-          locations: S.optional(__S(1, __c0, 1)),
-          locationInfo: S.optional(__S(237, __c29, 5)),
-          requiredQuotaIds: S.optional(__S(1, __c0, 1)),
-          requiredFeatures: S.optional(__S(1, __c0, 1)),
-          capacity: S.optional(__S(238, __c29, 6)),
-          costs: S.optional(__S(240, __c30, 0)),
-          capabilities: S.optional(__S(233, __c29, 1)),
+          locations: S.optional(__S(128, __c4, 0)),
+          locationInfo: S.optional(__S(1189, __c37, 5)),
+          requiredQuotaIds: S.optional(__S(128, __c4, 0)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          capacity: S.optional(__S(1190, __c37, 6)),
+          costs: S.optional(__S(1192, __c37, 8)),
+          capabilities: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({ identifier: "SkuSetting" });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(1193, __c37, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          skuSettings: __S(242, __c30, 2),
+          skuSettings: __S(1194, __c37, 10),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeSku" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(243, __c30, 3)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }),
       ).annotate({ identifier: "GetSkusResponse" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6483,19 +5123,1260 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetSkusNestedResourceTypeFirstRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(243, __c30, 3)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }),
       ).annotate({
         identifier: "GetSkusNestedResourceTypeFirstResponse",
       });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoProvisionConfig: S.optional(__S(1632, __c51, 0)),
+          canary: S.optional(__S(1344, __c42, 0)),
+          releaseScopes: S.optional(__S(128, __c4, 0)),
+          refreshSubscriptionRegistration: S.optional(S.Boolean),
+          skipReleaseScopeValidation: S.optional(S.Boolean),
+          providerRegistration: S.optional(__S(1376, __c43, 0)),
+          resourceTypeRegistrations: S.optional(__S(1378, __c43, 2)),
+          rolloutId: S.optional(S.String),
+          manifestCheckinSpecification: S.optional(__S(1634, __c51, 2)),
+        }),
+      ).annotate({
+        identifier: "CustomRolloutSpecificationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completedRegions: S.optional(__S(128, __c4, 0)),
+          failedOrSkippedRegions: S.optional(__S(1383, __c43, 7)),
+          manifestCheckinStatus: S.optional(__S(192, __c6, 0)),
+          completedRegionsInfo: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({ identifier: "CustomRolloutStatusInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          specification: __S(1312, __c41, 0),
+          status: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({
+        identifier: "CustomRolloutPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          rolloutName: S.String.pipe(T.Label()),
+          properties: __S(1314, __c41, 2),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomRolloutsCreateOrUpdateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(1349, __c42, 5),
+        }),
+      ).annotate({
+        identifier: "CustomRolloutsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "TrafficRegions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          manifestAppliedAt: S.optional(S.String),
+          previousCommitId: S.optional(S.String),
+          appliedCommitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppliedManifestInfo" });
+    case 2:
+      return S.Array(__S(1345, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          autoProvisionConfig: S.optional(__S(1632, __c51, 0)),
+          canary: S.optional(__S(1344, __c42, 0)),
+          releaseScopes: S.optional(__S(128, __c4, 0)),
+          refreshSubscriptionRegistration: S.optional(S.Boolean),
+          skipReleaseScopeValidation: S.optional(S.Boolean),
+          providerRegistration: S.optional(__S(1664, __c52, 0)),
+          resourceTypeRegistrations: S.optional(__S(1697, __c53, 1)),
+          rolloutId: S.optional(S.String),
+          manifestCheckinSpecification: S.optional(__S(1634, __c51, 2)),
+        }),
+      ).annotate({
+        identifier: "CustomRolloutSpecification",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          completedRegions: S.optional(__S(128, __c4, 0)),
+          failedOrSkippedRegions: S.optional(__S(1639, __c51, 7)),
+          manifestCheckinStatus: S.optional(__S(192, __c6, 0)),
+          completedRegionsInfo: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({ identifier: "CustomRolloutStatus" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          specification: __S(1347, __c42, 3),
+          status: S.optional(__S(1348, __c42, 4)),
+        }),
+      ).annotate({ identifier: "CustomRolloutProperties" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1553, __c48, 17)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProviderRegistrationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1619, __c50, 19)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationInput",
+      });
+    case 2:
+      return S.Array(__S(1377, __c43, 1));
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1382, __c43, 6)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "TypedErrorInfoInput" });
+    case 5:
+      return S.Array(__S(1380, __c43, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          target: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(1379, __c43, 3)),
+          additionalInfo: S.optional(__S(1381, __c43, 5)),
+        }),
+      ).annotate({ identifier: "ExtendedErrorInfoInput" });
     case 7:
+      return S.Record(S.String, __S(1382, __c43, 6));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requiredFeaturesPolicy: S.String,
+        }),
+      ).annotate({ identifier: "FeaturesRule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          optInHeaders: S.optional(S.String),
+          optOutHeaders: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RequestHeaderOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedGroupClaims: S.optional(__S(128, __c4, 0)),
+          actions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "ResourceAccessRole" });
+    case 3:
+      return S.Array(__S(1410, __c44, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          serverFailureResponseMessageType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManagementErrorResponseMessageOptions",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          expeditedRolloutIntent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManagementExpeditedRolloutMetadata",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          schemaOwners: S.optional(__S(128, __c4, 0)),
+          manifestOwners: S.optional(__S(128, __c4, 0)),
+          authorizationOwners: S.optional(__S(128, __c4, 0)),
+          incidentRoutingService: S.optional(S.String),
+          incidentRoutingTeam: S.optional(S.String),
+          incidentContactEmail: S.optional(S.String),
+          resourceAccessPolicy: S.optional(S.String),
+          resourceAccessRoles: S.optional(__S(1411, __c44, 3)),
+          expeditedRolloutSubmitters: S.optional(__S(128, __c4, 0)),
+          errorResponseMessageOptions: S.optional(__S(1412, __c44, 4)),
+          expeditedRolloutMetadata: S.optional(__S(1413, __c44, 5)),
+          canaryManifestOwners: S.optional(__S(128, __c4, 0)),
+          pcCode: S.optional(S.String),
+          profitCenterProgramId: S.optional(S.String),
+          featureManagementOwners: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManagement",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          notificationType: S.optional(S.String),
+          skipNotifications: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Notification" });
+    case 8:
+      return S.Array(__S(1415, __c44, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          authenticationScheme: S.optional(S.String),
+          signedRequestScope: S.optional(S.String),
+          disableCertificateAuthenticationFallback: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TokenAuthConfiguration" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationActions: S.optional(__S(128, __c4, 0)),
+          additionalOptions: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AsyncOperationPollingRules",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          asyncOperationPollingRules: S.optional(__S(1418, __c44, 10)),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderAuthorizationRules",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAudiences: __S(128, __c4, 0),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderAuthentication",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.optional(S.String),
+          roleDefinitionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdditionalAuthorization" });
+    case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          additionalAuthorizations: S.optional(__S(1442, __c45, 2)),
+          managedByResourceRoleDefinitionId: S.optional(S.String),
+          allowManagedByInheritance: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderAuthorizationManagedByAuthorization",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThirdPartyExtension" });
+    case 5:
+      return S.Array(__S(1444, __c45, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.optional(S.String),
+          roleDefinitionId: S.optional(S.String),
+          managedByRoleDefinitionId: S.optional(S.String),
+          managedByAuthorization: S.optional(__S(1443, __c45, 3)),
+          allowedThirdPartyExtensions: S.optional(__S(1445, __c45, 5)),
+          groupingTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderAuthorization",
+      });
+    case 7:
+      return S.Array(__S(1446, __c45, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceProviderService" });
+    case 9:
+      return S.Array(__S(1448, __c45, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          quotaId: S.String,
+          effect: S.String,
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderCapabilities",
+      });
+    case 11:
+      return S.Array(__S(1450, __c45, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          apiVersions: S.optional(__S(128, __c4, 0)),
+          endpointUri: S.optional(S.String),
+          locations: S.optional(__S(128, __c4, 0)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          timeout: S.optional(S.String),
+          endpointType: S.optional(S.String),
+          skuLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceProviderEndpoint" });
+    case 13:
+      return S.Array(__S(1452, __c45, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          tokenAuthConfiguration: S.optional(__S(1417, __c44, 9)),
+          actions: S.optional(__S(128, __c4, 0)),
+          endpoints: S.optional(__S(1453, __c45, 13)),
+        }),
+      ).annotate({
+        identifier: "FanoutLinkedNotificationRule",
+      });
+    case 15:
+      return S.Array(__S(1454, __c45, 14));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          intent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AllowedUnauthorizedActionsExtension",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          original: S.optional(S.String),
+          desired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AuthorizationActionMapping",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          actionName: S.optional(S.String),
+          linkedProperty: S.optional(S.String),
+          linkedAction: S.optional(S.String),
+          linkedActionVerb: S.optional(S.String),
+          linkedType: S.optional(S.String),
+          options: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkedAccessCheck" });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hiddenPathsOnRequest: S.optional(__S(128, __c4, 0)),
+          hiddenPathsOnResponse: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "LoggingHiddenPropertyPath",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          direction: S.String,
+          detailLevel: S.String,
+          hiddenPropertyPaths: S.optional(__S(1476, __c46, 4)),
+        }),
+      ).annotate({ identifier: "LoggingRule" });
+    case 6:
+      return S.Array(__S(1477, __c46, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          limit: S.Number,
+          interval: S.optional(S.String),
+          bucketSize: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThrottlingMetric" });
+    case 8:
+      return S.Array(__S(1479, __c46, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          metrics: __S(1480, __c46, 8),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          applicationId: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "ThrottlingRule" });
+    case 10:
+      return S.Array(__S(1481, __c46, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          allowedActions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "SubscriptionStateRule" });
+    case 12:
+      return S.Array(__S(1483, __c46, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          supportedPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedLocationOptions" });
+    case 14:
+      return S.Array(__S(1485, __c46, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          minimumRetentionTime: S.optional(S.String),
+          maximumRetentionTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceDeletionPolicyProperties",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          policyName: S.optional(S.String),
+          properties: S.optional(__S(1487, __c46, 15)),
+        }),
+      ).annotate({
+        identifier: "ResourceDeletionPolicyAndProperties",
+      });
+    case 17:
+      return S.Array(__S(1488, __c46, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(S.String),
+          quotaId: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocationQuotaRule" });
+    case 19:
+      return S.Array(__S(1490, __c46, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          quotaPolicy: S.optional(S.String),
+          locationRules: S.optional(__S(1491, __c46, 19)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "QuotaRule" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(128, __c4, 0)),
+          actionsOnFailedOperation: S.optional(__S(128, __c4, 0)),
+          fastPathActions: S.optional(__S(128, __c4, 0)),
+          fastPathActionsOnFailedOperation: S.optional(__S(128, __c4, 0)),
+          linkedNotificationTimeout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkedNotificationRule" });
+    case 22:
+      return S.Array(__S(1493, __c46, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.String,
+          preflightOptions: S.String,
+          preflightNotifications: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateDeploymentPolicy" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          linkedOperation: S.String,
+          linkedAction: S.String,
+          dependsOnTypes: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "LinkedOperationRule" });
+    case 25:
+      return S.Array(__S(1496, __c46, 24));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preflightSupported: S.optional(S.Boolean),
+          preflightOptions: S.optional(__S(1504, __c47, 0)),
+        }),
+      ).annotate({
+        identifier: "TemplateDeploymentOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          action: S.String,
+        }),
+      ).annotate({
+        identifier: "SubscriptionStateOverrideAction",
+      });
+    case 3:
+      return S.Array(__S(1506, __c47, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionStateOverrideActions: S.optional(__S(1507, __c47, 3)),
+          softDeleteTTL: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionLifecycleNotificationSpecifications",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxChildResourceConsistencyJobLimit: S.optional(S.Number),
+          encryptedKey: S.optional(S.String),
+          accountName: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceHydrationAccount" });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          endpointType: S.optional(S.String),
+          schemaVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointInformation" });
+    case 3:
+      return S.Array(__S(1538, __c48, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filterQuery: S.optional(S.String),
+          endpointInformation: S.optional(__S(1539, __c48, 3)),
+        }),
+      ).annotate({ identifier: "FilterRule" });
+    case 5:
+      return S.Array(__S(1540, __c48, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          filterRules: S.optional(__S(1541, __c48, 5)),
+        }),
+      ).annotate({ identifier: "SubscriberSetting" });
+    case 7:
+      return S.Array(__S(1542, __c48, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          subscriberSettings: S.optional(__S(1543, __c48, 7)),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManifestPropertiesNotificationSettings",
+      });
+    case 9:
+      return S.Array(__S(1452, __c45, 12));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          blockActionVerb: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          serviceClientOptionsType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceProviderManifestPropertiesResponseOptions",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.String,
+          roleDefinitionId: S.String,
+        }),
+      ).annotate({ identifier: "LightHouseAuthorization" });
+    case 13:
+      return S.Array(__S(1548, __c48, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          authorizations: S.optional(__S(1549, __c48, 13)),
+          managedByTenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThirdPartyProviderAuthorization",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          providerAuthorizations: S.optional(__S(1447, __c45, 7)),
+          providerAuthentication: S.optional(__S(1440, __c45, 0)),
+          thirdPartyProviderAuthorization: S.optional(__S(1550, __c48, 14)),
+          directRpRoleDefinitionId: S.optional(S.String),
+          regionalAsyncOperationResourceTypeName: S.optional(S.String),
+          globalAsyncOperationResourceTypeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProviderHubMetadata" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          allowedSubscriptions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateResourceProviderConfiguration",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          providerAuthentication: S.optional(__S(1440, __c45, 0)),
+          providerAuthorizations: S.optional(__S(1447, __c45, 7)),
+          namespace: S.optional(S.String),
+          services: S.optional(__S(1449, __c45, 9)),
+          serviceName: S.optional(S.String),
+          providerVersion: S.optional(S.String),
+          providerType: S.optional(S.String),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          requestHeaderOptions: S.optional(__S(1409, __c44, 1)),
+          management: S.optional(__S(1414, __c44, 6)),
+          capabilities: S.optional(__S(1451, __c45, 11)),
+          crossTenantTokenValidation: S.optional(S.String),
+          metadata: S.optional(S.Unknown),
+          templateDeploymentOptions: S.optional(__S(1505, __c47, 1)),
+          globalNotificationEndpoints: S.optional(__S(1453, __c45, 13)),
+          enableTenantLinkedNotification: S.optional(S.NullOr(S.Boolean)),
+          notifications: S.optional(__S(1416, __c44, 8)),
+          linkedNotificationRules: S.optional(__S(1455, __c45, 15)),
+          resourceProviderAuthorizationRules: S.optional(__S(1419, __c44, 11)),
+          notificationOptions: S.optional(S.String),
+          resourceHydrationAccounts: S.optional(__S(1537, __c48, 1)),
+          notificationSettings: S.optional(__S(1544, __c48, 8)),
+          managementGroupGlobalNotificationEndpoints: S.optional(__S(1545, __c48, 9)),
+          optionalFeatures: S.optional(__S(128, __c4, 0)),
+          resourceGroupLockOptionDuringMove: S.optional(__S(1546, __c48, 10)),
+          responseOptions: S.optional(__S(1547, __c48, 11)),
+          legacyNamespace: S.optional(S.String),
+          legacyRegistrations: S.optional(__S(128, __c4, 0)),
+          customManifestVersion: S.optional(S.String),
+          providerHubMetadata: S.optional(__S(1551, __c48, 15)),
+          provisioningState: S.optional(S.String),
+          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1508, __c47, 4)),
+          privateResourceProviderConfiguration: S.optional(__S(1552, __c48, 16)),
+          tokenAuthConfiguration: S.optional(__S(1417, __c44, 9)),
+          oboSubscriptionId: S.optional(S.String),
+          enablePresetResourceTypes: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ProviderRegistrationProperties",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointUri: S.optional(S.String),
+          extensionCategories: S.optional(__S(1504, __c47, 0)),
+          timeout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceTypeExtension" });
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          apiVersions: S.optional(__S(128, __c4, 0)),
+          locations: S.optional(__S(128, __c4, 0)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          extensions: S.optional(__S(1569, __c49, 1)),
+          timeout: S.optional(S.String),
+          endpointType: S.optional(S.String),
+          tokenAuthConfiguration: S.optional(__S(1417, __c44, 9)),
+          skuLink: S.optional(S.String),
+          endpointUri: S.optional(S.String),
+          apiVersion: S.optional(S.String),
+          zones: S.optional(__S(128, __c4, 0)),
+          dataBoundary: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceTypeEndpoint" });
+    case 3:
+      return S.Array(__S(1570, __c49, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          request: S.optional(__S(1504, __c47, 0)),
+          response: S.optional(__S(1504, __c47, 0)),
+        }),
+      ).annotate({ identifier: "ExtensionOptions" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceCreationBegin: S.optional(__S(1572, __c49, 4)),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeExtensionOptions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersions: S.optional(__S(128, __c4, 0)),
+          swaggerSpecFolderUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SwaggerSpecification" });
+    case 7:
+      return S.Array(__S(1574, __c49, 6));
+    case 8:
+      return S.Array(S.String);
+    case 9:
+      return S.Array(__S(1472, __c46, 0));
+    case 10:
+      return S.Array(__S(1473, __c46, 1));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          applicationId: S.optional(S.String),
+          applicationIds: S.optional(__S(128, __c4, 0)),
+          delegationAppIds: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "IdentityManagementProperties",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enableDefaultValidation: S.optional(S.Boolean),
+          resourceTypesWithCustomValidation: S.optional(__S(1576, __c49, 8)),
+        }),
+      ).annotate({
+        identifier: "CheckNameAvailabilitySpecifications",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          validationRequired: S.optional(S.Boolean),
+          crossResourceGroupMoveEnabled: S.optional(S.Boolean),
+          crossSubscriptionMoveEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ResourceMovePolicy" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          notActions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagedResourceGroupDenyAssignmentConfiguration",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          resourceGroupLocationOverride: S.optional(S.String),
+          applicationIds: S.optional(__S(1576, __c49, 8)),
+          denyAssignmentConfiguration: S.optional(__S(1582, __c49, 14)),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeManagedResourceGroupConfiguration",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String,
+          requiredMembers: __S(128, __c4, 0),
+          requiredZoneNames: __S(128, __c4, 0),
+          redirectMapId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GroupConnectivityInformation",
+      });
+    case 17:
+      return S.Array(__S(1584, __c49, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          minApiVersion: S.String,
+          groupConnectivityInformation: __S(1585, __c49, 17),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConfiguration",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WriteLockConfiguration" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceConcurrencyControlOption",
+      });
+    case 21:
+      return S.Record(S.String, __S(1588, __c49, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          apiVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceGraphConfiguration",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          allowNoncompliantCollectionResponse: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OpenApiValidation" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          validation: S.optional(__S(1591, __c49, 23)),
+        }),
+      ).annotate({ identifier: "OpenApiConfiguration" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          actionName: S.optional(S.String),
+          lifeTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeOnBehalfOfToken",
+      });
+    case 26:
+      return S.Record(S.String, S.Unknown);
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZonePolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesAvailabilityZoneRule",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          actionName: S.optional(S.String),
+          timeout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AsyncTimeoutRule" });
+    case 29:
+      return S.Array(__S(1596, __c49, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          profileVersion: S.optional(S.String),
+          apiVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiProfile" });
+    case 31:
+      return S.Array(__S(1598, __c49, 30));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          disallowedLegacyOperations: S.optional(__S(1504, __c47, 0)),
+          feature: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LegacyDisallowedCondition",
+      });
+    case 2:
+      return S.Array(__S(1601, __c50, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          disallowedLegacyOperations: S.optional(__S(1600, __c50, 0)),
+          disallowedConditions: S.optional(__S(1602, __c50, 2)),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesLegacyPolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          capacityPolicy: S.optional(S.String),
+          skuAlias: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesCapacityRule",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          addOnPlanConversionAllowed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesMarketplaceOptions",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          getActionVerb: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllowedResourceName" });
+    case 7:
+      return S.Array(__S(1606, __c50, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enableResourceCache: S.optional(S.Boolean),
+          resourceCacheExpirationTimespan: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesResourceCache",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          filterOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesResourceQueryManagement",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationAction: S.optional(S.String),
+          maxBatchSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActionConfiguration" });
+    case 11:
+      return S.Array(__S(1610, __c50, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          supportedOperations: S.optional(S.String),
+          maxBatchSize: S.optional(S.Number),
+          batchContractVersion: S.optional(S.String),
+          maxNestedBatchSize: S.optional(S.Number),
+          requiredFeatures: S.optional(__S(1576, __c49, 8)),
+          actionConfigurations: S.optional(__S(1611, __c50, 11)),
+        }),
+      ).annotate({
+        identifier:
+          "ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          linkedProperty: S.optional(S.String),
+          linkedType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteDependency" });
+    case 14:
+      return S.Array(__S(1613, __c50, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          minimumApiVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          batchProvisioningSupport: S.optional(__S(1612, __c50, 12)),
+          deleteDependencies: S.optional(__S(1614, __c50, 14)),
+          nestedProvisioningSupport: S.optional(__S(1615, __c50, 15)),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesResourceManagementOptions",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          commonApiVersionsMergeMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          hostResourceType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationPropertiesRoutingRule",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          routingType: S.optional(S.String),
+          additionalOptions: S.optional(S.String),
+          crossTenantTokenValidation: S.optional(S.String),
+          regionality: S.optional(S.String),
+          endpoints: S.optional(__S(1571, __c49, 3)),
+          extensionOptions: S.optional(__S(1573, __c49, 5)),
+          marketplaceType: S.optional(S.String),
+          swaggerSpecifications: S.optional(__S(1575, __c49, 7)),
+          allowedUnauthorizedActions: S.optional(__S(1576, __c49, 8)),
+          allowedUnauthorizedActionsExtensions: S.optional(__S(1577, __c49, 9)),
+          authorizationActionMappings: S.optional(__S(1578, __c49, 10)),
+          linkedAccessChecks: S.optional(__S(1475, __c46, 3)),
+          defaultApiVersion: S.optional(S.String),
+          loggingRules: S.optional(__S(1478, __c46, 6)),
+          throttlingRules: S.optional(__S(1482, __c46, 10)),
+          requiredFeatures: S.optional(__S(128, __c4, 0)),
+          featuresRule: S.optional(__S(1408, __c44, 0)),
+          enableAsyncOperation: S.optional(S.Boolean),
+          provisioningState: S.optional(S.String),
+          enableThirdPartyS2S: S.optional(S.Boolean),
+          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1508, __c47, 4)),
+          isPureProxy: S.optional(S.Boolean),
+          identityManagement: S.optional(__S(1579, __c49, 11)),
+          checkNameAvailabilitySpecifications: S.optional(__S(1580, __c49, 12)),
+          disallowedActionVerbs: S.optional(__S(128, __c4, 0)),
+          requestHeaderOptions: S.optional(__S(1409, __c44, 1)),
+          subscriptionStateRules: S.optional(__S(1484, __c46, 12)),
+          templateDeploymentOptions: S.optional(__S(1505, __c47, 1)),
+          extendedLocations: S.optional(__S(1486, __c46, 14)),
+          resourceMovePolicy: S.optional(__S(1581, __c49, 13)),
+          resourceDeletionPolicy: S.optional(S.String),
+          resourceDeletionPolicies: S.optional(__S(1489, __c46, 17)),
+          managedResourceGroupConfiguration: S.optional(__S(1583, __c49, 15)),
+          privateEndpointConfiguration: S.optional(__S(1586, __c49, 18)),
+          writeLock: S.optional(__S(1587, __c49, 19)),
+          superScaleEnabled: S.optional(S.Boolean),
+          resourceConcurrencyControlOptions: S.optional(__S(1589, __c49, 21)),
+          resourceGraphConfiguration: S.optional(__S(1590, __c49, 22)),
+          management: S.optional(__S(1414, __c44, 6)),
+          openApiConfiguration: S.optional(__S(1592, __c49, 24)),
+          onBehalfOfTokens: S.optional(__S(1593, __c49, 25)),
+          category: S.optional(S.String),
+          resourceValidation: S.optional(S.String),
+          disallowedEndUserOperations: S.optional(__S(1576, __c49, 8)),
+          metadata: S.optional(__S(1594, __c49, 26)),
+          skuLink: S.optional(S.String),
+          quotaRule: S.optional(__S(1492, __c46, 20)),
+          notifications: S.optional(__S(1416, __c44, 8)),
+          linkedNotificationRules: S.optional(__S(1494, __c46, 22)),
+          resourceProviderAuthorizationRules: S.optional(__S(1419, __c44, 11)),
+          tokenAuthConfiguration: S.optional(__S(1417, __c44, 9)),
+          templateDeploymentPolicy: S.optional(__S(1495, __c46, 23)),
+          allowEmptyRoleAssignments: S.optional(S.Boolean),
+          policyExecutionType: S.optional(S.String),
+          availabilityZoneRule: S.optional(__S(1595, __c49, 27)),
+          asyncTimeoutRules: S.optional(__S(1597, __c49, 29)),
+          commonApiVersions: S.optional(__S(128, __c4, 0)),
+          apiProfiles: S.optional(__S(1599, __c49, 31)),
+          linkedOperationRules: S.optional(__S(1497, __c46, 25)),
+          legacyName: S.optional(S.String),
+          legacyNames: S.optional(__S(128, __c4, 0)),
+          allowedTemplateDeploymentReferenceActions: S.optional(__S(1576, __c49, 8)),
+          legacyPolicy: S.optional(__S(1603, __c50, 3)),
+          manifestLink: S.optional(S.String),
+          capacityRule: S.optional(__S(1604, __c50, 4)),
+          marketplaceOptions: S.optional(__S(1605, __c50, 5)),
+          allowedResourceNames: S.optional(__S(1607, __c50, 7)),
+          resourceCache: S.optional(__S(1608, __c50, 8)),
+          resourceQueryManagement: S.optional(__S(1609, __c50, 9)),
+          supportsTags: S.optional(S.Boolean),
+          resourceManagementOptions: S.optional(__S(1616, __c50, 16)),
+          groupingTag: S.optional(S.String),
+          addResourceListTargetLocations: S.optional(S.Boolean),
+          resourceTypeCommonAttributeManagement: S.optional(__S(1617, __c50, 17)),
+          routingRule: S.optional(__S(1618, __c50, 18)),
+          frontdoorRequestMode: S.optional(S.String),
+          resourceSubType: S.optional(S.String),
+          asyncOperationResourceTypeName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceTypeRegistrationProperties",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storage: S.optional(S.Boolean),
+          resourceGraph: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CustomRolloutSpecificationAutoProvisionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.String,
+          baselineArmManifestLocation: S.String,
+        }),
+      ).annotate({ identifier: "CheckinManifestParams" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          manifestCheckinOption: S.optional(S.String),
+          manifestCheckinParams: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "ManifestCheckinSpecification",
+      });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1638, __c51, 6)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "TypedErrorInfo" });
+    case 5:
+      return S.Array(__S(1636, __c51, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          target: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(1635, __c51, 3)),
+          additionalInfo: S.optional(__S(1637, __c51, 5)),
+        }),
+      ).annotate({ identifier: "ExtendedErrorInfo" });
+    case 7:
+      return S.Record(S.String, __S(1638, __c51, 6));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1553, __c48, 17)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProviderRegistration" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1619, __c50, 19)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceTypeRegistration" });
+    case 1:
+      return S.Array(__S(1696, __c53, 0));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6517,7 +6398,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6540,7 +6421,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetSkusNestedResourceTypeThirdRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6556,28 +6441,32 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListAuthorizedApplicationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(99, __c3, 3)),
         }),
       ).annotate({ identifier: "AuthorizedApplication" });
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
     case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(251, __c31, 3),
+          value: __S(1794, __c56, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthorizedApplicationArrayResponseWithContinuation",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6593,12 +6482,12 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListCustomRolloutByProviderRegistrationRequest",
       });
-    case 6:
-      return S.Array(__S(216, __c27, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(254, __c31, 6),
+          value: __S(1825, __c57, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6606,7 +6495,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6630,22 +6519,26 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(182, __c22, 6)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2181, __c68, 5)),
         }),
       ).annotate({ identifier: "DefaultRollout" });
     case 2:
-      return S.Array(__S(257, __c32, 1));
+      return S.Array(__S(1857, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258, __c32, 2),
+          value: __S(1858, __c58, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DefaultRolloutArrayResponseWithContinuation",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6661,22 +6554,22 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListNotificationRegistrationByProviderRegistrationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(224, __c28, 0)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(930, __c29, 2)),
         }),
       ).annotate({ identifier: "NotificationRegistration" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1889, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(262, __c32, 6),
+          value: __S(1890, __c59, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6684,7 +6577,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6702,68 +6595,76 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListOperationByProviderRegistrationRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          default: __S(210, __c26, 2),
-          en: S.optional(__S(210, __c26, 2)),
-          cs: S.optional(__S(210, __c26, 2)),
-          de: S.optional(__S(210, __c26, 2)),
-          es: S.optional(__S(210, __c26, 2)),
-          fr: S.optional(__S(210, __c26, 2)),
-          hu: S.optional(__S(210, __c26, 2)),
-          it: S.optional(__S(210, __c26, 2)),
-          ja: S.optional(__S(210, __c26, 2)),
-          ko: S.optional(__S(210, __c26, 2)),
-          nl: S.optional(__S(210, __c26, 2)),
-          pl: S.optional(__S(210, __c26, 2)),
-          ptBR: S.optional(__S(210, __c26, 2)),
-          ptPT: S.optional(__S(210, __c26, 2)),
-          ru: S.optional(__S(210, __c26, 2)),
-          sv: S.optional(__S(210, __c26, 2)),
-          zhHans: S.optional(__S(210, __c26, 2)),
-          zhHant: S.optional(__S(210, __c26, 2)),
-          qpsPloc: S.optional(__S(210, __c26, 2)),
+          default: __S(544, __c17, 0),
+          en: S.optional(__S(544, __c17, 0)),
+          cs: S.optional(__S(544, __c17, 0)),
+          de: S.optional(__S(544, __c17, 0)),
+          es: S.optional(__S(544, __c17, 0)),
+          fr: S.optional(__S(544, __c17, 0)),
+          hu: S.optional(__S(544, __c17, 0)),
+          it: S.optional(__S(544, __c17, 0)),
+          ja: S.optional(__S(544, __c17, 0)),
+          ko: S.optional(__S(544, __c17, 0)),
+          nl: S.optional(__S(544, __c17, 0)),
+          pl: S.optional(__S(544, __c17, 0)),
+          ptBR: S.optional(__S(544, __c17, 0)),
+          ptPT: S.optional(__S(544, __c17, 0)),
+          ru: S.optional(__S(544, __c17, 0)),
+          sv: S.optional(__S(544, __c17, 0)),
+          zhHans: S.optional(__S(544, __c17, 0)),
+          zhHant: S.optional(__S(544, __c17, 0)),
+          qpsPloc: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({
         identifier: "LocalizedOperationDisplayDefinition",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          display: __S(265, __c33, 1),
+          display: __S(1952, __c61, 0),
           actionType: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "LocalizedOperationDefinition",
       });
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          contents: S.optional(__S(267, __c33, 3)),
+          contents: S.optional(__S(1954, __c61, 2)),
         }),
       ).annotate({
         identifier: "OperationsContentProperties",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(268, __c33, 4)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1955, __c61, 3)),
         }),
       ).annotate({
         identifier: "ListOperationByProviderRegistrationResponse",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6774,10 +6675,10 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(212, __c26, 4)),
+          value: S.optional(__S(577, __c18, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6785,7 +6686,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6803,30 +6704,38 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListProviderMonitorSettingsByResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(10, __c1, 2)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(640, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
+          properties: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({ identifier: "ProviderMonitorSetting" });
+    case 1:
+      return S.Array(__S(2048, __c64, 0));
     case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(274, __c34, 2),
+          value: __S(2049, __c64, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProviderMonitorSettingArrayResponseWithContinuation",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6841,7 +6750,156 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListProviderMonitorSettingsBySubscriptionRequest",
       });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expeditedRollout: S.optional(__S(2176, __c68, 0)),
+          canary: S.optional(__S(2177, __c68, 1)),
+          lowTraffic: S.optional(__S(2178, __c68, 2)),
+          mediumTraffic: S.optional(__S(2178, __c68, 2)),
+          highTraffic: S.optional(__S(2178, __c68, 2)),
+          restOfTheWorldGroupOne: S.optional(__S(2178, __c68, 2)),
+          restOfTheWorldGroupTwo: S.optional(__S(2178, __c68, 2)),
+          providerRegistration: S.optional(__S(1376, __c43, 0)),
+          resourceTypeRegistrations: S.optional(__S(1378, __c43, 2)),
+          autoProvisionConfig: S.optional(__S(1632, __c51, 0)),
+          manifestCheckinSpecification: S.optional(__S(1634, __c51, 2)),
+        }),
+      ).annotate({
+        identifier: "DefaultRolloutSpecificationInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          completedRegions: S.optional(__S(128, __c4, 0)),
+          failedOrSkippedRegions: S.optional(__S(1383, __c43, 7)),
+          nextTrafficRegion: S.optional(S.String),
+          nextTrafficRegionScheduledTime: S.optional(S.String),
+          subscriptionReregistrationResult: S.optional(S.String),
+          manifestCheckinStatus: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "DefaultRolloutStatusInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          specification: S.optional(__S(2112, __c66, 0)),
+          status: S.optional(__S(2113, __c66, 1)),
+        }),
+      ).annotate({
+        identifier: "DefaultRolloutPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          rolloutName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2114, __c66, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DefaultRolloutsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2181, __c68, 5)),
+        }),
+      ).annotate({
+        identifier: "DefaultRolloutsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ExpeditedRolloutDefinition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skipRegions: S.optional(__S(128, __c4, 0)),
+          regions: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "CanaryTrafficRegionRolloutConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(128, __c4, 0)),
+          waitDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TrafficRegionRolloutConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          expeditedRollout: S.optional(__S(2176, __c68, 0)),
+          canary: S.optional(__S(2177, __c68, 1)),
+          lowTraffic: S.optional(__S(2178, __c68, 2)),
+          mediumTraffic: S.optional(__S(2178, __c68, 2)),
+          highTraffic: S.optional(__S(2178, __c68, 2)),
+          restOfTheWorldGroupOne: S.optional(__S(2178, __c68, 2)),
+          restOfTheWorldGroupTwo: S.optional(__S(2178, __c68, 2)),
+          providerRegistration: S.optional(__S(1664, __c52, 0)),
+          resourceTypeRegistrations: S.optional(__S(1697, __c53, 1)),
+          autoProvisionConfig: S.optional(__S(1632, __c51, 0)),
+          manifestCheckinSpecification: S.optional(__S(1634, __c51, 2)),
+        }),
+      ).annotate({
+        identifier: "DefaultRolloutSpecification",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          completedRegions: S.optional(__S(128, __c4, 0)),
+          failedOrSkippedRegions: S.optional(__S(1639, __c51, 7)),
+          nextTrafficRegion: S.optional(S.String),
+          nextTrafficRegionScheduledTime: S.optional(S.String),
+          subscriptionReregistrationResult: S.optional(S.String),
+          manifestCheckinStatus: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "DefaultRolloutStatus" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          specification: S.optional(__S(2179, __c68, 3)),
+          status: S.optional(__S(2180, __c68, 4)),
+        }),
+      ).annotate({ identifier: "DefaultRolloutProperties" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6856,12 +6914,12 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListProviderRegistrationsRequest",
       });
-    case 6:
-      return S.Array(__S(161, __c20, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(278, __c34, 6),
+          value: __S(2209, __c69, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6869,7 +6927,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6890,13 +6948,17 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c20, 3),
+          value: __S(1697, __c53, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceTypeRegistrationArrayResponseWithContinuation",
       });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6913,18 +6975,26 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSkusByResourceTypeRegistrationsRequest",
       });
-    case 3:
-      return S.Array(__S(244, __c30, 4));
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1216, __c38, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(283, __c35, 3),
+          value: __S(2304, __c72, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SkuResourceArrayResponseWithContinuation",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6942,7 +7012,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6961,7 +7035,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest",
       });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6983,7 +7061,7 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7000,7 +7078,7 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           environment: S.String.pipe(T.Label()),
-          properties: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(2432, __c76, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7018,19 +7096,23 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(219, __c27, 3)),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({
         identifier: "ManifestsCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           notificationRegistrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(930, __c29, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7042,12 +7124,16 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "NotificationRegistrationsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
-          properties: S.optional(__S(268, __c33, 4)),
+          properties: S.optional(__S(1955, __c61, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7059,12 +7145,16 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OperationsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
-          properties: S.optional(__S(66, __c8, 2)),
+          properties: S.optional(__S(1553, __c48, 17)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7077,13 +7167,46 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ProviderRegistrationsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          applicationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAuthorizedApplicationRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAuthorizedApplicationResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
-          properties: S.optional(__S(145, __c18, 1)),
+          properties: S.optional(__S(1619, __c50, 19)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7096,14 +7219,18 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ResourceTypeRegistrationsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(243, __c30, 3)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7117,7 +7244,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7127,7 +7254,7 @@ function __c37(j: number): any {
           resourceType: S.String.pipe(T.Label()),
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(243, __c30, 3)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7139,7 +7266,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "SkusCreateOrUpdateNestedResourceTypeFirstRequest",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7148,7 +7279,7 @@ function __c37(j: number): any {
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(243, __c30, 3)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7160,7 +7291,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "SkusCreateOrUpdateNestedResourceTypeSecondRequest",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7170,7 +7305,7 @@ function __c37(j: number): any {
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
           nestedResourceTypeThird: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(243, __c30, 3)),
+          properties: S.optional(__S(1195, __c37, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7182,7 +7317,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "SkusCreateOrUpdateNestedResourceTypeThirdRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7197,7 +7336,11 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopCustomRolloutRequest" });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7214,7 +7357,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "StopDefaultRolloutRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7233,7 +7380,95 @@ function __c37(j: number): any {
       });
   }
 }
-
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          rolloutName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomRolloutRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCustomRolloutResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          rolloutName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDefaultRolloutRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+          notificationRegistrationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNotificationRegistrationRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          providerNamespace: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+            code: 200,
+            apiVersion: "2025-10-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOperationRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

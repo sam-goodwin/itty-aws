@@ -185,8 +185,8 @@ export const createRepositorySnapshot: API.OperationMethod<
   CreateRepositorySnapshotError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateRepositorySnapshotRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateRepositorySnapshotResponse>,
+  input: __S(9, __c0, 9) as any as S.Schema<CreateRepositorySnapshotRequest>,
+  output: __S(10, __c0, 10) as any as S.Schema<CreateRepositorySnapshotResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -200,8 +200,8 @@ export const diffRange: API.OperationMethod<
   DiffRangeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DiffRangeRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DiffRangeResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DiffRangeRequest>,
+  output: __S(21, __c1, 5) as any as S.Schema<DiffRangeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -215,8 +215,8 @@ export const fetchSbomReport: API.OperationMethod<
   FetchSbomReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<FetchSbomReportRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<FetchSbomReportResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<FetchSbomReportRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<FetchSbomReportResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -230,8 +230,8 @@ export const generateSbomReport: API.OperationMethod<
   GenerateSbomReportError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GenerateSbomReportRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GenerateSbomReportResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GenerateSbomReportRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GenerateSbomReportResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -291,13 +291,9 @@ function __c0(j: number): any {
           resolved: S.optional(__S(6, __c0, 6)),
         }),
       ).annotate({ identifier: "Manifest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -308,7 +304,7 @@ function __c1(j: number): any {
           ref: S.String,
           detector: __S(1, __c0, 1),
           metadata: S.optional(__S(2, __c0, 2)),
-          manifests: S.optional(__S(8, __c1, 0)),
+          manifests: S.optional(__S(8, __c0, 8)),
           scanned: S.String,
         }).pipe(
           T.Http({
@@ -320,7 +316,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateRepositorySnapshotRequest",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -331,7 +327,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateRepositorySnapshotResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -346,7 +346,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DiffRangeRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           severity: S.String,
@@ -357,9 +357,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DependencyGraphDiffItemVulnerabilitiesItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           change_type: S.String,
@@ -370,21 +370,21 @@ function __c1(j: number): any {
           package_url: S.NullOr(S.String),
           license: S.NullOr(S.String),
           source_repository_url: S.NullOr(S.String),
-          vulnerabilities: __S(13, __c1, 5),
+          vulnerabilities: __S(18, __c1, 2),
           scope: S.String,
         }),
       ).annotate({ identifier: "DependencyGraphDiffItem" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
+      return S.suspend(() => __S(20, __c1, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "DiffRangeResponse",
+      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(15, __c1, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "DiffRangeResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -398,11 +398,15 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FetchSbomReportRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "FetchSbomReportResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -417,7 +421,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GenerateSbomReportRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sbom_url: S.optional(S.String),
@@ -427,7 +431,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

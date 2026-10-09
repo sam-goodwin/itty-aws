@@ -214,8 +214,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListExportsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListExportsResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListExportsRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ListExportsResponse>,
   errors: [InvalidNextTokenException, InvalidParameterValueException, NoSuchDomainException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -244,8 +244,8 @@ export const startDomainExport: API.OperationMethod<
   StartDomainExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<StartDomainExportRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<StartDomainExportResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<StartDomainExportRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<StartDomainExportResponse>,
   errors: [
     ConflictException,
     InvalidParameterCombinationException,
@@ -287,7 +287,11 @@ function __c0(j: number): any {
           exportDataCutoffTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetExportResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
@@ -297,7 +301,7 @@ function __c0(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/v2/ListExports" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListExportsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exportArn: S.String,
@@ -306,13 +310,17 @@ function __c0(j: number): any {
           domainName: S.String,
         }),
       ).annotate({ identifier: "ExportSummary" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ exportSummaries: __S(4, __c0, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ exportSummaries: __S(6, __c1, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExportsResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -333,7 +341,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartDomainExportRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.String,
@@ -345,7 +353,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

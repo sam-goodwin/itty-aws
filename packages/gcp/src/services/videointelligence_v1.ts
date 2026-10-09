@@ -303,8 +303,8 @@ export const annotateVideos: API.OperationMethod<
   AnnotateVideosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AnnotateVideosRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleLongrunning_Operation>,
+  input: __S(80, __c2, 16) as any as S.Schema<AnnotateVideosRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<GoogleLongrunning_Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -323,8 +323,8 @@ export const cancelOperationsProjectsLocationsOperations: API.OperationMethod<
   CancelOperationsProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CancelOperationsProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GoogleProtobuf_Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<CancelOperationsProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GoogleProtobuf_Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GoogleProtobuf_Empty>,
+  input: __S(225, __c7, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GoogleProtobuf_Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const deleteOperationsProjectsLocationsOperations: API.OperationMethod<
   DeleteOperationsProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteOperationsProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GoogleProtobuf_Empty>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteOperationsProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GoogleProtobuf_Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -383,8 +383,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GoogleProtobuf_Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GoogleProtobuf_Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -398,8 +398,8 @@ export const getOperationsProjectsLocationsOperations: API.OperationMethod<
   GetOperationsProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetOperationsProjectsLocationsOperationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleLongrunning_Operation>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetOperationsProjectsLocationsOperationsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<GoogleLongrunning_Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +413,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GoogleLongrunning_Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<GoogleLongrunning_Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunning_ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GoogleLongrunning_ListOperationsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<GoogleLongrunning_ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,6 +439,58 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://videointelligence.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/operations",
+            baseUrl: "https://videointelligence.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+    case 1:
+      return S.Array(__S(131, __c4, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(33, __c1, 1)),
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunning_ListOperationsResponse",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -470,7 +522,7 @@ function __c0(j: number): any {
         identifier: "GoogleCloudVideointelligenceV1_VideoSegment",
       });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(67, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -501,34 +553,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_LabelDetectionConfig",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(S.Number);
-    case 1:
-      return S.Array(S.String);
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          phrases: S.optional(__S(9, __c1, 1)),
+          phrases: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_SpeechContext",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           maxAlternatives: S.optional(S.Number),
           filterProfanity: S.optional(S.Boolean),
-          audioTracks: S.optional(__S(8, __c1, 0)),
+          audioTracks: S.optional(__S(72, __c2, 8)),
           diarizationSpeakerCount: S.optional(S.Number),
           enableSpeakerDiarization: S.optional(S.Boolean),
           languageCode: S.optional(S.String),
-          speechContexts: S.optional(__S(11, __c1, 3)),
+          speechContexts: S.optional(__S(74, __c2, 10)),
           enableAutomaticPunctuation: S.optional(S.Boolean),
           enableWordConfidence: S.optional(S.Boolean),
           audioOutputUriPrefix: S.optional(S.String),
@@ -536,16 +582,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_SpeechTranscriptionConfig",
       });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
-          languageHints: S.optional(__S(9, __c1, 1)),
+          languageHints: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_TextDetectionConfig",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
@@ -553,43 +599,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_ShotChangeDetectionConfig",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          faceDetectionConfig: S.optional(__S(1, __c0, 1)),
-          objectTrackingConfig: S.optional(__S(2, __c0, 2)),
-          segments: S.optional(__S(4, __c0, 4)),
-          explicitContentDetectionConfig: S.optional(__S(5, __c0, 5)),
-          personDetectionConfig: S.optional(__S(6, __c0, 6)),
-          labelDetectionConfig: S.optional(__S(7, __c0, 7)),
-          speechTranscriptionConfig: S.optional(__S(12, __c1, 4)),
-          textDetectionConfig: S.optional(__S(13, __c1, 5)),
-          shotChangeDetectionConfig: S.optional(__S(14, __c1, 6)),
+          faceDetectionConfig: S.optional(__S(65, __c2, 1)),
+          objectTrackingConfig: S.optional(__S(66, __c2, 2)),
+          segments: S.optional(__S(68, __c2, 4)),
+          explicitContentDetectionConfig: S.optional(__S(69, __c2, 5)),
+          personDetectionConfig: S.optional(__S(70, __c2, 6)),
+          labelDetectionConfig: S.optional(__S(71, __c2, 7)),
+          speechTranscriptionConfig: S.optional(__S(75, __c2, 11)),
+          textDetectionConfig: S.optional(__S(76, __c2, 12)),
+          shotChangeDetectionConfig: S.optional(__S(77, __c2, 13)),
         }),
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_VideoContext",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(__S(0, __c0, 0)),
+          features: S.optional(__S(64, __c2, 0)),
           locationId: S.optional(S.String),
           inputContent: S.optional(S.String),
-          videoContext: S.optional(__S(15, __c1, 7)),
+          videoContext: S.optional(__S(78, __c2, 14)),
           outputUri: S.optional(S.String),
           inputUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudVideointelligenceV1_AnnotateVideoRequest",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(79, __c2, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -598,31 +640,45 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AnnotateVideosRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(19, __c2, 3)),
+          details: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "GoogleRpc_Status" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          response: S.optional(__S(18, __c2, 2)),
+          response: S.optional(__S(128, __c4, 0)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(18, __c2, 2)),
-          error: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(128, __c4, 0)),
+          error: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunning_Operation",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -636,13 +692,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelOperationsProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobuf_Empty",
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -652,7 +712,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -663,7 +723,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -677,7 +741,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteOperationsProjectsLocationsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -691,7 +759,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -705,57 +777,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOperationsProjectsLocationsOperationsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://videointelligence.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/operations",
-            baseUrl: "https://videointelligence.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.Array(__S(21, __c2, 5));
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(31, __c3, 7)),
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunning_ListOperationsResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

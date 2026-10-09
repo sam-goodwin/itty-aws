@@ -235,8 +235,8 @@ export const getPullRequestBypassListForRepo: API.OperationMethod<
   GetPullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetPullRequestBypassListForRepoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetPullRequestBypassListForRepoResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetPullRequestBypassListForRepoRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<GetPullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -250,8 +250,8 @@ export const getPullRequestCreationCapForOrg: API.OperationMethod<
   GetPullRequestCreationCapForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetPullRequestCreationCapForOrgRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetPullRequestCreationCapForOrgResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetPullRequestCreationCapForOrgRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<GetPullRequestCreationCapForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -265,8 +265,8 @@ export const getPullRequestCreationCapForRepo: API.OperationMethod<
   GetPullRequestCreationCapForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetPullRequestCreationCapForRepoRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetPullRequestCreationCapForRepoResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetPullRequestCreationCapForRepoRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<GetPullRequestCreationCapForRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -280,8 +280,8 @@ export const getRestrictionsForAuthenticatedUser: API.OperationMethod<
   GetRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetRestrictionsForAuthenticatedUserRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetRestrictionsForAuthenticatedUserResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetRestrictionsForAuthenticatedUserRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<GetRestrictionsForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -295,8 +295,8 @@ export const getRestrictionsForOrg: API.OperationMethod<
   GetRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetRestrictionsForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetRestrictionsForOrgResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetRestrictionsForOrgRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<GetRestrictionsForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -310,8 +310,8 @@ export const getRestrictionsForRepo: API.OperationMethod<
   GetRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetRestrictionsForRepoRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetRestrictionsForRepoResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetRestrictionsForRepoRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<GetRestrictionsForRepoResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -329,8 +329,8 @@ export const removePullRequestBypassListForRepo: API.OperationMethod<
   RemovePullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<RemovePullRequestBypassListForRepoRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RemovePullRequestBypassListForRepoResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<RemovePullRequestBypassListForRepoRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemovePullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -344,8 +344,8 @@ export const removeRestrictionsForAuthenticatedUser: API.OperationMethod<
   RemoveRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -359,8 +359,8 @@ export const removeRestrictionsForOrg: API.OperationMethod<
   RemoveRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<RemoveRestrictionsForOrgRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RemoveRestrictionsForOrgResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<RemoveRestrictionsForOrgRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemoveRestrictionsForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -374,8 +374,8 @@ export const removeRestrictionsForRepo: API.OperationMethod<
   RemoveRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<RemoveRestrictionsForRepoRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RemoveRestrictionsForRepoResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<RemoveRestrictionsForRepoRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemoveRestrictionsForRepoResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const setPullRequestBypassListForRepo: API.OperationMethod<
   SetPullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<SetPullRequestBypassListForRepoRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SetPullRequestBypassListForRepoResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<SetPullRequestBypassListForRepoRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SetPullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const setRestrictionsForAuthenticatedUser: API.OperationMethod<
   SetRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<SetRestrictionsForAuthenticatedUserRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<InteractionLimitResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<SetRestrictionsForAuthenticatedUserRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<InteractionLimitResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const setRestrictionsForOrg: API.OperationMethod<
   SetRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<SetRestrictionsForOrgRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<InteractionLimitResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<SetRestrictionsForOrgRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<InteractionLimitResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const setRestrictionsForRepo: API.OperationMethod<
   SetRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<SetRestrictionsForRepoRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<InteractionLimitResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<SetRestrictionsForRepoRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<InteractionLimitResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const updatePullRequestCreationCapForOrg: API.OperationMethod<
   UpdatePullRequestCreationCapForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdatePullRequestCreationCapForOrgRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<UpdatePullRequestCreationCapForOrgRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const updatePullRequestCreationCapForRepo: API.OperationMethod<
   UpdatePullRequestCreationCapForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdatePullRequestCreationCapForRepoRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<UpdatePullRequestCreationCapForRepoRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -485,6 +485,196 @@ export const updatePullRequestCreationCapForRepo: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          users: __S(8, __c2, 0),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemovePullRequestBypassListForRepoRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RemovePullRequestBypassListForRepoResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/user/interaction-limits", code: 200 })),
+      ).annotate({
+        identifier: "RemoveRestrictionsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/interaction-limits", code: 200 })),
+      ).annotate({
+        identifier: "RemoveRestrictionsForOrgRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/interaction-limits", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RemoveRestrictionsForRepoRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          users: __S(8, __c2, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetPullRequestBypassListForRepoRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.String,
+          expiry: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/interaction-limits", code: 200 })),
+      ).annotate({
+        identifier: "SetRestrictionsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.String,
+          origin: S.String,
+          expires_at: S.String,
+        }),
+      ).annotate({ identifier: "InteractionLimitResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          limit: S.String,
+          expiry: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/interaction-limits", code: 200 })),
+      ).annotate({
+        identifier: "SetRestrictionsForOrgRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          limit: S.String,
+          expiry: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/interaction-limits", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetRestrictionsForRepoRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          enabled: S.Boolean,
+          max_open_pull_requests: S.optional(S.Number),
+          include_drafts: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/orgs/{org}/interaction-limits/pulls/creation-cap",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePullRequestCreationCapForOrgRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          enabled: S.Boolean,
+          max_open_pull_requests: S.optional(S.Number),
+          include_drafts: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdatePullRequestCreationCapForRepoRequest",
+      });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -529,12 +719,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SimpleUser" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(53, __c13, 1));
     case 3:
-      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(54, __c13, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPullRequestBypassListForRepoResponse",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -548,7 +742,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPullRequestCreationCapForOrgRequest",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -558,7 +756,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPullRequestCreationCapForOrgResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -573,29 +775,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPullRequestCreationCapForRepoRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/interaction-limits", code: 200 })),
       ).annotate({
         identifier: "GetRestrictionsForAuthenticatedUserRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.String,
-          origin: S.String,
-          expires_at: S.String,
-        }),
-      ).annotate({ identifier: "InteractionLimitResponse" });
     case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRestrictionsForAuthenticatedUserResponse",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -603,11 +801,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetRestrictionsForOrgRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRestrictionsForOrgResponse",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -618,151 +820,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetRestrictionsForRepoRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRestrictionsForRepoResponse",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          users: __S(14, __c1, 6),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemovePullRequestBypassListForRepoRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "RemovePullRequestBypassListForRepoResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/user/interaction-limits", code: 200 })),
-      ).annotate({
-        identifier: "RemoveRestrictionsForAuthenticatedUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org}/interaction-limits", code: 200 })),
-      ).annotate({
-        identifier: "RemoveRestrictionsForOrgRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/interaction-limits", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RemoveRestrictionsForRepoRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          users: __S(14, __c1, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/bypass-list",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetPullRequestBypassListForRepoRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.String,
-          expiry: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/interaction-limits", code: 200 })),
-      ).annotate({
-        identifier: "SetRestrictionsForAuthenticatedUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          limit: S.String,
-          expiry: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/interaction-limits", code: 200 })),
-      ).annotate({
-        identifier: "SetRestrictionsForOrgRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          limit: S.String,
-          expiry: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/interaction-limits", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetRestrictionsForRepoRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          enabled: S.Boolean,
-          max_open_pull_requests: S.optional(S.Number),
-          include_drafts: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/orgs/{org}/interaction-limits/pulls/creation-cap",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePullRequestCreationCapForOrgRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          enabled: S.Boolean,
-          max_open_pull_requests: S.optional(S.Number),
-          include_drafts: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/repos/{owner}/{repo}/interaction-limits/pulls/creation-cap",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdatePullRequestCreationCapForRepoRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

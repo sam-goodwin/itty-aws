@@ -265,7 +265,7 @@ export const deleteAccountsProductsLocalInventories: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountsProductsLocalInventoriesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  output: __S(4, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -284,8 +284,8 @@ export const deleteAccountsProductsRegionalInventories: API.OperationMethod<
   DeleteAccountsProductsRegionalInventoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAccountsProductsRegionalInventoriesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteAccountsProductsRegionalInventoriesRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const insertAccountsProductsLocalInventories: API.OperationMethod<
   InsertAccountsProductsLocalInventoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<InsertAccountsProductsLocalInventoriesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<LocalInventory>,
+  input: __S(12, __c3, 0) as any as S.Schema<InsertAccountsProductsLocalInventoriesRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<LocalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const insertAccountsProductsRegionalInventories: API.OperationMethod<
   InsertAccountsProductsRegionalInventoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<InsertAccountsProductsRegionalInventoriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RegionalInventory>,
+  input: __S(24, __c6, 0) as any as S.Schema<InsertAccountsProductsRegionalInventoriesRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<RegionalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -340,8 +340,8 @@ export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocalInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListLocalInventoriesResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<ListLocalInventoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -357,8 +357,8 @@ export const listAccountsProductsRegionalInventories: API.PaginatedOperationMeth
   GcpOpContext,
   ListRegionalInventoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListRegionalInventoriesResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<ListRegionalInventoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -382,11 +382,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsProductsLocalInventoriesRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -400,79 +408,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsProductsRegionalInventoriesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Interval" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amountMicros: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => __S(6, __c0, 6))),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomAttribute" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          programLabel: S.optional(S.String),
-          tierLabel: S.optional(S.String),
-          shippingLabel: S.optional(S.String),
-          loyaltyPoints: S.optional(S.String),
-          memberPriceEffectiveInterval: S.optional(__S(3, __c0, 3)),
-          price: S.optional(__S(4, __c0, 4)),
-          cashbackForFutureUse: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "InventoryLoyaltyProgram" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          salePriceEffectiveDate: S.optional(__S(3, __c0, 3)),
-          pickupMethod: S.optional(S.String),
-          price: S.optional(__S(4, __c0, 4)),
-          customAttributes: S.optional(__S(6, __c0, 6)),
-          localShippingLabel: S.optional(S.String),
-          quantity: S.optional(S.String),
-          loyaltyPrograms: S.optional(__S(8, __c1, 0)),
-          salePrice: S.optional(__S(4, __c0, 4)),
-          pickupSla: S.optional(S.String),
-          availability: S.optional(S.String),
-          instoreProductLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalInventoryAttributes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.String),
-          name: S.optional(S.String),
-          storeCode: S.optional(S.String),
-          base64EncodedName: S.optional(S.String),
-          localInventoryAttributes: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LocalInventory" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(23, __c5, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -483,33 +427,87 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "InsertAccountsProductsLocalInventoriesRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(S.String),
-          loyaltyPrograms: S.optional(__S(8, __c1, 0)),
-          salePrice: S.optional(__S(4, __c0, 4)),
-          salePriceEffectiveDate: S.optional(__S(3, __c0, 3)),
-          price: S.optional(__S(4, __c0, 4)),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "RegionalInventoryAttributes",
-      });
-    case 5:
+      ).annotate({ identifier: "Interval" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(S.String),
-          account: S.optional(S.String),
-          base64EncodedName: S.optional(S.String),
-          regionalInventoryAttributes: S.optional(__S(12, __c1, 4)),
+          amountMicros: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Price" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          programLabel: S.optional(S.String),
+          tierLabel: S.optional(S.String),
+          shippingLabel: S.optional(S.String),
+          loyaltyPoints: S.optional(S.String),
+          memberPriceEffectiveInterval: S.optional(__S(16, __c4, 0)),
+          price: S.optional(__S(17, __c4, 1)),
+          cashbackForFutureUse: S.optional(__S(17, __c4, 1)),
+        }),
+      ).annotate({ identifier: "InventoryLoyaltyProgram" });
+    case 3:
+      return S.Array(__S(18, __c4, 2));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           name: S.optional(S.String),
+          groupValues: S.optional(S.suspend(() => __S(21, __c5, 1))),
+          value: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RegionalInventory" });
-    case 6:
+      ).annotate({ identifier: "CustomAttribute" });
+    case 1:
+      return S.Array(__S(20, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          salePriceEffectiveDate: S.optional(__S(16, __c4, 0)),
+          pickupMethod: S.optional(S.String),
+          price: S.optional(__S(17, __c4, 1)),
+          customAttributes: S.optional(__S(21, __c5, 1)),
+          localShippingLabel: S.optional(S.String),
+          quantity: S.optional(S.String),
+          loyaltyPrograms: S.optional(__S(19, __c4, 3)),
+          salePrice: S.optional(__S(17, __c4, 1)),
+          pickupSla: S.optional(S.String),
+          availability: S.optional(S.String),
+          instoreProductLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalInventoryAttributes" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          name: S.optional(S.String),
+          storeCode: S.optional(S.String),
+          base64EncodedName: S.optional(S.String),
+          localInventoryAttributes: S.optional(__S(22, __c5, 2)),
+        }),
+      ).annotate({ identifier: "LocalInventory" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -520,7 +518,37 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "InsertAccountsProductsRegionalInventoriesRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          loyaltyPrograms: S.optional(__S(19, __c4, 3)),
+          salePrice: S.optional(__S(17, __c4, 1)),
+          salePriceEffectiveDate: S.optional(__S(16, __c4, 0)),
+          price: S.optional(__S(17, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "RegionalInventoryAttributes",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          account: S.optional(S.String),
+          base64EncodedName: S.optional(S.String),
+          regionalInventoryAttributes: S.optional(__S(28, __c7, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegionalInventory" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -536,22 +564,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountsProductsLocalInventoriesRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(10, __c1, 2));
     case 1:
+      return S.Array(__S(23, __c5, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          localInventories: S.optional(__S(16, __c2, 0)),
+          localInventories: S.optional(__S(33, __c8, 1)),
         }),
       ).annotate({
         identifier: "ListLocalInventoriesResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -567,20 +595,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAccountsProductsRegionalInventoriesRequest",
       });
-    case 3:
-      return S.Array(__S(13, __c1, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(29, __c7, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          regionalInventories: S.optional(__S(19, __c2, 3)),
+          regionalInventories: S.optional(__S(37, __c9, 1)),
         }),
       ).annotate({
         identifier: "ListRegionalInventoriesResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -225,7 +225,7 @@ export const getEvent: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetEventRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetEventResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetEventResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -239,8 +239,8 @@ export const getEventsValue: API.OperationMethod<
   GetEventsValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetEventsValueRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EventPropertyValuesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetEventsValueRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<EventPropertyValuesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -254,8 +254,8 @@ export const listEvents: API.OperationMethod<
   ListEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListEventsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PaginatedClickhouseEventList>,
+  input: __S(68, __c4, 4) as any as S.Schema<ListEventsRequest>,
+  output: __S(73, __c4, 9) as any as S.Schema<PaginatedClickhouseEventList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -276,18 +276,24 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "GetEventRequest" });
     case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(16, __c1, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEventResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          event_name: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          event_name: S.optional(__S(48, __c3, 0).pipe(T.Query())),
           format: S.optional(S.String.pipe(T.Query())),
           is_column: S.optional(S.Boolean.pipe(T.Query())),
           key: S.String.pipe(T.Query()),
@@ -296,19 +302,19 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/events/values/", code: 200 }),
         ),
       ).annotate({ identifier: "GetEventsValueRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EventPropertyValue" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(6, __c0, 6),
+          results: __S(34, __c2, 2),
           refreshing: S.Boolean,
         }),
       ).annotate({
@@ -316,7 +322,13 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -328,16 +340,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PropertyItem" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(9, __c1, 1)),
+          values: S.optional(__S(65, __c4, 1)),
         }),
       ).annotate({ identifier: "Property" });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(66, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -351,9 +363,9 @@ function __c1(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           person_id: S.optional(S.Number.pipe(T.Query())),
-          properties: S.optional(__S(11, __c1, 3).pipe(T.Query())),
-          select: S.optional(__S(3, __c0, 3).pipe(T.Query())),
-          where: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          properties: S.optional(__S(67, __c4, 3).pipe(T.Query())),
+          select: S.optional(__S(48, __c3, 0).pipe(T.Query())),
+          where: S.optional(__S(48, __c3, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/events/", code: 200 })),
       ).annotate({ identifier: "ListEventsRequest" });
     case 5:
@@ -362,7 +374,7 @@ function __c1(j: number): any {
           event: S.optional(S.String),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(__S(3, __c0, 3))),
+          attr_class: S.optional(S.NullOr(__S(48, __c3, 0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -372,38 +384,33 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "EventElement" });
     case 6:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(69, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           distinct_id: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(16, __c1, 0)),
           event: S.optional(S.String),
           timestamp: S.optional(S.String),
-          person: S.optional(S.NullOr(__S(1, __c0, 1))),
-          elements: S.optional(__S(14, __c1, 6)),
+          person: S.optional(S.NullOr(__S(16, __c1, 0))),
+          elements: S.optional(__S(70, __c4, 6)),
           elements_chain: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClickhouseEvent" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(71, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(16, __c2, 0)),
+          results: S.optional(__S(72, __c4, 8)),
         }),
       ).annotate({
         identifier: "PaginatedClickhouseEventList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

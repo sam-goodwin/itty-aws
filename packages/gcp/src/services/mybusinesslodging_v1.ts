@@ -2927,7 +2927,7 @@ export const getGoogleUpdatedLocationsLodging: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetGoogleUpdatedLocationsLodgingRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetGoogleUpdatedLodgingResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetGoogleUpdatedLodgingResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2941,8 +2941,8 @@ export const getLodgingLocations: API.OperationMethod<
   GetLodgingLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetLodgingLocationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Lodging>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetLodgingLocationsRequest>,
+  output: __S(77, __c2, 13) as any as S.Schema<Lodging>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2956,8 +2956,8 @@ export const updateLodgingLocations: API.OperationMethod<
   UpdateLodgingLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UpdateLodgingLocationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Lodging>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateLodgingLocationsRequest>,
+  output: __S(77, __c2, 13) as any as S.Schema<Lodging>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2984,10 +2984,23 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          diffMask: S.optional(S.String),
+          lodging: S.optional(__S(77, __c2, 13)),
+        }),
+      ).annotate({
+        identifier: "GetGoogleUpdatedLodgingResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "LodgingMetadata" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           poolsCountException: S.optional(S.String),
@@ -3020,7 +3033,7 @@ function __c0(j: number): any {
           indoorPoolException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pools" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           patioException: S.optional(S.String),
@@ -3037,7 +3050,7 @@ function __c0(j: number): any {
           livingAreaSqMetersException: S.optional(S.String),
         }),
       ).annotate({ identifier: "LivingAreaLayout" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sink: S.optional(S.Boolean),
@@ -3074,7 +3087,7 @@ function __c0(j: number): any {
           indoorGrillException: S.optional(S.String),
         }),
       ).annotate({ identifier: "LivingAreaEating" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           otherBedsCount: S.optional(S.Number),
@@ -3107,7 +3120,7 @@ function __c0(j: number): any {
           sofaBedsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LivingAreaSleeping" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           hearingAccessibleFireAlarm: S.optional(S.Boolean),
@@ -3128,7 +3141,7 @@ function __c0(j: number): any {
           mobilityAccessibleUnitException: S.optional(S.String),
         }),
       ).annotate({ identifier: "LivingAreaAccessibility" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ironingEquipment: S.optional(S.Boolean),
@@ -3173,21 +3186,17 @@ function __c0(j: number): any {
           fireplace: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LivingAreaFeatures" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          layout: S.optional(__S(3, __c0, 3)),
-          eating: S.optional(__S(4, __c0, 4)),
-          sleeping: S.optional(__S(5, __c0, 5)),
-          accessibility: S.optional(__S(6, __c0, 6)),
-          features: S.optional(__S(7, __c0, 7)),
+          layout: S.optional(__S(34, __c1, 2)),
+          eating: S.optional(__S(35, __c1, 3)),
+          sleeping: S.optional(__S(36, __c1, 4)),
+          accessibility: S.optional(__S(37, __c1, 5)),
+          features: S.optional(__S(38, __c1, 6)),
         }),
       ).annotate({ identifier: "LivingArea" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           poolView: S.optional(S.Boolean),
@@ -3208,11 +3217,11 @@ function __c1(j: number): any {
           oceanViewException: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewsFromUnit" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           bungalowOrVilla: S.optional(S.Boolean),
-          totalLivingAreas: S.optional(__S(8, __c1, 0)),
+          totalLivingAreas: S.optional(__S(39, __c1, 7)),
           executiveFloor: S.optional(S.Boolean),
           suite: S.optional(S.Boolean),
           maxAdultOccupantsCount: S.optional(S.Number),
@@ -3227,25 +3236,25 @@ function __c1(j: number): any {
           maxAdultOccupantsCountException: S.optional(S.String),
           maxOccupantsCount: S.optional(S.Number),
           tierException: S.optional(S.String),
-          views: S.optional(__S(9, __c1, 1)),
+          views: S.optional(__S(40, __c1, 8)),
           executiveFloorException: S.optional(S.String),
           maxChildOccupantsCountException: S.optional(S.String),
           suiteException: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestUnitFeatures" });
-    case 3:
+    case 10:
       return S.Array(S.String);
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          features: S.optional(__S(10, __c1, 2)),
-          codes: S.optional(__S(11, __c1, 3)),
+          features: S.optional(__S(41, __c1, 9)),
+          codes: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({ identifier: "GuestUnitType" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(43, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           diningAreasAdditionalSanitationException: S.optional(S.String),
@@ -3260,7 +3269,7 @@ function __c1(j: number): any {
           disposableFlatwareException: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncreasedFoodSafety" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           employeesTrainedCleaningProceduresException: S.optional(S.String),
@@ -3277,11 +3286,7 @@ function __c1(j: number): any {
           employeesTrainedCleaningProcedures: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EnhancedCleaning" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           contactlessCheckinCheckoutException: S.optional(S.String),
@@ -3300,7 +3305,7 @@ function __c2(j: number): any {
           digitalGuestRoomKeysException: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinimizedContact" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           protectiveEquipmentAvailableException: S.optional(S.String),
@@ -3313,7 +3318,7 @@ function __c2(j: number): any {
           faceMaskRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PersonalProtection" });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           sharedAreasLimitedOccupancy: S.optional(S.Boolean),
@@ -3328,17 +3333,17 @@ function __c2(j: number): any {
           commonAreasPhysicalDistancingArranged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PhysicalDistancing" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          increasedFoodSafety: S.optional(__S(14, __c1, 6)),
-          enhancedCleaning: S.optional(__S(15, __c1, 7)),
-          minimizedContact: S.optional(__S(16, __c2, 0)),
-          personalProtection: S.optional(__S(17, __c2, 1)),
-          physicalDistancing: S.optional(__S(18, __c2, 2)),
+          increasedFoodSafety: S.optional(__S(45, __c1, 13)),
+          enhancedCleaning: S.optional(__S(46, __c1, 14)),
+          minimizedContact: S.optional(__S(47, __c1, 15)),
+          personalProtection: S.optional(__S(48, __c1, 16)),
+          physicalDistancing: S.optional(__S(49, __c1, 17)),
         }),
       ).annotate({ identifier: "HealthAndSafety" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           nightclub: S.optional(S.Boolean),
@@ -3377,7 +3382,7 @@ function __c2(j: number): any {
           casinoException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Activities" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           kidsClub: S.optional(S.Boolean),
@@ -3390,7 +3395,7 @@ function __c2(j: number): any {
           babysittingException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Families" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           freeWeights: S.optional(S.Boolean),
@@ -3417,7 +3422,7 @@ function __c2(j: number): any {
           spa: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Wellness" });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           locallySourcedFoodAndBeveragesException: S.optional(S.String),
@@ -3438,11 +3443,7 @@ function __c2(j: number): any {
           vegetarianMealsException: S.optional(S.String),
         }),
       ).annotate({ identifier: "SustainableSourcing" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           ecoCertificate: S.optional(S.String),
@@ -3450,21 +3451,21 @@ function __c3(j: number): any {
           awarded: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EcoCertification" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 24:
+      return S.Array(__S(55, __c1, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           leedCertificationException: S.optional(S.String),
           breeamCertification: S.optional(S.String),
           leedCertification: S.optional(S.String),
-          ecoCertifications: S.optional(__S(25, __c3, 1)),
+          ecoCertifications: S.optional(__S(56, __c1, 24)),
           breeamCertificationException: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SustainabilityCertifications",
       });
-    case 3:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           safelyDisposesElectronics: S.optional(S.Boolean),
@@ -3501,7 +3502,7 @@ function __c3(j: number): any {
           safelyDisposesBatteriesException: S.optional(S.String),
         }),
       ).annotate({ identifier: "WasteReduction" });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           energyEfficientLighting: S.optional(S.Boolean),
@@ -3520,7 +3521,7 @@ function __c3(j: number): any {
           independentOrganizationAuditsEnergyUseException: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnergyEfficiency" });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           waterSavingToilets: S.optional(S.Boolean),
@@ -3537,17 +3538,17 @@ function __c3(j: number): any {
           waterSavingSinks: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WaterConservation" });
-    case 6:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          sustainableSourcing: S.optional(__S(23, __c2, 7)),
-          sustainabilityCertifications: S.optional(__S(26, __c3, 2)),
-          wasteReduction: S.optional(__S(27, __c3, 3)),
-          energyEfficiency: S.optional(__S(28, __c3, 4)),
-          waterConservation: S.optional(__S(29, __c3, 5)),
+          sustainableSourcing: S.optional(__S(54, __c1, 22)),
+          sustainabilityCertifications: S.optional(__S(57, __c1, 25)),
+          wasteReduction: S.optional(__S(58, __c1, 26)),
+          energyEfficiency: S.optional(__S(59, __c1, 27)),
+          waterConservation: S.optional(__S(60, __c1, 28)),
         }),
       ).annotate({ identifier: "Sustainability" });
-    case 7:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           selfParkingAvailableException: S.optional(S.String),
@@ -3566,11 +3567,7 @@ function __c3(j: number): any {
           electricCarChargingStationsException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Parking" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           spoken: S.optional(S.Boolean),
@@ -3578,9 +3575,13 @@ function __c4(j: number): any {
           languageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LanguageSpoken" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(63, __c1, 31));
     case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           baggageStorage: S.optional(S.Boolean),
@@ -3603,14 +3604,14 @@ function __c4(j: number): any {
           fullServiceLaundryException: S.optional(S.String),
           giftShop: S.optional(S.Boolean),
           giftShopException: S.optional(S.String),
-          languagesSpoken: S.optional(__S(33, __c4, 1)),
+          languagesSpoken: S.optional(__S(64, __c2, 0)),
           socialHourException: S.optional(S.String),
           baggageStorageException: S.optional(S.String),
           wakeUpCalls: S.optional(S.Boolean),
           wakeUpCallsException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Services" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           turndownService: S.optional(S.Boolean),
@@ -3621,7 +3622,7 @@ function __c4(j: number): any {
           dailyHousekeepingException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Housekeeping" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           minutes: S.optional(S.Number),
@@ -3630,7 +3631,7 @@ function __c4(j: number): any {
           seconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeOfDay" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           chequeException: S.optional(S.String),
@@ -3645,11 +3646,11 @@ function __c4(j: number): any {
           creditCardException: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentOptions" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          checkinTime: S.optional(__S(36, __c4, 4)),
-          paymentOptions: S.optional(__S(37, __c4, 5)),
+          checkinTime: S.optional(__S(67, __c2, 3)),
+          paymentOptions: S.optional(__S(68, __c2, 4)),
           smokeFreeProperty: S.optional(S.Boolean),
           allInclusiveAvailableException: S.optional(S.String),
           allInclusiveAvailable: S.optional(S.Boolean),
@@ -3660,14 +3661,14 @@ function __c4(j: number): any {
           allInclusiveOnly: S.optional(S.Boolean),
           checkoutTimeException: S.optional(S.String),
           maxKidsStayFreeCountException: S.optional(S.String),
-          checkoutTime: S.optional(__S(36, __c4, 4)),
+          checkoutTime: S.optional(__S(67, __c2, 3)),
           kidsStayFreeException: S.optional(S.String),
           smokeFreePropertyException: S.optional(S.String),
           maxKidsStayFreeCount: S.optional(S.Number),
           kidsStayFree: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Policies" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           meetingRoomsCountException: S.optional(S.String),
@@ -3678,11 +3679,7 @@ function __c4(j: number): any {
           businessCenter: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Business" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           carRentalOnProperty: S.optional(S.Boolean),
@@ -3701,7 +3698,7 @@ function __c5(j: number): any {
           airportShuttle: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Transportation" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           catsAllowed: S.optional(S.Boolean),
@@ -3714,7 +3711,7 @@ function __c5(j: number): any {
           catsAllowedException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pets" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           mobilityAccessibleElevatorException: S.optional(S.String),
@@ -3727,7 +3724,7 @@ function __c5(j: number): any {
           mobilityAccessible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Accessibility" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           floorsCountException: S.optional(S.String),
@@ -3740,7 +3737,7 @@ function __c5(j: number): any {
           roomsCountException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Property" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           breakfastBuffet: S.optional(S.Boolean),
@@ -3769,7 +3766,7 @@ function __c5(j: number): any {
           roomServiceException: S.optional(S.String),
         }),
       ).annotate({ identifier: "FoodAndDrink" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           wifiAvailableException: S.optional(S.String),
@@ -3782,46 +3779,37 @@ function __c5(j: number): any {
           publicInternetTerminalException: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connectivity" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(1, __c0, 1)),
-          pools: S.optional(__S(2, __c0, 2)),
-          guestUnits: S.optional(__S(13, __c1, 5)),
-          healthAndSafety: S.optional(__S(19, __c2, 3)),
-          someUnits: S.optional(__S(10, __c1, 2)),
-          activities: S.optional(__S(20, __c2, 4)),
-          families: S.optional(__S(21, __c2, 5)),
-          wellness: S.optional(__S(22, __c2, 6)),
-          sustainability: S.optional(__S(30, __c3, 6)),
-          parking: S.optional(__S(31, __c3, 7)),
-          services: S.optional(__S(34, __c4, 2)),
-          housekeeping: S.optional(__S(35, __c4, 3)),
-          policies: S.optional(__S(38, __c4, 6)),
+          metadata: S.optional(__S(32, __c1, 0)),
+          pools: S.optional(__S(33, __c1, 1)),
+          guestUnits: S.optional(__S(44, __c1, 12)),
+          healthAndSafety: S.optional(__S(50, __c1, 18)),
+          someUnits: S.optional(__S(41, __c1, 9)),
+          activities: S.optional(__S(51, __c1, 19)),
+          families: S.optional(__S(52, __c1, 20)),
+          wellness: S.optional(__S(53, __c1, 21)),
+          sustainability: S.optional(__S(61, __c1, 29)),
+          parking: S.optional(__S(62, __c1, 30)),
+          services: S.optional(__S(65, __c2, 1)),
+          housekeeping: S.optional(__S(66, __c2, 2)),
+          policies: S.optional(__S(69, __c2, 5)),
           name: S.optional(S.String),
-          allUnits: S.optional(__S(10, __c1, 2)),
-          business: S.optional(__S(39, __c4, 7)),
-          transportation: S.optional(__S(40, __c5, 0)),
-          commonLivingArea: S.optional(__S(8, __c1, 0)),
-          pets: S.optional(__S(41, __c5, 1)),
-          accessibility: S.optional(__S(42, __c5, 2)),
-          property: S.optional(__S(43, __c5, 3)),
-          foodAndDrink: S.optional(__S(44, __c5, 4)),
-          connectivity: S.optional(__S(45, __c5, 5)),
+          allUnits: S.optional(__S(41, __c1, 9)),
+          business: S.optional(__S(70, __c2, 6)),
+          transportation: S.optional(__S(71, __c2, 7)),
+          commonLivingArea: S.optional(__S(39, __c1, 7)),
+          pets: S.optional(__S(72, __c2, 8)),
+          accessibility: S.optional(__S(73, __c2, 9)),
+          property: S.optional(__S(74, __c2, 10)),
+          foodAndDrink: S.optional(__S(75, __c2, 11)),
+          connectivity: S.optional(__S(76, __c2, 12)),
         }),
       ).annotate({ identifier: "Lodging" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          diffMask: S.optional(S.String),
-          lodging: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GetGoogleUpdatedLodgingResponse",
-      });
   }
 }
-function __c6(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3838,12 +3826,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetLodgingLocationsRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(77, __c2, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3856,7 +3848,6 @@ function __c6(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

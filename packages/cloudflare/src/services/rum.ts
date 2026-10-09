@@ -443,8 +443,8 @@ export const bulkCreateRules: API.OperationMethod<
   BulkCreateRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BulkCreateRulesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BulkCreateRulesResponse>,
+  input: __S(26, __c6, 2) as any as S.Schema<BulkCreateRulesRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<BulkCreateRulesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -458,8 +458,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateRuleRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateRuleResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<CreateRuleRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<CreateRuleResponse>,
   errors: [Forbidden, RulesetNotFound, MaxRulesExceeded, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -473,8 +473,8 @@ export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateSiteInfoRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateSiteInfoResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<CreateSiteInfoRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<CreateSiteInfoResponse>,
   errors: [Forbidden, RumSiteQuotaExceeded, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -488,8 +488,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<DeleteRuleResponse>,
   errors: [Forbidden, RulesetNotFound, RuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -503,8 +503,8 @@ export const deleteSiteInfo: API.OperationMethod<
   DeleteSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteSiteInfoRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteSiteInfoResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteSiteInfoRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -518,8 +518,8 @@ export const getSiteInfo: API.OperationMethod<
   GetSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetSiteInfoRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetSiteInfoResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetSiteInfoRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<GetSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -533,8 +533,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListRulesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListRulesResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListRulesRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<ListRulesResponse>,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -550,8 +550,8 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   SiteInfoListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<ListSiteInfosRequest>,
-    output: __S(21, __c2, 5) as any as S.Schema<ListSiteInfosResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListSiteInfosRequest>,
+    output: __S(15, __c3, 3) as any as S.Schema<ListSiteInfosResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateRuleResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<UpdateRuleResponse>,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const updateSiteInfo: API.OperationMethod<
   UpdateSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateSiteInfoRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateSiteInfoResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateSiteInfoRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<UpdateSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -600,154 +600,6 @@ export const updateSiteInfo: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          host: S.optional(S.String),
-          inclusive: S.optional(S.Boolean),
-          isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateRequestRulesItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          deleteRules: S.optional(__S(0, __c0, 0).pipe(T.Body("delete_rules"))),
-          rules: S.optional(__S(2, __c0, 2)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkCreateRulesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          created: S.optional(S.NullOr(S.String)),
-          host: S.optional(S.NullOr(S.String)),
-          inclusive: S.optional(S.NullOr(S.Boolean)),
-          isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-          paths: S.optional(S.NullOr(__S(0, __c0, 0))),
-          priority: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResponseRulesItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
-          zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResponseRuleset",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(S.NullOr(__S(5, __c0, 5))),
-          ruleset: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkCreateRulesResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          host: S.optional(S.String),
-          inclusive: S.optional(S.Boolean),
-          isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(__S(0, __c0, 0)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          created: S.optional(S.NullOr(S.String)),
-          host: S.optional(S.NullOr(S.String)),
-          inclusive: S.optional(S.NullOr(S.Boolean)),
-          isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-          paths: S.optional(S.NullOr(__S(0, __c0, 0))),
-          priority: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
-          host: S.optional(S.String),
-          zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rum/site_info", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateSiteInfoRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
-          created: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(5, __c0, 5))),
-          ruleset: S.optional(S.NullOr(__S(6, __c0, 6))),
-          siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
-          siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
-          snippet: S.optional(S.NullOr(S.String)),
-          host: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateSiteInfoResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleResponse" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -762,7 +614,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteSiteInfoRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
@@ -770,7 +622,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteSiteInfoResponse" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -787,7 +639,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSiteInfoRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -802,7 +658,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -815,29 +675,33 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSiteInfosRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
           created: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(5, __c0, 5))),
-          ruleset: S.optional(S.NullOr(__S(6, __c0, 6))),
+          rules: S.optional(S.NullOr(__S(37, __c9, 1))),
+          ruleset: S.optional(S.NullOr(__S(38, __c9, 2))),
           siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
           siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
           snippet: S.optional(S.NullOr(S.String)),
           host: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SiteInfoListResultItem" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(20, __c2, 4).pipe(T.EnvelopePayload()),
+          result: __S(14, __c3, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSiteInfosResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -846,7 +710,7 @@ function __c2(j: number): any {
           host: S.optional(S.String),
           inclusive: S.optional(S.Boolean),
           isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(__S(0, __c0, 0)),
+          paths: S.optional(__S(32, __c8, 0)),
         })
           .pipe(
             T.Http({
@@ -857,7 +721,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -879,7 +747,186 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateSiteInfoRequest" });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          host: S.optional(S.String),
+          inclusive: S.optional(S.Boolean),
+          isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
+          paths: S.optional(__S(32, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateRequestRulesItem",
+      });
+    case 1:
+      return S.Array(__S(24, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          deleteRules: S.optional(__S(32, __c8, 0).pipe(T.Body("delete_rules"))),
+          rules: S.optional(__S(25, __c6, 1)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkCreateRulesRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(S.NullOr(__S(37, __c9, 1))),
+          ruleset: S.optional(S.NullOr(__S(38, __c9, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkCreateRulesResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          created: S.optional(S.NullOr(S.String)),
+          host: S.optional(S.NullOr(S.String)),
+          inclusive: S.optional(S.NullOr(S.Boolean)),
+          isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+          paths: S.optional(S.NullOr(__S(32, __c8, 0))),
+          priority: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResponseRulesItem",
+      });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
+          zoneTag: S.optional(S.NullOr(S.String).pipe(T.Body("zone_tag"))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResponseRuleset",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          host: S.optional(S.String),
+          inclusive: S.optional(S.Boolean),
+          isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
+          paths: S.optional(__S(32, __c8, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          created: S.optional(S.NullOr(S.String)),
+          host: S.optional(S.NullOr(S.String)),
+          inclusive: S.optional(S.NullOr(S.Boolean)),
+          isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
+          paths: S.optional(S.NullOr(__S(32, __c8, 0))),
+          priority: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
+          host: S.optional(S.String),
+          zoneTag: S.optional(S.String.pipe(T.Body("zone_tag"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rum/site_info", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSiteInfoRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
+          created: S.optional(S.NullOr(S.String)),
+          rules: S.optional(S.NullOr(__S(37, __c9, 1))),
+          ruleset: S.optional(S.NullOr(__S(38, __c9, 2))),
+          siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
+          siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
+          snippet: S.optional(S.NullOr(S.String)),
+          host: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSiteInfoResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          rulesetId: S.String.pipe(T.Label("ruleset_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/rum/v2/{ruleset_id}/rule/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

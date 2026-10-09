@@ -1059,8 +1059,8 @@ export const bulkCreateOrgCustomPatterns: API.OperationMethod<
   BulkCreateOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BulkCreateOrgCustomPatternsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BulkCreateOrgCustomPatternsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<BulkCreateOrgCustomPatternsRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<BulkCreateOrgCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const bulkCreateRepoCustomPatterns: API.OperationMethod<
   BulkCreateRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BulkCreateRepoCustomPatternsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BulkCreateRepoCustomPatternsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<BulkCreateRepoCustomPatternsRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<BulkCreateRepoCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1094,8 +1094,8 @@ export const bulkDeleteOrgCustomPatterns: API.OperationMethod<
   BulkDeleteOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BulkDeleteOrgCustomPatternsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BulkDeleteOrgCustomPatternsResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<BulkDeleteOrgCustomPatternsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<BulkDeleteOrgCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1109,8 @@ export const bulkDeleteRepoCustomPatterns: API.OperationMethod<
   BulkDeleteRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1128,8 +1128,8 @@ export const createPushProtectionBypass: API.OperationMethod<
   CreatePushProtectionBypassError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreatePushProtectionBypassRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SecretScanningPushProtectionBypass>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreatePushProtectionBypassRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<SecretScanningPushProtectionBypass>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1143,8 +1143,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetAlertRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SecretScanningAlertWithMetadata>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAlertRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<SecretScanningAlertWithMetadata>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const getScanHistory: API.OperationMethod<
   GetScanHistoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetScanHistoryRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SecretScanningScanHistory>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetScanHistoryRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<SecretScanningScanHistory>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1173,8 +1173,8 @@ export const listAlertsForOrg: API.OperationMethod<
   ListAlertsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListAlertsForOrgRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListAlertsForOrgResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListAlertsForOrgRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListAlertsForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1188,8 +1188,8 @@ export const listAlertsForRepo: API.OperationMethod<
   ListAlertsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAlertsForRepoRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListAlertsForRepoResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAlertsForRepoRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListAlertsForRepoResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1203,8 +1203,8 @@ export const listLocationsForAlert: API.OperationMethod<
   ListLocationsForAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListLocationsForAlertRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListLocationsForAlertResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListLocationsForAlertRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListLocationsForAlertResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1218,8 +1218,8 @@ export const listOrgCustomPatterns: API.OperationMethod<
   ListOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListOrgCustomPatternsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListOrgCustomPatternsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListOrgCustomPatternsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListOrgCustomPatternsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1233,8 @@ export const listOrgPatternConfigs: API.OperationMethod<
   ListOrgPatternConfigsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListOrgPatternConfigsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<SecretScanningPatternConfiguration>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOrgPatternConfigsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<SecretScanningPatternConfiguration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1248,8 +1248,8 @@ export const listRepoCustomPatterns: API.OperationMethod<
   ListRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListRepoCustomPatternsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListRepoCustomPatternsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListRepoCustomPatternsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ListRepoCustomPatternsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1268,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpdateAlertRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SecretScanningAlertWithMetadata>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<SecretScanningAlertWithMetadata>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1288,8 @@ export const updateOrgCustomPattern: API.OperationMethod<
   UpdateOrgCustomPatternError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateOrgCustomPatternRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SecretScanningCustomPattern>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateOrgCustomPatternRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<SecretScanningCustomPattern>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1309,8 @@ export const updateOrgPatternConfigs: API.OperationMethod<
   UpdateOrgPatternConfigsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateOrgPatternConfigsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateOrgPatternConfigsResponse>,
+  input: __S(108, __c13, 4) as any as S.Schema<UpdateOrgPatternConfigsRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<UpdateOrgPatternConfigsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1329,8 +1329,8 @@ export const updateRepoCustomPattern: API.OperationMethod<
   UpdateRepoCustomPatternError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateRepoCustomPatternRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SecretScanningCustomPattern>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateRepoCustomPatternRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<SecretScanningCustomPattern>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1340,159 +1340,6 @@ export const updateRepoCustomPattern: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          pattern: S.String,
-          start_delimiter: S.optional(S.String),
-          end_delimiter: S.optional(S.String),
-          must_match: S.optional(__S(0, __c0, 0)),
-          must_not_match: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "SecretScanningCustomPatternToCreate",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          patterns: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/orgs/{org}/secret-scanning/custom-patterns", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "BulkCreateOrgCustomPatternsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          pattern: S.String,
-          slug: S.String,
-          state: S.String,
-          push_protection_enabled: S.Boolean,
-          start_delimiter: S.optional(S.NullOr(S.String)),
-          end_delimiter: S.optional(S.NullOr(S.String)),
-          must_match: S.optional(S.NullOr(__S(0, __c0, 0))),
-          must_not_match: S.optional(S.NullOr(__S(0, __c0, 0))),
-          custom_pattern_version: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecretScanningCustomPattern",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_patterns: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BulkCreateOrgCustomPatternsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          patterns: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/secret-scanning/custom-patterns",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkCreateRepoCustomPatternsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pattern_id: S.Number,
-          custom_pattern_version: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "SecretScanningCustomPatternToDelete",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          patterns: __S(9, __c1, 1),
-          post_delete_action: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/secret-scanning/custom-patterns",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkDeleteOrgCustomPatternsRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BulkDeleteOrgCustomPatternsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          patterns: __S(9, __c1, 1),
-          post_delete_action: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/repos/{owner}/{repo}/secret-scanning/custom-patterns",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkDeleteRepoCustomPatternsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          reason: S.String,
-          placeholder_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePushProtectionBypassRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          expire_at: S.optional(S.NullOr(S.String)),
-          token_type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecretScanningPushProtectionBypass",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1509,7 +1356,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetAlertRequest" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1538,7 +1385,11 @@ function __c2(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -1547,9 +1398,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SecretScanningAlertMetadataItem",
       });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
     case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.Number),
@@ -1561,7 +1412,7 @@ function __c2(j: number): any {
           state: S.optional(S.String),
           resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          resolved_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           resolution_comment: S.optional(S.NullOr(S.String)),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
@@ -1569,9 +1420,9 @@ function __c2(j: number): any {
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
@@ -1581,16 +1432,20 @@ function __c2(j: number): any {
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
           first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(__S(16, __c2, 0))),
+          assigned_to: S.optional(S.NullOr(__S(8, __c1, 0))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
-          metadata: S.optional(__S(18, __c2, 2)),
+          closure_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
+          metadata: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "SecretScanningAlertWithMetadata",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1603,7 +1458,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetScanHistoryRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1612,9 +1467,9 @@ function __c2(j: number): any {
           started_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SecretScanningScan" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1627,25 +1482,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SecretScanningScanHistoryCustomPatternBackfillScansItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          incremental_scans: S.optional(__S(22, __c2, 6)),
-          pattern_update_scans: S.optional(__S(22, __c2, 6)),
-          backfill_scans: S.optional(__S(22, __c2, 6)),
-          custom_pattern_backfill_scans: S.optional(__S(24, __c3, 0)),
-          generic_secrets_backfill_scans: S.optional(__S(22, __c2, 6)),
+          incremental_scans: S.optional(__S(26, __c3, 2)),
+          pattern_update_scans: S.optional(__S(26, __c3, 2)),
+          backfill_scans: S.optional(__S(26, __c3, 2)),
+          custom_pattern_backfill_scans: S.optional(__S(28, __c3, 4)),
+          generic_secrets_backfill_scans: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "SecretScanningScanHistory",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1671,14 +1526,14 @@ function __c3(j: number): any {
           owner_email_hash: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/secret-scanning/alerts", code: 200 })),
       ).annotate({ identifier: "ListAlertsForOrgRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: __S(16, __c2, 0),
+          owner: __S(8, __c1, 0),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1722,7 +1577,7 @@ function __c3(j: number): any {
           hooks_url: S.String,
         }),
       ).annotate({ identifier: "SimpleRepository" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.Number),
@@ -1734,17 +1589,17 @@ function __c3(j: number): any {
           state: S.optional(S.String),
           resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          resolved_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
           provider: S.optional(S.NullOr(S.String)),
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          repository: S.optional(__S(27, __c3, 3)),
+          repository: S.optional(__S(33, __c4, 1)),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
@@ -1755,21 +1610,25 @@ function __c3(j: number): any {
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
           first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(__S(16, __c2, 0))),
+          assigned_to: S.optional(S.NullOr(__S(8, __c1, 0))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
+          closure_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
         }),
       ).annotate({
         identifier: "OrganizationSecretScanningAlert",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() => __S(29, __c3, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
+      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForOrgResponse",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1798,11 +1657,7 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/secret-scanning/alerts", code: 200 }),
         ),
       ).annotate({ identifier: "ListAlertsForRepoRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.Number),
@@ -1814,7 +1669,7 @@ function __c4(j: number): any {
           state: S.optional(S.String),
           resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          resolved_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           resolution_comment: S.optional(S.NullOr(S.String)),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
@@ -1822,9 +1677,9 @@ function __c4(j: number): any {
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
@@ -1834,19 +1689,23 @@ function __c4(j: number): any {
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
           first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(__S(16, __c2, 0))),
+          assigned_to: S.optional(S.NullOr(__S(8, __c1, 0))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(__S(16, __c2, 0))),
+          closure_request_reviewer: S.optional(S.NullOr(__S(8, __c1, 0))),
         }),
       ).annotate({ identifier: "SecretScanningAlert" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
-      return S.suspend(() => __S(33, __c4, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(41, __c5, 1));
+    case 3:
+      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForRepoResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1864,20 +1723,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListLocationsForAlertRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           details: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "SecretScanningLocation" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() => __S(37, __c4, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() => __S(50, __c6, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLocationsForAlertResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1895,13 +1758,17 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(136, __c17, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgCustomPatternsResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1915,7 +1782,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListOrgPatternConfigsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token_type: S.optional(S.String),
@@ -1934,19 +1801,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SecretScanningPatternOverride",
       });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           pattern_config_version: S.optional(S.NullOr(S.String)),
-          provider_pattern_overrides: S.optional(__S(43, __c5, 3)),
-          custom_pattern_overrides: S.optional(__S(43, __c5, 3)),
+          provider_pattern_overrides: S.optional(__S(74, __c9, 2)),
+          custom_pattern_overrides: S.optional(__S(74, __c9, 2)),
         }),
       ).annotate({
         identifier: "SecretScanningPatternConfiguration",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1967,7 +1838,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRepoCustomPatternsRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -1986,7 +1861,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAlertRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1994,8 +1873,8 @@ function __c5(j: number): any {
           pattern: S.optional(S.String),
           start_delimiter: S.optional(S.String),
           end_delimiter: S.optional(S.String),
-          must_match: S.optional(__S(0, __c0, 0)),
-          must_not_match: S.optional(__S(0, __c0, 0)),
+          must_match: S.optional(__S(144, __c18, 0)),
+          must_not_match: S.optional(__S(144, __c18, 0)),
           custom_pattern_version: S.NullOr(S.String),
         }).pipe(
           T.Http({
@@ -2009,7 +1888,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2021,7 +1900,7 @@ function __c6(j: number): any {
         identifier: "UpdateOrgPatternConfigsRequestProviderPatternSettingsItem",
       });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2033,14 +1912,14 @@ function __c6(j: number): any {
         identifier: "UpdateOrgPatternConfigsRequestCustomPatternSettingsItem",
       });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(106, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           pattern_config_version: S.optional(S.NullOr(S.String)),
-          provider_pattern_settings: S.optional(__S(49, __c6, 1)),
-          custom_pattern_settings: S.optional(__S(51, __c6, 3)),
+          provider_pattern_settings: S.optional(__S(105, __c13, 1)),
+          custom_pattern_settings: S.optional(__S(107, __c13, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2059,7 +1938,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateOrgPatternConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -2068,8 +1951,8 @@ function __c6(j: number): any {
           pattern: S.optional(S.String),
           start_delimiter: S.optional(S.String),
           end_delimiter: S.optional(S.String),
-          must_match: S.optional(__S(0, __c0, 0)),
-          must_not_match: S.optional(__S(0, __c0, 0)),
+          must_match: S.optional(__S(144, __c18, 0)),
+          must_not_match: S.optional(__S(144, __c18, 0)),
           custom_pattern_version: S.NullOr(S.String),
         }).pipe(
           T.Http({
@@ -2083,7 +1966,191 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          patterns: __S(129, __c16, 1),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/orgs/{org}/secret-scanning/custom-patterns", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "BulkCreateOrgCustomPatternsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          pattern: S.String,
+          start_delimiter: S.optional(S.String),
+          end_delimiter: S.optional(S.String),
+          must_match: S.optional(__S(144, __c18, 0)),
+          must_not_match: S.optional(__S(144, __c18, 0)),
+        }),
+      ).annotate({
+        identifier: "SecretScanningCustomPatternToCreate",
+      });
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_patterns: S.optional(__S(136, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "BulkCreateOrgCustomPatternsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(145, __c18, 1));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          pattern: S.String,
+          slug: S.String,
+          state: S.String,
+          push_protection_enabled: S.Boolean,
+          start_delimiter: S.optional(S.NullOr(S.String)),
+          end_delimiter: S.optional(S.NullOr(S.String)),
+          must_match: S.optional(S.NullOr(__S(144, __c18, 0))),
+          must_not_match: S.optional(S.NullOr(__S(144, __c18, 0))),
+          custom_pattern_version: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecretScanningCustomPattern",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          patterns: __S(129, __c16, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/secret-scanning/custom-patterns",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkCreateRepoCustomPatternsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          patterns: __S(169, __c21, 1),
+          post_delete_action: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/secret-scanning/custom-patterns",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkDeleteOrgCustomPatternsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pattern_id: S.Number,
+          custom_pattern_version: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "SecretScanningCustomPatternToDelete",
+      });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BulkDeleteOrgCustomPatternsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          patterns: __S(169, __c21, 1),
+          post_delete_action: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/repos/{owner}/{repo}/secret-scanning/custom-patterns",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkDeleteRepoCustomPatternsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          reason: S.String,
+          placeholder_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePushProtectionBypassRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          expire_at: S.optional(S.NullOr(S.String)),
+          token_type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecretScanningPushProtectionBypass",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

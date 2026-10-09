@@ -264,8 +264,8 @@ export const commentsDestroy: API.OperationMethod<
   CommentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CommentsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CommentsDestroyResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<CommentsDestroyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<CommentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const commentsSendToSlackCreate: API.OperationMethod<
   CommentsSendToSlackCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CommentsSendToSlackCreateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CommentSlackThread>,
+  input: __S(28, __c7, 0) as any as S.Schema<CommentsSendToSlackCreateRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<CommentSlackThread>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCommentRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(36, __c9, 0) as any as S.Schema<CreateCommentRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const createCommentsComplete: API.OperationMethod<
   CreateCommentsCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateCommentsCompleteRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(48, __c12, 0) as any as S.Schema<CreateCommentsCompleteRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const createCommentsReopen: API.OperationMethod<
   CreateCommentsReopenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateCommentsReopenRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateCommentsReopenRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetCommentRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetCommentRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const getCommentsCount: API.OperationMethod<
   GetCommentsCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetCommentsCountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetCommentsCountResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetCommentsCountRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<GetCommentsCountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -366,8 +366,8 @@ export const getCommentsThread: API.OperationMethod<
   GetCommentsThreadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetCommentsThreadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetCommentsThreadResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetCommentsThreadRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<GetCommentsThreadResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -380,8 +380,8 @@ export const listComments: API.OperationMethod<
   ListCommentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListCommentsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PaginatedCommentListOutput>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListCommentsRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<PaginatedCommentListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const updateComment: API.OperationMethod<
   UpdateCommentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateCommentRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateCommentRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const updateCommentsPartial: API.OperationMethod<
   UpdateCommentsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateCommentsPartialRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CommentOutput>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateCommentsPartialRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<CommentOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -422,16 +422,132 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/count/", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetCommentsCountRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/comments/{id}/thread/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetCommentsThreadRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          completed: S.optional(S.String.pipe(T.Query())),
+          created_by: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          item_id: S.optional(S.String.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          source_comment: S.optional(S.String.pipe(T.Query())),
+          task_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/", code: 200 })),
+      ).annotate({ identifier: "ListCommentsRequest" });
+    case 1:
+      return S.Array(__S(45, __c11, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(9, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "PaginatedCommentListOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          scope: S.optional(S.String),
+          item_context: S.optional(S.Unknown),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+          mentions: S.optional(__S(40, __c10, 0)),
+          slug: S.optional(S.String),
+          is_task: S.optional(S.Boolean),
+          content: S.optional(S.NullOr(S.String)),
+          rich_content: S.optional(S.Unknown),
+          item_id: S.optional(S.NullOr(S.String)),
+          source_comment: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateCommentRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          scope: S.optional(S.String),
+          item_context: S.optional(S.Unknown),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+          mentions: S.optional(__S(40, __c10, 0)),
+          slug: S.optional(S.String),
+          is_task: S.optional(S.Boolean),
+          content: S.optional(S.NullOr(S.String)),
+          rich_content: S.optional(S.Unknown),
+          item_id: S.optional(S.NullOr(S.String)),
+          source_comment: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateCommentsPartialRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "CommentsDestroyRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CommentsDestroyResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -448,23 +564,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CommentsSendToSlackCreateRequest",
       });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(3, __c0, 3))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -477,19 +577,41 @@ function __c0(j: number): any {
           slack_thread_ts: S.String,
           slack_team_id: S.NullOr(S.String),
           created_at: S.String,
-          created_by: S.NullOr(__S(4, __c0, 4)),
+          created_by: S.NullOr(__S(33, __c8, 1)),
         }),
       ).annotate({ identifier: "CommentSlackThread" });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(32, __c8, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           scope: S.optional(S.String),
           item_context: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
-          mentions: S.optional(__S(6, __c0, 6)),
+          mentions: S.optional(__S(40, __c10, 0)),
           slug: S.optional(S.String),
           is_task: S.optional(S.Boolean),
           content: S.optional(S.NullOr(S.String)),
@@ -500,7 +622,13 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateCommentRequest" });
   }
 }
-function __c1(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -514,13 +642,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(4, __c0, 4))),
+          created_by: S.optional(S.NullOr(__S(33, __c8, 1))),
           scope: S.optional(S.String),
           item_context: S.optional(S.Unknown),
           deleted: S.optional(S.NullOr(S.Boolean)),
           is_task: S.optional(S.Boolean),
-          completed_by: S.optional(S.NullOr(__S(4, __c0, 4))),
-          slack_thread: S.optional(S.NullOr(__S(8, __c1, 0))),
+          completed_by: S.optional(S.NullOr(__S(33, __c8, 1))),
+          slack_thread: S.optional(S.NullOr(__S(44, __c11, 0))),
           content: S.optional(S.NullOr(S.String)),
           rich_content: S.optional(S.Unknown),
           version: S.optional(S.Number),
@@ -530,7 +658,11 @@ function __c1(j: number): any {
           source_comment: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CommentOutput" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -545,7 +677,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateCommentsCompleteRequest",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -560,7 +696,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateCommentsReopenRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -569,101 +709,8 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetCommentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/count/", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetCommentsCountRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/comments/{id}/thread/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetCommentsThreadRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          completed: S.optional(S.String.pipe(T.Query())),
-          created_by: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          item_id: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(S.String.pipe(T.Query())),
-          scope: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          source_comment: S.optional(S.String.pipe(T.Query())),
-          task_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/comments/", code: 200 })),
-      ).annotate({ identifier: "ListCommentsRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(9, __c1, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "PaginatedCommentListOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          scope: S.optional(S.String),
-          item_context: S.optional(S.Unknown),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-          mentions: S.optional(__S(6, __c0, 6)),
-          slug: S.optional(S.String),
-          is_task: S.optional(S.Boolean),
-          content: S.optional(S.NullOr(S.String)),
-          rich_content: S.optional(S.Unknown),
-          item_id: S.optional(S.NullOr(S.String)),
-          source_comment: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateCommentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          scope: S.optional(S.String),
-          item_context: S.optional(S.Unknown),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-          mentions: S.optional(__S(6, __c0, 6)),
-          slug: S.optional(S.String),
-          is_task: S.optional(S.Boolean),
-          content: S.optional(S.NullOr(S.String)),
-          rich_content: S.optional(S.Unknown),
-          item_id: S.optional(S.NullOr(S.String)),
-          source_comment: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/comments/{id}/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateCommentsPartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

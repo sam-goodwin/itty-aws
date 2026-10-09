@@ -1089,8 +1089,8 @@ export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
   CheckReadinessProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckReadinessResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<CheckReadinessResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1104,8 +1104,8 @@ export const checkStatusProjectsLocationsConnections: API.OperationMethod<
   CheckStatusProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CheckStatusResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CheckStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1126,11 +1126,11 @@ export const createProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    288,
+    __c36,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Entity>,
+  output: __S(296, __c37, 0) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,11 +1150,11 @@ export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    304,
+    __c38,
     0,
   ) as any as S.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  output: __S(312, __c39, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1175,11 +1175,11 @@ export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    320,
+    __c40,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  output: __S(312, __c39, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1198,8 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
   ExchangeAuthCodeProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ExchangeAuthCodeResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ExchangeAuthCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1218,8 +1218,8 @@ export const executeHttpRequestProjectsLocationsConnections: API.OperationMethod
   ExecuteHttpRequestProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ExecuteHttpRequestResponse>,
+  input: __S(35, __c4, 3) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ExecuteHttpRequestResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1238,8 @@ export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsActionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ExecuteActionResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ExecuteActionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1258,8 @@ export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ExecuteToolResponse>,
+  input: __S(57, __c7, 1) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ExecuteToolResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1278,8 @@ export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
   ExecuteSqlQueryProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ExecuteSqlQueryResponse>,
+  input: __S(68, __c8, 4) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>,
+  output: __S(69, __c8, 5) as any as S.Schema<ExecuteSqlQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1299,11 +1299,11 @@ export const generateConnectionToolspecOverrideProjectsLocationsConnections: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    40,
-    __c5,
+    72,
+    __c9,
     0,
   ) as any as S.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GenerateCustomToolspecResponse>,
+  output: __S(73, __c9, 1) as any as S.Schema<GenerateCustomToolspecResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1317,8 @@ export const getProjectsLocationsConnectionsActions: API.OperationMethod<
   GetProjectsLocationsConnectionsActionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Action>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<Action>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1332,8 +1332,8 @@ export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsConnectionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<EntityType>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<EntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1352,11 +1352,11 @@ export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    59,
-    __c7,
-    3,
+    136,
+    __c17,
+    0,
   ) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Entity>,
+  output: __S(296, __c37, 0) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1370,8 @@ export const getProjectsLocationsConnectionsResources: API.OperationMethod<
   GetProjectsLocationsConnectionsResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetResourceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetResourceResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1391,11 +1391,11 @@ export const getResourcePostProjectsLocationsConnectionsResources: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    161,
+    __c20,
+    1,
   ) as any as S.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetResourceResponse>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetResourceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1413,11 +1413,11 @@ export const listCustomToolNamesProjectsLocationsConnections: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    168,
+    __c21,
     0,
   ) as any as S.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListCustomToolNamesResponse>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListCustomToolNamesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1432,8 +1432,8 @@ export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMeth
   GcpOpContext,
   ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListActionsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1449,8 +1449,8 @@ export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperation
   GcpOpContext,
   ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListEntityTypesResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1471,11 +1471,11 @@ export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedO
   ListEntitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    71,
-    __c8,
-    7,
+    192,
+    __c24,
+    0,
   ) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListEntitiesResponse>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListEntitiesResponse>,
   errors: [NotFound, Forbidden, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1491,8 +1491,8 @@ export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMe
   GcpOpContext,
   ListResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListResourcesResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<ListResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1508,8 @@ export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod
   GcpOpContext,
   ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListToolsResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListToolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1531,11 +1531,11 @@ export const patchProjectsLocationsConnectionsEntityTypesEntities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    224,
+    __c28,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Entity>,
+  output: __S(296, __c37, 0) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1555,11 +1555,11 @@ export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    233,
+    __c29,
+    1,
   ) as any as S.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RefreshAccessTokenResponse>,
+  output: __S(234, __c29, 2) as any as S.Schema<RefreshAccessTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const toolsProjectsLocationsConnections: API.OperationMethod<
   ToolsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListToolsResponse>,
+  input: __S(241, __c30, 1) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<ListToolsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1599,11 +1599,11 @@ export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    89,
-    __c11,
-    1,
+    248,
+    __c31,
+    0,
   ) as any as S.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<UpdateEntitiesWithConditionsResponse>,
+  output: __S(249, __c31, 1) as any as S.Schema<UpdateEntitiesWithConditionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1611,6 +1611,923 @@ export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(16, __c2, 0)),
+          authCode: S.optional(S.String),
+          redirectUri: S.optional(S.String),
+          pkceVerifier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuthCodeData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionConfig: S.optional(__S(8, __c1, 0)),
+          oauth2Config: S.optional(__S(24, __c3, 0)),
+          authCodeData: S.optional(__S(0, __c0, 0)),
+        }),
+      ).annotate({ identifier: "ExchangeAuthCodeRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:exchangeAuthCode",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExchangeAuthCodeProjectsLocationsConnectionsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessCredentials: S.optional(__S(25, __c3, 1)),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({ identifier: "ExchangeAuthCodeResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecutionConfig" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientSecret: S.optional(S.String),
+          clientId: S.optional(S.String),
+          authUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuth2Config" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          refreshToken: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          expiresIn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessCredentials" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpHeader" });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          httpMethod: S.optional(S.String),
+          url: S.optional(S.String),
+          rawBody: S.optional(S.String),
+          headers: S.optional(__S(33, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "ExecuteHttpRequestRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:executeHttpRequest",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteHttpRequestProjectsLocationsConnectionsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(33, __c4, 1)),
+          reason: S.optional(S.String),
+          body: S.optional(S.String),
+          statusCode: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExecuteHttpRequestResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionConfig: S.optional(__S(8, __c1, 0)),
+          parameters: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteActionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:execute",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(280, __c35, 0)),
+          results: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteActionResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c34, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionConfig: S.optional(__S(8, __c1, 0)),
+          parameters: S.optional(__S(272, __c34, 0)),
+          toolDefinition: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteToolRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:execute",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteProjectsLocationsConnectionsToolsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.optional(__S(272, __c34, 0)),
+          metadata: S.optional(__S(280, __c35, 0)),
+          _meta: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteToolResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          dataType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryParameter" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          queryParameters: S.optional(__S(65, __c8, 1)),
+          timeout: S.optional(S.String),
+          maxRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Query" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(__S(66, __c8, 2)),
+        }),
+      ).annotate({ identifier: "ExecuteSqlQueryRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          connection: S.String.pipe(T.Label()),
+          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+connection}:executeSqlQuery",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteSqlQueryProjectsLocationsConnectionsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(48, __c6, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteSqlQueryResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(90, __c11, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:generateConnectionToolspecOverride",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          toolSpec: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "GenerateCustomToolspecResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          toolDefinitions: S.optional(__S(48, __c6, 0)),
+          toolSpecVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolSpec" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.optional(S.String),
+          name: S.optional(S.String),
+          entityName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolName" });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          toolNames: S.optional(__S(89, __c11, 1)),
+        }),
+      ).annotate({
+        identifier: "GenerateCustomToolspecRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConnectionsActionsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(107, __c13, 3)),
+      );
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(107, __c13, 3)));
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          $id: S.optional(S.String),
+          items: S.optional(__S(107, __c13, 3)),
+          properties: S.optional(__S(104, __c13, 0)),
+          additionalProperties: S.optional(__S(107, __c13, 3)),
+          pattern: S.optional(S.String),
+          definitions: S.optional(__S(104, __c13, 0)),
+          minItems: S.optional(S.Number),
+          format: S.optional(S.String),
+          type: S.optional(__S(16, __c2, 0)),
+          maximum: S.optional(S.Unknown),
+          default: S.optional(S.Unknown),
+          else: S.optional(__S(107, __c13, 3)),
+          $ref: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          not: S.optional(__S(107, __c13, 3)),
+          oneOf: S.optional(__S(105, __c13, 1)),
+          dependencies: S.optional(__S(272, __c34, 0)),
+          minimum: S.optional(S.Unknown),
+          $defs: S.optional(__S(104, __c13, 0)),
+          exclusiveMinimum: S.optional(S.Unknown),
+          contentEncoding: S.optional(S.String),
+          maxProperties: S.optional(S.Number),
+          allOf: S.optional(__S(105, __c13, 1)),
+          maxItems: S.optional(S.Number),
+          title: S.optional(S.String),
+          if: S.optional(__S(107, __c13, 3)),
+          then: S.optional(__S(107, __c13, 3)),
+          patternProperties: S.optional(__S(104, __c13, 0)),
+          jdbcType: S.optional(S.String),
+          maxLength: S.optional(S.Number),
+          anyOf: S.optional(__S(105, __c13, 1)),
+          enum: S.optional(__S(106, __c13, 2)),
+          writeOnly: S.optional(S.Boolean),
+          additionalDetails: S.optional(__S(272, __c34, 0)),
+          propertyNames: S.optional(__S(107, __c13, 3)),
+          examples: S.optional(__S(106, __c13, 2)),
+          $comment: S.optional(S.String),
+          uniqueItems: S.optional(S.Boolean),
+          exclusiveMaximum: S.optional(S.Unknown),
+          $schema: S.optional(S.String),
+          minProperties: S.optional(S.Number),
+          const: S.optional(S.Unknown),
+          required: S.optional(__S(16, __c2, 0)),
+          contains: S.optional(__S(107, __c13, 3)),
+          multipleOf: S.optional(S.Number),
+          contentMediaType: S.optional(S.String),
+          additionalItems: S.optional(__S(107, __c13, 3)),
+          minLength: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JsonSchema" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultValue: S.optional(S.Unknown),
+          jsonSchema: S.optional(__S(107, __c13, 3)),
+          dataType: S.optional(S.String),
+          description: S.optional(S.String),
+          nullable: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResultMetadata" });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nullable: S.optional(S.Boolean),
+          defaultValue: S.optional(S.Unknown),
+          description: S.optional(S.String),
+          dataType: S.optional(S.String),
+          name: S.optional(S.String),
+          additionalDetails: S.optional(__S(272, __c34, 0)),
+          jsonSchema: S.optional(__S(107, __c13, 3)),
+        }),
+      ).annotate({ identifier: "InputParameter" });
+    case 3:
+      return S.Array(__S(114, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resultMetadata: S.optional(__S(113, __c14, 1)),
+          resultJsonSchema: S.optional(__S(107, __c13, 3)),
+          inputJsonSchema: S.optional(__S(107, __c13, 3)),
+          metadata: S.optional(__S(280, __c35, 0)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          inputParameters: S.optional(__S(115, __c14, 3)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Action" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          contextMetadata: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConnectionsEntityTypesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Reference" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          dataType: S.optional(S.String),
+          nullable: S.optional(S.Boolean),
+          jsonSchema: S.optional(__S(107, __c13, 3)),
+          defaultValue: S.optional(S.Unknown),
+          description: S.optional(S.String),
+          additionalDetails: S.optional(__S(272, __c34, 0)),
+          reference: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 3:
+      return S.Array(__S(130, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(128, __c16, 0)),
+          fields: S.optional(__S(131, __c16, 3)),
+          metadata: S.optional(__S(280, __c35, 0)),
+          name: S.optional(S.String),
+          defaultSortBy: S.optional(S.String),
+          jsonSchema: S.optional(__S(107, __c13, 3)),
+        }),
+      ).annotate({ identifier: "EntityType" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConnectionsEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsConnectionsResourcesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(280, __c35, 0)),
+          mimeType: S.optional(S.String),
+          data: S.optional(S.String),
+          _meta: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "GetResourceResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          toolSpec: S.optional(__S(80, __c10, 0)),
+          executionConfig: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "GetResourcePostRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetResourcePostProjectsLocationsConnectionsResourcesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+name}:listCustomToolNames",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCustomToolNamesProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+parent}/actions",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConnectionsActionsRequest",
+      });
+    case 1:
+      return S.Array(__S(116, __c14, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          metadata: S.optional(__S(280, __c35, 0)),
+          unsupportedActionNames: S.optional(__S(16, __c2, 0)),
+          actions: S.optional(__S(177, __c22, 1)),
+        }),
+      ).annotate({ identifier: "ListActionsResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+parent}/entityTypes",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
+      });
+    case 1:
+      return S.Array(__S(132, __c16, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unsupportedTypeNames: S.optional(__S(16, __c2, 0)),
+          types: S.optional(__S(185, __c23, 1)),
+          nextPageToken: S.optional(S.String),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({ identifier: "ListEntityTypesResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(S.String.pipe(T.Query())),
+          sortBy: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          sortOrder: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+parent}/entities",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest",
+      });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          entities: S.optional(__S(193, __c24, 1)),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({ identifier: "ListEntitiesResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+parent}/resources",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConnectionsResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          size: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          uri: S.optional(S.String),
+          name: S.optional(S.String),
+          _meta: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 2:
+      return S.Array(__S(201, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(280, __c35, 0)),
+          resources: S.optional(__S(202, __c25, 2)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListResourcesResponse" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          toolNames: S.optional(__S(16, __c2, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/{+parent}/tools",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsConnectionsToolsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destructiveHint: S.optional(S.Boolean),
+          readOnlyHint: S.optional(S.Boolean),
+          openWorldHint: S.optional(S.Boolean),
+          title: S.optional(S.String),
+          idempotentHint: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ToolAnnotations" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          _meta: S.optional(__S(272, __c34, 0)),
+          name: S.optional(S.String),
+          annotations: S.optional(__S(216, __c27, 0)),
+          dependsOn: S.optional(__S(16, __c2, 0)),
+          outputSchema: S.optional(__S(107, __c13, 3)),
+          inputSchema: S.optional(__S(107, __c13, 3)),
+        }),
+      ).annotate({ identifier: "Tool" });
+    case 2:
+      return S.Array(__S(217, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tools: S.optional(__S(218, __c27, 2)),
+          nextPageToken: S.optional(S.String),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({ identifier: "ListToolsResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(296, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2/{+name}",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          refreshToken: S.optional(S.String),
+          executionConfig: S.optional(__S(8, __c1, 0)),
+          oauth2Config: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "RefreshAccessTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:refreshAccessToken",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshAccessTokenProjectsLocationsConnectionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accessCredentials: S.optional(__S(25, __c3, 1)),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "RefreshAccessTokenResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String),
+          toolNames: S.optional(__S(16, __c2, 0)),
+          toolSpec: S.optional(__S(80, __c10, 0)),
+          executionConfig: S.optional(__S(8, __c1, 0)),
+          pageSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ListToolsPostRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/tools",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ToolsProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityType: S.String.pipe(T.Label()),
+          conditions: S.optional(S.String.pipe(T.Query())),
+          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(296, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+entityType}/entities:updateEntitiesWithConditions",
+            baseUrl: "https://connectors.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(272, __c34, 0)),
+          metadata: S.optional(__S(280, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateEntitiesWithConditionsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1632,7 +2549,11 @@ function __c0(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckReadinessResponse" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
@@ -1647,32 +2568,36 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckStatusProjectsLocationsConnectionsRequest",
       });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           description: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(280, __c35, 0)),
         }),
       ).annotate({ identifier: "CheckStatusResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          fields: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Entity" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(272, __c34, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(296, __c37, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1685,7 +2610,19 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(280, __c35, 0)),
+          fields: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "Entity" });
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1704,11 +2641,19 @@ function __c1(j: number): any {
         identifier:
           "DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
@@ -1723,838 +2668,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientSecret: S.optional(S.String),
-          clientId: S.optional(S.String),
-          authUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuth2Config" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(13, __c1, 5)),
-          authCode: S.optional(S.String),
-          redirectUri: S.optional(S.String),
-          pkceVerifier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthCodeData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionConfig: S.optional(__S(11, __c1, 3)),
-          oauth2Config: S.optional(__S(12, __c1, 4)),
-          authCodeData: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ExchangeAuthCodeRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:exchangeAuthCode",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExchangeAuthCodeProjectsLocationsConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          refreshToken: S.optional(S.String),
-          accessToken: S.optional(S.String),
-          expiresIn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessCredentials" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessCredentials: S.optional(__S(17, __c2, 1)),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ExchangeAuthCodeResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpHeader" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          httpMethod: S.optional(S.String),
-          url: S.optional(S.String),
-          rawBody: S.optional(S.String),
-          headers: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "ExecuteHttpRequestRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:executeHttpRequest",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteHttpRequestProjectsLocationsConnectionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(20, __c2, 4)),
-          reason: S.optional(S.String),
-          body: S.optional(S.String),
-          statusCode: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExecuteHttpRequestResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          executionConfig: S.optional(__S(11, __c1, 3)),
-          parameters: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecuteActionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:execute",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
-      });
-    case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          results: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "ExecuteActionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          executionConfig: S.optional(__S(11, __c1, 3)),
-          parameters: S.optional(__S(3, __c0, 3)),
-          toolDefinition: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecuteToolRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:execute",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteProjectsLocationsConnectionsToolsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(__S(3, __c0, 3)),
-          metadata: S.optional(__S(4, __c0, 4)),
-          _meta: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecuteToolResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-          dataType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryParameter" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          queryParameters: S.optional(__S(32, __c4, 0)),
-          timeout: S.optional(S.String),
-          maxRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Query" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "ExecuteSqlQueryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          connection: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+connection}:executeSqlQuery",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteSqlQueryProjectsLocationsConnectionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "ExecuteSqlQueryResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(S.String),
-          name: S.optional(S.String),
-          entityName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolName" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          toolNames: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "GenerateCustomToolspecRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:generateConnectionToolspecOverride",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          toolDefinitions: S.optional(__S(26, __c3, 2)),
-          toolSpecVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolSpec" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          toolSpec: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "GenerateCustomToolspecResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConnectionsActionsRequest",
-      });
-    case 4:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(47, __c5, 7)),
-      );
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(47, __c5, 7)));
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          $id: S.optional(S.String),
-          items: S.optional(__S(47, __c5, 7)),
-          properties: S.optional(__S(44, __c5, 4)),
-          additionalProperties: S.optional(__S(47, __c5, 7)),
-          pattern: S.optional(S.String),
-          definitions: S.optional(__S(44, __c5, 4)),
-          minItems: S.optional(S.Number),
-          format: S.optional(S.String),
-          type: S.optional(__S(13, __c1, 5)),
-          maximum: S.optional(S.Unknown),
-          default: S.optional(S.Unknown),
-          else: S.optional(__S(47, __c5, 7)),
-          $ref: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          not: S.optional(__S(47, __c5, 7)),
-          oneOf: S.optional(__S(45, __c5, 5)),
-          dependencies: S.optional(__S(3, __c0, 3)),
-          minimum: S.optional(S.Unknown),
-          $defs: S.optional(__S(44, __c5, 4)),
-          exclusiveMinimum: S.optional(S.Unknown),
-          contentEncoding: S.optional(S.String),
-          maxProperties: S.optional(S.Number),
-          allOf: S.optional(__S(45, __c5, 5)),
-          maxItems: S.optional(S.Number),
-          title: S.optional(S.String),
-          if: S.optional(__S(47, __c5, 7)),
-          then: S.optional(__S(47, __c5, 7)),
-          patternProperties: S.optional(__S(44, __c5, 4)),
-          jdbcType: S.optional(S.String),
-          maxLength: S.optional(S.Number),
-          anyOf: S.optional(__S(45, __c5, 5)),
-          enum: S.optional(__S(46, __c5, 6)),
-          writeOnly: S.optional(S.Boolean),
-          additionalDetails: S.optional(__S(3, __c0, 3)),
-          propertyNames: S.optional(__S(47, __c5, 7)),
-          examples: S.optional(__S(46, __c5, 6)),
-          $comment: S.optional(S.String),
-          uniqueItems: S.optional(S.Boolean),
-          exclusiveMaximum: S.optional(S.Unknown),
-          $schema: S.optional(S.String),
-          minProperties: S.optional(S.Number),
-          const: S.optional(S.Unknown),
-          required: S.optional(__S(13, __c1, 5)),
-          contains: S.optional(__S(47, __c5, 7)),
-          multipleOf: S.optional(S.Number),
-          contentMediaType: S.optional(S.String),
-          additionalItems: S.optional(__S(47, __c5, 7)),
-          minLength: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JsonSchema" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          defaultValue: S.optional(S.Unknown),
-          jsonSchema: S.optional(__S(47, __c5, 7)),
-          dataType: S.optional(S.String),
-          description: S.optional(S.String),
-          nullable: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResultMetadata" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nullable: S.optional(S.Boolean),
-          defaultValue: S.optional(S.Unknown),
-          description: S.optional(S.String),
-          dataType: S.optional(S.String),
-          name: S.optional(S.String),
-          additionalDetails: S.optional(__S(3, __c0, 3)),
-          jsonSchema: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "InputParameter" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resultMetadata: S.optional(__S(49, __c6, 1)),
-          resultJsonSchema: S.optional(__S(47, __c5, 7)),
-          inputJsonSchema: S.optional(__S(47, __c5, 7)),
-          metadata: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          inputParameters: S.optional(__S(51, __c6, 3)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          contextMetadata: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConnectionsEntityTypesRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Reference" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          dataType: S.optional(S.String),
-          nullable: S.optional(S.Boolean),
-          jsonSchema: S.optional(__S(47, __c5, 7)),
-          defaultValue: S.optional(S.Unknown),
-          description: S.optional(S.String),
-          additionalDetails: S.optional(__S(3, __c0, 3)),
-          reference: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(54, __c6, 6)),
-          fields: S.optional(__S(57, __c7, 1)),
-          metadata: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          defaultSortBy: S.optional(S.String),
-          jsonSchema: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "EntityType" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsConnectionsResourcesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          mimeType: S.optional(S.String),
-          data: S.optional(S.String),
-          _meta: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "GetResourceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          toolSpec: S.optional(__S(41, __c5, 1)),
-          executionConfig: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "GetResourcePostRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetResourcePostProjectsLocationsConnectionsResourcesRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+name}:listCustomToolNames",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCustomToolNamesProjectsLocationsConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+parent}/actions",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConnectionsActionsRequest",
-      });
-    case 2:
-      return S.Array(__S(52, __c6, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          unsupportedActionNames: S.optional(__S(13, __c1, 5)),
-          actions: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "ListActionsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+parent}/entityTypes",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
-      });
-    case 5:
-      return S.Array(__S(58, __c7, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unsupportedTypeNames: S.optional(__S(13, __c1, 5)),
-          types: S.optional(__S(69, __c8, 5)),
-          nextPageToken: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ListEntityTypesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-          sortOrder: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+parent}/entities",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(6, __c0, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          entities: S.optional(__S(72, __c9, 0)),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ListEntitiesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+parent}/resources",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConnectionsResourcesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          size: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          uri: S.optional(S.String),
-          name: S.optional(S.String),
-          _meta: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Resource" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
-          resources: S.optional(__S(76, __c9, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListResourcesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          toolNames: S.optional(__S(13, __c1, 5).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/{+parent}/tools",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsConnectionsToolsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          destructiveHint: S.optional(S.Boolean),
-          readOnlyHint: S.optional(S.Boolean),
-          openWorldHint: S.optional(S.Boolean),
-          title: S.optional(S.String),
-          idempotentHint: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ToolAnnotations" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          _meta: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          annotations: S.optional(__S(79, __c9, 7)),
-          dependsOn: S.optional(__S(13, __c1, 5)),
-          outputSchema: S.optional(__S(47, __c5, 7)),
-          inputSchema: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "Tool" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tools: S.optional(__S(81, __c10, 1)),
-          nextPageToken: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ListToolsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2/{+name}",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          refreshToken: S.optional(S.String),
-          executionConfig: S.optional(__S(11, __c1, 3)),
-          oauth2Config: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "RefreshAccessTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:refreshAccessToken",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshAccessTokenProjectsLocationsConnectionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessCredentials: S.optional(__S(17, __c2, 1)),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "RefreshAccessTokenResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String),
-          toolNames: S.optional(__S(13, __c1, 5)),
-          toolSpec: S.optional(__S(41, __c5, 1)),
-          executionConfig: S.optional(__S(11, __c1, 3)),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ListToolsPostRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(87, __c10, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/tools",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ToolsProjectsLocationsConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entityType: S.String.pipe(T.Label()),
-          conditions: S.optional(S.String.pipe(T.Query())),
-          "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+entityType}/entities:updateEntitiesWithConditions",
-            baseUrl: "https://connectors.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(3, __c0, 3)),
-          metadata: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateEntitiesWithConditionsResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

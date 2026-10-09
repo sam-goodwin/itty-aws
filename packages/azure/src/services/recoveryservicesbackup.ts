@@ -2930,8 +2930,8 @@ export const BMSTriggerDataMove: API.OperationMethod<
   BMSTriggerDataMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BMSTriggerDataMoveRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BMSTriggerDataMoveResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BMSTriggerDataMoveRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<BMSTriggerDataMoveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2945,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2960,8 @@ export const DeleteProtectedItem: API.OperationMethod<
   DeleteProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteProtectedItemRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteProtectedItemResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteProtectedItemRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2975,8 @@ export const DeleteProtectionIntent: API.OperationMethod<
   DeleteProtectionIntentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteProtectionIntentRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteProtectionIntentResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteProtectionIntentRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteProtectionIntentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2990,8 @@ export const DeleteProtectionPolicy: API.OperationMethod<
   DeleteProtectionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteProtectionPolicyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteProtectionPolicyResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteProtectionPolicyRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteProtectionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3005,8 +3005,8 @@ export const DeleteResourceGuardProxy: API.OperationMethod<
   DeleteResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteResourceGuardProxyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteResourceGuardProxyResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DeleteResourceGuardProxyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3020,8 +3020,8 @@ export const ExecuteConfigureSourceScan: API.OperationMethod<
   ExecuteConfigureSourceScanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ExecuteConfigureSourceScanRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ExecuteConfigureSourceScanRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3035,8 +3035,8 @@ export const ExportJob: API.OperationMethod<
   ExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ExportJobRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ExportJobResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ExportJobRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3050,8 +3050,8 @@ export const GetBackupEngine: API.OperationMethod<
   GetBackupEngineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetBackupEngineRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetBackupEngineResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetBackupEngineRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<GetBackupEngineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3065,8 +3065,8 @@ export const GetBackupOperationResult: API.OperationMethod<
   GetBackupOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetBackupOperationResultRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetBackupOperationResultResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetBackupOperationResultRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetBackupOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3080,8 +3080,8 @@ export const GetBackupOperationStatus: API.OperationMethod<
   GetBackupOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetBackupOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetBackupOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3095,8 +3095,8 @@ export const GetBackupResourceEncryptionConfig: API.OperationMethod<
   GetBackupResourceEncryptionConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetBackupResourceEncryptionConfigRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetBackupResourceEncryptionConfigResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetBackupResourceEncryptionConfigRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GetBackupResourceEncryptionConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3110,8 +3110,8 @@ export const GetBackupResourceStorageConfigsNonCRR: API.OperationMethod<
   GetBackupResourceStorageConfigsNonCRRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetBackupResourceStorageConfigsNonCRRRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetBackupResourceStorageConfigsNonCRRResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetBackupResourceStorageConfigsNonCRRRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<GetBackupResourceStorageConfigsNonCRRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3125,8 +3125,8 @@ export const GetBackupResourceVaultConfig: API.OperationMethod<
   GetBackupResourceVaultConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetBackupResourceVaultConfigRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetBackupResourceVaultConfigResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetBackupResourceVaultConfigRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetBackupResourceVaultConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3140,8 +3140,8 @@ export const GetBackupStatus: API.OperationMethod<
   GetBackupStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetBackupStatusRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<BackupStatusResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetBackupStatusRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<BackupStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3155,8 +3155,8 @@ export const GetBMSPrepareDataMoveOperationResult: API.OperationMethod<
   GetBMSPrepareDataMoveOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetBMSPrepareDataMoveOperationResultRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<VaultStorageConfigOperationResultResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetBMSPrepareDataMoveOperationResultRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<VaultStorageConfigOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3170,8 +3170,8 @@ export const GetExportJobsOperationResult: API.OperationMethod<
   GetExportJobsOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetExportJobsOperationResultRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetExportJobsOperationResultResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetExportJobsOperationResultRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<GetExportJobsOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3185,8 +3185,8 @@ export const GetGetTieringCostOperationResult: API.OperationMethod<
   GetGetTieringCostOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetGetTieringCostOperationResultRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<TieringCostInfo>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetGetTieringCostOperationResultRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<TieringCostInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3200,8 +3200,8 @@ export const GetJobDetail: API.OperationMethod<
   GetJobDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetJobDetailRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetJobDetailResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetJobDetailRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetJobDetailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3215,8 +3215,8 @@ export const GetJobOperationResult: API.OperationMethod<
   GetJobOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetJobOperationResultRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetJobOperationResultResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetJobOperationResultRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<GetJobOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3230,8 +3230,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3245,8 +3245,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3260,8 +3260,8 @@ export const GetPrivateEndpointOperationStatus: API.OperationMethod<
   GetPrivateEndpointOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetPrivateEndpointOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetPrivateEndpointOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3275,8 +3275,8 @@ export const GetProtectedItem: API.OperationMethod<
   GetProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProtectedItemRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetProtectedItemResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetProtectedItemRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3290,8 +3290,8 @@ export const GetProtectedItemOperationResult: API.OperationMethod<
   GetProtectedItemOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetProtectedItemOperationResultRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetProtectedItemOperationResultResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetProtectedItemOperationResultRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetProtectedItemOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3305,8 +3305,8 @@ export const GetProtectedItemOperationStatus: API.OperationMethod<
   GetProtectedItemOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetProtectedItemOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetProtectedItemOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3320,8 +3320,8 @@ export const GetProtectionContainer: API.OperationMethod<
   GetProtectionContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetProtectionContainerRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetProtectionContainerResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetProtectionContainerRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetProtectionContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3335,8 +3335,8 @@ export const GetProtectionContainerOperationResult: API.OperationMethod<
   GetProtectionContainerOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetProtectionContainerOperationResultRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetProtectionContainerOperationResultResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetProtectionContainerOperationResultRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetProtectionContainerOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3350,8 +3350,8 @@ export const GetProtectionContainerRefreshOperationResult: API.OperationMethod<
   GetProtectionContainerRefreshOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetProtectionContainerRefreshOperationResultRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetProtectionContainerRefreshOperationResultResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetProtectionContainerRefreshOperationResultRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetProtectionContainerRefreshOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3365,8 +3365,8 @@ export const GetProtectionIntent: API.OperationMethod<
   GetProtectionIntentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetProtectionIntentRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetProtectionIntentResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetProtectionIntentRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetProtectionIntentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3380,8 +3380,8 @@ export const GetProtectionPolicy: API.OperationMethod<
   GetProtectionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetProtectionPolicyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetProtectionPolicyResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetProtectionPolicyRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<GetProtectionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3395,8 +3395,8 @@ export const GetProtectionPolicyOperationResult: API.OperationMethod<
   GetProtectionPolicyOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetProtectionPolicyOperationResultRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetProtectionPolicyOperationResultResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetProtectionPolicyOperationResultRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<GetProtectionPolicyOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3410,8 +3410,8 @@ export const GetProtectionPolicyOperationStatus: API.OperationMethod<
   GetProtectionPolicyOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetProtectionPolicyOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetProtectionPolicyOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3425,8 +3425,8 @@ export const GetRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetRecoveryPointRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetRecoveryPointResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetRecoveryPointRequest>,
+  output: __S(723, __c45, 3) as any as S.Schema<GetRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3440,8 +3440,8 @@ export const GetResourceGuardProxy: API.OperationMethod<
   GetResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetResourceGuardProxyRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetResourceGuardProxyResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetResourceGuardProxyRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<GetResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3455,8 +3455,8 @@ export const GetResourceGuardProxy2: API.OperationMethod<
   GetResourceGuardProxy2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetResourceGuardProxyRequest2>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetResourceGuardProxyResponse2>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetResourceGuardProxyRequest2>,
+  output: __S(755, __c47, 3) as any as S.Schema<GetResourceGuardProxyResponse2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3470,8 +3470,8 @@ export const GetSecurityPIN: API.OperationMethod<
   GetSecurityPINError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetSecurityPINRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<TokenInformation>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetSecurityPINRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<TokenInformation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3485,8 +3485,8 @@ export const GetTieringCostOperationStatus: API.OperationMethod<
   GetTieringCostOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetTieringCostOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetTieringCostOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3500,8 +3500,8 @@ export const GetValidateOperationResult: API.OperationMethod<
   GetValidateOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetValidateOperationResultRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ValidateOperationsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetValidateOperationResultRequest>,
+  output: __S(835, __c52, 3) as any as S.Schema<ValidateOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3515,8 +3515,8 @@ export const GetValidateOperationStatus: API.OperationMethod<
   GetValidateOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetValidateOperationStatusRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationStatus>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetValidateOperationStatusRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3530,8 +3530,8 @@ export const ListBackupEngines: API.OperationMethod<
   ListBackupEnginesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListBackupEnginesRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListBackupEnginesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListBackupEnginesRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<ListBackupEnginesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3545,8 +3545,8 @@ export const ListBackupJobs: API.OperationMethod<
   ListBackupJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListBackupJobsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListBackupJobsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListBackupJobsRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<ListBackupJobsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3560,8 +3560,8 @@ export const ListBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListBackupPoliciesResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListBackupPoliciesRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<ListBackupPoliciesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3575,8 +3575,8 @@ export const ListBackupProtectableItems: API.OperationMethod<
   ListBackupProtectableItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListBackupProtectableItemsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListBackupProtectableItemsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListBackupProtectableItemsRequest>,
+  output: __S(932, __c58, 4) as any as S.Schema<ListBackupProtectableItemsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3590,8 +3590,8 @@ export const ListBackupProtectedItems: API.OperationMethod<
   ListBackupProtectedItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListBackupProtectedItemsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListBackupProtectedItemsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListBackupProtectedItemsRequest>,
+  output: __S(946, __c59, 2) as any as S.Schema<ListBackupProtectedItemsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3605,8 +3605,8 @@ export const ListBackupProtectionContainers: API.OperationMethod<
   ListBackupProtectionContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListBackupProtectionContainersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListBackupProtectionContainersResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListBackupProtectionContainersRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ListBackupProtectionContainersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3620,8 +3620,8 @@ export const ListBackupProtectionIntent: API.OperationMethod<
   ListBackupProtectionIntentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListBackupProtectionIntentRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListBackupProtectionIntentResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListBackupProtectionIntentRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListBackupProtectionIntentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3635,8 +3635,8 @@ export const ListBackupUsageSummaries: API.OperationMethod<
   ListBackupUsageSummariesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListBackupUsageSummariesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListBackupUsageSummariesResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListBackupUsageSummariesRequest>,
+  output: __S(1012, __c63, 4) as any as S.Schema<ListBackupUsageSummariesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3650,8 +3650,8 @@ export const ListBackupWorkloadItems: API.OperationMethod<
   ListBackupWorkloadItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListBackupWorkloadItemsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListBackupWorkloadItemsResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListBackupWorkloadItemsRequest>,
+  output: __S(1028, __c64, 4) as any as S.Schema<ListBackupWorkloadItemsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3665,8 +3665,8 @@ export const ListDeletedProtectionContainers: API.OperationMethod<
   ListDeletedProtectionContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListDeletedProtectionContainersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListDeletedProtectionContainersResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListDeletedProtectionContainersRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ListDeletedProtectionContainersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3681,11 +3681,11 @@ export const ListItemLevelRecoveryConnectionInstantItemRecoveryOperationResult: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    1072,
+    __c67,
+    0,
   ) as any as S.Schema<ListItemLevelRecoveryConnectionInstantItemRecoveryOperationResultRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<InstantItemRecoveryTarget>,
+  output: __S(1075, __c67, 3) as any as S.Schema<InstantItemRecoveryTarget>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3699,8 +3699,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ClientDiscoveryResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1096, __c68, 8) as any as S.Schema<ClientDiscoveryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3714,8 +3714,8 @@ export const ListProtectableContainers: API.OperationMethod<
   ListProtectableContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListProtectableContainersRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListProtectableContainersResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListProtectableContainersRequest>,
+  output: __S(1108, __c69, 4) as any as S.Schema<ListProtectableContainersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3729,8 +3729,8 @@ export const ListRecoveryPoints: API.OperationMethod<
   ListRecoveryPointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListRecoveryPointsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListRecoveryPointsResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListRecoveryPointsRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<ListRecoveryPointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3744,8 +3744,8 @@ export const ListRecoveryPointsRecommendedForMove: API.OperationMethod<
   ListRecoveryPointsRecommendedForMoveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListRecoveryPointsRecommendedForMoveRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListRecoveryPointsRecommendedForMoveResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListRecoveryPointsRecommendedForMoveRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<ListRecoveryPointsRecommendedForMoveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3759,8 +3759,8 @@ export const MoveBMSPrepareData: API.OperationMethod<
   MoveBMSPrepareDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<MoveBMSPrepareDataRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MoveBMSPrepareDataResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<MoveBMSPrepareDataRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<MoveBMSPrepareDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3774,8 +3774,8 @@ export const MoveRecoveryPoint: API.OperationMethod<
   MoveRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<MoveRecoveryPointRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MoveRecoveryPointResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<MoveRecoveryPointRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<MoveRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3789,8 +3789,8 @@ export const PatchBackupResourceStorageConfigsNonCRR: API.OperationMethod<
   PatchBackupResourceStorageConfigsNonCRRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PatchBackupResourceStorageConfigsNonCRRRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PatchBackupResourceStorageConfigsNonCRRResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<PatchBackupResourceStorageConfigsNonCRRRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<PatchBackupResourceStorageConfigsNonCRRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3804,8 +3804,8 @@ export const PostFetchTieringCost: API.OperationMethod<
   PostFetchTieringCostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<PostFetchTieringCostRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<TieringCostInfo>,
+  input: __S(1216, __c76, 0) as any as S.Schema<PostFetchTieringCostRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<TieringCostInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3819,8 +3819,8 @@ export const ProtectedItemsCreateOrUpdate: API.OperationMethod<
   ProtectedItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ProtectedItemsCreateOrUpdateRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ProtectedItemsCreateOrUpdateResponse>,
+  input: __S(1233, __c77, 1) as any as S.Schema<ProtectedItemsCreateOrUpdateRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<ProtectedItemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3834,8 +3834,8 @@ export const ProtectionContainersInquire: API.OperationMethod<
   ProtectionContainersInquireError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ProtectionContainersInquireRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ProtectionContainersInquireResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ProtectionContainersInquireRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ProtectionContainersInquireResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3849,8 +3849,8 @@ export const ProtectionIntentCreateOrUpdate: API.OperationMethod<
   ProtectionIntentCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ProtectionIntentCreateOrUpdateRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ProtectionIntentCreateOrUpdateResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ProtectionIntentCreateOrUpdateRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<ProtectionIntentCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3864,8 +3864,8 @@ export const ProtectionPoliciesCreateOrUpdate: API.OperationMethod<
   ProtectionPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ProtectionPoliciesCreateOrUpdateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ProtectionPoliciesCreateOrUpdateResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ProtectionPoliciesCreateOrUpdateRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<ProtectionPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3879,8 +3879,8 @@ export const ProvisionItemLevelRecoveryConnection: API.OperationMethod<
   ProvisionItemLevelRecoveryConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ProvisionItemLevelRecoveryConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ProvisionItemLevelRecoveryConnectionResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ProvisionItemLevelRecoveryConnectionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ProvisionItemLevelRecoveryConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3894,8 +3894,8 @@ export const PutBackupResourceVaultConfig: API.OperationMethod<
   PutBackupResourceVaultConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<PutBackupResourceVaultConfigRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PutBackupResourceVaultConfigResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<PutBackupResourceVaultConfigRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<PutBackupResourceVaultConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3909,8 +3909,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3924,8 +3924,8 @@ export const PutResourceGuardProxy: API.OperationMethod<
   PutResourceGuardProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PutResourceGuardProxyRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PutResourceGuardProxyResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<PutResourceGuardProxyRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<PutResourceGuardProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3939,8 +3939,8 @@ export const RefreshProtectionContainer: API.OperationMethod<
   RefreshProtectionContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<RefreshProtectionContainerRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RefreshProtectionContainerResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<RefreshProtectionContainerRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<RefreshProtectionContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3954,8 +3954,8 @@ export const RegisterProtectionContainer: API.OperationMethod<
   RegisterProtectionContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<RegisterProtectionContainerRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<RegisterProtectionContainerResponse>,
+  input: __S(1425, __c89, 1) as any as S.Schema<RegisterProtectionContainerRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<RegisterProtectionContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3969,8 +3969,8 @@ export const ResourceGuardProxyUnlockDelete: API.OperationMethod<
   ResourceGuardProxyUnlockDeleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ResourceGuardProxyUnlockDeleteRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<UnlockDeleteResponse>,
+  input: __S(1441, __c90, 1) as any as S.Schema<ResourceGuardProxyUnlockDeleteRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<UnlockDeleteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3984,8 +3984,8 @@ export const RevokeItemLevelRecoveryConnection: API.OperationMethod<
   RevokeItemLevelRecoveryConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<RevokeItemLevelRecoveryConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RevokeItemLevelRecoveryConnectionResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<RevokeItemLevelRecoveryConnectionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<RevokeItemLevelRecoveryConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3999,8 +3999,8 @@ export const TriggerBackup: API.OperationMethod<
   TriggerBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<TriggerBackupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TriggerBackupResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<TriggerBackupRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<TriggerBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4014,8 +4014,8 @@ export const TriggerJobCancellation: API.OperationMethod<
   TriggerJobCancellationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<TriggerJobCancellationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TriggerJobCancellationResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<TriggerJobCancellationRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<TriggerJobCancellationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4029,8 +4029,8 @@ export const TriggerRestore: API.OperationMethod<
   TriggerRestoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<TriggerRestoreRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<TriggerRestoreResponse>,
+  input: __S(1521, __c95, 1) as any as S.Schema<TriggerRestoreRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<TriggerRestoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4044,8 +4044,8 @@ export const TriggerValidateOperation: API.OperationMethod<
   TriggerValidateOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<TriggerValidateOperationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<TriggerValidateOperationResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<TriggerValidateOperationRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<TriggerValidateOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4059,8 +4059,8 @@ export const UnregisterProtectionContainer: API.OperationMethod<
   UnregisterProtectionContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UnregisterProtectionContainerRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UnregisterProtectionContainerResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UnregisterProtectionContainerRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UnregisterProtectionContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4074,8 +4074,8 @@ export const UpdateBackupResourceEncryptionConfig: API.OperationMethod<
   UpdateBackupResourceEncryptionConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateBackupResourceEncryptionConfigRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateBackupResourceEncryptionConfigResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<UpdateBackupResourceEncryptionConfigRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateBackupResourceEncryptionConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4089,8 +4089,8 @@ export const UpdateBackupResourceStorageConfigsNonCRR: API.OperationMethod<
   UpdateBackupResourceStorageConfigsNonCRRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateBackupResourceStorageConfigsNonCRRRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateBackupResourceStorageConfigsNonCRRResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<UpdateBackupResourceStorageConfigsNonCRRRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<UpdateBackupResourceStorageConfigsNonCRRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4104,8 +4104,8 @@ export const UpdateBackupResourceVaultConfig: API.OperationMethod<
   UpdateBackupResourceVaultConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateBackupResourceVaultConfigRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UpdateBackupResourceVaultConfigResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<UpdateBackupResourceVaultConfigRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<UpdateBackupResourceVaultConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4119,8 +4119,8 @@ export const ValidateFeatureSupport: API.OperationMethod<
   ValidateFeatureSupportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ValidateFeatureSupportRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<AzureVMResourceFeatureSupportResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ValidateFeatureSupportRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<AzureVMResourceFeatureSupportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4134,8 +4134,8 @@ export const ValidateOperation: API.OperationMethod<
   ValidateOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ValidateOperationRequest2>,
-  output: __S(91, __c11, 3) as any as S.Schema<ValidateOperationsResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ValidateOperationRequest2>,
+  output: __S(835, __c52, 3) as any as S.Schema<ValidateOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4149,8 +4149,8 @@ export const ValidateProtectionIntent: API.OperationMethod<
   ValidateProtectionIntentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ValidateProtectionIntentRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<PreValidateEnableBackupResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ValidateProtectionIntentRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<PreValidateEnableBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4160,8 +4160,6 @@ export const ValidateProtectionIntent: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4171,7 +4169,7 @@ function __c0(j: number): any {
           sourceRegion: S.String,
           dataMoveLevel: S.String,
           correlationId: S.String,
-          sourceContainerArmIds: S.optional(__S(0, __c0, 0)),
+          sourceContainerArmIds: S.optional(__S(16, __c1, 0)),
           pauseGC: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -4184,11 +4182,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BMSTriggerDataMoveRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "BMSTriggerDataMoveResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4206,11 +4218,399 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePrivateEndpointConnectionResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBackupOperationStatusRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBackupResourceEncryptionConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionAtRestType: S.optional(S.String),
+          keyUri: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          lastUpdateStatus: S.optional(S.String),
+          infrastructureEncryptionState: S.optional(S.String),
+          userAssignedIdentity: S.optional(S.String),
+          useSystemAssignedIdentity: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BackupResourceEncryptionConfigExtended",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(97, __c6, 1)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetBackupResourceEncryptionConfigResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBackupResourceStorageConfigsNonCRRRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageModelType: S.optional(S.String),
+          storageType: S.optional(S.String),
+          storageTypeState: S.optional(S.String),
+          crossRegionRestoreFlag: S.optional(S.Boolean),
+          dedupState: S.optional(S.String),
+          xcoolState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackupResourceConfig" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetBackupResourceStorageConfigsNonCRRResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBackupResourceVaultConfigRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageModelType: S.optional(S.String),
+          storageType: S.optional(S.String),
+          storageTypeState: S.optional(S.String),
+          enhancedSecurityState: S.optional(S.String),
+          softDeleteFeatureState: S.optional(S.String),
+          softDeleteRetentionPeriodInDays: S.optional(S.Number),
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+          isSoftDeleteFeatureStateEditable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BackupResourceVaultConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetBackupResourceVaultConfigResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          azureRegion: S.String.pipe(T.Label()),
+          resourceType: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          poLogicalName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetBackupStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protectionStatus: S.optional(S.String),
+          vaultId: S.optional(S.String),
+          fabricName: S.optional(S.String),
+          containerName: S.optional(S.String),
+          protectedItemName: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          policyName: S.optional(S.String),
+          registrationStatus: S.optional(S.String),
+          protectedItemsCount: S.optional(S.Number),
+          acquireStorageAccountLock: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackupStatusResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBMSPrepareDataMoveOperationResultRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExportJobsOperationResultRequest",
+      });
+    case 1:
+      return S.Record(S.String, __S(16, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.String),
+          headers: S.optional(__S(225, __c14, 1)),
+          operation: S.optional(__S(1264, __c79, 0)),
+        }),
+      ).annotate({
+        identifier: "GetExportJobsOperationResultResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGetTieringCostOperationResultRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectType: S.String,
+        }),
+      ).annotate({ identifier: "TieringCostInfo" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobDetailRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entityFriendlyName: S.optional(S.String),
+          backupManagementType: S.optional(S.String),
+          operation: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          activityId: S.optional(S.String),
+          jobType: S.String,
+        }),
+      ).annotate({ identifier: "Job" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(288, __c18, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetJobDetailResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetJobOperationResultRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4230,7 +4630,448 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteProtectedItemRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationStatusRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(368, __c23, 0)),
+          groupIds: S.optional(__S(369, __c23, 1)),
+          privateLinkServiceConnectionState: S.optional(__S(370, __c23, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(371, __c23, 3)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}/operationsStatus/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointOperationStatusRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetProtectedItemRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceSideScanStatus: S.optional(S.String),
+          sourceSideScanSummary: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceSideScanInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protectedItemType: S.String,
+          backupManagementType: S.optional(S.String),
+          workloadType: S.optional(S.String),
+          containerName: S.optional(S.String),
+          sourceResourceId: S.optional(S.String),
+          policyId: S.optional(S.String),
+          lastRecoveryPoint: S.optional(S.String),
+          backupSetName: S.optional(S.String),
+          createMode: S.optional(S.String),
+          deferredDeleteTimeInUTC: S.optional(S.String),
+          isScheduledForDeferredDelete: S.optional(S.Boolean),
+          deferredDeleteTimeRemaining: S.optional(S.String),
+          isDeferredDeleteScheduleUpcoming: S.optional(S.Boolean),
+          isRehydrate: S.optional(S.Boolean),
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+          isArchiveEnabled: S.optional(S.Boolean),
+          policyName: S.optional(S.String),
+          softDeleteRetentionPeriodInDays: S.optional(S.Number),
+          sourceLocation: S.optional(S.String),
+          vaultId: S.optional(S.String),
+          sourceSideScanInfo: S.optional(__S(416, __c26, 0)),
+          friendlyName: S.optional(S.String),
+          protectionState: S.optional(S.String),
+          extendedProperties: S.optional(S.Unknown),
+          protectionStatus: S.optional(S.String),
+          lastBackupStatus: S.optional(S.String),
+          lastBackupTime: S.optional(S.String),
+          healthStatus: S.optional(S.String),
+          virtualMachineId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectedItem" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(417, __c26, 1)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetProtectedItemResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectedItemOperationResultRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(417, __c26, 1)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProtectedItemOperationResultResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationsStatus/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectedItemOperationStatusRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionContainerRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          friendlyName: S.optional(S.String),
+          backupManagementType: S.optional(S.String),
+          registrationStatus: S.optional(S.String),
+          healthStatus: S.optional(S.String),
+          containerType: S.String,
+          protectableObjectType: S.optional(S.String),
+          sourceLocation: S.optional(S.String),
+          sourceResourceId: S.optional(S.String),
+          acquireStorageAccountLock: S.optional(S.String),
+          protectedItemCount: S.optional(S.Number),
+          storageAccountVersion: S.optional(S.String),
+          resourceGroup: S.optional(S.String),
+          workloadType: S.optional(S.String),
+          operationType: S.optional(S.String),
+          extendedInfo: S.optional(S.Unknown),
+          lastUpdatedTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectionContainer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProtectionContainerResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionContainerOperationResultRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionContainerRefreshOperationResultRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          intentObjectName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionIntentRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protectionIntentItemType: S.String,
+          backupManagementType: S.optional(S.String),
+          sourceResourceId: S.optional(S.String),
+          itemId: S.optional(S.String),
+          policyId: S.optional(S.String),
+          protectionState: S.optional(S.String),
+          workloadItemType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectionIntent" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(576, __c36, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProtectionIntentResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4249,7 +5090,403 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteProtectionIntentRequest",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionPolicyRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protectedItemsCount: S.optional(S.Number),
+          backupManagementType: S.String,
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+          workLoadType: S.optional(S.String),
+          schedulePolicy: S.optional(S.Unknown),
+          retentionPolicy: S.optional(S.Unknown),
+          vaultRetentionPolicy: S.optional(S.Unknown),
+          timeZone: S.optional(S.String),
+          instantRpRetentionRangeInDays: S.optional(S.Number),
+          instantRPDetails: S.optional(S.Unknown),
+          policyType: S.optional(S.String),
+          tieringPolicy: S.optional(S.Unknown),
+          snapshotConsistencyType: S.optional(S.String),
+          settings: S.optional(S.Unknown),
+          subProtectionPolicy: S.optional(S.Unknown),
+          makePolicyConsistent: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProtectionPolicy" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(640, __c40, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProtectionPolicyResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionPolicyOperationResultRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operations/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProtectionPolicyOperationStatusRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRecoveryPointRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          threatTitle: S.optional(S.String),
+          threatDescription: S.optional(S.String),
+          lastUpdatedTime: S.optional(S.String),
+          threatState: S.optional(S.String),
+          threatStartTime: S.optional(S.String),
+          threatEndTime: S.optional(S.String),
+          threatURI: S.optional(S.String),
+          threatSeverity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThreatInfo" });
+    case 1:
+      return S.Array(__S(720, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          objectType: S.String,
+          threatStatus: S.optional(S.String),
+          threatInfo: S.optional(__S(721, __c45, 1)),
+        }),
+      ).annotate({ identifier: "RecoveryPoint" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(722, __c45, 2)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetRecoveryPointResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetResourceGuardProxyRequest",
+      });
+    case 1:
+      return S.Array(__S(755, __c47, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(737, __c46, 1)),
+        }),
+      ).annotate({
+        identifier: "GetResourceGuardProxyResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultCriticalOperation: S.optional(S.String),
+          defaultResourceRequest: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceGuardOperationDetail",
+      });
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceGuardResourceId: S.String,
+          resourceGuardOperationDetails: S.optional(__S(753, __c47, 1)),
+          lastUpdatedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceGuardProxyBase" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(754, __c47, 2)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceGuardProxyBaseResource",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          resourceGuardProxyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetResourceGuardProxyRequest2",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupSecurityPIN",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSecurityPINRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          expiryTimeInUtcTicks: S.optional(S.Number),
+          securityPIN: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TokenInformation" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTieringCostOperationStatusRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetValidateOperationResultRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          recommendations: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 1:
+      return S.Array(__S(832, __c52, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          validationResults: S.optional(__S(833, __c52, 1)),
+        }),
+      ).annotate({
+        identifier: "ValidateOperationResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          validateOperationResponse: S.optional(__S(834, __c52, 2)),
+        }),
+      ).annotate({
+        identifier: "ValidateOperationsResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetValidateOperationStatusRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4269,7 +5506,425 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListBackupEnginesRequest" });
+    case 1:
+      return S.Array(__S(1682, __c105, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(881, __c55, 1)),
+        }),
+      ).annotate({
+        identifier: "ListBackupEnginesResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListBackupJobsRequest" });
+    case 1:
+      return S.Array(__S(289, __c18, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(897, __c56, 1)),
+        }),
+      ).annotate({ identifier: "ListBackupJobsResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(640, __c40, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectionPolicyResource" });
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(914, __c57, 2)),
+        }),
+      ).annotate({
+        identifier: "ListBackupPoliciesResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupProtectableItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          backupManagementType: S.optional(S.String),
+          workloadType: S.optional(S.String),
+          protectableItemType: S.String,
+          friendlyName: S.optional(S.String),
+          protectionState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkloadProtectableItem" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(929, __c58, 1)),
+        }),
+      ).annotate({
+        identifier: "WorkloadProtectableItemResource",
+      });
+    case 3:
+      return S.Array(__S(930, __c58, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(931, __c58, 3)),
+        }),
+      ).annotate({
+        identifier: "ListBackupProtectableItemsResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupProtectedItemsRequest",
+      });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(945, __c59, 1)),
+        }),
+      ).annotate({
+        identifier: "ListBackupProtectedItemsResponse",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupProtectionContainersRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(513, __c32, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(976, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "ListBackupProtectionContainersResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupProtectionIntentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(576, __c36, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectionIntentResource" });
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(994, __c62, 2)),
+        }),
+      ).annotate({
+        identifier: "ListBackupProtectionIntentResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupUsageSummariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NameInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          quotaPeriod: S.optional(S.String),
+          nextResetTime: S.optional(S.String),
+          currentValue: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          name: S.optional(__S(1009, __c63, 1)),
+        }),
+      ).annotate({ identifier: "BackupManagementUsage" });
+    case 3:
+      return S.Array(__S(1010, __c63, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(1011, __c63, 3)),
+        }),
+      ).annotate({
+        identifier: "ListBackupUsageSummariesResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBackupWorkloadItemsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          backupManagementType: S.optional(S.String),
+          workloadType: S.optional(S.String),
+          workloadItemType: S.String,
+          friendlyName: S.optional(S.String),
+          protectionState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkloadItem" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(1025, __c64, 1)),
+        }),
+      ).annotate({ identifier: "WorkloadItemResource" });
+    case 3:
+      return S.Array(__S(1026, __c64, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(1027, __c64, 3)),
+        }),
+      ).annotate({
+        identifier: "ListBackupWorkloadItemsResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDeletedProtectionContainersRequest",
+      });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4289,7 +5944,408 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteResourceGuardProxyRequest",
       });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+          provisionInstantItemRecoveryOperationId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/listInstantItemRecoveryOperationResult",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListItemLevelRecoveryConnectionInstantItemRecoveryOperationResultRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scriptContent: S.optional(S.String),
+          scriptExtension: S.optional(S.String),
+          osType: S.optional(S.String),
+          url: S.optional(S.String),
+          scriptNameSuffix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientScriptForConnect" });
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clientScripts: S.optional(__S(1074, __c67, 2)),
+        }),
+      ).annotate({
+        identifier: "InstantItemRecoveryTarget",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.RecoveryServices/operations",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientDiscoveryDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          blobDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForLogSpecification",
+      });
+    case 3:
+      return S.Array(__S(1090, __c68, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          logSpecifications: S.optional(__S(1091, __c68, 3)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForServiceSpecification",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(1092, __c68, 4)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryForProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(1089, __c68, 1)),
+          origin: S.optional(S.String),
+          properties: S.optional(__S(1093, __c68, 5)),
+        }),
+      ).annotate({
+        identifier: "ClientDiscoveryValueForSingleApi",
+      });
+    case 7:
+      return S.Array(__S(1094, __c68, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1095, __c68, 7)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientDiscoveryResponse" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProtectableContainersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          friendlyName: S.optional(S.String),
+          backupManagementType: S.optional(S.String),
+          protectableContainerType: S.String,
+          healthStatus: S.optional(S.String),
+          containerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectableContainer" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(1105, __c69, 1)),
+        }),
+      ).annotate({
+        identifier: "ProtectableContainerResource",
+      });
+    case 3:
+      return S.Array(__S(1106, __c69, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(1107, __c69, 3)),
+        }),
+      ).annotate({
+        identifier: "ListProtectableContainersResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRecoveryPointsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(723, __c45, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "ListRecoveryPointsResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          objectType: S.optional(S.String),
+          excludedRPList: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRecoveryPointsRecommendedForMoveRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          targetResourceId: S.String,
+          targetRegion: S.String,
+          dataMoveLevel: S.String,
+          sourceContainerArmIds: S.optional(__S(16, __c1, 0)),
+          ignoreMoved: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MoveBMSPrepareDataRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+          objectType: S.optional(S.String),
+          sourceTierType: S.optional(S.String),
+          targetTierType: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "MoveRecoveryPointRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchBackupResourceStorageConfigsNonCRRRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          sourceTierType: S.String,
+          targetTierType: S.String,
+          objectType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PostFetchTieringCostRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          protectedItemType: S.String,
+          containerName: S.optional(S.String),
+          sourceResourceId: S.optional(S.String),
+          policyId: S.optional(S.String),
+          lastRecoveryPoint: S.optional(S.String),
+          backupSetName: S.optional(S.String),
+          createMode: S.optional(S.String),
+          deferredDeleteTimeInUTC: S.optional(S.String),
+          isScheduledForDeferredDelete: S.optional(S.Boolean),
+          deferredDeleteTimeRemaining: S.optional(S.String),
+          isDeferredDeleteScheduleUpcoming: S.optional(S.Boolean),
+          isRehydrate: S.optional(S.Boolean),
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+          isArchiveEnabled: S.optional(S.Boolean),
+          policyName: S.optional(S.String),
+          softDeleteRetentionPeriodInDays: S.optional(S.Number),
+          sourceSideScanInfo: S.optional(__S(416, __c26, 0)),
+          friendlyName: S.optional(S.String),
+          protectionState: S.optional(S.String),
+          extendedProperties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ProtectedItemInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1232, __c77, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProtectedItemsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4310,14 +6366,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ExecuteConfigureSourceScanRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationStatusError" });
-    case 3:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectType: S.String,
@@ -4325,7 +6378,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "OperationStatusExtendedInfo",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationStatusError" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4333,11 +6397,300 @@ function __c1(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(11, __c1, 3)),
+          error: S.optional(__S(1280, __c80, 0)),
+          properties: S.optional(__S(1264, __c79, 0)),
         }),
       ).annotate({ identifier: "OperationStatus" });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProtectionContainersInquireRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          intentObjectName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(576, __c36, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProtectionIntentCreateOrUpdateRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(640, __c40, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProtectionPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(1264, __c79, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionItemLevelRecoveryConnectionRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutBackupResourceVaultConfigRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(371, __c23, 3)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          resourceGuardProxyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(754, __c47, 2)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutResourceGuardProxyRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshProtectionContainerRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          friendlyName: S.optional(S.String),
+          backupManagementType: S.optional(S.String),
+          registrationStatus: S.optional(S.String),
+          healthStatus: S.optional(S.String),
+          containerType: S.String,
+          protectableObjectType: S.optional(S.String),
+          sourceResourceId: S.optional(S.String),
+          acquireStorageAccountLock: S.optional(S.String),
+          protectedItemCount: S.optional(S.Number),
+          storageAccountVersion: S.optional(S.String),
+          resourceGroup: S.optional(S.String),
+          workloadType: S.optional(S.String),
+          operationType: S.optional(S.String),
+          extendedInfo: S.optional(S.Unknown),
+          lastUpdatedTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProtectionContainerInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1424, __c89, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegisterProtectionContainerRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          resourceGuardProxyName: S.String.pipe(T.Label()),
+          resourceGuardOperationRequests: S.optional(__S(1440, __c90, 0)),
+          resourceToBeDeleted: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ResourceGuardProxyUnlockDeleteRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unlockDeleteExpiryTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnlockDeleteResponse" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4353,7 +6706,280 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExportJobRequest" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeItemLevelRecoveryConnectionRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(1264, __c79, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerBackupRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerJobCancellationRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectType: S.String,
+          resourceGuardOperationRequests: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "RestoreRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          protectedItemName: S.String.pipe(T.Label()),
+          recoveryPointId: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1648, __c103, 0)),
+          eTag: S.optional(S.String),
+          properties: S.optional(__S(1520, __c95, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerRestoreRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          id: S.String,
+          properties: __S(1264, __c79, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TriggerValidateOperationRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          fabricName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnregisterProtectionContainerRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionAtRestType: S.optional(S.String),
+          keyUri: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          lastUpdateStatus: S.optional(S.String),
+          infrastructureEncryptionState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BackupResourceEncryptionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1568, __c98, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBackupResourceEncryptionConfigRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBackupResourceStorageConfigsNonCRRRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(1648, __c103, 0)),
+          location: S.optional(S.String),
+          eTag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBackupResourceVaultConfigRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          azureRegion: S.String.pipe(T.Label()),
+          featureType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateFeatureSupportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          supportStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureVMResourceFeatureSupportResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4371,7 +6997,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupEngineRequest" });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4384,7 +7020,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c2(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4414,2352 +7050,34 @@ function __c2(j: number): any {
           azureBackupAgentVersion: S.optional(S.String),
           isAzureBackupAgentUpgradeAvailable: S.optional(S.Boolean),
           isDpmUpgradeAvailable: S.optional(S.Boolean),
-          extendedInfo: S.optional(__S(16, __c2, 0)),
+          extendedInfo: S.optional(__S(1680, __c105, 0)),
         }),
       ).annotate({ identifier: "BackupEngineBase" });
     case 2:
-      return S.Record(S.String, S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(17, __c2, 1)),
-          tags: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(1664, __c104, 0)),
+          properties: S.optional(__S(1681, __c105, 1)),
+          tags: S.optional(__S(1648, __c103, 0)),
           location: S.optional(S.String),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBackupEngineResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBackupOperationResultRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperations/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBackupOperationStatusRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBackupResourceEncryptionConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionAtRestType: S.optional(S.String),
-          keyUri: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          lastUpdateStatus: S.optional(S.String),
-          infrastructureEncryptionState: S.optional(S.String),
-          userAssignedIdentity: S.optional(S.String),
-          useSystemAssignedIdentity: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "BackupResourceEncryptionConfigExtended",
-      });
   }
 }
-function __c3(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(23, __c2, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetBackupResourceEncryptionConfigResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBackupResourceStorageConfigsNonCRRRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          storageModelType: S.optional(S.String),
-          storageType: S.optional(S.String),
-          storageTypeState: S.optional(S.String),
-          crossRegionRestoreFlag: S.optional(S.Boolean),
-          dedupState: S.optional(S.String),
-          xcoolState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackupResourceConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetBackupResourceStorageConfigsNonCRRResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBackupResourceVaultConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          storageModelType: S.optional(S.String),
-          storageType: S.optional(S.String),
-          storageTypeState: S.optional(S.String),
-          enhancedSecurityState: S.optional(S.String),
-          softDeleteFeatureState: S.optional(S.String),
-          softDeleteRetentionPeriodInDays: S.optional(S.Number),
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-          isSoftDeleteFeatureStateEditable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "BackupResourceVaultConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(29, __c3, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetBackupResourceVaultConfigResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          azureRegion: S.String.pipe(T.Label()),
-          resourceType: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          poLogicalName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupStatus",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetBackupStatusRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          protectionStatus: S.optional(S.String),
-          vaultId: S.optional(S.String),
-          fabricName: S.optional(S.String),
-          containerName: S.optional(S.String),
-          protectedItemName: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          policyName: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
-          protectedItemsCount: S.optional(S.Number),
-          acquireStorageAccountLock: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackupStatusResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBMSPrepareDataMoveOperationResultRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExportJobsOperationResultRequest",
-      });
-    case 3:
-      return S.Record(S.String, __S(0, __c0, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.String),
-          headers: S.optional(__S(35, __c4, 3)),
-          operation: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GetExportJobsOperationResultResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGetTieringCostOperationResultRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectType: S.String,
-        }),
-      ).annotate({ identifier: "TieringCostInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobDetailRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entityFriendlyName: S.optional(S.String),
-          backupManagementType: S.optional(S.String),
-          operation: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          activityId: S.optional(S.String),
-          jobType: S.String,
-        }),
-      ).annotate({ identifier: "Job" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetJobDetailResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetJobOperationResultRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/operationStatus/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationStatusRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(45, __c5, 5)),
-          groupIds: S.optional(__S(46, __c5, 6)),
-          privateLinkServiceConnectionState: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(48, __c6, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}/operationsStatus/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointOperationStatusRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetProtectedItemRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sourceSideScanStatus: S.optional(S.String),
-          sourceSideScanSummary: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceSideScanInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protectedItemType: S.String,
-          backupManagementType: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          containerName: S.optional(S.String),
-          sourceResourceId: S.optional(S.String),
-          policyId: S.optional(S.String),
-          lastRecoveryPoint: S.optional(S.String),
-          backupSetName: S.optional(S.String),
-          createMode: S.optional(S.String),
-          deferredDeleteTimeInUTC: S.optional(S.String),
-          isScheduledForDeferredDelete: S.optional(S.Boolean),
-          deferredDeleteTimeRemaining: S.optional(S.String),
-          isDeferredDeleteScheduleUpcoming: S.optional(S.Boolean),
-          isRehydrate: S.optional(S.Boolean),
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-          isArchiveEnabled: S.optional(S.Boolean),
-          policyName: S.optional(S.String),
-          softDeleteRetentionPeriodInDays: S.optional(S.Number),
-          sourceLocation: S.optional(S.String),
-          vaultId: S.optional(S.String),
-          sourceSideScanInfo: S.optional(__S(52, __c6, 4)),
-          friendlyName: S.optional(S.String),
-          protectionState: S.optional(S.String),
-          extendedProperties: S.optional(S.Unknown),
-          protectionStatus: S.optional(S.String),
-          lastBackupStatus: S.optional(S.String),
-          lastBackupTime: S.optional(S.String),
-          healthStatus: S.optional(S.String),
-          virtualMachineId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectedItem" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(53, __c6, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetProtectedItemResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectedItemOperationResultRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(53, __c6, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProtectedItemOperationResultResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/operationsStatus/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectedItemOperationStatusRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionContainerRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          friendlyName: S.optional(S.String),
-          backupManagementType: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
-          healthStatus: S.optional(S.String),
-          containerType: S.String,
-          protectableObjectType: S.optional(S.String),
-          sourceLocation: S.optional(S.String),
-          sourceResourceId: S.optional(S.String),
-          acquireStorageAccountLock: S.optional(S.String),
-          protectedItemCount: S.optional(S.Number),
-          storageAccountVersion: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          operationType: S.optional(S.String),
-          extendedInfo: S.optional(S.Unknown),
-          lastUpdatedTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectionContainer" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(59, __c7, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProtectionContainerResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionContainerOperationResultRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionContainerRefreshOperationResultRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          intentObjectName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionIntentRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          protectionIntentItemType: S.String,
-          backupManagementType: S.optional(S.String),
-          sourceResourceId: S.optional(S.String),
-          itemId: S.optional(S.String),
-          policyId: S.optional(S.String),
-          protectionState: S.optional(S.String),
-          workloadItemType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectionIntent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(64, __c8, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProtectionIntentResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          protectedItemsCount: S.optional(S.Number),
-          backupManagementType: S.String,
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-          workLoadType: S.optional(S.String),
-          schedulePolicy: S.optional(S.Unknown),
-          retentionPolicy: S.optional(S.Unknown),
-          vaultRetentionPolicy: S.optional(S.Unknown),
-          timeZone: S.optional(S.String),
-          instantRpRetentionRangeInDays: S.optional(S.Number),
-          instantRPDetails: S.optional(S.Unknown),
-          policyType: S.optional(S.String),
-          tieringPolicy: S.optional(S.Unknown),
-          snapshotConsistencyType: S.optional(S.String),
-          settings: S.optional(S.Unknown),
-          subProtectionPolicy: S.optional(S.Unknown),
-          makePolicyConsistent: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ProtectionPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(67, __c8, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProtectionPolicyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionPolicyOperationResultRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operations/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProtectionPolicyOperationStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRecoveryPointRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          threatTitle: S.optional(S.String),
-          threatDescription: S.optional(S.String),
-          lastUpdatedTime: S.optional(S.String),
-          threatState: S.optional(S.String),
-          threatStartTime: S.optional(S.String),
-          threatEndTime: S.optional(S.String),
-          threatURI: S.optional(S.String),
-          threatSeverity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThreatInfo" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          objectType: S.String,
-          threatStatus: S.optional(S.String),
-          threatInfo: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "RecoveryPoint" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(74, __c9, 2)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetRecoveryPointResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetResourceGuardProxyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          vaultCriticalOperation: S.optional(S.String),
-          defaultResourceRequest: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceGuardOperationDetail",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceGuardResourceId: S.String,
-          resourceGuardOperationDetails: S.optional(__S(78, __c9, 6)),
-          lastUpdatedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceGuardProxyBase" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(79, __c9, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceGuardProxyBaseResource",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "GetResourceGuardProxyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          resourceGuardProxyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetResourceGuardProxyRequest2",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupSecurityPIN",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSecurityPINRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          expiryTimeInUtcTicks: S.optional(S.Number),
-          securityPIN: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TokenInformation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/operationsStatus/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTieringCostOperationStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationResults/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetValidateOperationResultRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          recommendations: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          validationResults: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({
-        identifier: "ValidateOperationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validateOperationResponse: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({
-        identifier: "ValidateOperationsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupValidateOperationsStatuses/{operationId}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetValidateOperationStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEngines",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListBackupEnginesRequest" });
-    case 6:
-      return S.Array(__S(19, __c2, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({
-        identifier: "ListBackupEnginesResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListBackupJobsRequest" });
-    case 1:
-      return S.Array(__S(41, __c5, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "ListBackupJobsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupPoliciesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(67, __c8, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectionPolicyResource" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "ListBackupPoliciesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupProtectableItemsRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          backupManagementType: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          protectableItemType: S.String,
-          friendlyName: S.optional(S.String),
-          protectionState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkloadProtectableItem" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "WorkloadProtectableItemResource",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({
-        identifier: "ListBackupProtectableItemsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectedItems",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupProtectedItemsRequest",
-      });
-    case 5:
-      return S.Array(__S(54, __c6, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "ListBackupProtectedItemsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionContainers",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupProtectionContainersRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(60, __c7, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "ListBackupProtectionContainersResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectionIntents",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupProtectionIntentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(64, __c8, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectionIntentResource" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "ListBackupProtectionIntentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupUsageSummaries",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupUsageSummariesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NameInfo" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          quotaPeriod: S.optional(S.String),
-          nextResetTime: S.optional(S.String),
-          currentValue: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          name: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "BackupManagementUsage" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "ListBackupUsageSummariesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/items",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBackupWorkloadItemsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backupManagementType: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          workloadItemType: S.String,
-          friendlyName: S.optional(S.String),
-          protectionState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkloadItem" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(124, __c15, 4)),
-        }),
-      ).annotate({ identifier: "WorkloadItemResource" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "ListBackupWorkloadItemsResponse",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupDeletedProtectionContainers",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDeletedProtectionContainersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-          provisionInstantItemRecoveryOperationId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/listInstantItemRecoveryOperationResult",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListItemLevelRecoveryConnectionInstantItemRecoveryOperationResultRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scriptContent: S.optional(S.String),
-          scriptExtension: S.optional(S.String),
-          osType: S.optional(S.String),
-          url: S.optional(S.String),
-          scriptNameSuffix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientScriptForConnect" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientScripts: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "InstantItemRecoveryTarget",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.RecoveryServices/operations",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientDiscoveryDisplay" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          blobDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForLogSpecification",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          logSpecifications: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForServiceSpecification",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryForProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(134, __c16, 6)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({
-        identifier: "ClientDiscoveryValueForSingleApi",
-      });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(140, __c17, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientDiscoveryResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectableContainers",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProtectableContainersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          friendlyName: S.optional(S.String),
-          backupManagementType: S.optional(S.String),
-          protectableContainerType: S.String,
-          healthStatus: S.optional(S.String),
-          containerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectableContainer" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(15, __c1, 7)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({
-        identifier: "ProtectableContainerResource",
-      });
-    case 1:
-      return S.Array(__S(144, __c18, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({
-        identifier: "ListProtectableContainersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRecoveryPointsRequest",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({
-        identifier: "ListRecoveryPointsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          objectType: S.optional(S.String),
-          excludedRPList: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPointsRecommendedForMove",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRecoveryPointsRecommendedForMoveRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          targetResourceId: S.String,
-          targetRegion: S.String,
-          dataMoveLevel: S.String,
-          sourceContainerArmIds: S.optional(__S(0, __c0, 0)),
-          ignoreMoved: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MoveBMSPrepareDataRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-          objectType: S.optional(S.String),
-          sourceTierType: S.optional(S.String),
-          targetTierType: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "MoveRecoveryPointRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchBackupResourceStorageConfigsNonCRRRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          sourceTierType: S.String,
-          targetTierType: S.String,
-          objectType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PostFetchTieringCostRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          protectedItemType: S.String,
-          containerName: S.optional(S.String),
-          sourceResourceId: S.optional(S.String),
-          policyId: S.optional(S.String),
-          lastRecoveryPoint: S.optional(S.String),
-          backupSetName: S.optional(S.String),
-          createMode: S.optional(S.String),
-          deferredDeleteTimeInUTC: S.optional(S.String),
-          isScheduledForDeferredDelete: S.optional(S.Boolean),
-          deferredDeleteTimeRemaining: S.optional(S.String),
-          isDeferredDeleteScheduleUpcoming: S.optional(S.Boolean),
-          isRehydrate: S.optional(S.Boolean),
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-          isArchiveEnabled: S.optional(S.Boolean),
-          policyName: S.optional(S.String),
-          softDeleteRetentionPeriodInDays: S.optional(S.Number),
-          sourceSideScanInfo: S.optional(__S(52, __c6, 4)),
-          friendlyName: S.optional(S.String),
-          protectionState: S.optional(S.String),
-          extendedProperties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ProtectedItemInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(155, __c19, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProtectedItemsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProtectionContainersInquireRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          intentObjectName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(64, __c8, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/backupProtectionIntent/{intentObjectName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProtectionIntentCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(67, __c8, 3)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProtectionPoliciesCreateOrUpdateRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/provisionInstantItemRecovery",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionItemLevelRecoveryConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29, __c3, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutBackupResourceVaultConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(48, __c6, 0)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPrivateEndpointConnectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          resourceGuardProxyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(79, __c9, 7)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutResourceGuardProxyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshProtectionContainerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          friendlyName: S.optional(S.String),
-          backupManagementType: S.optional(S.String),
-          registrationStatus: S.optional(S.String),
-          healthStatus: S.optional(S.String),
-          containerType: S.String,
-          protectableObjectType: S.optional(S.String),
-          sourceResourceId: S.optional(S.String),
-          acquireStorageAccountLock: S.optional(S.String),
-          protectedItemCount: S.optional(S.Number),
-          storageAccountVersion: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          workloadType: S.optional(S.String),
-          operationType: S.optional(S.String),
-          extendedInfo: S.optional(S.Unknown),
-          lastUpdatedTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProtectionContainerInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(165, __c20, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegisterProtectionContainerRequest",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          resourceGuardProxyName: S.String.pipe(T.Label()),
-          resourceGuardOperationRequests: S.optional(__S(167, __c20, 7)),
-          resourceToBeDeleted: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}/unlockDelete",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ResourceGuardProxyUnlockDeleteRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          unlockDeleteExpiryTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UnlockDeleteResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/revokeInstantItemRecovery",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeItemLevelRecoveryConnectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerBackupRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}/cancel",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerJobCancellationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          objectType: S.String,
-          resourceGuardOperationRequests: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "RestoreRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          protectedItemName: S.String.pipe(T.Label()),
-          recoveryPointId: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(18, __c2, 2)),
-          eTag: S.optional(S.String),
-          properties: S.optional(__S(173, __c21, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerRestoreRequest" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           id: S.String,
-          properties: __S(11, __c1, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TriggerValidateOperationRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          fabricName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnregisterProtectionContainerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionAtRestType: S.optional(S.String),
-          keyUri: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          lastUpdateStatus: S.optional(S.String),
-          infrastructureEncryptionState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BackupResourceEncryptionConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(177, __c22, 1)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupEncryptionConfigs/backupResourceEncryptionConfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBackupResourceEncryptionConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(26, __c3, 2)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBackupResourceStorageConfigsNonCRRRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(29, __c3, 5)),
-          tags: S.optional(__S(18, __c2, 2)),
-          location: S.optional(S.String),
-          eTag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBackupResourceVaultConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          azureRegion: S.String.pipe(T.Label()),
-          featureType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupValidateFeatures",
-            code: 200,
-            apiVersion: "2026-08-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateFeatureSupportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          supportStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureVMResourceFeatureSupportResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vaultName: S.String.pipe(T.Label()),
-          id: S.String,
-          properties: __S(11, __c1, 3),
+          properties: __S(1264, __c79, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6773,7 +7091,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6810,7 +7128,28 @@ function __c23(j: number): any {
       });
   }
 }
-
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vaultName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupOperationResults/{operationId}",
+            code: 200,
+            apiVersion: "2026-08-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBackupOperationResultRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

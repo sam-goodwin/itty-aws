@@ -1371,8 +1371,8 @@ export const capturePayment: API.OperationMethod<
   CapturePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CapturePaymentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
+  input: __S(80, __c5, 0) as any as S.Schema<CapturePaymentRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<PaymentStatus>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1386,8 @@ export const createPayment: API.OperationMethod<
   CreatePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreatePaymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
+  input: __S(118, __c7, 6) as any as S.Schema<CreatePaymentRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<Payment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1401,8 @@ export const getPayment: API.OperationMethod<
   GetPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetPaymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetPaymentRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<Payment>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1416,8 @@ export const getStatusPayment: API.OperationMethod<
   GetStatusPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetStatusPaymentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetStatusPaymentRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<PaymentStatus>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1431,8 +1431,8 @@ export const listPaymentFees: API.OperationMethod<
   ListPaymentFeesError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListPaymentFeesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListPaymentFeesResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListPaymentFeesRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListPaymentFeesResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1448,8 @@ export const listPayments: API.PaginatedOperationMethod<
   Payment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(36, __c4, 4) as any as S.Schema<ListPaymentsRequest>,
-    output: __S(38, __c4, 6) as any as S.Schema<ListPaymentsResponse>,
+    input: __S(224, __c14, 0) as any as S.Schema<ListPaymentsRequest>,
+    output: __S(226, __c14, 2) as any as S.Schema<ListPaymentsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const refundPayment: API.OperationMethod<
   RefundPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<RefundPaymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
+  input: __S(0, __c0, 0) as any as S.Schema<RefundPaymentRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<Payment>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const resumePayment: API.OperationMethod<
   ResumePaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ResumePaymentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
+  input: __S(16, __c1, 0) as any as S.Schema<ResumePaymentRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<PaymentStatus>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const retryPayment: API.OperationMethod<
   RetryPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<RetryPaymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
+  input: __S(32, __c2, 0) as any as S.Schema<RetryPaymentRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<Payment>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const updateReturnUrlPayment: API.OperationMethod<
   UpdateReturnUrlPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateReturnUrlPaymentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaymentStatus>,
+  input: __S(48, __c3, 0) as any as S.Schema<UpdateReturnUrlPaymentRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<PaymentStatus>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const voidPayment: API.OperationMethod<
   VoidPaymentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<VoidPaymentRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Payment>,
+  input: __S(64, __c4, 0) as any as S.Schema<VoidPaymentRequest>,
+  output: __S(159, __c9, 15) as any as S.Schema<Payment>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1547,17 +1547,79 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
+          partial_amount: S.optional(S.NullOr(S.Number)),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/refund", code: 200 })),
+      ).annotate({ identifier: "RefundPaymentRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payment_id: S.String.pipe(T.Label()),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payments/{payment_id}/resume", code: 200 })),
+      ).annotate({ identifier: "ResumePaymentRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/retry", code: 200 })),
+      ).annotate({ identifier: "RetryPaymentRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payment_id: S.String.pipe(T.Label()),
+          return_url: S.String,
+        }).pipe(T.Http({ method: "PATCH", uri: "/payments/{payment_id}/return_url", code: 200 })),
+      ).annotate({
+        identifier: "UpdateReturnUrlPaymentRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/void", code: 200 })),
+      ).annotate({ identifier: "VoidPaymentRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/capture", code: 200 })),
       ).annotate({ identifier: "CapturePaymentRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "AccountSummary" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.NullOr(S.String),
@@ -1565,37 +1627,32 @@ function __c0(j: number): any {
           message: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentLastPaymentError" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          currency: S.String,
-          decimals: S.Number,
-          display_decimals: S.Number,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expected_by: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentProcessingDetails" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(1, __c0, 1)),
+          account: S.NullOr(__S(96, __c6, 0)),
           auto_capture_at: S.NullOr(S.String),
           capture_expires_at: S.NullOr(S.String),
           id: S.String,
-          last_payment_error: S.NullOr(__S(2, __c0, 2)),
+          last_payment_error: S.NullOr(__S(97, __c6, 1)),
           next_action: S.NullOr(S.Unknown),
           object: S.String,
-          processing_details: S.NullOr(__S(4, __c0, 4)),
+          processing_details: S.NullOr(__S(98, __c6, 2)),
           return_url: S.NullOr(S.String),
           status: S.String,
         }),
       ).annotate({ identifier: "PaymentStatus" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan_id: S.String,
@@ -1604,15 +1661,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePaymentRequestLineItemsItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
     case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
+      return S.Record(S.String, S.String);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           collect_shipping_address: S.optional(S.NullOr(S.Boolean)),
@@ -1631,7 +1684,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePaymentRequestPlanProduct",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           application_fee_amount: S.optional(S.NullOr(S.Number)),
@@ -1643,7 +1696,7 @@ function __c1(j: number): any {
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           plan_type: S.optional(S.NullOr(S.String)),
-          product: S.optional(S.NullOr(__S(9, __c1, 1))),
+          product: S.optional(S.NullOr(__S(115, __c7, 3))),
           product_id: S.optional(S.NullOr(S.String)),
           renewal_price: S.optional(S.NullOr(S.Number)),
           title: S.optional(S.NullOr(S.String)),
@@ -1651,7 +1704,7 @@ function __c1(j: number): any {
           visibility: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreatePaymentRequestPlan" });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.NullOr(S.String)),
@@ -1665,7 +1718,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePaymentRequestShippingAddress",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
@@ -1673,20 +1726,37 @@ function __c1(j: number): any {
           capture: S.optional(S.NullOr(S.Boolean)),
           confirmation_token: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          line_items: S.optional(__S(7, __c0, 7)),
+          line_items: S.optional(__S(113, __c7, 1)),
           member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(8, __c1, 0))),
+          metadata: S.optional(S.NullOr(__S(114, __c7, 2))),
           payment_method_id: S.optional(S.NullOr(S.String)),
-          plan: S.optional(__S(10, __c1, 2)),
+          plan: S.optional(__S(116, __c7, 4)),
           plan_id: S.optional(S.String),
           promo_code_id: S.optional(S.NullOr(S.String)),
           return_url: S.optional(S.NullOr(S.String)),
-          shipping_address: S.optional(S.NullOr(__S(11, __c1, 3))),
+          shipping_address: S.optional(S.NullOr(__S(117, __c7, 5))),
           statement_descriptor: S.optional(S.NullOr(S.String)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/payments", code: 200 })),
       ).annotate({ identifier: "CreatePaymentRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          currency: S.String,
+          decimals: S.Number,
+          display_decimals: S.Number,
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           city: S.NullOr(S.String),
@@ -1698,22 +1768,18 @@ function __c1(j: number): any {
           state: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentAddress" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          amount: __S(3, __c0, 3),
+          amount: __S(128, __c8, 0),
           percentage: S.NullOr(S.Number),
           release_at: S.NullOr(S.String),
           type: S.String,
         }),
       ).annotate({ identifier: "PaymentHold" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -1723,12 +1789,12 @@ function __c2(j: number): any {
           product_id: S.NullOr(S.String),
           product_title: S.NullOr(S.String),
           quantity: S.Number,
-          subtotal: S.NullOr(__S(3, __c0, 3)),
+          subtotal: S.NullOr(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "ReceiptLineItem" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           brand: S.NullOr(S.String),
@@ -1738,7 +1804,7 @@ function __c2(j: number): any {
           last4: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentInstrumentCard" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           png_1x: S.String,
@@ -1747,33 +1813,33 @@ function __c2(j: number): any {
           svg: S.String,
         }),
       ).annotate({ identifier: "PaymentMethodIconFiles" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          dark: __S(19, __c2, 3),
-          light: __S(19, __c2, 3),
+          dark: __S(150, __c9, 6),
+          light: __S(150, __c9, 6),
         }),
       ).annotate({
         identifier: "PaymentMethodIconVariants",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          card: __S(20, __c2, 4),
-          square: __S(20, __c2, 4),
+          card: __S(151, __c9, 7),
+          square: __S(151, __c9, 7),
         }),
       ).annotate({ identifier: "PaymentMethodIcons" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          card: S.NullOr(__S(18, __c2, 2)),
+          card: S.NullOr(__S(149, __c9, 5)),
           display_name: S.String,
-          icons: __S(21, __c2, 5),
+          icons: __S(152, __c9, 8),
           installment_count: S.NullOr(S.Number),
           payment_method_type: S.String,
         }),
       ).annotate({ identifier: "PaymentInstrument" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -1781,28 +1847,24 @@ function __c2(j: number): any {
           name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentRuleMatch" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(154, __c9, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "UserProfilePicture" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(25, __c3, 1),
+          profile_picture: __S(156, __c9, 12),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           address_line1: S.NullOr(S.String),
@@ -1814,13 +1876,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PaymentVerificationChecks",
       });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
-          amount_after_fees: __S(3, __c0, 3),
+          amount_after_fees: __S(128, __c8, 0),
           auto_refunded: S.Boolean,
-          billing_address: S.NullOr(__S(13, __c1, 5)),
+          billing_address: S.NullOr(__S(144, __c9, 0)),
           billing_reason: S.NullOr(S.String),
           checkout_configuration_id: S.NullOr(S.String),
           client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -1832,87 +1894,106 @@ function __c3(j: number): any {
           dispute_alerted_at: S.NullOr(S.String),
           failure_message: S.NullOr(S.String),
           financing_installments_count: S.NullOr(S.Number),
-          holds: __S(15, __c1, 7),
+          holds: __S(146, __c9, 2),
           id: S.String,
           last_payment_attempt_at: S.NullOr(S.String),
-          line_items: __S(17, __c2, 1),
+          line_items: __S(148, __c9, 4),
           member_id: S.NullOr(S.String),
           membership_id: S.NullOr(S.String),
           metadata: S.NullOr(S.Unknown),
           needs_tracking: S.NullOr(S.Boolean),
           next_payment_attempt_at: S.NullOr(S.String),
           paid_at: S.NullOr(S.String),
-          payment_instrument: S.NullOr(__S(22, __c2, 6)),
+          payment_instrument: S.NullOr(__S(153, __c9, 9)),
           payment_method_id: S.NullOr(S.String),
           payment_method_type: S.NullOr(S.String),
-          payment_rule_matches: __S(24, __c3, 0),
+          payment_rule_matches: __S(155, __c9, 11),
           payments_failed: S.Number,
           plan_id: S.NullOr(S.String),
-          presentment_total: S.NullOr(__S(3, __c0, 3)),
+          presentment_total: S.NullOr(__S(128, __c8, 0)),
           product_id: S.NullOr(S.String),
           promo_code_id: S.NullOr(S.String),
           recovery_url: S.NullOr(S.String),
           refundable: S.Boolean,
-          refunded_amount: S.NullOr(__S(3, __c0, 3)),
+          refunded_amount: S.NullOr(__S(128, __c8, 0)),
           refunded_at: S.NullOr(S.String),
           retryable: S.Boolean,
           risk_score: S.NullOr(S.Number),
           risk_signals: S.NullOr(S.Unknown),
           settlement_time_at: S.NullOr(S.String),
           shipment_id: S.NullOr(S.String),
-          shipping_address: S.NullOr(__S(13, __c1, 5)),
+          shipping_address: S.NullOr(__S(144, __c9, 0)),
           status: S.String,
           substatus: S.String,
-          subtotal: S.NullOr(__S(3, __c0, 3)),
-          tax_amount: S.NullOr(__S(3, __c0, 3)),
+          subtotal: S.NullOr(__S(128, __c8, 0)),
+          tax_amount: S.NullOr(__S(128, __c8, 0)),
           tax_behavior: S.NullOr(S.String),
-          tax_refunded_amount: __S(3, __c0, 3),
+          tax_refunded_amount: __S(128, __c8, 0),
           three_ds_verified: S.Boolean,
-          total: S.NullOr(__S(3, __c0, 3)),
+          total: S.NullOr(__S(128, __c8, 0)),
           updated_at: S.String,
-          usd_total: S.NullOr(__S(3, __c0, 3)),
-          user: S.NullOr(__S(26, __c3, 2)),
-          verification_checks: S.NullOr(__S(27, __c3, 3)),
+          usd_total: S.NullOr(__S(128, __c8, 0)),
+          user: S.NullOr(__S(157, __c9, 13)),
+          verification_checks: S.NullOr(__S(158, __c9, 14)),
           voidable: S.Boolean,
         }),
       ).annotate({ identifier: "Payment" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/payments/{id}", code: 200 })),
       ).annotate({ identifier: "GetPaymentRequest" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payment_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/payments/{payment_id}/status", code: 200 })),
       ).annotate({ identifier: "GetStatusPaymentRequest" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/payments/{id}/fees", code: 200 })),
       ).annotate({ identifier: "ListPaymentFeesRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          amount: __S(3, __c0, 3),
+          amount: __S(128, __c8, 0),
           collected_at: S.NullOr(S.String),
           description: S.NullOr(S.String),
           label: S.String,
           origin: S.String,
-          settlement_amount: __S(3, __c0, 3),
+          settlement_amount: __S(128, __c8, 0),
           type: S.String,
         }),
       ).annotate({ identifier: "PaymentFee" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(194, __c12, 2),
+          page_info: __S(208, __c13, 0),
+        }),
+      ).annotate({ identifier: "ListPaymentFeesResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1923,14 +2004,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPaymentFeesResponsePageInfo",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(33, __c4, 1),
-          page_info: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "ListPaymentFeesResponse" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -1953,60 +2031,17 @@ function __c4(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/payments", code: 200 })),
       ).annotate({ identifier: "ListPaymentsRequest" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(37, __c4, 5),
-          page_info: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "ListPaymentsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          partial_amount: S.optional(S.NullOr(S.Number)),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/refund", code: 200 })),
-      ).annotate({ identifier: "RefundPaymentRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          payment_id: S.String.pipe(T.Label()),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payments/{payment_id}/resume", code: 200 })),
-      ).annotate({ identifier: "ResumePaymentRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/retry", code: 200 })),
-      ).annotate({ identifier: "RetryPaymentRequest" });
+      return S.Array(__S(159, __c9, 15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          payment_id: S.String.pipe(T.Label()),
-          return_url: S.String,
-        }).pipe(T.Http({ method: "PATCH", uri: "/payments/{payment_id}/return_url", code: 200 })),
-      ).annotate({
-        identifier: "UpdateReturnUrlPaymentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/payments/{id}/void", code: 200 })),
-      ).annotate({ identifier: "VoidPaymentRequest" });
+          data: __S(225, __c14, 1),
+          page_info: __S(208, __c13, 0),
+        }),
+      ).annotate({ identifier: "ListPaymentsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

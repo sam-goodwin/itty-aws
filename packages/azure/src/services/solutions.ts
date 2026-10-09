@@ -1577,8 +1577,8 @@ export const ApplicationDefinitionsCreateOrUpdate: API.OperationMethod<
   ApplicationDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1592,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1607,8 @@ export const ApplicationsCreateOrUpdateById: API.OperationMethod<
   ApplicationsCreateOrUpdateByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<ApplicationsCreateOrUpdateByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1622,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,8 +1637,8 @@ export const DeleteApplicationById: API.OperationMethod<
   DeleteApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteApplicationByIdRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteApplicationByIdResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteApplicationByIdRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteApplicationByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1652,8 +1652,8 @@ export const DeleteApplicationDefinition: API.OperationMethod<
   DeleteApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteApplicationDefinitionRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteApplicationDefinitionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteApplicationDefinitionRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<DeleteApplicationDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1667,8 +1667,8 @@ export const DeleteJitRequest: API.OperationMethod<
   DeleteJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteJitRequestRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteJitRequestResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteJitRequestRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteJitRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1682,8 +1682,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetApplicationResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1697,8 +1697,8 @@ export const GetApplicationById: API.OperationMethod<
   GetApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetApplicationByIdRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetApplicationByIdResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetApplicationByIdRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<GetApplicationByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1712,8 +1712,8 @@ export const GetApplicationDefinition: API.OperationMethod<
   GetApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetApplicationDefinitionRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetApplicationDefinitionResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetApplicationDefinitionRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetApplicationDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1727,8 +1727,8 @@ export const GetJitRequest: API.OperationMethod<
   GetJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetJitRequestRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetJitRequestResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetJitRequestRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<GetJitRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1742,8 @@ export const JitRequestsCreateOrUpdate: API.OperationMethod<
   JitRequestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<JitRequestsCreateOrUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<JitRequestsCreateOrUpdateResponse>,
+  input: __S(241, __c15, 1) as any as S.Schema<JitRequestsCreateOrUpdateRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<JitRequestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1757,8 +1757,8 @@ export const ListApplicationAllowedUpgradePlans: API.OperationMethod<
   ListApplicationAllowedUpgradePlansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListApplicationAllowedUpgradePlansRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AllowedUpgradePlansResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListApplicationAllowedUpgradePlansRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<AllowedUpgradePlansResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1772,8 @@ export const ListApplicationByResourceGroup: API.OperationMethod<
   ListApplicationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListApplicationByResourceGroupRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ApplicationListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListApplicationByResourceGroupRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1787,8 +1787,8 @@ export const ListApplicationBySubscription: API.OperationMethod<
   ListApplicationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListApplicationBySubscriptionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ApplicationListResult>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListApplicationBySubscriptionRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<ApplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1802,8 @@ export const ListApplicationDefinitionByResourceGroup: API.OperationMethod<
   ListApplicationDefinitionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListApplicationDefinitionByResourceGroupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ApplicationDefinitionListResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListApplicationDefinitionByResourceGroupRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ApplicationDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1817,8 @@ export const ListApplicationDefinitionBySubscription: API.OperationMethod<
   ListApplicationDefinitionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListApplicationDefinitionBySubscriptionRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ApplicationDefinitionListResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListApplicationDefinitionBySubscriptionRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ApplicationDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1832,8 @@ export const ListApplicationTokens: API.OperationMethod<
   ListApplicationTokensError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListApplicationTokensRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ManagedIdentityTokenResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListApplicationTokensRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ManagedIdentityTokenResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1847,8 @@ export const ListJitRequestByResourceGroup: API.OperationMethod<
   ListJitRequestByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListJitRequestByResourceGroupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<JitRequestDefinitionListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListJitRequestByResourceGroupRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<JitRequestDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1862,8 @@ export const ListJitRequestBySubscription: API.OperationMethod<
   ListJitRequestBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListJitRequestBySubscriptionRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<JitRequestDefinitionListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListJitRequestBySubscriptionRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<JitRequestDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1877,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(452, __c28, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1892,8 @@ export const RefreshApplicationPermissions: API.OperationMethod<
   RefreshApplicationPermissionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<RefreshApplicationPermissionsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<RefreshApplicationPermissionsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<RefreshApplicationPermissionsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<RefreshApplicationPermissionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1907,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1922,8 @@ export const UpdateApplicationAccess: API.OperationMethod<
   UpdateApplicationAccessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UpdateApplicationAccessRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<UpdateApplicationAccessResponse>,
+  input: __S(513, __c32, 1) as any as S.Schema<UpdateApplicationAccessRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<UpdateApplicationAccessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +1937,8 @@ export const UpdateApplicationById: API.OperationMethod<
   UpdateApplicationByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<UpdateApplicationByIdRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<UpdateApplicationByIdResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateApplicationByIdRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<UpdateApplicationByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1952,8 @@ export const UpdateApplicationDefinition: API.OperationMethod<
   UpdateApplicationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<UpdateApplicationDefinitionRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<UpdateApplicationDefinitionResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<UpdateApplicationDefinitionRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<UpdateApplicationDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1967,8 +1967,8 @@ export const UpdateJitRequest: API.OperationMethod<
   UpdateJitRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdateJitRequestRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<UpdateJitRequestResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateJitRequestRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<UpdateJitRequestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1978,137 +1978,16 @@ export const UpdateJitRequest: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          size: S.optional(S.String),
-          family: S.optional(S.String),
-          model: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.String,
-          roleDefinitionId: S.String,
-        }),
-      ).annotate({ identifier: "ApplicationAuthorization" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          uri: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationDefinitionArtifact",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationNotificationEndpoint",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          notificationEndpoints: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "ApplicationNotificationPolicy",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allowedActions: S.optional(__S(9, __c1, 1)),
-          allowedDataActions: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ApplicationPackageLockingPolicyDefinition",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentMode: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationDeploymentPolicy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationManagementPolicy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          policyDefinitionId: S.optional(S.String),
-          parameters: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationPolicy" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          lockLevel: S.String,
-          displayName: S.optional(S.String),
-          isEnabled: S.optional(S.Boolean),
-          authorizations: S.optional(__S(3, __c0, 3)),
-          artifacts: S.optional(__S(5, __c0, 5)),
-          description: S.optional(S.String),
-          packageFileUri: S.optional(S.String),
-          storageAccountId: S.optional(S.String),
-          mainTemplate: S.optional(S.Unknown),
-          createUiDefinition: S.optional(S.Unknown),
-          notificationPolicy: S.optional(__S(8, __c1, 0)),
-          lockingPolicy: S.optional(__S(11, __c1, 3)),
-          deploymentPolicy: S.optional(__S(12, __c1, 4)),
-          managementPolicy: S.optional(__S(13, __c1, 5)),
-          policies: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "ApplicationDefinitionProperties",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationDefinitionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(16, __c2, 0),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(91, __c5, 11),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2120,7 +1999,57 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationDefinitionsCreateOrUpdateRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(91, __c5, 11),
+        }),
+      ).annotate({
+        identifier: "ApplicationDefinitionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.String,
+          roleDefinitionId: S.String,
+        }),
+      ).annotate({ identifier: "ApplicationAuthorization" });
     case 2:
+      return S.Array(__S(17, __c1, 1));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          size: S.optional(S.String),
+          family: S.optional(S.String),
+          model: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2133,95 +2062,123 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationDefinitionsCreateOrUpdateResponseSystemData",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(18, __c2, 2)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "ApplicationDefinitionsCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JitApproverDefinition" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          jitAccessEnabled: S.Boolean,
-          jitApprovalMode: S.optional(S.String),
-          jitApprovers: S.optional(__S(21, __c2, 5)),
-          maximumJitAccessDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationJitAccessPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          managedResourceGroupId: S.optional(S.String),
-          applicationDefinitionId: S.optional(S.String),
-          parameters: S.optional(S.Unknown),
-          jitAccessPolicy: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "ApplicationPropertiesInput",
-      });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          publisher: S.String,
-          product: S.String,
-          promotionCode: S.optional(S.String),
-          version: S.String,
+          uri: S.String,
+          type: S.String,
         }),
-      ).annotate({ identifier: "Plan" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedResourceIdentityInput",
+      ).annotate({
+        identifier: "ApplicationDefinitionArtifact",
       });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
     case 2:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(26, __c3, 2)),
+          uri: S.String,
         }),
-      ).annotate({ identifier: "IdentityInput" });
+      ).annotate({
+        identifier: "ApplicationNotificationEndpoint",
+      });
+    case 3:
+      return S.Array(__S(82, __c5, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          notificationEndpoints: __S(83, __c5, 3),
+        }),
+      ).annotate({
+        identifier: "ApplicationNotificationPolicy",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowedActions: S.optional(__S(64, __c4, 0)),
+          allowedDataActions: S.optional(__S(85, __c5, 5)),
+        }),
+      ).annotate({
+        identifier: "ApplicationPackageLockingPolicyDefinition",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentMode: S.String,
+        }),
+      ).annotate({
+        identifier: "ApplicationDeploymentPolicy",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationManagementPolicy",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          policyDefinitionId: S.optional(S.String),
+          parameters: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationPolicy" });
+    case 10:
+      return S.Array(__S(89, __c5, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          lockLevel: S.String,
+          displayName: S.optional(S.String),
+          isEnabled: S.optional(S.Boolean),
+          authorizations: S.optional(__S(18, __c1, 2)),
+          artifacts: S.optional(__S(81, __c5, 1)),
+          description: S.optional(S.String),
+          packageFileUri: S.optional(S.String),
+          storageAccountId: S.optional(S.String),
+          mainTemplate: S.optional(S.Unknown),
+          createUiDefinition: S.optional(S.Unknown),
+          notificationPolicy: S.optional(__S(84, __c5, 4)),
+          lockingPolicy: S.optional(__S(86, __c5, 6)),
+          deploymentPolicy: S.optional(__S(87, __c5, 7)),
+          managementPolicy: S.optional(__S(88, __c5, 8)),
+          policies: S.optional(__S(90, __c5, 10)),
+        }),
+      ).annotate({
+        identifier: "ApplicationDefinitionProperties",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(23, __c2, 7),
-          plan: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(112, __c7, 0),
+          plan: S.optional(__S(160, __c10, 0)),
           kind: S.String,
-          identity: S.optional(__S(27, __c3, 3)),
+          identity: S.optional(__S(114, __c7, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2233,7 +2190,190 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(184, __c11, 8),
+          plan: S.optional(__S(160, __c10, 0)),
+          kind: S.String,
+          identity: S.optional(__S(187, __c11, 11)),
+        }),
+      ).annotate({
+        identifier: "ApplicationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managedResourceGroupId: S.optional(S.String),
+          applicationDefinitionId: S.optional(S.String),
+          parameters: S.optional(S.Unknown),
+          jitAccessPolicy: S.optional(__S(178, __c11, 2)),
+        }),
+      ).annotate({
+        identifier: "ApplicationPropertiesInput",
+      });
+    case 1:
+      return S.Record(S.String, __S(128, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedResourceIdentityInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oid: S.optional(S.String),
+          puid: S.optional(S.String),
+          applicationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationClientDetails" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          publisher: S.String,
+          product: S.String,
+          promotionCode: S.optional(S.String),
+          version: S.String,
+        }),
+      ).annotate({ identifier: "Plan" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JitApproverDefinition" });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jitAccessEnabled: S.Boolean,
+          jitApprovalMode: S.optional(S.String),
+          jitApprovers: S.optional(__S(177, __c11, 1)),
+          maximumJitAccessDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationJitAccessPolicy",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUsageId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationBillingDetailsDefinition",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contactName: S.optional(S.String),
+          email: S.String,
+          phone: S.String,
+        }),
+      ).annotate({
+        identifier: "ApplicationPackageContact",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          publicAzure: S.optional(S.String),
+          governmentCloud: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApplicationPackageSupportUrls",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          uri: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "ApplicationArtifact" });
+    case 7:
+      return S.Array(__S(182, __c11, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          managedResourceGroupId: S.optional(S.String),
+          applicationDefinitionId: S.optional(S.String),
+          parameters: S.optional(S.Unknown),
+          outputs: S.optional(S.Unknown),
+          provisioningState: S.optional(S.String),
+          billingDetails: S.optional(__S(179, __c11, 3)),
+          jitAccessPolicy: S.optional(__S(178, __c11, 2)),
+          publisherTenantId: S.optional(S.String),
+          authorizations: S.optional(__S(18, __c1, 2)),
+          managementMode: S.optional(S.String),
+          customerSupport: S.optional(__S(180, __c11, 4)),
+          supportUrls: S.optional(__S(181, __c11, 5)),
+          artifacts: S.optional(__S(183, __c11, 7)),
+          createdBy: S.optional(__S(144, __c9, 0)),
+          updatedBy: S.optional(__S(144, __c9, 0)),
+        }),
+      ).annotate({ identifier: "ApplicationProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserAssignedResourceIdentity",
+      });
+    case 10:
+      return S.Record(S.String, __S(185, __c11, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(186, __c11, 10)),
+        }),
+      ).annotate({ identifier: "Identity" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2246,98 +2386,244 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateResponseSystemData",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUsageId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationBillingDetailsDefinition",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contactName: S.optional(S.String),
-          email: S.String,
-          phone: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationPackageContact",
-      });
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publicAzure: S.optional(S.String),
-          governmentCloud: S.optional(S.String),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jitRequestName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetJitRequestRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({ identifier: "GetJitRequestResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          duration: S.String,
+          startTime: S.String,
+        }),
+      ).annotate({ identifier: "JitSchedulingPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationResourceId: S.String,
+          publisherTenantId: S.optional(S.String),
+          jitAuthorizationPolicies: __S(18, __c1, 2),
+          jitSchedulingPolicy: __S(224, __c14, 0),
+          provisioningState: S.optional(S.String),
+          jitRequestState: S.optional(S.String),
+          createdBy: S.optional(__S(144, __c9, 0)),
+          updatedBy: S.optional(__S(144, __c9, 0)),
+        }),
+      ).annotate({ identifier: "JitRequestProperties" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationResourceId: S.String,
+          jitAuthorizationPolicies: __S(18, __c1, 2),
+          jitSchedulingPolicy: __S(224, __c14, 0),
         }),
       ).annotate({
-        identifier: "ApplicationPackageSupportUrls",
+        identifier: "JitRequestPropertiesInput",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          uri: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "ApplicationArtifact" });
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jitRequestName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(240, __c15, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "JitRequestsCreateOrUpdateRequest",
+      });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "JitRequestsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listAllowedUpgradePlans",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationAllowedUpgradePlansRequest",
+      });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(257, __c16, 1)),
+        }),
+      ).annotate({
+        identifier: "AllowedUpgradePlansResult",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationByResourceGroupRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationSystemData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(288, __c18, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(184, __c11, 8),
+          plan: S.optional(__S(160, __c10, 0)),
+          kind: S.String,
+          identity: S.optional(__S(187, __c11, 11)),
+        }),
+      ).annotate({ identifier: "Application" });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          oid: S.optional(S.String),
-          puid: S.optional(S.String),
-          applicationId: S.optional(S.String),
+          value: S.optional(__S(290, __c18, 2)),
+          nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ApplicationClientDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          managedResourceGroupId: S.optional(S.String),
-          applicationDefinitionId: S.optional(S.String),
-          parameters: S.optional(S.Unknown),
-          outputs: S.optional(S.Unknown),
-          provisioningState: S.optional(S.String),
-          billingDetails: S.optional(__S(30, __c3, 6)),
-          jitAccessPolicy: S.optional(__S(22, __c2, 6)),
-          publisherTenantId: S.optional(S.String),
-          authorizations: S.optional(__S(3, __c0, 3)),
-          managementMode: S.optional(S.String),
-          customerSupport: S.optional(__S(31, __c3, 7)),
-          supportUrls: S.optional(__S(32, __c4, 0)),
-          artifacts: S.optional(__S(34, __c4, 2)),
-          createdBy: S.optional(__S(35, __c4, 3)),
-          updatedBy: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ApplicationProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UserAssignedResourceIdentity",
-      });
-    case 6:
-      return S.Record(S.String, __S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "Identity" });
+      ).annotate({ identifier: "ApplicationListResult" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationBySubscriptionRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationDefinitionByResourceGroupRequest",
+      });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2346,56 +2632,478 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(36, __c4, 4),
-          plan: S.optional(__S(24, __c3, 0)),
-          kind: S.String,
-          identity: S.optional(__S(39, __c4, 7)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(91, __c5, 11),
+        }),
+      ).annotate({ identifier: "ApplicationDefinition" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(337, __c21, 1)),
+          nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ApplicationsCreateOrUpdateResponse",
+        identifier: "ApplicationDefinitionListResult",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationDefinitionBySubscriptionRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          authorizationAudience: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListApplicationTokensRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          expiresIn: S.optional(S.String),
+          expiresOn: S.optional(S.String),
+          notBefore: S.optional(S.String),
+          authorizationAudience: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          tokenType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedIdentityToken" });
+    case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(370, __c23, 2)),
+        }),
+      ).annotate({
+        identifier: "ManagedIdentityTokenResult",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJitRequestByResourceGroupRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({ identifier: "JitRequestDefinition" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(401, __c25, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "JitRequestDefinitionListResult",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListJitRequestBySubscriptionRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           applicationId: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(23, __c2, 7),
-          plan: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(112, __c7, 0),
+          plan: S.optional(__S(160, __c10, 0)),
           kind: S.String,
-          identity: S.optional(__S(27, __c3, 3)),
+          identity: S.optional(__S(114, __c7, 2)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/{applicationId+}", code: 200, apiVersion: "2021-07-01" }),
         ),
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateByIdRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(48, __c3, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(36, __c4, 4),
-          plan: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(184, __c11, 8),
+          plan: S.optional(__S(160, __c10, 0)),
           kind: S.String,
-          identity: S.optional(__S(39, __c4, 7)),
+          identity: S.optional(__S(187, __c11, 11)),
         }),
       ).annotate({
         identifier: "ApplicationsCreateOrUpdateByIdResponse",
       });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Solutions/operations",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(449, __c28, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
     case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(451, __c28, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshApplicationPermissionsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
+          plan: S.optional(__S(496, __c31, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(114, __c7, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(184, __c11, 8)),
+          plan: S.optional(__S(496, __c31, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(187, __c11, 11)),
+        }),
+      ).annotate({
+        identifier: "UpdateApplicationResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          publisher: S.optional(S.String),
+          product: S.optional(S.String),
+          promotionCode: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlanPatchable" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          originRequestId: S.optional(S.String),
+          requestorId: S.optional(S.String),
+          tenantDisplayName: S.optional(S.String),
+          subjectDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JitRequestMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          approver: S.optional(S.String),
+          metadata: __S(512, __c32, 0),
+          status: S.String,
+          subStatus: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/updateAccess",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationAccessRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateApplicationAccessResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(112, __c7, 0)),
+          plan: S.optional(__S(496, __c31, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(114, __c7, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/{applicationId+}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationByIdRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(184, __c11, 8)),
+          plan: S.optional(__S(496, __c31, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(187, __c11, 11)),
+        }),
+      ).annotate({
+        identifier: "UpdateApplicationByIdResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationDefinitionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          managedBy: S.optional(S.String),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(91, __c5, 11),
+        }),
+      ).annotate({
+        identifier: "UpdateApplicationDefinitionResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          jitRequestName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
+            code: 200,
+            apiVersion: "2021-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateJitRequestRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({ identifier: "UpdateJitRequestResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2410,11 +3118,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteApplicationResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
@@ -2429,7 +3145,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationByIdRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2446,7 +3166,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationDefinitionRequest",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2463,7 +3187,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteJitRequestRequest" });
   }
 }
-function __c6(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2487,17 +3211,21 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(36, __c4, 4),
-          plan: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(184, __c11, 8),
+          plan: S.optional(__S(160, __c10, 0)),
           kind: S.String,
-          identity: S.optional(__S(39, __c4, 7)),
+          identity: S.optional(__S(187, __c11, 11)),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.Label()),
@@ -2507,26 +3235,30 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetApplicationByIdRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(36, __c4, 4),
-          plan: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(184, __c11, 8),
+          plan: S.optional(__S(160, __c10, 0)),
           kind: S.String,
-          identity: S.optional(__S(39, __c4, 7)),
+          identity: S.optional(__S(187, __c11, 11)),
         }),
       ).annotate({
         identifier: "GetApplicationByIdResponse",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2543,633 +3275,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetApplicationDefinitionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(16, __c1, 0)),
+          systemData: S.optional(__S(192, __c12, 0)),
           managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(16, __c2, 0),
+          sku: S.optional(__S(32, __c2, 0)),
+          properties: __S(91, __c5, 11),
         }),
       ).annotate({
         identifier: "GetApplicationDefinitionResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jitRequestName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetJitRequestRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          duration: S.String,
-          startTime: S.String,
-        }),
-      ).annotate({ identifier: "JitSchedulingPolicy" });
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationResourceId: S.String,
-          publisherTenantId: S.optional(S.String),
-          jitAuthorizationPolicies: __S(3, __c0, 3),
-          jitSchedulingPolicy: __S(55, __c6, 7),
-          provisioningState: S.optional(S.String),
-          jitRequestState: S.optional(S.String),
-          createdBy: S.optional(__S(35, __c4, 3)),
-          updatedBy: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "JitRequestProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "GetJitRequestResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationResourceId: S.String,
-          jitAuthorizationPolicies: __S(3, __c0, 3),
-          jitSchedulingPolicy: __S(55, __c6, 7),
-        }),
-      ).annotate({
-        identifier: "JitRequestPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jitRequestName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(58, __c7, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "JitRequestsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "JitRequestsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listAllowedUpgradePlans",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationAllowedUpgradePlansRequest",
-      });
-    case 6:
-      return S.Array(__S(24, __c3, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "AllowedUpgradePlansResult",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationByResourceGroupRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationSystemData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(65, __c8, 1)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(36, __c4, 4),
-          plan: S.optional(__S(24, __c3, 0)),
-          kind: S.String,
-          identity: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "Application" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(67, __c8, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applications",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationBySubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationDefinitionByResourceGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "ApplicationDefinition" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(72, __c9, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationDefinitionListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/applicationDefinitions",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationDefinitionBySubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          authorizationAudience: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListApplicationTokensRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          expiresIn: S.optional(S.String),
-          expiresOn: S.optional(S.String),
-          notBefore: S.optional(S.String),
-          authorizationAudience: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          tokenType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedIdentityToken" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ManagedIdentityTokenResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJitRequestByResourceGroupRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "JitRequestDefinition" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(81, __c10, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "JitRequestDefinitionListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Solutions/jitRequests",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListJitRequestBySubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Solutions/operations",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(85, __c10, 5)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(87, __c10, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshApplicationPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          publisher: S.optional(S.String),
-          product: S.optional(S.String),
-          promotionCode: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlanPatchable" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(23, __c2, 7)),
-          plan: S.optional(__S(90, __c11, 2)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(36, __c4, 4)),
-          plan: S.optional(__S(90, __c11, 2)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "UpdateApplicationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          originRequestId: S.optional(S.String),
-          requestorId: S.optional(S.String),
-          tenantDisplayName: S.optional(S.String),
-          subjectDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JitRequestMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          approver: S.optional(S.String),
-          metadata: __S(93, __c11, 5),
-          status: S.String,
-          subStatus: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/updateAccess",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateApplicationAccessRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateApplicationAccessResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(23, __c2, 7)),
-          plan: S.optional(__S(90, __c11, 2)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/{applicationId+}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateApplicationByIdRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(36, __c4, 4)),
-          plan: S.optional(__S(90, __c11, 2)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "UpdateApplicationByIdResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationDefinitionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateApplicationDefinitionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          managedBy: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          properties: __S(16, __c2, 0),
-        }),
-      ).annotate({
-        identifier: "UpdateApplicationDefinitionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          jitRequestName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
-            code: 200,
-            apiVersion: "2021-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateJitRequestRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(29, __c3, 5)),
-          properties: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "UpdateJitRequestResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -813,8 +813,8 @@ export const createReferralPartner: API.OperationMethod<
   CreateReferralPartnerError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateReferralPartnerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateReferralPartnerResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateReferralPartnerRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<CreateReferralPartnerResponse>,
   errors: [Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -828,8 +828,8 @@ export const getPartner: API.OperationMethod<
   GetPartnerError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetPartnerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Partner>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetPartnerRequest>,
+  output: __S(40, __c2, 8) as any as S.Schema<Partner>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -843,8 +843,8 @@ export const getPartnerBusiness: API.OperationMethod<
   GetPartnerBusinessError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetPartnerBusinessRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetPartnerBusinessResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetPartnerBusinessRequest>,
+  output: __S(56, __c3, 8) as any as S.Schema<GetPartnerBusinessResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const getPartnerLeaderboard: API.OperationMethod<
   GetPartnerLeaderboardError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetPartnerLeaderboardRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetPartnerLeaderboardResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPartnerLeaderboardRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<GetPartnerLeaderboardResponse>,
   errors: [BadRequest],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -875,8 +875,8 @@ export const listPartnerBusinessEarnings: API.PaginatedOperationMethod<
   ListPartnerBusinessEarningsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32, __c4, 0) as any as S.Schema<ListPartnerBusinessEarningsRequest>,
-    output: __S(40, __c5, 0) as any as S.Schema<ListPartnerBusinessEarningsResponse>,
+    input: __S(113, __c7, 1) as any as S.Schema<ListPartnerBusinessEarningsRequest>,
+    output: __S(119, __c7, 7) as any as S.Schema<ListPartnerBusinessEarningsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const listPartnerBusinesses: API.PaginatedOperationMethod<
   ListPartnerBusinessesResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(41, __c5, 1) as any as S.Schema<ListPartnerBusinessesRequest>,
-    output: __S(44, __c5, 4) as any as S.Schema<ListPartnerBusinessesResponse>,
+    input: __S(160, __c10, 0) as any as S.Schema<ListPartnerBusinessesRequest>,
+    output: __S(163, __c10, 3) as any as S.Schema<ListPartnerBusinessesResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -929,8 +929,8 @@ export const listReferredUsers: API.PaginatedOperationMethod<
   ListReferredUsersResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45, __c5, 5) as any as S.Schema<ListReferredUsersRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListReferredUsersResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListReferredUsersRequest>,
+    output: __S(6, __c0, 6) as any as S.Schema<ListReferredUsersResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -952,6 +952,78 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          has_businesses: S.optional(S.Boolean.pipe(T.Query())),
+          has_earning_businesses: S.optional(S.Boolean.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/partners/referred_users", code: 200 })),
+      ).annotate({ identifier: "ListReferredUsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.String,
+          currency: S.String,
+          decimals: S.Number,
+          display_decimals: S.Number,
+        }),
+      ).annotate({ identifier: "Money" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ListReferredUsersResponseDataItemUserProfilePicture",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.NullOr(S.String)),
+          email: S.NullOr(S.String),
+          id: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          profile_picture: S.optional(__S(2, __c0, 2)),
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "ListReferredUsersResponseDataItemUser",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          business_count: S.Number,
+          earnings: __S(1, __c0, 1),
+          joined_at: S.String,
+          total_earnings_usd: S.String,
+          total_volume_usd: S.String,
+          user: __S(3, __c0, 3),
+          volume_30d: __S(1, __c0, 1),
+        }),
+      ).annotate({
+        identifier: "ListReferredUsersResponseDataItem",
+      });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(5, __c0, 5),
+          page_info: __S(144, __c9, 0),
+        }),
+      ).annotate({
+        identifier: "ListReferredUsersResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/partners", code: 200 })),
       ).annotate({
@@ -966,70 +1038,74 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateReferralPartnerResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/partners/{id}", code: 200 })),
       ).annotate({ identifier: "GetPartnerRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           unit: S.String,
           value: S.Number,
         }),
       ).annotate({ identifier: "PartnerPayoutDuration" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           income_source: S.String,
           percentage: S.Number,
         }),
       ).annotate({ identifier: "PartnerPayoutRate" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(34, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          duration: __S(3, __c0, 3),
-          rates: __S(5, __c0, 5),
+          duration: __S(33, __c2, 1),
+          rates: __S(35, __c2, 3),
           tier: S.String,
         }),
       ).annotate({ identifier: "PartnerPayoutTier" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "UserProfilePicture" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(8, __c1, 0),
+          profile_picture: __S(38, __c2, 6),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           certification_complete: S.Boolean,
           joined_at: S.NullOr(S.String),
-          payout_rates: __S(7, __c0, 7),
+          payout_rates: __S(37, __c2, 5),
           referred_businesses_count: S.Number,
-          user: __S(9, __c1, 1),
+          user: __S(39, __c2, 7),
           verification_waitlist_joined: S.Boolean,
           whop_partner_verified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Partner" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1037,7 +1113,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPartnerBusinessRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accept_bank_payments: S.String,
@@ -1054,13 +1130,13 @@ function __c1(j: number): any {
           transfer: S.String,
         }),
       ).annotate({ identifier: "AccountCapabilities" });
-    case 5:
+    case 2:
       return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          blocked_capabilities: __S(13, __c1, 5),
+          blocked_capabilities: __S(50, __c3, 2),
           cta: S.String,
           cta_label: S.String,
           description: S.String,
@@ -1071,17 +1147,13 @@ function __c1(j: number): any {
           title: S.String,
         }),
       ).annotate({ identifier: "AccountRecommendedAction" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          blocked_capabilities: __S(13, __c1, 5),
+          blocked_capabilities: __S(50, __c3, 2),
           cta: S.NullOr(S.String),
           cta_label: S.String,
           description: S.String,
@@ -1090,23 +1162,49 @@ function __c2(j: number): any {
           title: S.String,
         }),
       ).annotate({ identifier: "AccountRequiredAction" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(53, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.NullOr(__S(12, __c1, 4)),
+          capabilities: S.NullOr(__S(49, __c3, 1)),
           id: S.String,
           logo_url: S.NullOr(S.String),
-          recommended_actions: S.NullOr(__S(15, __c1, 7)),
-          required_actions: S.NullOr(__S(17, __c2, 1)),
+          recommended_actions: S.NullOr(__S(52, __c3, 4)),
+          required_actions: S.NullOr(__S(54, __c3, 6)),
           route: S.String,
           title: S.String,
         }),
       ).annotate({
         identifier: "GetPartnerBusinessResponseAccount",
       });
-    case 3:
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.NullOr(__S(55, __c3, 7)),
+          blueprint_partner: S.NullOr(__S(80, __c5, 0)),
+          created_at: S.String,
+          earnings_usd: __S(81, __c5, 1),
+          first_tier_partner: S.NullOr(__S(80, __c5, 0)),
+          id: S.String,
+          my_partner_tier: S.String,
+          object: S.String,
+          owner: S.NullOr(__S(82, __c5, 2)),
+          payout_percentages: __S(83, __c5, 3),
+          referral_expires_at: S.NullOr(S.String),
+          referral_started_at: S.NullOr(S.String),
+          second_tier_partner: S.NullOr(__S(80, __c5, 0)),
+          status: S.String,
+          volume_usd: __S(84, __c5, 4),
+        }),
+      ).annotate({
+        identifier: "GetPartnerBusinessResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -1114,18 +1212,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPartnerBusinessResponseBlueprintPartnerProfilePicture",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(19, __c2, 3),
+          profile_picture: __S(64, __c4, 0),
           username: S.String,
         }),
       ).annotate({
         identifier: "GetPartnerBusinessResponseBlueprintPartner",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.String,
@@ -1135,19 +1237,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPartnerBusinessResponseEarningsUsd",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.NullOr(S.String),
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(19, __c2, 3),
+          profile_picture: __S(64, __c4, 0),
           username: S.String,
         }),
       ).annotate({
         identifier: "GetPartnerBusinessResponseOwner",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ad_spend: S.NullOr(S.Number),
@@ -1158,11 +1260,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPartnerBusinessResponsePayoutPercentages",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           attributed: S.String,
@@ -1173,29 +1271,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPartnerBusinessResponseVolumeUsd",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.NullOr(__S(18, __c2, 2)),
-          blueprint_partner: S.NullOr(__S(20, __c2, 4)),
-          created_at: S.String,
-          earnings_usd: __S(21, __c2, 5),
-          first_tier_partner: S.NullOr(__S(20, __c2, 4)),
-          id: S.String,
-          my_partner_tier: S.String,
-          object: S.String,
-          owner: S.NullOr(__S(22, __c2, 6)),
-          payout_percentages: __S(23, __c2, 7),
-          referral_expires_at: S.NullOr(S.String),
-          referral_started_at: S.NullOr(S.String),
-          second_tier_partner: S.NullOr(__S(20, __c2, 4)),
-          status: S.String,
-          volume_usd: __S(24, __c3, 0),
-        }),
-      ).annotate({
-        identifier: "GetPartnerBusinessResponse",
-      });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           period: S.optional(S.String.pipe(T.Query())),
@@ -1203,54 +1283,54 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPartnerLeaderboardRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           city: S.NullOr(S.String),
           country: S.NullOr(S.String),
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
-          profile_picture: S.optional(__S(19, __c2, 3)),
+          profile_picture: S.optional(__S(64, __c4, 0)),
           username: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPartnerLeaderboardResponseLeadersItemUser",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           first_referral_started_at: S.String,
           rank: S.Number,
           total_earnings_usd: S.String,
           total_volume_usd: S.String,
-          user: S.NullOr(__S(27, __c3, 3)),
+          user: S.NullOr(__S(97, __c6, 1)),
         }),
       ).annotate({
         identifier: "GetPartnerLeaderboardResponseLeadersItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          leaders: __S(29, __c3, 5),
-          me: S.NullOr(__S(28, __c3, 4)),
+          leaders: __S(99, __c6, 3),
+          me: S.NullOr(__S(98, __c6, 2)),
         }),
       ).annotate({
         identifier: "GetPartnerLeaderboardResponse",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           status: S.optional(S.String.pipe(T.Query())),
-          income_source: S.optional(__S(31, __c3, 7).pipe(T.Query())),
+          income_source: S.optional(__S(112, __c7, 0).pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -1262,17 +1342,6 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/partners/businesses/{id}/earnings", code: 200 })),
       ).annotate({
         identifier: "ListPartnerBusinessEarningsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          logo_url: S.NullOr(S.String),
-          route: S.String,
-          title: S.String,
-        }),
-      ).annotate({
-        identifier: "ListPartnerBusinessEarningsResponseDataItemAccount",
       });
     case 2:
       return S.suspend(() =>
@@ -1288,7 +1357,7 @@ function __c4(j: number): any {
         identifier: "ListPartnerBusinessEarningsResponseDataItemFinancialActivityItem",
       });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(114, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1302,17 +1371,17 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(33, __c4, 1)),
+          account: S.NullOr(__S(128, __c8, 0)),
           cancelation_reason: S.NullOr(S.String),
           commission_amount_usd: S.NullOr(S.String),
           created_at: S.String,
-          financial_activity: S.NullOr(__S(35, __c4, 3)),
+          financial_activity: S.NullOr(__S(115, __c7, 3)),
           id: S.NullOr(S.String),
           income_source: S.String,
           object: S.String,
           payout_at: S.NullOr(S.String),
           payout_percentage: S.NullOr(S.Number),
-          product: S.NullOr(__S(36, __c4, 4)),
+          product: S.NullOr(__S(116, __c7, 4)),
           resource: S.NullOr(S.Unknown),
           second_tier: S.Boolean,
           status: S.String,
@@ -1322,8 +1391,36 @@ function __c4(j: number): any {
         identifier: "ListPartnerBusinessEarningsResponseDataItem",
       });
     case 6:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(117, __c7, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(118, __c7, 6),
+          page_info: __S(144, __c9, 0),
+        }),
+      ).annotate({
+        identifier: "ListPartnerBusinessEarningsResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          logo_url: S.NullOr(S.String),
+          route: S.String,
+          title: S.String,
+        }),
+      ).annotate({
+        identifier: "ListPartnerBusinessEarningsResponseDataItemAccount",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1336,18 +1433,9 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(38, __c4, 6),
-          page_info: __S(39, __c4, 7),
-        }),
-      ).annotate({
-        identifier: "ListPartnerBusinessEarningsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -1368,114 +1456,41 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListPartnerBusinessesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(__S(33, __c4, 1)),
-          blueprint_partner: S.NullOr(__S(20, __c2, 4)),
+          account: S.NullOr(__S(128, __c8, 0)),
+          blueprint_partner: S.NullOr(__S(80, __c5, 0)),
           created_at: S.String,
-          earnings_usd: __S(21, __c2, 5),
-          first_tier_partner: S.NullOr(__S(20, __c2, 4)),
+          earnings_usd: __S(81, __c5, 1),
+          first_tier_partner: S.NullOr(__S(80, __c5, 0)),
           id: S.String,
           my_partner_tier: S.String,
           object: S.String,
-          owner: S.NullOr(__S(22, __c2, 6)),
-          payout_percentages: __S(23, __c2, 7),
+          owner: S.NullOr(__S(82, __c5, 2)),
+          payout_percentages: __S(83, __c5, 3),
           referral_expires_at: S.NullOr(S.String),
           referral_started_at: S.NullOr(S.String),
-          second_tier_partner: S.NullOr(__S(20, __c2, 4)),
+          second_tier_partner: S.NullOr(__S(80, __c5, 0)),
           status: S.String,
-          volume_usd: __S(24, __c3, 0),
+          volume_usd: __S(84, __c5, 4),
         }),
       ).annotate({
         identifier: "ListPartnerBusinessesResponseDataItem",
       });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(43, __c5, 3),
-          page_info: __S(39, __c4, 7),
+          data: __S(162, __c10, 2),
+          page_info: __S(144, __c9, 0),
         }),
       ).annotate({
         identifier: "ListPartnerBusinessesResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          has_businesses: S.optional(S.Boolean.pipe(T.Query())),
-          has_earning_businesses: S.optional(S.Boolean.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/partners/referred_users", code: 200 })),
-      ).annotate({ identifier: "ListReferredUsersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.String,
-          currency: S.String,
-          decimals: S.Number,
-          display_decimals: S.Number,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ListReferredUsersResponseDataItemUserProfilePicture",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(S.String)),
-          email: S.NullOr(S.String),
-          id: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          profile_picture: S.optional(__S(47, __c5, 7)),
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "ListReferredUsersResponseDataItemUser",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          business_count: S.Number,
-          earnings: __S(46, __c5, 6),
-          joined_at: S.String,
-          total_earnings_usd: S.String,
-          total_volume_usd: S.String,
-          user: __S(48, __c6, 0),
-          volume_30d: __S(46, __c5, 6),
-        }),
-      ).annotate({
-        identifier: "ListReferredUsersResponseDataItem",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(50, __c6, 2),
-          page_info: __S(39, __c4, 7),
-        }),
-      ).annotate({
-        identifier: "ListReferredUsersResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

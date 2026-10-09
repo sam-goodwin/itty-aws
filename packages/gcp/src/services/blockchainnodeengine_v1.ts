@@ -334,8 +334,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(40, __c5, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const createProjectsLocationsBlockchainNodes: API.OperationMethod<
   CreateProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateProjectsLocationsBlockchainNodesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateProjectsLocationsBlockchainNodesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -374,8 +374,8 @@ export const deleteProjectsLocationsBlockchainNodes: API.OperationMethod<
   DeleteProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectsLocationsBlockchainNodesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeleteProjectsLocationsBlockchainNodesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Location>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const getProjectsLocationsBlockchainNodes: API.OperationMethod<
   GetProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetProjectsLocationsBlockchainNodesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BlockchainNode>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetProjectsLocationsBlockchainNodesRequest>,
+  output: __S(102, __c12, 6) as any as S.Schema<BlockchainNode>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListLocationsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +472,8 @@ export const listProjectsLocationsBlockchainNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBlockchainNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListBlockchainNodesResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListBlockchainNodesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -510,8 +510,8 @@ export const patchProjectsLocationsBlockchainNodes: API.OperationMethod<
   PatchProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<PatchProjectsLocationsBlockchainNodesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(32, __c4, 0) as any as S.Schema<PatchProjectsLocationsBlockchainNodesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -521,207 +521,6 @@ export const patchProjectsLocationsBlockchainNodes: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          beaconApiEndpoint: S.optional(S.String),
-          beaconPrometheusMetricsApiEndpoint: S.optional(S.String),
-          executionClientPrometheusMetricsApiEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EthereumEndpoints" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          garbageCollectionMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GethDetails" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          beaconFeeRecipient: S.optional(S.String),
-          managedValidatorClient: S.optional(S.Boolean),
-          mevRelayUrls: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "ValidatorConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiEnableAdmin: S.optional(S.Boolean),
-          nodeType: S.optional(S.String),
-          apiEnableDebug: S.optional(S.Boolean),
-          network: S.optional(S.String),
-          additionalEndpoints: S.optional(__S(3, __c0, 3)),
-          gethDetails: S.optional(__S(4, __c0, 4)),
-          consensusClient: S.optional(S.String),
-          executionClient: S.optional(S.String),
-          validatorConfig: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "EthereumDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jsonRpcApiEndpoint: S.optional(S.String),
-          websocketsApiEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAttachment: S.optional(S.String),
-          endpointInfo: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ConnectionInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          blockchainType: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          ethereumDetails: S.optional(__S(7, __c0, 7)),
-          connectionInfo: S.optional(__S(9, __c1, 1)),
-          updateTime: S.optional(S.String),
-          privateServiceConnectEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BlockchainNode" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          blockchainNodeId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/blockchainNodes",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBlockchainNodesRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(13, __c1, 5)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(12, __c1, 4)),
-          response: S.optional(__S(12, __c1, 4)),
-          error: S.optional(__S(14, __c1, 6)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsBlockchainNodesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://blockchainnodeengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsBlockchainNodesRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -735,10 +534,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(88, __c11, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -753,20 +556,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 7:
-      return S.Array(__S(19, __c2, 3));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(23, __c2, 7)),
+          locations: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -784,19 +587,23 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBlockchainNodesRequest",
       });
+    case 1:
+      return S.Array(__S(102, __c12, 6));
     case 2:
-      return S.Array(__S(10, __c1, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5, __c0, 5)),
+          unreachable: S.optional(__S(88, __c11, 0)),
           nextPageToken: S.optional(S.String),
-          blockchainNodes: S.optional(__S(26, __c3, 2)),
+          blockchainNodes: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "ListBlockchainNodesResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -813,22 +620,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 5:
-      return S.Array(__S(15, __c1, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(66, __c8, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(29, __c3, 5)),
+          operations: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -841,7 +652,251 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blockchainNodeId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(102, __c12, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/blockchainNodes",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBlockchainNodesRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(72, __c9, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(64, __c8, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(72, __c9, 0)),
+          response: S.optional(__S(72, __c9, 0)),
+          error: S.optional(__S(65, __c8, 1)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          beaconApiEndpoint: S.optional(S.String),
+          beaconPrometheusMetricsApiEndpoint: S.optional(S.String),
+          executionClientPrometheusMetricsApiEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EthereumEndpoints" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          garbageCollectionMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GethDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          beaconFeeRecipient: S.optional(S.String),
+          managedValidatorClient: S.optional(S.Boolean),
+          mevRelayUrls: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({ identifier: "ValidatorConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiEnableAdmin: S.optional(S.Boolean),
+          nodeType: S.optional(S.String),
+          apiEnableDebug: S.optional(S.Boolean),
+          network: S.optional(S.String),
+          additionalEndpoints: S.optional(__S(96, __c12, 0)),
+          gethDetails: S.optional(__S(97, __c12, 1)),
+          consensusClient: S.optional(S.String),
+          executionClient: S.optional(S.String),
+          validatorConfig: S.optional(__S(98, __c12, 2)),
+        }),
+      ).annotate({ identifier: "EthereumDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          jsonRpcApiEndpoint: S.optional(S.String),
+          websocketsApiEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAttachment: S.optional(S.String),
+          endpointInfo: S.optional(__S(100, __c12, 4)),
+        }),
+      ).annotate({ identifier: "ConnectionInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          blockchainType: S.optional(S.String),
+          labels: S.optional(__S(80, __c10, 0)),
+          ethereumDetails: S.optional(__S(99, __c12, 3)),
+          connectionInfo: S.optional(__S(101, __c12, 5)),
+          updateTime: S.optional(S.String),
+          privateServiceConnectEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BlockchainNode" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsBlockchainNodesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+          labels: S.optional(__S(80, __c10, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          metadata: S.optional(__S(72, __c9, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://blockchainnodeengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsBlockchainNodesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

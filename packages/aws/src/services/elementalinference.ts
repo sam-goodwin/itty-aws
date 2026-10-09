@@ -520,8 +520,8 @@ export const associateFeed: API.OperationMethod<
   AssociateFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AssociateFeedRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AssociateFeedResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<AssociateFeedRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<AssociateFeedResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -553,8 +553,8 @@ export const createDictionary: API.OperationMethod<
   CreateDictionaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateDictionaryRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateDictionaryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDictionaryRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CreateDictionaryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -587,8 +587,8 @@ export const createFeed: API.OperationMethod<
   CreateFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateFeedRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateFeedResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateFeedRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<CreateFeedResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -619,8 +619,8 @@ export const deleteDictionary: API.OperationMethod<
   DeleteDictionaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteDictionaryRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteDictionaryResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteDictionaryRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteDictionaryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -651,8 +651,8 @@ export const deleteFeed: API.OperationMethod<
   DeleteFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteFeedRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteFeedResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteFeedRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteFeedResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -682,8 +682,8 @@ export const deleteFeedPolicy: API.OperationMethod<
   DeleteFeedPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteFeedPolicyRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteFeedPolicyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteFeedPolicyRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<DeleteFeedPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -713,8 +713,8 @@ export const disassociateFeed: API.OperationMethod<
   DisassociateFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DisassociateFeedRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DisassociateFeedResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DisassociateFeedRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<DisassociateFeedResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -744,8 +744,8 @@ export const exportDictionaryEntries: API.OperationMethod<
   ExportDictionaryEntriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ExportDictionaryEntriesRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ExportDictionaryEntriesResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ExportDictionaryEntriesRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<ExportDictionaryEntriesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -774,8 +774,8 @@ export const getDictionary: API.OperationMethod<
   GetDictionaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetDictionaryRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetDictionaryResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetDictionaryRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<GetDictionaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -803,8 +803,8 @@ export const getFeed: API.OperationMethod<
   GetFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetFeedRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetFeedResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetFeedRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<GetFeedResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -832,8 +832,8 @@ export const getFeedPolicy: API.OperationMethod<
   GetFeedPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetFeedPolicyRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetFeedPolicyResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetFeedPolicyRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetFeedPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -864,8 +864,8 @@ export const getFixture: API.OperationMethod<
   GetFixtureError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetFixtureRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetFixtureResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetFixtureRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<GetFixtureResponse>,
   errors: [
     AccessDeniedException,
     GatewayTimedOutException,
@@ -896,8 +896,8 @@ export const listDictionaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DictionarySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListDictionariesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListDictionariesResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListDictionariesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<ListDictionariesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -932,8 +932,8 @@ export const listFeeds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FeedSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListFeedsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListFeedsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListFeedsRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListFeedsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -968,8 +968,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerErrorException,
@@ -999,8 +999,8 @@ export const putFeedPolicy: API.OperationMethod<
   PutFeedPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<PutFeedPolicyRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PutFeedPolicyResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<PutFeedPolicyRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<PutFeedPolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1032,8 +1032,8 @@ export const searchFixtures: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FixtureSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<SearchFixturesRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<SearchFixturesResponse>,
+  input: __S(354, __c22, 2) as any as S.Schema<SearchFixturesRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<SearchFixturesResponse>,
   errors: [
     AccessDeniedException,
     GatewayTimedOutException,
@@ -1070,8 +1070,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1102,8 +1102,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1134,8 +1134,8 @@ export const updateDictionary: API.OperationMethod<
   UpdateDictionaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateDictionaryRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UpdateDictionaryResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<UpdateDictionaryRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<UpdateDictionaryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1173,8 +1173,8 @@ export const updateFeed: API.OperationMethod<
   UpdateFeedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateFeedRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateFeedResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<UpdateFeedRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<UpdateFeedResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1193,105 +1193,22 @@ export const updateFeed: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, templateUris: __S(0, __c0, 0) })).annotate({
-        identifier: "TemplateGroup",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ templateGroups: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "CroppingConfig",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ fixtureId: S.String })).annotate({
-        identifier: "DataSourceConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          callbackMetadata: S.optional(S.String),
-          dataSourceConfiguration: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ClippingConfig" });
-    case 6:
-      return S.suspend(() => S.Struct({ width: S.Number, height: S.Number })).annotate({
-        identifier: "AspectRatio",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.String,
-          aspectRatio: S.optional(__S(6, __c0, 6)),
-          dictionary: S.optional(S.String),
-          profanityFilter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubtitlingConfig" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          summaryGeneration: S.optional(S.String),
-          extendedAnalysis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContextualMetadataConfig" });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ cropping: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ clipping: __S(5, __c0, 5) }),
-        /*@__PURE__*/ S.Struct({ subtitling: __S(7, __c0, 7) }),
-        /*@__PURE__*/ S.Struct({ contextualMetadata: __S(8, __c1, 0) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          outputConfig: __S(9, __c1, 1),
-          status: S.String,
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateOutput" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.HttpLabel("id")),
-          associatedResourceName: S.String.pipe(T.IdempotencyToken()),
-          outputs: __S(11, __c1, 3),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/feed/{id}/associate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "AssociateFeedRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ arn: S.String, id: S.String })).annotate({
-        identifier: "AssociateFeedResponse",
-      });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           language: S.String,
           entries: S.optional(S.String),
-          tags: S.optional(__S(14, __c1, 6)),
+          tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/dictionary" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateDictionaryRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c2(j: number): any {
@@ -1304,50 +1221,66 @@ function __c2(j: number): any {
           id: S.String,
           language: S.String,
           status: S.String,
-          references: S.optional(__S(0, __c0, 0)),
-          tags: S.optional(__S(14, __c1, 6)),
+          references: S.optional(__S(448, __c28, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "CreateDictionaryResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           accessRoleArn: S.optional(S.String),
-          outputs: __S(11, __c1, 3),
-          tags: S.optional(__S(14, __c1, 6)),
+          outputs: __S(465, __c29, 1),
+          tags: S.optional(__S(16, __c1, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/feed" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFeedRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ associatedResourceName: S.String })).annotate({
+        identifier: "FeedAssociation",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          outputConfig: __S(9, __c1, 1),
+          outputConfig: __S(488, __c30, 8),
           status: S.String,
           description: S.optional(S.String),
           fromAssociation: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetOutput" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ associatedResourceName: S.String })).annotate({
-        identifier: "FeedAssociation",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.String,
           id: S.String,
-          dataEndpoints: __S(0, __c0, 0),
-          outputs: __S(19, __c2, 3),
+          dataEndpoints: __S(448, __c28, 0),
+          outputs: __S(81, __c5, 1),
           accessRoleArn: S.optional(S.String),
           status: S.String,
-          association: S.optional(__S(20, __c2, 4)),
-          tags: S.optional(__S(14, __c1, 6)),
+          association: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "CreateFeedResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1360,13 +1293,17 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDictionaryRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ arn: S.String, id: S.String, status: S.String })).annotate({
         identifier: "DeleteDictionaryResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1374,7 +1311,11 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "DELETE", uri: "/v1/feed/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteFeedRequest" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1387,11 +1328,19 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteFeedPolicyRequest" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFeedPolicyResponse",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -1408,7 +1357,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DisassociateFeedRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1423,11 +1376,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ExportDictionaryEntriesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ entries: S.optional(S.String) })).annotate({
         identifier: "ExportDictionaryEntriesResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(
@@ -1440,7 +1397,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDictionaryRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/v1/feed/{id}" }), svc, auth, proto, ver, rules),
@@ -1448,7 +1409,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetFeedRequest" });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1467,7 +1428,11 @@ function __c4(j: number): any {
       return S.suspend(() => S.Struct({ policy: S.String })).annotate({
         identifier: "GetFeedPolicyResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ fixtureId: S.String.pipe(T.HttpLabel("fixtureId")) }).pipe(
           T.all(
@@ -1480,13 +1445,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetFixtureRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), isHome: S.optional(S.Boolean) }),
       ).annotate({ identifier: "Competitor" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           fixtureId: S.String,
@@ -1494,10 +1463,14 @@ function __c4(j: number): any {
           fixtureGroup: S.optional(S.String),
           scheduledStart: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           status: S.String,
-          competitors: __S(36, __c4, 4),
+          competitors: __S(273, __c17, 1),
         }),
       ).annotate({ identifier: "GetFixtureResponse" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1506,7 +1479,7 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/dictionaries" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDictionariesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -1516,40 +1489,44 @@ function __c4(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "DictionarySummary" });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ dictionaries: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDictionariesResponse" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ dictionaries: __S(40, __c5, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDictionariesResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/feeds" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFeedsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           id: S.String,
           name: S.String,
-          association: S.optional(__S(20, __c2, 4)),
+          association: S.optional(__S(64, __c4, 0)),
           status: S.String,
         }),
       ).annotate({ identifier: "FeedSummary" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ feeds: __S(44, __c5, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ feeds: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFeedsResponse" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1564,13 +1541,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(14, __c1, 6)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1585,36 +1562,44 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutFeedPolicyRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, values: __S(0, __c0, 0) })).annotate({
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, values: __S(448, __c28, 0) })).annotate({
         identifier: "SearchFilter",
       });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           sport: S.String,
           startDate: S.String,
           endDate: S.optional(S.String),
-          filters: S.optional(__S(50, __c6, 2)),
+          filters: S.optional(__S(353, __c22, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/fixtures" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SearchFixturesRequest" });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
     case 4:
-      return S.Array(__S(37, __c4, 5));
-    case 5:
       return S.suspend(() =>
-        S.Struct({ fixtures: __S(52, __c6, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ fixtures: __S(355, __c22, 3), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "SearchFixturesResponse" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(14, __c1, 6),
+          tags: __S(16, __c1, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceArn}" }),
@@ -1626,11 +1611,15 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(448, __c28, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{resourceArn}" }),
@@ -1644,7 +1633,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c7(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1664,20 +1653,126 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDictionaryRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           accessRoleArn: S.optional(S.String),
           id: S.String.pipe(T.HttpLabel("id")),
-          outputs: __S(19, __c2, 3),
+          outputs: __S(81, __c5, 1),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v1/feed/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateFeedRequest" });
   }
 }
-
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.HttpLabel("id")),
+          associatedResourceName: S.String.pipe(T.IdempotencyToken()),
+          outputs: __S(465, __c29, 1),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/feed/{id}/associate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AssociateFeedRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          outputConfig: __S(488, __c30, 8),
+          status: S.String,
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateOutput" });
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.String, templateUris: __S(448, __c28, 0) }),
+      ).annotate({ identifier: "TemplateGroup" });
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ templateGroups: S.optional(__S(481, __c30, 1)) })).annotate(
+        { identifier: "CroppingConfig" },
+      );
+    case 3:
+      return S.suspend(() => S.Struct({ fixtureId: S.String })).annotate({
+        identifier: "DataSourceConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          callbackMetadata: S.optional(S.String),
+          dataSourceConfiguration: S.optional(__S(483, __c30, 3)),
+        }),
+      ).annotate({ identifier: "ClippingConfig" });
+    case 5:
+      return S.suspend(() => S.Struct({ width: S.Number, height: S.Number })).annotate({
+        identifier: "AspectRatio",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.String,
+          aspectRatio: S.optional(__S(485, __c30, 5)),
+          dictionary: S.optional(S.String),
+          profanityFilter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubtitlingConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          summaryGeneration: S.optional(S.String),
+          extendedAnalysis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContextualMetadataConfig" });
+    case 8:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ cropping: __S(482, __c30, 2) }),
+        /*@__PURE__*/ S.Struct({ clipping: __S(484, __c30, 4) }),
+        /*@__PURE__*/ S.Struct({ subtitling: __S(486, __c30, 6) }),
+        /*@__PURE__*/ S.Struct({ contextualMetadata: __S(487, __c30, 7) }),
+      ]);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String, id: S.String })).annotate({
+        identifier: "AssociateFeedResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

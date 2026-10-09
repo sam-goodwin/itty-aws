@@ -277,7 +277,7 @@ export const accessLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(1, __c0, 1) as any as S.Schema<AccessLogsRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<AccessLogsResponse>,
+    output: __S(5, __c0, 5) as any as S.Schema<AccessLogsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const billableInfo: API.OperationMethod<
   BillableInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BillableInfoRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BillableInfoResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BillableInfoRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<BillableInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const billingInfo: API.OperationMethod<
   BillingInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BillingInfoRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BillingInfoResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<BillingInfoRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<BillingInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const disconnectExternalTeam: API.OperationMethod<
   DisconnectExternalTeamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DisconnectExternalTeamRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DisconnectExternalTeamResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DisconnectExternalTeamRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<DisconnectExternalTeamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -345,8 +345,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetProfileRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetProfileResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<GetProfileResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const integrationLogs: API.OperationMethod<
   IntegrationLogsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<IntegrationLogsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<IntegrationLogsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<IntegrationLogsRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<IntegrationLogsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -377,8 +377,8 @@ export const listExternalTeams: API.PaginatedOperationMethod<
   ListExternalTeamsResponseOrganizationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23, __c2, 7) as any as S.Schema<ListExternalTeamsRequest>,
-    output: __S(31, __c3, 7) as any as S.Schema<ListExternalTeamsResponse>,
+    input: __S(130, __c8, 2) as any as S.Schema<ListExternalTeamsRequest>,
+    output: __S(138, __c8, 10) as any as S.Schema<ListExternalTeamsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const listPreferences: API.OperationMethod<
   ListPreferencesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListPreferencesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListPreferencesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListPreferencesRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ListPreferencesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -416,8 +416,8 @@ export const teamInfo: API.OperationMethod<
   TeamInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<TeamInfoRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<TeamInfoResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<TeamInfoRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<TeamInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -470,21 +470,29 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
+          ok: S.Boolean,
+          logins: __S(3, __c0, 3),
+          paging: S.optional(__S(4, __c0, 4)),
+          response_metadata: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "AccessLogsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           next_cursor: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccessLogsResponseResponseMetadata",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          logins: __S(3, __c0, 3),
-          paging: S.optional(__S(4, __c0, 4)),
-          response_metadata: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AccessLogsResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -493,32 +501,40 @@ function __c0(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.billableInfo", code: 200 })),
       ).annotate({ identifier: "BillableInfoRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(5, __c0, 5)),
-          billable_info: __S(8, __c1, 0),
+          response_metadata: S.optional(__S(16, __c1, 0)),
+          billable_info: __S(48, __c3, 0),
         }),
       ).annotate({ identifier: "BillableInfoResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/team.billing.info", code: 200 })),
       ).annotate({ identifier: "BillingInfoRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           plan: S.String,
         }),
       ).annotate({ identifier: "BillingInfoResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           target_team: S.String,
@@ -533,7 +549,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DisconnectExternalTeamRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -542,35 +558,39 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DisconnectExternalTeamResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           visibility: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.profile.get", code: 200 })),
       ).annotate({ identifier: "GetProfileRequest" });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(__S(15, __c1, 7)),
-          sections: S.optional(__S(15, __c1, 7)),
+          fields: S.optional(__S(97, __c6, 1)),
+          sections: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({
         identifier: "GetProfileResponseProfile",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          profile: __S(16, __c2, 0),
+          profile: __S(98, __c6, 2),
         }),
       ).annotate({ identifier: "GetProfileResponse" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.optional(S.String.pipe(T.Query())),
@@ -582,37 +602,37 @@ function __c2(j: number): any {
           user: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.integrationLogs", code: 200 })),
       ).annotate({ identifier: "IntegrationLogsRequest" });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           paging: S.Unknown,
-          logs: __S(19, __c2, 3),
+          logs: __S(113, __c7, 1),
         }),
       ).annotate({ identifier: "IntegrationLogsResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           sort_field: S.optional(S.String.pipe(T.Query())),
           sort_direction: S.optional(S.String.pipe(T.Query())),
-          slack_connect_pref_filter: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          workspace_filter: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          slack_connect_pref_filter: S.optional(__S(128, __c8, 0).pipe(T.Query())),
+          workspace_filter: S.optional(__S(129, __c8, 1).pipe(T.Query())),
           connection_status_filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.externalTeams.list", code: 200 })),
       ).annotate({ identifier: "ListExternalTeamsRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           workspace_id: S.String,
@@ -621,9 +641,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItemConnectedWorkspacesItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
@@ -632,18 +652,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItemCanvasOwnershipDetailsItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(133, __c8, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          ownership_details: __S(27, __c3, 3),
+          ownership_details: __S(134, __c8, 6),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItemCanvas",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
@@ -653,33 +673,33 @@ function __c3(j: number): any {
           private_channel_count: S.Number,
           im_channel_count: S.Number,
           mpim_channel_count: S.Number,
-          connected_workspaces: __S(25, __c3, 1),
+          connected_workspaces: __S(132, __c8, 4),
           slack_connect_prefs: S.Unknown,
           connection_status: S.String,
           last_active_timestamp: S.Number,
           is_sponsored: S.Boolean,
-          canvas: S.optional(__S(28, __c3, 4)),
-          lists: S.optional(__S(28, __c3, 4)),
+          canvas: S.optional(__S(135, __c8, 7)),
+          lists: S.optional(__S(135, __c8, 7)),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponseOrganizationsItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(136, __c8, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          organizations: __S(30, __c3, 6),
+          organizations: __S(137, __c8, 9),
           total_count: S.Number,
-          response_metadata: S.optional(__S(5, __c0, 5)),
+          response_metadata: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "ListExternalTeamsResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -695,14 +715,18 @@ function __c4(j: number): any {
           who_can_post_general: S.String,
         }),
       ).annotate({ identifier: "ListPreferencesResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String.pipe(T.Query())),
           team: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/team.info", code: 200 })),
       ).annotate({ identifier: "TeamInfoRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -710,7 +734,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "TeamInfoResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

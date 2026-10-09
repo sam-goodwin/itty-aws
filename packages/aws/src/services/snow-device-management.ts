@@ -373,8 +373,8 @@ export const cancelTask: API.OperationMethod<
   CancelTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelTaskInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelTaskOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<CancelTaskInput>,
+  output: __S(145, __c9, 1) as any as S.Schema<CancelTaskOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -404,8 +404,8 @@ export const createTask: API.OperationMethod<
   CreateTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateTaskInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateTaskOutput>,
+  input: __S(161, __c10, 1) as any as S.Schema<CreateTaskInput>,
+  output: __S(162, __c10, 2) as any as S.Schema<CreateTaskOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -436,8 +436,8 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DescribeDeviceInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<DescribeDeviceOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<DescribeDeviceInput>,
+  output: __S(230, __c14, 6) as any as S.Schema<DescribeDeviceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -468,8 +468,8 @@ export const describeDeviceEc2Instances: API.OperationMethod<
   DescribeDeviceEc2InstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DescribeDeviceEc2Input>,
-  output: __S(26, __c3, 2) as any as S.Schema<DescribeDeviceEc2Output>,
+  input: __S(240, __c15, 0) as any as S.Schema<DescribeDeviceEc2Input>,
+  output: __S(251, __c15, 11) as any as S.Schema<DescribeDeviceEc2Output>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -498,8 +498,8 @@ export const describeExecution: API.OperationMethod<
   DescribeExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DescribeExecutionInput>,
-  output: __S(28, __c3, 4) as any as S.Schema<DescribeExecutionOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeExecutionInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<DescribeExecutionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -528,8 +528,8 @@ export const describeTask: API.OperationMethod<
   DescribeTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DescribeTaskInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeTaskOutput>,
+  input: __S(16, __c1, 0) as any as S.Schema<DescribeTaskInput>,
+  output: __S(17, __c1, 1) as any as S.Schema<DescribeTaskOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -559,8 +559,8 @@ export const listDeviceResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListDeviceResourcesInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListDeviceResourcesOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListDeviceResourcesInput>,
+  output: __S(35, __c2, 3) as any as S.Schema<ListDeviceResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -596,8 +596,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListDevicesInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListDevicesOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListDevicesInput>,
+  output: __S(51, __c3, 3) as any as S.Schema<ListDevicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -632,8 +632,8 @@ export const listExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExecutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListExecutionsInput>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListExecutionsOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListExecutionsInput>,
+  output: __S(67, __c4, 3) as any as S.Schema<ListExecutionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -666,8 +666,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(81, __c5, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -690,8 +690,8 @@ export const listTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListTasksInput>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListTasksOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListTasksInput>,
+  output: __S(99, __c6, 3) as any as S.Schema<ListTasksOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -723,8 +723,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(176, __c11, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -745,8 +745,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(176, __c11, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -755,6 +755,240 @@ export const untagResource: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String.pipe(T.HttpLabel("taskId")),
+          managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/task/{taskId}/execution/{managedDeviceId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DescribeExecutionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          managedDeviceId: S.optional(S.String),
+          state: S.optional(S.String),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DescribeExecutionOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/task/{taskId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeTaskInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          taskArn: S.optional(S.String),
+          targets: S.optional(__S(208, __c13, 0)),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          description: S.optional(S.String),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DescribeTaskOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
+          type: S.optional(S.String).pipe(T.HttpQuery("type")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/managed-device/{managedDeviceId}/resources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListDeviceResourcesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ resourceType: S.String, arn: S.optional(S.String), id: S.optional(S.String) }),
+      ).annotate({ identifier: "ResourceSummary" });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ resources: S.optional(__S(34, __c2, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDeviceResourcesOutput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String).pipe(T.HttpQuery("jobId")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/managed-devices" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListDevicesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          managedDeviceId: S.optional(S.String),
+          managedDeviceArn: S.optional(S.String),
+          associatedWithJob: S.optional(S.String),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DeviceSummary" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ devices: S.optional(__S(50, __c3, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDevicesOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String.pipe(T.HttpQuery("taskId")),
+          state: S.optional(S.String).pipe(T.HttpQuery("state")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/executions" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListExecutionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          managedDeviceId: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecutionSummary" });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ executions: S.optional(__S(66, __c4, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListExecutionsOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsForResourceInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(192, __c12, 0)) })).annotate({
+        identifier: "ListTagsForResourceOutput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String).pipe(T.HttpQuery("state")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/tasks" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListTasksInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String,
+          taskArn: S.optional(S.String),
+          state: S.optional(S.String),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "TaskSummary" });
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ tasks: S.optional(__S(98, __c6, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListTasksOutput" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(192, __c12, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(208, __c13, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -773,36 +1007,52 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ taskId: S.optional(S.String) })).annotate({
         identifier: "CancelTaskOutput",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Unlock",
-      });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ unlock: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ reboot: __S(3, __c0, 3) }),
+        /*@__PURE__*/ S.Struct({ unlock: __S(176, __c11, 0) }),
+        /*@__PURE__*/ S.Struct({ reboot: __S(176, __c11, 0) }),
       ]);
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(2, __c0, 2),
-          command: __S(4, __c0, 4),
+          targets: __S(208, __c13, 0),
+          command: __S(160, __c10, 0),
           description: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(192, __c12, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/task" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTaskInput" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({ taskId: S.optional(S.String), taskArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateTaskOutput" });
   }
 }
-function __c1(j: number): any {
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Unlock",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -830,7 +1080,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PhysicalNetworkInterface" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(225, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -842,7 +1092,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Capacity" });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(227, __c14, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -856,22 +1106,26 @@ function __c1(j: number): any {
         S.Struct({
           lastReachedOutAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(192, __c12, 0)),
           managedDeviceId: S.optional(S.String),
           managedDeviceArn: S.optional(S.String),
           deviceType: S.optional(S.String),
           associatedWithJob: S.optional(S.String),
           deviceState: S.optional(S.String),
-          physicalNetworkInterfaces: S.optional(__S(10, __c1, 2)),
-          deviceCapacities: S.optional(__S(12, __c1, 4)),
-          software: S.optional(__S(13, __c1, 5)),
+          physicalNetworkInterfaces: S.optional(__S(226, __c14, 2)),
+          deviceCapacities: S.optional(__S(228, __c14, 4)),
+          software: S.optional(__S(229, __c14, 5)),
         }),
       ).annotate({ identifier: "DescribeDeviceOutput" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
-          instanceIds: __S(2, __c0, 2),
+          instanceIds: __S(208, __c13, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -886,15 +1140,11 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeDeviceEc2Input" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ code: S.optional(S.Number), name: S.optional(S.String) }),
       ).annotate({ identifier: "InstanceState" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attachTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -903,272 +1153,57 @@ function __c2(j: number): any {
           volumeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EbsInstanceBlockDevice" });
-    case 2:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(__S(17, __c2, 1)) }),
+        S.Struct({ deviceName: S.optional(S.String), ebs: S.optional(__S(242, __c15, 2)) }),
       ).annotate({
         identifier: "InstanceBlockDeviceMapping",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
     case 4:
+      return S.Array(__S(243, __c15, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({ groupId: S.optional(S.String), groupName: S.optional(S.String) }),
       ).annotate({ identifier: "SecurityGroupIdentifier" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
     case 6:
+      return S.Array(__S(245, __c15, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({ coreCount: S.optional(S.Number), threadsPerCore: S.optional(S.Number) }),
       ).annotate({ identifier: "CpuOptions" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
           amiLaunchIndex: S.optional(S.Number),
           instanceId: S.optional(S.String),
-          state: S.optional(__S(16, __c2, 0)),
+          state: S.optional(__S(241, __c15, 1)),
           instanceType: S.optional(S.String),
           privateIpAddress: S.optional(S.String),
           publicIpAddress: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          blockDeviceMappings: S.optional(__S(19, __c2, 3)),
-          securityGroups: S.optional(__S(21, __c2, 5)),
-          cpuOptions: S.optional(__S(22, __c2, 6)),
+          blockDeviceMappings: S.optional(__S(244, __c15, 4)),
+          securityGroups: S.optional(__S(246, __c15, 6)),
+          cpuOptions: S.optional(__S(247, __c15, 7)),
           rootDeviceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(__S(23, __c2, 7)),
+          instance: S.optional(__S(248, __c15, 8)),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "InstanceSummary" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ instances: S.optional(__S(25, __c3, 1)) })).annotate({
+    case 10:
+      return S.Array(__S(249, __c15, 9));
+    case 11:
+      return S.suspend(() => S.Struct({ instances: S.optional(__S(250, __c15, 10)) })).annotate({
         identifier: "DescribeDeviceEc2Output",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String.pipe(T.HttpLabel("taskId")),
-          managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/task/{taskId}/execution/{managedDeviceId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DescribeExecutionInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          managedDeviceId: S.optional(S.String),
-          state: S.optional(S.String),
-          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DescribeExecutionOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/task/{taskId}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeTaskInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          taskArn: S.optional(S.String),
-          targets: S.optional(__S(2, __c0, 2)),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          description: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "DescribeTaskOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
-          type: S.optional(S.String).pipe(T.HttpQuery("type")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/managed-device/{managedDeviceId}/resources" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListDeviceResourcesInput" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ resourceType: S.String, arn: S.optional(S.String), id: S.optional(S.String) }),
-      ).annotate({ identifier: "ResourceSummary" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(33, __c4, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDeviceResourcesOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.optional(S.String).pipe(T.HttpQuery("jobId")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/managed-devices" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListDevicesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          managedDeviceId: S.optional(S.String),
-          managedDeviceArn: S.optional(S.String),
-          associatedWithJob: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "DeviceSummary" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ devices: S.optional(__S(37, __c4, 5)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDevicesOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String.pipe(T.HttpQuery("taskId")),
-          state: S.optional(S.String).pipe(T.HttpQuery("state")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/executions" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListExecutionsInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          managedDeviceId: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionSummary" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ executions: S.optional(__S(41, __c5, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListExecutionsOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String).pipe(T.HttpQuery("state")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/tasks" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListTasksInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String,
-          taskArn: S.optional(S.String),
-          state: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "TaskSummary" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ tasks: S.optional(__S(47, __c5, 7)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListTasksOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(5, __c0, 5),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

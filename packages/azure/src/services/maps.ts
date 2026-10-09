@@ -864,8 +864,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const CreatorsCreateOrUpdate: API.OperationMethod<
   CreatorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreatorsCreateOrUpdateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreatorsCreateOrUpdateResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreatorsCreateOrUpdateRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<CreatorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -909,8 +909,8 @@ export const DeleteCreator: API.OperationMethod<
   DeleteCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteCreatorRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteCreatorResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteCreatorRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteCreatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -924,8 +924,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAccountRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetAccountResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -939,8 +939,8 @@ export const GetCreator: API.OperationMethod<
   GetCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetCreatorRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetCreatorResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetCreatorRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetCreatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<MapsAccounts>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<MapsAccounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -969,8 +969,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<MapsAccounts>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<MapsAccounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const ListAccountKeys: API.OperationMethod<
   ListAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListAccountKeysRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<MapsAccountKeys>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListAccountKeysRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<MapsAccountKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const ListAccountSas: API.OperationMethod<
   ListAccountSasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListAccountSasRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<MapsAccountSasToken>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListAccountSasRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<MapsAccountSasToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1014,8 @@ export const ListCreatorByAccount: API.OperationMethod<
   ListCreatorByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListCreatorByAccountRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreatorList>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListCreatorByAccountRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<CreatorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1029,8 @@ export const ListMapOperations: API.OperationMethod<
   ListMapOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListMapOperationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<MapsOperations>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListMapOperationsRequest>,
+  output: __S(201, __c12, 9) as any as S.Schema<MapsOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1044,8 @@ export const ListMapSubscriptionOperations: API.OperationMethod<
   ListMapSubscriptionOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListMapSubscriptionOperationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<MapsOperations>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListMapSubscriptionOperationsRequest>,
+  output: __S(201, __c12, 9) as any as S.Schema<MapsOperations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const RegenerateAccountKeys: API.OperationMethod<
   RegenerateAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<RegenerateAccountKeysRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<MapsAccountKeys>,
+  input: __S(224, __c14, 0) as any as S.Schema<RegenerateAccountKeysRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<MapsAccountKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1074,8 +1074,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1089,8 +1089,8 @@ export const UpdateCreator: API.OperationMethod<
   UpdateCreatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<UpdateCreatorRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateCreatorResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateCreatorRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<UpdateCreatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1100,108 +1100,17 @@ export const UpdateCreator: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({ identifier: "SkuInput" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 3:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateRequestIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueName: S.String,
-          id: S.String,
-        }),
-      ).annotate({ identifier: "LinkedResource" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "CorsRule" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          corsRules: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "CorsRules" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identityType: S.optional(S.String),
-          userAssignedIdentityResourceId: S.optional(S.String),
-          delegatedIdentityClientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(11, __c1, 3)),
-          keyEncryptionKeyUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyEncryption",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "MapsAccountPropertiesInputEncryption",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disableLocalAuth: S.optional(S.Boolean),
-          linkedResources: S.optional(__S(6, __c0, 6)),
-          cors: S.optional(__S(10, __c1, 2)),
-          encryption: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "MapsAccountPropertiesInput",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          sku: __S(1, __c0, 1),
+          sku: __S(48, __c3, 0),
           kind: S.optional(S.String),
-          identity: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(50, __c3, 2)),
+          properties: S.optional(__S(52, __c3, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1213,18 +1122,28 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          sku: __S(87, __c5, 7),
+          kind: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(90, __c5, 10)),
+          properties: S.optional(__S(92, __c5, 12)),
         }),
-      ).annotate({ identifier: "Sku" });
-    case 1:
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1237,63 +1156,12 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateResponseSystemData",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 3:
-      return S.Record(S.String, __S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponseIdentity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "MapsAccountPropertiesEncryption",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueId: S.optional(S.String),
-          disableLocalAuth: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
-          linkedResources: S.optional(__S(6, __c0, 6)),
-          cors: S.optional(__S(10, __c1, 2)),
-          encryption: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "MapsAccountProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: __S(16, __c2, 0),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponse",
-      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
   }
 }
 function __c3(j: number): any {
@@ -1301,19 +1169,161 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          storageUnits: S.Number,
+          name: S.String,
         }),
-      ).annotate({ identifier: "CreatorPropertiesInput" });
+      ).annotate({ identifier: "SkuInput" });
     case 1:
+      return S.Record(S.String, __S(64, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(49, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateRequestIdentity",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureEncryption: S.optional(S.String),
+          customerManagedKeyEncryption: S.optional(__S(86, __c5, 6)),
+        }),
+      ).annotate({
+        identifier: "MapsAccountPropertiesInputEncryption",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          disableLocalAuth: S.optional(S.Boolean),
+          linkedResources: S.optional(__S(81, __c5, 1)),
+          cors: S.optional(__S(84, __c5, 4)),
+          encryption: S.optional(__S(51, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "MapsAccountPropertiesInput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueName: S.String,
+          id: S.String,
+        }),
+      ).annotate({ identifier: "LinkedResource" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: __S(96, __c6, 0),
+        }),
+      ).annotate({ identifier: "CorsRule" });
+    case 3:
+      return S.Array(__S(82, __c5, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          corsRules: S.optional(__S(83, __c5, 3)),
+        }),
+      ).annotate({ identifier: "CorsRules" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.optional(S.String),
+          userAssignedIdentityResourceId: S.optional(S.String),
+          delegatedIdentityClientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          keyEncryptionKeyIdentity: S.optional(__S(85, __c5, 5)),
+          keyEncryptionKeyUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyEncryption",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+    case 9:
+      return S.Record(S.String, __S(88, __c5, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(89, __c5, 9)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponseIdentity",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureEncryption: S.optional(S.String),
+          customerManagedKeyEncryption: S.optional(__S(86, __c5, 6)),
+        }),
+      ).annotate({
+        identifier: "MapsAccountPropertiesEncryption",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueId: S.optional(S.String),
+          disableLocalAuth: S.optional(S.Boolean),
+          provisioningState: S.optional(S.String),
+          linkedResources: S.optional(__S(81, __c5, 1)),
+          cors: S.optional(__S(84, __c5, 4)),
+          encryption: S.optional(__S(91, __c5, 11)),
+        }),
+      ).annotate({ identifier: "MapsAccountProperties" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           creatorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(24, __c3, 0),
+          properties: __S(128, __c8, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1325,28 +1335,295 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreatorsCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: __S(144, __c9, 0),
+          systemData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "CreatorsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageUnits: S.Number,
+        }),
+      ).annotate({ identifier: "CreatorPropertiesInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           storageUnits: S.Number,
         }),
       ).annotate({ identifier: "CreatorProperties" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCreatorByAccountRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(26, __c3, 2),
-          systemData: S.optional(__S(17, __c2, 1)),
+          properties: __S(144, __c9, 0),
+          systemData: S.optional(__S(368, __c23, 0)),
         }),
-      ).annotate({
-        identifier: "CreatorsCreateOrUpdateResponse",
-      });
+      ).annotate({ identifier: "Creator" });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(162, __c10, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatorList" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Maps/operations",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListMapOperationsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          internalName: S.optional(S.String),
+          internalMetricName: S.optional(S.String),
+          sourceMdmNamespace: S.optional(S.String),
+          toBeExportedToShoebox: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          displayDescription: S.optional(S.String),
+          unit: S.optional(S.String),
+          dimensions: S.optional(__S(194, __c12, 2)),
+          aggregationType: S.optional(S.String),
+          fillGapWithZero: S.optional(S.Boolean),
+          category: S.optional(S.String),
+          resourceIdDimensionNameOverride: S.optional(S.String),
+          sourceMdmAccount: S.optional(S.String),
+          internalMetricName: S.optional(S.String),
+          lockAggregationType: S.optional(S.String),
+          sourceMdmNamespace: S.optional(S.String),
+          supportedAggregationTypes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricSpecification" });
     case 4:
+      return S.Array(__S(195, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          metricSpecifications: S.optional(__S(196, __c12, 4)),
+        }),
+      ).annotate({ identifier: "ServiceSpecification" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          serviceSpecification: S.optional(__S(197, __c12, 5)),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(192, __c12, 0)),
+          origin: S.optional(S.String),
+          properties: S.optional(__S(198, __c12, 6)),
+        }),
+      ).annotate({ identifier: "OperationDetail" });
+    case 8:
+      return S.Array(__S(199, __c12, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(200, __c12, 8)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MapsOperations" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMapSubscriptionOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/regenerateKey",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateAccountKeysRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c2, 0)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(48, __c3, 0)),
+          identity: S.optional(__S(50, __c3, 2)),
+          properties: S.optional(__S(52, __c3, 4)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          sku: __S(87, __c5, 7),
+          kind: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(90, __c5, 10)),
+          properties: S.optional(__S(92, __c5, 12)),
+        }),
+      ).annotate({ identifier: "UpdateAccountResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          creatorName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(128, __c8, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
+            code: 200,
+            apiVersion: "2023-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCreatorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          properties: __S(144, __c9, 0),
+          systemData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "UpdateCreatorResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1361,7 +1638,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1377,7 +1658,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCreatorRequest" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1392,24 +1677,24 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          sku: __S(16, __c2, 0),
+          sku: __S(87, __c5, 7),
           kind: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
-          properties: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(90, __c5, 10)),
+          properties: S.optional(__S(92, __c5, 12)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
   }
 }
-function __c4(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1433,13 +1718,17 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(26, __c3, 2),
-          systemData: S.optional(__S(17, __c2, 1)),
+          properties: __S(144, __c9, 0),
+          systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetCreatorResponse" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1455,7 +1744,39 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAccountByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          sku: __S(87, __c5, 7),
+          kind: S.optional(S.String),
+          systemData: S.optional(__S(368, __c23, 0)),
+          identity: S.optional(__S(90, __c5, 10)),
+          properties: S.optional(__S(92, __c5, 12)),
+        }),
+      ).annotate({ identifier: "MapsAccount" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(353, __c22, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MapsAccounts" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1466,31 +1787,11 @@ function __c4(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccountSystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: __S(16, __c2, 0),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(35, __c4, 3)),
-          identity: S.optional(__S(20, __c2, 4)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "MapsAccount" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(37, __c4, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MapsAccounts" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1507,7 +1808,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1524,7 +1825,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountKeysRequest" });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primaryKeyLastUpdated: S.optional(S.String),
@@ -1533,7 +1838,11 @@ function __c5(j: number): any {
           secondaryKeyLastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccountKeys" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1541,7 +1850,7 @@ function __c5(j: number): any {
           accountName: S.String.pipe(T.Label()),
           signingKey: S.String,
           principalId: S.String,
-          regions: S.optional(__S(7, __c0, 7)),
+          regions: S.optional(__S(96, __c6, 0)),
           maxRatePerSecond: S.Number,
           start: S.String,
           expiry: S.String,
@@ -1554,248 +1863,14 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountSasRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountSasToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapsAccountSasToken" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCreatorByAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(26, __c3, 2),
-          systemData: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "Creator" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(46, __c5, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatorList" });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Maps/operations",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListMapOperationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          internalName: S.optional(S.String),
-          internalMetricName: S.optional(S.String),
-          sourceMdmNamespace: S.optional(S.String),
-          toBeExportedToShoebox: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Dimension" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          displayDescription: S.optional(S.String),
-          unit: S.optional(S.String),
-          dimensions: S.optional(__S(51, __c6, 3)),
-          aggregationType: S.optional(S.String),
-          fillGapWithZero: S.optional(S.Boolean),
-          category: S.optional(S.String),
-          resourceIdDimensionNameOverride: S.optional(S.String),
-          sourceMdmAccount: S.optional(S.String),
-          internalMetricName: S.optional(S.String),
-          lockAggregationType: S.optional(S.String),
-          sourceMdmNamespace: S.optional(S.String),
-          supportedAggregationTypes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricSpecification" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metricSpecifications: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "ServiceSpecification" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceSpecification: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(49, __c6, 1)),
-          origin: S.optional(S.String),
-          properties: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "OperationDetail" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(57, __c7, 1)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MapsOperations" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maps/operations",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMapSubscriptionOperationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/regenerateKey",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateAccountKeysRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(1, __c0, 1)),
-          identity: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateAccountRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: __S(16, __c2, 0),
-          kind: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(20, __c2, 4)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "UpdateAccountResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          creatorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Maps/accounts/{accountName}/creators/{creatorName}",
-            code: 200,
-            apiVersion: "2023-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCreatorRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(26, __c3, 2),
-          systemData: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "UpdateCreatorResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

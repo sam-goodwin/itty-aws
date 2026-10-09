@@ -704,8 +704,8 @@ export const addFirebaseProjects: API.OperationMethod<
   AddFirebaseProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddFirebaseProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(289, __c36, 1) as any as S.Schema<AddFirebaseProjectsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -724,8 +724,8 @@ export const addGoogleAnalyticsProjects: API.OperationMethod<
   AddGoogleAnalyticsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(305, __c38, 1) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const createProjectsAndroidApps: API.OperationMethod<
   CreateProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsAndroidAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateProjectsAndroidAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -764,8 +764,8 @@ export const createProjectsAndroidAppsSha: API.OperationMethod<
   CreateProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ShaCertificate>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<ShaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -779,8 +779,8 @@ export const createProjectsIosApps: API.OperationMethod<
   CreateProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsIosAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(352, __c44, 0) as any as S.Schema<CreateProjectsIosAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -794,8 +794,8 @@ export const createProjectsWebApps: API.OperationMethod<
   CreateProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateProjectsWebAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsWebAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const deleteProjectsAndroidAppsSha: API.OperationMethod<
   DeleteProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteProjectsAndroidAppsShaRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteProjectsAndroidAppsShaRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const finalizeProjectsDefaultLocation: API.OperationMethod<
   FinalizeProjectsDefaultLocationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<FinalizeProjectsDefaultLocationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(33, __c4, 1) as any as S.Schema<FinalizeProjectsDefaultLocationRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const getAdminSdkConfigProjects: API.OperationMethod<
   GetAdminSdkConfigProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAdminSdkConfigProjectsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AdminSdkConfig>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetAdminSdkConfigProjectsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<AdminSdkConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const getAnalyticsDetailsProjects: API.OperationMethod<
   GetAnalyticsDetailsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetAnalyticsDetailsProjectsRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AnalyticsDetails>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAnalyticsDetailsProjectsRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<AnalyticsDetails>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const getConfigProjectsAndroidApps: API.OperationMethod<
   GetConfigProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetConfigProjectsAndroidAppsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<AndroidAppConfig>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetConfigProjectsAndroidAppsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<AndroidAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const getConfigProjectsIosApps: API.OperationMethod<
   GetConfigProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetConfigProjectsIosAppsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<IosAppConfig>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetConfigProjectsIosAppsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<IosAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -909,8 +909,8 @@ export const getConfigProjectsWebApps: API.OperationMethod<
   GetConfigProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetConfigProjectsWebAppsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<WebAppConfig>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetConfigProjectsWebAppsRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<WebAppConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -924,8 +924,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -939,8 +939,8 @@ export const getProjects: API.OperationMethod<
   GetProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetProjectsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<FirebaseProject>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<FirebaseProject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -954,8 +954,8 @@ export const getProjectsAndroidApps: API.OperationMethod<
   GetProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetProjectsAndroidAppsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AndroidApp>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetProjectsAndroidAppsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<AndroidApp>,
   errors: [NotFound, Forbidden, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -969,8 +969,8 @@ export const getProjectsIosApps: API.OperationMethod<
   GetProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetProjectsIosAppsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IosApp>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetProjectsIosAppsRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<IosApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const getProjectsWebApps: API.OperationMethod<
   GetProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsWebAppsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WebApp>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetProjectsWebAppsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1000,8 +1000,8 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAvailableProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListAvailableProjectsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListAvailableProjectsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListAvailableProjectsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListAvailableProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1017,8 +1017,8 @@ export const listProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFirebaseProjectsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListProjectsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListFirebaseProjectsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<ListFirebaseProjectsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1034,8 +1034,8 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAndroidAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsAndroidAppsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListAndroidAppsResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListProjectsAndroidAppsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListAndroidAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1050,8 @@ export const listProjectsAndroidAppsSha: API.OperationMethod<
   ListProjectsAndroidAppsShaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsAndroidAppsShaRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListShaCertificatesResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListProjectsAndroidAppsShaRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListShaCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1066,8 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAvailableLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListProjectsAvailableLocationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListAvailableLocationsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListProjectsAvailableLocationsRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<ListAvailableLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListIosAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListProjectsIosAppsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListIosAppsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListProjectsIosAppsRequest>,
+  output: __S(178, __c22, 2) as any as S.Schema<ListIosAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1100,8 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWebAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListProjectsWebAppsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListWebAppsResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListProjectsWebAppsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<ListWebAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1116,8 @@ export const patchProjects: API.OperationMethod<
   PatchProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PatchProjectsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<FirebaseProject>,
+  input: __S(192, __c24, 0) as any as S.Schema<PatchProjectsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<FirebaseProject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1137,8 +1137,8 @@ export const patchProjectsAndroidApps: API.OperationMethod<
   PatchProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PatchProjectsAndroidAppsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AndroidApp>,
+  input: __S(200, __c25, 0) as any as S.Schema<PatchProjectsAndroidAppsRequest>,
+  output: __S(328, __c41, 0) as any as S.Schema<AndroidApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1152,8 +1152,8 @@ export const patchProjectsIosApps: API.OperationMethod<
   PatchProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<PatchProjectsIosAppsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IosApp>,
+  input: __S(208, __c26, 0) as any as S.Schema<PatchProjectsIosAppsRequest>,
+  output: __S(360, __c45, 0) as any as S.Schema<IosApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1167,8 +1167,8 @@ export const patchProjectsWebApps: API.OperationMethod<
   PatchProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<PatchProjectsWebAppsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WebApp>,
+  input: __S(216, __c27, 0) as any as S.Schema<PatchProjectsWebAppsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1187,8 +1187,8 @@ export const removeAnalyticsProjects: API.OperationMethod<
   RemoveAnalyticsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<RemoveAnalyticsProjectsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(225, __c28, 1) as any as S.Schema<RemoveAnalyticsProjectsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1208,8 @@ export const removeProjectsAndroidApps: API.OperationMethod<
   RemoveProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<RemoveProjectsAndroidAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(233, __c29, 1) as any as S.Schema<RemoveProjectsAndroidAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AndroidAppNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1223,8 @@ export const removeProjectsIosApps: API.OperationMethod<
   RemoveProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<RemoveProjectsIosAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(241, __c30, 1) as any as S.Schema<RemoveProjectsIosAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1238,8 @@ export const removeProjectsWebApps: API.OperationMethod<
   RemoveProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<RemoveProjectsWebAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(249, __c31, 1) as any as S.Schema<RemoveProjectsWebAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchFirebaseAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SearchAppsProjectsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<SearchFirebaseAppsResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<SearchAppsProjectsRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<SearchFirebaseAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const undeleteProjectsAndroidApps: API.OperationMethod<
   UndeleteProjectsAndroidAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<UndeleteProjectsAndroidAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(265, __c33, 1) as any as S.Schema<UndeleteProjectsAndroidAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1295,8 @@ export const undeleteProjectsIosApps: API.OperationMethod<
   UndeleteProjectsIosAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<UndeleteProjectsIosAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(273, __c34, 1) as any as S.Schema<UndeleteProjectsIosAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1315,8 @@ export const undeleteProjectsWebApps: API.OperationMethod<
   UndeleteProjectsWebAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UndeleteProjectsWebAppsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(281, __c35, 1) as any as S.Schema<UndeleteProjectsWebAppsRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1328,169 +1328,30 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddFirebaseRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+project}:addFirebase",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddFirebaseProjectsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          details: S.optional(__S(3, __c0, 3)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          error: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          analyticsAccountId: S.optional(S.String),
-          analyticsPropertyId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AddGoogleAnalyticsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1beta1/{+parent}:addGoogleAnalytics",
+            uri: "v1beta1/{+parent}/webApps",
             baseUrl: "https://firebase.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "AddGoogleAnalyticsProjectsRequest",
+        identifier: "CreateProjectsWebAppsRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          projectId: S.optional(S.String),
-          name: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          state: S.optional(S.String),
-          appId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sha256Hashes: S.optional(__S(8, __c1, 0)),
-          packageName: S.optional(S.String),
-          sha1Hashes: S.optional(__S(8, __c1, 0)),
-          apiKeyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AndroidApp" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/androidApps",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAndroidAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          shaHash: S.optional(S.String),
-          certType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ShaCertificate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/sha",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAndroidAppsShaRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          teamId: S.optional(S.String),
-          state: S.optional(S.String),
-          appStoreId: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          apiKeyId: S.optional(S.String),
-          name: S.optional(S.String),
-          projectId: S.optional(S.String),
-          bundleId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IosApp" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/iosApps",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsIosAppsRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
           appId: S.optional(S.String),
           displayName: S.optional(S.String),
           state: S.optional(S.String),
-          appUrls: S.optional(__S(8, __c1, 0)),
+          appUrls: S.optional(__S(320, __c40, 0)),
           expireTime: S.optional(S.String),
           webId: S.optional(S.String),
           name: S.optional(S.String),
@@ -1505,21 +1366,6 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/webApps",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsWebAppsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1531,147 +1377,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAndroidAppsShaRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FinalizeDefaultLocationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/defaultLocation:finalize",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FinalizeProjectsDefaultLocationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdminSdkConfigProjectsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          storageBucket: S.optional(S.String),
-          projectId: S.optional(S.String),
-          locationId: S.optional(S.String),
-          databaseURL: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdminSdkConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAnalyticsDetailsProjectsRequest",
-      });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-          analyticsAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnalyticsProperty" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          measurementId: S.optional(S.String),
-          streamId: S.optional(S.String),
-          app: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StreamMapping" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          analyticsProperty: S.optional(__S(24, __c3, 0)),
-          streamMappings: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "AnalyticsDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigProjectsAndroidAppsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          configFileContents: S.optional(S.String),
-          configFilename: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AndroidAppConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigProjectsIosAppsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConfigProjectsWebAppsRequest",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
       });
   }
 }
@@ -1681,95 +1393,24 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          recaptchaSiteKey: S.optional(S.String),
-          authDomain: S.optional(S.String),
-          measurementId: S.optional(S.String),
-          projectNumber: S.optional(S.String),
-          databaseURL: S.optional(S.String),
-          projectId: S.optional(S.String),
-          realtimeDatabaseUrl: S.optional(S.String),
-          storageBucket: S.optional(S.String),
-          appId: S.optional(S.String),
-          messagingSenderId: S.optional(S.String),
-          version: S.optional(S.String),
         }),
-      ).annotate({ identifier: "WebAppConfig" });
+      ).annotate({
+        identifier: "FinalizeDefaultLocationRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetProjectsRequest" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          realtimeDatabaseInstance: S.optional(S.String),
-          hostingSite: S.optional(S.String),
-          locationId: S.optional(S.String),
-          storageBucket: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DefaultResources" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          projectNumber: S.optional(S.String),
-          state: S.optional(S.String),
-          annotations: S.optional(__S(35, __c4, 3)),
-          projectId: S.optional(S.String),
-          etag: S.optional(S.String),
-          resources: S.optional(__S(36, __c4, 4)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FirebaseProject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
+            method: "POST",
+            uri: "v1beta1/{+parent}/defaultLocation:finalize",
             baseUrl: "https://firebase.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "GetProjectsAndroidAppsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/{+name}",
-            baseUrl: "https://firebase.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsIosAppsRequest",
+        identifier: "FinalizeProjectsDefaultLocationRequest",
       });
   }
 }
@@ -1787,9 +1428,262 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetProjectsWebAppsRequest",
+        identifier: "GetAdminSdkConfigProjectsRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageBucket: S.optional(S.String),
+          projectId: S.optional(S.String),
+          locationId: S.optional(S.String),
+          databaseURL: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdminSdkConfig" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAnalyticsDetailsProjectsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+          analyticsAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnalyticsProperty" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          measurementId: S.optional(S.String),
+          streamId: S.optional(S.String),
+          app: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamMapping" });
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          analyticsProperty: S.optional(__S(49, __c6, 1)),
+          streamMappings: S.optional(__S(51, __c6, 3)),
+        }),
+      ).annotate({ identifier: "AnalyticsDetails" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigProjectsAndroidAppsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configFileContents: S.optional(S.String),
+          configFilename: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AndroidAppConfig" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigProjectsIosAppsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConfigProjectsWebAppsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          recaptchaSiteKey: S.optional(S.String),
+          authDomain: S.optional(S.String),
+          measurementId: S.optional(S.String),
+          projectNumber: S.optional(S.String),
+          databaseURL: S.optional(S.String),
+          projectId: S.optional(S.String),
+          realtimeDatabaseUrl: S.optional(S.String),
+          storageBucket: S.optional(S.String),
+          appId: S.optional(S.String),
+          messagingSenderId: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebAppConfig" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetProjectsRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          realtimeDatabaseInstance: S.optional(S.String),
+          hostingSite: S.optional(S.String),
+          locationId: S.optional(S.String),
+          storageBucket: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DefaultResources" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          projectNumber: S.optional(S.String),
+          state: S.optional(S.String),
+          annotations: S.optional(__S(104, __c13, 0)),
+          projectId: S.optional(S.String),
+          etag: S.optional(S.String),
+          resources: S.optional(__S(105, __c13, 1)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FirebaseProject" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAndroidAppsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsIosAppsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/{+name}",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsWebAppsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1804,7 +1698,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListAvailableProjectsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
@@ -1812,18 +1706,22 @@ function __c5(j: number): any {
           project: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectInfo" });
+    case 2:
+      return S.Array(__S(137, __c17, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          projectInfo: S.optional(__S(43, __c5, 3)),
+          projectInfo: S.optional(__S(138, __c17, 2)),
         }),
       ).annotate({
         identifier: "ListAvailableProjectsResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1837,12 +1735,12 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(106, __c13, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(46, __c5, 6)),
+          results: S.optional(__S(145, __c18, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1850,7 +1748,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1870,15 +1768,19 @@ function __c6(j: number): any {
         identifier: "ListProjectsAndroidAppsRequest",
       });
     case 1:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(328, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(__S(49, __c6, 1)),
+          apps: S.optional(__S(153, __c19, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAndroidAppsResponse" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1892,17 +1794,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsAndroidAppsShaRequest",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(344, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(52, __c6, 4)),
+          certificates: S.optional(__S(161, __c20, 1)),
         }),
       ).annotate({
         identifier: "ListShaCertificatesResponse",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1918,32 +1824,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsAvailableLocationsRequest",
       });
-    case 7:
+    case 1:
       return S.Array(S.String);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           locationId: S.optional(S.String),
-          features: S.optional(__S(55, __c6, 7)),
+          features: S.optional(__S(169, __c21, 1)),
         }),
       ).annotate({ identifier: "Location" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(57, __c7, 1)),
+          locations: S.optional(__S(171, __c21, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAvailableLocationsResponse",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1960,16 +1866,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsIosAppsRequest",
       });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(360, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apps: S.optional(__S(60, __c7, 4)),
+          apps: S.optional(__S(177, __c22, 1)),
         }),
       ).annotate({ identifier: "ListIosAppsResponse" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1986,25 +1896,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsWebAppsRequest",
       });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apps: S.optional(__S(185, __c23, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListWebAppsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(__S(63, __c7, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListWebAppsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(106, __c13, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2013,12 +1923,16 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchProjectsRequest" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2029,12 +1943,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsAndroidAppsRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(360, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2045,12 +1963,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsIosAppsRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2061,17 +1983,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsWebAppsRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           analyticsPropertyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveAnalyticsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c28, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2082,7 +2008,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RemoveAnalyticsProjectsRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
@@ -2091,15 +2021,11 @@ function __c8(j: number): any {
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveAndroidAppRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2110,7 +2036,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RemoveProjectsAndroidAppsRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
@@ -2119,11 +2049,11 @@ function __c9(j: number): any {
           immediate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RemoveIosAppRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2134,7 +2064,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RemoveProjectsIosAppsRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
@@ -2143,11 +2077,11 @@ function __c9(j: number): any {
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveWebAppRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(248, __c31, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2158,7 +2092,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "RemoveProjectsWebAppsRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2176,7 +2114,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SearchAppsProjectsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           platform: S.optional(S.String),
@@ -2189,22 +2127,22 @@ function __c9(j: number): any {
           appId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirebaseAppInfo" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(257, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          apps: S.optional(__S(79, __c9, 7)),
+          apps: S.optional(__S(258, __c32, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchFirebaseAppsResponse",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
@@ -2213,11 +2151,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UndeleteAndroidAppRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(264, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2228,18 +2166,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsAndroidAppsRequest",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "UndeleteIosAppRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(83, __c10, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c34, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2250,18 +2192,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsIosAppsRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UndeleteWebAppRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2274,7 +2220,200 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          locationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddFirebaseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project: S.String.pipe(T.Label()),
+          body: S.optional(__S(288, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+project}:addFirebase",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddFirebaseProjectsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          details: S.optional(__S(297, __c37, 1)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(296, __c37, 0)),
+          metadata: S.optional(__S(296, __c37, 0)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          error: S.optional(__S(298, __c37, 2)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          analyticsAccountId: S.optional(S.String),
+          analyticsPropertyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AddGoogleAnalyticsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(304, __c38, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}:addGoogleAnalytics",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddGoogleAnalyticsProjectsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(328, __c41, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/androidApps",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAndroidAppsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          projectId: S.optional(S.String),
+          name: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          state: S.optional(S.String),
+          appId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sha256Hashes: S.optional(__S(320, __c40, 0)),
+          packageName: S.optional(S.String),
+          sha1Hashes: S.optional(__S(320, __c40, 0)),
+          apiKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AndroidApp" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(344, __c43, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/sha",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAndroidAppsShaRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          shaHash: S.optional(S.String),
+          certType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShaCertificate" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(360, __c45, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/iosApps",
+            baseUrl: "https://firebase.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsIosAppsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          teamId: S.optional(S.String),
+          state: S.optional(S.String),
+          appStoreId: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          apiKeyId: S.optional(S.String),
+          name: S.optional(S.String),
+          projectId: S.optional(S.String),
+          bundleId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IosApp" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

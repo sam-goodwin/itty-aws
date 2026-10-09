@@ -625,8 +625,8 @@ export const CreateConfigurationInResourceGroup: API.OperationMethod<
   CreateConfigurationInResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateConfigurationInResourceGroupRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateConfigurationInResourceGroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateConfigurationInResourceGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateConfigurationInResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const CreateConfigurationInSubscription: API.OperationMethod<
   CreateConfigurationInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateConfigurationInSubscriptionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateConfigurationInSubscriptionResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateConfigurationInSubscriptionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateConfigurationInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -655,8 +655,8 @@ export const CreateSuppression: API.OperationMethod<
   CreateSuppressionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateSuppressionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateSuppressionResponse>,
+  input: __S(121, __c15, 1) as any as S.Schema<CreateSuppressionRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<CreateSuppressionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -670,8 +670,8 @@ export const DeleteSuppression: API.OperationMethod<
   DeleteSuppressionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteSuppressionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteSuppressionResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteSuppressionRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<DeleteSuppressionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -685,8 +685,8 @@ export const GenerateRecommendation: API.OperationMethod<
   GenerateRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GenerateRecommendationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GenerateRecommendationResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GenerateRecommendationRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GenerateRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const GetAdvisorScore: API.OperationMethod<
   GetAdvisorScoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetAdvisorScoreRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetAdvisorScoreResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetAdvisorScoreRequest>,
+  output: __S(173, __c21, 5) as any as S.Schema<GetAdvisorScoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const GetRecommendation: API.OperationMethod<
   GetRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetRecommendationRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetRecommendationResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetRecommendationRequest>,
+  output: __S(189, __c23, 5) as any as S.Schema<GetRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -730,8 +730,8 @@ export const GetRecommendationMetadata: API.OperationMethod<
   GetRecommendationMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetRecommendationMetadataRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MetadataEntity>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetRecommendationMetadataRequest>,
+  output: __S(219, __c27, 3) as any as S.Schema<MetadataEntity>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -745,8 +745,8 @@ export const GetSuppression: API.OperationMethod<
   GetSuppressionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetSuppressionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetSuppressionResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetSuppressionRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetSuppressionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -760,8 +760,8 @@ export const ListAdvisorScores: API.OperationMethod<
   ListAdvisorScoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListAdvisorScoresRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<AdvisorScoreResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListAdvisorScoresRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<AdvisorScoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -775,8 +775,8 @@ export const ListConfigurationByResourceGroup: API.OperationMethod<
   ListConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ConfigurationListResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -790,8 +790,8 @@ export const ListConfigurationBySubscription: API.OperationMethod<
   ListConfigurationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ConfigurationListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<OperationEntityListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -820,8 +820,8 @@ export const ListRecommendationMetadata: API.OperationMethod<
   ListRecommendationMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListRecommendationMetadataRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<MetadataEntityListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListRecommendationMetadataRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<MetadataEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -835,8 +835,8 @@ export const ListRecommendations: API.OperationMethod<
   ListRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListRecommendationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ResourceRecommendationBaseListResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListRecommendationsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ResourceRecommendationBaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const ListSuppressions: API.OperationMethod<
   ListSuppressionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListSuppressionsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<SuppressionContractListResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListSuppressionsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<SuppressionContractListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -865,8 +865,8 @@ export const Predict: API.OperationMethod<
   PredictError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<PredictRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PredictionResponse>,
+  input: __S(105, __c13, 1) as any as S.Schema<PredictRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<PredictionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const RecommendationsGetGenerateStatus: API.OperationMethod<
   RecommendationsGetGenerateStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<RecommendationsGetGenerateStatusRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RecommendationsGetGenerateStatusResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<RecommendationsGetGenerateStatusRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<RecommendationsGetGenerateStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -891,36 +891,12 @@ export const RecommendationsGetGenerateStatus: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          actionGroupResourceId: S.optional(S.String),
-          frequency: S.optional(S.Number),
-          categories: S.optional(__S(0, __c0, 0)),
-          language: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DigestConfig" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.Boolean),
-          lowCpuThreshold: S.optional(S.String),
-          duration: S.optional(S.String),
-          digests: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ConfigDataProperties" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroup: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -932,7 +908,53 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConfigurationInResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(18, __c2, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateConfigurationInResourceGroupResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          actionGroupResourceId: S.optional(S.String),
+          frequency: S.optional(S.Number),
+          categories: S.optional(__S(32, __c4, 0)),
+          language: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DigestConfig" });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(S.Boolean),
+          lowCpuThreshold: S.optional(S.String),
+          duration: S.optional(S.String),
+          digests: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "ConfigDataProperties" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -943,24 +965,22 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateConfigurationInResourceGroupResponse",
-      });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(18, __c2, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -974,325 +994,9 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          suppressionId: S.optional(S.String),
-          ttl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SuppressionPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          recommendationId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateSuppressionRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          suppressionId: S.optional(S.String),
-          ttl: S.optional(S.String),
-          expirationTimeStamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SuppressionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateSuppressionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          recommendationId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSuppressionRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSuppressionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateRecommendationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore/{name}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAdvisorScoreRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          score: S.optional(S.Number),
-          consumptionUnits: S.optional(S.Number),
-          impactedResourceCount: S.optional(S.Number),
-          potentialScoreIncrease: S.optional(S.Number),
-          categoryCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScoreEntity" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          aggregationLevel: S.optional(S.String),
-          scoreHistory: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "TimeSeriesEntityItem" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastRefreshedScore: S.optional(__S(16, __c2, 0)),
-          timeSeries: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GetAdvisorScoreResponseProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "GetAdvisorScoreResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          recommendationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRecommendationRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          problem: S.optional(S.String),
-          solution: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ShortDescription" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          source: S.optional(S.String),
-          action: S.optional(__S(23, __c2, 7)),
-          singular: S.optional(S.String),
-          plural: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceMetadata" });
-    case 4:
-      return S.Array(__S(23, __c2, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          control: S.optional(S.String),
-          impact: S.optional(S.String),
-          impactedField: S.optional(S.String),
-          impactedValue: S.optional(S.String),
-          lastUpdated: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
-          recommendationTypeId: S.optional(S.String),
-          risk: S.optional(S.String),
-          shortDescription: S.optional(__S(24, __c3, 0)),
-          suppressionIds: S.optional(__S(25, __c3, 1)),
-          extendedProperties: S.optional(__S(26, __c3, 2)),
-          resourceMetadata: S.optional(__S(27, __c3, 3)),
-          description: S.optional(S.String),
-          label: S.optional(S.String),
-          learnMoreLink: S.optional(S.String),
-          potentialBenefits: S.optional(S.String),
-          actions: S.optional(__S(28, __c3, 4)),
-          remediation: S.optional(__S(23, __c2, 7)),
-          exposedMetadataProperties: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "RecommendationProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GetRecommendationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Advisor/metadata/{name}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRecommendationMetadataRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MetadataSupportedValueDetail",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          dependsOn: S.optional(__S(25, __c3, 1)),
-          applicableScenarios: S.optional(__S(0, __c0, 0)),
-          supportedValues: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "MetadataEntityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "MetadataEntity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          recommendationId: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSuppressionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "GetSuppressionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore",
-            code: 200,
-            apiVersion: "2025-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAdvisorScoresRequest" });
-    case 7:
-      return S.Array(__S(21, __c2, 5));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "AdvisorScoreResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1308,26 +1012,34 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListConfigurationByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ConfigData" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(43, __c5, 3)),
+          value: S.optional(__S(57, __c7, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationListResult" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1342,7 +1054,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListConfigurationBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1353,7 +1069,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1362,29 +1078,29 @@ function __c5(j: number): any {
           resource: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplayInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "OperationEntity" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(73, __c9, 1)),
+        }),
+      ).annotate({ identifier: "OperationEntity" });
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(49, __c6, 1)),
+          value: S.optional(__S(75, __c9, 3)),
         }),
       ).annotate({
         identifier: "OperationEntityListResult",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1399,16 +1115,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRecommendationMetadataRequest",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(219, __c27, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(52, __c6, 4)),
+          value: S.optional(__S(81, __c10, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataEntityListResult" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1426,22 +1146,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRecommendationsRequest",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(189, __c23, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(55, __c6, 7)),
+          value: S.optional(__S(89, __c11, 1)),
         }),
       ).annotate({
         identifier: "ResourceRecommendationBaseListResult",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1456,18 +1176,22 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSuppressionsRequest" });
+    case 1:
+      return S.Array(__S(232, __c29, 0));
     case 2:
-      return S.Array(__S(37, __c4, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(58, __c7, 2)),
+          value: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({
         identifier: "SuppressionContractListResult",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           predictionType: S.optional(S.String),
@@ -1476,11 +1200,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PredictionRequestProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(60, __c7, 4)),
+          properties: S.optional(__S(104, __c13, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1490,7 +1214,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PredictRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           extendedProperties: S.optional(S.Unknown),
@@ -1499,20 +1223,20 @@ function __c7(j: number): any {
           impact: S.optional(S.String),
           impactedField: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          shortDescription: S.optional(__S(24, __c3, 0)),
+          shortDescription: S.optional(__S(192, __c24, 0)),
         }),
       ).annotate({
         identifier: "PredictionResponseProperties",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(62, __c7, 6)),
+          properties: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "PredictionResponse" });
   }
 }
-function __c8(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1536,7 +1260,370 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suppressionId: S.optional(S.String),
+          ttl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SuppressionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          recommendationId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(120, __c15, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateSuppressionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSuppressionResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suppressionId: S.optional(S.String),
+          ttl: S.optional(S.String),
+          expirationTimeStamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SuppressionProperties" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          recommendationId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSuppressionRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSuppressionResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateRecommendationRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore/{name}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAdvisorScoreRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          score: S.optional(S.Number),
+          consumptionUnits: S.optional(S.Number),
+          impactedResourceCount: S.optional(S.Number),
+          potentialScoreIncrease: S.optional(S.Number),
+          categoryCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScoreEntity" });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          aggregationLevel: S.optional(S.String),
+          scoreHistory: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({ identifier: "TimeSeriesEntityItem" });
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          lastRefreshedScore: S.optional(__S(168, __c21, 0)),
+          timeSeries: S.optional(__S(171, __c21, 3)),
+        }),
+      ).annotate({
+        identifier: "GetAdvisorScoreResponseProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(172, __c21, 4)),
+        }),
+      ).annotate({ identifier: "GetAdvisorScoreResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          recommendationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRecommendationRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          source: S.optional(S.String),
+          action: S.optional(__S(184, __c23, 0)),
+          singular: S.optional(S.String),
+          plural: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceMetadata" });
+    case 3:
+      return S.Array(__S(184, __c23, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          control: S.optional(S.String),
+          impact: S.optional(S.String),
+          impactedField: S.optional(S.String),
+          impactedValue: S.optional(S.String),
+          lastUpdated: S.optional(S.String),
+          metadata: S.optional(__S(184, __c23, 0)),
+          recommendationTypeId: S.optional(S.String),
+          risk: S.optional(S.String),
+          shortDescription: S.optional(__S(192, __c24, 0)),
+          suppressionIds: S.optional(__S(200, __c25, 0)),
+          extendedProperties: S.optional(__S(185, __c23, 1)),
+          resourceMetadata: S.optional(__S(186, __c23, 2)),
+          description: S.optional(S.String),
+          label: S.optional(S.String),
+          learnMoreLink: S.optional(S.String),
+          potentialBenefits: S.optional(S.String),
+          actions: S.optional(__S(187, __c23, 3)),
+          remediation: S.optional(__S(184, __c23, 0)),
+          exposedMetadataProperties: S.optional(__S(184, __c23, 0)),
+        }),
+      ).annotate({ identifier: "RecommendationProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(188, __c23, 4)),
+        }),
+      ).annotate({
+        identifier: "GetRecommendationResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          problem: S.optional(S.String),
+          solution: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ShortDescription" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Advisor/metadata/{name}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRecommendationMetadataRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MetadataSupportedValueDetail",
+      });
+    case 1:
+      return S.Array(__S(216, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          dependsOn: S.optional(__S(200, __c25, 0)),
+          applicableScenarios: S.optional(__S(32, __c4, 0)),
+          supportedValues: S.optional(__S(217, __c27, 1)),
+        }),
+      ).annotate({ identifier: "MetadataEntityProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(218, __c27, 2)),
+        }),
+      ).annotate({ identifier: "MetadataEntity" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          recommendationId: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSuppressionRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({ identifier: "GetSuppressionResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Advisor/advisorScore",
+            code: 200,
+            apiVersion: "2025-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAdvisorScoresRequest" });
+    case 1:
+      return S.Array(__S(173, __c21, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(241, __c30, 1)),
+        }),
+      ).annotate({ identifier: "AdvisorScoreResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1680,8 +1680,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEventResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<CreateEventRequest>,
+  output: __S(80, __c20, 0) as any as S.Schema<CreateEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1697,8 +1697,8 @@ export const createRule: API.PaginatedOperationMethod<
   RulesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3, __c0, 3) as any as S.Schema<CreateRuleRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<CreateRuleResponse>,
+    input: __S(85, __c21, 1) as any as S.Schema<CreateRuleRequest>,
+    output: __S(90, __c22, 2) as any as S.Schema<CreateRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1715,8 +1715,8 @@ export const createWaitingRoom: API.OperationMethod<
   CreateWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateWaitingRoomRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateWaitingRoomResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<CreateWaitingRoomRequest>,
+  output: __S(93, __c23, 1) as any as S.Schema<CreateWaitingRoomResponse>,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1730,8 +1730,8 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteEventRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteEventResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<DeleteEventRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<DeleteEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1747,8 +1747,8 @@ export const deleteRule: API.PaginatedOperationMethod<
   RulesDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(18, __c2, 2) as any as S.Schema<DeleteRuleRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<DeleteRuleResponse>,
+    input: __S(108, __c27, 0) as any as S.Schema<DeleteRuleRequest>,
+    output: __S(90, __c22, 2) as any as S.Schema<DeleteRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1765,8 +1765,8 @@ export const deleteWaitingRoom: API.OperationMethod<
   DeleteWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteWaitingRoomRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteWaitingRoomResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<DeleteWaitingRoomRequest>,
+  output: __S(113, __c28, 1) as any as S.Schema<DeleteWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1780,8 +1780,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetEventResponse>,
+  input: __S(116, __c29, 0) as any as S.Schema<GetEventRequest>,
+  output: __S(80, __c20, 0) as any as S.Schema<GetEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1795,8 +1795,8 @@ export const getEventDetail: API.OperationMethod<
   GetEventDetailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetEventDetailRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetEventDetailResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetEventDetailRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetEventDetailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1812,8 +1812,8 @@ export const getRule: API.PaginatedOperationMethod<
   RulesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<GetRuleRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<GetRuleResponse>,
+    input: __S(4, __c1, 0) as any as S.Schema<GetRuleRequest>,
+    output: __S(90, __c22, 2) as any as S.Schema<GetRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1830,8 +1830,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetSettingRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetSettingResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetStatusResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetStatusRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<GetStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1860,8 @@ export const getWaitingRoom: API.OperationMethod<
   GetWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetWaitingRoomRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetWaitingRoomResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetWaitingRoomRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1877,8 @@ export const listEvents: API.PaginatedOperationMethod<
   EventsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(31, __c3, 7) as any as S.Schema<ListEventsRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<ListEventsResponse>,
+    input: __S(24, __c6, 0) as any as S.Schema<ListEventsRequest>,
+    output: __S(27, __c6, 3) as any as S.Schema<ListEventsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1903,8 +1903,8 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(35, __c4, 3) as any as S.Schema<ListWaitingRoomsForAccountRequest>,
-    output: __S(38, __c4, 6) as any as S.Schema<ListWaitingRoomsResponse>,
+    input: __S(28, __c7, 0) as any as S.Schema<ListWaitingRoomsForAccountRequest>,
+    output: __S(34, __c8, 2) as any as S.Schema<ListWaitingRoomsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1929,8 +1929,8 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(39, __c4, 7) as any as S.Schema<ListWaitingRoomsForZoneRequest>,
-    output: __S(38, __c4, 6) as any as S.Schema<ListWaitingRoomsResponse>,
+    input: __S(36, __c9, 0) as any as S.Schema<ListWaitingRoomsForZoneRequest>,
+    output: __S(34, __c8, 2) as any as S.Schema<ListWaitingRoomsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1953,8 +1953,8 @@ export const patchEvent: API.OperationMethod<
   PatchEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PatchEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchEventResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<PatchEventRequest>,
+  output: __S(80, __c20, 0) as any as S.Schema<PatchEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1970,8 +1970,8 @@ export const patchRule: API.PaginatedOperationMethod<
   RulesEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(42, __c5, 2) as any as S.Schema<PatchRuleRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<PatchRuleResponse>,
+    input: __S(45, __c11, 1) as any as S.Schema<PatchRuleRequest>,
+    output: __S(90, __c22, 2) as any as S.Schema<PatchRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1988,8 +1988,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<PatchSettingRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PatchSettingResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<PatchSettingRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<PatchSettingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2003,8 @@ export const patchWaitingRoom: API.OperationMethod<
   PatchWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<PatchWaitingRoomRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PatchWaitingRoomResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<PatchWaitingRoomRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<PatchWaitingRoomResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2018,8 @@ export const previewPage: API.OperationMethod<
   PreviewPageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<PreviewPageRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<PreviewPageResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<PreviewPageRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<PreviewPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2033,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<PutSettingRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PutSettingResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<PutSettingRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<PutSettingResponse>,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2048,8 @@ export const updateEvent: API.OperationMethod<
   UpdateEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UpdateEventRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateEventResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<UpdateEventRequest>,
+  output: __S(80, __c20, 0) as any as S.Schema<UpdateEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2065,8 @@ export const updateRule: API.PaginatedOperationMethod<
   RulesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(52, __c6, 4) as any as S.Schema<UpdateRuleRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<UpdateRuleResponse>,
+    input: __S(70, __c17, 2) as any as S.Schema<UpdateRuleRequest>,
+    output: __S(90, __c22, 2) as any as S.Schema<UpdateRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2087,8 +2087,8 @@ export const updateWaitingRoom: API.OperationMethod<
   UpdateWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UpdateWaitingRoomRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateWaitingRoomResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<UpdateWaitingRoomRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<UpdateWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2098,314 +2098,6 @@ export const updateWaitingRoom: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          eventEndTime: S.String.pipe(T.Body("event_end_time")),
-          eventStartTime: S.String.pipe(T.Body("event_start_time")),
-          name: S.String,
-          customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-          description: S.optional(S.String),
-          disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
-          newUsersPerMinute: S.optional(S.Number.pipe(T.Body("new_users_per_minute"))),
-          prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
-          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-          sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-          shuffleAtEventStart: S.optional(S.Boolean.pipe(T.Body("shuffle_at_event_start"))),
-          suspended: S.optional(S.Boolean),
-          totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
-          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateEventRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
-          description: S.optional(S.NullOr(S.String)),
-          disableSessionRenewal: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
-          ),
-          eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
-          eventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_start_time"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
-          prequeueStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("prequeue_start_time"))),
-          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
-          sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
-          shuffleAtEventStart: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
-          ),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
-          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateEventResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          expression: S.String,
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RulesCreateRequestRules" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          rules: __S(2, __c0, 2),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          expression: S.optional(S.NullOr(S.String)),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-          version: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "RulesCreateResultItem" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(5, __c0, 5).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateRequestAdditionalRoutesItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          samesite: S.optional(S.String),
-          secure: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateRequestCookieAttributes",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          host: S.String,
-          name: S.String,
-          newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
-          totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(__S(8, __c1, 0).pipe(T.Body("additional_routes"))),
-          cookieAttributes: S.optional(__S(9, __c1, 1).pipe(T.Body("cookie_attributes"))),
-          cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-          customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-          defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
-          description: S.optional(S.String),
-          disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
-          enabledOriginCommands: S.optional(
-            __S(10, __c1, 2).pipe(T.Body("enabled_origin_commands")),
-          ),
-          jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
-          path: S.optional(S.String),
-          queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
-          queueingStatusCode: S.optional(S.Number.pipe(T.Body("queueing_status_code"))),
-          sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-          suspended: S.optional(S.Boolean),
-          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
-          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/waiting_rooms", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateWaitingRoomRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseAdditionalRoutesItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          samesite: S.optional(S.NullOr(S.String)),
-          secure: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseCookieAttributes",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("cookie_attributes")),
-          ),
-          cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
-          defaultTemplateLanguage: S.optional(
-            S.NullOr(S.String).pipe(T.Body("default_template_language")),
-          ),
-          description: S.optional(S.NullOr(S.String)),
-          disableSessionRenewal: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
-          ),
-          enabledOriginCommands: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("enabled_origin_commands")),
-          ),
-          host: S.optional(S.NullOr(S.String)),
-          jsonResponseEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
-          ),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
-          nextEventPrequeueStartTime: S.optional(
-            S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
-          ),
-          nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
-          path: S.optional(S.NullOr(S.String)),
-          queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
-          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
-          sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
-          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateWaitingRoomResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          eventId: S.String.pipe(T.Label("event_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteEventRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteEventResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteWaitingRoomRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteWaitingRoomResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          eventId: S.String.pipe(T.Label("event_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetEventRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2421,7 +2113,7 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEventDetailRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2448,7 +2140,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetEventDetailResponse" });
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2465,7 +2157,11 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2475,13 +2171,21 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           searchEngineCrawlerBypass: S.Boolean.pipe(T.Body("search_engine_crawler_bypass")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2496,7 +2200,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStatusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           estimatedQueuedUsers: S.optional(
@@ -2512,7 +2216,11 @@ function __c3(j: number): any {
           status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStatusResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2527,15 +2235,15 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWaitingRoomRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           additionalRoutes: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("additional_routes")),
+            S.NullOr(__S(98, __c24, 2)).pipe(T.Body("additional_routes")),
           ),
           cookieAttributes: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("cookie_attributes")),
+            S.NullOr(__S(99, __c24, 3)).pipe(T.Body("cookie_attributes")),
           ),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2548,7 +2256,7 @@ function __c3(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(96, __c24, 0)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -2572,7 +2280,11 @@ function __c3(j: number): any {
           turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWaitingRoomResponse" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2589,11 +2301,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEventsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2620,16 +2328,20 @@ function __c4(j: number): any {
           turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }),
       ).annotate({ identifier: "EventsListResultItem" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(33, __c4, 1).pipe(T.EnvelopePayload()),
+          result: __S(26, __c6, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEventsResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2641,15 +2353,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListWaitingRoomsForAccountRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           additionalRoutes: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("additional_routes")),
+            S.NullOr(__S(98, __c24, 2)).pipe(T.Body("additional_routes")),
           ),
           cookieAttributes: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("cookie_attributes")),
+            S.NullOr(__S(99, __c24, 3)).pipe(T.Body("cookie_attributes")),
           ),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2662,7 +2378,7 @@ function __c4(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(96, __c24, 0)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -2686,16 +2402,20 @@ function __c4(j: number): any {
           turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(37, __c4, 5).pipe(T.EnvelopePayload()),
+          result: __S(33, __c8, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWaitingRoomsResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2709,7 +2429,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2742,9 +2462,13 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchEventRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]));
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2754,7 +2478,7 @@ function __c5(j: number): any {
           expression: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          position: S.optional(__S(41, __c5, 1)),
+          position: S.optional(__S(44, __c11, 0)),
         })
           .pipe(
             T.Http({
@@ -2765,7 +2489,11 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2778,7 +2506,11 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingRequest" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2787,15 +2519,15 @@ function __c5(j: number): any {
           name: S.String,
           newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
           totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(__S(8, __c1, 0).pipe(T.Body("additional_routes"))),
-          cookieAttributes: S.optional(__S(9, __c1, 1).pipe(T.Body("cookie_attributes"))),
+          additionalRoutes: S.optional(__S(101, __c25, 1).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(102, __c25, 2).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
           customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
           description: S.optional(S.String),
           disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
           enabledOriginCommands: S.optional(
-            __S(10, __c1, 2).pipe(T.Body("enabled_origin_commands")),
+            __S(96, __c24, 0).pipe(T.Body("enabled_origin_commands")),
           ),
           jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
           path: S.optional(S.String),
@@ -2816,15 +2548,15 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchWaitingRoomRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           additionalRoutes: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("additional_routes")),
+            S.NullOr(__S(98, __c24, 2)).pipe(T.Body("additional_routes")),
           ),
           cookieAttributes: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("cookie_attributes")),
+            S.NullOr(__S(99, __c24, 3)).pipe(T.Body("cookie_attributes")),
           ),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -2837,7 +2569,7 @@ function __c5(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(96, __c24, 0)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -2861,7 +2593,11 @@ function __c5(j: number): any {
           turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchWaitingRoomResponse" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2872,7 +2608,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PreviewPageRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           previewUrl: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url"))),
@@ -2880,7 +2616,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "PreviewPageResponse" });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2895,7 +2631,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSettingRequest" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2926,7 +2666,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateEventRequest" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -2937,14 +2681,14 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RulesUpdateRequestRulesItem",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(68, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          rules: __S(51, __c6, 3),
+          rules: __S(69, __c17, 1),
         })
           .pipe(
             T.Http({
@@ -2955,7 +2699,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRuleRequest" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2964,15 +2712,15 @@ function __c6(j: number): any {
           name: S.String,
           newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
           totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(__S(8, __c1, 0).pipe(T.Body("additional_routes"))),
-          cookieAttributes: S.optional(__S(9, __c1, 1).pipe(T.Body("cookie_attributes"))),
+          additionalRoutes: S.optional(__S(101, __c25, 1).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(102, __c25, 2).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
           customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
           description: S.optional(S.String),
           disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
           enabledOriginCommands: S.optional(
-            __S(10, __c1, 2).pipe(T.Body("enabled_origin_commands")),
+            __S(96, __c24, 0).pipe(T.Body("enabled_origin_commands")),
           ),
           jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
           path: S.optional(S.String),
@@ -2993,15 +2741,15 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateWaitingRoomRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           additionalRoutes: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("additional_routes")),
+            S.NullOr(__S(98, __c24, 2)).pipe(T.Body("additional_routes")),
           ),
           cookieAttributes: S.optional(
-            S.NullOr(__S(14, __c1, 6)).pipe(T.Body("cookie_attributes")),
+            S.NullOr(__S(99, __c24, 3)).pipe(T.Body("cookie_attributes")),
           ),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -3014,7 +2762,7 @@ function __c6(j: number): any {
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(96, __c24, 0)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -3042,7 +2790,350 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+          eventEndTime: S.String.pipe(T.Body("event_end_time")),
+          eventStartTime: S.String.pipe(T.Body("event_start_time")),
+          name: S.String,
+          customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+          description: S.optional(S.String),
+          disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
+          newUsersPerMinute: S.optional(S.Number.pipe(T.Body("new_users_per_minute"))),
+          prequeueStartTime: S.optional(S.String.pipe(T.Body("prequeue_start_time"))),
+          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
+          sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+          shuffleAtEventStart: S.optional(S.Boolean.pipe(T.Body("shuffle_at_event_start"))),
+          suspended: S.optional(S.Boolean),
+          totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateEventRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
+          description: S.optional(S.NullOr(S.String)),
+          disableSessionRenewal: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
+          ),
+          eventEndTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_end_time"))),
+          eventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("event_start_time"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
+          prequeueStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("prequeue_start_time"))),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
+          shuffleAtEventStart: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("shuffle_at_event_start")),
+          ),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateEventResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          expression: S.String,
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RulesCreateRequestRules" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+          rules: __S(84, __c21, 0),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          expression: S.optional(S.NullOr(S.String)),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+          version: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RulesCreateResultItem" });
+    case 1:
+      return S.Array(__S(88, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(89, __c22, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          host: S.String,
+          name: S.String,
+          newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
+          totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
+          additionalRoutes: S.optional(__S(101, __c25, 1).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(102, __c25, 2).pipe(T.Body("cookie_attributes"))),
+          cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
+          customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+          defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
+          description: S.optional(S.String),
+          disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
+          enabledOriginCommands: S.optional(
+            __S(96, __c24, 0).pipe(T.Body("enabled_origin_commands")),
+          ),
+          jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
+          path: S.optional(S.String),
+          queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.Number.pipe(T.Body("queueing_status_code"))),
+          sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+          suspended: S.optional(S.Boolean),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/waiting_rooms", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateWaitingRoomRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          additionalRoutes: S.optional(
+            S.NullOr(__S(98, __c24, 2)).pipe(T.Body("additional_routes")),
+          ),
+          cookieAttributes: S.optional(
+            S.NullOr(__S(99, __c24, 3)).pipe(T.Body("cookie_attributes")),
+          ),
+          cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
+          defaultTemplateLanguage: S.optional(
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
+          ),
+          description: S.optional(S.NullOr(S.String)),
+          disableSessionRenewal: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
+          ),
+          enabledOriginCommands: S.optional(
+            S.NullOr(__S(96, __c24, 0)).pipe(T.Body("enabled_origin_commands")),
+          ),
+          host: S.optional(S.NullOr(S.String)),
+          jsonResponseEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("json_response_enabled")),
+          ),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          newUsersPerMinute: S.optional(S.NullOr(S.Number).pipe(T.Body("new_users_per_minute"))),
+          nextEventPrequeueStartTime: S.optional(
+            S.NullOr(S.String).pipe(T.Body("next_event_prequeue_start_time")),
+          ),
+          nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
+          path: S.optional(S.NullOr(S.String)),
+          queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
+          sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateWaitingRoomResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseAdditionalRoutesItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          samesite: S.optional(S.NullOr(S.String)),
+          secure: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseCookieAttributes",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateRequestAdditionalRoutesItem",
+      });
+    case 1:
+      return S.Array(__S(100, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          samesite: S.optional(S.String),
+          secure: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateRequestCookieAttributes",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+          eventId: S.String.pipe(T.Label("event_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteEventRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteEventResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/rules/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteWaitingRoomRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteWaitingRoomResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
+          eventId: S.String.pipe(T.Label("event_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/waiting_rooms/{waiting_room_id}/events/{event_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetEventRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

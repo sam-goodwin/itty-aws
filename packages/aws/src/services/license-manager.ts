@@ -1396,7 +1396,7 @@ export const acceptGrant: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptGrantRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptGrantResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<AcceptGrantResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1430,8 +1430,8 @@ export const checkInLicense: API.OperationMethod<
   CheckInLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckInLicenseRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CheckInLicenseResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CheckInLicenseRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<CheckInLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1469,8 +1469,8 @@ export const checkoutBorrowLicense: API.OperationMethod<
   CheckoutBorrowLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CheckoutBorrowLicenseRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CheckoutBorrowLicenseResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CheckoutBorrowLicenseRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<CheckoutBorrowLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1513,8 +1513,8 @@ export const checkoutLicense: API.OperationMethod<
   CheckoutLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CheckoutLicenseRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CheckoutLicenseResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CheckoutLicenseRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<CheckoutLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1552,8 +1552,8 @@ export const createGrant: API.OperationMethod<
   CreateGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateGrantRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateGrantResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateGrantRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateGrantResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1587,8 +1587,8 @@ export const createGrantVersion: API.OperationMethod<
   CreateGrantVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateGrantVersionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateGrantVersionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateGrantVersionRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<CreateGrantVersionResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1621,8 +1621,8 @@ export const createLicense: API.OperationMethod<
   CreateLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateLicenseRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateLicenseResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateLicenseRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1654,8 +1654,8 @@ export const createLicenseAssetGroup: API.OperationMethod<
   CreateLicenseAssetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateLicenseAssetGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateLicenseAssetGroupResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateLicenseAssetGroupRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreateLicenseAssetGroupResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1686,8 +1686,8 @@ export const createLicenseAssetRuleset: API.OperationMethod<
   CreateLicenseAssetRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateLicenseAssetRulesetRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateLicenseAssetRulesetResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreateLicenseAssetRulesetRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CreateLicenseAssetRulesetResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1724,8 +1724,8 @@ export const createLicenseConfiguration: API.OperationMethod<
   CreateLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateLicenseConfigurationRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateLicenseConfigurationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateLicenseConfigurationRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<CreateLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1756,8 +1756,8 @@ export const createLicenseConversionTaskForResource: API.OperationMethod<
   CreateLicenseConversionTaskForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateLicenseConversionTaskForResourceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateLicenseConversionTaskForResourceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateLicenseConversionTaskForResourceRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<CreateLicenseConversionTaskForResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1790,8 +1790,8 @@ export const createLicenseManagerReportGenerator: API.OperationMethod<
   CreateLicenseManagerReportGeneratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateLicenseManagerReportGeneratorRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CreateLicenseManagerReportGeneratorResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateLicenseManagerReportGeneratorRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<CreateLicenseManagerReportGeneratorResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1826,8 +1826,8 @@ export const createLicenseVersion: API.OperationMethod<
   CreateLicenseVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateLicenseVersionRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateLicenseVersionResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateLicenseVersionRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<CreateLicenseVersionResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1866,8 +1866,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateTokenRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateTokenResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<CreateTokenResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1901,8 +1901,8 @@ export const deleteGrant: API.OperationMethod<
   DeleteGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteGrantRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGrantResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteGrantRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteGrantResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1936,8 +1936,8 @@ export const deleteLicense: API.OperationMethod<
   DeleteLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteLicenseRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteLicenseResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteLicenseRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<DeleteLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -1970,8 +1970,8 @@ export const deleteLicenseAssetGroup: API.OperationMethod<
   DeleteLicenseAssetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteLicenseAssetGroupRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeleteLicenseAssetGroupResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteLicenseAssetGroupRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<DeleteLicenseAssetGroupResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2002,8 +2002,8 @@ export const deleteLicenseAssetRuleset: API.OperationMethod<
   DeleteLicenseAssetRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteLicenseAssetRulesetRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteLicenseAssetRulesetResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteLicenseAssetRulesetRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<DeleteLicenseAssetRulesetResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2036,8 +2036,8 @@ export const deleteLicenseConfiguration: API.OperationMethod<
   DeleteLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteLicenseConfigurationRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteLicenseConfigurationResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteLicenseConfigurationRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<DeleteLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2073,8 +2073,8 @@ export const deleteLicenseManagerReportGenerator: API.OperationMethod<
   DeleteLicenseManagerReportGeneratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteLicenseManagerReportGeneratorRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteLicenseManagerReportGeneratorResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteLicenseManagerReportGeneratorRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<DeleteLicenseManagerReportGeneratorResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2108,8 +2108,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteTokenResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2142,8 +2142,8 @@ export const extendLicenseConsumption: API.OperationMethod<
   ExtendLicenseConsumptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ExtendLicenseConsumptionRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ExtendLicenseConsumptionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ExtendLicenseConsumptionRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ExtendLicenseConsumptionResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2176,8 +2176,8 @@ export const getAccessToken: API.OperationMethod<
   GetAccessTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetAccessTokenRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetAccessTokenResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetAccessTokenRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<GetAccessTokenResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2210,8 +2210,8 @@ export const getGrant: API.OperationMethod<
   GetGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetGrantRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetGrantResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetGrantRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<GetGrantResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2245,8 +2245,8 @@ export const getLicense: API.OperationMethod<
   GetLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetLicenseRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetLicenseResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetLicenseRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetLicenseResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2278,8 +2278,8 @@ export const getLicenseAssetGroup: API.OperationMethod<
   GetLicenseAssetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetLicenseAssetGroupRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetLicenseAssetGroupResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetLicenseAssetGroupRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<GetLicenseAssetGroupResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2310,8 +2310,8 @@ export const getLicenseAssetRuleset: API.OperationMethod<
   GetLicenseAssetRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetLicenseAssetRulesetRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetLicenseAssetRulesetResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetLicenseAssetRulesetRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<GetLicenseAssetRulesetResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2342,8 +2342,8 @@ export const getLicenseConfiguration: API.OperationMethod<
   GetLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetLicenseConfigurationRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetLicenseConfigurationResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetLicenseConfigurationRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GetLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2373,8 +2373,8 @@ export const getLicenseConversionTask: API.OperationMethod<
   GetLicenseConversionTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetLicenseConversionTaskRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetLicenseConversionTaskResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetLicenseConversionTaskRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<GetLicenseConversionTaskResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2406,8 +2406,8 @@ export const getLicenseManagerReportGenerator: API.OperationMethod<
   GetLicenseManagerReportGeneratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetLicenseManagerReportGeneratorRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GetLicenseManagerReportGeneratorResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetLicenseManagerReportGeneratorRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<GetLicenseManagerReportGeneratorResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2440,8 +2440,8 @@ export const getLicenseUsage: API.OperationMethod<
   GetLicenseUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetLicenseUsageRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetLicenseUsageResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<GetLicenseUsageRequest>,
+  output: __S(884, __c55, 4) as any as S.Schema<GetLicenseUsageResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2470,8 +2470,8 @@ export const getServiceSettings: API.OperationMethod<
   GetServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetServiceSettingsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetServiceSettingsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetServiceSettingsRequest>,
+  output: __S(902, __c56, 6) as any as S.Schema<GetServiceSettingsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2500,8 +2500,8 @@ export const listAssetsForLicenseAssetGroup: API.OperationMethod<
   ListAssetsForLicenseAssetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListAssetsForLicenseAssetGroupRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListAssetsForLicenseAssetGroupResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListAssetsForLicenseAssetGroupRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ListAssetsForLicenseAssetGroupResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2536,8 +2536,8 @@ export const listAssociationsForLicenseConfiguration: API.OperationMethod<
   ListAssociationsForLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListAssociationsForLicenseConfigurationRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ListAssociationsForLicenseConfigurationResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListAssociationsForLicenseConfigurationRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ListAssociationsForLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2569,8 +2569,8 @@ export const listDistributedGrants: API.OperationMethod<
   ListDistributedGrantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListDistributedGrantsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListDistributedGrantsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListDistributedGrantsRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<ListDistributedGrantsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2602,14 +2602,14 @@ export const listFailuresForLicenseConfigurationOperations: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    1024,
+    __c64,
+    0,
   ) as any as S.Schema<ListFailuresForLicenseConfigurationOperationsRequest>,
   output: __S(
-    138,
-    __c17,
-    2,
+    1027,
+    __c64,
+    3,
   ) as any as S.Schema<ListFailuresForLicenseConfigurationOperationsResponse>,
   errors: [
     AccessDeniedException,
@@ -2640,8 +2640,8 @@ export const listLicenseAssetGroups: API.OperationMethod<
   ListLicenseAssetGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListLicenseAssetGroupsRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListLicenseAssetGroupsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListLicenseAssetGroupsRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<ListLicenseAssetGroupsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2672,8 +2672,8 @@ export const listLicenseAssetRulesets: API.OperationMethod<
   ListLicenseAssetRulesetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListLicenseAssetRulesetsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<ListLicenseAssetRulesetsResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListLicenseAssetRulesetsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<ListLicenseAssetRulesetsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2704,8 +2704,8 @@ export const listLicenseConfigurations: API.OperationMethod<
   ListLicenseConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListLicenseConfigurationsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListLicenseConfigurationsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListLicenseConfigurationsRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListLicenseConfigurationsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2736,8 +2736,8 @@ export const listLicenseConfigurationsForOrganization: API.OperationMethod<
   ListLicenseConfigurationsForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListLicenseConfigurationsForOrganizationRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListLicenseConfigurationsForOrganizationResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListLicenseConfigurationsForOrganizationRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListLicenseConfigurationsForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2767,8 +2767,8 @@ export const listLicenseConversionTasks: API.OperationMethod<
   ListLicenseConversionTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListLicenseConversionTasksRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ListLicenseConversionTasksResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListLicenseConversionTasksRequest>,
+  output: __S(1139, __c71, 3) as any as S.Schema<ListLicenseConversionTasksResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2800,8 +2800,8 @@ export const listLicenseManagerReportGenerators: API.OperationMethod<
   ListLicenseManagerReportGeneratorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListLicenseManagerReportGeneratorsRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<ListLicenseManagerReportGeneratorsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListLicenseManagerReportGeneratorsRequest>,
+  output: __S(1154, __c72, 2) as any as S.Schema<ListLicenseManagerReportGeneratorsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2834,8 +2834,8 @@ export const listLicenses: API.OperationMethod<
   ListLicensesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListLicensesRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListLicensesResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListLicensesRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ListLicensesResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2865,8 +2865,8 @@ export const listLicenseSpecificationsForResource: API.OperationMethod<
   ListLicenseSpecificationsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListLicenseSpecificationsForResourceRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListLicenseSpecificationsForResourceResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListLicenseSpecificationsForResourceRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ListLicenseSpecificationsForResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2895,8 +2895,8 @@ export const listLicenseVersions: API.OperationMethod<
   ListLicenseVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListLicenseVersionsRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListLicenseVersionsResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListLicenseVersionsRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<ListLicenseVersionsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2929,8 +2929,8 @@ export const listReceivedGrants: API.OperationMethod<
   ListReceivedGrantsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListReceivedGrantsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListReceivedGrantsResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListReceivedGrantsRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<ListReceivedGrantsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2963,8 +2963,8 @@ export const listReceivedGrantsForOrganization: API.OperationMethod<
   ListReceivedGrantsForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListReceivedGrantsForOrganizationRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListReceivedGrantsForOrganizationResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListReceivedGrantsForOrganizationRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<ListReceivedGrantsForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -2997,8 +2997,8 @@ export const listReceivedLicenses: API.OperationMethod<
   ListReceivedLicensesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListReceivedLicensesRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ListReceivedLicensesResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListReceivedLicensesRequest>,
+  output: __S(1299, __c81, 3) as any as S.Schema<ListReceivedLicensesResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3031,8 +3031,8 @@ export const listReceivedLicensesForOrganization: API.OperationMethod<
   ListReceivedLicensesForOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListReceivedLicensesForOrganizationRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<ListReceivedLicensesForOrganizationResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListReceivedLicensesForOrganizationRequest>,
+  output: __S(1299, __c81, 3) as any as S.Schema<ListReceivedLicensesForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3065,8 +3065,8 @@ export const listResourceInventory: API.OperationMethod<
   ListResourceInventoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListResourceInventoryRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListResourceInventoryResponse>,
+  input: __S(1330, __c83, 2) as any as S.Schema<ListResourceInventoryRequest>,
+  output: __S(1333, __c83, 5) as any as S.Schema<ListResourceInventoryResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3099,8 +3099,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3130,8 +3130,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListTokensRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListTokensResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListTokensRequest>,
+  output: __S(1363, __c85, 3) as any as S.Schema<ListTokensResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3163,8 +3163,8 @@ export const listUsageForLicenseConfiguration: API.OperationMethod<
   ListUsageForLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListUsageForLicenseConfigurationRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListUsageForLicenseConfigurationResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListUsageForLicenseConfigurationRequest>,
+  output: __S(1379, __c86, 3) as any as S.Schema<ListUsageForLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3196,8 +3196,8 @@ export const rejectGrant: API.OperationMethod<
   RejectGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<RejectGrantRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectGrantResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<RejectGrantRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RejectGrantResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3238,8 +3238,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3270,8 +3270,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3302,8 +3302,8 @@ export const updateLicenseAssetGroup: API.OperationMethod<
   UpdateLicenseAssetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateLicenseAssetGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateLicenseAssetGroupResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UpdateLicenseAssetGroupRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateLicenseAssetGroupResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3334,8 +3334,8 @@ export const updateLicenseAssetRuleset: API.OperationMethod<
   UpdateLicenseAssetRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateLicenseAssetRulesetRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateLicenseAssetRulesetResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateLicenseAssetRulesetRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<UpdateLicenseAssetRulesetResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3368,8 +3368,8 @@ export const updateLicenseConfiguration: API.OperationMethod<
   UpdateLicenseConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateLicenseConfigurationRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateLicenseConfigurationResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateLicenseConfigurationRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<UpdateLicenseConfigurationResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3406,8 +3406,8 @@ export const updateLicenseManagerReportGenerator: API.OperationMethod<
   UpdateLicenseManagerReportGeneratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<UpdateLicenseManagerReportGeneratorRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateLicenseManagerReportGeneratorResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UpdateLicenseManagerReportGeneratorRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<UpdateLicenseManagerReportGeneratorResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3446,8 +3446,8 @@ export const updateLicenseSpecificationsForResource: API.OperationMethod<
   UpdateLicenseSpecificationsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<UpdateLicenseSpecificationsForResourceRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateLicenseSpecificationsForResourceResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdateLicenseSpecificationsForResourceRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<UpdateLicenseSpecificationsForResourceResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3481,8 +3481,8 @@ export const updateServiceSettings: API.OperationMethod<
   UpdateServiceSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<UpdateServiceSettingsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateServiceSettingsResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<UpdateServiceSettingsRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<UpdateServiceSettingsResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationException,
@@ -3506,36 +3506,6 @@ function __c0(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AcceptGrantRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          GrantArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          Version: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "AcceptGrantResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ LicenseConsumptionToken: S.String, Beneficiary: S.optional(S.String) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CheckInLicenseRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "CheckInLicenseResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Value: S.optional(S.String), Unit: S.String }),
-      ).annotate({ identifier: "EntitlementData" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Metadata" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -3543,11 +3513,37 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          GrantArn: S.optional(S.String),
+          Status: S.optional(S.String),
+          Version: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "AcceptGrantResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LicenseConsumptionToken: S.String, Beneficiary: S.optional(S.String) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CheckInLicenseRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "CheckInLicenseResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           LicenseArn: S.String,
-          Entitlements: __S(5, __c0, 5),
+          Entitlements: __S(65, __c4, 1),
           DigitalSignatureMethod: S.String,
           NodeId: S.optional(S.String),
-          CheckoutMetadata: S.optional(__S(7, __c0, 7)),
+          CheckoutMetadata: S.optional(__S(81, __c5, 1)),
           ClientToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3558,34 +3554,58 @@ function __c1(j: number): any {
         S.Struct({
           LicenseArn: S.optional(S.String),
           LicenseConsumptionToken: S.optional(S.String),
-          EntitlementsAllowed: S.optional(__S(5, __c0, 5)),
+          EntitlementsAllowed: S.optional(__S(65, __c4, 1)),
           NodeId: S.optional(S.String),
           SignedToken: S.optional(S.String),
           IssuedAt: S.optional(S.String),
           Expiration: S.optional(S.String),
-          CheckoutMetadata: S.optional(__S(7, __c0, 7)),
+          CheckoutMetadata: S.optional(__S(81, __c5, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "CheckoutBorrowLicenseResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Value: S.optional(S.String), Unit: S.String }),
+      ).annotate({ identifier: "EntitlementData" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Metadata" });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductSKU: S.String,
           CheckoutType: S.String,
           KeyFingerprint: S.String,
-          Entitlements: __S(5, __c0, 5),
+          Entitlements: __S(65, __c4, 1),
           ClientToken: S.String,
           Beneficiary: S.optional(S.String),
           NodeId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CheckoutLicenseRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CheckoutType: S.optional(S.String),
           LicenseConsumptionToken: S.optional(S.String),
-          EntitlementsAllowed: S.optional(__S(5, __c0, 5)),
+          EntitlementsAllowed: S.optional(__S(65, __c4, 1)),
           SignedToken: S.optional(S.String),
           NodeId: S.optional(S.String),
           IssuedAt: S.optional(S.String),
@@ -3593,19 +3613,9 @@ function __c1(j: number): any {
           LicenseArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "CheckoutLicenseResponse" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3613,32 +3623,54 @@ function __c2(j: number): any {
           ClientToken: S.String,
           GrantName: S.String,
           LicenseArn: S.String,
-          Principals: __S(12, __c1, 4),
+          Principals: __S(160, __c10, 0),
           HomeRegion: S.String,
-          AllowedOperations: __S(13, __c1, 5),
-          Tags: S.optional(__S(15, __c1, 7)),
+          AllowedOperations: __S(128, __c8, 0),
+          Tags: S.optional(__S(145, __c9, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGrantRequest" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ActivationOverrideBehavior: S.optional(S.String) }),
-      ).annotate({ identifier: "Options" });
-    case 2:
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.String,
           GrantArn: S.String,
           GrantName: S.optional(S.String),
-          AllowedOperations: S.optional(__S(13, __c1, 5)),
+          AllowedOperations: S.optional(__S(128, __c8, 0)),
           Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           SourceVersion: S.optional(S.String),
-          Options: S.optional(__S(17, __c2, 1)),
+          Options: S.optional(__S(192, __c12, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateGrantVersionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GrantArn: S.optional(S.String),
@@ -3648,15 +3680,60 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateGrantVersionResponse",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ActivationOverrideBehavior: S.optional(S.String) }),
+      ).annotate({ identifier: "Options" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LicenseName: S.String,
+          ProductName: S.String,
+          ProductSKU: S.String,
+          Issuer: __S(224, __c14, 0),
+          HomeRegion: S.String,
+          Validity: __S(240, __c15, 0),
+          Entitlements: __S(242, __c15, 2),
+          Beneficiary: S.String,
+          ConsumptionConfiguration: __S(245, __c15, 5),
+          LicenseMetadata: S.optional(__S(81, __c5, 1)),
+          ClientToken: S.String,
+          Tags: S.optional(__S(145, __c9, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateLicenseRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          LicenseArn: S.optional(S.String),
+          Status: S.optional(S.String),
+          Version: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CreateLicenseResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.String, SignKey: S.optional(S.String) })).annotate({
         identifier: "Issuer",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Begin: S.String, End: S.optional(S.String) })).annotate({
         identifier: "DatetimeRange",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3667,193 +3744,161 @@ function __c2(j: number): any {
           AllowCheckIn: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Entitlement" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
       return S.suspend(() => S.Struct({ MaxTimeToLiveInMinutes: S.Number })).annotate({
         identifier: "ProvisionalConfiguration",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({ AllowEarlyCheckIn: S.Boolean, MaxTimeToLiveInMinutes: S.Number }),
       ).annotate({ identifier: "BorrowConfiguration" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           RenewType: S.optional(S.String),
-          ProvisionalConfiguration: S.optional(__S(24, __c3, 0)),
-          BorrowConfiguration: S.optional(__S(25, __c3, 1)),
+          ProvisionalConfiguration: S.optional(__S(243, __c15, 3)),
+          BorrowConfiguration: S.optional(__S(244, __c15, 4)),
         }),
       ).annotate({ identifier: "ConsumptionConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseName: S.String,
-          ProductName: S.String,
-          ProductSKU: S.String,
-          Issuer: __S(20, __c2, 4),
-          HomeRegion: S.String,
-          Validity: __S(21, __c2, 5),
-          Entitlements: __S(23, __c2, 7),
-          Beneficiary: S.String,
-          ConsumptionConfiguration: __S(26, __c3, 2),
-          LicenseMetadata: S.optional(__S(7, __c0, 7)),
-          ClientToken: S.String,
-          Tags: S.optional(__S(15, __c1, 7)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateLicenseRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseArn: S.optional(S.String),
-          Status: S.optional(S.String),
-          Version: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "CreateLicenseResponse" });
-    case 5:
-      return S.suspend(() => S.Struct({ UsageDimension: S.optional(S.String) })).annotate({
-        identifier: "LicenseAssetGroupConfiguration",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "LicenseAssetGroupProperty",
-      });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          LicenseAssetGroupConfigurations: __S(30, __c3, 6),
-          AssociatedLicenseAssetRulesetARNs: __S(12, __c1, 4),
-          Properties: S.optional(__S(32, __c4, 0)),
-          Tags: S.optional(__S(15, __c1, 7)),
+          LicenseAssetGroupConfigurations: __S(273, __c17, 1),
+          AssociatedLicenseAssetRulesetARNs: __S(160, __c10, 0),
+          Properties: S.optional(__S(275, __c17, 3)),
+          Tags: S.optional(__S(145, __c9, 1)),
           ClientToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLicenseAssetGroupRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ UsageDimension: S.optional(S.String) })).annotate({
+        identifier: "LicenseAssetGroupConfiguration",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
     case 2:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "LicenseAssetGroupProperty",
+      });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseAssetGroupArn: S.String, Status: S.String }).pipe(ns),
       ).annotate({
         identifier: "CreateLicenseAssetGroupResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ KeyToMatch: S.String, Constraint: S.String, ValueToMatch: __S(12, __c1, 4) }),
-      ).annotate({ identifier: "MatchingRuleStatement" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ KeyToMatch: S.String, Script: S.String })).annotate({
-        identifier: "ScriptRuleStatement",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MatchingRuleStatements: S.optional(__S(36, __c4, 4)),
-          ScriptRuleStatements: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "AndRuleStatement" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AndRuleStatement: S.optional(__S(39, __c4, 7)),
-          OrRuleStatement: S.optional(__S(39, __c4, 7)),
-          MatchingRuleStatement: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "LicenseConfigurationRuleStatement",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AndRuleStatement: S.optional(__S(39, __c4, 7)),
-          OrRuleStatement: S.optional(__S(39, __c4, 7)),
-          MatchingRuleStatement: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "LicenseRuleStatement" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AndRuleStatement: S.optional(__S(39, __c4, 7)),
-          OrRuleStatement: S.optional(__S(39, __c4, 7)),
-          MatchingRuleStatement: S.optional(__S(35, __c4, 3)),
-          ScriptRuleStatement: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "InstanceRuleStatement" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseConfigurationRuleStatement: S.optional(__S(40, __c5, 0)),
-          LicenseRuleStatement: S.optional(__S(41, __c5, 1)),
-          InstanceRuleStatement: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "RuleStatement" });
-    case 4:
-      return S.suspend(() => S.Struct({ RuleStatement: __S(43, __c5, 3) })).annotate({
-        identifier: "LicenseAssetRule",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Rules: __S(45, __c5, 5),
-          Tags: S.optional(__S(15, __c1, 7)),
+          Rules: __S(330, __c20, 10),
+          Tags: S.optional(__S(145, __c9, 1)),
           ClientToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLicenseAssetRulesetRequest",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KeyToMatch: S.String, Constraint: S.String, ValueToMatch: __S(160, __c10, 0) }),
+      ).annotate({ identifier: "MatchingRuleStatement" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ KeyToMatch: S.String, Script: S.String })).annotate({
+        identifier: "ScriptRuleStatement",
+      });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MatchingRuleStatements: S.optional(__S(321, __c20, 1)),
+          ScriptRuleStatements: S.optional(__S(323, __c20, 3)),
+        }),
+      ).annotate({ identifier: "AndRuleStatement" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AndRuleStatement: S.optional(__S(324, __c20, 4)),
+          OrRuleStatement: S.optional(__S(324, __c20, 4)),
+          MatchingRuleStatement: S.optional(__S(320, __c20, 0)),
+        }),
+      ).annotate({
+        identifier: "LicenseConfigurationRuleStatement",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AndRuleStatement: S.optional(__S(324, __c20, 4)),
+          OrRuleStatement: S.optional(__S(324, __c20, 4)),
+          MatchingRuleStatement: S.optional(__S(320, __c20, 0)),
+        }),
+      ).annotate({ identifier: "LicenseRuleStatement" });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AndRuleStatement: S.optional(__S(324, __c20, 4)),
+          OrRuleStatement: S.optional(__S(324, __c20, 4)),
+          MatchingRuleStatement: S.optional(__S(320, __c20, 0)),
+          ScriptRuleStatement: S.optional(__S(322, __c20, 2)),
+        }),
+      ).annotate({ identifier: "InstanceRuleStatement" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          LicenseConfigurationRuleStatement: S.optional(__S(325, __c20, 5)),
+          LicenseRuleStatement: S.optional(__S(326, __c20, 6)),
+          InstanceRuleStatement: S.optional(__S(327, __c20, 7)),
+        }),
+      ).annotate({ identifier: "RuleStatement" });
+    case 9:
+      return S.suspend(() => S.Struct({ RuleStatement: __S(328, __c20, 8) })).annotate({
+        identifier: "LicenseAssetRule",
+      });
+    case 10:
+      return S.Array(__S(329, __c20, 9));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ LicenseAssetRulesetArn: S.String }).pipe(ns)).annotate({
         identifier: "CreateLicenseAssetRulesetResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ProductInformationFilterName: S.String,
-          ProductInformationFilterValue: S.optional(__S(12, __c1, 4)),
-          ProductInformationFilterComparator: S.String,
-        }),
-      ).annotate({ identifier: "ProductInformationFilter" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceType: S.String,
-          ProductInformationFilterList: __S(49, __c6, 1),
-        }),
-      ).annotate({ identifier: "ProductInformation" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3861,99 +3906,135 @@ function __c6(j: number): any {
           LicenseCountingType: S.String,
           LicenseCount: S.optional(S.Number),
           LicenseCountHardLimit: S.optional(S.Boolean),
-          LicenseRules: S.optional(__S(12, __c1, 4)),
-          Tags: S.optional(__S(15, __c1, 7)),
+          LicenseRules: S.optional(__S(160, __c10, 0)),
+          Tags: S.optional(__S(145, __c9, 1)),
           DisassociateWhenNotFound: S.optional(S.Boolean),
-          ProductInformationList: S.optional(__S(51, __c6, 3)),
+          ProductInformationList: S.optional(__S(371, __c23, 3)),
           LicenseExpiry: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLicenseConfigurationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ LicenseConfigurationArn: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateLicenseConfigurationResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ProductCodeId: S.String, ProductCodeType: S.String }),
-      ).annotate({ identifier: "ProductCodeListItem" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          UsageOperation: S.optional(S.String),
-          ProductCodes: S.optional(__S(55, __c6, 7)),
+          ProductInformationFilterName: S.String,
+          ProductInformationFilterValue: S.optional(__S(160, __c10, 0)),
+          ProductInformationFilterComparator: S.String,
         }),
-      ).annotate({ identifier: "LicenseConversionContext" });
+      ).annotate({ identifier: "ProductInformationFilter" });
     case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.String, ProductInformationFilterList: __S(369, __c23, 1) }),
+      ).annotate({ identifier: "ProductInformation" });
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
-          SourceLicenseContext: __S(56, __c7, 0),
-          DestinationLicenseContext: __S(56, __c7, 0),
+          SourceLicenseContext: __S(402, __c25, 2),
+          DestinationLicenseContext: __S(402, __c25, 2),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLicenseConversionTaskForResourceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ LicenseConversionTaskId: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateLicenseConversionTaskForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ProductCodeId: S.String, ProductCodeType: S.String }),
+      ).annotate({ identifier: "ProductCodeListItem" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          licenseConfigurationArns: S.optional(__S(12, __c1, 4)),
-          licenseAssetGroupArns: S.optional(__S(12, __c1, 4)),
-          reportStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          reportEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UsageOperation: S.optional(S.String),
+          ProductCodes: S.optional(__S(401, __c25, 1)),
         }),
-      ).annotate({ identifier: "ReportContext" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ value: S.optional(S.Number), period: S.optional(S.String) }),
-      ).annotate({ identifier: "ReportFrequency" });
-    case 5:
+      ).annotate({ identifier: "LicenseConversionContext" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReportGeneratorName: S.String,
-          Type: __S(13, __c1, 5),
-          ReportContext: __S(59, __c7, 3),
-          ReportFrequency: __S(60, __c7, 4),
+          Type: __S(128, __c8, 0),
+          ReportContext: __S(432, __c27, 0),
+          ReportFrequency: __S(433, __c27, 1),
           ClientToken: S.String,
           Description: S.optional(S.String),
-          Tags: S.optional(__S(15, __c1, 7)),
+          Tags: S.optional(__S(145, __c9, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLicenseManagerReportGeneratorRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ LicenseManagerReportGeneratorArn: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateLicenseManagerReportGeneratorResponse",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          licenseConfigurationArns: S.optional(__S(160, __c10, 0)),
+          licenseAssetGroupArns: S.optional(__S(160, __c10, 0)),
+          reportStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          reportEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ReportContext" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ value: S.optional(S.Number), period: S.optional(S.String) }),
+      ).annotate({ identifier: "ReportFrequency" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.String,
           LicenseName: S.String,
           ProductName: S.String,
-          Issuer: __S(20, __c2, 4),
+          Issuer: __S(224, __c14, 0),
           HomeRegion: S.String,
-          Validity: __S(21, __c2, 5),
-          LicenseMetadata: S.optional(__S(7, __c0, 7)),
-          Entitlements: __S(23, __c2, 7),
-          ConsumptionConfiguration: __S(26, __c3, 2),
+          Validity: __S(240, __c15, 0),
+          LicenseMetadata: S.optional(__S(81, __c5, 1)),
+          Entitlements: __S(242, __c15, 2),
+          ConsumptionConfiguration: __S(245, __c15, 5),
           Status: S.String,
           ClientToken: S.String,
           SourceVersion: S.optional(S.String),
@@ -3962,11 +4043,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateLicenseVersionRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.optional(S.String),
@@ -3976,17 +4053,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateLicenseVersionResponse",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.String,
-          RoleArns: S.optional(__S(12, __c1, 4)),
+          RoleArns: S.optional(__S(160, __c10, 0)),
           ExpirationInDays: S.optional(S.Number),
-          TokenProperties: S.optional(__S(12, __c1, 4)),
+          TokenProperties: S.optional(__S(160, __c10, 0)),
           ClientToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TokenId: S.optional(S.String),
@@ -3994,7 +4075,11 @@ function __c8(j: number): any {
           Token: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "CreateTokenResponse" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GrantArn: S.String,
@@ -4002,20 +4087,25 @@ function __c8(j: number): any {
           Version: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteGrantRequest" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseArn: S.String, SourceVersion: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteLicenseRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          DeletionDate: S.optional(S.String),
-        }).pipe(ns),
+        S.Struct({ Status: S.optional(S.String), DeletionDate: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "DeleteLicenseResponse" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseAssetGroupArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4023,13 +4113,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteLicenseAssetGroupRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Status: S.String }).pipe(ns)).annotate({
         identifier: "DeleteLicenseAssetGroupResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4039,11 +4129,19 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLicenseAssetRulesetRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLicenseAssetRulesetResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4051,7 +4149,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLicenseConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseManagerReportGeneratorArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4059,17 +4161,29 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteLicenseManagerReportGeneratorRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TokenId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTokenRequest" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteTokenResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseConsumptionToken: S.String, DryRun: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4077,7 +4191,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ExtendLicenseConsumptionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LicenseConsumptionToken: S.optional(S.String),
@@ -4088,11 +4202,11 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Token: SensitiveString, TokenProperties: S.optional(__S(12, __c1, 4)) }).pipe(
+        S.Struct({ Token: SensitiveString, TokenProperties: S.optional(__S(160, __c10, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccessTokenRequest" });
@@ -4100,13 +4214,25 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({ AccessToken: S.optional(SensitiveString) }).pipe(ns),
       ).annotate({ identifier: "GetAccessTokenResponse" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GrantArn: S.String, Version: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetGrantRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() => S.Struct({ Grant: S.optional(__S(672, __c42, 0)) }).pipe(ns)).annotate(
+        { identifier: "GetGrantResponse" },
+      );
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GrantArn: S.String,
@@ -4118,21 +4244,52 @@ function __c10(j: number): any {
           GrantStatus: S.String,
           StatusReason: S.optional(S.String),
           Version: S.String,
-          GrantedOperations: __S(13, __c1, 5),
-          Options: S.optional(__S(17, __c2, 1)),
+          GrantedOperations: __S(128, __c8, 0),
+          Options: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({ identifier: "Grant" });
-    case 4:
-      return S.suspend(() => S.Struct({ Grant: S.optional(__S(83, __c10, 3)) }).pipe(ns)).annotate({
-        identifier: "GetGrantResponse",
-      });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseArn: S.String, Version: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetLicenseRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ License: S.optional(__S(704, __c44, 0)) }).pipe(ns),
+      ).annotate({ identifier: "GetLicenseResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LicenseArn: S.optional(S.String),
+          LicenseName: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ProductSKU: S.optional(S.String),
+          Issuer: S.optional(__S(720, __c45, 0)),
+          HomeRegion: S.optional(S.String),
+          Status: S.optional(S.String),
+          Validity: S.optional(__S(240, __c15, 0)),
+          Beneficiary: S.optional(S.String),
+          Entitlements: S.optional(__S(242, __c15, 2)),
+          ConsumptionConfiguration: S.optional(__S(245, __c15, 5)),
+          LicenseMetadata: S.optional(__S(81, __c5, 1)),
+          CreateTime: S.optional(S.String),
+          Version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "License" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4140,36 +4297,11 @@ function __c10(j: number): any {
           KeyFingerprint: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssuerDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseArn: S.optional(S.String),
-          LicenseName: S.optional(S.String),
-          ProductName: S.optional(S.String),
-          ProductSKU: S.optional(S.String),
-          Issuer: S.optional(__S(86, __c10, 6)),
-          HomeRegion: S.optional(S.String),
-          Status: S.optional(S.String),
-          Validity: S.optional(__S(21, __c2, 5)),
-          Beneficiary: S.optional(S.String),
-          Entitlements: S.optional(__S(23, __c2, 7)),
-          ConsumptionConfiguration: S.optional(__S(26, __c3, 2)),
-          LicenseMetadata: S.optional(__S(7, __c0, 7)),
-          CreateTime: S.optional(S.String),
-          Version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "License" });
   }
 }
-function __c11(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ License: S.optional(__S(87, __c10, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetLicenseResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ LicenseAssetGroupArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4177,14 +4309,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetLicenseAssetGroupRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ LicenseAssetGroup: __S(752, __c47, 0) }).pipe(ns)).annotate(
+        {
+          identifier: "GetLicenseAssetGroupResponse",
+        },
+      );
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          LicenseAssetGroupConfigurations: S.optional(__S(30, __c3, 6)),
-          AssociatedLicenseAssetRulesetARNs: __S(12, __c1, 4),
-          Properties: S.optional(__S(32, __c4, 0)),
+          LicenseAssetGroupConfigurations: S.optional(__S(273, __c17, 1)),
+          AssociatedLicenseAssetRulesetARNs: __S(160, __c10, 0),
+          Properties: S.optional(__S(275, __c17, 3)),
           LicenseAssetGroupArn: S.String,
           Status: S.String,
           StatusMessage: S.optional(S.String),
@@ -4192,11 +4334,11 @@ function __c11(j: number): any {
           LatestResourceDiscoveryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "LicenseAssetGroup" });
-    case 3:
-      return S.suspend(() => S.Struct({ LicenseAssetGroup: __S(90, __c11, 2) }).pipe(ns)).annotate({
-        identifier: "GetLicenseAssetGroupResponse",
-      });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseAssetRulesetArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4204,22 +4346,30 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetLicenseAssetRulesetRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ LicenseAssetRuleset: __S(784, __c49, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "GetLicenseAssetRulesetResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Rules: __S(45, __c5, 5),
+          Rules: __S(330, __c20, 10),
           LicenseAssetRulesetArn: S.String,
         }),
       ).annotate({ identifier: "LicenseAssetRuleset" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ LicenseAssetRuleset: __S(93, __c11, 5) }).pipe(ns),
-      ).annotate({
-        identifier: "GetLicenseAssetRulesetResponse",
-      });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseConfigurationArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4227,35 +4377,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetLicenseConfigurationRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceType: S.optional(S.String),
-          ConsumedLicenses: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ConsumedLicenseSummary" });
     case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceType: S.optional(S.String),
-          AssociationCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ManagedResourceSummary" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ LastRunTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
-      ).annotate({
-        identifier: "AutomatedDiscoveryInformation",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationId: S.optional(S.String),
@@ -4263,24 +4385,50 @@ function __c12(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           LicenseCountingType: S.optional(S.String),
-          LicenseRules: S.optional(__S(12, __c1, 4)),
+          LicenseRules: S.optional(__S(160, __c10, 0)),
           LicenseCount: S.optional(S.Number),
           LicenseCountHardLimit: S.optional(S.Boolean),
           ConsumedLicenses: S.optional(S.Number),
           Status: S.optional(S.String),
           OwnerAccountId: S.optional(S.String),
-          ConsumedLicenseSummaryList: S.optional(__S(97, __c12, 1)),
-          ManagedResourceSummaryList: S.optional(__S(99, __c12, 3)),
-          Tags: S.optional(__S(15, __c1, 7)),
-          ProductInformationList: S.optional(__S(51, __c6, 3)),
-          AutomatedDiscoveryInformation: S.optional(__S(100, __c12, 4)),
+          ConsumedLicenseSummaryList: S.optional(__S(817, __c51, 1)),
+          ManagedResourceSummaryList: S.optional(__S(819, __c51, 3)),
+          Tags: S.optional(__S(145, __c9, 1)),
+          ProductInformationList: S.optional(__S(371, __c23, 3)),
+          AutomatedDiscoveryInformation: S.optional(__S(820, __c51, 4)),
           DisassociateWhenNotFound: S.optional(S.Boolean),
           LicenseExpiry: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({
         identifier: "GetLicenseConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(S.String), ConsumedLicenses: S.optional(S.Number) }),
+      ).annotate({ identifier: "ConsumedLicenseSummary" });
+    case 1:
+      return S.Array(__S(816, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(S.String), AssociationCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "ManagedResourceSummary" });
+    case 3:
+      return S.Array(__S(818, __c51, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ LastRunTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))) }),
+      ).annotate({
+        identifier: "AutomatedDiscoveryInformation",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseConversionTaskId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4288,13 +4436,13 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetLicenseConversionTaskRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LicenseConversionTaskId: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          SourceLicenseContext: S.optional(__S(56, __c7, 0)),
-          DestinationLicenseContext: S.optional(__S(56, __c7, 0)),
+          SourceLicenseContext: S.optional(__S(402, __c25, 2)),
+          DestinationLicenseContext: S.optional(__S(402, __c25, 2)),
           StatusMessage: S.optional(S.String),
           Status: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4306,7 +4454,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4318,39 +4466,47 @@ function __c13(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ ReportGenerator: S.optional(__S(865, __c54, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetLicenseManagerReportGeneratorResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ bucket: S.optional(S.String), keyPrefix: S.optional(S.String) }),
       ).annotate({ identifier: "S3Location" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReportGeneratorName: S.optional(S.String),
-          ReportType: S.optional(__S(13, __c1, 5)),
-          ReportContext: S.optional(__S(59, __c7, 3)),
-          ReportFrequency: S.optional(__S(60, __c7, 4)),
+          ReportType: S.optional(__S(128, __c8, 0)),
+          ReportContext: S.optional(__S(432, __c27, 0)),
+          ReportFrequency: S.optional(__S(433, __c27, 1)),
           LicenseManagerReportGeneratorArn: S.optional(S.String),
           LastRunStatus: S.optional(S.String),
           LastRunFailureReason: S.optional(S.String),
           LastReportGenerationTime: S.optional(S.String),
           ReportCreatorAccount: S.optional(S.String),
           Description: S.optional(S.String),
-          S3Location: S.optional(__S(105, __c13, 1)),
+          S3Location: S.optional(__S(864, __c54, 0)),
           CreateTime: S.optional(S.String),
-          Tags: S.optional(__S(15, __c1, 7)),
+          Tags: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({ identifier: "ReportGenerator" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ReportGenerator: S.optional(__S(106, __c13, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetLicenseManagerReportGeneratorResponse",
-      });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LicenseArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetLicenseUsageRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -4359,21 +4515,21 @@ function __c13(j: number): any {
           Unit: S.String,
         }),
       ).annotate({ identifier: "EntitlementUsage" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(881, __c55, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ EntitlementUsages: S.optional(__S(110, __c13, 6)) }),
+        S.Struct({ EntitlementUsages: S.optional(__S(882, __c55, 2)) }),
       ).annotate({ identifier: "LicenseUsage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ LicenseUsage: S.optional(__S(883, __c55, 3)) }).pipe(ns),
+      ).annotate({ identifier: "GetLicenseUsageResponse" });
   }
 }
-function __c14(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ LicenseUsage: S.optional(__S(111, __c13, 7)) }).pipe(ns),
-      ).annotate({ identifier: "GetLicenseUsageResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4381,51 +4537,55 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetServiceSettingsRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ EnableIntegration: S.Boolean })).annotate({
-        identifier: "OrganizationConfiguration",
-      });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ Message: S.optional(S.String) })).annotate({
         identifier: "CrossAccountDiscoveryServiceStatus",
       });
-    case 4:
+    case 2:
       return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "RegionStatus",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(116, __c14, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() => S.Struct({ Message: S.optional(__S(117, __c14, 5)) })).annotate({
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(898, __c56, 2).pipe(S.optional));
+    case 4:
+      return S.suspend(() => S.Struct({ Message: S.optional(__S(899, __c56, 3)) })).annotate({
         identifier: "CrossRegionDiscoveryStatus",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          CrossAccountDiscovery: S.optional(__S(115, __c14, 3)),
-          CrossRegionDiscovery: S.optional(__S(118, __c14, 6)),
+          CrossAccountDiscovery: S.optional(__S(897, __c56, 1)),
+          CrossRegionDiscovery: S.optional(__S(900, __c56, 4)),
         }),
       ).annotate({ identifier: "ServiceStatus" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           S3BucketArn: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
-          OrganizationConfiguration: S.optional(__S(114, __c14, 2)),
+          OrganizationConfiguration: S.optional(__S(912, __c57, 0)),
           EnableCrossAccountsDiscovery: S.optional(S.Boolean),
           LicenseManagerResourceShareArn: S.optional(S.String),
           CrossRegionDiscoveryHomeRegion: S.optional(S.String),
-          CrossRegionDiscoverySourceRegions: S.optional(__S(12, __c1, 4)),
-          ServiceStatus: S.optional(__S(119, __c14, 7)),
+          CrossRegionDiscoverySourceRegions: S.optional(__S(160, __c10, 0)),
+          ServiceStatus: S.optional(__S(901, __c56, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetServiceSettingsResponse",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ EnableIntegration: S.Boolean })).annotate({
+        identifier: "OrganizationConfiguration",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseAssetGroupArn: S.String,
@@ -4436,24 +4596,28 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAssetsForLicenseAssetGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AssetArn: S.optional(S.String),
           LatestAssetDiscoveryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Asset" });
+    case 2:
+      return S.Array(__S(929, __c58, 1));
     case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ Assets: S.optional(__S(123, __c15, 3)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Assets: S.optional(__S(930, __c58, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "ListAssetsForLicenseAssetGroupResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationArn: S.String,
@@ -4463,7 +4627,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListAssociationsForLicenseConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -4475,51 +4639,67 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "LicenseConfigurationAssociation",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          LicenseConfigurationAssociations: S.optional(__S(127, __c15, 7)),
+          LicenseConfigurationAssociations: S.optional(__S(946, __c59, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAssociationsForLicenseConfigurationResponse",
       });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(129, __c16, 1)) }),
-      ).annotate({ identifier: "Filter" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          GrantArns: S.optional(__S(12, __c1, 4)),
-          Filters: S.optional(__S(131, __c16, 3)),
+          GrantArns: S.optional(__S(160, __c10, 0)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDistributedGrantsRequest",
       });
-    case 5:
-      return S.Array(__S(83, __c10, 3));
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("item")));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Grants: S.optional(__S(133, __c16, 5)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(976, __c61, 0)) }),
+      ).annotate({ identifier: "Filter" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(977, __c61, 1));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(672, __c42, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Grants: S.optional(__S(1008, __c63, 0)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "ListDistributedGrantsResponse",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationArn: S.String,
@@ -4529,11 +4709,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListFailuresForLicenseConfigurationOperationsRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -4543,51 +4719,63 @@ function __c17(j: number): any {
           OperationName: S.optional(S.String),
           ResourceOwnerId: S.optional(S.String),
           OperationRequestedBy: S.optional(S.String),
-          MetadataList: S.optional(__S(7, __c0, 7)),
+          MetadataList: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({ identifier: "LicenseOperationFailure" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(1025, __c64, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          LicenseOperationFailureList: S.optional(__S(137, __c17, 1)),
+          LicenseOperationFailureList: S.optional(__S(1026, __c64, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListFailuresForLicenseConfigurationOperationsResponse",
       });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(130, __c16, 2).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "Filter",
-        }),
-      );
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(139, __c17, 3)),
+          Filters: S.optional(__S(1056, __c66, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListLicenseAssetGroupsRequest",
       });
-    case 5:
-      return S.Array(__S(90, __c11, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          LicenseAssetGroups: S.optional(__S(141, __c17, 5)),
+          LicenseAssetGroups: S.optional(__S(1041, __c65, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseAssetGroupsResponse",
       });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ __S(977, __c61, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("item"))
+          .annotate({ identifier: "Filter" }),
+      );
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(139, __c17, 3)),
+          Filters: S.optional(__S(1056, __c66, 0)),
           ShowAWSManagedLicenseAssetRulesets: S.optional(S.Boolean),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
@@ -4595,33 +4783,37 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListLicenseAssetRulesetsRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(93, __c11, 5));
     case 1:
+      return S.Array(__S(784, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          LicenseAssetRulesets: S.optional(__S(144, __c18, 0)),
+          LicenseAssetRulesets: S.optional(__S(1073, __c67, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseAssetRulesetsResponse",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          LicenseConfigurationArns: S.optional(__S(12, __c1, 4)),
+          LicenseConfigurationArns: S.optional(__S(160, __c10, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(139, __c17, 3)),
+          Filters: S.optional(__S(1056, __c66, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListLicenseConfigurationsRequest",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationId: S.optional(S.String),
@@ -4629,63 +4821,67 @@ function __c18(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           LicenseCountingType: S.optional(S.String),
-          LicenseRules: S.optional(__S(12, __c1, 4)),
+          LicenseRules: S.optional(__S(160, __c10, 0)),
           LicenseCount: S.optional(S.Number),
           LicenseCountHardLimit: S.optional(S.Boolean),
           DisassociateWhenNotFound: S.optional(S.Boolean),
           ConsumedLicenses: S.optional(S.Number),
           Status: S.optional(S.String),
           OwnerAccountId: S.optional(S.String),
-          ConsumedLicenseSummaryList: S.optional(__S(97, __c12, 1)),
-          ManagedResourceSummaryList: S.optional(__S(99, __c12, 3)),
-          ProductInformationList: S.optional(__S(51, __c6, 3)),
-          AutomatedDiscoveryInformation: S.optional(__S(100, __c12, 4)),
+          ConsumedLicenseSummaryList: S.optional(__S(817, __c51, 1)),
+          ManagedResourceSummaryList: S.optional(__S(819, __c51, 3)),
+          ProductInformationList: S.optional(__S(371, __c23, 3)),
+          AutomatedDiscoveryInformation: S.optional(__S(820, __c51, 4)),
           LicenseExpiry: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LicenseConfiguration" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(1104, __c69, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          LicenseConfigurations: S.optional(__S(148, __c18, 4)),
+          LicenseConfigurations: S.optional(__S(1105, __c69, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseConfigurationsResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseConfigurationArns: S.optional(__S(12, __c1, 4)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          Filters: S.optional(__S(139, __c17, 3)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListLicenseConfigurationsForOrganizationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(139, __c17, 3)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListLicenseConversionTasksRequest",
-      });
   }
 }
-function __c19(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          LicenseConfigurationArns: S.optional(__S(160, __c10, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Filters: S.optional(__S(1056, __c66, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListLicenseConfigurationsForOrganizationRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          Filters: S.optional(__S(1056, __c66, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListLicenseConversionTasksRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           LicenseConversionTaskId: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          SourceLicenseContext: S.optional(__S(56, __c7, 0)),
-          DestinationLicenseContext: S.optional(__S(56, __c7, 0)),
+          SourceLicenseContext: S.optional(__S(402, __c25, 2)),
+          DestinationLicenseContext: S.optional(__S(402, __c25, 2)),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4693,61 +4889,73 @@ function __c19(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "LicenseConversionTask" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
     case 2:
+      return S.Array(__S(1137, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          LicenseConversionTasks: S.optional(__S(153, __c19, 1)),
+          LicenseConversionTasks: S.optional(__S(1138, __c71, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseConversionTasksResponse",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(131, __c16, 3)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListLicenseManagerReportGeneratorsRequest",
       });
-    case 4:
-      return S.Array(__S(106, __c13, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(865, __c54, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ReportGenerators: S.optional(__S(156, __c19, 4)),
+          ReportGenerators: S.optional(__S(1153, __c72, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseManagerReportGeneratorsResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          LicenseArns: S.optional(__S(12, __c1, 4)),
-          Filters: S.optional(__S(131, __c16, 3)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListLicensesRequest" });
-    case 7:
-      return S.Array(__S(87, __c10, 7));
   }
 }
-function __c20(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Licenses: S.optional(__S(159, __c19, 7)),
+          LicenseArns: S.optional(__S(160, __c10, 0)),
+          Filters: S.optional(__S(992, __c62, 0)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListLicensesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Licenses: S.optional(__S(1184, __c74, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListLicensesResponse" });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(704, __c44, 0));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
@@ -4757,22 +4965,30 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListLicenseSpecificationsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ LicenseConfigurationArn: S.String, AmiAssociationScope: S.optional(S.String) }),
-      ).annotate({ identifier: "LicenseSpecification" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          LicenseSpecifications: S.optional(__S(163, __c20, 3)),
+          LicenseSpecifications: S.optional(__S(1217, __c76, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseSpecificationsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LicenseConfigurationArn: S.String, AmiAssociationScope: S.optional(S.String) }),
+      ).annotate({ identifier: "LicenseSpecification" });
+    case 1:
+      return S.Array(__S(1216, __c76, 0));
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.String,
@@ -4782,20 +4998,24 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListLicenseVersionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Licenses: S.optional(__S(159, __c19, 7)),
+          Licenses: S.optional(__S(1184, __c74, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLicenseVersionsResponse",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          GrantArns: S.optional(__S(12, __c1, 4)),
-          Filters: S.optional(__S(131, __c16, 3)),
+          GrantArns: S.optional(__S(160, __c10, 0)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4804,104 +5024,112 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.String,
-          Filters: S.optional(__S(131, __c16, 3)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListReceivedGrantsForOrganizationRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          LicenseArns: S.optional(__S(12, __c1, 4)),
-          Filters: S.optional(__S(131, __c16, 3)),
+          LicenseArns: S.optional(__S(160, __c10, 0)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListReceivedLicensesRequest",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReceivedStatus: S.optional(S.String),
           ReceivedStatusReason: S.optional(S.String),
-          AllowedOperations: S.optional(__S(13, __c1, 5)),
+          AllowedOperations: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "ReceivedMetadata" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LicenseArn: S.optional(S.String),
           LicenseName: S.optional(S.String),
           ProductName: S.optional(S.String),
           ProductSKU: S.optional(S.String),
-          Issuer: S.optional(__S(86, __c10, 6)),
+          Issuer: S.optional(__S(720, __c45, 0)),
           HomeRegion: S.optional(S.String),
           Status: S.optional(S.String),
-          Validity: S.optional(__S(21, __c2, 5)),
+          Validity: S.optional(__S(240, __c15, 0)),
           Beneficiary: S.optional(S.String),
-          Entitlements: S.optional(__S(23, __c2, 7)),
-          ConsumptionConfiguration: S.optional(__S(26, __c3, 2)),
-          LicenseMetadata: S.optional(__S(7, __c0, 7)),
+          Entitlements: S.optional(__S(242, __c15, 2)),
+          ConsumptionConfiguration: S.optional(__S(245, __c15, 5)),
+          LicenseMetadata: S.optional(__S(81, __c5, 1)),
           CreateTime: S.optional(S.String),
           Version: S.optional(S.String),
-          ReceivedMetadata: S.optional(__S(170, __c21, 2)),
+          ReceivedMetadata: S.optional(__S(1296, __c81, 0)),
         }),
       ).annotate({ identifier: "GrantedLicense" });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1297, __c81, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Licenses: S.optional(__S(172, __c21, 4)),
+          Licenses: S.optional(__S(1298, __c81, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListReceivedLicensesResponse",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(131, __c16, 3)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListReceivedLicensesForOrganizationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Condition: S.String,
-          Value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InventoryFilter" });
   }
 }
-function __c22(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(175, __c21, 7));
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Condition: S.String, Value: S.optional(S.String) }),
+      ).annotate({ identifier: "InventoryFilter" });
     case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(176, __c22, 0)),
+          Filters: S.optional(__S(1329, __c83, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListResourceInventoryRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
@@ -4910,7 +5138,7 @@ function __c22(j: number): any {
           Platform: S.optional(S.String),
           PlatformVersion: S.optional(S.String),
           ResourceOwningAccountId: S.optional(S.String),
-          MarketplaceProductCodes: S.optional(__S(12, __c1, 4)),
+          MarketplaceProductCodes: S.optional(__S(160, __c10, 0)),
           UsageOperation: S.optional(S.String),
           AmiId: S.optional(S.String),
           HostId: S.optional(S.String),
@@ -4918,18 +5146,22 @@ function __c22(j: number): any {
           InstanceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceInventory" });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
     case 4:
+      return S.Array(__S(1331, __c83, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ResourceInventoryList: S.optional(__S(179, __c22, 3)),
+          ResourceInventoryList: S.optional(__S(1332, __c83, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListResourceInventoryResponse",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4937,55 +5169,59 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(15, __c1, 7)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(145, __c9, 1)) }).pipe(ns)).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          TokenIds: S.optional(__S(12, __c1, 4)),
-          Filters: S.optional(__S(131, __c16, 3)),
+          TokenIds: S.optional(__S(160, __c10, 0)),
+          Filters: S.optional(__S(992, __c62, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTokensRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TokenId: S.optional(S.String),
           TokenType: S.optional(S.String),
           LicenseArn: S.optional(S.String),
           ExpirationTime: S.optional(S.String),
-          TokenProperties: S.optional(__S(12, __c1, 4)),
-          RoleArns: S.optional(__S(12, __c1, 4)),
+          TokenProperties: S.optional(__S(160, __c10, 0)),
+          RoleArns: S.optional(__S(160, __c10, 0)),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenData" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1361, __c85, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Tokens: S.optional(__S(185, __c23, 1)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Tokens: S.optional(__S(1362, __c85, 2)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListTokensResponse" });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationArn: S.String,
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(__S(139, __c17, 3)),
+          Filters: S.optional(__S(1056, __c66, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListUsageForLicenseConfigurationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -4998,18 +5234,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "LicenseConfigurationUsage",
       });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1377, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          LicenseConfigurationUsageList: S.optional(__S(189, __c23, 5)),
+          LicenseConfigurationUsageList: S.optional(__S(1378, __c86, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListUsageForLicenseConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GrantArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5017,28 +5257,36 @@ function __c23(j: number): any {
       ).annotate({ identifier: "RejectGrantRequest" });
   }
 }
-function __c24(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(15, __c1, 7) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(145, __c9, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(12, __c1, 4) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(160, __c10, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          LicenseAssetGroupConfigurations: S.optional(__S(30, __c3, 6)),
-          AssociatedLicenseAssetRulesetARNs: __S(12, __c1, 4),
-          Properties: S.optional(__S(32, __c4, 0)),
+          LicenseAssetGroupConfigurations: S.optional(__S(273, __c17, 1)),
+          AssociatedLicenseAssetRulesetARNs: __S(160, __c10, 0),
+          Properties: S.optional(__S(275, __c17, 3)),
           LicenseAssetGroupArn: S.String,
           Status: S.optional(S.String),
           ClientToken: S.String,
@@ -5046,74 +5294,93 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateLicenseAssetGroupRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Rules: __S(45, __c5, 5),
+          Rules: __S(330, __c20, 10),
           LicenseAssetRulesetArn: S.String,
           ClientToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateLicenseAssetRulesetRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseConfigurationArn: S.String,
           LicenseConfigurationStatus: S.optional(S.String),
-          LicenseRules: S.optional(__S(12, __c1, 4)),
+          LicenseRules: S.optional(__S(160, __c10, 0)),
           LicenseCount: S.optional(S.Number),
           LicenseCountHardLimit: S.optional(S.Boolean),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ProductInformationList: S.optional(__S(51, __c6, 3)),
+          ProductInformationList: S.optional(__S(371, __c23, 3)),
           DisassociateWhenNotFound: S.optional(S.Boolean),
           LicenseExpiry: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateLicenseConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LicenseManagerReportGeneratorArn: S.String,
           ReportGeneratorName: S.String,
-          Type: __S(13, __c1, 5),
-          ReportContext: __S(59, __c7, 3),
-          ReportFrequency: __S(60, __c7, 4),
+          Type: __S(128, __c8, 0),
+          ReportContext: __S(432, __c27, 0),
+          ReportFrequency: __S(433, __c27, 1),
           ClientToken: S.String,
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateLicenseManagerReportGeneratorRequest",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
-          AddLicenseSpecifications: S.optional(__S(163, __c20, 3)),
-          RemoveLicenseSpecifications: S.optional(__S(163, __c20, 3)),
+          AddLicenseSpecifications: S.optional(__S(1217, __c76, 1)),
+          RemoveLicenseSpecifications: S.optional(__S(1217, __c76, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateLicenseSpecificationsForResourceRequest",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           S3BucketArn: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
-          OrganizationConfiguration: S.optional(__S(114, __c14, 2)),
+          OrganizationConfiguration: S.optional(__S(912, __c57, 0)),
           EnableCrossAccountsDiscovery: S.optional(S.Boolean),
-          EnabledDiscoverySourceRegions: S.optional(__S(12, __c1, 4)),
+          EnabledDiscoverySourceRegions: S.optional(__S(160, __c10, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateServiceSettingsRequest",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

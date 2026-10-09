@@ -342,8 +342,8 @@ export const getControl: API.OperationMethod<
   GetControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetControlRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetControlResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetControlRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<GetControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -374,8 +374,8 @@ export const listCommonControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CommonControlSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListCommonControlsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListCommonControlsResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<ListCommonControlsRequest>,
+  output: __S(69, __c4, 5) as any as S.Schema<ListCommonControlsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -409,8 +409,8 @@ export const listControlMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ControlMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListControlMappingsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListControlMappingsResponse>,
+  input: __S(98, __c6, 2) as any as S.Schema<ListControlMappingsRequest>,
+  output: __S(105, __c6, 9) as any as S.Schema<ListControlMappingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -444,8 +444,8 @@ export const listControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ControlSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListControlsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListControlsResponse>,
+  input: __S(114, __c7, 2) as any as S.Schema<ListControlsRequest>,
+  output: __S(117, __c7, 5) as any as S.Schema<ListControlsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -479,8 +479,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListDomainsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListDomainsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ListDomainsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -516,8 +516,8 @@ export const listObjectives: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ObjectiveSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListObjectivesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListObjectivesResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ListObjectivesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListObjectivesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -539,113 +539,160 @@ export const listObjectives: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ Domains: S.optional(__S(81, __c5, 1)) })).annotate({
+        identifier: "ObjectiveFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          ObjectiveFilter: S.optional(__S(0, __c0, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/objectives" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListObjectivesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Name: S.String,
+          Description: S.String,
+          Domain: __S(82, __c5, 2),
+          CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "ObjectiveSummary" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Objectives: __S(3, __c0, 3), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListObjectivesResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ControlArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/get-control" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetControlRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
-        S.Struct({ Scope: S.String, DeployableRegions: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ Scope: S.String, DeployableRegions: S.optional(__S(32, __c2, 0)) }),
       ).annotate({ identifier: "RegionConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
-      ).annotate({ identifier: "ImplementationDetails" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Requirement: S.optional(S.String) }),
       ).annotate({ identifier: "ControlParameter" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          Aliases: S.optional(__S(1, __c0, 1)),
+          Aliases: S.optional(__S(32, __c2, 0)),
           Name: S.String,
           Description: S.String,
           Behavior: S.String,
           Severity: S.optional(S.String),
-          RegionConfiguration: __S(2, __c0, 2),
-          Implementation: S.optional(__S(3, __c0, 3)),
+          RegionConfiguration: __S(17, __c1, 1),
+          Implementation: S.optional(__S(48, __c3, 0)),
           ParameterRequirementSummary: S.optional(S.String),
-          Parameters: S.optional(__S(5, __c0, 5)),
+          Parameters: S.optional(__S(19, __c1, 3)),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          GovernedResources: S.optional(__S(1, __c0, 1)),
-          GovernedProviders: S.optional(__S(1, __c0, 1)),
+          GovernedResources: S.optional(__S(32, __c2, 0)),
+          GovernedProviders: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "GetControlResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
-        identifier: "ObjectiveResourceFilter",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ Objectives: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "CommonControlFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          CommonControlFilter: S.optional(__S(9, __c1, 1)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/common-controls" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListCommonControlsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({ identifier: "AssociatedDomainSummary" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssociatedObjectiveSummary",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          Name: S.String,
-          Description: S.String,
-          Domain: __S(11, __c1, 3),
-          Objective: __S(12, __c1, 4),
-          CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "CommonControlSummary" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ CommonControls: __S(14, __c1, 6), NextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListCommonControlsResponse",
-      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
+      ).annotate({ identifier: "ImplementationDetails" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Objectives: S.optional(__S(81, __c5, 1)) })).annotate({
+        identifier: "CommonControlFilter",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ControlArns: S.optional(__S(1, __c0, 1)),
-          CommonControlArns: S.optional(__S(1, __c0, 1)),
-          MappingTypes: S.optional(__S(16, __c2, 0)),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          CommonControlFilter: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/common-controls" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListCommonControlsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AssociatedObjectiveSummary",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Name: S.String,
+          Description: S.String,
+          Domain: __S(82, __c5, 2),
+          Objective: __S(66, __c4, 2),
+          CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "CommonControlSummary" });
+    case 4:
+      return S.Array(__S(67, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CommonControls: __S(68, __c4, 4), NextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListCommonControlsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
+        identifier: "ObjectiveResourceFilter",
+      });
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({ identifier: "AssociatedDomainSummary" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ControlArns: S.optional(__S(32, __c2, 0)),
+          CommonControlArns: S.optional(__S(32, __c2, 0)),
+          MappingTypes: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "ControlMappingFilter" });
     case 2:
@@ -653,7 +700,7 @@ function __c2(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          Filter: S.optional(__S(17, __c2, 1)),
+          Filter: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/list-control-mappings" }),
@@ -683,75 +730,75 @@ function __c2(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Framework: __S(19, __c2, 3) }),
-        /*@__PURE__*/ S.Struct({ CommonControl: __S(20, __c2, 4) }),
-        /*@__PURE__*/ S.Struct({ RelatedControl: __S(21, __c2, 5) }),
+        /*@__PURE__*/ S.Struct({ Framework: __S(99, __c6, 3) }),
+        /*@__PURE__*/ S.Struct({ CommonControl: __S(100, __c6, 4) }),
+        /*@__PURE__*/ S.Struct({ RelatedControl: __S(101, __c6, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
-        S.Struct({ ControlArn: S.String, MappingType: S.String, Mapping: __S(22, __c2, 6) }),
+        S.Struct({ ControlArn: S.String, MappingType: S.String, Mapping: __S(102, __c6, 6) }),
       ).annotate({ identifier: "ControlMapping" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(103, __c6, 7));
+    case 9:
       return S.suspend(() =>
-        S.Struct({ ControlMappings: __S(24, __c3, 0), NextToken: S.optional(S.String) }),
+        S.Struct({ ControlMappings: __S(104, __c6, 8), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListControlMappingsResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Types: S.optional(__S(1, __c0, 1)),
-          Identifiers: S.optional(__S(1, __c0, 1)),
+          Types: S.optional(__S(32, __c2, 0)),
+          Identifiers: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "ImplementationFilter" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Implementations: S.optional(__S(26, __c3, 2)),
-          GovernedProviders: S.optional(__S(1, __c0, 1)),
+          Implementations: S.optional(__S(112, __c7, 0)),
+          GovernedProviders: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "ControlFilter" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          Filter: S.optional(__S(27, __c3, 3)),
+          Filter: S.optional(__S(113, __c7, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/list-controls" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListControlsRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          Aliases: S.optional(__S(1, __c0, 1)),
+          Aliases: S.optional(__S(32, __c2, 0)),
           Name: S.String,
           Description: S.String,
           Behavior: S.optional(S.String),
           Severity: S.optional(S.String),
           ParameterRequirementSummary: S.optional(S.String),
-          Implementation: S.optional(__S(3, __c0, 3)),
+          Implementation: S.optional(__S(48, __c3, 0)),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          GovernedResources: S.optional(__S(1, __c0, 1)),
-          GovernedProviders: S.optional(__S(1, __c0, 1)),
+          GovernedResources: S.optional(__S(32, __c2, 0)),
+          GovernedProviders: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "ControlSummary" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ Controls: __S(30, __c3, 6), NextToken: S.optional(S.String) }),
+        S.Struct({ Controls: __S(116, __c7, 4), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListControlsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -771,49 +818,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DomainSummary" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(129, __c8, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Domains: __S(34, __c4, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ Domains: __S(130, __c8, 2), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 4:
-      return S.suspend(() => S.Struct({ Domains: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "ObjectiveFilter",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          ObjectiveFilter: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/objectives" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListObjectivesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          Name: S.String,
-          Description: S.String,
-          Domain: __S(11, __c1, 3),
-          CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "ObjectiveSummary" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Objectives: __S(39, __c4, 7), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListObjectivesResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

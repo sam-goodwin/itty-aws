@@ -289,7 +289,7 @@ export const createAssetForAccount: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateAssetForAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAssetResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const createAssetForZone: API.OperationMethod<
   CreateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAssetForZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAssetResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateAssetForZoneRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const deleteAssetForAccount: API.OperationMethod<
   DeleteAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteAssetForAccountRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteAssetForAccountResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteAssetForAccountRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteAssetForAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -333,8 +333,8 @@ export const deleteAssetForZone: API.OperationMethod<
   DeleteAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteAssetForZoneRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteAssetForZoneResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<DeleteAssetForZoneRequest>,
+  output: __S(48, __c12, 0) as any as S.Schema<DeleteAssetForZoneResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const getAssetForAccount: API.OperationMethod<
   GetAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetAssetForAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetAssetResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetAssetForAccountRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const getAssetForZone: API.OperationMethod<
   GetAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetAssetForZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetAssetResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetAssetForZoneRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const getCustomPageForAccount: API.OperationMethod<
   GetCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetCustomPageForAccountRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetCustomPageResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetCustomPageForAccountRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<GetCustomPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const getCustomPageForZone: API.OperationMethod<
   GetCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetCustomPageForZoneRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetCustomPageResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetCustomPageForZoneRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<GetCustomPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -410,8 +410,8 @@ export const listAssetsForAccount: API.PaginatedOperationMethod<
   AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListAssetsForAccountRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListAssetsResponse>,
+    input: __S(80, __c20, 0) as any as S.Schema<ListAssetsForAccountRequest>,
+    output: __S(86, __c21, 2) as any as S.Schema<ListAssetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -436,8 +436,8 @@ export const listAssetsForZone: API.PaginatedOperationMethod<
   AssetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListAssetsForZoneRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListAssetsResponse>,
+    input: __S(88, __c22, 0) as any as S.Schema<ListAssetsForZoneRequest>,
+    output: __S(86, __c21, 2) as any as S.Schema<ListAssetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -462,8 +462,8 @@ export const listCustomPagesForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<ListCustomPagesForAccountRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListCustomPagesResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListCustomPagesForAccountRequest>,
+    output: __S(18, __c4, 2) as any as S.Schema<ListCustomPagesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -482,8 +482,8 @@ export const listCustomPagesForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ListCustomPagesForZoneRequest>,
-    output: __S(20, __c2, 4) as any as S.Schema<ListCustomPagesResponse>,
+    input: __S(20, __c5, 0) as any as S.Schema<ListCustomPagesForZoneRequest>,
+    output: __S(18, __c4, 2) as any as S.Schema<ListCustomPagesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -500,8 +500,8 @@ export const putCustomPageForAccount: API.OperationMethod<
   PutCustomPageForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<PutCustomPageForAccountRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<PutCustomPageResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<PutCustomPageForAccountRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<PutCustomPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const putCustomPageForZone: API.OperationMethod<
   PutCustomPageForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<PutCustomPageForZoneRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<PutCustomPageResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<PutCustomPageForZoneRequest>,
+  output: __S(28, __c7, 0) as any as S.Schema<PutCustomPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const updateAssetForAccount: API.OperationMethod<
   UpdateAssetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateAssetForAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateAssetForAccountRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UpdateAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const updateAssetForZone: API.OperationMethod<
   UpdateAssetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateAssetForZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<UpdateAssetForZoneRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<UpdateAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -574,7 +574,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAssetForAccountRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
@@ -584,7 +588,11 @@ function __c0(j: number): any {
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateAssetResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -597,173 +605,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAssetForZoneRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          assetName: S.String.pipe(T.Label("asset_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteAssetForAccountRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteAssetForAccountResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          assetName: S.String.pipe(T.Label("asset_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteAssetForZoneRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          assetName: S.String.pipe(T.Label("asset_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAssetForAccountRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          assetName: S.String.pipe(T.Label("asset_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetAssetForZoneRequest" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          identifier: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/custom_pages/{identifier}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCustomPageForAccountRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("required_tokens"))),
-          state: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCustomPageResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          identifier: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages/{identifier}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCustomPageForZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/accounts/{account_id}/custom_pages/assets", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListAssetsForAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-          name: S.optional(S.NullOr(S.String)),
-          sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AssetsListResultItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(14, __c1, 6).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListAssetsResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          page: S.optional(S.Number.pipe(T.Query())),
-          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages/assets", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListAssetsForZoneRequest" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -773,7 +619,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCustomPagesForAccountRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -781,21 +631,25 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("required_tokens"))),
+          requiredTokens: S.optional(S.NullOr(__S(72, __c18, 0)).pipe(T.Body("required_tokens"))),
           state: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(19, __c2, 3).pipe(T.EnvelopePayload()),
+          result: __S(17, __c4, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCustomPagesResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -805,7 +659,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCustomPagesForZoneRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -824,7 +682,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PutCustomPageForAccountRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -832,14 +694,14 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
-          requiredTokens: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("required_tokens"))),
+          requiredTokens: S.optional(S.NullOr(__S(72, __c18, 0)).pipe(T.Body("required_tokens"))),
           state: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutCustomPageResponse" });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -856,7 +718,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutCustomPageForZoneRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -875,7 +741,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateAssetForAccountRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -896,7 +766,212 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          assetName: S.String.pipe(T.Label("asset_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteAssetForAccountRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteAssetForAccountResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          assetName: S.String.pipe(T.Label("asset_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteAssetForZoneRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          assetName: S.String.pipe(T.Label("asset_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/custom_pages/assets/{asset_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAssetForAccountRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          assetName: S.String.pipe(T.Label("asset_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/custom_pages/assets/{asset_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAssetForZoneRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          identifier: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/custom_pages/{identifier}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCustomPageForAccountRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          previewTarget: S.optional(S.NullOr(S.String).pipe(T.Body("preview_target"))),
+          requiredTokens: S.optional(S.NullOr(__S(72, __c18, 0)).pipe(T.Body("required_tokens"))),
+          state: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCustomPageResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          identifier: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages/{identifier}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCustomPageForZoneRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/custom_pages/assets", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListAssetsForAccountRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+          name: S.optional(S.NullOr(S.String)),
+          sizeBytes: S.optional(S.NullOr(S.Number).pipe(T.Body("size_bytes"))),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AssetsListResultItem" });
+    case 1:
+      return S.Array(__S(84, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(85, __c21, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListAssetsResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/custom_pages/assets", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListAssetsForZoneRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

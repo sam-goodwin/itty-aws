@@ -638,8 +638,8 @@ export const CreateRoleAssignment: API.OperationMethod<
   CreateRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateRoleAssignmentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateRoleAssignmentResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateRoleAssignmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const CreateRoleAssignmentById: API.OperationMethod<
   CreateRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateRoleAssignmentByIdRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateRoleAssignmentByIdResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateRoleAssignmentByIdRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const DeleteRoleAssignment: API.OperationMethod<
   DeleteRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteRoleAssignmentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteRoleAssignmentResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteRoleAssignmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const DeleteRoleAssignmentById: API.OperationMethod<
   DeleteRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteRoleAssignmentByIdRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteRoleAssignmentByIdResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteRoleAssignmentByIdRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -698,8 +698,8 @@ export const DeleteRoleDefinition: API.OperationMethod<
   DeleteRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteRoleDefinitionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RoleDefinition>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteRoleDefinitionRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -713,8 +713,8 @@ export const GetDenyAssignment: API.OperationMethod<
   GetDenyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetDenyAssignmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DenyAssignment>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetDenyAssignmentRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<DenyAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -728,8 +728,8 @@ export const GetDenyAssignmentById: API.OperationMethod<
   GetDenyAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetDenyAssignmentByIdRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DenyAssignment>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetDenyAssignmentByIdRequest>,
+  output: __S(237, __c29, 5) as any as S.Schema<DenyAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const GetProviderOperationsMetadata: API.OperationMethod<
   GetProviderOperationsMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetProviderOperationsMetadataRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetProviderOperationsMetadataResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetProviderOperationsMetadataRequest>,
+  output: __S(260, __c32, 4) as any as S.Schema<GetProviderOperationsMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const GetRoleAssignment: API.OperationMethod<
   GetRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetRoleAssignmentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetRoleAssignmentResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetRoleAssignmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const GetRoleAssignmentById: API.OperationMethod<
   GetRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetRoleAssignmentByIdRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetRoleAssignmentByIdResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetRoleAssignmentByIdRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const GetRoleDefinition: API.OperationMethod<
   GetRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetRoleDefinitionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RoleDefinition>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetRoleDefinitionRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -803,8 +803,8 @@ export const ListDenyAssignmentForResource: API.OperationMethod<
   ListDenyAssignmentForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListDenyAssignmentForResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DenyAssignmentListResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListDenyAssignmentForResourceRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const ListDenyAssignmentForResourceGroup: API.OperationMethod<
   ListDenyAssignmentForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListDenyAssignmentForResourceGroupRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DenyAssignmentListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListDenyAssignmentForResourceGroupRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const ListDenyAssignmentForScope: API.OperationMethod<
   ListDenyAssignmentForScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListDenyAssignmentForScopeRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DenyAssignmentListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListDenyAssignmentForScopeRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -848,8 +848,8 @@ export const ListDenyAssignments: API.OperationMethod<
   ListDenyAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListDenyAssignmentsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DenyAssignmentListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListDenyAssignmentsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const ListPermissionsForResource: API.OperationMethod<
   ListPermissionsForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListPermissionsForResourceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PermissionGetResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListPermissionsForResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const ListPermissionsForResourceGroup: API.OperationMethod<
   ListPermissionsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListPermissionsForResourceGroupRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PermissionGetResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListPermissionsForResourceGroupRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const ListProviderOperationsMetadata: API.OperationMethod<
   ListProviderOperationsMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListProviderOperationsMetadataRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ProviderOperationsMetadataListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListProviderOperationsMetadataRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ProviderOperationsMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const ListRoleAssignmentForResource: API.OperationMethod<
   ListRoleAssignmentForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListRoleAssignmentForResourceRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<RoleAssignmentListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListRoleAssignmentForResourceRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const ListRoleAssignmentForResourceGroup: API.OperationMethod<
   ListRoleAssignmentForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListRoleAssignmentForResourceGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<RoleAssignmentListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListRoleAssignmentForResourceGroupRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const ListRoleAssignmentForScope: API.OperationMethod<
   ListRoleAssignmentForScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListRoleAssignmentForScopeRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<RoleAssignmentListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListRoleAssignmentForScopeRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -953,8 +953,8 @@ export const ListRoleAssignmentForSubscription: API.OperationMethod<
   ListRoleAssignmentForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListRoleAssignmentForSubscriptionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<RoleAssignmentListResult>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListRoleAssignmentForSubscriptionRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -968,8 +968,8 @@ export const ListRoleDefinitions: API.OperationMethod<
   ListRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListRoleDefinitionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<RoleDefinitionListResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListRoleDefinitionsRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<RoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -983,8 +983,8 @@ export const RoleDefinitionsCreateOrUpdate: API.OperationMethod<
   RoleDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<RoleDefinitionsCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RoleDefinition>,
+  input: __S(177, __c22, 1) as any as S.Schema<RoleDefinitionsCreateOrUpdateRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -992,6 +992,27 @@ export const RoleDefinitionsCreateOrUpdate: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          roleAssignmentName: S.String.pipe(T.Label()),
+          properties: __S(8, __c1, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRoleAssignmentRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1007,24 +1028,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RoleAssignmentPropertiesInput",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          scope: S.String.pipe(T.Label()),
-          roleAssignmentName: S.String.pipe(T.Label()),
-          properties: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(25, __c3, 1)),
+        }),
       ).annotate({
-        identifier: "CreateRoleAssignmentRequest",
+        identifier: "CreateRoleAssignmentResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1035,7 +1059,7 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
@@ -1052,23 +1076,15 @@ function __c0(j: number): any {
           delegatedManagedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateRoleAssignmentResponse",
-      });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: __S(0, __c0, 0),
+          properties: __S(8, __c1, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1080,270 +1096,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateRoleAssignmentByIdRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          roleAssignmentName: S.String.pipe(T.Label()),
-          tenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRoleAssignmentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleAssignmentId: S.String.pipe(T.Label()),
-          tenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{roleAssignmentId+}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRoleAssignmentByIdRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          roleDefinitionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/{scope+}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRoleDefinitionRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(9, __c1, 1)),
-          notActions: S.optional(__S(9, __c1, 1)),
-          dataActions: S.optional(__S(9, __c1, 1)),
-          notDataActions: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Permission" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          roleName: S.optional(S.String),
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-          permissions: S.optional(__S(11, __c1, 3)),
-          assignableScopes: S.optional(__S(9, __c1, 1)),
-          createdOn: S.optional(S.String),
-          updatedOn: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          updatedBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoleDefinitionProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "RoleDefinition" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          denyAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetDenyAssignmentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(9, __c1, 1)),
-          notActions: S.optional(__S(9, __c1, 1)),
-          dataActions: S.optional(__S(9, __c1, 1)),
-          notDataActions: S.optional(__S(9, __c1, 1)),
-          condition: S.optional(S.String),
-          conditionVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DenyAssignmentPermission" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          displayName: S.optional(S.String),
-          type: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DenyAssignmentPropertiesPrincipalsItem",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          denyAssignmentName: S.optional(S.String),
-          description: S.optional(S.String),
-          permissions: S.optional(__S(16, __c2, 0)),
-          scope: S.optional(S.String),
-          doNotApplyToChildScopes: S.optional(S.Boolean),
-          principals: S.optional(__S(18, __c2, 2)),
-          excludePrincipals: S.optional(__S(18, __c2, 2)),
-          isSystemProtected: S.optional(S.Boolean),
-          condition: S.optional(S.String),
-          conditionVersion: S.optional(S.String),
-          createdOn: S.optional(S.String),
-          updatedOn: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          updatedBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DenyAssignmentProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "DenyAssignment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          denyAssignmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{denyAssignmentId+}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDenyAssignmentByIdRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceProviderNamespace: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Authorization/providerOperations/{resourceProviderNamespace}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProviderOperationsMetadataRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          origin: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-          isDataAction: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ProviderOperation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          operations: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "ResourceType" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resourceTypes: S.optional(__S(26, __c3, 2)),
-          operations: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "GetProviderOperationsMetadataResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          roleAssignmentName: S.String.pipe(T.Label()),
-          tenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRoleAssignmentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          roleAssignmentId: S.String.pipe(T.Label()),
-          tenantId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{roleAssignmentId+}",
-            code: 200,
-            apiVersion: "2022-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRoleAssignmentByIdRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1357,7 +1114,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoleDefinitionRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1380,18 +1141,22 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(20, __c2, 4));
+      return S.Array(__S(237, __c29, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(32, __c4, 0)),
+          value: S.optional(__S(56, __c7, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DenyAssignmentListResult" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1408,7 +1173,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDenyAssignmentForResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1424,7 +1193,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDenyAssignmentForScopeRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1440,7 +1213,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListDenyAssignmentsRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1460,14 +1237,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPermissionsForResourceRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11, __c1, 3)),
+          value: S.optional(__S(201, __c25, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PermissionGetResult" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1485,7 +1270,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1503,17 +1288,21 @@ function __c5(j: number): any {
         identifier: "ListProviderOperationsMetadataRequest",
       });
     case 1:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(260, __c32, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41, __c5, 1),
+          value: __S(113, __c14, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProviderOperationsMetadataListResult",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1534,26 +1323,34 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListRoleAssignmentForResourceRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "RoleAssignment" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(45, __c5, 5),
+          value: __S(129, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentListResult" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1573,7 +1370,28 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          roleAssignmentName: S.String.pipe(T.Label()),
+          tenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRoleAssignmentRequest",
+      });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1593,7 +1411,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRoleAssignmentForScopeRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1610,7 +1432,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRoleAssignmentForSubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1626,33 +1452,37 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRoleDefinitionsRequest",
       });
-    case 3:
-      return S.Array(__S(13, __c1, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(209, __c26, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(51, __c6, 3)),
+          value: S.optional(__S(169, __c21, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleDefinitionListResult" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           roleName: S.optional(S.String),
           description: S.optional(S.String),
           type: S.optional(S.String),
-          permissions: S.optional(__S(11, __c1, 3)),
-          assignableScopes: S.optional(__S(9, __c1, 1)),
+          permissions: S.optional(__S(201, __c25, 1)),
+          assignableScopes: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "RoleDefinitionPropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(53, __c6, 5)),
+          properties: S.optional(__S(176, __c22, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1666,7 +1496,288 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleAssignmentId: S.String.pipe(T.Label()),
+          tenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{roleAssignmentId+}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRoleAssignmentByIdRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          roleDefinitionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/{scope+}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRoleDefinitionRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(216, __c27, 0)),
+          notActions: S.optional(__S(216, __c27, 0)),
+          dataActions: S.optional(__S(216, __c27, 0)),
+          notDataActions: S.optional(__S(216, __c27, 0)),
+        }),
+      ).annotate({ identifier: "Permission" });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleName: S.optional(S.String),
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+          permissions: S.optional(__S(201, __c25, 1)),
+          assignableScopes: S.optional(__S(216, __c27, 0)),
+          createdOn: S.optional(S.String),
+          updatedOn: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoleDefinitionProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(208, __c26, 0)),
+        }),
+      ).annotate({ identifier: "RoleDefinition" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          denyAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetDenyAssignmentRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(216, __c27, 0)),
+          notActions: S.optional(__S(216, __c27, 0)),
+          dataActions: S.optional(__S(216, __c27, 0)),
+          notDataActions: S.optional(__S(216, __c27, 0)),
+          condition: S.optional(S.String),
+          conditionVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DenyAssignmentPermission" });
+    case 1:
+      return S.Array(__S(232, __c29, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          displayName: S.optional(S.String),
+          type: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DenyAssignmentPropertiesPrincipalsItem",
+      });
+    case 3:
+      return S.Array(__S(234, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          denyAssignmentName: S.optional(S.String),
+          description: S.optional(S.String),
+          permissions: S.optional(__S(233, __c29, 1)),
+          scope: S.optional(S.String),
+          doNotApplyToChildScopes: S.optional(S.Boolean),
+          principals: S.optional(__S(235, __c29, 3)),
+          excludePrincipals: S.optional(__S(235, __c29, 3)),
+          isSystemProtected: S.optional(S.Boolean),
+          condition: S.optional(S.String),
+          conditionVersion: S.optional(S.String),
+          createdOn: S.optional(S.String),
+          updatedOn: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          updatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DenyAssignmentProperties" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(236, __c29, 4)),
+        }),
+      ).annotate({ identifier: "DenyAssignment" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          denyAssignmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{denyAssignmentId+}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDenyAssignmentByIdRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceProviderNamespace: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Authorization/providerOperations/{resourceProviderNamespace}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProviderOperationsMetadataRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          origin: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+          isDataAction: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProviderOperation" });
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          operations: S.optional(__S(257, __c32, 1)),
+        }),
+      ).annotate({ identifier: "ResourceType" });
+    case 3:
+      return S.Array(__S(258, __c32, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resourceTypes: S.optional(__S(259, __c32, 3)),
+          operations: S.optional(__S(257, __c32, 1)),
+        }),
+      ).annotate({
+        identifier: "GetProviderOperationsMetadataResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          roleAssignmentName: S.String.pipe(T.Label()),
+          tenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRoleAssignmentRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleAssignmentId: S.String.pipe(T.Label()),
+          tenantId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{roleAssignmentId+}",
+            code: 200,
+            apiVersion: "2022-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRoleAssignmentByIdRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

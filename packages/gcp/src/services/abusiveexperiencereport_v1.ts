@@ -77,7 +77,7 @@ export const getSites: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetSitesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SiteSummaryResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<SiteSummaryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -91,8 +91,8 @@ export const listViolatingSites: API.OperationMethod<
   ListViolatingSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListViolatingSitesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ViolatingSitesResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListViolatingSitesRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ViolatingSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -113,7 +113,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportUrl: S.optional(S.String),
@@ -125,7 +129,11 @@ function __c0(j: number): any {
           underReview: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SiteSummaryResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -137,17 +145,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListViolatingSitesRequest",
       });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          violatingSites: S.optional(__S(3, __c0, 3)),
+          violatingSites: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ViolatingSitesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

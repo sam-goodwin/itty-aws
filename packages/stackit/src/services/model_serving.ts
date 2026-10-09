@@ -233,8 +233,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateTokenRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateTokenResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateTokenResponse>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -248,8 +248,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<MessageResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<MessageResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -263,8 +263,8 @@ export const getChatModel: API.OperationMethod<
   GetChatModelError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetChatModelRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetChatModelResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetChatModelRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetChatModelResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -278,8 +278,8 @@ export const getEmbeddingModel: API.OperationMethod<
   GetEmbeddingModelError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetEmbeddingModelRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetEmbeddingsModelResp>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetEmbeddingModelRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<GetEmbeddingsModelResp>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -293,8 +293,8 @@ export const getToken: API.OperationMethod<
   GetTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetTokenRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetTokenResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetTokenRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetTokenResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -308,8 +308,8 @@ export const listModels: API.OperationMethod<
   ListModelsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListModelsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListModelsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(93, __c11, 5) as any as S.Schema<ListModelsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -323,8 +323,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListTokensRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListTokenResp>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListTokensRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListTokenResp>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const partialUpdateToken: API.OperationMethod<
   PartialUpdateTokenError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PartialUpdateTokenRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateTokenResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<PartialUpdateTokenRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateTokenResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -349,14 +349,38 @@ export const partialUpdateToken: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
+          tId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           labels: S.optional(__S(0, __c0, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/tokens/{tId}",
+            code: 200,
+            baseUrl: "https://model-serving.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "PartialUpdateTokenRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          labels: S.optional(__S(16, __c2, 0)),
           name: S.String,
           ttlDuration: S.optional(S.String),
         }).pipe(
@@ -368,27 +392,37 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c2, 0)),
           name: S.String,
           region: S.String,
           state: S.String,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "TokenCreated" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          token: __S(2, __c0, 2),
+          token: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "CreateTokenResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -403,13 +437,17 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTokenRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionId: S.String.pipe(T.Label()),
@@ -423,23 +461,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetChatModelRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          id: S.String,
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SKU" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           bits: S.optional(S.Number),
@@ -452,19 +474,43 @@ function __c1(j: number): any {
           quantizationMethod: S.optional(S.String),
           region: S.String,
           size: S.Number,
-          skus: __S(8, __c1, 0),
-          tags: __S(9, __c1, 1),
+          skus: __S(40, __c5, 0),
+          tags: __S(41, __c5, 1),
           url: S.String,
         }),
       ).annotate({ identifier: "ChatModelDetails" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          model: __S(10, __c1, 2),
+          model: __S(33, __c4, 1),
         }),
       ).annotate({ identifier: "GetChatModelResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(48, __c6, 0));
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          id: S.String,
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SKU" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionId: S.String.pipe(T.Label()),
@@ -478,7 +524,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEmbeddingModelRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -488,19 +534,23 @@ function __c1(j: number): any {
           name: S.String,
           outputDimension: S.Number,
           region: S.String,
-          skus: __S(8, __c1, 0),
-          tags: S.optional(__S(9, __c1, 1)),
+          skus: __S(40, __c5, 0),
+          tags: S.optional(__S(41, __c5, 1)),
           url: S.String,
         }),
       ).annotate({ identifier: "EmbeddingModelDetails" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          model: __S(13, __c1, 5),
+          model: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "GetEmbeddingsModelResp" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -517,28 +567,36 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetTokenRequest" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          token: __S(80, __c10, 0),
+        }),
+      ).annotate({ identifier: "GetTokenResponse" });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           id: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c2, 0)),
           name: S.String,
           region: S.String,
           state: S.String,
           validUntil: S.String,
         }),
       ).annotate({ identifier: "Token" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          token: __S(16, __c2, 0),
-        }),
-      ).annotate({ identifier: "GetTokenResponse" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionId: S.String.pipe(T.Label()),
@@ -551,11 +609,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListModelsRequest" });
-    case 3:
-      return S.Array(__S(7, __c0, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -564,24 +622,24 @@ function __c2(j: number): any {
           id: S.String,
           name: S.String,
           region: S.String,
-          skus: __S(19, __c2, 3),
-          tags: S.optional(__S(20, __c2, 4)),
+          skus: __S(89, __c11, 1),
+          tags: S.optional(__S(90, __c11, 2)),
           type: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "Model" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(91, __c11, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          models: __S(22, __c2, 6),
+          models: __S(92, __c11, 4),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -599,39 +657,16 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListTokensRequest" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          tokens: __S(25, __c3, 1),
+          tokens: __S(97, __c12, 1),
         }),
       ).annotate({ identifier: "ListTokenResp" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          tId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          labels: S.optional(__S(27, __c3, 3)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/tokens/{tId}",
-            code: 200,
-            baseUrl: "https://model-serving.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "PartialUpdateTokenRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

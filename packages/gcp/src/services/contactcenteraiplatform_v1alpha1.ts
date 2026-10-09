@@ -663,8 +663,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(288, __c9, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -684,8 +684,8 @@ export const createProjectsLocationsContactCenters: API.OperationMethod<
   CreateProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -705,8 +705,8 @@ export const deleteProjectsLocationsContactCenters: API.OperationMethod<
   DeleteProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Operation>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -726,8 +726,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -747,8 +747,8 @@ export const generateShiftsProjectsLocations: API.OperationMethod<
   GenerateShiftsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Operation>,
+  input: __S(659, __c20, 19) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<Location>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -781,8 +781,8 @@ export const getProjectsLocationsContactCenters: API.OperationMethod<
   GetProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsLocationsContactCentersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ContactCenter>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetProjectsLocationsContactCentersRequest>,
+  output: __S(429, __c13, 13) as any as S.Schema<ContactCenter>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -800,8 +800,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -837,8 +837,8 @@ export const listProjectsLocationsContactCenters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListContactCentersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListProjectsLocationsContactCentersRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListContactCentersResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsLocationsContactCentersRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListContactCentersResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const patchProjectsLocationsContactCenters: API.OperationMethod<
   PatchProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -899,8 +899,8 @@ export const queryContactCenterQuotaProjectsLocations: API.OperationMethod<
   QueryContactCenterQuotaProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ContactCenterQuota>,
+  input: __S(256, __c8, 0) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>,
+  output: __S(259, __c8, 3) as any as S.Schema<ContactCenterQuota>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,381 +910,6 @@ export const queryContactCenterQuotaProjectsLocations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+name}:cancel",
-            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instanceSize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceConfig" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          virtualAgentStreamingServiceUri: S.optional(S.String),
-          rootUri: S.optional(S.String),
-          chatBotUri: S.optional(S.String),
-          mediaUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "URIs" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          certificate: S.optional(S.String),
-          emailMapping: S.optional(S.String),
-          userEmail: S.optional(S.String),
-          ssoUri: S.optional(S.String),
-          entityId: S.optional(S.String),
-          authenticationContexts: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "SAMLParams" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hours: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(S.String),
-          days: S.optional(__S(5, __c0, 5)),
-          startTime: S.optional(__S(7, __c0, 7)),
-          endTime: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "WeeklySchedule" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          peakHours: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Critical" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          givenName: S.optional(S.String),
-          familyName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdminUser" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          agentDesktopEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FeatureConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAttachmentNames: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Component" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedConsumerProjectIds: S.optional(__S(3, __c0, 3)),
-          producerProjectIds: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "PscSetting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          egressSettings: S.optional(__S(15, __c1, 7)),
-          pscSetting: S.optional(__S(16, __c2, 0)),
-          ingressSettings: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "PrivateAccess" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instanceConfig: S.optional(__S(2, __c0, 2)),
-          privateComponents: S.optional(__S(3, __c0, 3)),
-          userEmail: S.optional(S.String),
-          customerDomainPrefix: S.optional(S.String),
-          uris: S.optional(__S(4, __c0, 4)),
-          samlParams: S.optional(__S(6, __c0, 6)),
-          releaseVersion: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          critical: S.optional(__S(10, __c1, 2)),
-          expireTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          normal: S.optional(__S(0, __c0, 0)),
-          adminUser: S.optional(__S(11, __c1, 3)),
-          early: S.optional(__S(0, __c0, 0)),
-          createTime: S.optional(S.String),
-          ccaipManagedUsers: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          labels: S.optional(__S(12, __c1, 4)),
-          featureConfig: S.optional(__S(13, __c1, 5)),
-          privateAccess: S.optional(__S(17, __c2, 1)),
-          purgeTime: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-          advancedReportingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ContactCenter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contactCenterId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}/contactCenters",
-            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsContactCentersRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(22, __c2, 6)),
-          metadata: S.optional(__S(20, __c2, 4)),
-          response: S.optional(__S(20, __c2, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsContactCentersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startTimeIncrementMinutes: S.optional(S.Number),
-          id: S.optional(S.String),
-          minimumMinutesAfterShiftStart: S.optional(S.Number),
-          durationMinutes: S.optional(S.Number),
-          maximumMinutesAfterShiftStart: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EventTemplate" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "Contactcenteraiplatform_Date",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "DateList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          earliestStartTime: S.optional(__S(7, __c0, 7)),
-          eventTemplates: S.optional(__S(27, __c3, 3)),
-          latestStartTime: S.optional(__S(7, __c0, 7)),
-          durationMinutes: S.optional(S.Number),
-          assignableEmployeeIds: S.optional(__S(3, __c0, 3)),
-          daysOffDates: S.optional(__S(30, __c3, 6)),
-          startTimeIncrementMinutes: S.optional(S.Number),
-          daysOffCountPerWeek: S.optional(S.Number),
-          minimumIntereventGapMinutes: S.optional(S.Number),
-          id: S.optional(S.String),
-          maximumEmployeeCount: S.optional(S.Number),
-          minimumEmployeeCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ShiftTemplate" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maximumProcessingDuration: S.optional(S.String),
-          scheduleType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SolverConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeZone: S.optional(__S(34, __c4, 2)),
-          nanos: S.optional(S.Number),
-          year: S.optional(S.Number),
-          hours: S.optional(S.Number),
-          day: S.optional(S.Number),
-          utcOffset: S.optional(S.String),
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DateTime" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(__S(35, __c4, 3)),
-          endTime: S.optional(__S(35, __c4, 3)),
-          employeeCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkforceDemand" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "WorkforceDemandList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(__S(35, __c4, 3)),
-          durationMinutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UnwantedEventInterval" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          unwantedEventIntervals: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "EmployeeInfo" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(__S(35, __c4, 3)),
-          startTime: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "PlanningHorizon" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          shiftTemplates: S.optional(__S(32, __c4, 0)),
-          solverConfig: S.optional(__S(33, __c4, 1)),
-          workforceDemands: S.optional(__S(38, __c4, 6)),
-          employeeInfo: S.optional(__S(42, __c5, 2)),
-          planningHorizon: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "GenerateShiftsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/{+parent}:generateShifts",
-            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateShiftsProjectsLocationsRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1298,19 +923,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-          labels: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(448, __c14, 0)),
+          labels: S.optional(__S(384, __c12, 0)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
   }
 }
-function __c6(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1326,7 +955,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsContactCentersRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1340,11 +973,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(3, __c0, 3).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(512, __c16, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1358,16 +995,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(47, __c5, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(51, __c6, 3)),
+          locations: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1385,13 +1026,13 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsContactCentersRequest",
       });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(429, __c13, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
-          contactCenters: S.optional(__S(54, __c6, 6)),
+          unreachable: S.optional(__S(512, __c16, 0)),
+          contactCenters: S.optional(__S(161, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1399,7 +1040,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1420,22 +1061,26 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(__S(23, __c2, 7));
+      return S.Array(__S(482, __c15, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(3, __c0, 3)),
+          unreachable: S.optional(__S(512, __c16, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(57, __c7, 1)),
+          operations: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(429, __c13, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1446,7 +1091,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsContactCentersRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1460,7 +1109,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "QueryContactCenterQuotaProjectsLocationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contactCenterCountSum: S.optional(S.Number),
@@ -1468,19 +1117,421 @@ function __c7(j: number): any {
           contactCenterInstanceSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "Quota" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          quotas: S.optional(__S(62, __c7, 6)),
+          quotas: S.optional(__S(258, __c8, 2)),
           contactCenterCountSum: S.optional(S.Number),
           contactCenterCountLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContactCenterQuota" });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+name}:cancel",
+            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contactCenterId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(429, __c13, 13).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}/contactCenters",
+            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsContactCentersRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceSize: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          virtualAgentStreamingServiceUri: S.optional(S.String),
+          rootUri: S.optional(S.String),
+          chatBotUri: S.optional(S.String),
+          mediaUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "URIs" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          certificate: S.optional(S.String),
+          emailMapping: S.optional(S.String),
+          userEmail: S.optional(S.String),
+          ssoUri: S.optional(S.String),
+          entityId: S.optional(S.String),
+          authenticationContexts: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "SAMLParams" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(S.String),
+          days: S.optional(__S(418, __c13, 2)),
+          startTime: S.optional(__S(544, __c17, 0)),
+          endTime: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "WeeklySchedule" });
+    case 5:
+      return S.Array(__S(420, __c13, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          peakHours: S.optional(__S(421, __c13, 5)),
+        }),
+      ).annotate({ identifier: "Critical" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          givenName: S.optional(S.String),
+          familyName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdminUser" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          agentDesktopEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FeatureConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAttachmentNames: S.optional(__S(512, __c16, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Component" });
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          allowedConsumerProjectIds: S.optional(__S(512, __c16, 0)),
+          producerProjectIds: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "PscSetting" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          egressSettings: S.optional(__S(426, __c13, 10)),
+          pscSetting: S.optional(__S(427, __c13, 11)),
+          ingressSettings: S.optional(__S(426, __c13, 10)),
+        }),
+      ).annotate({ identifier: "PrivateAccess" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          instanceConfig: S.optional(__S(416, __c13, 0)),
+          privateComponents: S.optional(__S(512, __c16, 0)),
+          userEmail: S.optional(S.String),
+          customerDomainPrefix: S.optional(S.String),
+          uris: S.optional(__S(417, __c13, 1)),
+          samlParams: S.optional(__S(419, __c13, 3)),
+          releaseVersion: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          critical: S.optional(__S(422, __c13, 6)),
+          expireTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          normal: S.optional(__S(320, __c10, 0)),
+          adminUser: S.optional(__S(423, __c13, 7)),
+          early: S.optional(__S(320, __c10, 0)),
+          createTime: S.optional(S.String),
+          ccaipManagedUsers: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          labels: S.optional(__S(384, __c12, 0)),
+          featureConfig: S.optional(__S(424, __c13, 8)),
+          privateAccess: S.optional(__S(428, __c13, 12)),
+          purgeTime: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+          advancedReportingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ContactCenter" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c14, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(481, __c15, 1)),
+          metadata: S.optional(__S(448, __c14, 0)),
+          response: S.optional(__S(448, __c14, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hours: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsContactCentersRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTimeIncrementMinutes: S.optional(S.Number),
+          id: S.optional(S.String),
+          minimumMinutesAfterShiftStart: S.optional(S.Number),
+          durationMinutes: S.optional(S.Number),
+          maximumMinutesAfterShiftStart: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EventTemplate" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "Contactcenteraiplatform_Date",
+      });
+    case 3:
+      return S.Array(__S(642, __c20, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(643, __c20, 3)),
+        }),
+      ).annotate({ identifier: "DateList" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          earliestStartTime: S.optional(__S(544, __c17, 0)),
+          eventTemplates: S.optional(__S(641, __c20, 1)),
+          latestStartTime: S.optional(__S(544, __c17, 0)),
+          durationMinutes: S.optional(S.Number),
+          assignableEmployeeIds: S.optional(__S(512, __c16, 0)),
+          daysOffDates: S.optional(__S(644, __c20, 4)),
+          startTimeIncrementMinutes: S.optional(S.Number),
+          daysOffCountPerWeek: S.optional(S.Number),
+          minimumIntereventGapMinutes: S.optional(S.Number),
+          id: S.optional(S.String),
+          maximumEmployeeCount: S.optional(S.Number),
+          minimumEmployeeCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ShiftTemplate" });
+    case 6:
+      return S.Array(__S(645, __c20, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maximumProcessingDuration: S.optional(S.String),
+          scheduleType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SolverConfig" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          timeZone: S.optional(__S(648, __c20, 8)),
+          nanos: S.optional(S.Number),
+          year: S.optional(S.Number),
+          hours: S.optional(S.Number),
+          day: S.optional(S.Number),
+          utcOffset: S.optional(S.String),
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DateTime" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(__S(649, __c20, 9)),
+          endTime: S.optional(__S(649, __c20, 9)),
+          employeeCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkforceDemand" });
+    case 11:
+      return S.Array(__S(650, __c20, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(651, __c20, 11)),
+        }),
+      ).annotate({ identifier: "WorkforceDemandList" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(__S(649, __c20, 9)),
+          durationMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UnwantedEventInterval" });
+    case 14:
+      return S.Array(__S(653, __c20, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          unwantedEventIntervals: S.optional(__S(654, __c20, 14)),
+        }),
+      ).annotate({ identifier: "EmployeeInfo" });
+    case 16:
+      return S.Array(__S(655, __c20, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(__S(649, __c20, 9)),
+          startTime: S.optional(__S(649, __c20, 9)),
+        }),
+      ).annotate({ identifier: "PlanningHorizon" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          shiftTemplates: S.optional(__S(646, __c20, 6)),
+          solverConfig: S.optional(__S(647, __c20, 7)),
+          workforceDemands: S.optional(__S(652, __c20, 12)),
+          employeeInfo: S.optional(__S(656, __c20, 16)),
+          planningHorizon: S.optional(__S(657, __c20, 17)),
+        }),
+      ).annotate({ identifier: "GenerateShiftsRequest" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(658, __c20, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/{+parent}:generateShifts",
+            baseUrl: "https://contactcenteraiplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateShiftsProjectsLocationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

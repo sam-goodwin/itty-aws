@@ -154,7 +154,7 @@ export const completeFile: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<CompleteFileRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<File>,
+  output: __S(10, __c1, 2) as any as S.Schema<File>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -168,8 +168,8 @@ export const createFile: API.OperationMethod<
   CreateFileError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateFileRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<File>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateFileRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<File>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export type GetFileError = NotFound | WhopOpError;
 /** Retrieve File Retrieves a file you uploaded -- poll it after uploading the bytes to see `upload_status` become `ready`. Only the creator can retrieve a file this way; a file attached to another resource is read through that resource. */
 export const getFile: API.OperationMethod<GetFileRequest, File, GetFileError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(7, __c0, 7) as any as S.Schema<GetFileRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<File>,
+    input: __S(24, __c3, 0) as any as S.Schema<GetFileRequest>,
+    output: __S(10, __c1, 2) as any as S.Schema<File>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const listFiles: API.PaginatedOperationMethod<
   File
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9, __c1, 1) as any as S.Schema<ListFilesRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<ListFilesResponse>,
+    input: __S(33, __c4, 1) as any as S.Schema<ListFilesRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListFilesResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -236,16 +236,20 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/files/{id}/complete", code: 200 })),
       ).annotate({ identifier: "CompleteFileRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           part_number: S.Number,
           url: S.String,
         }),
       ).annotate({ identifier: "FileMultipartUrl" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           content_type: S.NullOr(S.String),
@@ -254,7 +258,7 @@ function __c0(j: number): any {
           id: S.String,
           multipart_chunk_size: S.optional(S.NullOr(S.Number)),
           multipart_upload_id: S.optional(S.NullOr(S.String)),
-          multipart_upload_urls: S.optional(S.NullOr(__S(4, __c0, 4))),
+          multipart_upload_urls: S.optional(S.NullOr(__S(9, __c1, 1))),
           object: S.String,
           size: S.NullOr(S.Number),
           upload_headers: S.optional(S.Unknown),
@@ -264,7 +268,11 @@ function __c0(j: number): any {
           visibility: S.String,
         }),
       ).annotate({ identifier: "File" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           byte_size: S.optional(S.Number),
@@ -274,7 +282,11 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/files", code: 200 })),
       ).annotate({ identifier: "CreateFileRequest" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -282,14 +294,14 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetFileRequest" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          file_ids: __S(8, __c1, 0).pipe(T.Query()),
+          file_ids: __S(32, __c4, 0).pipe(T.Query()),
           order: S.optional(S.String.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
@@ -299,7 +311,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/files", code: 200 })),
       ).annotate({ identifier: "ListFilesRequest" });
     case 2:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(10, __c1, 2));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -314,13 +326,12 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10, __c1, 2),
-          page_info: __S(11, __c1, 3),
+          data: __S(34, __c4, 2),
+          page_info: __S(35, __c4, 3),
         }),
       ).annotate({ identifier: "ListFilesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

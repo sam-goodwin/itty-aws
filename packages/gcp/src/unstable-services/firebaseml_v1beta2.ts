@@ -199,8 +199,8 @@ export const createProjectsModels: API.OperationMethod<
   CreateProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateProjectsModelsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsModelsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const deleteProjectsModels: API.OperationMethod<
   DeleteProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteProjectsModelsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Empty>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteProjectsModelsRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -229,8 +229,8 @@ export const downloadProjectsModels: API.OperationMethod<
   DownloadProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DownloadProjectsModelsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DownloadModelResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DownloadProjectsModelsRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DownloadModelResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const getProjectsModels: API.OperationMethod<
   GetProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetProjectsModelsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Model>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsModelsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<Model>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -275,8 +275,8 @@ export const listProjectsModels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListProjectsModelsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListModelsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListProjectsModelsRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -291,8 +291,8 @@ export const patchProjectsModels: API.OperationMethod<
   PatchProjectsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<PatchProjectsModelsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchProjectsModelsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,6 +300,71 @@ export const patchProjectsModels: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1beta2/{+name}",
+            baseUrl: "https://firebaseml.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsModelsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta2/{+parent}/models",
+            baseUrl: "https://firebaseml.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsModelsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(17, __c2, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(16, __c2, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(18, __c2, 2)),
+          metadata: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -312,71 +377,34 @@ function __c0(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(3, __c0, 3)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           published: S.optional(S.Boolean),
-          validationError: S.optional(__S(4, __c0, 4)),
+          validationError: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ModelState" });
-    case 6:
+    case 3:
+      return S.Array(__S(19, __c2, 3));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(4, __c0, 4)),
-          metadata: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tfliteModel: S.optional(__S(0, __c0, 0)),
+          tfliteModel: S.optional(__S(24, __c3, 0)),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(25, __c3, 1)),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(__S(5, __c0, 5)),
-          activeOperations: S.optional(__S(7, __c0, 7)),
+          state: S.optional(__S(26, __c3, 2)),
+          activeOperations: S.optional(__S(27, __c3, 3)),
           modelHash: S.optional(S.String),
         }),
       ).annotate({ identifier: "Model" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta2/{+parent}/models",
-            baseUrl: "https://firebaseml.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsModelsRequest",
-      });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -390,11 +418,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsModelsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -408,7 +440,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsModelsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
@@ -417,7 +449,11 @@ function __c1(j: number): any {
           sizeBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "DownloadModelResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -429,7 +465,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsModelsRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -445,7 +485,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -465,33 +505,16 @@ function __c2(j: number): any {
         identifier: "ListProjectsModelsRequest",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(28, __c3, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(17, __c2, 1)),
+          models: S.optional(__S(65, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListModelsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1beta2/{+name}",
-            baseUrl: "https://firebaseml.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsModelsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

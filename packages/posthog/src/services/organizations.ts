@@ -5801,8 +5801,8 @@ export const billingSpendExportDownload: API.OperationMethod<
   BillingSpendExportDownloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<BillingSpendExportDownloadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingSpendExportDownloadResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<BillingSpendExportDownloadRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<BillingSpendExportDownloadResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5816,8 +5816,8 @@ export const billingUsageExportDownload: API.OperationMethod<
   BillingUsageExportDownloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BillingUsageExportDownloadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<BillingUsageExportDownloadResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<BillingUsageExportDownloadRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<BillingUsageExportDownloadResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5831,8 +5831,8 @@ export const cimdVerificationTokensDestroy: API.OperationMethod<
   CimdVerificationTokensDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CimdVerificationTokensDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CimdVerificationTokensDestroyResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<CimdVerificationTokensDestroyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<CimdVerificationTokensDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5845,8 +5845,8 @@ export const create: API.OperationMethod<
   CreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Organization>,
+  input: __S(3232, __c101, 0) as any as S.Schema<CreateRequest>,
+  output: __S(3331, __c104, 3) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5860,8 +5860,8 @@ export const createCimdVerificationToken: API.OperationMethod<
   CreateCimdVerificationTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateCimdVerificationTokenRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CIMDVerificationTokenWithValue>,
+  input: __S(3776, __c118, 0) as any as S.Schema<CreateCimdVerificationTokenRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<CIMDVerificationTokenWithValue>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5874,8 +5874,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateDomainRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrganizationDomain>,
+  input: __S(4160, __c130, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5888,8 +5888,8 @@ export const createIdentityProviderConfig: API.OperationMethod<
   CreateIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateIdentityProviderConfigRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: __S(4544, __c142, 0) as any as S.Schema<CreateIdentityProviderConfigRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<IdentityProviderConfigOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5903,8 +5903,8 @@ export const createIdentityProviderConfigsScimToken: API.OperationMethod<
   CreateIdentityProviderConfigsScimTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateIdentityProviderConfigsScimTokenRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<SCIMTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateIdentityProviderConfigsScimTokenRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SCIMTokenResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5917,8 +5917,8 @@ export const createInvite: API.OperationMethod<
   CreateInviteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateInviteRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<OrganizationInviteOutput>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateInviteRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OrganizationInviteOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5932,8 +5932,8 @@ export const createInvitesDelegate: API.OperationMethod<
   CreateInvitesDelegateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateInvitesDelegateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<OrganizationInviteOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateInvitesDelegateRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<OrganizationInviteOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5946,8 +5946,8 @@ export const createLegalDocument: API.OperationMethod<
   CreateLegalDocumentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateLegalDocumentRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<LegalDocumentDTO>,
+  input: __S(928, __c29, 0) as any as S.Schema<CreateLegalDocumentRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<LegalDocumentDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5961,8 +5961,8 @@ export const createOrganizationsProject: API.OperationMethod<
   CreateOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateOrganizationsProjectRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateOrganizationsProjectRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5980,8 +5980,12 @@ export const createOrganizationsProjectsChangeOrganization: API.OperationMethod<
   CreateOrganizationsProjectsChangeOrganizationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(
+    1152,
+    __c36,
+    0,
+  ) as any as S.Schema<CreateOrganizationsProjectsChangeOrganizationRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5996,11 +6000,11 @@ export const createOrganizationsProjectsDefaultEvaluationContext: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    54,
-    __c6,
-    6,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<CreateOrganizationsProjectsDefaultEvaluationContextRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6015,11 +6019,11 @@ export const createOrganizationsProjectsEvaluationContextSuggestion: API.Operati
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<CreateOrganizationsProjectsEvaluationContextSuggestionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EvaluationContextSuggestionResponse>,
+  output: __S(1280, __c40, 0) as any as S.Schema<EvaluationContextSuggestionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6033,8 +6037,8 @@ export const createRequestAiAccess: API.OperationMethod<
   CreateRequestAiAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateRequestAiAccessRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<OrganizationAIAccessRequestResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<CreateRequestAiAccessRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<OrganizationAIAccessRequestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6048,8 +6052,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateRoleRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Role>,
+  input: __S(1344, __c42, 0) as any as S.Schema<CreateRoleRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6062,8 +6066,8 @@ export const createRoleExternalReference: API.OperationMethod<
   CreateRoleExternalReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateRoleExternalReferenceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<RoleExternalReference>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateRoleExternalReferenceRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<RoleExternalReference>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6077,8 +6081,8 @@ export const createRolesRoleMembership: API.OperationMethod<
   CreateRolesRoleMembershipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateRolesRoleMembershipRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RoleMembershipOutput>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateRolesRoleMembershipRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<RoleMembershipOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6091,8 +6095,8 @@ export const destroy: API.OperationMethod<
   DestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<DestroyResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6105,8 +6109,8 @@ export const domainsDestroy: API.OperationMethod<
   DomainsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DomainsDestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<DomainsDestroyResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DomainsDestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DomainsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6119,8 +6123,8 @@ export const domainsVerifyCreate: API.OperationMethod<
   DomainsVerifyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DomainsVerifyCreateRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<DomainsVerifyCreateResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DomainsVerifyCreateRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<DomainsVerifyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6129,8 +6133,8 @@ export const domainsVerifyCreate: API.OperationMethod<
 export type GetError = Forbidden | NotFound | PosthogOpError;
 export const get: API.OperationMethod<GetRequest, Organization, GetError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(70, __c8, 6) as any as S.Schema<GetRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<Organization>,
+    input: __S(1696, __c53, 0) as any as S.Schema<GetRequest>,
+    output: __S(3331, __c104, 3) as any as S.Schema<Organization>,
     errors: [Forbidden, NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -6144,8 +6148,8 @@ export const getBillingFeature: API.OperationMethod<
   GetBillingFeatureError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetBillingFeatureRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<BillingFeatures>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetBillingFeatureRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<BillingFeatures>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6159,8 +6163,8 @@ export const getBillingForecast: API.OperationMethod<
   GetBillingForecastError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetBillingForecastRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<BillingForecast>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetBillingForecastRequest>,
+  output: __S(1799, __c56, 7) as any as S.Schema<BillingForecast>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6174,8 +6178,8 @@ export const getBillingInvoicesContent: API.OperationMethod<
   GetBillingInvoicesContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetBillingInvoicesContentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetBillingInvoicesContentResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetBillingInvoicesContentRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<GetBillingInvoicesContentResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6189,8 +6193,8 @@ export const getBillingLimit: API.OperationMethod<
   GetBillingLimitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetBillingLimitRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<BillingLimits>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetBillingLimitRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<BillingLimits>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6204,8 +6208,8 @@ export const getBillingProduct: API.OperationMethod<
   GetBillingProductError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetBillingProductRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<BillingProduct>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetBillingProductRequest>,
+  output: __S(2025, __c63, 9) as any as S.Schema<BillingProduct>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6219,8 +6223,8 @@ export const getBillingProductsSummary: API.OperationMethod<
   GetBillingProductsSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetBillingProductsSummaryRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<BillingProductsSummary>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetBillingProductsSummaryRequest>,
+  output: __S(2055, __c64, 7) as any as S.Schema<BillingProductsSummary>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6234,8 +6238,8 @@ export const getBillingSpendSummary: API.OperationMethod<
   GetBillingSpendSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetBillingSpendSummaryRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<BillingSpendSummary>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetBillingSpendSummaryRequest>,
+  output: __S(2087, __c65, 7) as any as S.Schema<BillingSpendSummary>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6249,8 +6253,8 @@ export const getBillingSpendTimeseries: API.OperationMethod<
   GetBillingSpendTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetBillingSpendTimeseriesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetBillingSpendTimeseriesRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6264,8 +6268,8 @@ export const getBillingSubscription: API.OperationMethod<
   GetBillingSubscriptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetBillingSubscriptionRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<BillingSubscription>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetBillingSubscriptionRequest>,
+  output: __S(2180, __c68, 4) as any as S.Schema<BillingSubscription>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6279,8 +6283,8 @@ export const getBillingUsageStatus: API.OperationMethod<
   GetBillingUsageStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetBillingUsageStatusRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<BillingUsageStatus>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetBillingUsageStatusRequest>,
+  output: __S(2213, __c69, 5) as any as S.Schema<BillingUsageStatus>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6294,8 +6298,8 @@ export const getBillingUsageSummary: API.OperationMethod<
   GetBillingUsageSummaryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetBillingUsageSummaryRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<BillingUsageSummary>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetBillingUsageSummaryRequest>,
+  output: __S(2249, __c70, 9) as any as S.Schema<BillingUsageSummary>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6309,8 +6313,8 @@ export const getBillingUsageTimeseries: API.OperationMethod<
   GetBillingUsageTimeseriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetBillingUsageTimeseriesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetBillingUsageTimeseriesRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<PaginatedBillingTimeSeriesPointList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6324,8 +6328,8 @@ export const getCimdVerificationToken: API.OperationMethod<
   GetCimdVerificationTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetCimdVerificationTokenRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<CIMDVerificationToken>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetCimdVerificationTokenRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<CIMDVerificationToken>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6338,8 +6342,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetDomainRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrganizationDomain>,
+  input: __S(2368, __c74, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<OrganizationDomain>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6352,8 +6356,8 @@ export const getDomainsScimLog: API.OperationMethod<
   GetDomainsScimLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetDomainsScimLogRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<PaginatedSCIMRequestLog>,
+  input: __S(2432, __c76, 0) as any as S.Schema<GetDomainsScimLogRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<PaginatedSCIMRequestLog>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6366,8 +6370,8 @@ export const getIdentityProviderConfig: API.OperationMethod<
   GetIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetIdentityProviderConfigRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetIdentityProviderConfigRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<IdentityProviderConfigOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6380,8 +6384,8 @@ export const getIdentityProviderConfigsScimLog: API.OperationMethod<
   GetIdentityProviderConfigsScimLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetIdentityProviderConfigsScimLogRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<PaginatedSCIMRequestLog>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetIdentityProviderConfigsScimLogRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<PaginatedSCIMRequestLog>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6394,8 +6398,8 @@ export const getLegalDocument: API.OperationMethod<
   GetLegalDocumentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetLegalDocumentRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<LegalDocumentDTO>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetLegalDocumentRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<LegalDocumentDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6408,8 +6412,8 @@ export const getMembersGithubLogin: API.OperationMethod<
   GetMembersGithubLoginError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetMembersGithubLoginRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<OrganizationMemberGithubLogin>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetMembersGithubLoginRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<OrganizationMemberGithubLogin>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6423,8 +6427,8 @@ export const getMembersProjectAccess: API.OperationMethod<
   GetMembersProjectAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetMembersProjectAccessRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<MemberProjectAccessResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetMembersProjectAccessRequest>,
+  output: __S(2630, __c82, 6) as any as S.Schema<MemberProjectAccessResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6437,8 +6441,8 @@ export const getMembersScopedApiKey: API.OperationMethod<
   GetMembersScopedApiKeyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetMembersScopedApiKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<OrganizationMember>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetMembersScopedApiKeyRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<OrganizationMember>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6452,8 +6456,8 @@ export const getOrganizationsProject: API.OperationMethod<
   GetOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetOrganizationsProjectRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetOrganizationsProjectRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6467,8 +6471,12 @@ export const getOrganizationsProjectsAccessControlDefault: API.OperationMethod<
   GetOrganizationsProjectsAccessControlDefaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<AccessControlDefaultsResponse>,
+  input: __S(
+    2720,
+    __c85,
+    0,
+  ) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultRequest>,
+  output: __S(2725, __c85, 5) as any as S.Schema<AccessControlDefaultsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6483,11 +6491,11 @@ export const getOrganizationsProjectsAccessControlDefaultObject: API.OperationMe
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    170,
-    __c21,
-    2,
+    2752,
+    __c86,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultObjectRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<AccessControlObjectRulesResponse>,
+  output: __S(2786, __c87, 2) as any as S.Schema<AccessControlObjectRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6502,11 +6510,11 @@ export const getOrganizationsProjectsAccessControlDefaultProperty: API.Operation
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    2848,
+    __c89,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlDefaultPropertyRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  output: __S(2882, __c90, 2) as any as S.Schema<AccessControlPropertyRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6520,8 +6528,8 @@ export const getOrganizationsProjectsAccessControlMember: API.OperationMethod<
   GetOrganizationsProjectsAccessControlMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<AccessControlMembersResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberRequest>,
+  output: __S(2916, __c91, 4) as any as S.Schema<AccessControlMembersResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6536,11 +6544,11 @@ export const getOrganizationsProjectsAccessControlMemberObject: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    186,
-    __c23,
-    2,
+    2976,
+    __c93,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberObjectRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<AccessControlObjectRulesResponse>,
+  output: __S(2786, __c87, 2) as any as S.Schema<AccessControlObjectRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6555,11 +6563,11 @@ export const getOrganizationsProjectsAccessControlMemberProperty: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    3008,
+    __c94,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlMemberPropertyRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  output: __S(2882, __c90, 2) as any as S.Schema<AccessControlPropertyRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6573,8 +6581,8 @@ export const getOrganizationsProjectsAccessControlRole: API.OperationMethod<
   GetOrganizationsProjectsAccessControlRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<AccessControlRolesResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleRequest>,
+  output: __S(3043, __c95, 3) as any as S.Schema<AccessControlRolesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6589,11 +6597,11 @@ export const getOrganizationsProjectsAccessControlRoleObject: API.OperationMetho
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    192,
-    __c24,
+    3072,
+    __c96,
     0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlRoleObjectRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<AccessControlObjectRulesResponse>,
+  output: __S(2786, __c87, 2) as any as S.Schema<AccessControlObjectRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6608,11 +6616,11 @@ export const getOrganizationsProjectsAccessControlRoleProperty: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    3104,
+    __c97,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsAccessControlRolePropertyRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<AccessControlPropertyRulesResponse>,
+  output: __S(2882, __c90, 2) as any as S.Schema<AccessControlPropertyRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6626,8 +6634,8 @@ export const getOrganizationsProjectsActivity: API.OperationMethod<
   GetOrganizationsProjectsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetOrganizationsProjectsActivityRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetOrganizationsProjectsActivityRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6642,11 +6650,11 @@ export const getOrganizationsProjectsDefaultEvaluationContext: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    3168,
+    __c99,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsDefaultEvaluationContextRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6661,11 +6669,11 @@ export const getOrganizationsProjectsDefaultReleaseCondition: API.OperationMetho
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    3200,
+    __c100,
+    0,
   ) as any as S.Schema<GetOrganizationsProjectsDefaultReleaseConditionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6679,8 +6687,8 @@ export const getOrganizationsProjectsExperimentsConfig: API.OperationMethod<
   GetOrganizationsProjectsExperimentsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetOrganizationsProjectsExperimentsConfigRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetOrganizationsProjectsExperimentsConfigRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6697,8 +6705,12 @@ export const getOrganizationsProjectsIsGeneratingDemoData: API.OperationMethod<
   GetOrganizationsProjectsIsGeneratingDemoDataError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetOrganizationsProjectsIsGeneratingDemoDataRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(
+    3424,
+    __c107,
+    0,
+  ) as any as S.Schema<GetOrganizationsProjectsIsGeneratingDemoDataRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6712,8 +6724,8 @@ export const getOrganizationsProjectsLogsConfig: API.OperationMethod<
   GetOrganizationsProjectsLogsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetOrganizationsProjectsLogsConfigRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<TeamLogsConfig>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetOrganizationsProjectsLogsConfigRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<TeamLogsConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6727,8 +6739,8 @@ export const getOrganizationsProjectsSettingsAsOf: API.OperationMethod<
   GetOrganizationsProjectsSettingsAsOfError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetOrganizationsProjectsSettingsAsOfRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetOrganizationsProjectsSettingsAsOfRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6742,8 +6754,8 @@ export const getOrganizationsProjectsTracingConfig: API.OperationMethod<
   GetOrganizationsProjectsTracingConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetOrganizationsProjectsTracingConfigRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<TeamTracingConfig>,
+  input: __S(3552, __c111, 0) as any as S.Schema<GetOrganizationsProjectsTracingConfigRequest>,
+  output: __S(3584, __c112, 0) as any as S.Schema<TeamTracingConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6753,8 +6765,8 @@ export type GetRoleError = Forbidden | NotFound | PosthogOpError;
 /** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const getRole: API.OperationMethod<GetRoleRequest, Role, GetRoleError, PosthogOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(204, __c25, 4) as any as S.Schema<GetRoleRequest>,
-    output: __S(60, __c7, 4) as any as S.Schema<Role>,
+    input: __S(3616, __c113, 0) as any as S.Schema<GetRoleRequest>,
+    output: __S(1376, __c43, 0) as any as S.Schema<Role>,
     errors: [Forbidden, NotFound],
     protocol: PosthogProtocol,
     retry: Retry.Retry,
@@ -6771,8 +6783,8 @@ export const getRoleExternalReferencesLookup: API.OperationMethod<
   GetRoleExternalReferencesLookupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetRoleExternalReferencesLookupRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<RoleLookupResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetRoleExternalReferencesLookupRequest>,
+  output: __S(3649, __c114, 1) as any as S.Schema<RoleLookupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6786,8 +6798,8 @@ export const getRolesRoleMembership: API.OperationMethod<
   GetRolesRoleMembershipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetRolesRoleMembershipRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RoleMembershipOutput>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetRolesRoleMembershipRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<RoleMembershipOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6801,8 +6813,8 @@ export const getTeamsDataFreshness: API.OperationMethod<
   GetTeamsDataFreshnessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetTeamsDataFreshnessRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<OrganizationDataFreshness>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetTeamsDataFreshnessRequest>,
+  output: __S(3717, __c116, 5) as any as S.Schema<OrganizationDataFreshness>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6816,8 +6828,8 @@ export const getWelcomeCurrent: API.OperationMethod<
   GetWelcomeCurrentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetWelcomeCurrentRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<WelcomeResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetWelcomeCurrentRequest>,
+  output: __S(3754, __c117, 10) as any as S.Schema<WelcomeResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6830,8 +6842,8 @@ export const identityProviderConfigsDestroy: API.OperationMethod<
   IdentityProviderConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<IdentityProviderConfigsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<IdentityProviderConfigsDestroyResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<IdentityProviderConfigsDestroyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<IdentityProviderConfigsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6844,8 +6856,8 @@ export const invitesBulkCreate: API.OperationMethod<
   InvitesBulkCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<InvitesBulkCreateRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<InvitesBulkCreateResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<InvitesBulkCreateRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<InvitesBulkCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6858,8 +6870,8 @@ export const invitesDestroy: API.OperationMethod<
   InvitesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<InvitesDestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<InvitesDestroyResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<InvitesDestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<InvitesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6873,8 +6885,8 @@ export const legalDocumentsDestroy: API.OperationMethod<
   LegalDocumentsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<LegalDocumentsDestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LegalDocumentsDestroyResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<LegalDocumentsDestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<LegalDocumentsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6888,8 +6900,8 @@ export const legalDocumentsDownloadRetrieve: API.OperationMethod<
   LegalDocumentsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<LegalDocumentsDownloadRetrieveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<LegalDocumentsDownloadRetrieveRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<LegalDocumentsDownloadRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6902,8 +6914,8 @@ export const list: API.OperationMethod<
   ListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<PaginatedOrganizationList>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<PaginatedOrganizationList>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6917,8 +6929,8 @@ export const listBillingInvoices: API.OperationMethod<
   ListBillingInvoicesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ListBillingInvoicesRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<BillingInvoices>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListBillingInvoicesRequest>,
+  output: __S(4035, __c126, 3) as any as S.Schema<BillingInvoices>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6932,8 +6944,8 @@ export const listBillingProducts: API.OperationMethod<
   ListBillingProductsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListBillingProductsRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<BillingProducts>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ListBillingProductsRequest>,
+  output: __S(4066, __c127, 2) as any as S.Schema<BillingProducts>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6947,8 +6959,8 @@ export const listBillingProject: API.OperationMethod<
   ListBillingProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListBillingProjectRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<BillingProjects>,
+  input: __S(4096, __c128, 0) as any as S.Schema<ListBillingProjectRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<BillingProjects>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6962,8 +6974,8 @@ export const listCimdVerificationTokens: API.OperationMethod<
   ListCimdVerificationTokensError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListCimdVerificationTokensRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<PaginatedCIMDVerificationTokenList>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ListCimdVerificationTokensRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<PaginatedCIMDVerificationTokenList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6976,8 +6988,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListDomainsRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<PaginatedOrganizationDomainList>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<PaginatedOrganizationDomainList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -6990,8 +7002,8 @@ export const listIdentityProviderConfigs: API.OperationMethod<
   ListIdentityProviderConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListIdentityProviderConfigsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<PaginatedIdentityProviderConfigListOutput>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListIdentityProviderConfigsRequest>,
+  output: __S(4258, __c133, 2) as any as S.Schema<PaginatedIdentityProviderConfigListOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7004,8 +7016,8 @@ export const listInvites: API.OperationMethod<
   ListInvitesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListInvitesRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<PaginatedOrganizationInviteListOutput>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListInvitesRequest>,
+  output: __S(4290, __c134, 2) as any as S.Schema<PaginatedOrganizationInviteListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7018,8 +7030,8 @@ export const listLegalDocuments: API.OperationMethod<
   ListLegalDocumentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListLegalDocumentsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<PaginatedLegalDocumentDTOList>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListLegalDocumentsRequest>,
+  output: __S(4322, __c135, 2) as any as S.Schema<PaginatedLegalDocumentDTOList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7032,8 +7044,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<ListMembersRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<PaginatedOrganizationMemberList>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(4354, __c136, 2) as any as S.Schema<PaginatedOrganizationMemberList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7047,8 +7059,8 @@ export const listOauthApplications: API.OperationMethod<
   ListOauthApplicationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<ListOauthApplicationsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<PaginatedOrganizationOAuthApplicationList>,
+  input: __S(4384, __c137, 0) as any as S.Schema<ListOauthApplicationsRequest>,
+  output: __S(4387, __c137, 3) as any as S.Schema<PaginatedOrganizationOAuthApplicationList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7062,8 +7074,8 @@ export const listOrganizationsProjects: API.OperationMethod<
   ListOrganizationsProjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListOrganizationsProjectsRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>,
+  input: __S(4416, __c138, 0) as any as S.Schema<ListOrganizationsProjectsRequest>,
+  output: __S(4419, __c138, 3) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7078,14 +7090,14 @@ export const listOrganizationsProjectsEventIngestionRestrictions: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    270,
-    __c33,
-    6,
+    4448,
+    __c139,
+    0,
   ) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsRequest>,
   output: __S(
-    273,
-    __c34,
-    1,
+    4451,
+    __c139,
+    3,
   ) as any as S.Schema<ListOrganizationsProjectsEventIngestionRestrictionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -7099,8 +7111,8 @@ export const listRoleExternalReferences: API.OperationMethod<
   ListRoleExternalReferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListRoleExternalReferencesRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<PaginatedRoleExternalReferenceList>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListRoleExternalReferencesRequest>,
+  output: __S(4482, __c140, 2) as any as S.Schema<PaginatedRoleExternalReferenceList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7114,8 +7126,8 @@ export const listRoles: API.OperationMethod<
   ListRolesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListRolesRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<PaginatedRoleList>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListRolesRequest>,
+  output: __S(4514, __c141, 2) as any as S.Schema<PaginatedRoleList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7129,8 +7141,8 @@ export const listRolesRoleMemberships: API.OperationMethod<
   ListRolesRoleMembershipsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListRolesRoleMembershipsRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<PaginatedRoleMembershipListOutput>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListRolesRoleMembershipsRequest>,
+  output: __S(4642, __c145, 2) as any as S.Schema<PaginatedRoleMembershipListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7143,8 +7155,8 @@ export const membersDestroy: API.OperationMethod<
   MembersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<MembersDestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<MembersDestroyResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<MembersDestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<MembersDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7163,11 +7175,11 @@ export const organizationsProjectsAddProductIntentPartialUpdate: API.OperationMe
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    284,
-    __c35,
-    4,
+    4704,
+    __c147,
+    0,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7181,8 +7193,8 @@ export const organizationsProjectsCancelDeletionCreate: API.OperationMethod<
   OrganizationsProjectsCancelDeletionCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<OrganizationsProjectsCancelDeletionCreateRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<Project>,
+  input: __S(4736, __c148, 0) as any as S.Schema<OrganizationsProjectsCancelDeletionCreateRequest>,
+  output: __S(4738, __c148, 2) as any as S.Schema<Project>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7197,13 +7209,13 @@ export const organizationsProjectsDefaultEvaluationContextsDestroy: API.Operatio
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    288,
-    __c36,
+    4768,
+    __c149,
     0,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyRequest>,
   output: __S(
-    289,
-    __c36,
+    4769,
+    __c149,
     1,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsDestroyResponse>,
   errors: [],
@@ -7224,11 +7236,11 @@ export const organizationsProjectsDeleteSecretTokenBackupPartialUpdate: API.Oper
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    290,
-    __c36,
-    2,
+    4800,
+    __c150,
+    0,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7242,8 +7254,8 @@ export const organizationsProjectsDestroy: API.OperationMethod<
   OrganizationsProjectsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<OrganizationsProjectsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<OrganizationsProjectsDestroyResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<OrganizationsProjectsDestroyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<OrganizationsProjectsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7258,11 +7270,11 @@ export const organizationsProjectsEvaluationContextSuggestionsDestroy: API.Opera
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    292,
-    __c36,
-    4,
+    4864,
+    __c152,
+    0,
   ) as any as S.Schema<OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EvaluationContextSuggestionResponse>,
+  output: __S(1280, __c40, 0) as any as S.Schema<EvaluationContextSuggestionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7281,11 +7293,11 @@ export const organizationsProjectsGenerateConversationsPublicTokenCreate: API.Op
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    293,
-    __c36,
-    5,
+    4896,
+    __c153,
+    0,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7303,8 +7315,12 @@ export const organizationsProjectsResetTokenPartialUpdate: API.OperationMethod<
   OrganizationsProjectsResetTokenPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(
+    4928,
+    __c154,
+    0,
+  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7319,11 +7335,11 @@ export const organizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdate: A
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    295,
-    __c36,
-    7,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7342,11 +7358,11 @@ export const organizationsProjectsRotateSecretTokenPartialUpdate: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    296,
-    __c37,
+    64,
+    __c2,
     0,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7361,11 +7377,11 @@ export const removeBlockedMembersAndEnforceVerifiedDomainsCreate: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    297,
-    __c37,
-    1,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<OrganizationRemoveBlockedMembersResponse>,
+  output: __S(97, __c3, 1) as any as S.Schema<OrganizationRemoveBlockedMembersResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7378,8 +7394,8 @@ export const roleExternalReferencesDestroy: API.OperationMethod<
   RoleExternalReferencesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<RoleExternalReferencesDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RoleExternalReferencesDestroyResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<RoleExternalReferencesDestroyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<RoleExternalReferencesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7393,8 +7409,8 @@ export const rolesDestroy: API.OperationMethod<
   RolesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<RolesDestroyRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<RolesDestroyResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<RolesDestroyRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<RolesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7408,8 +7424,8 @@ export const rolesRoleMembershipsDestroy: API.OperationMethod<
   RolesRoleMembershipsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<RolesRoleMembershipsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RolesRoleMembershipsDestroyResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<RolesRoleMembershipsDestroyRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<RolesRoleMembershipsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7422,8 +7438,8 @@ export const update: API.OperationMethod<
   UpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<UpdateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Organization>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdateRequest>,
+  output: __S(3331, __c104, 3) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7437,8 +7453,8 @@ export const updateCimdVerificationTokensPartial: API.OperationMethod<
   UpdateCimdVerificationTokensPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<UpdateCimdVerificationTokensPartialRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<CIMDVerificationToken>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateCimdVerificationTokensPartialRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<CIMDVerificationToken>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7451,8 +7467,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrganizationDomain>,
+  input: __S(288, __c9, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7465,8 +7481,8 @@ export const updateDomainsPartial: API.OperationMethod<
   UpdateDomainsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<UpdateDomainsPartialRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<OrganizationDomain>,
+  input: __S(320, __c10, 0) as any as S.Schema<UpdateDomainsPartialRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7479,8 +7495,8 @@ export const updateIdentityProviderConfig: API.OperationMethod<
   UpdateIdentityProviderConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<UpdateIdentityProviderConfigRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: __S(416, __c13, 0) as any as S.Schema<UpdateIdentityProviderConfigRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<IdentityProviderConfigOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7493,8 +7509,8 @@ export const updateIdentityProviderConfigsPartial: API.OperationMethod<
   UpdateIdentityProviderConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IdentityProviderConfigOutput>,
+  input: __S(448, __c14, 0) as any as S.Schema<UpdateIdentityProviderConfigsPartialRequest>,
+  output: __S(4608, __c144, 0) as any as S.Schema<IdentityProviderConfigOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7512,8 +7528,8 @@ export const updateIntegrationsEnvironmentMappingPartial: API.OperationMethod<
   UpdateIntegrationsEnvironmentMappingPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<UpdateIntegrationsEnvironmentMappingPartialRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<OrganizationIntegration>,
+  input: __S(480, __c15, 0) as any as S.Schema<UpdateIntegrationsEnvironmentMappingPartialRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<OrganizationIntegration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7526,8 +7542,8 @@ export const updateMember: API.OperationMethod<
   UpdateMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<UpdateMemberRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<OrganizationMember>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateMemberRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<OrganizationMember>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7540,8 +7556,8 @@ export const updateMembersPartial: API.OperationMethod<
   UpdateMembersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<UpdateMembersPartialRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<OrganizationMember>,
+  input: __S(544, __c17, 0) as any as S.Schema<UpdateMembersPartialRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<OrganizationMember>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7555,8 +7571,8 @@ export const updateOrganizationsProject: API.OperationMethod<
   UpdateOrganizationsProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<UpdateOrganizationsProjectRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(576, __c18, 0) as any as S.Schema<UpdateOrganizationsProjectRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7575,11 +7591,11 @@ export const updateOrganizationsProjectsCompleteProductOnboardingPartial: API.Op
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    313,
-    __c39,
-    1,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7594,11 +7610,11 @@ export const updateOrganizationsProjectsDefaultReleaseCondition: API.OperationMe
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    314,
-    __c39,
-    2,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<UpdateOrganizationsProjectsDefaultReleaseConditionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7613,11 +7629,11 @@ export const updateOrganizationsProjectsExperimentsConfigPartial: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    315,
-    __c39,
-    3,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<UpdateOrganizationsProjectsExperimentsConfigPartialRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7631,8 +7647,8 @@ export const updateOrganizationsProjectsLogsConfigPartial: API.OperationMethod<
   UpdateOrganizationsProjectsLogsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<TeamLogsConfig>,
+  input: __S(704, __c22, 0) as any as S.Schema<UpdateOrganizationsProjectsLogsConfigPartialRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<TeamLogsConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7650,8 +7666,8 @@ export const updateOrganizationsProjectsPartial: API.OperationMethod<
   UpdateOrganizationsProjectsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<UpdateOrganizationsProjectsPartialRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ProjectBackwardCompat>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdateOrganizationsProjectsPartialRequest>,
+  output: __S(1074, __c33, 18) as any as S.Schema<ProjectBackwardCompat>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7666,11 +7682,11 @@ export const updateOrganizationsProjectsTracingConfigPartial: API.OperationMetho
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    318,
-    __c39,
-    6,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<UpdateOrganizationsProjectsTracingConfigPartialRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<TeamTracingConfig>,
+  output: __S(3584, __c112, 0) as any as S.Schema<TeamTracingConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7683,8 +7699,8 @@ export const updatePartial: API.OperationMethod<
   UpdatePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<UpdatePartialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Organization>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdatePartialRequest>,
+  output: __S(3331, __c104, 3) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7698,8 +7714,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Role>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7713,8 +7729,8 @@ export const updateRolesPartial: API.OperationMethod<
   UpdateRolesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<UpdateRolesPartialRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Role>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateRolesPartialRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -7722,6 +7738,2033 @@ export const updateRolesPartial: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/scim/token/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIdentityProviderConfigsScimTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scim_enabled: S.Boolean,
+          scim_bearer_token: S.String,
+        }),
+      ).annotate({ identifier: "SCIMTokenResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/rotate_heatmaps_screenshot_secret/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/rotate_secret_token/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "OrganizationsProjectsRotateSecretTokenPartialUpdateRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{id}/remove_blocked_members_and_enforce_verified_domains/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          removed_members: S.Number,
+        }),
+      ).annotate({
+        identifier: "OrganizationRemoveBlockedMembersResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/role_external_references/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RoleExternalReferencesDestroyRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/roles/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RolesDestroyRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          role_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RolesRoleMembershipsDestroyRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
+          members_can_invite: S.optional(S.NullOr(S.Boolean)),
+          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          members_can_see_org_members: S.optional(S.Boolean),
+          allow_publicly_shared_resources: S.optional(S.Boolean),
+          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
+          member_notice: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
+          default_anonymize_ips: S.optional(S.Boolean),
+          default_role_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/organizations/{id}/", code: 200 })),
+      ).annotate({ identifier: "UpdateRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          cimd_url: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCimdVerificationTokensPartialRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          domain: S.optional(S.String),
+          jit_provisioning_enabled: S.optional(S.Boolean),
+          sso_enforcement: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/domains/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateDomainRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          domain: S.optional(S.String),
+          jit_provisioning_enabled: S.optional(S.Boolean),
+          sso_enforcement: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/domains/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDomainsPartialRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          target_email: S.optional(S.String),
+          first_name: S.optional(S.String),
+          level: S.optional(S.Number),
+          message: S.optional(S.NullOr(S.String)),
+          private_project_access: S.optional(S.Unknown),
+          send_email: S.optional(S.Boolean),
+          combine_pending_invites: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/invites/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateInviteRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          target_email: S.optional(S.String),
+          first_name: S.optional(S.String),
+          emailing_attempt_made: S.optional(S.Boolean),
+          level: S.optional(S.Number),
+          is_expired: S.optional(S.Boolean),
+          created_by: S.optional(S.NullOr(__S(3808, __c119, 0))),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          message: S.optional(S.NullOr(S.String)),
+          private_project_access: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "OrganizationInviteOutput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          domain_scope: S.optional(S.NullOr(S.Unknown)),
+          config_scope: S.optional(S.NullOr(S.Unknown)),
+          organization_domain_ids: S.optional(__S(4576, __c143, 0)),
+          oidc_issuer_url: S.optional(S.String),
+          oidc_client_id: S.optional(S.String),
+          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          saml_entity_id: S.optional(S.NullOr(S.String)),
+          saml_acs_url: S.optional(S.NullOr(S.String)),
+          saml_x509_cert: S.optional(S.NullOr(S.String)),
+          scim_enabled: S.optional(S.Boolean),
+          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+          id_jag_allowed_clients: S.optional(__S(4576, __c143, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateIdentityProviderConfigRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          domain_scope: S.optional(S.NullOr(S.Unknown)),
+          config_scope: S.optional(S.NullOr(S.Unknown)),
+          organization_domain_ids: S.optional(__S(1088, __c34, 0)),
+          oidc_issuer_url: S.optional(S.String),
+          oidc_client_id: S.optional(S.String),
+          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          saml_entity_id: S.optional(S.NullOr(S.String)),
+          saml_acs_url: S.optional(S.NullOr(S.String)),
+          saml_x509_cert: S.optional(S.NullOr(S.String)),
+          scim_enabled: S.optional(S.Boolean),
+          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+          id_jag_allowed_clients: S.optional(__S(1088, __c34, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateIdentityProviderConfigsPartialRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/integrations/{id}/environment-mapping/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateIntegrationsEnvironmentMappingPartialRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          integration_id: S.optional(S.NullOr(S.String)),
+          config: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(3808, __c119, 0))),
+        }),
+      ).annotate({ identifier: "OrganizationIntegration" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          user__uuid: S.String.pipe(T.Label()),
+          level: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/members/{user__uuid}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateMemberRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          user__uuid: S.String.pipe(T.Label()),
+          level: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/members/{user__uuid}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateMembersPartialRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          app_urls: S.optional(__S(1056, __c33, 0)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(3360, __c105, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/projects/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/complete_product_onboarding/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/projects/{id}/default_release_conditions/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsDefaultReleaseConditionRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/experiments_config/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsExperimentsConfigPartialRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          logs_distinct_id_attribute_keys: S.optional(__S(1088, __c34, 0)),
+          logs_session_id_attribute_keys: S.optional(__S(1088, __c34, 0)),
+          logs_pattern_message_keys: S.optional(__S(1088, __c34, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/logs_config/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsLogsConfigPartialRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          target_email: S.String,
+          message: S.optional(S.String),
+          step_at_delegation: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/invites/delegate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInvitesDelegateRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          app_urls: S.optional(__S(1056, __c33, 0)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsPartialRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          tracing_distinct_id_attribute_keys: S.optional(__S(1088, __c34, 0)),
+          tracing_session_id_attribute_keys: S.optional(__S(1088, __c34, 0)),
+          retention_days: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/projects/{id}/tracing_config/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationsProjectsTracingConfigPartialRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
+          members_can_invite: S.optional(S.NullOr(S.Boolean)),
+          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          members_can_see_org_members: S.optional(S.Boolean),
+          allow_publicly_shared_resources: S.optional(S.Boolean),
+          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
+          member_notice: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
+          default_anonymize_ips: S.optional(S.Boolean),
+          default_role_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/api/organizations/{id}/", code: 200 })),
+      ).annotate({ identifier: "UpdatePartialRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/organizations/{organization_id}/roles/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRoleRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/organizations/{organization_id}/roles/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRolesPartialRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          document_type: S.optional(S.String),
+          company_name: S.optional(S.String),
+          company_address: S.optional(S.String),
+          representative_email: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/legal_documents/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLegalDocumentRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          first_name: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LegalDocumentCreator" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          document_type: S.optional(S.String),
+          company_name: S.optional(S.String),
+          representative_email: S.optional(S.String),
+          status: S.optional(S.String),
+          signed_pdf_stored: S.optional(S.Boolean),
+          created_by: S.optional(S.NullOr(__S(960, __c30, 0))),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LegalDocumentDTO" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          app_urls: S.optional(__S(1056, __c33, 0)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(3360, __c105, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/projects/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsProjectRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          base_currency: S.optional(S.String),
+          events: S.optional(S.Unknown),
+          filter_test_accounts: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TeamRevenueAnalyticsConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ad_group_id: S.optional(S.NullOr(S.String)),
+          ad_group_name: S.optional(S.NullOr(S.String)),
+          ad_id: S.optional(S.NullOr(S.String)),
+          ad_name: S.optional(S.NullOr(S.String)),
+          campaign: S.optional(S.NullOr(S.String)),
+          clicks: S.optional(S.NullOr(S.String)),
+          cost: S.optional(S.NullOr(S.String)),
+          currency: S.optional(S.NullOr(S.String)),
+          date: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.String)),
+          impressions: S.optional(S.NullOr(S.String)),
+          reported_conversion: S.optional(S.NullOr(S.String)),
+          reported_conversion_value: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SourceMap" });
+    case 3:
+      return S.Record(S.String, __S(1058, __c33, 2));
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
+      return S.Record(S.String, __S(4576, __c143, 0));
+    case 6:
+      return S.Record(S.String, __S(1061, __c33, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          match_field: S.String,
+        }),
+      ).annotate({ identifier: "CampaignFieldPreference" });
+    case 8:
+      return S.Record(S.String, __S(1063, __c33, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sources_map: S.optional(__S(1059, __c33, 3)),
+          conversion_goals: S.optional(__S(1060, __c33, 4)),
+          attribution_window_days: S.optional(S.Number),
+          attribution_mode: S.optional(S.String),
+          filter_test_accounts: S.optional(S.Boolean),
+          campaign_name_mappings: S.optional(__S(1062, __c33, 6)),
+          custom_source_mappings: S.optional(__S(1061, __c33, 5)),
+          campaign_field_preferences: S.optional(__S(1064, __c33, 8)),
+        }),
+      ).annotate({
+        identifier: "TeamMarketingAnalyticsConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "TeamCustomerAnalyticsPinnedAccountProperty",
+      });
+    case 11:
+      return S.Array(__S(1066, __c33, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          activity_event: S.optional(S.Unknown),
+          signup_pageview_event: S.optional(S.Unknown),
+          signup_event: S.optional(S.Unknown),
+          subscription_event: S.optional(S.Unknown),
+          payment_event: S.optional(S.Unknown),
+          account_group_type_index: S.optional(S.NullOr(S.Number)),
+          default_pinned_properties: S.optional(__S(1067, __c33, 11)),
+        }),
+      ).annotate({
+        identifier: "TeamCustomerAnalyticsConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          capture_workflows_engagement_events: S.optional(S.Boolean),
+          email_tracking_consent_mode: S.optional(S.String),
+          workflow_task_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
+          workflow_task_team_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "TeamWorkflowsConfig" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          require_tags: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TeamFeatureFlagPolicyConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          product_type: S.optional(S.String),
+          created_at: S.optional(S.String),
+          onboarding_completed_at: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProjectBackwardCompatProductIntentsItem",
+      });
+    case 16:
+      return S.Array(__S(1071, __c33, 15));
+    case 17:
+      return S.Record(S.String, S.Boolean);
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          organization: S.optional(S.String),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          created_at: S.optional(S.String),
+          effective_membership_level: S.optional(S.Number),
+          has_group_types: S.optional(S.Boolean),
+          group_types: S.optional(__S(3264, __c102, 0)),
+          live_events_token: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.NullOr(S.String)),
+          uuid: S.optional(S.String),
+          api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          app_urls: S.optional(__S(1056, __c33, 0)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          ingested_event: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(3296, __c103, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(3296, __c103, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(4576, __c143, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1056, __c33, 0))),
+          person_on_events_querying_enabled: S.optional(S.Boolean),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          default_modifiers: S.optional(__S(3360, __c105, 0)),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          product_intents: S.optional(__S(1072, __c33, 16)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          secret_api_token: S.optional(S.NullOr(S.String)),
+          secret_api_token_backup: S.optional(S.NullOr(S.String)),
+          heatmaps_screenshot_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(3360, __c105, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          available_setup_task_ids: S.optional(__S(1024, __c32, 0)),
+          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
+          deletion_scheduled_at: S.optional(S.NullOr(S.String)),
+          project_id: S.optional(S.Number),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          managed_viewsets: S.optional(__S(1073, __c33, 17)),
+          flag_evaluations_mode: S.optional(S.Number),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ProjectBackwardCompat" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/projects/{id}/change_organization/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsProjectsChangeOrganizationRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          product_description: S.optional(S.NullOr(S.String)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
+          anonymize_ips: S.optional(S.Boolean),
+          completed_snippet_onboarding: S.optional(S.Boolean),
+          test_account_filters: S.optional(S.Unknown),
+          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
+          path_cleaning_filters: S.optional(S.Unknown),
+          is_demo: S.optional(S.Boolean),
+          timezone: S.optional(S.String),
+          data_attributes: S.optional(S.Unknown),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          correlation_config: S.optional(S.Unknown),
+          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
+          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
+          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
+          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
+          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
+          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
+          session_recording_opt_in: S.optional(S.Boolean),
+          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
+          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
+          session_recording_linked_flag: S.optional(S.Unknown),
+          session_recording_network_payload_capture_config: S.optional(S.Unknown),
+          session_recording_masking_config: S.optional(S.Unknown),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
+          session_recording_trigger_groups: S.optional(S.Unknown),
+          session_recording_retention_period: S.optional(S.String),
+          session_replay_config: S.optional(S.Unknown),
+          survey_config: S.optional(S.Unknown),
+          access_control: S.optional(S.Boolean),
+          week_start_day: S.optional(S.NullOr(S.Number)),
+          primary_dashboard: S.optional(S.NullOr(S.Number)),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
+          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
+          extra_settings: S.optional(S.Unknown),
+          modifiers: S.optional(S.Unknown),
+          has_completed_onboarding_for: S.optional(S.Unknown),
+          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
+          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
+          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
+          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
+          business_model: S.optional(S.NullOr(S.Unknown)),
+          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs_settings: S.optional(S.Unknown),
+          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
+          base_currency: S.optional(S.String),
+          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
+          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
+          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
+          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
+          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
+          default_data_theme: S.optional(S.NullOr(S.Number)),
+          onboarding_tasks: S.optional(S.Unknown),
+          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/projects/{id}/default_evaluation_contexts/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsProjectsDefaultEvaluationContextRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          context_name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/projects/{id}/evaluation_context_suggestions/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsProjectsEvaluationContextSuggestionRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          name: S.String,
+          hidden_from_suggestions: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "EvaluationContextSuggestionResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/organizations/{id}/request_ai_access/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateRequestAiAccessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "OrganizationAIAccessRequestResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/organizations/{organization_id}/roles/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateRoleRequest" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(3808, __c119, 0))),
+          members: S.optional(__S(3264, __c102, 0)),
+          is_default: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Role" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          provider: S.optional(S.String),
+          provider_organization_id: S.optional(S.String),
+          provider_role_id: S.optional(S.String),
+          provider_role_slug: S.optional(S.NullOr(S.String)),
+          provider_role_name: S.optional(S.String),
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/role_external_references/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRoleExternalReferenceRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          provider: S.optional(S.String),
+          provider_organization_id: S.optional(S.String),
+          provider_role_id: S.optional(S.String),
+          provider_role_slug: S.optional(S.NullOr(S.String)),
+          provider_role_name: S.optional(S.String),
+          role: S.optional(S.String),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(3808, __c119, 0))),
+        }),
+      ).annotate({ identifier: "RoleExternalReference" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          role_id: S.String.pipe(T.Label()),
+          user_uuid: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRolesRoleMembershipRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          user: S.optional(S.NullOr(__S(3808, __c119, 0))),
+          level: S.optional(S.Number),
+          joined_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          is_2fa_enabled: S.optional(S.Boolean),
+          has_social_auth: S.optional(S.Boolean),
+          last_login: S.optional(S.String),
+          search_match_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "OrganizationMember" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          role_id: S.optional(S.String),
+          organization_member: S.optional(__S(1504, __c47, 0)),
+          user: S.optional(S.NullOr(__S(3808, __c119, 0))),
+          joined_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoleMembershipOutput" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/organizations/{id}/", code: 200 })),
+      ).annotate({ identifier: "DestroyRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DestroyResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/domains/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DomainsDestroyRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          domain: S.optional(S.String),
+          jit_provisioning_enabled: S.optional(S.Boolean),
+          sso_enforcement: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/domains/{id}/verify/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DomainsVerifyCreateRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{id}/", code: 200 })),
+      ).annotate({ identifier: "GetRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/billing/features/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBillingFeatureRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          available_product_features: __S(1761, __c55, 1),
+        }),
+      ).annotate({ identifier: "BillingFeatures" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          name: S.String,
+          description: S.String,
+          unit: S.optional(S.NullOr(S.String)),
+          limit: S.optional(S.NullOr(S.Number)),
+          note: S.optional(S.NullOr(S.String)),
+          is_plan_default: S.optional(S.Boolean),
+          entitlement_only: S.optional(S.NullOr(S.Boolean)),
+          category: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ProductFeature" });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/billing/forecast/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingForecastRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          up_to: S.NullOr(S.Number),
+          projected_usage: S.NullOr(S.Number),
+          projected_amount_usd: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TierForecast" });
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          projected_usage: S.NullOr(S.Number),
+          projected_amount_usd: S.NullOr(S.String),
+          projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
+          tier_forecast: S.NullOr(__S(1794, __c56, 2)),
+        }),
+      ).annotate({ identifier: "ForecastItem" });
+    case 4:
+      return S.Array(__S(1795, __c56, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          projected_usage: S.NullOr(S.Number),
+          projected_amount_usd: S.NullOr(S.String),
+          projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
+          tier_forecast: S.NullOr(__S(1794, __c56, 2)),
+          addons: __S(1796, __c56, 4),
+        }),
+      ).annotate({ identifier: "ProductForecast" });
+    case 6:
+      return S.Array(__S(1797, __c56, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          billing_period: S.NullOr(__S(1824, __c57, 0)),
+          projected_total_amount_usd: S.NullOr(S.String),
+          projected_total_amount_usd_with_limit: S.NullOr(S.String),
+          projected_total_amount_usd_after_discount: S.NullOr(S.String),
+          projected_total_amount_usd_with_limit_after_discount: S.NullOr(S.String),
+          products: __S(1798, __c56, 6),
+          computed_at: S.String,
+        }),
+      ).annotate({ identifier: "BillingForecast" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          current_period_start: S.String,
+          current_period_end: S.String,
+          interval: S.String,
+        }),
+      ).annotate({ identifier: "BillingPeriod" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          invoice_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/billing/invoices/{invoice_id}/content/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingInvoicesContentRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/billing/limits/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBillingLimitRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          limit_usd: S.NullOr(S.Number),
+          next_period_limit_usd: S.NullOr(S.Number),
+          spend_usd: S.NullOr(S.String),
+          reached: S.Boolean,
+        }),
+      ).annotate({ identifier: "ProductLimit" });
+    case 2:
+      return S.Array(__S(1889, __c59, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(1890, __c59, 2),
+        }),
+      ).annotate({ identifier: "BillingLimits" });
+  }
+}
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7744,1237 +9787,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BillingSpendExportDownloadRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "BillingSpendExportDownloadResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          breakdowns: S.optional(S.String.pipe(T.Query())),
-          end_date: S.optional(S.String.pipe(T.Query())),
-          interval: S.optional(S.String.pipe(T.Query())),
-          start_date: S.optional(S.String.pipe(T.Query())),
-          team_ids: S.optional(S.String.pipe(T.Query())),
-          top_projects: S.optional(S.Number.pipe(T.Query())),
-          usage_types: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/billing/usage/export/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BillingUsageExportDownloadRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CimdVerificationTokensDestroyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "OrganizationMemberNoticeAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          action: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({ identifier: "OrganizationMemberNotice" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
-          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
-          members_can_invite: S.optional(S.NullOr(S.Boolean)),
-          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          members_can_see_org_members: S.optional(S.Boolean),
-          allow_publicly_shared_resources: S.optional(S.Boolean),
-          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5, __c0, 5))),
-          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-          default_anonymize_ips: S.optional(S.Boolean),
-          default_role_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/organizations/", code: 200 })),
-      ).annotate({ identifier: "CreateRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c1(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          membership_level: S.optional(S.Number),
-          plugins_access_level: S.optional(S.Number),
-          teams: S.optional(__S(8, __c1, 0)),
-          projects: S.optional(__S(8, __c1, 0)),
-          available_product_features: S.optional(S.NullOr(__S(9, __c1, 1))),
-          is_member_join_email_enabled: S.optional(S.Boolean),
-          metadata: S.optional(__S(10, __c1, 2)),
-          customer_id: S.optional(S.NullOr(S.String)),
-          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
-          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
-          members_can_invite: S.optional(S.NullOr(S.Boolean)),
-          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          members_can_see_org_members: S.optional(S.Boolean),
-          allow_publicly_shared_resources: S.optional(S.Boolean),
-          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5, __c0, 5))),
-          member_count: S.optional(S.Number),
-          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
-          has_signed_baa: S.optional(S.Boolean),
-          default_anonymize_ips: S.optional(S.Boolean),
-          default_role_id: S.optional(S.NullOr(S.String)),
-          is_active: S.optional(S.NullOr(S.Boolean)),
-          is_not_active_reason: S.optional(S.NullOr(S.String)),
-          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-          uses_most_specific_access_resolution: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          label: S.String,
-          cimd_url: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCimdVerificationTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(7, __c0, 7))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          label: S.String,
-          cimd_url: S.NullOr(S.String),
-          mask_value: S.NullOr(S.String),
-          created_by: __S(13, __c1, 5),
-          created_at: S.String,
-          last_used_at: S.NullOr(S.String),
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CIMDVerificationTokenWithValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          domain: S.optional(S.String),
-          jit_provisioning_enabled: S.optional(S.Boolean),
-          sso_enforcement: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/domains/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateDomainRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          domain: S.optional(S.String),
-          is_verified: S.optional(S.Boolean),
-          verified_at: S.optional(S.NullOr(S.String)),
-          verification_challenge: S.optional(S.String),
-          jit_provisioning_enabled: S.optional(S.Boolean),
-          sso_enforcement: S.optional(S.String),
-          scim_base_url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "OrganizationDomain" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17, __c2, 1)),
-          oidc_issuer_url: S.optional(S.String),
-          oidc_client_id: S.optional(S.String),
-          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          saml_entity_id: S.optional(S.NullOr(S.String)),
-          saml_acs_url: S.optional(S.NullOr(S.String)),
-          saml_x509_cert: S.optional(S.NullOr(S.String)),
-          scim_enabled: S.optional(S.Boolean),
-          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/identity_provider_configs/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIdentityProviderConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17, __c2, 1)),
-          created_at: S.String,
-          updated_at: S.String,
-          has_saml: S.Boolean,
-          has_oidc: S.Boolean,
-          has_oidc_client_secret: S.Boolean,
-          oidc_issuer_url: S.optional(S.String),
-          oidc_client_id: S.optional(S.String),
-          saml_relay_state: S.String,
-          saml_entity_id: S.optional(S.NullOr(S.String)),
-          saml_acs_url: S.optional(S.NullOr(S.String)),
-          saml_x509_cert: S.optional(S.NullOr(S.String)),
-          has_scim: S.Boolean,
-          scim_enabled: S.optional(S.Boolean),
-          scim_base_url: S.String,
-          scim_bearer_token: S.NullOr(S.String),
-          has_id_jag: S.Boolean,
-          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "IdentityProviderConfigOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/scim/token/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIdentityProviderConfigsScimTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scim_enabled: S.Boolean,
-          scim_bearer_token: S.String,
-        }),
-      ).annotate({ identifier: "SCIMTokenResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          target_email: S.optional(S.String),
-          first_name: S.optional(S.String),
-          level: S.optional(S.Number),
-          message: S.optional(S.NullOr(S.String)),
-          private_project_access: S.optional(S.Unknown),
-          send_email: S.optional(S.Boolean),
-          combine_pending_invites: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/invites/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateInviteRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          target_email: S.optional(S.String),
-          first_name: S.optional(S.String),
-          emailing_attempt_made: S.optional(S.Boolean),
-          level: S.optional(S.Number),
-          is_expired: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          message: S.optional(S.NullOr(S.String)),
-          private_project_access: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "OrganizationInviteOutput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          target_email: S.String,
-          message: S.optional(S.String),
-          step_at_delegation: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/invites/delegate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInvitesDelegateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          document_type: S.optional(S.String),
-          company_name: S.optional(S.String),
-          company_address: S.optional(S.String),
-          representative_email: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/legal_documents/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLegalDocumentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          first_name: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LegalDocumentCreator" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          document_type: S.optional(S.String),
-          company_name: S.optional(S.String),
-          representative_email: S.optional(S.String),
-          status: S.optional(S.String),
-          signed_pdf_stored: S.optional(S.Boolean),
-          created_by: S.optional(S.NullOr(__S(26, __c3, 2))),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LegalDocumentDTO" });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.Array(/*@__PURE__*/ S.NullOr(S.String));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          base_currency: S.optional(S.String),
-          events: S.optional(S.Unknown),
-          filter_test_accounts: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TeamRevenueAnalyticsConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ad_group_id: S.optional(S.NullOr(S.String)),
-          ad_group_name: S.optional(S.NullOr(S.String)),
-          ad_id: S.optional(S.NullOr(S.String)),
-          ad_name: S.optional(S.NullOr(S.String)),
-          campaign: S.optional(S.NullOr(S.String)),
-          clicks: S.optional(S.NullOr(S.String)),
-          cost: S.optional(S.NullOr(S.String)),
-          currency: S.optional(S.NullOr(S.String)),
-          date: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.String)),
-          impressions: S.optional(S.NullOr(S.String)),
-          reported_conversion: S.optional(S.NullOr(S.String)),
-          reported_conversion_value: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "SourceMap" });
-    case 2:
-      return S.Record(S.String, __S(33, __c4, 1));
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.Record(S.String, __S(17, __c2, 1));
-    case 5:
-      return S.Record(S.String, __S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          match_field: S.String,
-        }),
-      ).annotate({ identifier: "CampaignFieldPreference" });
-    case 7:
-      return S.Record(S.String, __S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sources_map: S.optional(__S(34, __c4, 2)),
-          conversion_goals: S.optional(__S(35, __c4, 3)),
-          attribution_window_days: S.optional(S.Number),
-          attribution_mode: S.optional(S.String),
-          filter_test_accounts: S.optional(S.Boolean),
-          campaign_name_mappings: S.optional(__S(37, __c4, 5)),
-          custom_source_mappings: S.optional(__S(36, __c4, 4)),
-          campaign_field_preferences: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "TeamMarketingAnalyticsConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "TeamCustomerAnalyticsPinnedAccountProperty",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activity_event: S.optional(S.Unknown),
-          signup_pageview_event: S.optional(S.Unknown),
-          signup_event: S.optional(S.Unknown),
-          subscription_event: S.optional(S.Unknown),
-          payment_event: S.optional(S.Unknown),
-          account_group_type_index: S.optional(S.NullOr(S.Number)),
-          default_pinned_properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "TeamCustomerAnalyticsConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          capture_workflows_engagement_events: S.optional(S.Boolean),
-          email_tracking_consent_mode: S.optional(S.String),
-          workflow_task_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
-          workflow_task_team_rate_limit_per_day: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "TeamWorkflowsConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          require_tags: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TeamFeatureFlagPolicyConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          app_urls: S.optional(__S(28, __c3, 4)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17, __c2, 1))),
-          recording_domains: S.optional(S.NullOr(__S(28, __c3, 4))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7, __c0, 7))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/projects/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsProjectRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          product_type: S.optional(S.String),
-          created_at: S.optional(S.String),
-          onboarding_completed_at: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectBackwardCompatProductIntentsItem",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Record(S.String, S.Boolean);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          organization: S.optional(S.String),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          created_at: S.optional(S.String),
-          effective_membership_level: S.optional(S.Number),
-          has_group_types: S.optional(S.Boolean),
-          group_types: S.optional(__S(8, __c1, 0)),
-          live_events_token: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.NullOr(S.String)),
-          uuid: S.optional(S.String),
-          api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          app_urls: S.optional(__S(28, __c3, 4)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          ingested_event: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(17, __c2, 1))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(9, __c1, 1))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(9, __c1, 1))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(28, __c3, 4))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17, __c2, 1))),
-          recording_domains: S.optional(S.NullOr(__S(28, __c3, 4))),
-          person_on_events_querying_enabled: S.optional(S.Boolean),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          default_modifiers: S.optional(__S(7, __c0, 7)),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          product_intents: S.optional(__S(48, __c6, 0)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          secret_api_token: S.optional(S.NullOr(S.String)),
-          secret_api_token_backup: S.optional(S.NullOr(S.String)),
-          heatmaps_screenshot_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7, __c0, 7))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          available_setup_task_ids: S.optional(__S(49, __c6, 1)),
-          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-          deletion_scheduled_at: S.optional(S.NullOr(S.String)),
-          project_id: S.optional(S.Number),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          managed_viewsets: S.optional(__S(50, __c6, 2)),
-          flag_evaluations_mode: S.optional(S.Number),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "ProjectBackwardCompat" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/projects/{id}/change_organization/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsProjectsChangeOrganizationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/projects/{id}/default_evaluation_contexts/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsProjectsDefaultEvaluationContextRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          context_name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/projects/{id}/evaluation_context_suggestions/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsProjectsEvaluationContextSuggestionRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          name: S.String,
-          hidden_from_suggestions: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "EvaluationContextSuggestionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/organizations/{id}/request_ai_access/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateRequestAiAccessRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "OrganizationAIAccessRequestResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/organizations/{organization_id}/roles/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateRoleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
-          members: S.optional(__S(8, __c1, 0)),
-          is_default: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Role" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          provider: S.optional(S.String),
-          provider_organization_id: S.optional(S.String),
-          provider_role_id: S.optional(S.String),
-          provider_role_slug: S.optional(S.NullOr(S.String)),
-          provider_role_name: S.optional(S.String),
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/role_external_references/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRoleExternalReferenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          provider: S.optional(S.String),
-          provider_organization_id: S.optional(S.String),
-          provider_role_id: S.optional(S.String),
-          provider_role_slug: S.optional(S.NullOr(S.String)),
-          provider_role_name: S.optional(S.String),
-          role: S.optional(S.String),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }),
-      ).annotate({ identifier: "RoleExternalReference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          role_id: S.String.pipe(T.Label()),
-          user_uuid: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRolesRoleMembershipRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          user: S.optional(S.NullOr(__S(13, __c1, 5))),
-          level: S.optional(S.Number),
-          joined_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          is_2fa_enabled: S.optional(S.Boolean),
-          has_social_auth: S.optional(S.Boolean),
-          last_login: S.optional(S.String),
-          search_match_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "OrganizationMember" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          role_id: S.optional(S.String),
-          organization_member: S.optional(__S(64, __c8, 0)),
-          user: S.optional(S.NullOr(__S(13, __c1, 5))),
-          joined_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoleMembershipOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/organizations/{id}/", code: 200 })),
-      ).annotate({ identifier: "DestroyRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DestroyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/domains/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DomainsDestroyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          domain: S.optional(S.String),
-          jit_provisioning_enabled: S.optional(S.Boolean),
-          sso_enforcement: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{organization_id}/domains/{id}/verify/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DomainsVerifyCreateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{id}/", code: 200 })),
-      ).annotate({ identifier: "GetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/billing/features/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBillingFeatureRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          name: S.String,
-          description: S.String,
-          unit: S.optional(S.NullOr(S.String)),
-          limit: S.optional(S.NullOr(S.Number)),
-          note: S.optional(S.NullOr(S.String)),
-          is_plan_default: S.optional(S.Boolean),
-          entitlement_only: S.optional(S.NullOr(S.Boolean)),
-          category: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ProductFeature" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          available_product_features: __S(73, __c9, 1),
-        }),
-      ).annotate({ identifier: "BillingFeatures" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/billing/forecast/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingForecastRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          current_period_start: S.String,
-          current_period_end: S.String,
-          interval: S.String,
-        }),
-      ).annotate({ identifier: "BillingPeriod" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          up_to: S.NullOr(S.Number),
-          projected_usage: S.NullOr(S.Number),
-          projected_amount_usd: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "TierForecast" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          projected_usage: S.NullOr(S.Number),
-          projected_amount_usd: S.NullOr(S.String),
-          projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
-          tier_forecast: S.NullOr(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "ForecastItem" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          projected_usage: S.NullOr(S.Number),
-          projected_amount_usd: S.NullOr(S.String),
-          projected_amount_usd_with_limit: S.optional(S.NullOr(S.String)),
-          tier_forecast: S.NullOr(__S(78, __c9, 6)),
-          addons: __S(80, __c10, 0),
-        }),
-      ).annotate({ identifier: "ProductForecast" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          billing_period: S.NullOr(__S(76, __c9, 4)),
-          projected_total_amount_usd: S.NullOr(S.String),
-          projected_total_amount_usd_with_limit: S.NullOr(S.String),
-          projected_total_amount_usd_after_discount: S.NullOr(S.String),
-          projected_total_amount_usd_with_limit_after_discount: S.NullOr(S.String),
-          products: __S(82, __c10, 2),
-          computed_at: S.String,
-        }),
-      ).annotate({ identifier: "BillingForecast" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          invoice_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/billing/invoices/{invoice_id}/content/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingInvoicesContentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{organization_id}/billing/limits/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBillingLimitRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          limit_usd: S.NullOr(S.Number),
-          next_period_limit_usd: S.NullOr(S.Number),
-          spend_usd: S.NullOr(S.String),
-          reached: S.Boolean,
-        }),
-      ).annotate({ identifier: "ProductLimit" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(87, __c10, 7),
-        }),
-      ).annotate({ identifier: "BillingLimits" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -8988,7 +9813,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBillingProductRequest" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           flat_amount_usd: S.String,
@@ -8996,9 +9825,9 @@ function __c11(j: number): any {
           up_to: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "PriceTier" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           product_key: S.String,
@@ -9010,9 +9839,9 @@ function __c11(j: number): any {
           note: S.NullOr(S.String),
           unit: S.NullOr(S.String),
           flat_rate: S.Boolean,
-          tiers: S.NullOr(__S(91, __c11, 3)),
+          tiers: S.NullOr(__S(2017, __c63, 1)),
           free_allocation: S.NullOr(S.Number),
-          features: __S(73, __c9, 1),
+          features: __S(1761, __c55, 1),
           included_if: S.NullOr(S.String),
           contact_support: S.NullOr(S.Boolean),
           unit_amount_usd: S.NullOr(S.String),
@@ -9020,9 +9849,9 @@ function __c11(j: number): any {
           initial_billing_limit: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ProductPlan" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2018, __c63, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -9034,19 +9863,15 @@ function __c11(j: number): any {
           category: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ProductBaseFeature" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2020, __c63, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           length: S.Number,
         }),
       ).annotate({ identifier: "ProductTrialConfig" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -9070,18 +9895,18 @@ function __c12(j: number): any {
           display_divisor: S.NullOr(S.Number),
           tiered: S.Boolean,
           unit_amount_usd: S.NullOr(S.String),
-          tiers: S.NullOr(__S(91, __c11, 3)),
-          plans: S.optional(__S(93, __c11, 5)),
-          features: __S(95, __c11, 7),
-          trial: S.NullOr(__S(96, __c12, 0)),
+          tiers: S.NullOr(__S(2017, __c63, 1)),
+          plans: S.optional(__S(2019, __c63, 3)),
+          features: __S(2021, __c63, 5),
+          trial: S.NullOr(__S(2022, __c63, 6)),
           included_with_main_product: S.Boolean,
           included_if: S.NullOr(S.String),
           default_unit_amount_usd: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingAddon" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(2023, __c63, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -9105,16 +9930,20 @@ function __c12(j: number): any {
           display_divisor: S.NullOr(S.Number),
           tiered: S.Boolean,
           unit_amount_usd: S.NullOr(S.String),
-          tiers: S.NullOr(__S(91, __c11, 3)),
-          plans: S.optional(__S(93, __c11, 5)),
-          features: __S(95, __c11, 7),
-          trial: S.NullOr(__S(96, __c12, 0)),
+          tiers: S.NullOr(__S(2017, __c63, 1)),
+          plans: S.optional(__S(2019, __c63, 3)),
+          features: __S(2021, __c63, 5),
+          trial: S.NullOr(__S(2022, __c63, 6)),
           headline: S.NullOr(S.String),
           screenshot_url: S.NullOr(S.String),
-          addons: __S(98, __c12, 2),
+          addons: __S(2024, __c63, 8),
         }),
       ).annotate({ identifier: "BillingProduct" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9128,7 +9957,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetBillingProductsSummaryRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -9139,47 +9968,47 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "BillingProductsSummaryAddon",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2049, __c64, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
           included: S.Boolean,
-          addon_keys: __S(17, __c2, 1),
+          addon_keys: __S(4576, __c143, 0),
         }),
       ).annotate({
         identifier: "BillingProductsSummaryFeature",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(2051, __c64, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           name: S.String,
           description: S.String,
           subscribed: S.NullOr(S.Boolean),
-          addons: __S(102, __c12, 6),
-          features: __S(104, __c13, 0),
+          addons: __S(2050, __c64, 2),
+          features: __S(2052, __c64, 4),
         }),
       ).annotate({
         identifier: "BillingProductsSummaryProduct",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(2053, __c64, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          results: __S(106, __c13, 2),
+          results: __S(2054, __c64, 6),
         }),
       ).annotate({ identifier: "BillingProductsSummary" });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9193,57 +10022,57 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetBillingSpendSummaryRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           up_to: S.NullOr(S.Number),
           current_amount_usd: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TierSpend" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          current_amount_usd: S.NullOr(S.String),
-          current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
-          tier_spend: S.NullOr(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "SpendItem" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          current_amount_usd: S.NullOr(S.String),
-          current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
-          tier_spend: S.NullOr(__S(110, __c13, 6)),
-          addons: __S(112, __c14, 0),
-        }),
-      ).annotate({ identifier: "ProductSpend" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(2081, __c65, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76, __c9, 4)),
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          current_amount_usd: S.NullOr(S.String),
+          current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
+          tier_spend: S.NullOr(__S(2082, __c65, 2)),
+        }),
+      ).annotate({ identifier: "SpendItem" });
+    case 4:
+      return S.Array(__S(2083, __c65, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          current_amount_usd: S.NullOr(S.String),
+          current_amount_usd_before_addons: S.optional(S.NullOr(S.String)),
+          tier_spend: S.NullOr(__S(2082, __c65, 2)),
+          addons: __S(2084, __c65, 4),
+        }),
+      ).annotate({ identifier: "ProductSpend" });
+    case 6:
+      return S.Array(__S(2085, __c65, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          billing_period: S.NullOr(__S(1824, __c57, 0)),
           usage_reported_through: S.NullOr(S.String),
           current_total_amount_usd: S.NullOr(S.String),
           current_total_amount_usd_after_discount: S.NullOr(S.String),
-          products: __S(114, __c14, 2),
+          products: __S(2086, __c65, 6),
         }),
       ).annotate({ identifier: "BillingSpendSummary" });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9266,37 +10095,41 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetBillingSpendTimeseriesRequest",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           label: S.optional(S.String),
-          data: S.optional(__S(117, __c14, 5)),
-          dates: S.optional(__S(17, __c2, 1)),
+          data: S.optional(__S(2144, __c67, 0)),
+          dates: S.optional(__S(4576, __c143, 0)),
           breakdown_type: S.optional(S.NullOr(S.String)),
           breakdown_value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "BillingTimeSeriesPoint" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2145, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(119, __c14, 7),
+          results: __S(2146, __c67, 2),
         }),
       ).annotate({
         identifier: "PaginatedBillingTimeSeriesPointList",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9310,7 +10143,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetBillingSubscriptionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -9319,19 +10152,19 @@ function __c15(j: number): any {
           expires_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Trial" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           plan: S.String,
         }),
       ).annotate({ identifier: "License" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           partner_name: S.String,
         }),
       ).annotate({ identifier: "BillingManagedByPartner" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.NullOr(S.String),
@@ -9341,8 +10174,8 @@ function __c15(j: number): any {
           billing_provider: S.NullOr(S.String),
           deactivated: S.Boolean,
           is_annual_plan_customer: S.Boolean,
-          billing_period: S.NullOr(__S(76, __c9, 4)),
-          trial: S.NullOr(__S(122, __c15, 2)),
+          billing_period: S.NullOr(__S(1824, __c57, 0)),
+          trial: S.NullOr(__S(2177, __c68, 1)),
           free_trial_until: S.NullOr(S.String),
           discount_percent: S.NullOr(S.Number),
           discount_amount_usd: S.NullOr(S.String),
@@ -9351,11 +10184,15 @@ function __c15(j: number): any {
           startup_program_label_previous: S.NullOr(S.String),
           billing_portal_url: S.String,
           invoices_url: S.optional(S.String),
-          license: __S(123, __c15, 3),
-          billing_managed_by_partner: S.NullOr(__S(124, __c15, 4)),
+          license: __S(2178, __c68, 2),
+          billing_managed_by_partner: S.NullOr(__S(2179, __c68, 3)),
         }),
       ).annotate({ identifier: "BillingSubscription" });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9369,7 +10206,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetBillingUsageStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -9382,13 +10219,9 @@ function __c15(j: number): any {
           quota_limiting_suspended_until: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UsageStatusItem" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -9399,20 +10232,24 @@ function __c16(j: number): any {
           approaching_limit: S.Boolean,
           quota_limited_until: S.NullOr(S.String),
           quota_limiting_suspended_until: S.NullOr(S.String),
-          addons: __S(128, __c16, 0),
+          addons: __S(2210, __c69, 2),
         }),
       ).annotate({ identifier: "ProductUsageStatus" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(2211, __c69, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76, __c9, 4)),
+          billing_period: S.NullOr(__S(1824, __c57, 0)),
           usage_reported_through: S.NullOr(S.String),
-          products: __S(130, __c16, 2),
+          products: __S(2212, __c69, 4),
         }),
       ).annotate({ identifier: "BillingUsageStatus" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9426,7 +10263,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetBillingUsageSummaryRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           usage_key: S.String,
@@ -9437,62 +10274,62 @@ function __c16(j: number): any {
           quota_limiting_suspended_until: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "UsageKeySummary" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2241, __c70, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           up_to: S.NullOr(S.Number),
           current_usage: S.Number,
         }),
       ).annotate({ identifier: "TierUsage" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          current_usage: S.Number,
-          usage_limit: S.NullOr(S.Number),
-          has_exceeded_limit: S.Boolean,
-          usage_ratio: S.Number,
-          tier_usage: S.NullOr(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "UsageItem" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          key: S.String,
-          usage_key: S.NullOr(S.String),
-          current_usage: S.Number,
-          usage_limit: S.NullOr(S.Number),
-          has_exceeded_limit: S.Boolean,
-          usage_ratio: S.Number,
-          tier_usage: S.NullOr(__S(136, __c17, 0)),
-          addons: __S(138, __c17, 2),
-        }),
-      ).annotate({ identifier: "ProductUsage" });
     case 4:
-      return S.Array(__S(139, __c17, 3));
+      return S.Array(__S(2243, __c70, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_period: S.NullOr(__S(76, __c9, 4)),
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          current_usage: S.Number,
+          usage_limit: S.NullOr(S.Number),
+          has_exceeded_limit: S.Boolean,
+          usage_ratio: S.Number,
+          tier_usage: S.NullOr(__S(2244, __c70, 4)),
+        }),
+      ).annotate({ identifier: "UsageItem" });
+    case 6:
+      return S.Array(__S(2245, __c70, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          key: S.String,
+          usage_key: S.NullOr(S.String),
+          current_usage: S.Number,
+          usage_limit: S.NullOr(S.Number),
+          has_exceeded_limit: S.Boolean,
+          usage_ratio: S.Number,
+          tier_usage: S.NullOr(__S(2244, __c70, 4)),
+          addons: __S(2246, __c70, 6),
+        }),
+      ).annotate({ identifier: "ProductUsage" });
+    case 8:
+      return S.Array(__S(2247, __c70, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          billing_period: S.NullOr(__S(1824, __c57, 0)),
           usage_reported_through: S.NullOr(S.String),
-          usage_summary: __S(134, __c16, 6),
-          products: __S(140, __c17, 4),
+          usage_summary: __S(2242, __c70, 2),
+          products: __S(2248, __c70, 8),
         }),
       ).annotate({ identifier: "BillingUsageSummary" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9515,7 +10352,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetBillingUsageTimeseriesRequest",
       });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9532,7 +10373,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9541,12 +10382,16 @@ function __c18(j: number): any {
           label: S.String,
           cimd_url: S.NullOr(S.String),
           mask_value: S.NullOr(S.String),
-          created_by: __S(13, __c1, 5),
+          created_by: __S(3808, __c119, 0),
           created_at: S.String,
           last_used_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CIMDVerificationToken" });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9559,7 +10404,36 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainRequest" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          breakdowns: S.optional(S.String.pipe(T.Query())),
+          end_date: S.optional(S.String.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
+          start_date: S.optional(S.String.pipe(T.Query())),
+          team_ids: S.optional(S.String.pipe(T.Query())),
+          top_projects: S.optional(S.Number.pipe(T.Query())),
+          usage_types: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{organization_id}/billing/usage/export/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BillingUsageExportDownloadRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9579,7 +10453,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainsScimLogRequest" });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9594,18 +10472,22 @@ function __c18(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "SCIMRequestLog" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(148, __c18, 4),
+          results: __S(2465, __c77, 1),
         }),
       ).annotate({ identifier: "PaginatedSCIMRequestLog" });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9620,7 +10502,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetIdentityProviderConfigRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9644,7 +10530,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9659,7 +10545,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLegalDocumentRequest" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9674,7 +10564,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetMembersGithubLoginRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           github_login: S.NullOr(S.String),
@@ -9682,7 +10572,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "OrganizationMemberGithubLogin",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9697,7 +10591,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetMembersProjectAccessRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access_level: S.String,
@@ -9708,40 +10602,40 @@ function __c19(j: number): any {
           subject_name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ProjectAccessSource" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           team_id: S.Number,
           team_name: S.String,
           access_level: S.String,
-          resolved: S.NullOr(__S(156, __c19, 4)),
+          resolved: S.NullOr(__S(2625, __c82, 1)),
           subject_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "MemberProjectAccessEntry" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(2626, __c82, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           organization_membership_id: S.String,
-          projects: __S(158, __c19, 6),
+          projects: __S(2627, __c82, 3),
         }),
       ).annotate({ identifier: "MemberProjectAccess" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(2628, __c82, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          results: __S(160, __c20, 0),
+          results: __S(2629, __c82, 5),
         }),
       ).annotate({
         identifier: "MemberProjectAccessResponse",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9756,7 +10650,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetMembersScopedApiKeyRequest",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9771,7 +10669,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectRequest",
       });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9786,7 +10688,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlDefaultRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access_level: S.NullOr(S.String),
@@ -9796,38 +10698,38 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "AccessControlResourceDefault",
       });
-    case 6:
-      return S.Record(S.String, __S(165, __c20, 5));
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(2721, __c85, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String,
-          available_access_levels: __S(17, __c2, 1),
+          available_access_levels: __S(4576, __c143, 0),
           minimum_access_level: S.String,
         }),
       ).annotate({
         identifier: "AccessControlObjectRuleResource",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(2723, __c85, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          available_project_levels: __S(17, __c2, 1),
-          available_resource_levels: __S(17, __c2, 1),
+          available_project_levels: __S(4576, __c143, 0),
+          available_resource_levels: __S(4576, __c143, 0),
           can_edit: S.Boolean,
           project_access_level: S.String,
-          resource_access_levels: __S(166, __c20, 6),
-          object_rule_resources: __S(168, __c21, 0),
+          resource_access_levels: __S(2722, __c85, 2),
+          object_rule_resources: __S(2724, __c85, 4),
         }),
       ).annotate({
         identifier: "AccessControlDefaultsResponse",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9842,7 +10744,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlDefaultObjectRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String,
@@ -9852,17 +10758,40 @@ function __c21(j: number): any {
           access_level: S.String,
         }),
       ).annotate({ identifier: "AccessControlObjectRule" });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2784, __c87, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(172, __c21, 4),
+          results: __S(2785, __c87, 1),
         }),
       ).annotate({
         identifier: "AccessControlObjectRulesResponse",
       });
-    case 6:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CimdVerificationTokensDestroyRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9877,7 +10806,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlDefaultPropertyRequest",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           property_definition_id: S.String,
@@ -9888,21 +10821,21 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "AccessControlPropertyRule",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
     case 1:
+      return S.Array(__S(2880, __c90, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(176, __c22, 0),
+          results: __S(2881, __c90, 1),
         }),
       ).annotate({
         identifier: "AccessControlPropertyRulesResponse",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9918,7 +10851,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlMemberRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -9927,7 +10860,37 @@ function __c22(j: number): any {
           email: S.String,
         }),
       ).annotate({ identifier: "AccessControlMemberUser" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          organization_membership_id: S.String,
+          user: __S(2913, __c91, 1),
+          organization_level: S.Number,
+          role_ids: __S(4576, __c143, 0),
+          project: __S(2945, __c92, 1),
+          resources: __S(2946, __c92, 2),
+        }),
+      ).annotate({
+        identifier: "AccessControlMemberAccess",
+      });
+    case 3:
+      return S.Array(__S(2914, __c91, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          available_project_levels: __S(4576, __c143, 0),
+          available_resource_levels: __S(4576, __c143, 0),
+          can_edit: S.Boolean,
+          results: __S(2915, __c91, 3),
+        }),
+      ).annotate({
+        identifier: "AccessControlMembersResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           access_level: S.String,
@@ -9937,49 +10900,23 @@ function __c22(j: number): any {
           source_resource_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ResolvedAccess" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access_level: S.NullOr(S.String),
           effective_access_level: S.NullOr(S.String),
-          inherited_access: S.NullOr(__S(180, __c22, 4)),
+          inherited_access: S.NullOr(__S(2944, __c92, 0)),
           minimum: S.String,
           maximum: S.String,
         }),
       ).annotate({ identifier: "SubjectAccessEntry" });
-    case 6:
-      return S.Record(S.String, __S(181, __c22, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_membership_id: S.String,
-          user: __S(179, __c22, 3),
-          organization_level: S.Number,
-          role_ids: __S(17, __c2, 1),
-          project: __S(181, __c22, 5),
-          resources: __S(182, __c22, 6),
-        }),
-      ).annotate({
-        identifier: "AccessControlMemberAccess",
-      });
+    case 2:
+      return S.Record(S.String, __S(2945, __c92, 1));
   }
 }
-function __c23(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          available_project_levels: __S(17, __c2, 1),
-          available_resource_levels: __S(17, __c2, 1),
-          can_edit: S.Boolean,
-          results: __S(184, __c23, 0),
-        }),
-      ).annotate({
-        identifier: "AccessControlMembersResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -9995,7 +10932,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlMemberObjectRequest",
       });
-    case 3:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10011,7 +10952,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlMemberPropertyRequest",
       });
-    case 4:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10027,31 +10972,31 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlRoleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           role_id: S.String,
           role_name: S.String,
-          project: __S(181, __c22, 5),
-          resources: __S(182, __c22, 6),
+          project: __S(2945, __c92, 1),
+          resources: __S(2946, __c92, 2),
         }),
       ).annotate({ identifier: "AccessControlRoleAccess" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(3041, __c95, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          available_project_levels: __S(17, __c2, 1),
-          available_resource_levels: __S(17, __c2, 1),
+          available_project_levels: __S(4576, __c143, 0),
+          available_resource_levels: __S(4576, __c143, 0),
           can_edit: S.Boolean,
-          results: __S(190, __c23, 6),
+          results: __S(3042, __c95, 2),
         }),
       ).annotate({
         identifier: "AccessControlRolesResponse",
       });
   }
 }
-function __c24(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10069,7 +11014,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlRoleObjectRequest",
       });
-    case 1:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10085,7 +11034,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsAccessControlRolePropertyRequest",
       });
-    case 2:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10100,7 +11053,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsActivityRequest",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10115,7 +11072,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsDefaultEvaluationContextRequest",
       });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10130,7 +11091,115 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsDefaultReleaseConditionRequest",
       });
-    case 5:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
+          members_can_invite: S.optional(S.NullOr(S.Boolean)),
+          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          members_can_see_org_members: S.optional(S.Boolean),
+          allow_publicly_shared_resources: S.optional(S.Boolean),
+          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
+          member_notice: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
+          default_anonymize_ips: S.optional(S.Boolean),
+          default_role_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/organizations/", code: 200 })),
+      ).annotate({ identifier: "CreateRequest" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3360, __c105, 0));
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationMemberNoticeAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          action: S.optional(S.NullOr(__S(3328, __c104, 0))),
+        }),
+      ).annotate({ identifier: "OrganizationMemberNotice" });
+    case 2:
+      return S.Record(S.String, S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          logo_media_id: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          membership_level: S.optional(S.Number),
+          plugins_access_level: S.optional(S.Number),
+          teams: S.optional(__S(3264, __c102, 0)),
+          projects: S.optional(__S(3264, __c102, 0)),
+          available_product_features: S.optional(S.NullOr(__S(3296, __c103, 0))),
+          is_member_join_email_enabled: S.optional(S.Boolean),
+          metadata: S.optional(__S(3330, __c104, 2)),
+          customer_id: S.optional(S.NullOr(S.String)),
+          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
+          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
+          members_can_invite: S.optional(S.NullOr(S.Boolean)),
+          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
+          members_can_use_personal_api_keys: S.optional(S.Boolean),
+          members_can_see_org_members: S.optional(S.Boolean),
+          allow_publicly_shared_resources: S.optional(S.Boolean),
+          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
+          member_notice: S.optional(S.NullOr(__S(3329, __c104, 1))),
+          member_count: S.optional(S.Number),
+          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
+          is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
+          has_signed_baa: S.optional(S.Boolean),
+          default_anonymize_ips: S.optional(S.Boolean),
+          default_role_id: S.optional(S.NullOr(S.String)),
+          is_active: S.optional(S.NullOr(S.Boolean)),
+          is_not_active_reason: S.optional(S.NullOr(S.String)),
+          is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
+          uses_most_specific_access_resolution: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "Organization" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10145,7 +11214,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsExperimentsConfigRequest",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10160,7 +11233,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsIsGeneratingDemoDataRequest",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10177,18 +11254,22 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           logs_distinct_id_attribute_key: S.String,
-          logs_distinct_id_attribute_keys: __S(17, __c2, 1),
-          logs_session_id_attribute_keys: __S(17, __c2, 1),
-          logs_pattern_message_keys: __S(17, __c2, 1),
+          logs_distinct_id_attribute_keys: __S(4576, __c143, 0),
+          logs_session_id_attribute_keys: __S(4576, __c143, 0),
+          logs_pattern_message_keys: __S(4576, __c143, 0),
         }),
       ).annotate({ identifier: "TeamLogsConfig" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10203,7 +11284,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsSettingsAsOfRequest",
       });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10218,16 +11303,24 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsProjectsTracingConfigRequest",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          tracing_distinct_id_attribute_keys: __S(17, __c2, 1),
-          tracing_session_id_attribute_keys: __S(17, __c2, 1),
+          tracing_distinct_id_attribute_keys: __S(4576, __c143, 0),
+          tracing_session_id_attribute_keys: __S(4576, __c143, 0),
           retention_days: S.optional(S.Number),
           retention_last_updated: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TeamTracingConfig" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10240,7 +11333,11 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoleRequest" });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10258,13 +11355,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetRoleExternalReferencesLookupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          reference: S.optional(S.NullOr(__S(62, __c7, 6))),
+          reference: S.optional(S.NullOr(__S(1440, __c45, 0))),
         }),
       ).annotate({ identifier: "RoleLookupResponse" });
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10282,7 +11383,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10306,29 +11407,33 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "DataFreshnessSource" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(3713, __c116, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           team_id: S.Number,
           freshness: S.String,
           last_data_at: S.NullOr(S.String),
-          sources: __S(210, __c26, 2),
+          sources: __S(3714, __c116, 2),
         }),
       ).annotate({ identifier: "DataFreshnessProject" });
     case 4:
-      return S.Array(__S(211, __c26, 3));
+      return S.Array(__S(3715, __c116, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(212, __c26, 4),
+          results: __S(3716, __c116, 4),
           lookback_days: S.Number,
           quiet_after_days: S.Number,
         }),
       ).annotate({
         identifier: "OrganizationDataFreshness",
       });
-    case 6:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10340,18 +11445,14 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWelcomeCurrentRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "WelcomeInviter" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -10361,9 +11462,9 @@ function __c27(j: number): any {
           last_active: S.optional(S.String),
         }),
       ).annotate({ identifier: "WelcomeTeamMember" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(3746, __c117, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -10373,9 +11474,9 @@ function __c27(j: number): any {
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "WelcomeRecentActivity" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(3748, __c117, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -10385,9 +11486,9 @@ function __c27(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "WelcomePopularDashboard" });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(3750, __c117, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -10397,26 +11498,79 @@ function __c27(j: number): any {
           product_key: S.optional(S.String),
         }),
       ).annotate({ identifier: "WelcomeSuggestedStep" });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
+    case 9:
+      return S.Array(__S(3752, __c117, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          organization_name: S.optional(S.String),
+          inviter: S.optional(S.NullOr(__S(3745, __c117, 1))),
+          team_members: S.optional(__S(3747, __c117, 3)),
+          recent_activity: S.optional(__S(3749, __c117, 5)),
+          popular_dashboards: S.optional(__S(3751, __c117, 7)),
+          products_in_use: S.optional(__S(4576, __c143, 0)),
+          suggested_next_steps: S.optional(__S(3753, __c117, 9)),
+          is_organization_first_user: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WelcomeResponse" });
   }
 }
-function __c28(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          organization_name: S.optional(S.String),
-          inviter: S.optional(S.NullOr(__S(215, __c26, 7))),
-          team_members: S.optional(__S(217, __c27, 1)),
-          recent_activity: S.optional(__S(219, __c27, 3)),
-          popular_dashboards: S.optional(__S(221, __c27, 5)),
-          products_in_use: S.optional(__S(17, __c2, 1)),
-          suggested_next_steps: S.optional(__S(223, __c27, 7)),
-          is_organization_first_user: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WelcomeResponse" });
+          organization_id: S.String.pipe(T.Label()),
+          label: S.String,
+          cimd_url: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCimdVerificationTokenRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          label: S.String,
+          cimd_url: S.NullOr(S.String),
+          mask_value: S.NullOr(S.String),
+          created_by: __S(3808, __c119, 0),
+          created_at: S.String,
+          last_used_at: S.NullOr(S.String),
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CIMDVerificationTokenWithValue",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(3360, __c105, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10431,7 +11585,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "IdentityProviderConfigsDestroyRequest",
       });
-    case 2:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10450,7 +11608,11 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InvitesBulkCreateRequest" });
-    case 3:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10463,7 +11625,11 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InvitesDestroyRequest" });
-    case 4:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10478,7 +11644,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "LegalDocumentsDestroyRequest",
       });
-    case 5:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10493,31 +11663,35 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "LegalDocumentsDownloadRetrieveRequest",
       });
-    case 6:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/organizations/", code: 200 })),
       ).annotate({ identifier: "ListRequest" });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3331, __c104, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(231, __c28, 7)),
+          results: S.optional(__S(4001, __c125, 1)),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationList",
       });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10534,7 +11708,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListBillingInvoicesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10551,17 +11725,21 @@ function __c29(j: number): any {
           due_date: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingInvoice" });
+    case 2:
+      return S.Array(__S(4033, __c126, 1));
     case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(235, __c29, 3),
+          results: __S(4034, __c126, 2),
         }),
       ).annotate({ identifier: "BillingInvoices" });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10576,17 +11754,17 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListBillingProductsRequest",
       });
-    case 6:
-      return S.Array(__S(99, __c12, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(2025, __c63, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(238, __c29, 6),
+          results: __S(4065, __c127, 1),
         }),
       ).annotate({ identifier: "BillingProducts" });
   }
 }
-function __c30(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10611,17 +11789,21 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "BillingProject" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(4097, __c128, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(242, __c30, 2),
+          results: __S(4098, __c128, 2),
         }),
       ).annotate({ identifier: "BillingProjects" });
-    case 4:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10637,20 +11819,60 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListCimdVerificationTokensRequest",
       });
-    case 5:
-      return S.Array(__S(144, __c18, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(245, __c30, 5),
+          results: __S(4129, __c129, 1),
         }),
       ).annotate({
         identifier: "PaginatedCIMDVerificationTokenList",
       });
-    case 7:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          domain: S.optional(S.String),
+          jit_provisioning_enabled: S.optional(S.Boolean),
+          sso_enforcement: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/domains/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateDomainRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          domain: S.optional(S.String),
+          is_verified: S.optional(S.Boolean),
+          verified_at: S.optional(S.NullOr(S.String)),
+          verification_challenge: S.optional(S.String),
+          jit_provisioning_enabled: S.optional(S.Boolean),
+          sso_enforcement: S.optional(S.String),
+          scim_base_url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "OrganizationDomain" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10664,24 +11886,24 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
     case 1:
+      return S.Array(__S(4192, __c131, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(248, __c31, 0)),
+          results: S.optional(__S(4225, __c132, 1)),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationDomainList",
       });
-    case 2:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10697,20 +11919,24 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListIdentityProviderConfigsRequest",
       });
-    case 3:
-      return S.Array(__S(19, __c2, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(4608, __c144, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(251, __c31, 3),
+          results: __S(4257, __c133, 1),
         }),
       ).annotate({
         identifier: "PaginatedIdentityProviderConfigListOutput",
       });
-    case 5:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10724,22 +11950,22 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListInvitesRequest" });
-    case 6:
-      return S.Array(__S(23, __c2, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(254, __c31, 6)),
+          results: S.optional(__S(4289, __c134, 1)),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationInviteListOutput",
       });
   }
 }
-function __c32(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10758,19 +11984,23 @@ function __c32(j: number): any {
         identifier: "ListLegalDocumentsRequest",
       });
     case 1:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(961, __c30, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(257, __c32, 1)),
+          results: S.optional(__S(4321, __c135, 1)),
         }),
       ).annotate({
         identifier: "PaginatedLegalDocumentDTOList",
       });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10789,20 +12019,24 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMembersRequest" });
-    case 4:
-      return S.Array(__S(64, __c8, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(1504, __c47, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(260, __c32, 4)),
+          results: S.optional(__S(4353, __c136, 1)),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationMemberList",
       });
-    case 6:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10818,13 +12052,13 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListOauthApplicationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           client_id: S.optional(S.String),
-          redirect_uris_list: S.optional(__S(17, __c2, 1)),
+          redirect_uris_list: S.optional(__S(4576, __c143, 0)),
           is_verified: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
@@ -10832,24 +12066,24 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "OrganizationOAuthApplication",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(4385, __c137, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(264, __c33, 0)),
+          results: S.optional(__S(4386, __c137, 2)),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationOAuthApplicationList",
       });
-    case 2:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10868,7 +12102,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsProjectsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -10883,25 +12117,29 @@ function __c33(j: number): any {
           is_demo: S.optional(S.Boolean),
           timezone: S.optional(S.String),
           access_control: S.optional(S.Boolean),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(4576, __c143, 0)),
         }),
       ).annotate({
         identifier: "ProjectBackwardCompatBasic",
       });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4417, __c138, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(268, __c33, 4)),
+          results: S.optional(__S(4418, __c138, 2)),
         }),
       ).annotate({
         identifier: "PaginatedProjectBackwardCompatBasicList",
       });
-    case 6:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10917,30 +12155,30 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsProjectsEventIngestionRestrictionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           restriction_type: S.String,
-          distinct_ids: __S(17, __c2, 1),
-          session_ids: __S(17, __c2, 1),
-          event_names: __S(17, __c2, 1),
-          event_uuids: __S(17, __c2, 1),
-          pipelines: __S(49, __c6, 1),
+          distinct_ids: __S(4576, __c143, 0),
+          session_ids: __S(4576, __c143, 0),
+          event_names: __S(4576, __c143, 0),
+          event_uuids: __S(4576, __c143, 0),
+          pipelines: __S(1024, __c32, 0),
         }),
       ).annotate({
         identifier: "EventIngestionRestriction",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() => __S(272, __c34, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(4449, __c139, 1));
+    case 3:
+      return S.suspend(() => __S(4450, __c139, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationsProjectsEventIngestionRestrictionsResponse",
       });
-    case 2:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10956,20 +12194,24 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListRoleExternalReferencesRequest",
       });
-    case 3:
-      return S.Array(__S(62, __c7, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(275, __c34, 3)),
+          results: S.optional(__S(4481, __c140, 1)),
         }),
       ).annotate({
         identifier: "PaginatedRoleExternalReferenceList",
       });
-    case 5:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -10979,20 +12221,93 @@ function __c34(j: number): any {
           T.Http({ method: "GET", uri: "/api/organizations/{organization_id}/roles/", code: 200 }),
         ),
       ).annotate({ identifier: "ListRolesRequest" });
-    case 6:
-      return S.Array(__S(60, __c7, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(278, __c34, 6)),
+          results: S.optional(__S(4513, __c141, 1)),
         }),
       ).annotate({ identifier: "PaginatedRoleList" });
   }
 }
-function __c35(j: number): any {
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          domain_scope: S.optional(S.NullOr(S.Unknown)),
+          config_scope: S.optional(S.NullOr(S.Unknown)),
+          organization_domain_ids: S.optional(__S(4576, __c143, 0)),
+          oidc_issuer_url: S.optional(S.String),
+          oidc_client_id: S.optional(S.String),
+          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          saml_entity_id: S.optional(S.NullOr(S.String)),
+          saml_acs_url: S.optional(S.NullOr(S.String)),
+          saml_x509_cert: S.optional(S.NullOr(S.String)),
+          scim_enabled: S.optional(S.Boolean),
+          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+          id_jag_allowed_clients: S.optional(__S(4576, __c143, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/organizations/{organization_id}/identity_provider_configs/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIdentityProviderConfigRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+          domain_scope: S.optional(S.NullOr(S.Unknown)),
+          config_scope: S.optional(S.NullOr(S.Unknown)),
+          organization_domain_ids: S.optional(__S(4576, __c143, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          has_saml: S.Boolean,
+          has_oidc: S.Boolean,
+          has_oidc_client_secret: S.Boolean,
+          oidc_issuer_url: S.optional(S.String),
+          oidc_client_id: S.optional(S.String),
+          saml_relay_state: S.String,
+          saml_entity_id: S.optional(S.NullOr(S.String)),
+          saml_acs_url: S.optional(S.NullOr(S.String)),
+          saml_x509_cert: S.optional(S.NullOr(S.String)),
+          has_scim: S.Boolean,
+          scim_enabled: S.optional(S.Boolean),
+          scim_base_url: S.String,
+          scim_bearer_token: S.NullOr(S.String),
+          has_id_jag: S.Boolean,
+          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
+          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
+          id_jag_allowed_clients: S.optional(__S(4576, __c143, 0)),
+        }),
+      ).annotate({
+        identifier: "IdentityProviderConfigOutput",
+      });
+  }
+}
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11012,19 +12327,23 @@ function __c35(j: number): any {
         identifier: "ListRolesRoleMembershipsRequest",
       });
     case 1:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(1536, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(281, __c35, 1)),
+          results: S.optional(__S(4641, __c145, 1)),
         }),
       ).annotate({
         identifier: "PaginatedRoleMembershipListOutput",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -11037,15 +12356,19 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MembersDestroyRequest" });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
@@ -11054,7 +12377,7 @@ function __c35(j: number): any {
           is_demo: S.optional(S.Boolean),
           timezone: S.optional(S.String),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11069,9 +12392,9 @@ function __c35(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
           session_recording_retention_period: S.optional(S.String),
@@ -11080,8 +12403,8 @@ function __c35(j: number): any {
           access_control: S.optional(S.Boolean),
           week_start_day: S.optional(S.NullOr(S.Number)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11092,14 +12415,14 @@ function __c35(j: number): any {
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
           business_model: S.optional(S.NullOr(S.Unknown)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
           base_currency: S.optional(S.String),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
           cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
@@ -11121,7 +12444,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsAddProductIntentPartialUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -11136,9 +12463,9 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsCancelDeletionCreateRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -11148,12 +12475,12 @@ function __c35(j: number): any {
           created_at: S.String,
           is_pending_deletion: S.NullOr(S.Boolean),
           deletion_scheduled_at: S.NullOr(S.String),
-          tags: S.optional(__S(286, __c35, 6)),
+          tags: S.optional(__S(4737, __c148, 1)),
         }),
       ).annotate({ identifier: "Project" });
   }
 }
-function __c36(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11174,15 +12501,19 @@ function __c36(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "OrganizationsProjectsDefaultEvaluationContextsDestroyResponse",
       });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
@@ -11191,7 +12522,7 @@ function __c36(j: number): any {
           is_demo: S.optional(S.Boolean),
           timezone: S.optional(S.String),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11206,9 +12537,9 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
           session_recording_retention_period: S.optional(S.String),
@@ -11217,8 +12548,8 @@ function __c36(j: number): any {
           access_control: S.optional(S.Boolean),
           week_start_day: S.optional(S.NullOr(S.Number)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11229,14 +12560,14 @@ function __c36(j: number): any {
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
           business_model: S.optional(S.NullOr(S.Unknown)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
           base_currency: S.optional(S.String),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
           cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
@@ -11258,7 +12589,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -11273,7 +12608,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsDestroyRequest",
       });
-    case 4:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -11289,15 +12628,19 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsEvaluationContextSuggestionsDestroyRequest",
       });
-    case 5:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
+          tags: S.optional(__S(1088, __c34, 0)),
+          app_urls: S.optional(__S(1121, __c35, 1)),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
@@ -11306,7 +12649,7 @@ function __c36(j: number): any {
           is_demo: S.optional(S.Boolean),
           timezone: S.optional(S.String),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11321,9 +12664,9 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
           session_recording_retention_period: S.optional(S.String),
@@ -11332,8 +12675,8 @@ function __c36(j: number): any {
           access_control: S.optional(S.Boolean),
           week_start_day: S.optional(S.NullOr(S.Number)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11344,14 +12687,14 @@ function __c36(j: number): any {
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
           business_model: S.optional(S.NullOr(S.Unknown)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
           base_currency: S.optional(S.String),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
           cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
@@ -11373,15 +12716,19 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest",
       });
-    case 6:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          app_urls: S.optional(__S(28, __c3, 4)),
+          tags: S.optional(__S(4576, __c143, 0)),
+          app_urls: S.optional(__S(1056, __c33, 0)),
           anonymize_ips: S.optional(S.Boolean),
           completed_snippet_onboarding: S.optional(S.Boolean),
           test_account_filters: S.optional(S.Unknown),
@@ -11390,7 +12737,7 @@ function __c36(j: number): any {
           is_demo: S.optional(S.Boolean),
           timezone: S.optional(S.String),
           data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
+          person_display_name_properties: S.optional(S.NullOr(__S(1088, __c34, 0))),
           correlation_config: S.optional(S.Unknown),
           autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
           autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
@@ -11405,9 +12752,9 @@ function __c36(j: number): any {
           session_recording_linked_flag: S.optional(S.Unknown),
           session_recording_network_payload_capture_config: S.optional(S.Unknown),
           session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
+          session_recording_url_trigger_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(1120, __c35, 0))),
+          session_recording_event_trigger_config: S.optional(S.NullOr(__S(1121, __c35, 1))),
           session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
           session_recording_trigger_groups: S.optional(S.Unknown),
           session_recording_retention_period: S.optional(S.String),
@@ -11416,8 +12763,8 @@ function __c36(j: number): any {
           access_control: S.optional(S.Boolean),
           week_start_day: S.optional(S.NullOr(S.Number)),
           primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
+          live_events_columns: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          recording_domains: S.optional(S.NullOr(__S(1121, __c35, 1))),
           inject_web_apps: S.optional(S.NullOr(S.Boolean)),
           extra_settings: S.optional(S.Unknown),
           modifiers: S.optional(S.Unknown),
@@ -11428,14 +12775,14 @@ function __c36(j: number): any {
           receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
           business_model: S.optional(S.NullOr(S.Unknown)),
           conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
+          conversations_settings: S.optional(S.NullOr(__S(1184, __c37, 0))),
           logs_settings: S.optional(S.Unknown),
           proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
+          revenue_analytics_config: S.optional(__S(1057, __c33, 1)),
+          marketing_analytics_config: S.optional(__S(1065, __c33, 9)),
+          customer_analytics_config: S.optional(__S(1068, __c33, 12)),
+          workflows_config: S.optional(__S(1069, __c33, 13)),
+          feature_flag_policy_config: S.optional(__S(1070, __c33, 14)),
           base_currency: S.optional(S.String),
           capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
           cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
@@ -11457,884 +12804,8 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "OrganizationsProjectsResetTokenPartialUpdateRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/rotate_heatmaps_screenshot_secret/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "OrganizationsProjectsRotateHeatmapsScreenshotSecretPartialUpdateRequest",
-      });
   }
 }
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/rotate_secret_token/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "OrganizationsProjectsRotateSecretTokenPartialUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/organizations/{id}/remove_blocked_members_and_enforce_verified_domains/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveBlockedMembersAndEnforceVerifiedDomainsCreateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          removed_members: S.Number,
-        }),
-      ).annotate({
-        identifier: "OrganizationRemoveBlockedMembersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/role_external_references/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RoleExternalReferencesDestroyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/roles/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RolesDestroyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          role_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/organizations/{organization_id}/roles/{role_id}/role_memberships/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RolesRoleMembershipsDestroyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
-          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
-          members_can_invite: S.optional(S.NullOr(S.Boolean)),
-          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          members_can_see_org_members: S.optional(S.Boolean),
-          allow_publicly_shared_resources: S.optional(S.Boolean),
-          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5, __c0, 5))),
-          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-          default_anonymize_ips: S.optional(S.Boolean),
-          default_role_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/organizations/{id}/", code: 200 })),
-      ).annotate({ identifier: "UpdateRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          cimd_url: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/cimd_verification_tokens/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCimdVerificationTokensPartialRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          domain: S.optional(S.String),
-          jit_provisioning_enabled: S.optional(S.Boolean),
-          sso_enforcement: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/domains/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateDomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          domain: S.optional(S.String),
-          jit_provisioning_enabled: S.optional(S.Boolean),
-          sso_enforcement: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/domains/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDomainsPartialRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(17, __c2, 1)),
-          oidc_issuer_url: S.optional(S.String),
-          oidc_client_id: S.optional(S.String),
-          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          saml_entity_id: S.optional(S.NullOr(S.String)),
-          saml_acs_url: S.optional(S.NullOr(S.String)),
-          saml_x509_cert: S.optional(S.NullOr(S.String)),
-          scim_enabled: S.optional(S.Boolean),
-          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateIdentityProviderConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          domain_scope: S.optional(S.NullOr(S.Unknown)),
-          config_scope: S.optional(S.NullOr(S.Unknown)),
-          organization_domain_ids: S.optional(__S(29, __c3, 5)),
-          oidc_issuer_url: S.optional(S.String),
-          oidc_client_id: S.optional(S.String),
-          oidc_client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          saml_entity_id: S.optional(S.NullOr(S.String)),
-          saml_acs_url: S.optional(S.NullOr(S.String)),
-          saml_x509_cert: S.optional(S.NullOr(S.String)),
-          scim_enabled: S.optional(S.Boolean),
-          id_jag_issuer_url: S.optional(S.NullOr(S.String)),
-          id_jag_jwks_url: S.optional(S.NullOr(S.String)),
-          id_jag_allowed_clients: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/identity_provider_configs/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateIdentityProviderConfigsPartialRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/integrations/{id}/environment-mapping/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateIntegrationsEnvironmentMappingPartialRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          integration_id: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }),
-      ).annotate({ identifier: "OrganizationIntegration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          user__uuid: S.String.pipe(T.Label()),
-          level: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/members/{user__uuid}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateMemberRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          user__uuid: S.String.pipe(T.Label()),
-          level: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/members/{user__uuid}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateMembersPartialRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          app_urls: S.optional(__S(28, __c3, 4)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17, __c2, 1))),
-          recording_domains: S.optional(S.NullOr(__S(28, __c3, 4))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(7, __c0, 7))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/projects/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/complete_product_onboarding/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsCompleteProductOnboardingPartialRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/projects/{id}/default_release_conditions/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsDefaultReleaseConditionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(29, __c3, 5)),
-          app_urls: S.optional(__S(31, __c3, 7)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(29, __c3, 5))),
-          recording_domains: S.optional(S.NullOr(__S(31, __c3, 7))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/experiments_config/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsExperimentsConfigPartialRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          logs_distinct_id_attribute_keys: S.optional(__S(29, __c3, 5)),
-          logs_session_id_attribute_keys: S.optional(__S(29, __c3, 5)),
-          logs_pattern_message_keys: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/logs_config/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsLogsConfigPartialRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          product_description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(__S(17, __c2, 1)),
-          app_urls: S.optional(__S(28, __c3, 4)),
-          anonymize_ips: S.optional(S.Boolean),
-          completed_snippet_onboarding: S.optional(S.Boolean),
-          test_account_filters: S.optional(S.Unknown),
-          test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
-          path_cleaning_filters: S.optional(S.Unknown),
-          is_demo: S.optional(S.Boolean),
-          timezone: S.optional(S.String),
-          data_attributes: S.optional(S.Unknown),
-          person_display_name_properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-          correlation_config: S.optional(S.Unknown),
-          autocapture_opt_out: S.optional(S.NullOr(S.Boolean)),
-          autocapture_exceptions_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_opt_in: S.optional(S.NullOr(S.Boolean)),
-          autocapture_web_vitals_allowed_metrics: S.optional(S.Unknown),
-          autocapture_exceptions_errors_to_ignore: S.optional(S.Unknown),
-          capture_console_log_opt_in: S.optional(S.NullOr(S.Boolean)),
-          capture_performance_opt_in: S.optional(S.NullOr(S.Boolean)),
-          session_recording_opt_in: S.optional(S.Boolean),
-          session_recording_sample_rate: S.optional(S.NullOr(S.String)),
-          session_recording_minimum_duration_milliseconds: S.optional(S.NullOr(S.Number)),
-          session_recording_linked_flag: S.optional(S.Unknown),
-          session_recording_network_payload_capture_config: S.optional(S.Unknown),
-          session_recording_masking_config: S.optional(S.Unknown),
-          session_recording_url_trigger_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_url_blocklist_config: S.optional(S.NullOr(__S(30, __c3, 6))),
-          session_recording_event_trigger_config: S.optional(S.NullOr(__S(31, __c3, 7))),
-          session_recording_trigger_match_type_config: S.optional(S.NullOr(S.String)),
-          session_recording_trigger_groups: S.optional(S.Unknown),
-          session_recording_retention_period: S.optional(S.String),
-          session_replay_config: S.optional(S.Unknown),
-          survey_config: S.optional(S.Unknown),
-          access_control: S.optional(S.Boolean),
-          week_start_day: S.optional(S.NullOr(S.Number)),
-          primary_dashboard: S.optional(S.NullOr(S.Number)),
-          live_events_columns: S.optional(S.NullOr(__S(17, __c2, 1))),
-          recording_domains: S.optional(S.NullOr(__S(28, __c3, 4))),
-          inject_web_apps: S.optional(S.NullOr(S.Boolean)),
-          extra_settings: S.optional(S.Unknown),
-          modifiers: S.optional(S.Unknown),
-          has_completed_onboarding_for: S.optional(S.Unknown),
-          surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
-          heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-          flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-          receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
-          business_model: S.optional(S.NullOr(S.Unknown)),
-          conversations_enabled: S.optional(S.NullOr(S.Boolean)),
-          conversations_settings: S.optional(S.NullOr(__S(52, __c6, 4))),
-          logs_settings: S.optional(S.Unknown),
-          proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-          revenue_analytics_config: S.optional(__S(32, __c4, 0)),
-          marketing_analytics_config: S.optional(__S(40, __c5, 0)),
-          customer_analytics_config: S.optional(__S(43, __c5, 3)),
-          workflows_config: S.optional(__S(44, __c5, 4)),
-          feature_flag_policy_config: S.optional(__S(45, __c5, 5)),
-          base_currency: S.optional(S.String),
-          capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-          cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
-          human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
-          feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
-          default_evaluation_contexts_enabled: S.optional(S.NullOr(S.Boolean)),
-          require_evaluation_contexts: S.optional(S.NullOr(S.Boolean)),
-          default_data_theme: S.optional(S.NullOr(S.Number)),
-          onboarding_tasks: S.optional(S.Unknown),
-          web_analytics_pre_aggregated_tables_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsPartialRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          tracing_distinct_id_attribute_keys: S.optional(__S(29, __c3, 5)),
-          tracing_session_id_attribute_keys: S.optional(__S(29, __c3, 5)),
-          retention_days: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/projects/{id}/tracing_config/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationsProjectsTracingConfigPartialRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          logo_media_id: S.optional(S.NullOr(S.String)),
-          enforce_2fa: S.optional(S.NullOr(S.Boolean)),
-          enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
-          members_can_invite: S.optional(S.NullOr(S.Boolean)),
-          members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
-          members_can_use_personal_api_keys: S.optional(S.Boolean),
-          members_can_see_org_members: S.optional(S.Boolean),
-          allow_publicly_shared_resources: S.optional(S.Boolean),
-          read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(__S(5, __c0, 5))),
-          is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
-          is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-          default_anonymize_ips: S.optional(S.Boolean),
-          default_role_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/api/organizations/{id}/", code: 200 })),
-      ).annotate({ identifier: "UpdatePartialRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/organizations/{organization_id}/roles/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRoleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/organizations/{organization_id}/roles/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRolesPartialRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

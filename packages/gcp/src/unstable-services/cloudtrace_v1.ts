@@ -152,7 +152,7 @@ export const getProjectsTraces: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetProjectsTracesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Trace>,
+  output: __S(7, __c1, 3) as any as S.Schema<Trace>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -167,8 +167,8 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTracesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListProjectsTracesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListTracesResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListProjectsTracesRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<ListTracesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const patchTracesProjects: API.OperationMethod<
   PatchTracesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<PatchTracesProjectsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(17, __c4, 1) as any as S.Schema<PatchTracesProjectsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -206,13 +206,17 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsTracesRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(4, __c1, 0)),
           spanId: S.optional(S.String),
           endTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -220,17 +224,21 @@ function __c0(j: number): any {
           parentSpanId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceSpan" });
+    case 2:
+      return S.Array(__S(5, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          spans: S.optional(__S(3, __c0, 3)),
+          spans: S.optional(__S(6, __c1, 2)),
           traceId: S.optional(S.String),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Trace" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String.pipe(T.Query())),
@@ -251,30 +259,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListProjectsTracesRequest",
       });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          traces: S.optional(__S(6, __c0, 6)),
+          traces: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({ identifier: "ListTracesResponse" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7, __c1, 3));
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          traces: S.optional(__S(6, __c0, 6)),
+          traces: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({ identifier: "Traces" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -291,7 +303,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

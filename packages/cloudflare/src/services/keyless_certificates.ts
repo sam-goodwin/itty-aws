@@ -232,8 +232,8 @@ export const createKeylessCertificate: API.OperationMethod<
   CreateKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateKeylessCertificateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateKeylessCertificateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateKeylessCertificateRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateKeylessCertificateResponse>,
   errors: [KeylessSslNotAvailable, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -250,8 +250,8 @@ export const deleteKeylessCertificate: API.OperationMethod<
   DeleteKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteKeylessCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteKeylessCertificateResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteKeylessCertificateRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteKeylessCertificateResponse>,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -265,8 +265,8 @@ export const getKeylessCertificate: API.OperationMethod<
   GetKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetKeylessCertificateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetKeylessCertificateResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetKeylessCertificateRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetKeylessCertificateResponse>,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -282,8 +282,8 @@ export const listKeylessCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(8, __c1, 0) as any as S.Schema<ListKeylessCertificatesRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListKeylessCertificatesResponse>,
+    input: __S(16, __c4, 0) as any as S.Schema<ListKeylessCertificatesRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ListKeylessCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const patchKeylessCertificate: API.OperationMethod<
   PatchKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PatchKeylessCertificateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PatchKeylessCertificateResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<PatchKeylessCertificateRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<PatchKeylessCertificateResponse>,
   errors: [KeylessCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -316,29 +316,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateIp: S.String.pipe(T.Body("private_ip")),
-          vnetId: S.String.pipe(T.Body("vnet_id")),
-        }),
-      ).annotate({ identifier: "CreateRequestTunnel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           certificate: S.String,
           host: S.String,
           port: S.Number,
           bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
           name: S.optional(S.String),
-          tunnel: S.optional(__S(0, __c0, 0)),
+          tunnel: S.optional(__S(4, __c1, 0)),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/keyless_certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateKeylessCertificateRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -347,15 +338,32 @@ function __c0(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2, __c0, 2),
+          permissions: __S(5, __c1, 1),
           port: S.Number,
           status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tunnel: S.optional(S.NullOr(__S(4, __c1, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateKeylessCertificateResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateIp: S.String.pipe(T.Body("private_ip")),
+          vnetId: S.String.pipe(T.Body("vnet_id")),
+        }),
+      ).annotate({ identifier: "CreateRequestTunnel" });
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -372,7 +380,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteKeylessCertificateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -380,7 +388,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteKeylessCertificateResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -397,7 +409,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetKeylessCertificateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -406,17 +418,17 @@ function __c0(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2, __c0, 2),
+          permissions: __S(5, __c1, 1),
           port: S.Number,
           status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tunnel: S.optional(S.NullOr(__S(4, __c1, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetKeylessCertificateResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -437,24 +449,28 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2, __c0, 2),
+          permissions: __S(5, __c1, 1),
           port: S.Number,
           status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tunnel: S.optional(S.NullOr(__S(4, __c1, 0))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(17, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10, __c1, 2).pipe(T.EnvelopePayload()),
+          result: __S(18, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListKeylessCertificatesResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -463,7 +479,7 @@ function __c1(j: number): any {
           host: S.optional(S.String),
           name: S.optional(S.String),
           port: S.optional(S.Number),
-          tunnel: S.optional(__S(0, __c0, 0)),
+          tunnel: S.optional(__S(4, __c1, 0)),
         })
           .pipe(
             T.Http({
@@ -476,7 +492,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchKeylessCertificateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -485,17 +501,16 @@ function __c1(j: number): any {
           host: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          permissions: __S(2, __c0, 2),
+          permissions: __S(5, __c1, 1),
           port: S.Number,
           status: S.String,
-          tunnel: S.optional(S.NullOr(__S(0, __c0, 0))),
+          tunnel: S.optional(S.NullOr(__S(4, __c1, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchKeylessCertificateResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

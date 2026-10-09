@@ -1486,8 +1486,8 @@ export const AccessPolicyAssignmentCreateUpdate: API.OperationMethod<
   AccessPolicyAssignmentCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AccessPolicyAssignmentCreateUpdateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AccessPolicyAssignmentCreateUpdateRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1501,8 @@ export const AccessPolicyCreateUpdate: API.OperationMethod<
   AccessPolicyCreateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AccessPolicyCreateUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AccessPolicyCreateUpdateResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<AccessPolicyCreateUpdateRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<AccessPolicyCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const CheckRedisNameAvailability: API.OperationMethod<
   CheckRedisNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CheckRedisNameAvailabilityRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CheckRedisNameAvailabilityResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<CheckRedisNameAvailabilityRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<CheckRedisNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const CreateLinkedServer: API.OperationMethod<
   CreateLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateLinkedServerRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateLinkedServerResponse>,
+  input: __S(529, __c33, 1) as any as S.Schema<CreateLinkedServerRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const CreateRedis: API.OperationMethod<
   CreateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateRedisRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateRedisResponse>,
+  input: __S(753, __c47, 1) as any as S.Schema<CreateRedisRequest>,
+  output: __S(857, __c53, 9) as any as S.Schema<CreateRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1561,8 @@ export const DeleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const DeleteAccessPolicyAssignment: API.OperationMethod<
   DeleteAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const DeleteLinkedServer: API.OperationMethod<
   DeleteLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteLinkedServerRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteLinkedServerResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteLinkedServerRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const DeletePatchSchedule: API.OperationMethod<
   DeletePatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeletePatchScheduleRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeletePatchScheduleResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeletePatchScheduleRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeletePatchScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const DeleteRedis: API.OperationMethod<
   DeleteRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteRedisRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteRedisResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteRedisRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const ExportRedisData: API.OperationMethod<
   ExportRedisDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ExportRedisDataRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ExportRedisDataResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ExportRedisDataRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<ExportRedisDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1681,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1696,8 @@ export const FlushRedisCache: API.OperationMethod<
   FlushRedisCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<FlushRedisCacheRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<FlushRedisCacheResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<FlushRedisCacheRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<FlushRedisCacheResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const GetAccessPolicy: API.OperationMethod<
   GetAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetAccessPolicyResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetAccessPolicyRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const GetAccessPolicyAssignment: API.OperationMethod<
   GetAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetAccessPolicyAssignmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetAccessPolicyAssignmentResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetAccessPolicyAssignmentRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GetAccessPolicyAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1741,8 @@ export const GetAsyncOperationStatus: API.OperationMethod<
   GetAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetAsyncOperationStatusRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetAsyncOperationStatusResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetAsyncOperationStatusRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<GetAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1756,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetFirewallRuleResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1771,8 @@ export const GetLinkedServer: API.OperationMethod<
   GetLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetLinkedServerRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetLinkedServerResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetLinkedServerRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1786,8 @@ export const GetPatchSchedule: API.OperationMethod<
   GetPatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPatchScheduleRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetPatchScheduleResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetPatchScheduleRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetPatchScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1801,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1816,8 @@ export const GetRedis: API.OperationMethod<
   GetRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetRedisRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetRedisResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetRedisRequest>,
+  output: __S(857, __c53, 9) as any as S.Schema<GetRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,8 @@ export const ImportRedisData: API.OperationMethod<
   ImportRedisDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ImportRedisDataRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ImportRedisDataResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ImportRedisDataRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<ImportRedisDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1846,8 @@ export const ListAccessPolicy: API.OperationMethod<
   ListAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListAccessPolicyRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<RedisCacheAccessPolicyList>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListAccessPolicyRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<RedisCacheAccessPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1861,8 @@ export const ListAccessPolicyAssignment: API.OperationMethod<
   ListAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListAccessPolicyAssignmentRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListAccessPolicyAssignmentRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1876,8 @@ export const ListFirewallRules: API.OperationMethod<
   ListFirewallRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListFirewallRulesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<RedisFirewallRuleListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListFirewallRulesRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<RedisFirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1891,8 @@ export const ListLinkedServer: API.OperationMethod<
   ListLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListLinkedServerRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<RedisLinkedServerWithPropertiesList>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListLinkedServerRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<RedisLinkedServerWithPropertiesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1906,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<OperationListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1921,8 @@ export const ListPatchScheduleByRedisResource: API.OperationMethod<
   ListPatchScheduleByRedisResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<RedisPatchScheduleListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<RedisPatchScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1936,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1951,8 @@ export const ListPrivateLinkResourceByRedisCache: API.OperationMethod<
   ListPrivateLinkResourceByRedisCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>,
+  output: __S(596, __c37, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1966,8 @@ export const ListRedisByResourceGroup: API.OperationMethod<
   ListRedisByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListRedisByResourceGroupRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<RedisListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListRedisByResourceGroupRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<RedisListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +1981,8 @@ export const ListRedisBySubscription: API.OperationMethod<
   ListRedisBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListRedisBySubscriptionRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<RedisListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListRedisBySubscriptionRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<RedisListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +1996,8 @@ export const ListRedisKeys: API.OperationMethod<
   ListRedisKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListRedisKeysRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<RedisAccessKeys>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListRedisKeysRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<RedisAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2011,8 @@ export const ListRedisUpgradeNotifications: API.OperationMethod<
   ListRedisUpgradeNotificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListRedisUpgradeNotificationsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<NotificationListResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListRedisUpgradeNotificationsRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<NotificationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2026,8 @@ export const PatchSchedulesCreateOrUpdate: API.OperationMethod<
   PatchSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2041,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: __S(705, __c44, 1) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2056,8 @@ export const RebootRedisForce: API.OperationMethod<
   RebootRedisForceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<RebootRedisForceRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<RebootRedisForceResponse>,
+  input: __S(721, __c45, 1) as any as S.Schema<RebootRedisForceRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<RebootRedisForceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2071,8 @@ export const RegenerateRedisKey: API.OperationMethod<
   RegenerateRedisKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<RegenerateRedisKeyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<RedisAccessKeys>,
+  input: __S(736, __c46, 0) as any as S.Schema<RegenerateRedisKeyRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<RedisAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2086,8 @@ export const UpdateRedis: API.OperationMethod<
   UpdateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UpdateRedisRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateRedisResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<UpdateRedisRequest>,
+  output: __S(857, __c53, 9) as any as S.Schema<UpdateRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2095,6 +2095,44 @@ export const UpdateRedis: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          accessPolicyAssignmentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(32, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccessPolicyAssignmentCreateUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2110,63 +2148,27 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          accessPolicyAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccessPolicyAssignmentCreateUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "AccessPolicyAssignmentCreateUpdateResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          type: S.optional(S.String),
-          permissions: S.String,
-        }),
-      ).annotate({
-        identifier: "RedisCacheAccessPolicyProperties",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           accessPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2178,19 +2180,385 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccessPolicyCreateUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "AccessPolicyCreateUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          type: S.optional(S.String),
+          permissions: S.String,
+        }),
+      ).annotate({
+        identifier: "RedisCacheAccessPolicyProperties",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRedisRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          format: S.optional(S.String),
+          prefix: S.String,
+          container: S.String,
+          preferred_data_archive_auth_method: S.optional(
+            S.String.pipe(T.Body("preferred-data-archive-auth-method")),
+          ),
+          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/export",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ExportRedisDataRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+          properties: __S(144, __c9, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "FirewallRulesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(144, __c9, 0),
+        }),
+      ).annotate({
+        identifier: "FirewallRulesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startIP: S.String,
+          endIP: S.String,
+        }),
+      ).annotate({
+        identifier: "RedisFirewallRuleProperties",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/flush",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "FlushRedisCacheRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(182, __c11, 6)),
+          error: S.optional(__S(180, __c11, 4)),
+        }),
+      ).annotate({ identifier: "FlushRedisCacheResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(181, __c11, 5)));
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(180, __c11, 4)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(177, __c11, 1)),
+          additionalInfo: S.optional(__S(179, __c11, 3)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(176, __c11, 0)),
+          error: S.optional(__S(180, __c11, 4)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult" });
+    case 6:
+      return S.Array(__S(181, __c11, 5));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          accessPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccessPolicyRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetAccessPolicyResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          accessPolicyAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccessPolicyAssignmentRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAsyncOperationStatusRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(182, __c11, 6)),
+          error: S.optional(__S(180, __c11, 4)),
+          properties: S.optional(__S(241, __c15, 1)),
+        }),
+      ).annotate({
+        identifier: "GetAsyncOperationStatusResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetFirewallRuleRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(144, __c9, 0),
+        }),
+      ).annotate({ identifier: "GetFirewallRuleResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          linkedServerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetLinkedServerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(544, __c34, 0)),
+        }),
+      ).annotate({ identifier: "GetLinkedServerResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2209,13 +2577,332 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CheckRedisNameAvailabilityResponse",
       });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          default: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPatchScheduleRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(370, __c23, 2),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPatchScheduleResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.String,
+          startHourUtc: S.Number,
+          maintenanceWindow: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleEntry" });
     case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleEntries: __S(369, __c23, 1),
+        }),
+      ).annotate({ identifier: "ScheduleEntries" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRedisRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          format: S.optional(S.String),
+          files: __S(768, __c48, 0),
+          preferred_data_archive_auth_method: S.optional(
+            S.String.pipe(T.Body("preferred-data-archive-auth-method")),
+          ),
+          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/import",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ImportRedisDataRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAccessPolicyRequest" });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(433, __c27, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RedisCacheAccessPolicyList",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccessPolicyAssignmentRequest",
+      });
+    case 1:
+      return S.Array(__S(33, __c2, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(449, __c28, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RedisCacheAccessPolicyAssignmentList",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListFirewallRulesRequest" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(465, __c29, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RedisFirewallRuleListResult",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListLinkedServerRequest" });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(481, __c30, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RedisLinkedServerWithPropertiesList",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Cache/operations",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          operation: S.optional(S.String),
+          resource: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(497, __c31, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(498, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(499, __c31, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationListResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/patchSchedules",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPatchScheduleByRedisResourceRequest",
+      });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(513, __c32, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RedisPatchScheduleListResult",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           linkedRedisCacheId: S.String,
@@ -2225,14 +2912,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RedisLinkedServerCreatePropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           linkedServerName: S.String.pipe(T.Label()),
-          properties: __S(9, __c1, 1),
+          properties: __S(528, __c33, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2244,7 +2931,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLinkedServerRequest",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           linkedRedisCacheId: S.String,
@@ -2257,83 +2948,356 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RedisLinkedServerProperties",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(11, __c1, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(544, __c34, 0)),
         }),
       ).annotate({
         identifier: "CreateLinkedServerResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
-          rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
-          rdb_backup_max_snapshot_count: S.optional(
-            S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
-          ),
-          rdb_storage_connection_string: S.optional(
-            S.String.pipe(T.Body("rdb-storage-connection-string")),
-          ),
-          aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
-          aof_storage_connection_string_0: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-0")),
-          ),
-          aof_storage_connection_string_1: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-1")),
-          ),
-          maxfragmentationmemory_reserved: S.optional(
-            S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
-          ),
-          maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
-          maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
-          maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
-          notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
-          preferred_data_persistence_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
-          ),
-          authnotrequired: S.optional(S.String),
-          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
-          aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
-        }),
-      ).annotate({
-        identifier: "RedisCommonPropertiesRedisConfigurationInput",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          family: S.String,
-          capacity: S.Number,
-        }),
-      ).annotate({ identifier: "Sku" });
   }
 }
-function __c2(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(13, __c1, 5)),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateEndpointConnectionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(800, __c50, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionListResult",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateLinkResources",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateLinkResourceByRedisCacheRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(768, __c48, 0)),
+          requiredZoneNames: S.optional(__S(768, __c48, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(593, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResultValueItem",
+      });
+    case 3:
+      return S.Array(__S(594, __c37, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(595, __c37, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceListResult",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRedisByResourceGroupRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(857, __c53, 9));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(624, __c39, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RedisListResult" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redis",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRedisBySubscriptionRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listKeys",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListRedisKeysRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          history: S.Number.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listUpgradeNotifications",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRedisUpgradeNotificationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          upsellNotification: S.optional(__S(832, __c52, 0)),
+        }),
+      ).annotate({ identifier: "UpgradeNotification" });
+    case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(674, __c42, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotificationListResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          default: S.String.pipe(T.Label()),
+          properties: __S(370, __c23, 2),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchSchedulesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(370, __c23, 2),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PatchSchedulesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(880, __c55, 0)),
+          privateLinkServiceConnectionState: __S(785, __c49, 1),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(704, __c44, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          rebootType: S.optional(S.String),
+          shardId: S.optional(S.Number),
+          ports: S.optional(__S(720, __c45, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/forceReboot",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "RebootRedisForceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RebootRedisForceResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          keyType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/regenerateKey",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateRedisKeyRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisConfiguration: S.optional(__S(864, __c54, 0)),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14, __c1, 6)),
+          tenantSettings: S.optional(__S(832, __c52, 0)),
           shardCount: S.optional(S.Number),
           minimumTlsVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           updateChannel: S.optional(S.String),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
           zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(15, __c1, 7),
+          sku: __S(848, __c53, 0),
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
         }),
@@ -2341,33 +3305,16 @@ function __c2(j: number): any {
         identifier: "RedisCreatePropertiesInput",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 3:
-      return S.Record(S.String, __S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateRedisRequestIdentity",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(16, __c2, 0),
-          zones: S.optional(__S(17, __c2, 1)),
+          properties: __S(752, __c47, 0),
+          zones: S.optional(__S(768, __c48, 0)),
           location: S.String,
-          tags: S.optional(__S(14, __c1, 6)),
-          identity: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(832, __c52, 0)),
+          identity: S.optional(__S(866, __c54, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2377,7 +3324,91 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRedisRequest" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RedisLinkedServer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(768, __c48, 0)),
+          privateEndpoint: S.optional(__S(784, __c49, 0)),
+          privateLinkServiceConnectionState: __S(785, __c49, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(786, __c49, 2)),
+        }),
+      ).annotate({
+        identifier: "RedisPropertiesPrivateEndpointConnectionsItem",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(787, __c49, 3));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primaryKey: S.optional(S.String),
+          secondaryKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RedisAccessKeys" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          family: S.String,
+          capacity: S.Number,
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
@@ -2417,26 +3448,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RedisCommonPropertiesRedisConfiguration",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          primaryKey: S.optional(S.String),
-          secondaryKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RedisAccessKeys" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RedisLinkedServer" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(784, __c49, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           sslPort: S.optional(S.Number),
@@ -2447,110 +3461,175 @@ function __c3(j: number): any {
           isPrimary: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RedisInstanceDetails" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
+      return S.Array(__S(851, __c53, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(17, __c2, 1)),
-          privateEndpoint: S.optional(__S(24, __c3, 0)),
-          privateLinkServiceConnectionState: __S(28, __c3, 4),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "RedisPropertiesPrivateEndpointConnectionsItem",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          redisConfiguration: S.optional(__S(22, __c2, 6)),
+          redisConfiguration: S.optional(__S(849, __c53, 1)),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14, __c1, 6)),
+          tenantSettings: S.optional(__S(832, __c52, 0)),
           shardCount: S.optional(S.Number),
           minimumTlsVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           updateChannel: S.optional(S.String),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
           zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(15, __c1, 7),
+          sku: __S(848, __c53, 0),
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
           provisioningState: S.optional(S.String),
           hostName: S.optional(S.String),
           port: S.optional(S.Number),
           sslPort: S.optional(S.Number),
-          accessKeys: S.optional(__S(23, __c2, 7)),
-          linkedServers: S.optional(__S(25, __c3, 1)),
-          instances: S.optional(__S(27, __c3, 3)),
-          privateEndpointConnections: S.optional(__S(31, __c3, 7)),
+          accessKeys: S.optional(__S(816, __c51, 0)),
+          linkedServers: S.optional(__S(850, __c53, 2)),
+          instances: S.optional(__S(852, __c53, 4)),
+          privateEndpointConnections: S.optional(__S(800, __c50, 0)),
         }),
       ).annotate({ identifier: "RedisProperties" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 2:
-      return S.Record(S.String, __S(33, __c4, 1));
-    case 3:
+    case 7:
+      return S.Record(S.String, __S(854, __c53, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(34, __c4, 2)),
+          userAssignedIdentities: S.optional(__S(855, __c53, 7)),
         }),
       ).annotate({
         identifier: "CreateRedisResponseIdentity",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(14, __c1, 6)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(832, __c52, 0)),
           location: S.String,
-          properties: __S(32, __c4, 0),
-          zones: S.optional(__S(17, __c2, 1)),
-          identity: S.optional(__S(35, __c4, 3)),
+          properties: __S(853, __c53, 5),
+          zones: S.optional(__S(768, __c48, 0)),
+          identity: S.optional(__S(856, __c53, 8)),
         }),
       ).annotate({ identifier: "CreateRedisResponse" });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
+          rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
+          rdb_backup_max_snapshot_count: S.optional(
+            S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
+          ),
+          rdb_storage_connection_string: S.optional(
+            S.String.pipe(T.Body("rdb-storage-connection-string")),
+          ),
+          aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
+          aof_storage_connection_string_0: S.optional(
+            S.String.pipe(T.Body("aof-storage-connection-string-0")),
+          ),
+          aof_storage_connection_string_1: S.optional(
+            S.String.pipe(T.Body("aof-storage-connection-string-1")),
+          ),
+          maxfragmentationmemory_reserved: S.optional(
+            S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
+          ),
+          maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
+          maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
+          maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
+          notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
+          preferred_data_persistence_auth_method: S.optional(
+            S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
+          ),
+          authnotrequired: S.optional(S.String),
+          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
+          aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
+        }),
+      ).annotate({
+        identifier: "RedisCommonPropertiesRedisConfigurationInput",
+      });
+    case 1:
+      return S.Record(S.String, __S(880, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(865, __c54, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateRedisRequestIdentity",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisConfiguration: S.optional(__S(864, __c54, 0)),
+          redisVersion: S.optional(S.String),
+          enableNonSslPort: S.optional(S.Boolean),
+          replicasPerMaster: S.optional(S.Number),
+          replicasPerPrimary: S.optional(S.Number),
+          tenantSettings: S.optional(__S(832, __c52, 0)),
+          shardCount: S.optional(S.Number),
+          minimumTlsVersion: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          updateChannel: S.optional(S.String),
+          disableAccessKeyAuthentication: S.optional(S.Boolean),
+          zonalAllocationPolicy: S.optional(S.String),
+          sku: S.optional(__S(848, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "RedisUpdatePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          properties: S.optional(__S(896, __c56, 0)),
+          tags: S.optional(__S(832, __c52, 0)),
+          identity: S.optional(__S(866, __c54, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
+            code: 200,
+            apiVersion: "2024-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRedisRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2568,7 +3647,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2586,7 +3669,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPolicyAssignmentRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2606,7 +3693,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2626,7 +3713,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteLinkedServerRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2644,916 +3735,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePatchScheduleRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRedisRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          format: S.optional(S.String),
-          prefix: S.String,
-          container: S.String,
-          preferred_data_archive_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-archive-auth-method")),
-          ),
-          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/export",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ExportRedisDataRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startIP: S.String,
-          endIP: S.String,
-        }),
-      ).annotate({
-        identifier: "RedisFirewallRuleProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-          properties: __S(45, __c5, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FirewallRulesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "FirewallRulesCreateOrUpdateResponse",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/flush",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "FlushRedisCacheRequest" });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(54, __c6, 6)));
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(53, __c6, 5)));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(50, __c6, 2)),
-          additionalInfo: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(49, __c6, 1)),
-          error: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(55, __c6, 7)),
-          error: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "FlushRedisCacheResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          accessPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccessPolicyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "GetAccessPolicyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          accessPolicyAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccessPolicyAssignmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/asyncOperations/{operationId}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAsyncOperationStatusRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(55, __c6, 7)),
-          error: S.optional(__S(53, __c6, 5)),
-          properties: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "GetAsyncOperationStatusResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules/{ruleName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetFirewallRuleRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(45, __c5, 5),
-        }),
-      ).annotate({ identifier: "GetFirewallRuleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          linkedServerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetLinkedServerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "GetLinkedServerResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPatchScheduleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.String,
-          startHourUtc: S.Number,
-          maintenanceWindow: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleEntry" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleEntries: __S(69, __c8, 5),
-        }),
-      ).annotate({ identifier: "ScheduleEntries" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(70, __c8, 6),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetPatchScheduleResponse" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRedisRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          format: S.optional(S.String),
-          files: __S(17, __c2, 1),
-          preferred_data_archive_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-archive-auth-method")),
-          ),
-          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/import",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ImportRedisDataRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAccessPolicyRequest" });
-    case 4:
-      return S.Array(__S(58, __c7, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(76, __c9, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RedisCacheAccessPolicyList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccessPolicyAssignmentRequest",
-      });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(79, __c9, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RedisCacheAccessPolicyAssignmentList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/firewallRules",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListFirewallRulesRequest" });
-    case 2:
-      return S.Array(__S(64, __c8, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(82, __c10, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RedisFirewallRuleListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListLinkedServerRequest" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(85, __c10, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RedisLinkedServerWithPropertiesList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Cache/operations",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          operation: S.optional(S.String),
-          resource: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(90, __c11, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/patchSchedules",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPatchScheduleByRedisResourceRequest",
-      });
-    case 5:
-      return S.Array(__S(71, __c8, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(93, __c11, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RedisPatchScheduleListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateEndpointConnectionsRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(31, __c3, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateLinkResources",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateLinkResourceByRedisCacheRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(17, __c2, 1)),
-          requiredZoneNames: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResultValueItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(100, __c12, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRedisByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(36, __c4, 4));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(103, __c12, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RedisListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/redis",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRedisBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listKeys",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRedisKeysRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          history: S.Number.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/listUpgradeNotifications",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRedisUpgradeNotificationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          upsellNotification: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "UpgradeNotification" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(109, __c13, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NotificationListResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          default: S.String.pipe(T.Label()),
-          properties: __S(70, __c8, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/patchSchedules/{default}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchSchedulesCreateOrUpdateRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(70, __c8, 6),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PatchSchedulesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(18, __c2, 2)),
-          privateLinkServiceConnectionState: __S(28, __c3, 4),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(113, __c14, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPrivateEndpointConnectionRequest",
-      });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          rebootType: S.optional(S.String),
-          shardId: S.optional(S.Number),
-          ports: S.optional(__S(115, __c14, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/forceReboot",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "RebootRedisForceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RebootRedisForceResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          keyType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/regenerateKey",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateRedisKeyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          redisConfiguration: S.optional(__S(13, __c1, 5)),
-          redisVersion: S.optional(S.String),
-          enableNonSslPort: S.optional(S.Boolean),
-          replicasPerMaster: S.optional(S.Number),
-          replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(14, __c1, 6)),
-          shardCount: S.optional(S.Number),
-          minimumTlsVersion: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          updateChannel: S.optional(S.String),
-          disableAccessKeyAuthentication: S.optional(S.Boolean),
-          zonalAllocationPolicy: S.optional(S.String),
-          sku: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "RedisUpdatePropertiesInput",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(119, __c14, 7)),
-          tags: S.optional(__S(14, __c1, 6)),
-          identity: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
-            code: 200,
-            apiVersion: "2024-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRedisRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

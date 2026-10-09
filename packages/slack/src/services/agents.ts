@@ -379,8 +379,8 @@ export const createConversation: API.OperationMethod<
   CreateConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateConversationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateConversationResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateConversationRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const getCanvas: API.OperationMethod<
   GetCanvasError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetCanvasRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetCanvasResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCanvasRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<GetCanvasResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const listViews: API.OperationMethod<
   ListViewsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListViewsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListViewsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListViewsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<ListViewsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const removeView: API.OperationMethod<
   RemoveViewError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<RemoveViewRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<RemoveViewResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<RemoveViewRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<RemoveViewResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const renameSession: API.OperationMethod<
   RenameSessionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<RenameSessionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<RenameSessionResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<RenameSessionRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<RenameSessionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const setCanvasContent: API.OperationMethod<
   SetCanvasContentError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SetCanvasContentRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<SetCanvasContentResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<SetCanvasContentRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<SetCanvasContentResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const setCommands: API.OperationMethod<
   SetCommandsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<SetCommandsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SetCommandsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<SetCommandsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<SetCommandsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const setProperties: API.OperationMethod<
   SetPropertiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<SetPropertiesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<SetPropertiesResponse>,
+  input: __S(83, __c10, 3) as any as S.Schema<SetPropertiesRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<SetPropertiesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const setStatus: API.OperationMethod<
   SetStatusError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<SetStatusRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<SetStatusResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<SetStatusRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<SetStatusResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -514,8 +514,8 @@ export const setView: API.OperationMethod<
   SetViewError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<SetViewRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<SetViewResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<SetViewRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<SetViewResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -541,7 +541,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ArchiveConversationResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -554,7 +558,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConversationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -563,7 +567,53 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConversationResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connect_domains: S.optional(__S(88, __c11, 0)),
+          resource_domains: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({ identifier: "SetViewRequestCsp" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          type: S.optional(S.Unknown),
+          view_key: S.optional(S.String),
+          content: S.optional(S.String),
+          blocks: S.optional(S.Unknown),
+          canvas_id: S.optional(S.String),
+          access_level: S.optional(S.String),
+          agent_content_hash: S.optional(S.String),
+          pr_url: S.optional(S.String),
+          base_branch: S.optional(S.String),
+          head_branch: S.optional(S.String),
+          name: S.optional(S.String),
+          label: S.optional(S.String),
+          csp: S.optional(__S(16, __c2, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.setView", code: 200 })),
+      ).annotate({ identifier: "SetViewRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel_id: S.String,
+          view_id: S.String,
+          file_id: S.String,
+          content_version: S.Number,
+          type: S.optional(S.Unknown),
+          canvas_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetViewResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -572,7 +622,7 @@ function __c0(j: number): any {
           include_resolved: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.getCanvas", code: 200 })),
       ).annotate({ identifier: "GetCanvasRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ts: S.String,
@@ -582,9 +632,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCanvasResponseCommentsItemRepliesItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -593,36 +643,36 @@ function __c0(j: number): any {
           text: S.String,
           quoted_text: S.String,
           is_resolved: S.Boolean,
-          replies: __S(6, __c0, 6),
+          replies: __S(26, __c3, 2),
           has_more_replies: S.Boolean,
         }),
       ).annotate({
         identifier: "GetCanvasResponseCommentsItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           canvas_id: S.String,
           title: S.String,
           content: S.String,
-          comments: __S(8, __c1, 0),
+          comments: __S(28, __c3, 4),
           has_more_comments: S.Boolean,
         }),
       ).annotate({ identifier: "GetCanvasResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.listViews", code: 200 })),
       ).annotate({ identifier: "ListViewsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           view_id: S.String,
@@ -635,16 +685,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListViewsResponseViewsItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          views: __S(12, __c1, 4),
+          views: __S(34, __c4, 2),
         }),
       ).annotate({ identifier: "ListViewsResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -652,7 +706,7 @@ function __c1(j: number): any {
           view_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.removeView", code: 200 })),
       ).annotate({ identifier: "RemoveViewRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -662,7 +716,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "RemoveViewResponse" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -680,7 +734,11 @@ function __c2(j: number): any {
           channel_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "RenameSessionResponse" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -690,7 +748,7 @@ function __c2(j: number): any {
           T.Http({ method: "POST", uri: "/agents.conversations.setCanvasContent", code: 200 }),
         ),
       ).annotate({ identifier: "SetCanvasContentRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -698,16 +756,18 @@ function __c2(j: number): any {
           sections_changed_count: S.Number,
         }),
       ).annotate({ identifier: "SetCanvasContentResponse" });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          commands: __S(20, __c2, 4),
+          commands: __S(72, __c9, 0),
         }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.setCommands", code: 200 })),
       ).annotate({ identifier: "SetCommandsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -715,11 +775,15 @@ function __c2(j: number): any {
           command_count: S.Number,
         }),
       ).annotate({ identifier: "SetCommandsResponse" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -744,12 +808,12 @@ function __c3(j: number): any {
           pr_status: S.optional(S.String),
           ci_url: S.optional(S.String),
           ci_state: S.optional(S.String),
-          file_paths: S.optional(__S(23, __c2, 7)),
+          file_paths: S.optional(__S(88, __c11, 0)),
           language: S.optional(S.String),
           upstream_url: S.optional(S.String),
           branch_url: S.optional(S.String),
-          context_bar_items: S.optional(__S(20, __c2, 4)),
-          summary_message: S.optional(__S(24, __c3, 0)),
+          context_bar_items: S.optional(__S(72, __c9, 0)),
+          summary_message: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "SetPropertiesRequestCodeChannel",
@@ -771,8 +835,8 @@ function __c3(j: number): any {
           channel_id: S.String,
           title: S.optional(S.String),
           status: S.optional(S.String),
-          code_channel: S.optional(__S(25, __c3, 1)),
-          agent_resource: S.optional(__S(26, __c3, 2)),
+          code_channel: S.optional(__S(81, __c10, 1)),
+          agent_resource: S.optional(__S(82, __c10, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.setProperties", code: 200 })),
       ).annotate({ identifier: "SetPropertiesRequest" });
     case 4:
@@ -782,7 +846,17 @@ function __c3(j: number): any {
           channel_id: S.String,
         }),
       ).annotate({ identifier: "SetPropertiesResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.optional(S.String),
@@ -795,7 +869,7 @@ function __c3(j: number): any {
           username: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/agents.sessions.setStatus", code: 200 })),
       ).annotate({ identifier: "SetStatusRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -804,51 +878,8 @@ function __c3(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetStatusResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          connect_domains: S.optional(__S(23, __c2, 7)),
-          resource_domains: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "SetViewRequestCsp" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          type: S.optional(S.Unknown),
-          view_key: S.optional(S.String),
-          content: S.optional(S.String),
-          blocks: S.optional(S.Unknown),
-          canvas_id: S.optional(S.String),
-          access_level: S.optional(S.String),
-          agent_content_hash: S.optional(S.String),
-          pr_url: S.optional(S.String),
-          base_branch: S.optional(S.String),
-          head_branch: S.optional(S.String),
-          name: S.optional(S.String),
-          label: S.optional(S.String),
-          csp: S.optional(__S(31, __c3, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/agents.conversations.setView", code: 200 })),
-      ).annotate({ identifier: "SetViewRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel_id: S.String,
-          view_id: S.String,
-          file_id: S.String,
-          content_version: S.Number,
-          type: S.optional(S.Unknown),
-          canvas_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetViewResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

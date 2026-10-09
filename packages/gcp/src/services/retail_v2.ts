@@ -2352,11 +2352,11 @@ export const addCatalogAttributeProjectsLocationsCatalogsAttributesConfig: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    1825,
+    __c57,
+    1,
   ) as any as S.Schema<AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
+  output: __S(1897, __c59, 9) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -2384,11 +2384,11 @@ export const addControlProjectsLocationsCatalogsServingConfigs: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    16,
-    __c2,
+    2400,
+    __c75,
     0,
   ) as any as S.Schema<AddControlProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -2416,11 +2416,11 @@ export const addFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    2945,
+    __c92,
+    1,
   ) as any as S.Schema<AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -2448,11 +2448,11 @@ export const addLocalInventoriesProjectsLocationsCatalogsBranchesProducts: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    34,
-    __c4,
-    2,
+    3265,
+    __c102,
+    1,
   ) as any as S.Schema<AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -2480,14 +2480,14 @@ export const batchUpdateProjectsLocationsCatalogsGenerativeQuestion: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    3363,
+    __c105,
+    3,
   ) as any as S.Schema<BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest>,
   output: __S(
-    41,
-    __c5,
-    1,
+    3364,
+    __c105,
+    4,
   ) as any as S.Schema<GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse>,
   errors: [
     NotFound,
@@ -2515,8 +2515,8 @@ export const collectProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   CollectProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(1, __c0, 1) as any as S.Schema<CollectProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GoogleApiHttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2541,8 +2541,8 @@ export const completeQueryProjectsLocationsCatalogs: API.OperationMethod<
   CompleteQueryProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GoogleCloudRetailV2CompleteQueryResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<CompleteQueryProjectsLocationsCatalogsRequest>,
+  output: __S(39, __c1, 7) as any as S.Schema<GoogleCloudRetailV2CompleteQueryResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2563,11 +2563,11 @@ export const conversationalSearchProjectsLocationsCatalogsPlacements: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    64,
+    __c2,
+    0,
   ) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsPlacementsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponse>,
+  output: __S(106, __c3, 10) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2595,11 +2595,11 @@ export const conversationalSearchProjectsLocationsCatalogsServingConfigs: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponse>,
+  output: __S(106, __c3, 10) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2627,11 +2627,11 @@ export const createProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    256,
+    __c8,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GoogleCloudRetailV2Product>,
+  output: __S(298, __c9, 10) as any as S.Schema<GoogleCloudRetailV2Product>,
   errors: [
     NotFound,
     Forbidden,
@@ -2658,8 +2658,8 @@ export const createProjectsLocationsCatalogsControls: API.OperationMethod<
   CreateProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudRetailV2Control>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateProjectsLocationsCatalogsControlsRequest>,
+  output: __S(371, __c11, 19) as any as S.Schema<GoogleCloudRetailV2Control>,
   errors: [
     NotFound,
     Forbidden,
@@ -2686,8 +2686,8 @@ export const createProjectsLocationsCatalogsModels: API.OperationMethod<
   CreateProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateProjectsLocationsCatalogsModelsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -2715,11 +2715,11 @@ export const createProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    113,
+    448,
     __c14,
-    1,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -2747,11 +2747,11 @@ export const deleteProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(512, __c16, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2778,8 +2778,8 @@ export const deleteProjectsLocationsCatalogsControls: API.OperationMethod<
   DeleteProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsControlsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2806,8 +2806,8 @@ export const deleteProjectsLocationsCatalogsModels: API.OperationMethod<
   DeleteProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteProjectsLocationsCatalogsModelsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2835,11 +2835,11 @@ export const deleteProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(512, __c16, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2867,11 +2867,11 @@ export const exportAnalyticsMetricsProjectsLocationsCatalogs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    123,
-    __c15,
-    3,
+    644,
+    __c20,
+    4,
   ) as any as S.Schema<ExportAnalyticsMetricsProjectsLocationsCatalogsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -2896,8 +2896,8 @@ export const getAttributesConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetAttributesConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetAttributesConfigProjectsLocationsCatalogsRequest>,
+  output: __S(1897, __c59, 9) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2915,8 +2915,8 @@ export const getCompletionConfigProjectsLocationsCatalogs: API.OperationMethod<
   GetCompletionConfigProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GoogleCloudRetailV2CompletionConfig>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetCompletionConfigProjectsLocationsCatalogsRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<GoogleCloudRetailV2CompletionConfig>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2935,14 +2935,14 @@ export const getConversationalSearchCustomizationConfigProjectsLocationsCatalogs
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    130,
-    __c16,
-    2,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>,
   output: __S(
-    137,
-    __c17,
-    1,
+    870,
+    __c27,
+    6,
   ) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchCustomizationConfig>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2961,8 +2961,8 @@ export const getDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   GetDefaultBranchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GoogleCloudRetailV2GetDefaultBranchResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetDefaultBranchProjectsLocationsCatalogsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<GoogleCloudRetailV2GetDefaultBranchResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2981,14 +2981,14 @@ export const getGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>,
   output: __S(
-    141,
-    __c17,
-    5,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3008,11 +3008,11 @@ export const getProjectsLocationsCatalogsBranchesOperations: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    992,
+    __c31,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCatalogsBranchesOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3030,8 +3030,12 @@ export const getProjectsLocationsCatalogsBranchesProducts: API.OperationMethod<
   GetProjectsLocationsCatalogsBranchesProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GoogleCloudRetailV2Product>,
+  input: __S(
+    1024,
+    __c32,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsCatalogsBranchesProductsRequest>,
+  output: __S(298, __c9, 10) as any as S.Schema<GoogleCloudRetailV2Product>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3049,8 +3053,8 @@ export const getProjectsLocationsCatalogsControls: API.OperationMethod<
   GetProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudRetailV2Control>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetProjectsLocationsCatalogsControlsRequest>,
+  output: __S(371, __c11, 19) as any as S.Schema<GoogleCloudRetailV2Control>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3068,8 +3072,8 @@ export const getProjectsLocationsCatalogsModels: API.OperationMethod<
   GetProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudRetailV2Model>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetProjectsLocationsCatalogsModelsRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<GoogleCloudRetailV2Model>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3087,8 +3091,8 @@ export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
   GetProjectsLocationsCatalogsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3106,8 +3110,8 @@ export const getProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GetProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3125,8 +3129,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3144,8 +3148,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3166,11 +3170,11 @@ export const importProjectsLocationsCatalogsBranchesProducts: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
+    1251,
+    __c39,
     3,
   ) as any as S.Schema<ImportProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3198,11 +3202,11 @@ export const importProjectsLocationsCatalogsCompletionData: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    157,
-    __c19,
-    5,
+    1313,
+    __c41,
+    1,
   ) as any as S.Schema<ImportProjectsLocationsCatalogsCompletionDataRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3229,8 +3233,8 @@ export const importProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   ImportProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1348, __c42, 4) as any as S.Schema<ImportProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3256,8 +3260,8 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRetailV2ListCatalogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GoogleCloudRetailV2ListCatalogsResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ListProjectsLocationsCatalogsRequest>,
+  output: __S(1410, __c44, 2) as any as S.Schema<GoogleCloudRetailV2ListCatalogsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3278,11 +3282,11 @@ export const listProjectsLocationsCatalogsBranchesProducts: API.PaginatedOperati
   GoogleCloudRetailV2ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    175,
-    __c21,
-    7,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<GoogleCloudRetailV2ListProductsResponse>,
+  output: __S(1473, __c46, 1) as any as S.Schema<GoogleCloudRetailV2ListProductsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3302,8 +3306,8 @@ export const listProjectsLocationsCatalogsControls: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudRetailV2ListControlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<GoogleCloudRetailV2ListControlsResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListProjectsLocationsCatalogsControlsRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<GoogleCloudRetailV2ListControlsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3323,14 +3327,14 @@ export const listProjectsLocationsCatalogsGenerativeQuestions: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    180,
-    __c22,
-    4,
+    1536,
+    __c48,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCatalogsGenerativeQuestionsRequest>,
   output: __S(
-    181,
-    __c22,
-    5,
+    1537,
+    __c48,
+    1,
   ) as any as S.Schema<GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3350,8 +3354,8 @@ export const listProjectsLocationsCatalogsModels: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRetailV2ListModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GoogleCloudRetailV2ListModelsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ListProjectsLocationsCatalogsModelsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<GoogleCloudRetailV2ListModelsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3371,8 +3375,8 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListProjectsLocationsCatalogsOperationsRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3392,8 +3396,8 @@ export const listProjectsLocationsCatalogsServingConfigs: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudRetailV2ListServingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GoogleCloudRetailV2ListServingConfigsResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<GoogleCloudRetailV2ListServingConfigsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3413,8 +3417,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3434,8 +3438,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, RetailDataUseTermsNotAccepted, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3456,8 +3460,8 @@ export const patchProjectsLocationsCatalogs: API.OperationMethod<
   PatchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GoogleCloudRetailV2Catalog>,
+  input: __S(1760, __c55, 0) as any as S.Schema<PatchProjectsLocationsCatalogsRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<GoogleCloudRetailV2Catalog>,
   errors: [
     NotFound,
     Forbidden,
@@ -3485,11 +3489,11 @@ export const patchProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    194,
-    __c24,
-    2,
+    1792,
+    __c56,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GoogleCloudRetailV2Product>,
+  output: __S(298, __c9, 10) as any as S.Schema<GoogleCloudRetailV2Product>,
   errors: [
     NotFound,
     Forbidden,
@@ -3516,8 +3520,8 @@ export const patchProjectsLocationsCatalogsControls: API.OperationMethod<
   PatchProjectsLocationsCatalogsControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudRetailV2Control>,
+  input: __S(1984, __c62, 0) as any as S.Schema<PatchProjectsLocationsCatalogsControlsRequest>,
+  output: __S(371, __c11, 19) as any as S.Schema<GoogleCloudRetailV2Control>,
   errors: [
     NotFound,
     Forbidden,
@@ -3544,8 +3548,8 @@ export const patchProjectsLocationsCatalogsModels: API.OperationMethod<
   PatchProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudRetailV2Model>,
+  input: __S(2016, __c63, 0) as any as S.Schema<PatchProjectsLocationsCatalogsModelsRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<GoogleCloudRetailV2Model>,
   errors: [
     NotFound,
     Forbidden,
@@ -3572,8 +3576,12 @@ export const patchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   PatchProjectsLocationsCatalogsServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
+  input: __S(
+    2048,
+    __c64,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsCatalogsServingConfigsRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3600,8 +3608,8 @@ export const pauseProjectsLocationsCatalogsModels: API.OperationMethod<
   PauseProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudRetailV2Model>,
+  input: __S(2080, __c65, 0) as any as S.Schema<PauseProjectsLocationsCatalogsModelsRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<GoogleCloudRetailV2Model>,
   errors: [
     NotFound,
     Forbidden,
@@ -3628,8 +3636,8 @@ export const predictProjectsLocationsCatalogsPlacements: API.OperationMethod<
   PredictProjectsLocationsCatalogsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudRetailV2PredictResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<PredictProjectsLocationsCatalogsPlacementsRequest>,
+  output: __S(2179, __c68, 3) as any as S.Schema<GoogleCloudRetailV2PredictResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -3657,11 +3665,11 @@ export const predictProjectsLocationsCatalogsServingConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    205,
-    __c25,
-    5,
+    2208,
+    __c69,
+    0,
   ) as any as S.Schema<PredictProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<GoogleCloudRetailV2PredictResponse>,
+  output: __S(2179, __c68, 3) as any as S.Schema<GoogleCloudRetailV2PredictResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -3689,11 +3697,11 @@ export const purgeProjectsLocationsCatalogsBranchesProducts: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    207,
-    __c25,
-    7,
+    2240,
+    __c70,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3720,8 +3728,8 @@ export const purgeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   PurgeProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2304, __c72, 0) as any as S.Schema<PurgeProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3748,8 +3756,8 @@ export const rejoinProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   RejoinProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2337, __c73, 1) as any as S.Schema<RejoinProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3777,11 +3785,11 @@ export const removeCatalogAttributeProjectsLocationsCatalogsAttributesConfig: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    212,
-    __c26,
-    4,
+    2369,
+    __c74,
+    1,
   ) as any as S.Schema<RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
+  output: __S(1897, __c59, 9) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3809,11 +3817,11 @@ export const removeControlProjectsLocationsCatalogsServingConfigs: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    213,
-    __c26,
-    5,
+    2560,
+    __c80,
+    0,
   ) as any as S.Schema<RemoveControlProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GoogleCloudRetailV2ServingConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3841,11 +3849,11 @@ export const removeFulfillmentPlacesProjectsLocationsCatalogsBranchesProducts: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    2593,
+    __c81,
+    1,
   ) as any as S.Schema<RemoveFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3873,11 +3881,11 @@ export const removeLocalInventoriesProjectsLocationsCatalogsBranchesProducts: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
+    2625,
+    __c82,
     1,
   ) as any as S.Schema<RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -3905,11 +3913,11 @@ export const replaceCatalogAttributeProjectsLocationsCatalogsAttributesConfig: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    219,
-    __c27,
-    3,
+    2657,
+    __c83,
+    1,
   ) as any as S.Schema<ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
+  output: __S(1897, __c59, 9) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3936,8 +3944,8 @@ export const resumeProjectsLocationsCatalogsModels: API.OperationMethod<
   ResumeProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GoogleCloudRetailV2Model>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ResumeProjectsLocationsCatalogsModelsRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<GoogleCloudRetailV2Model>,
   errors: [
     NotFound,
     Forbidden,
@@ -3964,8 +3972,8 @@ export const searchProjectsLocationsCatalogsPlacements: API.OperationMethod<
   SearchProjectsLocationsCatalogsPlacementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GoogleCloudRetailV2SearchResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<SearchProjectsLocationsCatalogsPlacementsRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<GoogleCloudRetailV2SearchResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -3993,11 +4001,11 @@ export const searchProjectsLocationsCatalogsServingConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    255,
-    __c31,
-    7,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<SearchProjectsLocationsCatalogsServingConfigsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<GoogleCloudRetailV2SearchResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<GoogleCloudRetailV2SearchResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -4024,8 +4032,8 @@ export const setDefaultBranchProjectsLocationsCatalogs: API.OperationMethod<
   SetDefaultBranchProjectsLocationsCatalogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2849, __c89, 1) as any as S.Schema<SetDefaultBranchProjectsLocationsCatalogsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [
     NotFound,
     Forbidden,
@@ -4053,11 +4061,11 @@ export const setInventoryProjectsLocationsCatalogsBranchesProducts: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    259,
-    __c32,
-    3,
+    2881,
+    __c90,
+    1,
   ) as any as S.Schema<SetInventoryProjectsLocationsCatalogsBranchesProductsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -4084,8 +4092,8 @@ export const tuneProjectsLocationsCatalogsModels: API.OperationMethod<
   TuneProjectsLocationsCatalogsModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2912, __c91, 0) as any as S.Schema<TuneProjectsLocationsCatalogsModelsRequest>,
+  output: __S(3041, __c95, 1) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [
     NotFound,
     Forbidden,
@@ -4113,11 +4121,11 @@ export const updateAttributesConfigProjectsLocationsCatalogs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    261,
-    __c32,
-    5,
+    3072,
+    __c96,
+    0,
   ) as any as S.Schema<UpdateAttributesConfigProjectsLocationsCatalogsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
+  output: __S(1897, __c59, 9) as any as S.Schema<GoogleCloudRetailV2AttributesConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -4145,11 +4153,11 @@ export const updateCompletionConfigProjectsLocationsCatalogs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    262,
-    __c32,
-    6,
+    3104,
+    __c97,
+    0,
   ) as any as S.Schema<UpdateCompletionConfigProjectsLocationsCatalogsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GoogleCloudRetailV2CompletionConfig>,
+  output: __S(800, __c25, 0) as any as S.Schema<GoogleCloudRetailV2CompletionConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -4177,14 +4185,14 @@ export const updateConversationalSearchCustomizationConfigProjectsLocationsCatal
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    263,
-    __c32,
-    7,
+    3136,
+    __c98,
+    0,
   ) as any as S.Schema<UpdateConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest>,
   output: __S(
-    137,
-    __c17,
-    1,
+    870,
+    __c27,
+    6,
   ) as any as S.Schema<GoogleCloudRetailV2ConversationalSearchCustomizationConfig>,
   errors: [
     NotFound,
@@ -4213,14 +4221,14 @@ export const updateGenerativeQuestionFeatureProjectsLocationsCatalogs: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    264,
-    __c33,
+    3168,
+    __c99,
     0,
   ) as any as S.Schema<UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest>,
   output: __S(
-    141,
-    __c17,
-    5,
+    960,
+    __c30,
+    0,
   ) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionsFeatureConfig>,
   errors: [
     NotFound,
@@ -4249,11 +4257,11 @@ export const updateGenerativeQuestionProjectsLocationsCatalogs: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    265,
-    __c33,
-    1,
+    3200,
+    __c100,
+    0,
   ) as any as S.Schema<UpdateGenerativeQuestionProjectsLocationsCatalogsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfig>,
+  output: __S(3424, __c107, 0) as any as S.Schema<GoogleCloudRetailV2GenerativeQuestionConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -4280,8 +4288,8 @@ export const writeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
   WriteProjectsLocationsCatalogsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<GoogleCloudRetailV2UserEvent>,
+  input: __S(3232, __c101, 0) as any as S.Schema<WriteProjectsLocationsCatalogsUserEventsRequest>,
+  output: __S(1382, __c43, 6) as any as S.Schema<GoogleCloudRetailV2UserEvent>,
   errors: [
     NotFound,
     Forbidden,
@@ -4298,389 +4306,6 @@ export const writeProjectsLocationsCatalogsUserEvents: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mergedValue: S.optional(S.String),
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mergedFacetKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minimum: S.optional(S.Number),
-          exclusiveMinimum: S.optional(S.Number),
-          exclusiveMaximum: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Interval",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String),
-          values: S.optional(__S(0, __c0, 0)),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          facetValues: S.optional(__S(0, __c0, 0)),
-          rerankFacet: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mergedFacetValues: S.optional(__S(2, __c0, 2)),
-          mergedFacet: S.optional(__S(3, __c0, 3)),
-          facetIntervals: S.optional(__S(5, __c0, 5)),
-          ignoredFacetValues: S.optional(__S(7, __c0, 7)),
-          rerankConfig: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          retrievableOption: S.optional(S.String),
-          inUse: S.optional(S.Boolean),
-          exactSearchableOption: S.optional(S.String),
-          type: S.optional(S.String),
-          dynamicFacetableOption: S.optional(S.String),
-          key: S.optional(S.String),
-          indexableOption: S.optional(S.String),
-          searchableOption: S.optional(S.String),
-          facetConfig: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CatalogAttribute",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          catalogAttribute: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2AddCatalogAttributeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+attributesConfig}:addCatalogAttribute",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
-      });
-    case 5:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attributeConfigLevel: S.optional(S.String),
-          name: S.optional(S.String),
-          catalogAttributes: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2AttributesConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          controlId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2AddControlRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+servingConfig}:addControl",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddControlProjectsLocationsCatalogsServingConfigsRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestPersonalizationSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreRecsDenylist: S.optional(S.Boolean),
-          twowaySynonymsControlIds: S.optional(__S(0, __c0, 0)),
-          onewaySynonymsControlIds: S.optional(__S(0, __c0, 0)),
-          diversityType: S.optional(S.String),
-          redirectControlIds: S.optional(__S(0, __c0, 0)),
-          facetControlIds: S.optional(__S(0, __c0, 0)),
-          modelId: S.optional(S.String),
-          filterControlIds: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-          replacementControlIds: S.optional(__S(0, __c0, 0)),
-          enableCategoryFilterLevel: S.optional(S.String),
-          name: S.optional(S.String),
-          boostControlIds: S.optional(__S(0, __c0, 0)),
-          ignoreControlIds: S.optional(__S(0, __c0, 0)),
-          solutionTypes: S.optional(__S(17, __c2, 1)),
-          personalizationSpec: S.optional(__S(18, __c2, 2)),
-          diversityLevel: S.optional(S.String),
-          doNotAssociateControlIds: S.optional(__S(0, __c0, 0)),
-          priceRerankingLevel: S.optional(S.String),
-          dynamicFacetSpec: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ServingConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          placeIds: S.optional(__S(0, __c0, 0)),
-          addTime: S.optional(S.String),
-          allowMissing: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2AddFulfillmentPlacesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+product}:addFulfillmentPlaces",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(22, __c2, 6)),
-          metadata: S.optional(__S(22, __c2, 6)),
-          name: S.optional(S.String),
-          error: S.optional(__S(24, __c3, 0)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          originalPrice: S.optional(__S(4, __c0, 4)),
-          price: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2PriceInfoPriceRange",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          price: S.optional(S.Number),
-          originalPrice: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-          priceEffectiveTime: S.optional(S.String),
-          priceRange: S.optional(__S(26, __c3, 2)),
-          priceExpireTime: S.optional(S.String),
-          cost: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2PriceInfo",
-      });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          numbers: S.optional(__S(28, __c3, 4)),
-          indexable: S.optional(S.Boolean),
-          searchable: S.optional(S.Boolean),
-          text: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2CustomAttribute",
-      });
-    case 6:
-      return S.Record(S.String, __S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          priceInfo: S.optional(__S(27, __c3, 3)),
-          placeId: S.optional(S.String),
-          fulfillmentTypes: S.optional(__S(0, __c0, 0)),
-          attributes: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2LocalInventory",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          addMask: S.optional(S.String),
-          addTime: S.optional(S.String),
-          localInventories: S.optional(__S(32, __c4, 0)),
-          allowMissing: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2AddLocalInventoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+product}:addLocalInventories",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          facet: S.optional(S.String),
-          finalQuestion: S.optional(S.String),
-          generatedQuestion: S.optional(S.String),
-          exampleValues: S.optional(__S(0, __c0, 0)),
-          catalog: S.optional(S.String),
-          allowedInConversation: S.optional(S.Boolean),
-          frequency: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2GenerativeQuestionConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          generativeQuestionConfig: S.optional(__S(35, __c4, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/generativeQuestion:batchUpdate",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          generativeQuestionConfigs: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ets: S.optional(S.String),
@@ -4692,11 +4317,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2CollectUserEventRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4707,19 +4332,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CollectProjectsLocationsCatalogsUserEventsRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(__S(23, __c2, 7)),
+          extensions: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "GoogleApiHttpBody" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxSuggestions: S.optional(S.Number.pipe(T.Query())),
-          languageCodes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          languageCodes: S.optional(__S(1920, __c60, 0).pipe(T.Query())),
           catalog: S.String.pipe(T.Label()),
           dataset: S.optional(S.String.pipe(T.Query())),
           deviceType: S.optional(S.String.pipe(T.Query())),
@@ -4737,7 +4366,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CompleteQueryProjectsLocationsCatalogsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recentSearch: S.optional(S.String),
@@ -4745,166 +4374,49 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           suggestion: S.optional(S.String),
-          attributes: S.optional(__S(30, __c3, 6)),
+          attributes: S.optional(__S(3298, __c103, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2CompleteQueryResponseCompletionResult",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(35, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(__S(0, __c0, 0)),
+          suggestions: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2CompleteQueryResponseAttributeResult",
       });
-    case 3:
-      return S.Record(S.String, __S(50, __c6, 2));
-    case 4:
+    case 6:
+      return S.Record(S.String, __S(37, __c1, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          recentSearchResults: S.optional(__S(47, __c5, 7)),
-          completionResults: S.optional(__S(49, __c6, 1)),
+          recentSearchResults: S.optional(__S(34, __c1, 2)),
+          completionResults: S.optional(__S(36, __c1, 4)),
           attributionToken: S.optional(S.String),
-          attributeResults: S.optional(__S(51, __c6, 3)),
+          attributeResults: S.optional(__S(38, __c1, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2CompleteQueryResponse",
       });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          boost: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conditionBoostSpecs: S.optional(__S(55, __c6, 7)),
-          skipBoostSpecValidation: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestBoostSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          canonicalFilter: S.optional(S.String),
-          sortBy: S.optional(S.String),
-          filter: S.optional(S.String),
-          boostSpec: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchRequestSearchParams",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          directUserRequest: S.optional(S.Boolean),
-          ipAddress: S.optional(S.String),
-          userAgent: S.optional(S.String),
-          userId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2UserInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          method: S.optional(S.String),
-          threshold: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SafetySetting",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ProductAttributeValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          productAttributeValue: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          textAnswer: S.optional(S.String),
-          selectedAnswer: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchRequestUserAnswer",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conversationalFilteringMode: S.optional(S.String),
-          userAnswer: S.optional(__S(63, __c7, 7)),
-          enableConversationalFiltering: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conversationId: S.optional(S.String),
-          userLabels: S.optional(__S(53, __c6, 5)),
-          searchParams: S.optional(__S(57, __c7, 1)),
-          branch: S.optional(S.String),
-          userInfo: S.optional(__S(58, __c7, 2)),
-          visitorId: S.optional(S.String),
-          pageCategories: S.optional(__S(0, __c0, 0)),
-          safetySettings: S.optional(__S(60, __c7, 4)),
-          conversationalFilteringSpec: S.optional(__S(64, __c8, 0)),
-          query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(101, __c3, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4915,27 +4427,88 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ConversationalSearchProjectsLocationsCatalogsPlacementsRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canonicalFilter: S.optional(S.String),
+          sortBy: S.optional(S.String),
+          filter: S.optional(S.String),
+          boostSpec: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConversationalSearchRequestSearchParams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          method: S.optional(S.String),
+          threshold: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SafetySetting",
+      });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
     case 3:
-      return S.Array(__S(62, __c7, 6));
+      return S.suspend(() =>
+        S.Struct({
+          textAnswer: S.optional(S.String),
+          selectedAnswer: S.optional(__S(196, __c6, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConversationalSearchRequestUserAnswer",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          followupQuestion: S.optional(S.String),
-          suggestedAnswers: S.optional(__S(67, __c8, 3)),
+          conversationalFilteringMode: S.optional(S.String),
+          userAnswer: S.optional(__S(99, __c3, 3)),
+          enableConversationalFiltering: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion",
+        identifier: "GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          followupQuestion: S.optional(__S(68, __c8, 4)),
-          additionalFilter: S.optional(__S(62, __c7, 6)),
+          conversationId: S.optional(S.String),
+          userLabels: S.optional(__S(128, __c4, 0)),
+          searchParams: S.optional(__S(96, __c3, 0)),
+          branch: S.optional(S.String),
+          userInfo: S.optional(__S(160, __c5, 0)),
+          visitorId: S.optional(S.String),
+          pageCategories: S.optional(__S(1920, __c60, 0)),
+          safetySettings: S.optional(__S(98, __c3, 2)),
+          conversationalFilteringSpec: S.optional(__S(100, __c3, 4)),
+          query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConversationalSearchRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          followupQuestion: S.optional(S.String),
+          suggestedAnswers: S.optional(__S(197, __c6, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          followupQuestion: S.optional(__S(102, __c3, 6)),
+          additionalFilter: S.optional(__S(196, __c6, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
@@ -4943,31 +4516,95 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(104, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           conversationalTextResponse: S.optional(S.String),
           state: S.optional(S.String),
-          followupQuestion: S.optional(__S(68, __c8, 4)),
+          followupQuestion: S.optional(__S(102, __c3, 6)),
           conversationId: S.optional(S.String),
-          conversationalFilteringResult: S.optional(__S(69, __c8, 5)),
-          refinedSearch: S.optional(__S(71, __c8, 7)),
-          userQueryTypes: S.optional(__S(0, __c0, 0)),
+          conversationalFilteringResult: S.optional(__S(103, __c3, 7)),
+          refinedSearch: S.optional(__S(105, __c3, 9)),
+          userQueryTypes: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ConversationalSearchResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directUserRequest: S.optional(S.Boolean),
+          ipAddress: S.optional(S.String),
+          userAgent: S.optional(S.String),
+          userId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2UserInfo",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          boost: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec",
+      });
     case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conditionBoostSpecs: S.optional(__S(193, __c6, 1)),
+          skipBoostSpecValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestBoostSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ProductAttributeValue",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          productAttributeValue: S.optional(__S(195, __c6, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer",
+      });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(101, __c3, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4978,118 +4615,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ConversationalSearchProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          placeIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2FulfillmentInfo",
-      });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          colorFamilies: S.optional(__S(0, __c0, 0)),
-          colors: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ColorInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          averageRating: S.optional(S.Number),
-          ratingHistogram: S.optional(__S(28, __c3, 4)),
-          ratingCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Rating",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          promotionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Promotion",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
   }
 }
-function __c10(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          genders: S.optional(__S(0, __c0, 0)),
-          ageGroups: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Audience",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleCloudRetailV2Image" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(84, __c10, 4)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fulfillmentInfo: S.optional(__S(75, __c9, 3)),
-          publishTime: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          primaryProductId: S.optional(S.String),
-          description: S.optional(S.String),
-          availableQuantity: S.optional(S.Number),
-          type: S.optional(S.String),
-          availableTime: S.optional(S.String),
-          patterns: S.optional(__S(0, __c0, 0)),
-          colorInfo: S.optional(__S(76, __c9, 4)),
-          brands: S.optional(__S(0, __c0, 0)),
-          materials: S.optional(__S(0, __c0, 0)),
-          rating: S.optional(__S(77, __c9, 5)),
-          gtin: S.optional(S.String),
-          collectionMemberIds: S.optional(__S(0, __c0, 0)),
-          categories: S.optional(__S(0, __c0, 0)),
-          conditions: S.optional(__S(0, __c0, 0)),
-          retrievableFields: S.optional(S.String),
-          attributes: S.optional(__S(30, __c3, 6)),
-          promotions: S.optional(__S(79, __c9, 7)),
-          priceInfo: S.optional(__S(27, __c3, 3)),
-          id: S.optional(S.String),
-          uri: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          sizes: S.optional(__S(0, __c0, 0)),
-          availability: S.optional(S.String),
-          title: S.optional(S.String),
-          ttl: S.optional(S.String),
-          audience: S.optional(__S(80, __c10, 0)),
-          images: S.optional(__S(82, __c10, 2)),
-          variants: S.optional(__S(83, __c10, 3)),
-          localInventories: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Product",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           productId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5100,192 +4635,122 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCatalogsBranchesProductsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pinMap: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RulePinAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          queryTerms: S.optional(__S(0, __c0, 0)),
-          term: S.optional(S.String),
-          replacementTerm: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleReplacementAction",
-      });
   }
 }
-function __c11(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributeNames: S.optional(__S(0, __c0, 0)),
+          type: S.optional(S.String),
+          placeIds: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2RuleRemoveFacetAction",
+        identifier: "GoogleCloudRetailV2FulfillmentInfo",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          synonyms: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleTwowaySynonymsAction",
-      });
+      return S.Array(__S(288, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          redirectUri: S.optional(S.String),
+          colorFamilies: S.optional(__S(1920, __c60, 0)),
+          colors: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2RuleRedirectAction",
+        identifier: "GoogleCloudRetailV2ColorInfo",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(S.Number),
-          attributeName: S.optional(S.String),
+          averageRating: S.optional(S.Number),
+          ratingHistogram: S.optional(__S(3296, __c103, 0)),
+          ratingCount: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment",
+        identifier: "GoogleCloudRetailV2Rating",
       });
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          facetPositionAdjustments: S.optional(__S(92, __c11, 4)),
+          promotionId: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2RuleForceReturnFacetAction",
+        identifier: "GoogleCloudRetailV2Promotion",
       });
+    case 5:
+      return S.Array(__S(292, __c9, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          doNotAssociateTerms: S.optional(__S(0, __c0, 0)),
-          terms: S.optional(__S(0, __c0, 0)),
-          queryTerms: S.optional(__S(0, __c0, 0)),
+          genders: S.optional(__S(1920, __c60, 0)),
+          ageGroups: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2RuleDoNotAssociateAction",
+        identifier: "GoogleCloudRetailV2Audience",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ignoreTerms: S.optional(__S(0, __c0, 0)),
+          uri: S.optional(S.String),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleIgnoreAction",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+      ).annotate({ identifier: "GoogleCloudRetailV2Image" });
+    case 8:
+      return S.Array(__S(295, __c9, 7));
+    case 9:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(298, __c9, 10)));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleFilterAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConditionTimeRange",
-      });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          fullMatch: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ConditionQueryTerm",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageCategories: S.optional(__S(0, __c0, 0)),
-          activeTimeRange: S.optional(__S(98, __c12, 2)),
-          queryTerms: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2Condition",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          onewayTerms: S.optional(__S(0, __c0, 0)),
-          synonyms: S.optional(__S(0, __c0, 0)),
-          queryTerms: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleOnewaySynonymsAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boost: S.optional(S.Number),
-          productsFilter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2RuleBoostAction",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pinAction: S.optional(__S(86, __c10, 6)),
-          replacementAction: S.optional(__S(87, __c10, 7)),
-          removeFacetAction: S.optional(__S(88, __c11, 0)),
-          twowaySynonymsAction: S.optional(__S(89, __c11, 1)),
-          redirectAction: S.optional(__S(90, __c11, 2)),
-          forceReturnFacetAction: S.optional(__S(93, __c11, 5)),
-          doNotAssociateAction: S.optional(__S(94, __c11, 6)),
-          ignoreAction: S.optional(__S(95, __c11, 7)),
-          filterAction: S.optional(__S(96, __c12, 0)),
-          condition: S.optional(__S(101, __c12, 5)),
-          onewaySynonymsAction: S.optional(__S(102, __c12, 6)),
-          boostAction: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({ identifier: "GoogleCloudRetailV2Rule" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          searchSolutionUseCase: S.optional(__S(17, __c2, 1)),
-          solutionTypes: S.optional(__S(17, __c2, 1)),
-          rule: S.optional(__S(104, __c13, 0)),
+          fulfillmentInfo: S.optional(__S(289, __c9, 1)),
+          publishTime: S.optional(S.String),
+          tags: S.optional(__S(1920, __c60, 0)),
           name: S.optional(S.String),
-          associatedServingConfigIds: S.optional(__S(0, __c0, 0)),
+          primaryProductId: S.optional(S.String),
+          description: S.optional(S.String),
+          availableQuantity: S.optional(S.Number),
+          type: S.optional(S.String),
+          availableTime: S.optional(S.String),
+          patterns: S.optional(__S(1920, __c60, 0)),
+          colorInfo: S.optional(__S(290, __c9, 2)),
+          brands: S.optional(__S(1920, __c60, 0)),
+          materials: S.optional(__S(1920, __c60, 0)),
+          rating: S.optional(__S(291, __c9, 3)),
+          gtin: S.optional(S.String),
+          collectionMemberIds: S.optional(__S(1920, __c60, 0)),
+          categories: S.optional(__S(1920, __c60, 0)),
+          conditions: S.optional(__S(1920, __c60, 0)),
+          retrievableFields: S.optional(S.String),
+          attributes: S.optional(__S(3298, __c103, 2)),
+          promotions: S.optional(__S(293, __c9, 5)),
+          priceInfo: S.optional(__S(3329, __c104, 1)),
+          id: S.optional(S.String),
+          uri: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          sizes: S.optional(__S(1920, __c60, 0)),
+          availability: S.optional(S.String),
+          title: S.optional(S.String),
+          ttl: S.optional(S.String),
+          audience: S.optional(__S(294, __c9, 6)),
+          images: S.optional(__S(296, __c9, 8)),
+          variants: S.optional(__S(297, __c9, 9)),
+          localInventories: S.optional(__S(3331, __c104, 3)),
         }),
       ).annotate({
-        identifier: "GoogleCloudRetailV2Control",
+        identifier: "GoogleCloudRetailV2Product",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           controlId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(371, __c11, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5296,17 +4761,213 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCatalogsControlsRequest",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pinMap: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RulePinAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          queryTerms: S.optional(__S(1920, __c60, 0)),
+          term: S.optional(S.String),
+          replacementTerm: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleReplacementAction",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attributeNames: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleRemoveFacetAction",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          servingConfigIds: S.optional(__S(0, __c0, 0)),
+          synonyms: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleTwowaySynonymsAction",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          redirectUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleRedirectAction",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(S.Number),
+          attributeName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment",
+      });
+    case 6:
+      return S.Array(__S(357, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          facetPositionAdjustments: S.optional(__S(358, __c11, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleForceReturnFacetAction",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          doNotAssociateTerms: S.optional(__S(1920, __c60, 0)),
+          terms: S.optional(__S(1920, __c60, 0)),
+          queryTerms: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleDoNotAssociateAction",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreTerms: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleIgnoreAction",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleFilterAction",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConditionTimeRange",
+      });
+    case 12:
+      return S.Array(__S(363, __c11, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          fullMatch: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ConditionQueryTerm",
+      });
+    case 14:
+      return S.Array(__S(365, __c11, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          pageCategories: S.optional(__S(1920, __c60, 0)),
+          activeTimeRange: S.optional(__S(364, __c11, 12)),
+          queryTerms: S.optional(__S(366, __c11, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2Condition",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          onewayTerms: S.optional(__S(1920, __c60, 0)),
+          synonyms: S.optional(__S(1920, __c60, 0)),
+          queryTerms: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleOnewaySynonymsAction",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          boost: S.optional(S.Number),
+          productsFilter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2RuleBoostAction",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          pinAction: S.optional(__S(352, __c11, 0)),
+          replacementAction: S.optional(__S(353, __c11, 1)),
+          removeFacetAction: S.optional(__S(354, __c11, 2)),
+          twowaySynonymsAction: S.optional(__S(355, __c11, 3)),
+          redirectAction: S.optional(__S(356, __c11, 4)),
+          forceReturnFacetAction: S.optional(__S(359, __c11, 7)),
+          doNotAssociateAction: S.optional(__S(360, __c11, 8)),
+          ignoreAction: S.optional(__S(361, __c11, 9)),
+          filterAction: S.optional(__S(362, __c11, 10)),
+          condition: S.optional(__S(367, __c11, 15)),
+          onewaySynonymsAction: S.optional(__S(368, __c11, 16)),
+          boostAction: S.optional(__S(369, __c11, 17)),
+        }),
+      ).annotate({ identifier: "GoogleCloudRetailV2Rule" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          searchSolutionUseCase: S.optional(__S(2432, __c76, 0)),
+          solutionTypes: S.optional(__S(2432, __c76, 0)),
+          rule: S.optional(__S(370, __c11, 18)),
+          name: S.optional(S.String),
+          associatedServingConfigIds: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2Control",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dryRun: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(420, __c13, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/models",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCatalogsModelsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfigIds: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ModelServingConfigList",
       });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           contextProductsType: S.optional(S.String),
@@ -5314,15 +4975,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          frequentlyBoughtTogetherConfig: S.optional(__S(109, __c13, 5)),
+          frequentlyBoughtTogetherConfig: S.optional(__S(418, __c13, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ModelModelFeaturesConfig",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           optimizationObjective: S.optional(S.String),
@@ -5332,10 +4993,10 @@ function __c13(j: number): any {
           periodicTuningState: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          servingConfigLists: S.optional(__S(108, __c13, 4)),
+          servingConfigLists: S.optional(__S(417, __c13, 1)),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          modelFeaturesConfig: S.optional(__S(110, __c13, 6)),
+          modelFeaturesConfig: S.optional(__S(419, __c13, 3)),
           tuningOperation: S.optional(S.String),
           lastTuneTime: S.optional(S.String),
           trainingState: S.optional(S.String),
@@ -5349,25 +5010,9 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dryRun: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/models",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCatalogsModelsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
           servingConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2464, __c77, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5378,7 +5023,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5392,11 +5041,19 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCatalogsBranchesProductsRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5410,7 +5067,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCatalogsControlsRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5424,7 +5085,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCatalogsModelsRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5438,7 +5103,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           outputUriPrefix: S.optional(S.String),
@@ -5446,11 +5115,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2OutputConfigGcsDestination",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.optional(S.String),
@@ -5460,29 +5125,29 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2OutputConfigBigQueryDestination",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(__S(119, __c14, 7)),
-          bigqueryDestination: S.optional(__S(120, __c15, 0)),
+          gcsDestination: S.optional(__S(640, __c20, 0)),
+          bigqueryDestination: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2OutputConfig",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          outputConfig: S.optional(__S(121, __c15, 1)),
+          outputConfig: S.optional(__S(642, __c20, 2)),
           filter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ExportAnalyticsMetricsRequest",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(643, __c20, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5493,7 +5158,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ExportAnalyticsMetricsProjectsLocationsCatalogsRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5503,7 +5172,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetAttributesConfigProjectsLocationsCatalogsRequest",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5513,7 +5186,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetCompletionConfigProjectsLocationsCatalogsRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           day: S.optional(S.Number),
@@ -5521,7 +5198,7 @@ function __c15(j: number): any {
           year: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleTypeDate" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataSchema: S.optional(S.String),
@@ -5529,34 +5206,38 @@ function __c15(j: number): any {
           gcsStagingDir: S.optional(S.String),
           tableId: S.optional(S.String),
           projectId: S.optional(S.String),
-          partitionDate: S.optional(__S(126, __c15, 6)),
+          partitionDate: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2BigQuerySource",
       });
   }
 }
-function __c16(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bigQuerySource: S.optional(__S(127, __c15, 7)),
+          bigQuerySource: S.optional(__S(737, __c23, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2CompletionDataInputConfig",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           maxSuggestions: S.optional(S.Number),
           autoLearning: S.optional(S.Boolean),
-          allowlistInputConfig: S.optional(__S(128, __c16, 0)),
+          allowlistInputConfig: S.optional(__S(768, __c24, 0)),
           minPrefixLength: S.optional(S.Number),
-          suggestionsInputConfig: S.optional(__S(128, __c16, 0)),
+          suggestionsInputConfig: S.optional(__S(768, __c24, 0)),
           matchingOrder: S.optional(S.String),
-          denylistInputConfig: S.optional(__S(128, __c16, 0)),
+          denylistInputConfig: S.optional(__S(768, __c24, 0)),
           lastAllowlistImportOperation: S.optional(S.String),
           lastDenylistImportOperation: S.optional(S.String),
           lastSuggestionsImportOperation: S.optional(S.String),
@@ -5564,7 +5245,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2CompletionConfig",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5578,7 +5263,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetConversationalSearchCustomizationConfigProjectsLocationsCatalogsRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           classifiedPositive: S.optional(S.Boolean),
@@ -5589,9 +5278,9 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2IntentClassificationConfigExample",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
@@ -5601,43 +5290,43 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent",
       });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(866, __c27, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          inlineForceIntents: S.optional(__S(134, __c16, 6)),
+          inlineForceIntents: S.optional(__S(867, __c27, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2IntentClassificationConfigInlineSource",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          example: S.optional(__S(132, __c16, 4)),
-          blocklistKeywords: S.optional(__S(0, __c0, 0)),
-          disabledIntentTypes: S.optional(__S(0, __c0, 0)),
-          inlineSource: S.optional(__S(135, __c16, 7)),
+          example: S.optional(__S(865, __c27, 1)),
+          blocklistKeywords: S.optional(__S(1920, __c60, 0)),
+          disabledIntentTypes: S.optional(__S(1920, __c60, 0)),
+          inlineSource: S.optional(__S(868, __c27, 4)),
           modelPreamble: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2IntentClassificationConfig",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.String),
-          intentClassificationConfig: S.optional(__S(136, __c17, 0)),
+          intentClassificationConfig: S.optional(__S(869, __c27, 5)),
           retailerDisplayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ConversationalSearchCustomizationConfig",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
@@ -5651,7 +5340,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDefaultBranchProjectsLocationsCatalogsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.String),
@@ -5661,7 +5350,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2GetDefaultBranchResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
@@ -5675,7 +5368,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetGenerativeQuestionFeatureProjectsLocationsCatalogsRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           minimumProducts: S.optional(S.Number),
@@ -5685,7 +5382,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2GenerativeQuestionsFeatureConfig",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5695,7 +5396,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsBranchesOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5707,7 +5412,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5719,7 +5424,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsControlsRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5729,7 +5438,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsModelsRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5739,7 +5452,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5749,7 +5466,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5759,7 +5480,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5769,31 +5494,14 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetProjectsOperationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gcsPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ImportErrorsConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataSchema: S.optional(S.String),
-          inputUris: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2GcsSource",
-      });
   }
 }
-function __c19(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(83, __c10, 3)),
+          products: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ProductInlineSource",
@@ -5801,9 +5509,9 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bigQuerySource: S.optional(__S(127, __c15, 7)),
-          gcsSource: S.optional(__S(151, __c18, 7)),
-          productInlineSource: S.optional(__S(152, __c19, 0)),
+          bigQuerySource: S.optional(__S(737, __c23, 1)),
+          gcsSource: S.optional(__S(1281, __c40, 1)),
+          productInlineSource: S.optional(__S(1248, __c39, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ProductInputConfig",
@@ -5812,8 +5520,8 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          errorsConfig: S.optional(__S(150, __c18, 6)),
-          inputConfig: S.optional(__S(153, __c19, 1)),
+          errorsConfig: S.optional(__S(1280, __c40, 0)),
+          inputConfig: S.optional(__S(1249, __c39, 1)),
           updateMask: S.optional(S.String),
           reconciliationMode: S.optional(S.String),
           notificationPubsubTopic: S.optional(S.String),
@@ -5825,7 +5533,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1250, __c39, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5836,20 +5544,45 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsCatalogsBranchesProductsRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ImportErrorsConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataSchema: S.optional(S.String),
+          inputUris: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2GcsSource",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           notificationPubsubTopic: S.optional(S.String),
-          inputConfig: S.optional(__S(128, __c16, 0)),
+          inputConfig: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ImportCompletionDataRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1312, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5860,26 +5593,74 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsCatalogsCompletionDataRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.Number),
-          product: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ProductDetail",
-      });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
   }
 }
-function __c20(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1382, __c43, 6));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userEvents: S.optional(__S(1344, __c42, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2UserEventInlineSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userEventInlineSource: S.optional(__S(1345, __c42, 1)),
+          bigQuerySource: S.optional(__S(737, __c23, 1)),
+          gcsSource: S.optional(__S(1281, __c40, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2UserEventInputConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errorsConfig: S.optional(__S(1280, __c40, 0)),
+          inputConfig: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ImportUserEventsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1347, __c42, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/userEvents:import",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsCatalogsUserEventsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          quantity: S.optional(S.Number),
+          product: S.optional(__S(298, __c9, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ProductDetail",
+      });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           panelId: S.optional(S.String),
-          productDetails: S.optional(__S(159, __c19, 7)),
+          productDetails: S.optional(__S(1377, __c43, 1)),
           panelPosition: S.optional(S.Number),
           displayName: S.optional(S.String),
           totalPanels: S.optional(S.Number),
@@ -5888,9 +5669,9 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2PanelInfo",
       });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1378, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5902,7 +5683,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2PurchaseTransaction",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           completionAttributionToken: S.optional(S.String),
@@ -5912,84 +5693,40 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2CompletionDetail",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.String),
-          attributes: S.optional(__S(30, __c3, 6)),
-          panels: S.optional(__S(161, __c20, 1)),
-          purchaseTransaction: S.optional(__S(162, __c20, 2)),
+          attributes: S.optional(__S(3298, __c103, 2)),
+          panels: S.optional(__S(1379, __c43, 3)),
+          purchaseTransaction: S.optional(__S(1380, __c43, 4)),
           pageViewId: S.optional(S.String),
-          userInfo: S.optional(__S(58, __c7, 2)),
+          userInfo: S.optional(__S(160, __c5, 0)),
           eventTime: S.optional(S.String),
           offset: S.optional(S.Number),
-          pageCategories: S.optional(__S(0, __c0, 0)),
+          pageCategories: S.optional(__S(1920, __c60, 0)),
           referrerUri: S.optional(S.String),
           cartId: S.optional(S.String),
           attributionToken: S.optional(S.String),
           orderBy: S.optional(S.String),
-          experimentIds: S.optional(__S(0, __c0, 0)),
-          productDetails: S.optional(__S(159, __c19, 7)),
+          experimentIds: S.optional(__S(1920, __c60, 0)),
+          productDetails: S.optional(__S(1377, __c43, 1)),
           uri: S.optional(S.String),
           searchQuery: S.optional(S.String),
           sessionId: S.optional(S.String),
           visitorId: S.optional(S.String),
           entity: S.optional(S.String),
-          completionDetail: S.optional(__S(163, __c20, 3)),
+          completionDetail: S.optional(__S(1381, __c43, 5)),
           filter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2UserEvent",
       });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userEvents: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2UserEventInlineSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userEventInlineSource: S.optional(__S(166, __c20, 6)),
-          bigQuerySource: S.optional(__S(127, __c15, 7)),
-          gcsSource: S.optional(__S(151, __c18, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2UserEventInputConfig",
-      });
   }
 }
-function __c21(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorsConfig: S.optional(__S(150, __c18, 6)),
-          inputConfig: S.optional(__S(167, __c20, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ImportUserEventsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(168, __c21, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/userEvents:import",
-            baseUrl: "https://retail.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsCatalogsUserEventsRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6005,7 +5742,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsRequest",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(1441, __c45, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          catalogs: S.optional(__S(1409, __c44, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ListCatalogsResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ingestionProductType: S.optional(S.String),
@@ -6014,28 +5766,21 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2ProductLevelConfig",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          productLevelConfig: S.optional(__S(171, __c21, 3)),
+          productLevelConfig: S.optional(__S(1440, __c45, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2Catalog",
       });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          catalogs: S.optional(__S(173, __c21, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ListCatalogsResponse",
-      });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6053,20 +5798,20 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsBranchesProductsRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          products: S.optional(__S(83, __c10, 3)),
+          products: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ListProductsResponse",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6083,18 +5828,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsControlsRequest",
       });
+    case 1:
+      return S.Array(__S(371, __c11, 19));
     case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          controls: S.optional(__S(178, __c22, 2)),
+          controls: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ListControlsResponse",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -6108,15 +5857,19 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsGenerativeQuestionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          generativeQuestionConfigs: S.optional(__S(40, __c5, 0)),
+          generativeQuestionConfigs: S.optional(__S(3392, __c106, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ListGenerativeQuestionConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -6132,22 +5885,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsModelsRequest",
       });
-    case 7:
-      return S.Array(__S(111, __c13, 7));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(420, __c13, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(183, __c22, 7)),
+          models: S.optional(__S(1569, __c49, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ListModelsResponse",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -6165,19 +5918,27 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsOperationsRequest",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3041, __c95, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(186, __c23, 2)),
+          unreachable: S.optional(__S(1920, __c60, 0)),
+          operations: S.optional(__S(1632, __c51, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6193,18 +5954,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 5:
-      return S.Array(__S(19, __c2, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          servingConfigs: S.optional(__S(189, __c23, 5)),
+          servingConfigs: S.optional(__S(1665, __c52, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ListServingConfigsResponse",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -6224,7 +5989,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6244,76 +6009,234 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListProjectsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(172, __c21, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1441, __c45, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(84, __c10, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(298, __c9, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsBranchesProductsRequest",
       });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          catalogAttribute: S.optional(__S(1895, __c59, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2AddCatalogAttributeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributesConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+attributesConfig}:addCatalogAttribute",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1952, __c61, 0));
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mergedValue: S.optional(S.String),
+          values: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue",
+      });
+    case 1:
+      return S.Array(__S(1888, __c59, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mergedFacetKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String),
+          values: S.optional(__S(1920, __c60, 0)),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues",
+      });
+    case 4:
+      return S.Array(__S(1891, __c59, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          facetValues: S.optional(__S(1920, __c60, 0)),
+          rerankFacet: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          mergedFacetValues: S.optional(__S(1889, __c59, 1)),
+          mergedFacet: S.optional(__S(1890, __c59, 2)),
+          facetIntervals: S.optional(__S(1856, __c58, 0)),
+          ignoredFacetValues: S.optional(__S(1892, __c59, 4)),
+          rerankConfig: S.optional(__S(1893, __c59, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttributeFacetConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          retrievableOption: S.optional(S.String),
+          inUse: S.optional(S.Boolean),
+          exactSearchableOption: S.optional(S.String),
+          type: S.optional(S.String),
+          dynamicFacetableOption: S.optional(S.String),
+          key: S.optional(S.String),
+          indexableOption: S.optional(S.String),
+          searchableOption: S.optional(S.String),
+          facetConfig: S.optional(__S(1894, __c59, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CatalogAttribute",
+      });
+    case 8:
+      return S.Record(S.String, __S(1895, __c59, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          attributeConfigLevel: S.optional(S.String),
+          name: S.optional(S.String),
+          catalogAttributes: S.optional(__S(1896, __c59, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2AttributesConfig",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minimum: S.optional(S.Number),
+          exclusiveMinimum: S.optional(S.Number),
+          exclusiveMaximum: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2Interval",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(371, __c11, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsControlsRequest",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(420, __c13, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsModelsRequest",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2464, __c77, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudRetailV2PauseModelRequest",
-      });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(198, __c24, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2112, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6326,27 +6249,21 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudRetailV2PauseModelRequest",
+      });
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(S.String),
-          userEvent: S.optional(__S(164, __c20, 4)),
-          labels: S.optional(__S(53, __c6, 5)),
-          pageToken: S.optional(S.String),
-          validateOnly: S.optional(S.Boolean),
-          pageSize: S.optional(S.Number),
-          params: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2PredictRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(200, __c25, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6357,33 +6274,55 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PredictProjectsLocationsCatalogsPlacementsRequest",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(22, __c2, 6)),
+          filter: S.optional(S.String),
+          userEvent: S.optional(__S(1382, __c43, 6)),
+          labels: S.optional(__S(128, __c4, 0)),
+          pageToken: S.optional(S.String),
+          validateOnly: S.optional(S.Boolean),
+          pageSize: S.optional(S.Number),
+          params: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2PredictRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(2976, __c93, 0)),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2PredictResponsePredictionResult",
       });
+    case 2:
+      return S.Array(__S(2177, __c68, 1));
     case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           attributionToken: S.optional(S.String),
-          missingIds: S.optional(__S(0, __c0, 0)),
-          results: S.optional(__S(203, __c25, 3)),
+          missingIds: S.optional(__S(1920, __c60, 0)),
+          results: S.optional(__S(2178, __c68, 2)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2PredictResponse",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(200, __c25, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6394,20 +6333,15 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PredictProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2PurgeProductsRequest",
-      });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(206, __c25, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6420,13 +6354,26 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2PurgeProductsRequest",
+      });
+  }
+}
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(206, __c25, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2272, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6437,7 +6384,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsCatalogsUserEventsRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userEventRejoinScope: S.optional(S.String),
@@ -6445,11 +6396,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2RejoinUserEventsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(209, __c26, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2336, __c73, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6460,7 +6411,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RejoinProjectsLocationsCatalogsUserEventsRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -6468,11 +6423,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2RemoveCatalogAttributeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(211, __c26, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2368, __c74, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6483,11 +6438,95 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RemoveCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
       });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+servingConfig}:addControl",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddControlProjectsLocationsCatalogsServingConfigsRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreRecsDenylist: S.optional(S.Boolean),
+          twowaySynonymsControlIds: S.optional(__S(1920, __c60, 0)),
+          onewaySynonymsControlIds: S.optional(__S(1920, __c60, 0)),
+          diversityType: S.optional(S.String),
+          redirectControlIds: S.optional(__S(1920, __c60, 0)),
+          facetControlIds: S.optional(__S(1920, __c60, 0)),
+          modelId: S.optional(S.String),
+          filterControlIds: S.optional(__S(1920, __c60, 0)),
+          displayName: S.optional(S.String),
+          replacementControlIds: S.optional(__S(1920, __c60, 0)),
+          enableCategoryFilterLevel: S.optional(S.String),
+          name: S.optional(S.String),
+          boostControlIds: S.optional(__S(1920, __c60, 0)),
+          ignoreControlIds: S.optional(__S(1920, __c60, 0)),
+          solutionTypes: S.optional(__S(2432, __c76, 0)),
+          personalizationSpec: S.optional(__S(2496, __c78, 0)),
+          diversityLevel: S.optional(S.String),
+          doNotAssociateControlIds: S.optional(__S(1920, __c60, 0)),
+          priceRerankingLevel: S.optional(S.String),
+          dynamicFacetSpec: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ServingConfig",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestPersonalizationSpec",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          controlId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2AddControlRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(2528, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6498,22 +6537,26 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "RemoveControlProjectsLocationsCatalogsServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
           removeTime: S.optional(S.String),
-          placeIds: S.optional(__S(0, __c0, 0)),
+          placeIds: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2RemoveFulfillmentPlacesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(__S(214, __c26, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6526,12 +6569,12 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          placeIds: S.optional(__S(0, __c0, 0)),
+          placeIds: S.optional(__S(1920, __c60, 0)),
           removeTime: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
         }),
@@ -6542,7 +6585,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           product: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2624, __c82, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6553,20 +6596,24 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RemoveLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          catalogAttribute: S.optional(__S(10, __c1, 2)),
+          catalogAttribute: S.optional(__S(1895, __c59, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ReplaceCatalogAttributeRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           attributesConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(218, __c27, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6577,11 +6624,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ReplaceCatalogAttributeProjectsLocationsCatalogsAttributesConfigRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(198, __c24, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2112, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6592,160 +6643,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ResumeProjectsLocationsCatalogsModelsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2StringList",
-      });
-    case 6:
-      return S.Record(S.String, __S(221, __c27, 5));
-    case 7:
-      return S.Array(__S(61, __c7, 5));
   }
 }
-function __c28(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          productAttributeValue: S.optional(__S(61, __c7, 5)),
-          productAttributeValues: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          selectedAnswer: S.optional(__S(224, __c28, 0)),
-          textAnswer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          followupConversationRequested: S.optional(S.Boolean),
-          userAnswer: S.optional(__S(225, __c28, 1)),
-          conversationId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestConversationalSearchSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pinUnexpandedResults: S.optional(S.Boolean),
-          condition: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestQueryExpansionSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          returnMinMax: S.optional(S.Boolean),
-          caseInsensitive: S.optional(S.Boolean),
-          intervals: S.optional(__S(5, __c0, 5)),
-          orderBy: S.optional(S.String),
-          restrictedValues: S.optional(__S(0, __c0, 0)),
-          prefixes: S.optional(__S(0, __c0, 0)),
-          contains: S.optional(__S(0, __c0, 0)),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestFacetSpecFacetKey",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          excludedFilterKeys: S.optional(__S(0, __c0, 0)),
-          enableDynamicPosition: S.optional(S.Boolean),
-          facetKey: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestFacetSpec",
-      });
-    case 6:
-      return S.Array(__S(229, __c28, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2ProductAttributeInterval",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          productAttributeInterval: S.optional(__S(231, __c28, 7)),
-          productAttributeValue: S.optional(__S(61, __c7, 5)),
-          representativeProductId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudRetailV2Tile" });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appliedTiles: S.optional(__S(233, __c29, 1)),
-          tileNavigationRequested: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequestTileNavigationSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          searchMode: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-          userAttributes: S.optional(__S(222, __c27, 6)),
-          offset: S.optional(S.Number),
-          branch: S.optional(S.String),
-          placeId: S.optional(S.String),
-          spellCorrectionSpec: S.optional(__S(18, __c2, 2)),
-          pageToken: S.optional(S.String),
-          dynamicFacetSpec: S.optional(__S(18, __c2, 2)),
-          conversationalSearchSpec: S.optional(__S(226, __c28, 2)),
-          orderBy: S.optional(S.String),
-          queryExpansionSpec: S.optional(__S(227, __c28, 3)),
-          pageCategories: S.optional(__S(0, __c0, 0)),
-          regionCode: S.optional(S.String),
-          boostSpec: S.optional(__S(56, __c7, 0)),
-          query: S.optional(S.String),
-          entity: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          personalizationSpec: S.optional(__S(18, __c2, 2)),
-          visitorId: S.optional(S.String),
-          facetSpecs: S.optional(__S(230, __c28, 6)),
-          tileNavigationSpec: S.optional(__S(234, __c29, 2)),
-          canonicalFilter: S.optional(S.String),
-          variantRollupKeys: S.optional(__S(0, __c0, 0)),
-          labels: S.optional(__S(53, __c6, 5)),
-          userInfo: S.optional(__S(58, __c7, 2)),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudRetailV2SearchRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2766, __c86, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6756,7 +6662,152 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "SearchProjectsLocationsCatalogsPlacementsRequest",
       });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2StringList",
+      });
+    case 1:
+      return S.Record(S.String, __S(2752, __c86, 0));
+    case 2:
+      return S.Array(__S(195, __c6, 3));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          productAttributeValue: S.optional(__S(195, __c6, 3)),
+          productAttributeValues: S.optional(__S(2754, __c86, 2)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          selectedAnswer: S.optional(__S(2755, __c86, 3)),
+          textAnswer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswer",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          followupConversationRequested: S.optional(S.Boolean),
+          userAnswer: S.optional(__S(2756, __c86, 4)),
+          conversationId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestConversationalSearchSpec",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          pinUnexpandedResults: S.optional(S.Boolean),
+          condition: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestQueryExpansionSpec",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          returnMinMax: S.optional(S.Boolean),
+          caseInsensitive: S.optional(S.Boolean),
+          intervals: S.optional(__S(1856, __c58, 0)),
+          orderBy: S.optional(S.String),
+          restrictedValues: S.optional(__S(1920, __c60, 0)),
+          prefixes: S.optional(__S(1920, __c60, 0)),
+          contains: S.optional(__S(1920, __c60, 0)),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestFacetSpecFacetKey",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          excludedFilterKeys: S.optional(__S(1920, __c60, 0)),
+          enableDynamicPosition: S.optional(S.Boolean),
+          facetKey: S.optional(__S(2759, __c86, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestFacetSpec",
+      });
+    case 9:
+      return S.Array(__S(2760, __c86, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(__S(1952, __c61, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2ProductAttributeInterval",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          productAttributeInterval: S.optional(__S(2762, __c86, 10)),
+          productAttributeValue: S.optional(__S(195, __c6, 3)),
+          representativeProductId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudRetailV2Tile" });
+    case 12:
+      return S.Array(__S(2763, __c86, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          appliedTiles: S.optional(__S(2764, __c86, 12)),
+          tileNavigationRequested: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequestTileNavigationSpec",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          searchMode: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+          userAttributes: S.optional(__S(2753, __c86, 1)),
+          offset: S.optional(S.Number),
+          branch: S.optional(S.String),
+          placeId: S.optional(S.String),
+          spellCorrectionSpec: S.optional(__S(2496, __c78, 0)),
+          pageToken: S.optional(S.String),
+          dynamicFacetSpec: S.optional(__S(2496, __c78, 0)),
+          conversationalSearchSpec: S.optional(__S(2757, __c86, 5)),
+          orderBy: S.optional(S.String),
+          queryExpansionSpec: S.optional(__S(2758, __c86, 6)),
+          pageCategories: S.optional(__S(1920, __c60, 0)),
+          regionCode: S.optional(S.String),
+          boostSpec: S.optional(__S(194, __c6, 2)),
+          query: S.optional(S.String),
+          entity: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          personalizationSpec: S.optional(__S(2496, __c78, 0)),
+          visitorId: S.optional(S.String),
+          facetSpecs: S.optional(__S(2761, __c86, 9)),
+          tileNavigationSpec: S.optional(__S(2765, __c86, 13)),
+          canonicalFilter: S.optional(S.String),
+          variantRollupKeys: S.optional(__S(1920, __c60, 0)),
+          labels: S.optional(__S(128, __c4, 0)),
+          userInfo: S.optional(__S(160, __c5, 0)),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2SearchRequest",
+      });
+    case 15:
       return S.suspend(() =>
         S.Struct({
           originalServingConfig: S.optional(S.String),
@@ -6765,118 +6816,110 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2ExperimentInfoServingConfigExperiment",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          servingConfigExperiment: S.optional(__S(237, __c29, 5)),
+          servingConfigExperiment: S.optional(__S(2767, __c86, 15)),
           experiment: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2ExperimentInfo",
       });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
+      return S.Array(__S(2768, __c86, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           maxValue: S.optional(S.Number),
           count: S.optional(S.String),
           minValue: S.optional(S.Number),
-          interval: S.optional(__S(4, __c0, 4)),
+          interval: S.optional(__S(1952, __c61, 0)),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseFacetFacetValue",
       });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
+    case 19:
+      return S.Array(__S(2770, __c86, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          values: S.optional(__S(241, __c30, 1)),
+          values: S.optional(__S(2771, __c86, 19)),
           dynamicFacet: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseFacet",
       });
-    case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
+    case 21:
+      return S.Array(__S(2772, __c86, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          productId: S.optional(__S(0, __c0, 0)),
+          productId: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2PinControlMetadataProductPins",
       });
-    case 5:
-      return S.Record(S.String, __S(244, __c30, 4));
-    case 6:
+    case 23:
+      return S.Record(S.String, __S(2774, __c86, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          droppedPins: S.optional(__S(245, __c30, 5)),
-          allMatchedPins: S.optional(__S(245, __c30, 5)),
+          droppedPins: S.optional(__S(2775, __c86, 23)),
+          allMatchedPins: S.optional(__S(2775, __c86, 23)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2PinControlMetadata",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(28, __c3, 4)),
+          values: S.optional(__S(3296, __c103, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2DoubleList",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(247, __c30, 7));
-    case 1:
+    case 26:
+      return S.Record(S.String, __S(2777, __c86, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           matchingVariantCount: S.optional(S.Number),
-          modelScores: S.optional(__S(248, __c31, 0)),
-          matchingVariantFields: S.optional(__S(53, __c6, 5)),
-          product: S.optional(__S(84, __c10, 4)),
-          personalLabels: S.optional(__S(0, __c0, 0)),
+          modelScores: S.optional(__S(2778, __c86, 26)),
+          matchingVariantFields: S.optional(__S(128, __c4, 0)),
+          product: S.optional(__S(298, __c9, 10)),
+          personalLabels: S.optional(__S(1920, __c60, 0)),
           id: S.optional(S.String),
-          variantRollupValues: S.optional(__S(22, __c2, 6)),
+          variantRollupValues: S.optional(__S(2976, __c93, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseSearchResult",
       });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
+    case 28:
+      return S.Array(__S(2779, __c86, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          additionalFilters: S.optional(__S(67, __c8, 3)),
+          additionalFilters: S.optional(__S(197, __c6, 5)),
           followupQuestion: S.optional(S.String),
           refinedQuery: S.optional(S.String),
-          additionalFilter: S.optional(__S(62, __c7, 6)),
+          additionalFilter: S.optional(__S(196, __c6, 4)),
           conversationId: S.optional(S.String),
-          suggestedAnswers: S.optional(__S(67, __c8, 3)),
+          suggestedAnswers: S.optional(__S(197, __c6, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseConversationalSearchResult",
       });
-    case 4:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          tiles: S.optional(__S(233, __c29, 1)),
+          tiles: S.optional(__S(2764, __c86, 12)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseTileNavigationResult",
       });
-    case 5:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           expandedQuery: S.optional(S.Boolean),
@@ -6885,32 +6928,40 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponseQueryExpansionInfo",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           correctedQuery: S.optional(S.String),
-          experimentInfo: S.optional(__S(239, __c29, 7)),
-          facets: S.optional(__S(243, __c30, 3)),
-          pinControlMetadata: S.optional(__S(246, __c30, 6)),
-          appliedControls: S.optional(__S(0, __c0, 0)),
+          experimentInfo: S.optional(__S(2769, __c86, 17)),
+          facets: S.optional(__S(2773, __c86, 21)),
+          pinControlMetadata: S.optional(__S(2776, __c86, 24)),
+          appliedControls: S.optional(__S(1920, __c60, 0)),
           redirectUri: S.optional(S.String),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
-          invalidConditionBoostSpecs: S.optional(__S(55, __c6, 7)),
+          invalidConditionBoostSpecs: S.optional(__S(193, __c6, 1)),
           attributionToken: S.optional(S.String),
-          results: S.optional(__S(250, __c31, 2)),
-          conversationalSearchResult: S.optional(__S(251, __c31, 3)),
-          tileNavigationResult: S.optional(__S(252, __c31, 4)),
-          queryExpansionInfo: S.optional(__S(253, __c31, 5)),
+          results: S.optional(__S(2780, __c86, 28)),
+          conversationalSearchResult: S.optional(__S(2781, __c86, 29)),
+          tileNavigationResult: S.optional(__S(2782, __c86, 30)),
+          queryExpansionInfo: S.optional(__S(2783, __c86, 31)),
         }),
       ).annotate({
         identifier: "GoogleCloudRetailV2SearchResponse",
       });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           placement: S.String.pipe(T.Label()),
-          body: S.optional(__S(235, __c29, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2766, __c86, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6923,7 +6974,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6939,7 +6990,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
-          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6950,10 +7001,14 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetDefaultBranchProjectsLocationsCatalogsRequest",
       });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          inventory: S.optional(__S(84, __c10, 4)),
+          inventory: S.optional(__S(298, __c9, 10)),
           setTime: S.optional(S.String),
           allowMissing: S.optional(S.Boolean),
           setMask: S.optional(S.String),
@@ -6961,11 +7016,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GoogleCloudRetailV2SetInventoryRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(258, __c32, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6976,11 +7031,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SetInventoryProjectsLocationsCatalogsBranchesProductsRequest",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(198, __c24, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2112, __c66, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6991,36 +7050,114 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "TuneProjectsLocationsCatalogsModelsRequest",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          placeIds: S.optional(__S(1920, __c60, 0)),
+          addTime: S.optional(S.String),
+          allowMissing: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2AddFulfillmentPlacesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.String.pipe(T.Label()),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+product}:addFulfillmentPlaces",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddFulfillmentPlacesProjectsLocationsCatalogsBranchesProductsRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2976, __c93, 0));
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(3008, __c94, 0)),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(2976, __c93, 0)),
+          metadata: S.optional(__S(2976, __c93, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(3040, __c95, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1897, __c59, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateAttributesConfigProjectsLocationsCatalogsRequest",
       });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://retail.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateCompletionConfigProjectsLocationsCatalogsRequest",
       });
-    case 7:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(870, __c27, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7033,14 +7170,14 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(960, __c30, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7051,12 +7188,16 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateGenerativeQuestionFeatureProjectsLocationsCatalogsRequest",
       });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3424, __c107, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7067,12 +7208,16 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateGenerativeQuestionProjectsLocationsCatalogsRequest",
       });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           writeAsync: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(164, __c20, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1382, __c43, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7085,7 +7230,165 @@ function __c33(j: number): any {
       });
   }
 }
-
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addMask: S.optional(S.String),
+          addTime: S.optional(S.String),
+          localInventories: S.optional(__S(3331, __c104, 3)),
+          allowMissing: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2AddLocalInventoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.String.pipe(T.Label()),
+          body: S.optional(__S(3264, __c102, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+product}:addLocalInventories",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddLocalInventoriesProjectsLocationsCatalogsBranchesProductsRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          numbers: S.optional(__S(3296, __c103, 0)),
+          indexable: S.optional(S.Boolean),
+          searchable: S.optional(S.Boolean),
+          text: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2CustomAttribute",
+      });
+    case 2:
+      return S.Record(S.String, __S(3297, __c103, 1));
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          originalPrice: S.optional(__S(1952, __c61, 0)),
+          price: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2PriceInfoPriceRange",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          price: S.optional(S.Number),
+          originalPrice: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+          priceEffectiveTime: S.optional(S.String),
+          priceRange: S.optional(__S(3328, __c104, 0)),
+          priceExpireTime: S.optional(S.String),
+          cost: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2PriceInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          priceInfo: S.optional(__S(3329, __c104, 1)),
+          placeId: S.optional(S.String),
+          fulfillmentTypes: S.optional(__S(1920, __c60, 0)),
+          attributes: S.optional(__S(3298, __c103, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2LocalInventory",
+      });
+    case 3:
+      return S.Array(__S(3330, __c104, 2));
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          generativeQuestionConfig: S.optional(__S(3424, __c107, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2UpdateGenerativeQuestionConfigRequest",
+      });
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(3361, __c105, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3362, __c105, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/generativeQuestion:batchUpdate",
+            baseUrl: "https://retail.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateProjectsLocationsCatalogsGenerativeQuestionRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          generativeQuestionConfigs: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsResponse",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3424, __c107, 0));
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          facet: S.optional(S.String),
+          finalQuestion: S.optional(S.String),
+          generatedQuestion: S.optional(S.String),
+          exampleValues: S.optional(__S(1920, __c60, 0)),
+          catalog: S.optional(S.String),
+          allowedInConversation: S.optional(S.Boolean),
+          frequency: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudRetailV2GenerativeQuestionConfig",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

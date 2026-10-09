@@ -128,8 +128,8 @@ export const listUploadedMedia: API.OperationMethod<
   ListUploadedMediaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListUploadedMediaRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PaginatedUploadedMediaList>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListUploadedMediaRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<PaginatedUploadedMediaList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const uploadedMediaCompleteUploadCreate: API.OperationMethod<
   UploadedMediaCompleteUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<UploadedMediaCompleteUploadCreateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UploadedMedia2>,
+  input: __S(12, __c3, 0) as any as S.Schema<UploadedMediaCompleteUploadCreateRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<UploadedMedia2>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const uploadedMediaStartUploadCreate: API.OperationMethod<
   UploadedMediaStartUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UploadedMediaStartUploadCreateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UploadedMediaUploadStarted>,
+  input: __S(16, __c4, 0) as any as S.Schema<UploadedMediaStartUploadCreateRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<UploadedMediaUploadStarted>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -191,7 +191,11 @@ function __c0(j: number): any {
       return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateUploadedMediaResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -202,7 +206,24 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/uploaded_media/", code: 200 }),
         ),
       ).annotate({ identifier: "ListUploadedMediaRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(5, __c1, 1),
+        }),
+      ).annotate({
+        identifier: "PaginatedUploadedMediaList",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -214,20 +235,11 @@ function __c0(j: number): any {
           created_at: S.String,
         }),
       ).annotate({ identifier: "UploadedMedia2" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "PaginatedUploadedMediaList",
-      });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -244,7 +256,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -269,7 +281,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           upload_url: S.String,
-          form_fields: __S(9, __c1, 1),
+          form_fields: __S(17, __c4, 1),
           expires_in: S.Number,
         }),
       ).annotate({
@@ -277,7 +289,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

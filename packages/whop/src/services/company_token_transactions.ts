@@ -212,7 +212,7 @@ export const createCompanyTokenTransaction: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateCompanyTokenTransactionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CompanyTokenTransaction>,
+  output: __S(8, __c1, 0) as any as S.Schema<CompanyTokenTransaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -231,8 +231,8 @@ export const getCompanyTokenTransaction: API.OperationMethod<
   GetCompanyTokenTransactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetCompanyTokenTransactionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CompanyTokenTransaction>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCompanyTokenTransactionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CompanyTokenTransaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -253,8 +253,8 @@ export const listCompanyTokenTransaction: API.PaginatedOperationMethod<
   CompanyTokenTransactionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6, __c0, 6) as any as S.Schema<ListCompanyTokenTransactionRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListCompanyTokenTransactionResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListCompanyTokenTransactionRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListCompanyTokenTransactionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -281,7 +281,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCompanyTokenTransactionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          company: __S(16, __c2, 0),
+          created_at: S.String,
+          description: S.NullOr(S.String),
+          id: S.String,
+          idempotency_key: S.NullOr(S.String),
+          linked_transaction_id: S.NullOr(S.String),
+          member: __S(17, __c2, 1),
+          transaction_type: S.String,
+          user: __S(18, __c2, 2),
+        }),
+      ).annotate({ identifier: "CompanyTokenTransaction" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -291,7 +314,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompanyTokenTransactionCompany",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -299,7 +322,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompanyTokenTransactionMember",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -309,22 +332,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompanyTokenTransactionUser",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          company: __S(1, __c0, 1),
-          created_at: S.String,
-          description: S.NullOr(S.String),
-          id: S.String,
-          idempotency_key: S.NullOr(S.String),
-          linked_transaction_id: S.NullOr(S.String),
-          member: __S(2, __c0, 2),
-          transaction_type: S.String,
-          user: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "CompanyTokenTransaction" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -332,7 +344,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCompanyTokenTransactionRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -346,30 +362,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListCompanyTokenTransactionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
-          company: __S(1, __c0, 1),
+          company: __S(16, __c2, 0),
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
           idempotency_key: S.NullOr(S.String),
           linked_transaction_id: S.NullOr(S.String),
-          member: __S(2, __c0, 2),
+          member: __S(17, __c2, 1),
           transaction_type: S.String,
-          user: __S(3, __c0, 3),
+          user: __S(18, __c2, 2),
         }),
       ).annotate({
         identifier: "CompanyTokenTransactionListItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -378,18 +390,17 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8, __c1, 0),
-          page_info: __S(9, __c1, 1),
+          data: __S(34, __c4, 2),
+          page_info: __S(35, __c4, 3),
         }),
       ).annotate({
         identifier: "ListCompanyTokenTransactionResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

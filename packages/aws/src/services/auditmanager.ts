@@ -95,7 +95,7 @@ export class AuditManagerMaintenanceMode
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(195, __c24, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -144,7 +144,7 @@ export class ValidationException
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(195, __c24, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1260,8 +1260,8 @@ export const associateAssessmentReportEvidenceFolder: API.OperationMethod<
   AssociateAssessmentReportEvidenceFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateAssessmentReportEvidenceFolderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateAssessmentReportEvidenceFolderResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<AssociateAssessmentReportEvidenceFolderRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<AssociateAssessmentReportEvidenceFolderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1289,8 +1289,8 @@ export const batchAssociateAssessmentReportEvidence: API.OperationMethod<
   BatchAssociateAssessmentReportEvidenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BatchAssociateAssessmentReportEvidenceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchAssociateAssessmentReportEvidenceResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<BatchAssociateAssessmentReportEvidenceRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<BatchAssociateAssessmentReportEvidenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1317,8 +1317,8 @@ export const batchCreateDelegationByAssessment: API.OperationMethod<
   BatchCreateDelegationByAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchCreateDelegationByAssessmentRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BatchCreateDelegationByAssessmentResponse>,
+  input: __S(1394, __c87, 2) as any as S.Schema<BatchCreateDelegationByAssessmentRequest>,
+  output: __S(1397, __c87, 5) as any as S.Schema<BatchCreateDelegationByAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1345,8 +1345,8 @@ export const batchDeleteDelegationByAssessment: API.OperationMethod<
   BatchDeleteDelegationByAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BatchDeleteDelegationByAssessmentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchDeleteDelegationByAssessmentResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<BatchDeleteDelegationByAssessmentRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<BatchDeleteDelegationByAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1373,8 +1373,8 @@ export const batchDisassociateAssessmentReportEvidence: API.OperationMethod<
   BatchDisassociateAssessmentReportEvidenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BatchDisassociateAssessmentReportEvidenceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchDisassociateAssessmentReportEvidenceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<BatchDisassociateAssessmentReportEvidenceRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<BatchDisassociateAssessmentReportEvidenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1421,8 +1421,8 @@ export const batchImportEvidenceToAssessmentControl: API.OperationMethod<
   BatchImportEvidenceToAssessmentControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<BatchImportEvidenceToAssessmentControlRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<BatchImportEvidenceToAssessmentControlResponse>,
+  input: __S(50, __c3, 2) as any as S.Schema<BatchImportEvidenceToAssessmentControlRequest>,
+  output: __S(53, __c3, 5) as any as S.Schema<BatchImportEvidenceToAssessmentControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1452,8 +1452,8 @@ export const createAssessment: API.OperationMethod<
   CreateAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateAssessmentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateAssessmentResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateAssessmentRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<CreateAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1483,8 +1483,8 @@ export const createAssessmentFramework: API.OperationMethod<
   CreateAssessmentFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateAssessmentFrameworkRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CreateAssessmentFrameworkResponse>,
+  input: __S(194, __c12, 2) as any as S.Schema<CreateAssessmentFrameworkRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<CreateAssessmentFrameworkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1512,8 +1512,8 @@ export const createAssessmentReport: API.OperationMethod<
   CreateAssessmentReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateAssessmentReportRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreateAssessmentReportResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateAssessmentReportRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<CreateAssessmentReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1541,8 +1541,8 @@ export const createControl: API.OperationMethod<
   CreateControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateControlRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<CreateControlResponse>,
+  input: __S(274, __c17, 2) as any as S.Schema<CreateControlRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreateControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1570,8 +1570,8 @@ export const deleteAssessment: API.OperationMethod<
   DeleteAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteAssessmentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteAssessmentResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteAssessmentRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1598,8 +1598,8 @@ export const deleteAssessmentFramework: API.OperationMethod<
   DeleteAssessmentFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteAssessmentFrameworkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAssessmentFrameworkResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteAssessmentFrameworkRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteAssessmentFrameworkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1626,8 +1626,8 @@ export const deleteAssessmentFrameworkShare: API.OperationMethod<
   DeleteAssessmentFrameworkShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteAssessmentFrameworkShareRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAssessmentFrameworkShareResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteAssessmentFrameworkShareRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteAssessmentFrameworkShareResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1674,8 +1674,8 @@ export const deleteAssessmentReport: API.OperationMethod<
   DeleteAssessmentReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteAssessmentReportRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteAssessmentReportResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteAssessmentReportRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteAssessmentReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1707,8 +1707,8 @@ export const deleteControl: API.OperationMethod<
   DeleteControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteControlRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteControlResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteControlRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1743,8 +1743,8 @@ export const deregisterAccount: API.OperationMethod<
   DeregisterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeregisterAccountRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeregisterAccountResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeregisterAccountRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<DeregisterAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1823,8 +1823,8 @@ export const deregisterOrganizationAdminAccount: API.OperationMethod<
   DeregisterOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeregisterOrganizationAdminAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeregisterOrganizationAdminAccountResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeregisterOrganizationAdminAccountRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeregisterOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1851,8 +1851,12 @@ export const disassociateAssessmentReportEvidenceFolder: API.OperationMethod<
   DisassociateAssessmentReportEvidenceFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DisassociateAssessmentReportEvidenceFolderRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateAssessmentReportEvidenceFolderResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DisassociateAssessmentReportEvidenceFolderRequest>,
+  output: __S(
+    1328,
+    __c83,
+    0,
+  ) as any as S.Schema<DisassociateAssessmentReportEvidenceFolderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1874,8 +1878,8 @@ export const getAccountStatus: API.OperationMethod<
   GetAccountStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetAccountStatusRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetAccountStatusResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetAccountStatusRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetAccountStatusResponse>,
   errors: [InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1897,8 +1901,8 @@ export const getAssessment: API.OperationMethod<
   GetAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetAssessmentRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetAssessmentResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetAssessmentRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GetAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1925,8 +1929,8 @@ export const getAssessmentFramework: API.OperationMethod<
   GetAssessmentFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetAssessmentFrameworkRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetAssessmentFrameworkResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetAssessmentFrameworkRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<GetAssessmentFrameworkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1953,8 +1957,8 @@ export const getAssessmentReportUrl: API.OperationMethod<
   GetAssessmentReportUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetAssessmentReportUrlRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetAssessmentReportUrlResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetAssessmentReportUrlRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<GetAssessmentReportUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1982,8 +1986,8 @@ export const getChangeLogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetChangeLogsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetChangeLogsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetChangeLogsRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<GetChangeLogsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2015,8 +2019,8 @@ export const getControl: API.OperationMethod<
   GetControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetControlRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetControlResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetControlRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2043,8 +2047,8 @@ export const getDelegations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetDelegationsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetDelegationsResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetDelegationsRequest>,
+  output: __S(563, __c35, 3) as any as S.Schema<GetDelegationsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2071,8 +2075,8 @@ export const getEvidence: API.OperationMethod<
   GetEvidenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetEvidenceRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetEvidenceResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetEvidenceRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetEvidenceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2100,8 +2104,8 @@ export const getEvidenceByEvidenceFolder: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetEvidenceByEvidenceFolderRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetEvidenceByEvidenceFolderResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetEvidenceByEvidenceFolderRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<GetEvidenceByEvidenceFolderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2146,8 +2150,8 @@ export const getEvidenceFileUploadUrl: API.OperationMethod<
   GetEvidenceFileUploadUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetEvidenceFileUploadUrlRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetEvidenceFileUploadUrlResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetEvidenceFileUploadUrlRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GetEvidenceFileUploadUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2174,8 +2178,8 @@ export const getEvidenceFolder: API.OperationMethod<
   GetEvidenceFolderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetEvidenceFolderRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetEvidenceFolderResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetEvidenceFolderRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<GetEvidenceFolderResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2203,8 +2207,8 @@ export const getEvidenceFoldersByAssessment: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetEvidenceFoldersByAssessmentRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetEvidenceFoldersByAssessmentResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetEvidenceFoldersByAssessmentRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetEvidenceFoldersByAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2238,8 +2242,8 @@ export const getEvidenceFoldersByAssessmentControl: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetEvidenceFoldersByAssessmentControlRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetEvidenceFoldersByAssessmentControlResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetEvidenceFoldersByAssessmentControlRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetEvidenceFoldersByAssessmentControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2266,8 +2270,8 @@ export const getInsights: API.OperationMethod<
   GetInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetInsightsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetInsightsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetInsightsRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<GetInsightsResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2289,8 +2293,8 @@ export const getInsightsByAssessment: API.OperationMethod<
   GetInsightsByAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetInsightsByAssessmentRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GetInsightsByAssessmentResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetInsightsByAssessmentRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<GetInsightsByAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2318,8 +2322,8 @@ export const getOrganizationAdminAccount: API.OperationMethod<
   GetOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetOrganizationAdminAccountRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetOrganizationAdminAccountResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetOrganizationAdminAccountRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<GetOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2356,8 +2360,8 @@ export const getServicesInScope: API.OperationMethod<
   GetServicesInScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetServicesInScopeRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetServicesInScopeResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetServicesInScopeRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<GetServicesInScopeResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2374,8 +2378,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetSettingsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetSettingsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetSettingsRequest>,
+  output: __S(820, __c51, 4) as any as S.Schema<GetSettingsResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2404,11 +2408,11 @@ export const listAssessmentControlInsightsByControlDomain: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListAssessmentControlInsightsByControlDomainRequest>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListAssessmentControlInsightsByControlDomainRequest>,
   output: __S(
-    135,
-    __c16,
-    7,
+    835,
+    __c52,
+    3,
   ) as any as S.Schema<ListAssessmentControlInsightsByControlDomainResponse>,
   errors: [
     AccessDeniedException,
@@ -2442,8 +2446,8 @@ export const listAssessmentFrameworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListAssessmentFrameworksRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListAssessmentFrameworksResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListAssessmentFrameworksRequest>,
+  output: __S(867, __c54, 3) as any as S.Schema<ListAssessmentFrameworksResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2470,8 +2474,8 @@ export const listAssessmentFrameworkShareRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListAssessmentFrameworkShareRequestsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListAssessmentFrameworkShareRequestsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListAssessmentFrameworkShareRequestsRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<ListAssessmentFrameworkShareRequestsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2498,8 +2502,8 @@ export const listAssessmentReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListAssessmentReportsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListAssessmentReportsResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListAssessmentReportsRequest>,
+  output: __S(915, __c57, 3) as any as S.Schema<ListAssessmentReportsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2526,8 +2530,8 @@ export const listAssessments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListAssessmentsRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ListAssessmentsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListAssessmentsRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ListAssessmentsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2568,8 +2572,8 @@ export const listControlDomainInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListControlDomainInsightsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListControlDomainInsightsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListControlDomainInsightsRequest>,
+  output: __S(962, __c60, 2) as any as S.Schema<ListControlDomainInsightsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2614,8 +2618,8 @@ export const listControlDomainInsightsByAssessment: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListControlDomainInsightsByAssessmentRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListControlDomainInsightsByAssessmentResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListControlDomainInsightsByAssessmentRequest>,
+  output: __S(962, __c60, 2) as any as S.Schema<ListControlDomainInsightsByAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2654,8 +2658,8 @@ export const listControlInsightsByControlDomain: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListControlInsightsByControlDomainRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListControlInsightsByControlDomainResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListControlInsightsByControlDomainRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListControlInsightsByControlDomainResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2687,8 +2691,8 @@ export const listControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListControlsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListControlsResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListControlsRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<ListControlsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2716,8 +2720,8 @@ export const listKeywordsForDataSource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListKeywordsForDataSourceRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListKeywordsForDataSourceResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListKeywordsForDataSourceRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<ListKeywordsForDataSourceResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2744,8 +2748,8 @@ export const listNotifications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListNotificationsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListNotificationsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListNotificationsRequest>,
+  output: __S(1043, __c65, 3) as any as S.Schema<ListNotificationsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2771,8 +2775,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2796,8 +2800,8 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<RegisterAccountRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<RegisterAccountResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RegisterAccountRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<RegisterAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2828,8 +2832,8 @@ export const registerOrganizationAdminAccount: API.OperationMethod<
   RegisterOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<RegisterOrganizationAdminAccountRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<RegisterOrganizationAdminAccountResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<RegisterOrganizationAdminAccountRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<RegisterOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2891,8 +2895,8 @@ export const startAssessmentFrameworkShare: API.OperationMethod<
   StartAssessmentFrameworkShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<StartAssessmentFrameworkShareRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<StartAssessmentFrameworkShareResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<StartAssessmentFrameworkShareRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<StartAssessmentFrameworkShareResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2918,8 +2922,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2940,8 +2944,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2965,8 +2969,8 @@ export const updateAssessment: API.OperationMethod<
   UpdateAssessmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateAssessmentRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateAssessmentResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<UpdateAssessmentRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2995,8 +2999,8 @@ export const updateAssessmentControl: API.OperationMethod<
   UpdateAssessmentControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateAssessmentControlRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<UpdateAssessmentControlResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateAssessmentControlRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<UpdateAssessmentControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3023,8 +3027,8 @@ export const updateAssessmentControlSetStatus: API.OperationMethod<
   UpdateAssessmentControlSetStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<UpdateAssessmentControlSetStatusRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<UpdateAssessmentControlSetStatusResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UpdateAssessmentControlSetStatusRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<UpdateAssessmentControlSetStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3052,8 +3056,8 @@ export const updateAssessmentFramework: API.OperationMethod<
   UpdateAssessmentFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateAssessmentFrameworkRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UpdateAssessmentFrameworkResponse>,
+  input: __S(1218, __c76, 2) as any as S.Schema<UpdateAssessmentFrameworkRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<UpdateAssessmentFrameworkResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3082,8 +3086,8 @@ export const updateAssessmentFrameworkShare: API.OperationMethod<
   UpdateAssessmentFrameworkShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UpdateAssessmentFrameworkShareRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<UpdateAssessmentFrameworkShareResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateAssessmentFrameworkShareRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<UpdateAssessmentFrameworkShareResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3112,8 +3116,8 @@ export const updateAssessmentStatus: API.OperationMethod<
   UpdateAssessmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateAssessmentStatusRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<UpdateAssessmentStatusResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UpdateAssessmentStatusRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<UpdateAssessmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3141,8 +3145,8 @@ export const updateControl: API.OperationMethod<
   UpdateControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateControlRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UpdateControlResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<UpdateControlRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateControlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3168,8 +3172,8 @@ export const updateSettings: API.OperationMethod<
   UpdateSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<UpdateSettingsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<UpdateSettingsResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateSettingsRequest>,
+  output: __S(820, __c51, 4) as any as S.Schema<UpdateSettingsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3191,8 +3195,8 @@ export const validateAssessmentReportIntegrity: API.OperationMethod<
   ValidateAssessmentReportIntegrityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ValidateAssessmentReportIntegrityRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ValidateAssessmentReportIntegrityResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ValidateAssessmentReportIntegrityRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<ValidateAssessmentReportIntegrityResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3208,151 +3212,19 @@ export const validateAssessmentReportIntegrity: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
-          evidenceFolderId: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/assessments/{assessmentId}/associateToAssessmentReport",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateAssessmentReportEvidenceFolderRequest",
+      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateAssessmentReportEvidenceFolderResponse",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
-          evidenceFolderId: S.String,
-          evidenceIds: __S(2, __c0, 2),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/assessments/{assessmentId}/batchAssociateToAssessmentReport",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchAssociateAssessmentReportEvidenceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          evidenceId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssessmentReportEvidenceError",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          evidenceIds: S.optional(__S(2, __c0, 2)),
-          errors: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchAssociateAssessmentReportEvidenceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(SensitiveString),
-          controlSetId: S.optional(S.String),
-          roleArn: S.optional(S.String),
-          roleType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateDelegationRequest" });
+      return S.Array(__S(0, __c0, 0));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          createDelegationRequests: __S(8, __c1, 0),
-          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/assessments/{assessmentId}/delegations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchCreateDelegationByAssessmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          assessmentName: S.optional(SensitiveString),
-          assessmentId: S.optional(S.String),
-          status: S.optional(S.String),
-          roleArn: S.optional(S.String),
-          roleType: S.optional(S.String),
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          controlSetId: S.optional(S.String),
-          comment: S.optional(SensitiveString),
-          createdBy: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Delegation" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createDelegationRequest: S.optional(__S(7, __c0, 7)),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchCreateDelegationByAssessmentError",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          delegations: S.optional(__S(11, __c1, 3)),
-          errors: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateDelegationByAssessmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          delegationIds: __S(2, __c0, 2),
+          delegationIds: __S(1360, __c85, 0),
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
         }).pipe(
           T.all(
@@ -3367,11 +3239,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchDeleteDelegationByAssessmentRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           delegationId: S.optional(S.String),
@@ -3381,18 +3249,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BatchDeleteDelegationByAssessmentError",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(17, __c2, 1)) })).annotate({
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(18, __c1, 2)) })).annotate({
         identifier: "BatchDeleteDelegationByAssessmentResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
           evidenceFolderId: S.String,
-          evidenceIds: __S(2, __c0, 2),
+          evidenceIds: __S(1360, __c85, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -3409,7 +3281,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BatchDisassociateAssessmentReportEvidenceRequest",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           s3ResourcePath: S.optional(S.String),
@@ -3417,15 +3293,15 @@ function __c2(j: number): any {
           evidenceFileName: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ManualEvidence" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
           controlSetId: S.String.pipe(T.HttpLabel("controlSetId")),
           controlId: S.String.pipe(T.HttpLabel("controlId")),
-          manualEvidence: __S(21, __c2, 5),
+          manualEvidence: __S(49, __c3, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -3442,27 +3318,61 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BatchImportEvidenceToAssessmentControlRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          manualEvidence: S.optional(__S(20, __c2, 4)),
+          manualEvidence: S.optional(__S(48, __c3, 0)),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchImportEvidenceToAssessmentControlError",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ errors: S.optional(__S(24, __c3, 0)) })).annotate({
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ errors: S.optional(__S(52, __c3, 4)) })).annotate({
         identifier: "BatchImportEvidenceToAssessmentControlResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          assessmentReportsDestination: __S(112, __c7, 0),
+          scope: __S(164, __c10, 4),
+          roles: __S(97, __c6, 1),
+          frameworkId: S.String,
+          tags: S.optional(__S(80, __c5, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/assessments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAssessmentRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ roleType: S.String, roleArn: S.String })).annotate({
+        identifier: "Role",
+      });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationType: S.optional(S.String),
@@ -3471,7 +3381,58 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AssessmentReportsDestination",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorName: S.optional(SensitiveString),
+          commentBody: S.optional(SensitiveString),
+          postedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ControlComment" });
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          status: S.optional(S.String),
+          response: S.optional(S.String),
+          comments: S.optional(__S(129, __c8, 1)),
+          evidenceSources: S.optional(__S(1360, __c85, 0)),
+          evidenceCount: S.optional(S.Number),
+          assessmentReportEvidenceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AssessmentControl" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(130, __c8, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          status: S.optional(S.String),
+          roles: S.optional(__S(97, __c6, 1)),
+          controls: S.optional(__S(144, __c9, 0)),
+          delegations: S.optional(__S(1409, __c88, 1)),
+          systemEvidenceCount: S.optional(S.Number),
+          manualEvidenceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AssessmentControlSet" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3479,48 +3440,22 @@ function __c3(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AWSAccount" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() => S.Struct({ serviceName: S.optional(S.String) })).annotate({
         identifier: "AWSService",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(162, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          awsAccounts: S.optional(__S(28, __c3, 4)),
-          awsServices: S.optional(__S(30, __c3, 6)),
+          awsAccounts: S.optional(__S(161, __c10, 1)),
+          awsServices: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "Scope" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ roleType: S.String, roleArn: S.String })).annotate({
-        identifier: "Role",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: SensitiveString,
-          description: S.optional(SensitiveString),
-          assessmentReportsDestination: __S(26, __c3, 2),
-          scope: __S(31, __c3, 7),
-          roles: __S(33, __c4, 1),
-          frameworkId: S.String,
-          tags: S.optional(__S(34, __c4, 2)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/assessments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateAssessmentRequest" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(SensitiveString),
@@ -3528,15 +3463,15 @@ function __c4(j: number): any {
           description: S.optional(SensitiveString),
           complianceType: S.optional(SensitiveString),
           status: S.optional(S.String),
-          assessmentReportsDestination: S.optional(__S(26, __c3, 2)),
-          scope: S.optional(__S(31, __c3, 7)),
-          roles: S.optional(__S(33, __c4, 1)),
-          delegations: S.optional(__S(11, __c1, 3)),
+          assessmentReportsDestination: S.optional(__S(112, __c7, 0)),
+          scope: S.optional(__S(164, __c10, 4)),
+          roles: S.optional(__S(97, __c6, 1)),
+          delegations: S.optional(__S(1409, __c88, 1)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AssessmentMetadata" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(SensitiveString),
@@ -3545,100 +3480,55 @@ function __c4(j: number): any {
           complianceType: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "FrameworkMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authorName: S.optional(SensitiveString),
-          commentBody: S.optional(SensitiveString),
-          postedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "ControlComment" });
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(SensitiveString),
-          status: S.optional(S.String),
-          response: S.optional(S.String),
-          comments: S.optional(__S(39, __c4, 7)),
-          evidenceSources: S.optional(__S(2, __c0, 2)),
-          evidenceCount: S.optional(S.Number),
-          assessmentReportEvidenceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AssessmentControl" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          status: S.optional(S.String),
-          roles: S.optional(__S(33, __c4, 1)),
-          controls: S.optional(__S(41, __c5, 1)),
-          delegations: S.optional(__S(11, __c1, 3)),
-          systemEvidenceCount: S.optional(S.Number),
-          manualEvidenceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AssessmentControlSet" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+      return S.Array(__S(145, __c9, 1));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           arn: S.optional(S.String),
-          metadata: S.optional(__S(37, __c4, 5)),
-          controlSets: S.optional(__S(43, __c5, 3)),
+          metadata: S.optional(__S(166, __c10, 6)),
+          controlSets: S.optional(__S(167, __c10, 7)),
         }),
       ).annotate({ identifier: "AssessmentFramework" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          awsAccount: S.optional(__S(27, __c3, 3)),
-          metadata: S.optional(__S(36, __c4, 4)),
-          framework: S.optional(__S(44, __c5, 4)),
-          tags: S.optional(__S(34, __c4, 2)),
+          awsAccount: S.optional(__S(160, __c10, 0)),
+          metadata: S.optional(__S(165, __c10, 5)),
+          framework: S.optional(__S(168, __c10, 8)),
+          tags: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "Assessment" });
-    case 6:
-      return S.suspend(() => S.Struct({ assessment: S.optional(__S(45, __c5, 5)) })).annotate({
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ assessment: S.optional(__S(169, __c10, 9)) })).annotate({
         identifier: "CreateAssessmentResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ id: S.String })).annotate({
-        identifier: "CreateAssessmentFrameworkControl",
       });
   }
 }
-function __c6(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.String, controls: S.optional(__S(48, __c6, 0)) }),
+        S.Struct({ name: S.String, controls: S.optional(__S(241, __c15, 1)) }),
       ).annotate({
         identifier: "CreateAssessmentFrameworkControlSet",
       });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           complianceType: S.optional(SensitiveString),
-          controlSets: __S(50, __c6, 2),
-          tags: S.optional(__S(34, __c4, 2)),
+          controlSets: __S(193, __c12, 1),
+          tags: S.optional(__S(80, __c5, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assessmentFrameworks" }),
@@ -3652,14 +3542,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateAssessmentFrameworkRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          keywordInputType: S.optional(S.String),
-          keywordValue: S.optional(S.String),
-        }),
+        S.Struct({ keywordInputType: S.optional(S.String), keywordValue: S.optional(S.String) }),
       ).annotate({ identifier: "SourceKeyword" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceId: S.optional(S.String),
@@ -3667,14 +3558,14 @@ function __c6(j: number): any {
           sourceDescription: S.optional(S.String),
           sourceSetUpOption: S.optional(S.String),
           sourceType: S.optional(S.String),
-          sourceKeyword: S.optional(__S(52, __c6, 4)),
+          sourceKeyword: S.optional(__S(208, __c13, 0)),
           sourceFrequency: S.optional(S.String),
           troubleshootingText: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ControlMappingSource" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -3686,31 +3577,31 @@ function __c6(j: number): any {
           actionPlanTitle: S.optional(SensitiveString),
           actionPlanInstructions: S.optional(SensitiveString),
           controlSources: S.optional(S.String),
-          controlMappingSources: S.optional(__S(54, __c6, 6)),
+          controlMappingSources: S.optional(__S(210, __c13, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdBy: S.optional(SensitiveString),
           lastUpdatedBy: S.optional(SensitiveString),
-          tags: S.optional(__S(34, __c4, 2)),
+          tags: S.optional(__S(80, __c5, 0)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Control" });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
+      return S.Array(__S(211, __c13, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          controls: S.optional(__S(56, __c7, 0)),
+          controls: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({ identifier: "ControlSet" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(225, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3722,19 +3613,33 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           logo: S.optional(S.String),
           controlSources: S.optional(S.String),
-          controlSets: S.optional(__S(58, __c7, 2)),
+          controlSets: S.optional(__S(226, __c14, 2)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdBy: S.optional(SensitiveString),
           lastUpdatedBy: S.optional(SensitiveString),
-          tags: S.optional(__S(34, __c4, 2)),
+          tags: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "Framework" });
     case 4:
-      return S.suspend(() => S.Struct({ framework: S.optional(__S(59, __c7, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ framework: S.optional(__S(227, __c14, 3)) })).annotate({
         identifier: "CreateAssessmentFrameworkResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ id: S.String })).annotate({
+        identifier: "CreateAssessmentFrameworkControl",
+      });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -3754,7 +3659,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateAssessmentReportRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3768,15 +3673,15 @@ function __c7(j: number): any {
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AssessmentReport" });
-    case 7:
-      return S.suspend(() => S.Struct({ assessmentReport: S.optional(__S(62, __c7, 6)) })).annotate(
-        {
-          identifier: "CreateAssessmentReportResponse",
-        },
-      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ assessmentReport: S.optional(__S(257, __c16, 1)) }),
+      ).annotate({
+        identifier: "CreateAssessmentReportResponse",
+      });
   }
 }
-function __c8(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3785,7 +3690,7 @@ function __c8(j: number): any {
           sourceDescription: S.optional(S.String),
           sourceSetUpOption: S.optional(S.String),
           sourceType: S.optional(S.String),
-          sourceKeyword: S.optional(__S(52, __c6, 4)),
+          sourceKeyword: S.optional(__S(208, __c13, 0)),
           sourceFrequency: S.optional(S.String),
           troubleshootingText: S.optional(SensitiveString),
         }),
@@ -3793,7 +3698,7 @@ function __c8(j: number): any {
         identifier: "CreateControlMappingSource",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(272, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3802,15 +3707,23 @@ function __c8(j: number): any {
           testingInformation: S.optional(SensitiveString),
           actionPlanTitle: S.optional(SensitiveString),
           actionPlanInstructions: S.optional(SensitiveString),
-          controlMappingSources: __S(65, __c8, 1),
-          tags: S.optional(__S(34, __c4, 2)),
+          controlMappingSources: __S(273, __c17, 1),
+          tags: S.optional(__S(80, __c5, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/controls" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateControlRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ control: S.optional(__S(55, __c6, 7)) })).annotate({
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ control: S.optional(__S(211, __c13, 3)) })).annotate({
         identifier: "CreateControlResponse",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ assessmentId: S.String.pipe(T.HttpLabel("assessmentId")) }).pipe(
           T.all(
@@ -3823,11 +3736,19 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAssessmentRequest" });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAssessmentResponse",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ frameworkId: S.String.pipe(T.HttpLabel("frameworkId")) }).pipe(
           T.all(
@@ -3842,7 +3763,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteAssessmentFrameworkRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.String.pipe(T.HttpLabel("requestId")),
@@ -3862,7 +3787,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3885,7 +3810,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAssessmentReportRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ controlId: S.String.pipe(T.HttpLabel("controlId")) }).pipe(
           T.all(
@@ -3898,7 +3827,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteControlRequest" });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -3911,11 +3844,15 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeregisterAccountRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "DeregisterAccountResponse",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ adminAccountId: S.optional(S.String) }).pipe(
           T.all(
@@ -3930,7 +3867,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeregisterOrganizationAdminAccountRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -3951,19 +3892,27 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociateAssessmentReportEvidenceFolderRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/account/status" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccountStatusRequest" });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "GetAccountStatusResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3981,11 +3930,15 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(__S(45, __c5, 5)),
-          userRole: S.optional(__S(32, __c4, 0)),
+          assessment: S.optional(__S(169, __c10, 9)),
+          userRole: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetAssessmentResponse" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ frameworkId: S.String.pipe(T.HttpLabel("frameworkId")) }).pipe(
           T.all(
@@ -4000,7 +3953,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAssessmentFrameworkRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentReportId: S.String.pipe(T.HttpLabel("assessmentReportId")),
@@ -4021,15 +3978,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAssessmentReportUrlRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ hyperlinkName: S.optional(S.String), link: S.optional(S.String) }),
       ).annotate({ identifier: "URL" });
-    case 5:
-      return S.suspend(() => S.Struct({ preSignedUrl: S.optional(__S(84, __c10, 4)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ preSignedUrl: S.optional(__S(513, __c32, 1)) })).annotate({
         identifier: "GetAssessmentReportUrlResponse",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -4048,7 +4009,7 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetChangeLogsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           objectType: S.optional(S.String),
@@ -4058,17 +4019,17 @@ function __c10(j: number): any {
           createdBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeLog" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ changeLogs: S.optional(__S(530, __c33, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "GetChangeLogsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ changeLogs: S.optional(__S(88, __c11, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "GetChangeLogsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ controlId: S.String.pipe(T.HttpLabel("controlId")) }).pipe(
           T.all(
@@ -4081,7 +4042,11 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetControlRequest" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4090,7 +4055,7 @@ function __c11(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/delegations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDelegationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4102,16 +4067,17 @@ function __c11(j: number): any {
           controlSetName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DelegationMetadata" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(561, __c35, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          delegations: S.optional(__S(93, __c11, 5)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ delegations: S.optional(__S(562, __c35, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetDelegationsResponse" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -4132,9 +4098,13 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEvidenceRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ evidence: S.optional(__S(595, __c37, 3)) })).annotate({
+        identifier: "GetEvidenceResponse",
+      });
   }
 }
-function __c12(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4145,7 +4115,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Resource" });
     case 1:
-      return S.Array(__S(96, __c12, 0));
+      return S.Array(__S(592, __c37, 0));
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
@@ -4157,8 +4127,8 @@ function __c12(j: number): any {
           eventSource: S.optional(S.String),
           eventName: S.optional(S.String),
           evidenceByType: S.optional(S.String),
-          resourcesIncluded: S.optional(__S(97, __c12, 1)),
-          attributes: S.optional(__S(98, __c12, 2)),
+          resourcesIncluded: S.optional(__S(593, __c37, 1)),
+          attributes: S.optional(__S(594, __c37, 2)),
           iamId: S.optional(S.String),
           complianceCheck: S.optional(S.String),
           awsOrganization: S.optional(S.String),
@@ -4168,11 +4138,11 @@ function __c12(j: number): any {
           assessmentReportSelection: S.optional(S.String),
         }),
       ).annotate({ identifier: "Evidence" });
-    case 4:
-      return S.suspend(() => S.Struct({ evidence: S.optional(__S(99, __c12, 3)) })).annotate({
-        identifier: "GetEvidenceResponse",
-      });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -4196,17 +4166,17 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEvidenceByEvidenceFolderRequest",
       });
-    case 6:
-      return S.Array(__S(99, __c12, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(595, __c37, 3));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ evidence: S.optional(__S(102, __c12, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ evidence: S.optional(__S(609, __c38, 1)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetEvidenceByEvidenceFolderResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4229,7 +4199,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetEvidenceFileUploadUrlResponse",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -4249,7 +4223,17 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEvidenceFolderRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() => S.Struct({ evidenceFolder: S.optional(__S(656, __c41, 0)) })).annotate(
+        {
+          identifier: "GetEvidenceFolderResponse",
+        },
+      );
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4272,13 +4256,11 @@ function __c13(j: number): any {
           evidenceAwsServiceSourceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AssessmentEvidenceFolder" });
-    case 4:
-      return S.suspend(() => S.Struct({ evidenceFolder: S.optional(__S(107, __c13, 3)) })).annotate(
-        {
-          identifier: "GetEvidenceFolderResponse",
-        },
-      );
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -4297,12 +4279,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetEvidenceFoldersByAssessmentRequest",
       });
-    case 6:
-      return S.Array(__S(107, __c13, 3));
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(656, __c41, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          evidenceFolders: S.optional(__S(110, __c13, 6)),
+          evidenceFolders: S.optional(__S(688, __c43, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4310,7 +4296,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4336,13 +4322,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetEvidenceFoldersByAssessmentControlRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/insights" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetInsightsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activeAssessmentsCount: S.optional(S.Number),
@@ -4354,11 +4344,15 @@ function __c14(j: number): any {
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Insights" });
-    case 3:
-      return S.suspend(() => S.Struct({ insights: S.optional(__S(114, __c14, 2)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ insights: S.optional(__S(721, __c45, 1)) })).annotate({
         identifier: "GetInsightsResponse",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ assessmentId: S.String.pipe(T.HttpLabel("assessmentId")) }).pipe(
           T.all(
@@ -4373,7 +4367,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetInsightsByAssessmentRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           noncompliantEvidenceCount: S.optional(S.Number),
@@ -4384,11 +4378,15 @@ function __c14(j: number): any {
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "InsightsByAssessment" });
-    case 6:
-      return S.suspend(() => S.Struct({ insights: S.optional(__S(117, __c14, 5)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ insights: S.optional(__S(737, __c46, 1)) })).annotate({
         identifier: "GetInsightsByAssessmentResponse",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -4405,7 +4403,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4413,7 +4411,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetOrganizationAdminAccountResponse",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/services" }), svc, auth, proto, ver, rules),
@@ -4421,7 +4423,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetServicesInScopeRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4430,15 +4432,19 @@ function __c15(j: number): any {
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceMetadata" });
+    case 2:
+      return S.Array(__S(785, __c49, 1));
     case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ serviceMetadata: S.optional(__S(123, __c15, 3)) }),
+        S.Struct({ serviceMetadata: S.optional(__S(786, __c49, 2)) }),
       ).annotate({
         identifier: "GetServicesInScopeResponse",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ attribute: S.String.pipe(T.HttpLabel("attribute")) }).pipe(
           T.all(
@@ -4451,7 +4457,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSettingsRequest" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventDataStoreArn: S.optional(S.String),
@@ -4460,39 +4470,39 @@ function __c15(j: number): any {
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "EvidenceFinderEnablement" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ deleteResources: S.optional(S.String) })).annotate({
         identifier: "DeregistrationPolicy",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           destinationType: S.optional(S.String),
           destination: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultExportDestination" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           isAwsOrgEnabled: S.optional(S.Boolean),
           snsTopic: S.optional(SensitiveString),
-          defaultAssessmentReportsDestination: S.optional(__S(26, __c3, 2)),
-          defaultProcessOwners: S.optional(__S(33, __c4, 1)),
+          defaultAssessmentReportsDestination: S.optional(__S(112, __c7, 0)),
+          defaultProcessOwners: S.optional(__S(97, __c6, 1)),
           kmsKey: S.optional(S.String),
-          evidenceFinderEnablement: S.optional(__S(126, __c15, 6)),
-          deregistrationPolicy: S.optional(__S(127, __c15, 7)),
-          defaultExportDestination: S.optional(__S(128, __c16, 0)),
+          evidenceFinderEnablement: S.optional(__S(816, __c51, 0)),
+          deregistrationPolicy: S.optional(__S(817, __c51, 1)),
+          defaultExportDestination: S.optional(__S(818, __c51, 2)),
         }),
       ).annotate({ identifier: "Settings" });
-    case 2:
-      return S.suspend(() => S.Struct({ settings: S.optional(__S(129, __c16, 1)) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ settings: S.optional(__S(819, __c51, 3)) })).annotate({
         identifier: "GetSettingsResponse",
       });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           controlDomainId: S.String.pipe(T.HttpQuery("controlDomainId")),
@@ -4512,32 +4522,24 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAssessmentControlInsightsByControlDomainRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          noncompliantEvidenceCount: S.optional(S.Number),
-          compliantEvidenceCount: S.optional(S.Number),
-          inconclusiveEvidenceCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EvidenceInsights" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
-          evidenceInsights: S.optional(__S(132, __c16, 4)),
+          evidenceInsights: S.optional(__S(848, __c53, 0)),
           controlSetName: S.optional(S.String),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "ControlInsightsMetadataByAssessmentItem",
       });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          controlInsightsByAssessment: S.optional(__S(134, __c16, 6)),
+          controlInsightsByAssessment: S.optional(__S(834, __c52, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4545,7 +4547,19 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          noncompliantEvidenceCount: S.optional(S.Number),
+          compliantEvidenceCount: S.optional(S.Number),
+          inconclusiveEvidenceCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EvidenceInsights" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4585,17 +4599,21 @@ function __c17(j: number): any {
         identifier: "AssessmentFrameworkMetadata",
       });
     case 2:
-      return S.Array(__S(137, __c17, 1));
+      return S.Array(__S(865, __c54, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          frameworkMetadataList: S.optional(__S(138, __c17, 2)),
+          frameworkMetadataList: S.optional(__S(866, __c54, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssessmentFrameworksResponse",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestType: S.String.pipe(T.HttpQuery("requestType")),
@@ -4614,7 +4632,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAssessmentFrameworkShareRequestsRequest",
       });
-    case 5:
+    case 1:
+      return S.Array(__S(896, __c56, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assessmentFrameworkShareRequests: S.optional(__S(881, __c55, 1)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAssessmentFrameworkShareRequestsResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4636,20 +4669,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "AssessmentFrameworkShareRequest",
       });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assessmentFrameworkShareRequests: S.optional(__S(142, __c17, 6)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAssessmentFrameworkShareRequestsResponse",
-      });
   }
 }
-function __c18(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4676,17 +4698,21 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "AssessmentReportMetadata" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(913, __c57, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assessmentReports: S.optional(__S(146, __c18, 2)),
+          assessmentReports: S.optional(__S(914, __c57, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssessmentReportsResponse",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String).pipe(T.HttpQuery("status")),
@@ -4696,31 +4722,31 @@ function __c18(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/assessments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAssessmentsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(SensitiveString),
           id: S.optional(S.String),
           complianceType: S.optional(SensitiveString),
           status: S.optional(S.String),
-          roles: S.optional(__S(33, __c4, 1)),
-          delegations: S.optional(__S(11, __c1, 3)),
+          roles: S.optional(__S(97, __c6, 1)),
+          delegations: S.optional(__S(1409, __c88, 1)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AssessmentMetadataItem" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          assessmentMetadata: S.optional(__S(150, __c18, 6)),
+          assessmentMetadata: S.optional(__S(930, __c58, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAssessmentsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4740,29 +4766,37 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListControlDomainInsightsRequest",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
           controlsCountByNoncompliantEvidence: S.optional(S.Number),
           totalControlsCount: S.optional(S.Number),
-          evidenceInsights: S.optional(__S(132, __c16, 4)),
+          evidenceInsights: S.optional(__S(848, __c53, 0)),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ControlDomainInsights" });
+    case 1:
+      return S.Array(__S(960, __c60, 0));
     case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          controlDomainInsights: S.optional(__S(154, __c19, 2)),
+          controlDomainInsights: S.optional(__S(961, __c60, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListControlDomainInsightsResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpQuery("assessmentId")),
@@ -4781,7 +4815,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListControlDomainInsightsByAssessmentRequest",
       });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           controlDomainId: S.String.pipe(T.HttpQuery("controlDomainId")),
@@ -4793,33 +4831,33 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListControlInsightsByControlDomainRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
-          evidenceInsights: S.optional(__S(132, __c16, 4)),
+          evidenceInsights: S.optional(__S(848, __c53, 0)),
           lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "ControlInsightsMetadataItem",
       });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          controlInsightsMetadata: S.optional(__S(159, __c19, 7)),
+          controlInsightsMetadata: S.optional(__S(994, __c62, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListControlInsightsByControlDomainResponse",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           controlType: S.String.pipe(T.HttpQuery("controlType")),
@@ -4828,7 +4866,7 @@ function __c20(j: number): any {
           controlCatalogId: S.optional(S.String).pipe(T.HttpQuery("controlCatalogId")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/controls" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListControlsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -4839,16 +4877,20 @@ function __c20(j: number): any {
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ControlMetadata" });
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          controlMetadataList: S.optional(__S(163, __c20, 3)),
+          controlMetadataList: S.optional(__S(1010, __c63, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListControlsResponse" });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String.pipe(T.HttpQuery("source")),
@@ -4867,13 +4909,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListKeywordsForDataSourceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ keywords: S.optional(__S(2, __c0, 2)), nextToken: S.optional(S.String) }),
+        S.Struct({ keywords: S.optional(__S(1360, __c85, 0)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListKeywordsForDataSourceResponse",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4882,11 +4928,7 @@ function __c20(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/notifications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListNotificationsRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4899,18 +4941,22 @@ function __c21(j: number): any {
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notification" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
     case 2:
+      return S.Array(__S(1041, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          notifications: S.optional(__S(169, __c21, 1)),
+          notifications: S.optional(__S(1042, __c65, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListNotificationsResponse",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -4925,11 +4971,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(34, __c4, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(80, __c5, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kmsKey: S.optional(S.String),
@@ -4945,7 +4995,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RegisterAccountRequest" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ adminAccountId: S.String }).pipe(
           T.all(
@@ -4960,7 +5014,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RegisterOrganizationAdminAccountRequest",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           frameworkId: S.String.pipe(T.HttpLabel("frameworkId")),
@@ -4982,19 +5040,23 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ assessmentFrameworkShareRequest: S.optional(__S(141, __c17, 5)) }),
+        S.Struct({ assessmentFrameworkShareRequest: S.optional(__S(896, __c56, 0)) }),
       ).annotate({
         identifier: "StartAssessmentFrameworkShareResponse",
       });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(34, __c4, 2),
+          tags: __S(80, __c5, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -5006,11 +5068,15 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(2, __c0, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(1360, __c85, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -5022,15 +5088,19 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
           assessmentName: S.optional(SensitiveString),
           assessmentDescription: S.optional(SensitiveString),
-          scope: __S(31, __c3, 7),
-          assessmentReportsDestination: S.optional(__S(26, __c3, 2)),
-          roles: S.optional(__S(33, __c4, 1)),
+          scope: __S(164, __c10, 4),
+          assessmentReportsDestination: S.optional(__S(112, __c7, 0)),
+          roles: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/assessments/{assessmentId}" }),
@@ -5042,7 +5112,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAssessmentRequest" });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -5066,11 +5140,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateAssessmentControlRequest",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ control: S.optional(__S(40, __c5, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ control: S.optional(__S(130, __c8, 2)) })).annotate({
         identifier: "UpdateAssessmentControlResponse",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -5093,26 +5171,26 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateAssessmentControlSetStatusRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ controlSet: S.optional(__S(42, __c5, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ controlSet: S.optional(__S(145, __c9, 1)) })).annotate({
         identifier: "UpdateAssessmentControlSetStatusResponse",
       });
   }
 }
-function __c23(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
-          controls: __S(48, __c6, 0),
+          controls: __S(241, __c15, 1),
         }),
       ).annotate({
         identifier: "UpdateAssessmentFrameworkControlSet",
       });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(1216, __c76, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5120,7 +5198,7 @@ function __c23(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           complianceType: S.optional(SensitiveString),
-          controlSets: __S(185, __c23, 1),
+          controlSets: __S(1217, __c76, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/assessmentFrameworks/{frameworkId}" }),
@@ -5134,7 +5212,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAssessmentFrameworkRequest",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.String.pipe(T.HttpLabel("requestId")),
@@ -5153,7 +5235,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAssessmentFrameworkShareRequest",
       });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
@@ -5171,11 +5257,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAssessmentStatusRequest",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ assessment: S.optional(__S(45, __c5, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ assessment: S.optional(__S(169, __c10, 9)) })).annotate({
         identifier: "UpdateAssessmentStatusResponse",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           controlId: S.String.pipe(T.HttpLabel("controlId")),
@@ -5184,7 +5274,7 @@ function __c23(j: number): any {
           testingInformation: S.optional(SensitiveString),
           actionPlanTitle: S.optional(SensitiveString),
           actionPlanInstructions: S.optional(SensitiveString),
-          controlMappingSources: __S(54, __c6, 6),
+          controlMappingSources: __S(210, __c13, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/controls/{controlId}" }),
@@ -5196,21 +5286,25 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateControlRequest" });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           snsTopic: S.optional(S.String),
-          defaultAssessmentReportsDestination: S.optional(__S(26, __c3, 2)),
-          defaultProcessOwners: S.optional(__S(33, __c4, 1)),
+          defaultAssessmentReportsDestination: S.optional(__S(112, __c7, 0)),
+          defaultProcessOwners: S.optional(__S(97, __c6, 1)),
           kmsKey: S.optional(S.String),
           evidenceFinderEnabled: S.optional(S.Boolean),
-          deregistrationPolicy: S.optional(__S(127, __c15, 7)),
-          defaultExportDestination: S.optional(__S(128, __c16, 0)),
+          deregistrationPolicy: S.optional(__S(817, __c51, 1)),
+          defaultExportDestination: S.optional(__S(818, __c51, 2)),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/settings" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateSettingsRequest" });
   }
 }
-function __c24(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5234,20 +5328,179 @@ function __c24(j: number): any {
           signatureAlgorithm: S.optional(S.String),
           signatureDateTime: S.optional(S.String),
           signatureKeyId: S.optional(S.String),
-          validationErrors: S.optional(__S(2, __c0, 2)),
+          validationErrors: S.optional(__S(1360, __c85, 0)),
         }),
       ).annotate({
         identifier: "ValidateAssessmentReportIntegrityResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
   }
 }
-
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
+          evidenceFolderId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/assessments/{assessmentId}/associateToAssessmentReport",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateAssessmentReportEvidenceFolderRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AssociateAssessmentReportEvidenceFolderResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
+          evidenceFolderId: S.String,
+          evidenceIds: __S(1360, __c85, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/assessments/{assessmentId}/batchAssociateToAssessmentReport",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAssociateAssessmentReportEvidenceRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          evidenceId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssessmentReportEvidenceError",
+      });
+    case 1:
+      return S.Array(__S(1376, __c86, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          evidenceIds: S.optional(__S(1360, __c85, 0)),
+          errors: S.optional(__S(1377, __c86, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchAssociateAssessmentReportEvidenceResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(SensitiveString),
+          controlSetId: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          roleType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDelegationRequest" });
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createDelegationRequests: __S(1393, __c87, 1),
+          assessmentId: S.String.pipe(T.HttpLabel("assessmentId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/assessments/{assessmentId}/delegations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchCreateDelegationByAssessmentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          createDelegationRequest: S.optional(__S(1392, __c87, 0)),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchCreateDelegationByAssessmentError",
+      });
+    case 4:
+      return S.Array(__S(1395, __c87, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          delegations: S.optional(__S(1409, __c88, 1)),
+          errors: S.optional(__S(1396, __c87, 4)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateDelegationByAssessmentResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          assessmentName: S.optional(SensitiveString),
+          assessmentId: S.optional(S.String),
+          status: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          roleType: S.optional(S.String),
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          controlSetId: S.optional(S.String),
+          comment: S.optional(SensitiveString),
+          createdBy: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Delegation" });
+    case 1:
+      return S.Array(__S(1408, __c88, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -551,7 +551,7 @@ export const createSetupIntent: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateSetupIntentRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SetupIntent>,
+  output: __S(23, __c2, 7) as any as S.Schema<SetupIntent>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -565,8 +565,8 @@ export const getSetupIntent: API.OperationMethod<
   GetSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetSetupIntentRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SetupIntent>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetSetupIntentRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<SetupIntent>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const getStatusSetupIntent: API.OperationMethod<
   GetStatusSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetStatusSetupIntentRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<SetupStatus>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetStatusSetupIntentRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<SetupStatus>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const listSetupIntents: API.PaginatedOperationMethod<
   SetupIntent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14, __c1, 6) as any as S.Schema<ListSetupIntentsRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<ListSetupIntentsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListSetupIntentsRequest>,
+    output: __S(51, __c6, 3) as any as S.Schema<ListSetupIntentsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -622,8 +622,8 @@ export const updateReturnUrlSetupIntent: API.OperationMethod<
   UpdateReturnUrlSetupIntentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateReturnUrlSetupIntentRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<SetupStatus>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateReturnUrlSetupIntentRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<SetupStatus>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -648,14 +648,22 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/setup_intents", code: 200 })),
       ).annotate({ identifier: "CreateSetupIntentRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.NullOr(S.String),
           message: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SetupLastSetupError" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           brand: S.NullOr(S.String),
@@ -665,7 +673,7 @@ function __c0(j: number): any {
           last4: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PaymentInstrumentCard" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           png_1x: S.String,
@@ -674,52 +682,48 @@ function __c0(j: number): any {
           svg: S.String,
         }),
       ).annotate({ identifier: "PaymentMethodIconFiles" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dark: __S(4, __c0, 4),
-          light: __S(4, __c0, 4),
+          dark: __S(17, __c2, 1),
+          light: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "PaymentMethodIconVariants",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          card: __S(5, __c0, 5),
-          square: __S(5, __c0, 5),
+          card: __S(18, __c2, 2),
+          square: __S(18, __c2, 2),
         }),
       ).annotate({ identifier: "PaymentMethodIcons" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          card: S.NullOr(__S(3, __c0, 3)),
+          card: S.NullOr(__S(16, __c2, 0)),
           display_name: S.String,
-          icons: __S(6, __c0, 6),
+          icons: __S(19, __c2, 3),
           installment_count: S.NullOr(S.Number),
           payment_method_type: S.String,
         }),
       ).annotate({ identifier: "PaymentInstrument" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }),
       ).annotate({ identifier: "UserProfilePicture" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: __S(8, __c1, 0),
+          profile_picture: __S(21, __c2, 5),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
@@ -727,26 +731,34 @@ function __c1(j: number): any {
           client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           created_at: S.String,
           id: S.String,
-          last_setup_error: S.NullOr(__S(2, __c0, 2)),
+          last_setup_error: S.NullOr(__S(8, __c1, 0)),
           member_id: S.NullOr(S.String),
           metadata: S.NullOr(S.Unknown),
-          payment_instrument: S.NullOr(__S(7, __c0, 7)),
+          payment_instrument: S.NullOr(__S(20, __c2, 4)),
           payment_method_id: S.NullOr(S.String),
           payment_method_type: S.NullOr(S.String),
           return_url: S.NullOr(S.String),
           status: S.String,
           three_ds_verified: S.Boolean,
           updated_at: S.String,
-          user: S.NullOr(__S(9, __c1, 1)),
+          user: S.NullOr(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "SetupIntent" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/setup_intents/{id}", code: 200 })),
       ).annotate({ identifier: "GetSetupIntentRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           setup_intent_id: S.String.pipe(T.Label()),
@@ -756,18 +768,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetStatusSetupIntentRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          last_setup_error: S.NullOr(__S(2, __c0, 2)),
+          last_setup_error: S.NullOr(__S(8, __c1, 0)),
           next_action: S.NullOr(S.Unknown),
           object: S.String,
           return_url: S.NullOr(S.String),
           status: S.String,
         }),
       ).annotate({ identifier: "SetupStatus" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -782,13 +802,9 @@ function __c1(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/setup_intents", code: 200 })),
       ).annotate({ identifier: "ListSetupIntentsRequest" });
-    case 7:
-      return S.Array(__S(10, __c1, 2));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(23, __c2, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -799,14 +815,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListSetupIntentsResponsePageInfo",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(15, __c1, 7),
-          page_info: __S(16, __c2, 0),
+          data: __S(49, __c6, 1),
+          page_info: __S(50, __c6, 2),
         }),
       ).annotate({ identifier: "ListSetupIntentsResponse" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           setup_intent_id: S.String.pipe(T.Label()),
@@ -823,7 +843,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

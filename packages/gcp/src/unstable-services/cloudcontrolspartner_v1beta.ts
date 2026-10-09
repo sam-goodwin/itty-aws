@@ -489,8 +489,8 @@ export const createOrganizationsLocationsCustomers: API.OperationMethod<
   CreateOrganizationsLocationsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateOrganizationsLocationsCustomersRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Customer>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateOrganizationsLocationsCustomersRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -509,8 +509,8 @@ export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
   DeleteOrganizationsLocationsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteOrganizationsLocationsCustomersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Empty>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteOrganizationsLocationsCustomersRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -528,11 +528,11 @@ export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<EkmConnections>,
+  output: __S(84, __c10, 4) as any as S.Schema<EkmConnections>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const getOrganizationsLocationsCustomers: API.OperationMethod<
   GetOrganizationsLocationsCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetOrganizationsLocationsCustomersRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Customer>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetOrganizationsLocationsCustomersRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
   GetOrganizationsLocationsCustomersWorkloadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Workload>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<Workload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,11 +580,11 @@ export const getOrganizationsLocationsCustomersWorkloadsViolations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    112,
+    __c14,
+    0,
   ) as any as S.Schema<GetOrganizationsLocationsCustomersWorkloadsViolationsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Violation>,
+  output: __S(132, __c16, 4) as any as S.Schema<Violation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -598,8 +598,8 @@ export const getPartnerOrganizationsLocations: API.OperationMethod<
   GetPartnerOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetPartnerOrganizationsLocationsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Partner>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetPartnerOrganizationsLocationsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<Partner>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -617,11 +617,11 @@ export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    8,
+    __c1,
+    0,
   ) as any as S.Schema<GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PartnerPermissions>,
+  output: __S(10, __c1, 2) as any as S.Schema<PartnerPermissions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -636,8 +636,8 @@ export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListCustomersResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListOrganizationsLocationsCustomersRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
   GcpOpContext,
   ListWorkloadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListWorkloadsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListWorkloadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -674,11 +674,11 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
   ListAccessApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    40,
-    __c5,
+    32,
+    __c4,
     0,
   ) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListAccessApprovalRequestsResponse>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListAccessApprovalRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -698,11 +698,11 @@ export const listOrganizationsLocationsCustomersWorkloadsViolations: API.Paginat
   ListViolationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    45,
+    40,
     __c5,
-    5,
+    0,
   ) as any as S.Schema<ListOrganizationsLocationsCustomersWorkloadsViolationsRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListViolationsResponse>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListViolationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,7 +723,7 @@ export const patchOrganizationsLocationsCustomers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c6, 0) as any as S.Schema<PatchOrganizationsLocationsCustomersRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Customer>,
+  output: __S(67, __c8, 3) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -733,238 +733,6 @@ export const patchOrganizationsLocationsCustomers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          step: S.optional(S.String),
-          completionState: S.optional(S.String),
-          completionTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomerOnboardingStep" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          onboardingSteps: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "CustomerOnboardingState" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationDomain: S.optional(S.String),
-          displayName: S.optional(S.String),
-          isOnboarded: S.optional(S.Boolean),
-          customerOnboardingState: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Customer" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/customers",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsCustomersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsLocationsCustomersRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorDomain: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionError" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connectionError: S.optional(__S(8, __c1, 0)),
-          connectionName: S.optional(S.String),
-          connectionState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EkmConnection" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          ekmConnections: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "EkmConnections" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsCustomersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsCustomersWorkloadsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          step: S.optional(S.String),
-          startTime: S.optional(S.String),
-          completionState: S.optional(S.String),
-          completionTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkloadOnboardingStep" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          onboardingSteps: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "WorkloadOnboardingState" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isOnboarded: S.optional(S.Boolean),
-          keyManagementProjectId: S.optional(S.String),
-          location: S.optional(S.String),
-          folder: S.optional(S.String),
-          folderId: S.optional(S.String),
-          workloadOnboardingState: S.optional(__S(16, __c2, 0)),
-          createTime: S.optional(S.String),
-          partner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Workload" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(19, __c2, 3)),
-          additionalLinks: S.optional(__S(19, __c2, 3)),
-          consoleUris: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Console" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          steps: S.optional(__S(19, __c2, 3)),
-          additionalLinks: S.optional(__S(19, __c2, 3)),
-          gcloudCommands: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Gcloud" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          consoleInstructions: S.optional(__S(20, __c2, 4)),
-          gcloudInstructions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "Instructions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          instructions: S.optional(__S(22, __c2, 6)),
-          remediationType: S.optional(S.String),
-          compliantValues: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Remediation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          description: S.optional(S.String),
-          remediation: S.optional(__S(23, __c2, 7)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          beginTime: S.optional(S.String),
-          nonCompliantOrgPolicy: S.optional(S.String),
-          state: S.optional(S.String),
-          resolveTime: S.optional(S.String),
-          folderId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Violation" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -978,37 +746,41 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPartnerOrganizationsLocationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ekmSolution: S.optional(S.String),
           ekmEndpointUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "EkmMetadata" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
     case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           partnerProjectId: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          ekmSolutions: S.optional(__S(27, __c3, 3)),
+          ekmSolutions: S.optional(__S(2, __c0, 2)),
           name: S.optional(S.String),
-          skus: S.optional(__S(29, __c3, 5)),
-          operatedCloudRegions: S.optional(__S(19, __c2, 3)),
+          skus: S.optional(__S(4, __c0, 4)),
+          operatedCloudRegions: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "Partner" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1022,20 +794,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          partnerPermissions: S.optional(__S(32, __c4, 0)),
+          partnerPermissions: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({ identifier: "PartnerPermissions" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1053,17 +825,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsCustomersRequest",
       });
-    case 3:
-      return S.Array(__S(3, __c0, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(67, __c8, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customers: S.optional(__S(35, __c4, 3)),
-          unreachable: S.optional(__S(19, __c2, 3)),
+          customers: S.optional(__S(17, __c2, 1)),
+          unreachable: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "ListCustomersResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1081,19 +857,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsCustomersWorkloadsRequest",
       });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(107, __c13, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(19, __c2, 3)),
-          workloads: S.optional(__S(38, __c4, 6)),
+          unreachable: S.optional(__S(120, __c15, 0)),
+          workloads: S.optional(__S(25, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkloadsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1126,22 +902,26 @@ function __c5(j: number): any {
           requestedExpirationTime: S.optional(S.String),
           name: S.optional(S.String),
           requestTime: S.optional(S.String),
-          requestedReason: S.optional(__S(41, __c5, 1)),
+          requestedReason: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "AccessApprovalRequest" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(34, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accessApprovalRequests: S.optional(__S(43, __c5, 3)),
+          accessApprovalRequests: S.optional(__S(35, __c4, 3)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(19, __c2, 3)),
+          unreachable: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({
         identifier: "ListAccessApprovalRequestsResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1161,14 +941,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsCustomersWorkloadsViolationsRequest",
       });
-    case 6:
-      return S.Array(__S(24, __c3, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(132, __c16, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          violations: S.optional(__S(46, __c5, 6)),
+          violations: S.optional(__S(41, __c5, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(19, __c2, 3)),
+          unreachable: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "ListViolationsResponse" });
   }
@@ -1180,7 +960,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1193,7 +973,266 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/customers",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsCustomersRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          step: S.optional(S.String),
+          completionState: S.optional(S.String),
+          completionTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomerOnboardingStep" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          onboardingSteps: S.optional(__S(65, __c8, 1)),
+        }),
+      ).annotate({ identifier: "CustomerOnboardingState" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          organizationDomain: S.optional(S.String),
+          displayName: S.optional(S.String),
+          isOnboarded: S.optional(S.Boolean),
+          customerOnboardingState: S.optional(__S(66, __c8, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Customer" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsLocationsCustomersRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorDomain: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionError" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          connectionError: S.optional(__S(81, __c10, 1)),
+          connectionName: S.optional(S.String),
+          connectionState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EkmConnection" });
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ekmConnections: S.optional(__S(83, __c10, 3)),
+        }),
+      ).annotate({ identifier: "EkmConnections" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsCustomersRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsCustomersWorkloadsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          step: S.optional(S.String),
+          startTime: S.optional(S.String),
+          completionState: S.optional(S.String),
+          completionTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkloadOnboardingStep" });
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          onboardingSteps: S.optional(__S(105, __c13, 1)),
+        }),
+      ).annotate({ identifier: "WorkloadOnboardingState" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isOnboarded: S.optional(S.Boolean),
+          keyManagementProjectId: S.optional(S.String),
+          location: S.optional(S.String),
+          folder: S.optional(S.String),
+          folderId: S.optional(S.String),
+          workloadOnboardingState: S.optional(__S(106, __c13, 2)),
+          createTime: S.optional(S.String),
+          partner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Workload" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudcontrolspartner.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsCustomersWorkloadsViolationsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(120, __c15, 0)),
+          additionalLinks: S.optional(__S(120, __c15, 0)),
+          consoleUris: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Console" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          steps: S.optional(__S(120, __c15, 0)),
+          additionalLinks: S.optional(__S(120, __c15, 0)),
+          gcloudCommands: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Gcloud" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consoleInstructions: S.optional(__S(128, __c16, 0)),
+          gcloudInstructions: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "Instructions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instructions: S.optional(__S(130, __c16, 2)),
+          remediationType: S.optional(S.String),
+          compliantValues: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "Remediation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          description: S.optional(S.String),
+          remediation: S.optional(__S(131, __c16, 3)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          beginTime: S.optional(S.String),
+          nonCompliantOrgPolicy: S.optional(S.String),
+          state: S.optional(S.String),
+          resolveTime: S.optional(S.String),
+          folderId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Violation" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -79,7 +79,7 @@ export const createVolume: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<VolumeDto>,
+  output: __S(4, __c1, 0) as any as S.Schema<VolumeDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -93,8 +93,8 @@ export const deleteVolume: API.OperationMethod<
   DeleteVolumeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -108,8 +108,8 @@ export const getVolume: API.OperationMethod<
   GetVolumeError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<VolumeDto>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetVolumeRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<VolumeDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -123,8 +123,8 @@ export const getVolumeByName: API.OperationMethod<
   GetVolumeByNameError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetVolumeByNameRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<VolumeDto>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetVolumeByNameRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<VolumeDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -138,8 +138,8 @@ export const listVolumes: API.OperationMethod<
   ListVolumesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListVolumesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListVolumesResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListVolumesRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ListVolumesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -155,7 +155,11 @@ function __c0(j: number): any {
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/volumes", code: 200 })),
       ).annotate({ identifier: "CreateVolumeRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -168,51 +172,62 @@ function __c0(j: number): any {
           errorReason: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "VolumeDto" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/volumes/{volumeId}", code: 200 })),
       ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteVolumeResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/volumes/{volumeId}", code: 200 })),
       ).annotate({ identifier: "GetVolumeRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/volumes/by-name/{name}", code: 200 })),
       ).annotate({ identifier: "GetVolumeByNameRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/volumes", code: 200 })),
       ).annotate({ identifier: "ListVolumesRequest" });
-    case 7:
-      return S.Array(__S(1, __c0, 1));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
+      return S.suspend(() => __S(21, __c5, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVolumesResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

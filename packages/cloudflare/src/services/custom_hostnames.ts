@@ -1397,8 +1397,8 @@ export const createCustomHostname: API.OperationMethod<
   CreateCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateCustomHostnameRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateCustomHostnameResponse>,
+  input: __S(98, __c6, 2) as any as S.Schema<CreateCustomHostnameRequest>,
+  output: __S(101, __c6, 5) as any as S.Schema<CreateCustomHostnameResponse>,
   errors: [SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1412,8 @@ export const deleteCertificatePackCertificate: API.OperationMethod<
   DeleteCertificatePackCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteCertificatePackCertificateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCertificatePackCertificateResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteCertificatePackCertificateRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteCertificatePackCertificateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const deleteCustomHostname: API.OperationMethod<
   DeleteCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteCustomHostnameRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteCustomHostnameResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteCustomHostnameRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<DeleteCustomHostnameResponse>,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1448,8 @@ export const deleteFallbackOrigin: API.OperationMethod<
   DeleteFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteFallbackOriginRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteFallbackOriginResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteFallbackOriginRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<DeleteFallbackOriginResponse>,
   errors: [FallbackOriginNotFound, SaasAccessNotGranted, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1467,8 @@ export const getCustomHostname: API.OperationMethod<
   GetCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetCustomHostnameRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetCustomHostnameResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetCustomHostnameRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<GetCustomHostnameResponse>,
   errors: [
     CustomHostnameNotFound,
     SaasQuotaNotAllocated,
@@ -1492,8 +1492,8 @@ export const getFallbackOrigin: API.OperationMethod<
   GetFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetFallbackOriginRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetFallbackOriginResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetFallbackOriginRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetFallbackOriginResponse>,
   errors: [
     FallbackOriginNotFound,
     SaasAccessNotGranted,
@@ -1513,8 +1513,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetQuotaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetQuotaResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetQuotaRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetQuotaResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1530,8 @@ export const listCustomHostnames: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(30, __c3, 6) as any as S.Schema<ListCustomHostnamesRequest>,
-    output: __S(35, __c4, 3) as any as S.Schema<ListCustomHostnamesResponse>,
+    input: __S(33, __c2, 1) as any as S.Schema<ListCustomHostnamesRequest>,
+    output: __S(38, __c2, 6) as any as S.Schema<ListCustomHostnamesResponse>,
     errors: [SaasQuotaNotAllocated, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1557,8 +1557,8 @@ export const patchCustomHostname: API.OperationMethod<
   PatchCustomHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PatchCustomHostnameRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PatchCustomHostnameResponse>,
+  input: __S(50, __c3, 2) as any as S.Schema<PatchCustomHostnameRequest>,
+  output: __S(53, __c3, 5) as any as S.Schema<PatchCustomHostnameResponse>,
   errors: [CustomHostnameNotFound, SaasQuotaNotAllocated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1572,8 +1572,8 @@ export const putCertificatePackCertificate: API.OperationMethod<
   PutCertificatePackCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<PutCertificatePackCertificateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PutCertificatePackCertificateResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<PutCertificatePackCertificateRequest>,
+  output: __S(72, __c4, 8) as any as S.Schema<PutCertificatePackCertificateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1587,8 +1587,8 @@ export const putFallbackOrigin: API.OperationMethod<
   PutFallbackOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<PutFallbackOriginRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<PutFallbackOriginResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<PutFallbackOriginRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<PutFallbackOriginResponse>,
   errors: [SaasAccessNotGranted, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1598,343 +1598,6 @@ export const putFallbackOrigin: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customCertificate: S.String.pipe(T.Body("custom_certificate")),
-          customKey: S.String.pipe(T.Body("custom_key")),
-        }),
-      ).annotate({
-        identifier: "CreateRequestSslCustomCertBundleItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ciphers: S.optional(__S(3, __c0, 3)),
-          earlyHints: S.optional(S.String.pipe(T.Body("early_hints"))),
-          http2: S.optional(S.String),
-          minTlsVersion: S.optional(S.String.pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateRequestSslSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
-          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
-          cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
-          customCertBundle: S.optional(__S(2, __c0, 2).pipe(T.Body("custom_cert_bundle"))),
-          customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
-          customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-          customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
-          method: S.optional(S.String),
-          settings: S.optional(__S(4, __c0, 4)),
-          type: S.optional(S.String),
-          wildcard: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CreateRequestSsl" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          hostname: S.String,
-          customMetadata: S.optional(__S(0, __c0, 0).pipe(T.Body("custom_metadata"))),
-          customOriginServer: S.optional(S.String.pipe(T.Body("custom_origin_server"))),
-          customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
-          ssl: S.optional(__S(5, __c0, 5)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_hostnames", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCustomHostnameRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseOwnershipVerification",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseOwnershipVerificationHttp",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cname: S.optional(S.NullOr(S.String)),
-          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(3, __c0, 3))),
-          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseSslDcvDelegationRecordsItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3, __c0, 3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseSslSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateResponseSslValidationErrorsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
-          certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
-          ),
-          customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
-          customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
-          customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
-          dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("dcv_delegation_records")),
-          ),
-          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3, __c0, 3))),
-          issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
-          serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(11, __c1, 3))),
-          signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_errors")),
-          ),
-          validationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("validation_records")),
-          ),
-          wildcard: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "CreateResponseSsl" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          hostname: S.String,
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("custom_metadata"))),
-          customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
-          customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
-          ownershipVerification: S.optional(
-            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ownership_verification")),
-          ),
-          ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("ownership_verification_http")),
-          ),
-          ssl: S.optional(S.NullOr(__S(14, __c1, 6))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(
-            S.NullOr(__S(3, __c0, 3)).pipe(T.Body("verification_errors")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCustomHostnameResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
-          certificateId: S.String.pipe(T.Label("certificate_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCertificatePackCertificateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCertificatePackCertificateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCustomHostnameRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteFallbackOriginRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3, __c0, 3))),
-          origin: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteFallbackOriginResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetCustomHostnameRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3, __c0, 3))),
-          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
-          http2: S.optional(S.NullOr(S.String)),
-          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
-          tls_1_3: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GetResponseSslSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
-          certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
-          ),
-          customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
-          customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
-          customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
-          dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("dcv_delegation_records")),
-          ),
-          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3, __c0, 3))),
-          issuer: S.optional(S.NullOr(S.String)),
-          method: S.optional(S.NullOr(S.String)),
-          serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(22, __c2, 6))),
-          signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          validationErrors: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_errors")),
-          ),
-          validationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("validation_records")),
-          ),
-          wildcard: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "GetResponseSsl" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          hostname: S.String,
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("custom_metadata"))),
-          customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
-          customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
-          ownershipVerification: S.optional(
-            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ownership_verification")),
-          ),
-          ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("ownership_verification_http")),
-          ),
-          ssl: S.optional(S.NullOr(__S(23, __c2, 7))),
-          status: S.optional(S.NullOr(S.String)),
-          verificationErrors: S.optional(
-            S.NullOr(__S(3, __c0, 3)).pipe(T.Body("verification_errors")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCustomHostnameResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1948,11 +1611,11 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetFallbackOriginRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3, __c0, 3))),
+          errors: S.optional(S.NullOr(__S(128, __c8, 0))),
           origin: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -1960,7 +1623,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetFallbackOriginResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1970,7 +1637,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetQuotaRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allocated: S.Number,
@@ -1979,7 +1646,11 @@ function __c3(j: number): any {
           used: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetQuotaResponse" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contain: S.optional(S.String),
@@ -1987,7 +1658,7 @@ function __c3(j: number): any {
           startsWith: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRequestHostname" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1995,7 +1666,7 @@ function __c3(j: number): any {
           certificateAuthority: S.optional(S.String.pipe(T.Query("certificate_authority"))),
           customOriginServer: S.optional(S.String.pipe(T.Query("custom_origin_server"))),
           direction: S.optional(S.String.pipe(T.Query())),
-          hostname: S.optional(__S(29, __c3, 5).pipe(T.DeepQuery("hostname"))),
+          hostname: S.optional(__S(32, __c2, 0).pipe(T.DeepQuery("hostname"))),
           hostnameStatus: S.optional(S.String.pipe(T.Query("hostname_status"))),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -2009,10 +1680,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCustomHostnamesRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          ciphers: S.optional(S.NullOr(__S(128, __c8, 0))),
           earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
           http2: S.optional(S.NullOr(S.String)),
           minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
@@ -2021,11 +1692,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListResultItemSslSettings",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2037,95 +1704,99 @@ function __c4(j: number): any {
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("dcv_delegation_records")),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3, __c0, 3))),
+          hosts: S.optional(S.NullOr(__S(128, __c8, 0))),
           issuer: S.optional(S.NullOr(S.String)),
           method: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(31, __c3, 7))),
+          settings: S.optional(S.NullOr(__S(34, __c2, 2))),
           signature: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
           validationErrors: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_errors")),
+            S.NullOr(__S(147, __c9, 3)).pipe(T.Body("validation_errors")),
           ),
           validationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("validation_records")),
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("validation_records")),
           ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListResultItemSsl" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(160, __c10, 0)).pipe(T.Body("custom_metadata"))),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(__S(144, __c9, 0)).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(__S(161, __c10, 1)).pipe(T.Body("ownership_verification_http")),
           ),
-          ssl: S.optional(S.NullOr(__S(32, __c4, 0))),
+          ssl: S.optional(S.NullOr(__S(35, __c2, 3))),
           status: S.optional(S.NullOr(S.String)),
           verificationErrors: S.optional(
-            S.NullOr(__S(3, __c0, 3)).pipe(T.Body("verification_errors")),
+            S.NullOr(__S(128, __c8, 0)).pipe(T.Body("verification_errors")),
           ),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
+          result: __S(37, __c2, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListCustomHostnamesResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(__S(3, __c0, 3)),
+          ciphers: S.optional(__S(128, __c8, 0)),
           earlyHints: S.optional(S.String.pipe(T.Body("early_hints"))),
           http2: S.optional(S.String),
           minTlsVersion: S.optional(S.String.pipe(T.Body("min_tls_version"))),
           tls_1_3: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditRequestSslSettings" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
           certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
           cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
-          customCertBundle: S.optional(__S(2, __c0, 2).pipe(T.Body("custom_cert_bundle"))),
+          customCertBundle: S.optional(__S(113, __c7, 1).pipe(T.Body("custom_cert_bundle"))),
           customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
           customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
           method: S.optional(S.String),
-          settings: S.optional(__S(36, __c4, 4)),
+          settings: S.optional(__S(48, __c3, 0)),
           type: S.optional(S.String),
           wildcard: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EditRequestSsl" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
-          customMetadata: S.optional(__S(0, __c0, 0).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(160, __c10, 0).pipe(T.Body("custom_metadata"))),
           customOriginServer: S.optional(S.String.pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
-          ssl: S.optional(__S(37, __c4, 5)),
+          ssl: S.optional(__S(49, __c3, 1)),
         })
           .pipe(
             T.Http({
@@ -2138,21 +1809,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchCustomHostnameRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          ciphers: S.optional(S.NullOr(__S(128, __c8, 0))),
           earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
           http2: S.optional(S.NullOr(S.String)),
           minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
           tls_1_3: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EditResponseSslSettings" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2164,52 +1831,56 @@ function __c5(j: number): any {
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("dcv_delegation_records")),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3, __c0, 3))),
+          hosts: S.optional(S.NullOr(__S(128, __c8, 0))),
           issuer: S.optional(S.NullOr(S.String)),
           method: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(39, __c4, 7))),
+          settings: S.optional(S.NullOr(__S(51, __c3, 3))),
           signature: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
           validationErrors: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_errors")),
+            S.NullOr(__S(147, __c9, 3)).pipe(T.Body("validation_errors")),
           ),
           validationRecords: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("validation_records")),
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("validation_records")),
           ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "EditResponseSsl" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(160, __c10, 0)).pipe(T.Body("custom_metadata"))),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ownership_verification")),
+            S.NullOr(__S(144, __c9, 0)).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(__S(161, __c10, 1)).pipe(T.Body("ownership_verification_http")),
           ),
-          ssl: S.optional(S.NullOr(__S(40, __c5, 0))),
+          ssl: S.optional(S.NullOr(__S(52, __c3, 4))),
           status: S.optional(S.NullOr(S.String)),
           verificationErrors: S.optional(
-            S.NullOr(__S(3, __c0, 3)).pipe(T.Body("verification_errors")),
+            S.NullOr(__S(128, __c8, 0)).pipe(T.Body("verification_errors")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchCustomHostnameResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2230,7 +1901,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PutCertificatePackCertificateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -2240,14 +1911,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CertificatePackCertificatesUpdateResponseOwnershipVerification",
       });
-    case 4:
+    case 2:
       return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cname: S.optional(S.NullOr(S.String)),
           cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(44, __c5, 4))),
+          emails: S.optional(S.NullOr(__S(66, __c4, 2))),
           httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
           httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
           status: S.optional(S.NullOr(S.String)),
@@ -2257,12 +1928,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CertificatePackCertificatesUpdateResponseSslDcvDelegationRecordsItem",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(67, __c4, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ciphers: S.optional(S.NullOr(__S(44, __c5, 4))),
+          ciphers: S.optional(S.NullOr(__S(66, __c4, 2))),
           earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
           http2: S.optional(S.NullOr(S.String)),
           minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
@@ -2271,13 +1942,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CertificatePackCertificatesUpdateResponseSslSettings",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
-    case 1:
+    case 6:
+      return S.Array(__S(162, __c10, 2));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2289,54 +1956,58 @@ function __c6(j: number): any {
           customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
           customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(46, __c5, 6)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(__S(68, __c4, 4)).pipe(T.Body("dcv_delegation_records")),
           ),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          hosts: S.optional(S.NullOr(__S(3, __c0, 3))),
+          hosts: S.optional(S.NullOr(__S(128, __c8, 0))),
           issuer: S.optional(S.NullOr(S.String)),
           method: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
-          settings: S.optional(S.NullOr(__S(47, __c5, 7))),
+          settings: S.optional(S.NullOr(__S(69, __c4, 5))),
           signature: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           type: S.optional(S.NullOr(S.String)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
           validationErrors: S.optional(
-            S.NullOr(__S(48, __c6, 0)).pipe(T.Body("validation_errors")),
+            S.NullOr(__S(70, __c4, 6)).pipe(T.Body("validation_errors")),
           ),
           validationRecords: S.optional(
-            S.NullOr(__S(46, __c5, 6)).pipe(T.Body("validation_records")),
+            S.NullOr(__S(68, __c4, 4)).pipe(T.Body("validation_records")),
           ),
           wildcard: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "CertificatePackCertificatesUpdateResponseSsl",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           hostname: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          customMetadata: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(160, __c10, 0)).pipe(T.Body("custom_metadata"))),
           customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
           customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
           ownershipVerification: S.optional(
-            S.NullOr(__S(43, __c5, 3)).pipe(T.Body("ownership_verification")),
+            S.NullOr(__S(65, __c4, 1)).pipe(T.Body("ownership_verification")),
           ),
           ownershipVerificationHttp: S.optional(
-            S.NullOr(__S(8, __c1, 0)).pipe(T.Body("ownership_verification_http")),
+            S.NullOr(__S(161, __c10, 1)).pipe(T.Body("ownership_verification_http")),
           ),
-          ssl: S.optional(S.NullOr(__S(49, __c6, 1))),
+          ssl: S.optional(S.NullOr(__S(71, __c4, 7))),
           status: S.optional(S.NullOr(S.String)),
           verificationErrors: S.optional(
-            S.NullOr(__S(44, __c5, 4)).pipe(T.Body("verification_errors")),
+            S.NullOr(__S(66, __c4, 2)).pipe(T.Body("verification_errors")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutCertificatePackCertificateResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2351,11 +2022,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutFallbackOriginRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          errors: S.optional(S.NullOr(__S(3, __c0, 3))),
+          errors: S.optional(S.NullOr(__S(128, __c8, 0))),
           origin: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -2365,7 +2036,371 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ciphers: S.optional(__S(128, __c8, 0)),
+          earlyHints: S.optional(S.String.pipe(T.Body("early_hints"))),
+          http2: S.optional(S.String),
+          minTlsVersion: S.optional(S.String.pipe(T.Body("min_tls_version"))),
+          tls_1_3: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateRequestSslSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
+          cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
+          customCertBundle: S.optional(__S(113, __c7, 1).pipe(T.Body("custom_cert_bundle"))),
+          customCertificate: S.optional(S.String.pipe(T.Body("custom_certificate"))),
+          customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+          customKey: S.optional(S.String.pipe(T.Body("custom_key"))),
+          method: S.optional(S.String),
+          settings: S.optional(__S(96, __c6, 0)),
+          type: S.optional(S.String),
+          wildcard: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CreateRequestSsl" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          hostname: S.String,
+          customMetadata: S.optional(__S(160, __c10, 0).pipe(T.Body("custom_metadata"))),
+          customOriginServer: S.optional(S.String.pipe(T.Body("custom_origin_server"))),
+          customOriginSni: S.optional(S.String.pipe(T.Body("custom_origin_sni"))),
+          ssl: S.optional(__S(97, __c6, 1)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_hostnames", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCustomHostnameRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ciphers: S.optional(S.NullOr(__S(128, __c8, 0))),
+          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
+          http2: S.optional(S.NullOr(S.String)),
+          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
+          tls_1_3: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSslSettings",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          certificateAuthority: S.optional(
+            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+          ),
+          customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
+          customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+          customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
+          dcvDelegationRecords: S.optional(
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("dcv_delegation_records")),
+          ),
+          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+          hosts: S.optional(S.NullOr(__S(128, __c8, 0))),
+          issuer: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(S.String)),
+          serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+          settings: S.optional(S.NullOr(__S(99, __c6, 3))),
+          signature: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+          validationErrors: S.optional(
+            S.NullOr(__S(147, __c9, 3)).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("validation_records")),
+          ),
+          wildcard: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "CreateResponseSsl" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          hostname: S.String,
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          customMetadata: S.optional(S.NullOr(__S(160, __c10, 0)).pipe(T.Body("custom_metadata"))),
+          customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
+          customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
+          ownershipVerification: S.optional(
+            S.NullOr(__S(144, __c9, 0)).pipe(T.Body("ownership_verification")),
+          ),
+          ownershipVerificationHttp: S.optional(
+            S.NullOr(__S(161, __c10, 1)).pipe(T.Body("ownership_verification_http")),
+          ),
+          ssl: S.optional(S.NullOr(__S(100, __c6, 4))),
+          status: S.optional(S.NullOr(S.String)),
+          verificationErrors: S.optional(
+            S.NullOr(__S(128, __c8, 0)).pipe(T.Body("verification_errors")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCustomHostnameResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customCertificate: S.String.pipe(T.Body("custom_certificate")),
+          customKey: S.String.pipe(T.Body("custom_key")),
+        }),
+      ).annotate({
+        identifier: "CreateRequestSslCustomCertBundleItem",
+      });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseOwnershipVerification",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cname: S.optional(S.NullOr(S.String)),
+          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+          emails: S.optional(S.NullOr(__S(128, __c8, 0))),
+          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSslDcvDelegationRecordsItem",
+      });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.Array(__S(162, __c10, 2));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseOwnershipVerificationHttp",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateResponseSslValidationErrorsItem",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+          certificateId: S.String.pipe(T.Label("certificate_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}/certificate_pack/{certificate_pack_id}/certificates/{certificate_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCertificatePackCertificateRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCertificatePackCertificateResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCustomHostnameRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/custom_hostnames/fallback_origin",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteFallbackOriginRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          errors: S.optional(S.NullOr(__S(128, __c8, 0))),
+          origin: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteFallbackOriginResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          customHostnameId: S.String.pipe(T.Label("custom_hostname_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/custom_hostnames/{custom_hostname_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetCustomHostnameRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ciphers: S.optional(S.NullOr(__S(128, __c8, 0))),
+          earlyHints: S.optional(S.NullOr(S.String).pipe(T.Body("early_hints"))),
+          http2: S.optional(S.NullOr(S.String)),
+          minTlsVersion: S.optional(S.NullOr(S.String).pipe(T.Body("min_tls_version"))),
+          tls_1_3: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GetResponseSslSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          certificateAuthority: S.optional(
+            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+          ),
+          customCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("custom_certificate"))),
+          customCsrId: S.optional(S.NullOr(S.String).pipe(T.Body("custom_csr_id"))),
+          customKey: S.optional(S.NullOr(S.String).pipe(T.Body("custom_key"))),
+          dcvDelegationRecords: S.optional(
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("dcv_delegation_records")),
+          ),
+          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+          hosts: S.optional(S.NullOr(__S(128, __c8, 0))),
+          issuer: S.optional(S.NullOr(S.String)),
+          method: S.optional(S.NullOr(S.String)),
+          serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
+          settings: S.optional(S.NullOr(__S(241, __c15, 1))),
+          signature: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+          validationErrors: S.optional(
+            S.NullOr(__S(147, __c9, 3)).pipe(T.Body("validation_errors")),
+          ),
+          validationRecords: S.optional(
+            S.NullOr(__S(146, __c9, 2)).pipe(T.Body("validation_records")),
+          ),
+          wildcard: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "GetResponseSsl" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          hostname: S.String,
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          customMetadata: S.optional(S.NullOr(__S(160, __c10, 0)).pipe(T.Body("custom_metadata"))),
+          customOriginServer: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_server"))),
+          customOriginSni: S.optional(S.NullOr(S.String).pipe(T.Body("custom_origin_sni"))),
+          ownershipVerification: S.optional(
+            S.NullOr(__S(144, __c9, 0)).pipe(T.Body("ownership_verification")),
+          ),
+          ownershipVerificationHttp: S.optional(
+            S.NullOr(__S(161, __c10, 1)).pipe(T.Body("ownership_verification_http")),
+          ),
+          ssl: S.optional(S.NullOr(__S(242, __c15, 2))),
+          status: S.optional(S.NullOr(S.String)),
+          verificationErrors: S.optional(
+            S.NullOr(__S(128, __c8, 0)).pipe(T.Body("verification_errors")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCustomHostnameResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

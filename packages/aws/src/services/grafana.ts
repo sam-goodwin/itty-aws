@@ -145,7 +145,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(73, __c9, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(209, __c26, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -596,8 +596,8 @@ export const associateLicense: API.OperationMethod<
   AssociateLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateLicenseRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<AssociateLicenseResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<AssociateLicenseRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<AssociateLicenseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -629,8 +629,8 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateWorkspaceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateWorkspaceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateWorkspaceRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -664,8 +664,8 @@ export const createWorkspaceApiKey: API.OperationMethod<
   CreateWorkspaceApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateWorkspaceApiKeyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateWorkspaceApiKeyResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateWorkspaceApiKeyRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<CreateWorkspaceApiKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -704,8 +704,8 @@ export const createWorkspaceServiceAccount: API.OperationMethod<
   CreateWorkspaceServiceAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateWorkspaceServiceAccountRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateWorkspaceServiceAccountResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWorkspaceServiceAccountRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateWorkspaceServiceAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -744,8 +744,8 @@ export const createWorkspaceServiceAccountToken: API.OperationMethod<
   CreateWorkspaceServiceAccountTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateWorkspaceServiceAccountTokenRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateWorkspaceServiceAccountTokenResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateWorkspaceServiceAccountTokenRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateWorkspaceServiceAccountTokenResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -778,7 +778,7 @@ export const deleteWorkspace: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteWorkspaceResponse>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -811,8 +811,8 @@ export const deleteWorkspaceApiKey: API.OperationMethod<
   DeleteWorkspaceApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteWorkspaceApiKeyRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteWorkspaceApiKeyResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteWorkspaceApiKeyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<DeleteWorkspaceApiKeyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -847,8 +847,8 @@ export const deleteWorkspaceServiceAccount: API.OperationMethod<
   DeleteWorkspaceServiceAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteWorkspaceServiceAccountRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteWorkspaceServiceAccountResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteWorkspaceServiceAccountRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteWorkspaceServiceAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -883,8 +883,8 @@ export const deleteWorkspaceServiceAccountToken: API.OperationMethod<
   DeleteWorkspaceServiceAccountTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteWorkspaceServiceAccountTokenRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteWorkspaceServiceAccountTokenResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteWorkspaceServiceAccountTokenRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DeleteWorkspaceServiceAccountTokenResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -914,8 +914,8 @@ export const describeWorkspace: API.OperationMethod<
   DescribeWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DescribeWorkspaceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DescribeWorkspaceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DescribeWorkspaceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DescribeWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,8 +945,8 @@ export const describeWorkspaceAuthentication: API.OperationMethod<
   DescribeWorkspaceAuthenticationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DescribeWorkspaceAuthenticationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DescribeWorkspaceAuthenticationResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DescribeWorkspaceAuthenticationRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<DescribeWorkspaceAuthenticationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -975,8 +975,8 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
   DescribeWorkspaceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DescribeWorkspaceConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DescribeWorkspaceConfigurationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DescribeWorkspaceConfigurationRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<DescribeWorkspaceConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1004,8 +1004,8 @@ export const disassociateLicense: API.OperationMethod<
   DisassociateLicenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DisassociateLicenseRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DisassociateLicenseResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DisassociateLicenseRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DisassociateLicenseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1035,8 +1035,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PermissionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListPermissionsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListPermissionsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<ListPermissionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1071,8 +1071,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1102,8 +1102,8 @@ export const listVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GrafanaVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListVersionsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListVersionsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListVersionsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1137,8 +1137,8 @@ export const listWorkspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkspaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListWorkspacesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<ListWorkspacesResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1171,8 +1171,8 @@ export const listWorkspaceServiceAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListWorkspaceServiceAccountsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListWorkspaceServiceAccountsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListWorkspaceServiceAccountsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListWorkspaceServiceAccountsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1214,8 +1214,8 @@ export const listWorkspaceServiceAccountTokens: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceAccountTokenSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListWorkspaceServiceAccountTokensRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListWorkspaceServiceAccountTokensResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListWorkspaceServiceAccountTokensRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<ListWorkspaceServiceAccountTokensResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1253,8 +1253,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1283,8 +1283,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1313,8 +1313,8 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdatePermissionsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UpdatePermissionsResponse>,
+  input: __S(179, __c22, 3) as any as S.Schema<UpdatePermissionsRequest>,
+  output: __S(182, __c22, 6) as any as S.Schema<UpdatePermissionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1348,8 +1348,8 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1382,8 +1382,8 @@ export const updateWorkspaceAuthentication: API.OperationMethod<
   UpdateWorkspaceAuthenticationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UpdateWorkspaceAuthenticationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateWorkspaceAuthenticationResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateWorkspaceAuthenticationRequest>,
+  output: __S(79, __c9, 7) as any as S.Schema<UpdateWorkspaceAuthenticationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1414,8 +1414,8 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
   UpdateWorkspaceConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateWorkspaceConfigurationRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UpdateWorkspaceConfigurationResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateWorkspaceConfigurationRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<UpdateWorkspaceConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1435,137 +1435,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          licenseType: S.String.pipe(T.HttpLabel("licenseType")),
-          grafanaToken: S.optional(S.String).pipe(T.HttpHeader("Grafana-Token")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/licenses/{licenseType}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "AssociateLicenseRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          providers: __S(1, __c0, 1),
-          samlConfigurationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuthenticationSummary" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ securityGroupIds: __S(1, __c0, 1), subnetIds: __S(1, __c0, 1) }),
-      ).annotate({ identifier: "VpcConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ prefixListIds: __S(1, __c0, 1), vpceIds: __S(1, __c0, 1) }),
-      ).annotate({
-        identifier: "NetworkAccessConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountAccessType: S.optional(S.String),
-          created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          dataSources: __S(1, __c0, 1),
-          description: S.optional(SensitiveString),
-          endpoint: S.String,
-          grafanaVersion: S.String,
-          id: S.String,
-          modified: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          name: S.optional(SensitiveString),
-          organizationRoleName: S.optional(SensitiveString),
-          notificationDestinations: S.optional(__S(1, __c0, 1)),
-          organizationalUnits: S.optional(__S(1, __c0, 1)),
-          permissionType: S.optional(S.String),
-          stackSetName: S.optional(S.String),
-          status: S.String,
-          workspaceRoleArn: S.optional(SensitiveString),
-          licenseType: S.optional(S.String),
-          freeTrialConsumed: S.optional(S.Boolean),
-          licenseExpiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          freeTrialExpiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          authentication: __S(2, __c0, 2),
-          tags: S.optional(__S(3, __c0, 3)),
-          vpcConfiguration: S.optional(__S(4, __c0, 4)),
-          networkAccessControl: S.optional(__S(5, __c0, 5)),
-          grafanaToken: S.optional(S.String),
-          ipAddressType: S.optional(S.String),
-          kmsKeyId: S.optional(S.String),
-          degradedWorkspaceReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkspaceDescription" });
-    case 7:
-      return S.suspend(() => S.Struct({ workspace: __S(6, __c0, 6) })).annotate({
-        identifier: "AssociateLicenseResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountAccessType: S.String,
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          organizationRoleName: S.optional(SensitiveString),
-          permissionType: S.String,
-          stackSetName: S.optional(S.String),
-          workspaceDataSources: S.optional(__S(1, __c0, 1)),
-          workspaceDescription: S.optional(SensitiveString),
-          workspaceName: S.optional(SensitiveString),
-          workspaceNotificationDestinations: S.optional(__S(1, __c0, 1)),
-          workspaceOrganizationalUnits: S.optional(__S(1, __c0, 1)),
-          workspaceRoleArn: S.optional(SensitiveString),
-          authenticationProviders: __S(1, __c0, 1),
-          tags: S.optional(__S(3, __c0, 3)),
-          vpcConfiguration: S.optional(__S(4, __c0, 4)),
-          configuration: S.optional(S.String),
-          networkAccessControl: S.optional(__S(5, __c0, 5)),
-          grafanaVersion: S.optional(S.String),
-          ipAddressType: S.optional(S.String),
-          kmsKeyId: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/workspaces" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateWorkspaceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyName: S.String,
-          keyRole: S.String,
-          secondsToLive: S.Number,
-          workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/apikeys" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateWorkspaceApiKeyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ keyName: S.String, key: SensitiveString, workspaceId: S.String }),
-      ).annotate({
-        identifier: "CreateWorkspaceApiKeyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
           grafanaRole: S.String,
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -1582,13 +1451,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateWorkspaceServiceAccountRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ id: S.String, name: S.String, grafanaRole: S.String, workspaceId: S.String }),
       ).annotate({
         identifier: "CreateWorkspaceServiceAccountResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -1611,16 +1484,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateWorkspaceServiceAccountTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ id: S.String, name: S.String, key: SensitiveString }),
       ).annotate({
         identifier: "ServiceAccountTokenSummaryWithKey",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          serviceAccountToken: __S(14, __c1, 6),
+          serviceAccountToken: __S(9, __c1, 1),
           serviceAccountId: S.String,
           workspaceId: S.String,
         }),
@@ -1644,7 +1517,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyName: S.String.pipe(T.HttpLabel("keyName")),
@@ -1662,11 +1539,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteWorkspaceApiKeyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ keyName: S.String, workspaceId: S.String })).annotate({
         identifier: "DeleteWorkspaceApiKeyResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.String.pipe(T.HttpLabel("serviceAccountId")),
@@ -1687,13 +1568,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteWorkspaceServiceAccountRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ serviceAccountId: S.String, workspaceId: S.String }),
       ).annotate({
         identifier: "DeleteWorkspaceServiceAccountResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tokenId: S.String.pipe(T.HttpLabel("tokenId")),
@@ -1715,13 +1600,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteWorkspaceServiceAccountTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ tokenId: S.String, serviceAccountId: S.String, workspaceId: S.String }),
       ).annotate({
         identifier: "DeleteWorkspaceServiceAccountTokenResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
           T.all(
@@ -1736,13 +1625,17 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DescribeWorkspaceRequest" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ workspace: __S(6, __c0, 6) })).annotate({
+      return S.suspend(() => S.Struct({ workspace: __S(250, __c31, 2) })).annotate({
         identifier: "DescribeWorkspaceResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
           T.all(
@@ -1757,12 +1650,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeWorkspaceAuthenticationRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ url: S.String }),
         /*@__PURE__*/ S.Struct({ xml: S.String }),
       ]);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1773,47 +1670,47 @@ function __c3(j: number): any {
           org: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssertionAttributes" });
-    case 4:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ editor: S.optional(__S(1, __c0, 1)), admin: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ editor: S.optional(__S(224, __c28, 0)), admin: S.optional(__S(224, __c28, 0)) }),
       ).annotate({ identifier: "RoleValues" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          idpMetadata: __S(26, __c3, 2),
-          assertionAttributes: S.optional(__S(27, __c3, 3)),
-          roleValues: S.optional(__S(28, __c3, 4)),
-          allowedOrganizations: S.optional(__S(1, __c0, 1)),
+          idpMetadata: __S(72, __c9, 0),
+          assertionAttributes: S.optional(__S(73, __c9, 1)),
+          roleValues: S.optional(__S(74, __c9, 2)),
+          allowedOrganizations: S.optional(__S(224, __c28, 0)),
           loginValidityDuration: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SamlConfiguration" });
-    case 6:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ status: S.String, configuration: S.optional(__S(29, __c3, 5)) }),
+        S.Struct({ status: S.String, configuration: S.optional(__S(75, __c9, 3)) }),
       ).annotate({ identifier: "SamlAuthentication" });
-    case 7:
+    case 5:
       return S.suspend(() => S.Struct({ ssoClientId: S.optional(S.String) })).annotate({
         identifier: "AwsSsoAuthentication",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          providers: __S(1, __c0, 1),
-          saml: S.optional(__S(30, __c3, 6)),
-          awsSso: S.optional(__S(31, __c3, 7)),
+          providers: __S(224, __c28, 0),
+          saml: S.optional(__S(76, __c9, 4)),
+          awsSso: S.optional(__S(77, __c9, 5)),
         }),
       ).annotate({
         identifier: "AuthenticationDescription",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ authentication: __S(32, __c4, 0) })).annotate({
+    case 7:
+      return S.suspend(() => S.Struct({ authentication: __S(78, __c9, 6) })).annotate({
         identifier: "DescribeWorkspaceAuthenticationResponse",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")) }).pipe(
           T.all(
@@ -1828,13 +1725,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeWorkspaceConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ configuration: S.String, grafanaVersion: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeWorkspaceConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
@@ -1852,7 +1753,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DisassociateLicenseRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1872,25 +1777,29 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPermissionsRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() => S.Struct({ user: __S(104, __c13, 0), role: S.String })).annotate({
+        identifier: "PermissionEntry",
+      });
+    case 2:
+      return S.Array(__S(97, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), permissions: __S(98, __c12, 2) }),
+      ).annotate({ identifier: "ListPermissionsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ id: S.String, type: S.String })).annotate({
         identifier: "User",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ user: __S(38, __c4, 6), role: S.String })).annotate({
-        identifier: "PermissionEntry",
-      });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), permissions: __S(40, __c5, 0) }),
-      ).annotate({ identifier: "ListPermissionsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1905,11 +1814,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(232, __c29, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1917,21 +1830,25 @@ function __c5(j: number): any {
           workspaceId: S.optional(S.String).pipe(T.HttpQuery("workspace-id")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/versions" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListVersionsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          grafanaVersions: S.optional(__S(1, __c0, 1)),
+          grafanaVersions: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/workspaces" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1941,25 +1858,25 @@ function __c5(j: number): any {
           id: S.String,
           modified: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           name: S.optional(SensitiveString),
-          notificationDestinations: S.optional(__S(1, __c0, 1)),
+          notificationDestinations: S.optional(__S(224, __c28, 0)),
           status: S.String,
-          authentication: __S(2, __c0, 2),
-          tags: S.optional(__S(3, __c0, 3)),
+          authentication: __S(240, __c30, 0),
+          tags: S.optional(__S(232, __c29, 0)),
           licenseType: S.optional(S.String),
           grafanaToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceSummary" });
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ workspaces: __S(130, __c16, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListWorkspacesResponse" });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ workspaces: __S(48, __c6, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListWorkspacesResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1978,23 +1895,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceServiceAccountsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ id: S.String, name: S.String, isDisabled: S.String, grafanaRole: S.String }),
       ).annotate({ identifier: "ServiceAccountSummary" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          serviceAccounts: __S(52, __c6, 4),
+          serviceAccounts: __S(138, __c17, 2),
           workspaceId: S.String,
         }),
       ).annotate({
         identifier: "ListWorkspaceServiceAccountsResponse",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2017,7 +1938,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceServiceAccountTokensRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2029,28 +1950,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ServiceAccountTokenSummary",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(145, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          serviceAccountTokens: __S(56, __c7, 0),
+          serviceAccountTokens: __S(146, __c18, 2),
           serviceAccountId: S.String,
           workspaceId: S.String,
         }),
       ).annotate({
         identifier: "ListWorkspaceServiceAccountTokensResponse",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(3, __c0, 3),
+          tags: __S(232, __c29, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2062,15 +1983,23 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(1, __c0, 1).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(224, __c28, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2082,22 +2011,22 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
-      return S.Array(__S(38, __c4, 6));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ action: S.String, role: S.String, users: __S(61, __c7, 5) }),
-      ).annotate({ identifier: "UpdateInstruction" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(104, __c13, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ action: S.String, role: S.String, users: __S(176, __c22, 0) }),
+      ).annotate({ identifier: "UpdateInstruction" });
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          updateInstructionBatch: __S(63, __c7, 7),
+          updateInstructionBatch: __S(178, __c22, 2),
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
         }).pipe(
           T.all(
@@ -2110,33 +2039,37 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePermissionsRequest" });
-    case 1:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ code: S.Number, message: S.String, causedBy: __S(62, __c7, 6) }),
+        S.Struct({ code: S.Number, message: S.String, causedBy: __S(177, __c22, 1) }),
       ).annotate({ identifier: "UpdateError" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ errors: __S(66, __c8, 2) })).annotate({
+    case 5:
+      return S.Array(__S(180, __c22, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ errors: __S(181, __c22, 5) })).annotate({
         identifier: "UpdatePermissionsResponse",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountAccessType: S.optional(S.String),
           organizationRoleName: S.optional(SensitiveString),
           permissionType: S.optional(S.String),
           stackSetName: S.optional(S.String),
-          workspaceDataSources: S.optional(__S(1, __c0, 1)),
+          workspaceDataSources: S.optional(__S(224, __c28, 0)),
           workspaceDescription: S.optional(SensitiveString),
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           workspaceName: S.optional(SensitiveString),
-          workspaceNotificationDestinations: S.optional(__S(1, __c0, 1)),
-          workspaceOrganizationalUnits: S.optional(__S(1, __c0, 1)),
+          workspaceNotificationDestinations: S.optional(__S(224, __c28, 0)),
+          workspaceOrganizationalUnits: S.optional(__S(224, __c28, 0)),
           workspaceRoleArn: S.optional(SensitiveString),
-          vpcConfiguration: S.optional(__S(4, __c0, 4)),
+          vpcConfiguration: S.optional(__S(248, __c31, 0)),
           removeVpcConfiguration: S.optional(S.Boolean),
-          networkAccessControl: S.optional(__S(5, __c0, 5)),
+          networkAccessControl: S.optional(__S(249, __c31, 1)),
           removeNetworkAccessConfiguration: S.optional(S.Boolean),
           ipAddressType: S.optional(S.String),
         }).pipe(
@@ -2150,12 +2083,16 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          authenticationProviders: __S(1, __c0, 1),
-          samlConfiguration: S.optional(__S(29, __c3, 5)),
+          authenticationProviders: __S(224, __c28, 0),
+          samlConfiguration: S.optional(__S(75, __c9, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/authentication" }),
@@ -2169,7 +2106,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateWorkspaceAuthenticationRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuration: S.String,
@@ -2188,23 +2129,178 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateWorkspaceConfigurationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateWorkspaceConfigurationResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(208, __c26, 0));
   }
 }
-
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
+          licenseType: S.String.pipe(T.HttpLabel("licenseType")),
+          grafanaToken: S.optional(S.String).pipe(T.HttpHeader("Grafana-Token")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/licenses/{licenseType}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AssociateLicenseRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ providers: __S(224, __c28, 0), samlConfigurationStatus: S.optional(S.String) }),
+      ).annotate({ identifier: "AuthenticationSummary" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ securityGroupIds: __S(224, __c28, 0), subnetIds: __S(224, __c28, 0) }),
+      ).annotate({ identifier: "VpcConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ prefixListIds: __S(224, __c28, 0), vpceIds: __S(224, __c28, 0) }),
+      ).annotate({
+        identifier: "NetworkAccessConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountAccessType: S.optional(S.String),
+          created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          dataSources: __S(224, __c28, 0),
+          description: S.optional(SensitiveString),
+          endpoint: S.String,
+          grafanaVersion: S.String,
+          id: S.String,
+          modified: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          name: S.optional(SensitiveString),
+          organizationRoleName: S.optional(SensitiveString),
+          notificationDestinations: S.optional(__S(224, __c28, 0)),
+          organizationalUnits: S.optional(__S(224, __c28, 0)),
+          permissionType: S.optional(S.String),
+          stackSetName: S.optional(S.String),
+          status: S.String,
+          workspaceRoleArn: S.optional(SensitiveString),
+          licenseType: S.optional(S.String),
+          freeTrialConsumed: S.optional(S.Boolean),
+          licenseExpiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          freeTrialExpiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          authentication: __S(240, __c30, 0),
+          tags: S.optional(__S(232, __c29, 0)),
+          vpcConfiguration: S.optional(__S(248, __c31, 0)),
+          networkAccessControl: S.optional(__S(249, __c31, 1)),
+          grafanaToken: S.optional(S.String),
+          ipAddressType: S.optional(S.String),
+          kmsKeyId: S.optional(S.String),
+          degradedWorkspaceReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkspaceDescription" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ workspace: __S(250, __c31, 2) })).annotate({
+        identifier: "AssociateLicenseResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountAccessType: S.String,
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          organizationRoleName: S.optional(SensitiveString),
+          permissionType: S.String,
+          stackSetName: S.optional(S.String),
+          workspaceDataSources: S.optional(__S(224, __c28, 0)),
+          workspaceDescription: S.optional(SensitiveString),
+          workspaceName: S.optional(SensitiveString),
+          workspaceNotificationDestinations: S.optional(__S(224, __c28, 0)),
+          workspaceOrganizationalUnits: S.optional(__S(224, __c28, 0)),
+          workspaceRoleArn: S.optional(SensitiveString),
+          authenticationProviders: __S(224, __c28, 0),
+          tags: S.optional(__S(232, __c29, 0)),
+          vpcConfiguration: S.optional(__S(248, __c31, 0)),
+          configuration: S.optional(S.String),
+          networkAccessControl: S.optional(__S(249, __c31, 1)),
+          grafanaVersion: S.optional(S.String),
+          ipAddressType: S.optional(S.String),
+          kmsKeyId: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/workspaces" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateWorkspaceRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyName: S.String,
+          keyRole: S.String,
+          secondsToLive: S.Number,
+          workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/apikeys" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateWorkspaceApiKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ keyName: S.String, key: SensitiveString, workspaceId: S.String }),
+      ).annotate({
+        identifier: "CreateWorkspaceApiKeyResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

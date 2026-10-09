@@ -692,8 +692,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(121, __c30, 1) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(122, __c30, 2) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -736,8 +736,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(129, __c32, 1) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -837,8 +837,8 @@ export const createRoute: API.OperationMethod<
   CreateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateRouteRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateRouteResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateRouteRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateRouteResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -879,8 +879,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateServiceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateServiceResponse>,
+  input: __S(10, __c2, 2) as any as S.Schema<CreateServiceRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<CreateServiceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -913,8 +913,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -946,8 +946,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -977,8 +977,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1008,8 +1008,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteRouteResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<DeleteRouteResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1040,8 +1040,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<DeleteServiceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1071,8 +1071,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetApplicationResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1101,8 +1101,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<GetEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1131,8 +1131,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1161,8 +1161,8 @@ export const getRoute: API.OperationMethod<
   GetRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetRouteRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetRouteResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetRouteRequest>,
+  output: __S(68, __c17, 0) as any as S.Schema<GetRouteResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1191,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetServiceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetServiceResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<GetServiceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1224,8 +1224,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(82, __c20, 2) as any as S.Schema<ListApplicationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1264,8 +1264,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(86, __c21, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1302,8 +1302,8 @@ export const listEnvironmentVpcs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentVpc
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListEnvironmentVpcsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListEnvironmentVpcsResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<ListEnvironmentVpcsRequest>,
+  output: __S(91, __c22, 3) as any as S.Schema<ListEnvironmentVpcsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1341,8 +1341,8 @@ export const listRoutes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RouteSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListRoutesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListRoutesResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<ListRoutesRequest>,
+  output: __S(94, __c23, 2) as any as S.Schema<ListRoutesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1382,8 +1382,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListServicesRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListServicesResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(98, __c24, 2) as any as S.Schema<ListServicesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1419,8 +1419,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1447,8 +1447,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1481,8 +1481,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1505,8 +1505,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1529,8 +1529,8 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateRouteRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateRouteResponse>,
+  input: __S(116, __c29, 0) as any as S.Schema<UpdateRouteRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdateRouteResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1547,111 +1547,29 @@ export const updateRoute: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ EndpointType: S.optional(S.String), StageName: S.optional(S.String) }),
-      ).annotate({ identifier: "ApiGatewayProxyInput" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
-          VpcId: S.String,
-          ProxyType: S.String,
-          ApiGatewayProxy: S.optional(__S(0, __c0, 0)),
-          Tags: S.optional(__S(1, __c0, 1)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/environments/{EnvironmentIdentifier}/applications" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Arn: S.optional(S.String),
-          OwnerAccountId: S.optional(S.String),
-          CreatedByAccountId: S.optional(S.String),
-          ApplicationId: S.optional(S.String),
-          EnvironmentId: S.optional(S.String),
-          VpcId: S.optional(S.String),
-          ProxyType: S.optional(S.String),
-          ApiGatewayProxy: S.optional(__S(0, __c0, 0)),
-          State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Description: S.optional(S.String),
-          NetworkFabricType: S.String,
-          Tags: S.optional(__S(1, __c0, 1)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Arn: S.optional(S.String),
-          Description: S.optional(S.String),
-          EnvironmentId: S.optional(S.String),
-          NetworkFabricType: S.optional(S.String),
-          OwnerAccountId: S.optional(S.String),
-          State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
-    case 6:
       return S.suspend(() => S.Struct({ ActivationState: S.optional(S.String) })).annotate({
         identifier: "DefaultRouteInput",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SourcePath: S.String,
           ActivationState: S.String,
-          Methods: S.optional(__S(7, __c0, 7)),
+          Methods: S.optional(__S(4, __c1, 0)),
           IncludeChildPaths: S.optional(S.Boolean),
           AppendSourcePath: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UriPathRouteInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
           ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
           ServiceIdentifier: S.String,
           RouteType: S.String,
-          DefaultRoute: S.optional(__S(6, __c0, 6)),
-          UriPathRoute: S.optional(__S(8, __c1, 0)),
-          Tags: S.optional(__S(1, __c0, 1)),
+          DefaultRoute: S.optional(__S(0, __c0, 0)),
+          UriPathRoute: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(124, __c31, 0)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1667,7 +1585,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateRouteRequest" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           RouteId: S.optional(S.String),
@@ -1677,22 +1595,32 @@ function __c1(j: number): any {
           RouteType: S.optional(S.String),
           ServiceId: S.optional(S.String),
           ApplicationId: S.optional(S.String),
-          UriPathRoute: S.optional(__S(8, __c1, 0)),
+          UriPathRoute: S.optional(__S(1, __c0, 1)),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(124, __c31, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateRouteResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Url: S.String, HealthUrl: S.optional(S.String) })).annotate(
         { identifier: "UrlEndpointInput" },
       );
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "LambdaEndpointInput",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -1701,9 +1629,9 @@ function __c1(j: number): any {
           ApplicationIdentifier: S.String.pipe(T.HttpLabel("ApplicationIdentifier")),
           VpcId: S.optional(S.String),
           EndpointType: S.String,
-          UrlEndpoint: S.optional(__S(11, __c1, 3)),
-          LambdaEndpoint: S.optional(__S(12, __c1, 4)),
-          Tags: S.optional(__S(1, __c0, 1)),
+          UrlEndpoint: S.optional(__S(8, __c2, 0)),
+          LambdaEndpoint: S.optional(__S(9, __c2, 1)),
+          Tags: S.optional(__S(124, __c31, 0)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1719,7 +1647,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateServiceRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ServiceId: S.optional(S.String),
@@ -1732,15 +1660,19 @@ function __c1(j: number): any {
           ApplicationId: S.optional(S.String),
           VpcId: S.optional(S.String),
           EndpointType: S.optional(S.String),
-          UrlEndpoint: S.optional(__S(11, __c1, 3)),
-          LambdaEndpoint: S.optional(__S(12, __c1, 4)),
+          UrlEndpoint: S.optional(__S(8, __c2, 0)),
+          LambdaEndpoint: S.optional(__S(9, __c2, 1)),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(124, __c31, 0)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateServiceResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1759,11 +1691,7 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1776,7 +1704,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteApplicationResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1791,7 +1723,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1803,7 +1735,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEnvironmentResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
           T.all(
@@ -1818,11 +1754,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteResourcePolicyResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1842,7 +1786,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteRouteRequest" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RouteId: S.optional(S.String),
@@ -1853,7 +1801,11 @@ function __c2(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DeleteRouteResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1873,11 +1825,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ServiceId: S.optional(S.String),
@@ -1889,7 +1837,11 @@ function __c3(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DeleteServiceResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1908,7 +1860,28 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Code: S.optional(S.String),
+          Message: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          ResourceIdentifier: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          AdditionalDetails: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({ identifier: "ErrorResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProxyUrl: S.optional(S.String),
@@ -1920,20 +1893,7 @@ function __c3(j: number): any {
           StageName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiGatewayProxyConfig" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Code: S.optional(S.String),
-          Message: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          ResourceIdentifier: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          AdditionalDetails: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "ErrorResponse" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1944,15 +1904,19 @@ function __c3(j: number): any {
           EnvironmentId: S.optional(S.String),
           VpcId: S.optional(S.String),
           ProxyType: S.optional(S.String),
-          ApiGatewayProxy: S.optional(__S(26, __c3, 2)),
+          ApiGatewayProxy: S.optional(__S(48, __c12, 0)),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          Error: S.optional(__S(28, __c3, 4)),
+          Tags: S.optional(__S(124, __c31, 0)),
+          Error: S.optional(__S(45, __c11, 1)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -1967,7 +1931,11 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -1978,15 +1946,15 @@ function __c3(j: number): any {
           OwnerAccountId: S.optional(S.String),
           TransitGatewayId: S.optional(S.String),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          Error: S.optional(__S(28, __c3, 4)),
+          Tags: S.optional(__S(124, __c31, 0)),
+          Error: S.optional(__S(45, __c11, 1)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetEnvironmentResponse" });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2005,7 +1973,11 @@ function __c4(j: number): any {
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
         identifier: "GetResourcePolicyResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2025,7 +1997,11 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetRouteRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RouteId: S.optional(S.String),
@@ -2037,18 +2013,22 @@ function __c4(j: number): any {
           ApplicationId: S.optional(S.String),
           EnvironmentId: S.optional(S.String),
           SourcePath: S.optional(S.String),
-          Methods: S.optional(__S(7, __c0, 7)),
+          Methods: S.optional(__S(4, __c1, 0)),
           IncludeChildPaths: S.optional(S.Boolean),
-          PathResourceToId: S.optional(__S(27, __c3, 3)),
+          PathResourceToId: S.optional(__S(44, __c11, 0)),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          Error: S.optional(__S(28, __c3, 4)),
+          Tags: S.optional(__S(124, __c31, 0)),
+          Error: S.optional(__S(45, __c11, 1)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AppendSourcePath: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetRouteResponse" });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2068,15 +2048,19 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetServiceRequest" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Url: S.optional(S.String), HealthUrl: S.optional(S.String) }),
       ).annotate({ identifier: "UrlEndpointConfig" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "LambdaEndpointConfig",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ServiceId: S.optional(S.String),
@@ -2089,18 +2073,18 @@ function __c4(j: number): any {
           ApplicationId: S.optional(S.String),
           VpcId: S.optional(S.String),
           EndpointType: S.optional(S.String),
-          UrlEndpoint: S.optional(__S(37, __c4, 5)),
-          LambdaEndpoint: S.optional(__S(38, __c4, 6)),
+          UrlEndpoint: S.optional(__S(76, __c19, 0)),
+          LambdaEndpoint: S.optional(__S(77, __c19, 1)),
           State: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
-          Error: S.optional(__S(28, __c3, 4)),
+          Tags: S.optional(__S(124, __c31, 0)),
+          Error: S.optional(__S(45, __c11, 1)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
   }
 }
-function __c5(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2120,15 +2104,19 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 1:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(49, __c12, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ApplicationSummaryList: S.optional(__S(41, __c5, 1)),
+          ApplicationSummaryList: S.optional(__S(81, __c20, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListApplicationsResponse" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2137,16 +2125,20 @@ function __c5(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 4:
-      return S.Array(__S(31, __c3, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          EnvironmentSummaryList: S.optional(__S(44, __c5, 4)),
+          EnvironmentSummaryList: S.optional(__S(85, __c21, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2165,34 +2157,34 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentVpcsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EnvironmentId: S.optional(S.String),
           VpcId: S.optional(S.String),
           AccountId: S.optional(S.String),
-          CidrBlocks: S.optional(__S(7, __c0, 7)),
+          CidrBlocks: S.optional(__S(4, __c1, 0)),
           VpcName: S.optional(S.String),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "EnvironmentVpc" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(89, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          EnvironmentVpcList: S.optional(__S(48, __c6, 0)),
+          EnvironmentVpcList: S.optional(__S(90, __c22, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEnvironmentVpcsResponse",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2213,16 +2205,20 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListRoutesRequest" });
-    case 3:
-      return S.Array(__S(35, __c4, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(68, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RouteSummaryList: S.optional(__S(51, __c6, 3)),
+          RouteSummaryList: S.optional(__S(93, __c23, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRoutesResponse" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2243,18 +2239,18 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 6:
-      return S.Array(__S(39, __c4, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(78, __c19, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ServiceSummaryList: S.optional(__S(54, __c6, 6)),
+          ServiceSummaryList: S.optional(__S(97, __c24, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
 }
-function __c7(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2272,20 +2268,28 @@ function __c7(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(124, __c31, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/resourcepolicy" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(1, __c0, 1),
+          Tags: __S(124, __c31, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -2297,11 +2301,15 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(7, __c0, 7).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(4, __c1, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -2313,7 +2321,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
@@ -2336,7 +2348,94 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UpdateRouteRequest" });
   }
 }
-
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EndpointType: S.optional(S.String), StageName: S.optional(S.String) }),
+      ).annotate({ identifier: "ApiGatewayProxyInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          EnvironmentIdentifier: S.String.pipe(T.HttpLabel("EnvironmentIdentifier")),
+          VpcId: S.String,
+          ProxyType: S.String,
+          ApiGatewayProxy: S.optional(__S(120, __c30, 0)),
+          Tags: S.optional(__S(124, __c31, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/environments/{EnvironmentIdentifier}/applications" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          CreatedByAccountId: S.optional(S.String),
+          ApplicationId: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          ProxyType: S.optional(S.String),
+          ApiGatewayProxy: S.optional(__S(120, __c30, 0)),
+          State: S.optional(S.String),
+          Tags: S.optional(__S(124, __c31, 0)),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Description: S.optional(S.String),
+          NetworkFabricType: S.String,
+          Tags: S.optional(__S(124, __c31, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Description: S.optional(S.String),
+          EnvironmentId: S.optional(S.String),
+          NetworkFabricType: S.optional(S.String),
+          OwnerAccountId: S.optional(S.String),
+          State: S.optional(S.String),
+          Tags: S.optional(__S(124, __c31, 0)),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "CreateEnvironmentResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

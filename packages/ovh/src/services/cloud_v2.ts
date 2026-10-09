@@ -4857,8 +4857,8 @@ export const createPublicCloudProjectComputeAutobackup: API.OperationMethod<
   CreatePublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreatePublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: __S(3712, __c116, 0) as any as S.Schema<CreatePublicCloudProjectComputeAutobackupRequest>,
+  output: __S(3749, __c117, 5) as any as S.Schema<PublicCloudInstanceAutobackup>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4872,8 +4872,8 @@ export const createPublicCloudProjectComputeBackup: API.OperationMethod<
   CreatePublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreatePublicCloudProjectComputeBackupRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: __S(4416, __c138, 0) as any as S.Schema<CreatePublicCloudProjectComputeBackupRequest>,
+  output: __S(4450, __c139, 2) as any as S.Schema<PublicCloudInstanceBackup>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4887,8 +4887,8 @@ export const createPublicCloudProjectComputeInstance: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreatePublicCloudProjectComputeInstanceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: __S(4800, __c150, 0) as any as S.Schema<CreatePublicCloudProjectComputeInstanceRequest>,
+  output: __S(4876, __c152, 12) as any as S.Schema<PublicCloudInstanceInstance>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4906,8 +4906,12 @@ export const createPublicCloudProjectComputeInstanceAction: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreatePublicCloudProjectComputeInstanceActionRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: __S(
+    5249,
+    __c164,
+    1,
+  ) as any as S.Schema<CreatePublicCloudProjectComputeInstanceActionRequest>,
+  output: __S(4876, __c152, 12) as any as S.Schema<PublicCloudInstanceInstance>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4921,8 +4925,12 @@ export const createPublicCloudProjectComputeInstanceConsole: API.OperationMethod
   CreatePublicCloudProjectComputeInstanceConsoleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreatePublicCloudProjectComputeInstanceConsoleRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<PublicCloudInstanceRemoteConsole>,
+  input: __S(
+    5664,
+    __c177,
+    0,
+  ) as any as S.Schema<CreatePublicCloudProjectComputeInstanceConsoleRequest>,
+  output: __S(5665, __c177, 1) as any as S.Schema<PublicCloudInstanceRemoteConsole>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4936,8 +4944,12 @@ export const createPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   CreatePublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreatePublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: __S(
+    6016,
+    __c188,
+    0,
+  ) as any as S.Schema<CreatePublicCloudProjectComputeInstanceGroupRequest>,
+  output: __S(6082, __c190, 2) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4951,8 +4963,8 @@ export const createPublicCloudProjectFloatingIp: API.OperationMethod<
   CreatePublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreatePublicCloudProjectFloatingIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: __S(6624, __c207, 0) as any as S.Schema<CreatePublicCloudProjectFloatingIpRequest>,
+  output: __S(6689, __c209, 1) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4966,8 +4978,8 @@ export const createPublicCloudProjectGateway: API.OperationMethod<
   CreatePublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreatePublicCloudProjectGatewayRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePublicCloudProjectGatewayRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<PublicCloudGatewayGateway>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4981,8 +4993,8 @@ export const createPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   CreatePublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<PublicCloudKeyManagerContainer>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5001,11 +5013,11 @@ export const createPublicCloudProjectKeyManagerContainerConsumer: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    57,
-    __c7,
-    1,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<CreatePublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5019,8 +5031,8 @@ export const createPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   CreatePublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PublicCloudKeyManagerSecret>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5039,11 +5051,11 @@ export const createPublicCloudProjectKeyManagerSecretConsumer: API.OperationMeth
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    1696,
+    __c53,
     0,
   ) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5058,11 +5070,11 @@ export const createPublicCloudProjectKeyManagerSecretPayload: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    2144,
+    __c67,
+    0,
   ) as any as S.Schema<CreatePublicCloudProjectKeyManagerSecretPayloadRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PublicCloudKeyManagerSecretPayload>,
+  output: __S(2145, __c67, 1) as any as S.Schema<PublicCloudKeyManagerSecretPayload>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5080,8 +5092,8 @@ export const createPublicCloudProjectLoadbalancer: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreatePublicCloudProjectLoadbalancerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreatePublicCloudProjectLoadbalancerRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5099,8 +5111,12 @@ export const createPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: __S(
+    2880,
+    __c90,
+    0,
+  ) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerRequest>,
+  output: __S(2948, __c92, 4) as any as S.Schema<PublicCloudLoadbalancerListener>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5118,11 +5134,11 @@ export const createPublicCloudProjectLoadbalancerListenerL7policy: API.Operation
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    2976,
+    __c93,
+    0,
   ) as any as S.Schema<CreatePublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  output: __S(3014, __c94, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5136,8 +5152,8 @@ export const createPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   CreatePublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolRequest>,
+  output: __S(3077, __c96, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5156,11 +5172,11 @@ export const createPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    96,
-    __c12,
+    3104,
+    __c97,
     0,
   ) as any as S.Schema<CreatePublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  output: __S(3139, __c98, 3) as any as S.Schema<PublicCloudLoadbalancerMember>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5174,8 +5190,8 @@ export const createPublicCloudProjectNetwork: API.OperationMethod<
   CreatePublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreatePublicCloudProjectNetworkRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CreatePublicCloudProjectNetworkRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<PublicCloudNetworkNetwork>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5189,8 +5205,8 @@ export const createPublicCloudProjectNetworkSubnet: API.OperationMethod<
   CreatePublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreatePublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: __S(3232, __c101, 0) as any as S.Schema<CreatePublicCloudProjectNetworkSubnetRequest>,
+  output: __S(3270, __c102, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5204,8 +5220,8 @@ export const createPublicCloudProjectPublicIpFloating: API.OperationMethod<
   CreatePublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreatePublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: __S(3296, __c103, 0) as any as S.Schema<CreatePublicCloudProjectPublicIpFloatingRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5219,8 +5235,8 @@ export const createPublicCloudProjectRancher: API.OperationMethod<
   CreatePublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreatePublicCloudProjectRancherRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PublicCloudRancherRancher>,
+  input: __S(3393, __c106, 1) as any as S.Schema<CreatePublicCloudProjectRancherRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<PublicCloudRancherRancher>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5235,11 +5251,11 @@ export const createPublicCloudProjectRancherAdminCredentials: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    3456,
+    __c108,
+    0,
   ) as any as S.Schema<CreatePublicCloudProjectRancherAdminCredentialsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PublicCloudRancherCredentials>,
+  output: __S(3457, __c108, 1) as any as S.Schema<PublicCloudRancherCredentials>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5253,8 +5269,8 @@ export const createPublicCloudProjectSecurityGroup: API.OperationMethod<
   CreatePublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreatePublicCloudProjectSecurityGroupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: __S(3488, __c109, 0) as any as S.Schema<CreatePublicCloudProjectSecurityGroupRequest>,
+  output: __S(3527, __c110, 7) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5268,8 +5284,8 @@ export const createPublicCloudProjectSshKey: API.OperationMethod<
   CreatePublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreatePublicCloudProjectSshKeyRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: __S(3552, __c111, 0) as any as S.Schema<CreatePublicCloudProjectSshKeyRequest>,
+  output: __S(3584, __c112, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5283,8 +5299,8 @@ export const createPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreatePublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: __S(3616, __c113, 0) as any as S.Schema<CreatePublicCloudProjectStorageBlockBackupRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageBackup>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5298,8 +5314,12 @@ export const createPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreatePublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: __S(
+    3680,
+    __c115,
+    0,
+  ) as any as S.Schema<CreatePublicCloudProjectStorageBlockSnapshotRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5313,8 +5333,8 @@ export const createPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   CreatePublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreatePublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: __S(3904, __c122, 0) as any as S.Schema<CreatePublicCloudProjectStorageBlockVolumeRequest>,
+  output: __S(3940, __c123, 4) as any as S.Schema<PublicCloudBlockStorageBlock>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5328,8 +5348,8 @@ export const createPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   CreatePublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<CreatePublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: __S(3968, __c124, 0) as any as S.Schema<CreatePublicCloudProjectStorageFileNetworkRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5347,8 +5367,12 @@ export const createPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   CreatePublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreatePublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: __S(
+    4064,
+    __c127,
+    0,
+  ) as any as S.Schema<CreatePublicCloudProjectStorageFileSnapshotRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5362,8 +5386,12 @@ export const createPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   CreatePublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreatePublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: __S(
+    4129,
+    __c129,
+    1,
+  ) as any as S.Schema<CreatePublicCloudProjectStorageObjectBucketRequest>,
+  output: __S(4198, __c131, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5377,8 +5405,8 @@ export const deletePublicCloudProjectComputeAutobackup: API.OperationMethod<
   DeletePublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeletePublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: __S(4224, __c132, 0) as any as S.Schema<DeletePublicCloudProjectComputeAutobackupRequest>,
+  output: __S(3749, __c117, 5) as any as S.Schema<PublicCloudInstanceAutobackup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5392,8 +5420,8 @@ export const deletePublicCloudProjectComputeBackup: API.OperationMethod<
   DeletePublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeletePublicCloudProjectComputeBackupRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DeletePublicCloudProjectComputeBackupRequest>,
+  output: __S(4450, __c139, 2) as any as S.Schema<PublicCloudInstanceBackup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5407,8 +5435,8 @@ export const deletePublicCloudProjectComputeInstance: API.OperationMethod<
   DeletePublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<DeletePublicCloudProjectComputeInstanceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: __S(4288, __c134, 0) as any as S.Schema<DeletePublicCloudProjectComputeInstanceRequest>,
+  output: __S(4876, __c152, 12) as any as S.Schema<PublicCloudInstanceInstance>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5422,8 +5450,12 @@ export const deletePublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   DeletePublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeletePublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: __S(
+    4320,
+    __c135,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectComputeInstanceGroupRequest>,
+  output: __S(6082, __c190, 2) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5437,8 +5469,8 @@ export const deletePublicCloudProjectFloatingIp: API.OperationMethod<
   DeletePublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeletePublicCloudProjectFloatingIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DeletePublicCloudProjectFloatingIpRequest>,
+  output: __S(6689, __c209, 1) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5452,8 +5484,8 @@ export const deletePublicCloudProjectGateway: API.OperationMethod<
   DeletePublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeletePublicCloudProjectGatewayRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: __S(4384, __c137, 0) as any as S.Schema<DeletePublicCloudProjectGatewayRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<PublicCloudGatewayGateway>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5467,8 +5499,12 @@ export const deletePublicCloudProjectKeyManagerContainer: API.OperationMethod<
   DeletePublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: __S(
+    4480,
+    __c140,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<PublicCloudKeyManagerContainer>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5483,11 +5519,11 @@ export const deletePublicCloudProjectKeyManagerContainerConsumer: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<DeletePublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5501,8 +5537,8 @@ export const deletePublicCloudProjectKeyManagerSecret: API.OperationMethod<
   DeletePublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: __S(4544, __c142, 0) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PublicCloudKeyManagerSecret>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5517,11 +5553,11 @@ export const deletePublicCloudProjectKeyManagerSecretConsumer: API.OperationMeth
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    176,
-    __c22,
+    4576,
+    __c143,
     0,
   ) as any as S.Schema<DeletePublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5535,8 +5571,8 @@ export const deletePublicCloudProjectLoadbalancer: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeletePublicCloudProjectLoadbalancerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DeletePublicCloudProjectLoadbalancerRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5550,8 +5586,12 @@ export const deletePublicCloudProjectLoadbalancerListener: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: __S(
+    4640,
+    __c145,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerRequest>,
+  output: __S(2948, __c92, 4) as any as S.Schema<PublicCloudLoadbalancerListener>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5569,11 +5609,11 @@ export const deletePublicCloudProjectLoadbalancerListenerL7policy: API.Operation
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    179,
-    __c22,
-    3,
+    4672,
+    __c146,
+    0,
   ) as any as S.Schema<DeletePublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  output: __S(3014, __c94, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5587,8 +5627,8 @@ export const deletePublicCloudProjectLoadbalancerPool: API.OperationMethod<
   DeletePublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolRequest>,
+  output: __S(3077, __c96, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5603,11 +5643,11 @@ export const deletePublicCloudProjectLoadbalancerPoolMember: API.OperationMethod
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    4736,
+    __c148,
+    0,
   ) as any as S.Schema<DeletePublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  output: __S(3139, __c98, 3) as any as S.Schema<PublicCloudLoadbalancerMember>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5621,8 +5661,8 @@ export const deletePublicCloudProjectNetwork: API.OperationMethod<
   DeletePublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeletePublicCloudProjectNetworkRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: __S(4768, __c149, 0) as any as S.Schema<DeletePublicCloudProjectNetworkRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<PublicCloudNetworkNetwork>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5636,8 +5676,8 @@ export const deletePublicCloudProjectNetworkSubnet: API.OperationMethod<
   DeletePublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeletePublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: __S(4896, __c153, 0) as any as S.Schema<DeletePublicCloudProjectNetworkSubnetRequest>,
+  output: __S(3270, __c102, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5651,8 +5691,8 @@ export const deletePublicCloudProjectPublicIpExtNet: API.OperationMethod<
   DeletePublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeletePublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
+  input: __S(4928, __c154, 0) as any as S.Schema<DeletePublicCloudProjectPublicIpExtNetRequest>,
+  output: __S(4961, __c155, 1) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5666,8 +5706,8 @@ export const deletePublicCloudProjectPublicIpFloating: API.OperationMethod<
   DeletePublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeletePublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: __S(4992, __c156, 0) as any as S.Schema<DeletePublicCloudProjectPublicIpFloatingRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5681,8 +5721,8 @@ export const deletePublicCloudProjectRancher: API.OperationMethod<
   DeletePublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeletePublicCloudProjectRancherRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PublicCloudRancherRancher>,
+  input: __S(5024, __c157, 0) as any as S.Schema<DeletePublicCloudProjectRancherRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<PublicCloudRancherRancher>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5696,8 +5736,8 @@ export const deletePublicCloudProjectSecurityGroup: API.OperationMethod<
   DeletePublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeletePublicCloudProjectSecurityGroupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: __S(5056, __c158, 0) as any as S.Schema<DeletePublicCloudProjectSecurityGroupRequest>,
+  output: __S(3527, __c110, 7) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5711,8 +5751,8 @@ export const deletePublicCloudProjectSshKey: API.OperationMethod<
   DeletePublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeletePublicCloudProjectSshKeyRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: __S(5088, __c159, 0) as any as S.Schema<DeletePublicCloudProjectSshKeyRequest>,
+  output: __S(3584, __c112, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5726,8 +5766,8 @@ export const deletePublicCloudProjectStorageBlockBackup: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeletePublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: __S(5120, __c160, 0) as any as S.Schema<DeletePublicCloudProjectStorageBlockBackupRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageBackup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5741,8 +5781,12 @@ export const deletePublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeletePublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: __S(
+    5152,
+    __c161,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectStorageBlockSnapshotRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5756,8 +5800,8 @@ export const deletePublicCloudProjectStorageBlockVolume: API.OperationMethod<
   DeletePublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeletePublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DeletePublicCloudProjectStorageBlockVolumeRequest>,
+  output: __S(3940, __c123, 4) as any as S.Schema<PublicCloudBlockStorageBlock>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5771,8 +5815,8 @@ export const deletePublicCloudProjectStorageFileNetwork: API.OperationMethod<
   DeletePublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DeletePublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: __S(5216, __c163, 0) as any as S.Schema<DeletePublicCloudProjectStorageFileNetworkRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5786,8 +5830,8 @@ export const deletePublicCloudProjectStorageFileShare: API.OperationMethod<
   DeletePublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeletePublicCloudProjectStorageFileShareRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DeletePublicCloudProjectStorageFileShareRequest>,
+  output: __S(5320, __c166, 8) as any as S.Schema<PublicCloudStorageFileFileStorage>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5801,8 +5845,12 @@ export const deletePublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   DeletePublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeletePublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: __S(
+    5344,
+    __c167,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectStorageFileSnapshotRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5816,8 +5864,12 @@ export const deletePublicCloudProjectStorageObjectBucket: API.OperationMethod<
   DeletePublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<DeletePublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: __S(
+    5376,
+    __c168,
+    0,
+  ) as any as S.Schema<DeletePublicCloudProjectStorageObjectBucketRequest>,
+  output: __S(4198, __c131, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5831,8 +5883,8 @@ export const getPublicCloudProject: API.OperationMethod<
   GetPublicCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetPublicCloudProjectRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<PublicCloudProjectProjectAsyncWithIAM>,
+  input: __S(5408, __c169, 0) as any as S.Schema<GetPublicCloudProjectRequest>,
+  output: __S(5443, __c170, 3) as any as S.Schema<PublicCloudProjectProjectAsyncWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5846,8 +5898,8 @@ export const getPublicCloudProjectComputeAutobackup: API.OperationMethod<
   GetPublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetPublicCloudProjectComputeAutobackupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PublicCloudInstanceAutobackup>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetPublicCloudProjectComputeAutobackupRequest>,
+  output: __S(3749, __c117, 5) as any as S.Schema<PublicCloudInstanceAutobackup>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5861,8 +5913,8 @@ export const getPublicCloudProjectComputeBackup: API.OperationMethod<
   GetPublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetPublicCloudProjectComputeBackupRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<PublicCloudInstanceBackup>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetPublicCloudProjectComputeBackupRequest>,
+  output: __S(4450, __c139, 2) as any as S.Schema<PublicCloudInstanceBackup>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5876,8 +5928,8 @@ export const getPublicCloudProjectComputeInstance: API.OperationMethod<
   GetPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetPublicCloudProjectComputeInstanceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetPublicCloudProjectComputeInstanceRequest>,
+  output: __S(4876, __c152, 12) as any as S.Schema<PublicCloudInstanceInstance>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5892,11 +5944,11 @@ export const getPublicCloudProjectComputeInstanceConsoleOutput: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    5568,
+    __c174,
+    0,
   ) as any as S.Schema<GetPublicCloudProjectComputeInstanceConsoleOutputRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<PublicCloudInstanceConsoleOutput>,
+  output: __S(5569, __c174, 1) as any as S.Schema<PublicCloudInstanceConsoleOutput>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5910,8 +5962,8 @@ export const getPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   GetPublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetPublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetPublicCloudProjectComputeInstanceGroupRequest>,
+  output: __S(6082, __c190, 2) as any as S.Schema<PublicCloudInstanceGroupInstanceGroup>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5925,8 +5977,8 @@ export const getPublicCloudProjectFloatingIp: API.OperationMethod<
   GetPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetPublicCloudProjectFloatingIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: __S(5632, __c176, 0) as any as S.Schema<GetPublicCloudProjectFloatingIpRequest>,
+  output: __S(6689, __c209, 1) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5940,8 +5992,8 @@ export const getPublicCloudProjectGateway: API.OperationMethod<
   GetPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetPublicCloudProjectGatewayRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetPublicCloudProjectGatewayRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<PublicCloudGatewayGateway>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5955,8 +6007,8 @@ export const getPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   GetPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<PublicCloudKeyManagerContainer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5971,11 +6023,11 @@ export const getPublicCloudProjectKeyManagerContainerConsumer: API.OperationMeth
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    221,
-    __c27,
-    5,
+    5760,
+    __c180,
+    0,
   ) as any as S.Schema<GetPublicCloudProjectKeyManagerContainerConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerContainerConsumer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5989,8 +6041,8 @@ export const getPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   GetPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: __S(5792, __c181, 0) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PublicCloudKeyManagerSecret>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6005,11 +6057,11 @@ export const getPublicCloudProjectKeyManagerSecretConsumer: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    5824,
+    __c182,
+    0,
   ) as any as S.Schema<GetPublicCloudProjectKeyManagerSecretConsumerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
+  output: __S(832, __c26, 0) as any as S.Schema<PublicCloudKeyManagerSecretConsumer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6023,8 +6075,8 @@ export const getPublicCloudProjectLoadbalancer: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetPublicCloudProjectLoadbalancerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: __S(5856, __c183, 0) as any as S.Schema<GetPublicCloudProjectLoadbalancerRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6038,8 +6090,8 @@ export const getPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: __S(5888, __c184, 0) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerRequest>,
+  output: __S(2948, __c92, 4) as any as S.Schema<PublicCloudLoadbalancerListener>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6054,11 +6106,11 @@ export const getPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    5920,
+    __c185,
+    0,
   ) as any as S.Schema<GetPublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  output: __S(3014, __c94, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6072,8 +6124,8 @@ export const getPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolRequest>,
+  output: __S(3077, __c96, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6087,8 +6139,12 @@ export const getPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   GetPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: __S(
+    5984,
+    __c187,
+    0,
+  ) as any as S.Schema<GetPublicCloudProjectLoadbalancerPoolMemberRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<PublicCloudLoadbalancerMember>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6102,8 +6158,8 @@ export const getPublicCloudProjectNetwork: API.OperationMethod<
   GetPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetPublicCloudProjectNetworkRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: __S(6144, __c192, 0) as any as S.Schema<GetPublicCloudProjectNetworkRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<PublicCloudNetworkNetwork>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6117,8 +6173,8 @@ export const getPublicCloudProjectNetworkSubnet: API.OperationMethod<
   GetPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<GetPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetPublicCloudProjectNetworkSubnetRequest>,
+  output: __S(3270, __c102, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6132,8 +6188,8 @@ export const getPublicCloudProjectPublicIpAdditional: API.OperationMethod<
   GetPublicCloudProjectPublicIpAdditionalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetPublicCloudProjectPublicIpAdditionalRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<PublicCloudPublicIpAdditionalIP>,
+  input: __S(6208, __c194, 0) as any as S.Schema<GetPublicCloudProjectPublicIpAdditionalRequest>,
+  output: __S(6241, __c195, 1) as any as S.Schema<PublicCloudPublicIpAdditionalIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6147,8 +6203,8 @@ export const getPublicCloudProjectPublicIpExtNet: API.OperationMethod<
   GetPublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetPublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
+  input: __S(6272, __c196, 0) as any as S.Schema<GetPublicCloudProjectPublicIpExtNetRequest>,
+  output: __S(4961, __c155, 1) as any as S.Schema<PublicCloudPublicIpExtNetIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6162,8 +6218,8 @@ export const getPublicCloudProjectPublicIpFloating: API.OperationMethod<
   GetPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetPublicCloudProjectPublicIpFloatingRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6177,8 +6233,8 @@ export const getPublicCloudProjectQuota: API.OperationMethod<
   GetPublicCloudProjectQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetPublicCloudProjectQuotaRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<PublicCloudQuotaQuota>,
+  input: __S(6336, __c198, 0) as any as S.Schema<GetPublicCloudProjectQuotaRequest>,
+  output: __S(6393, __c199, 25) as any as S.Schema<PublicCloudQuotaQuota>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6192,8 +6248,8 @@ export const getPublicCloudProjectRancher: API.OperationMethod<
   GetPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetPublicCloudProjectRancherRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PublicCloudRancherRancher>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetPublicCloudProjectRancherRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<PublicCloudRancherRancher>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6207,8 +6263,8 @@ export const getPublicCloudProjectRancherTask: API.OperationMethod<
   GetPublicCloudProjectRancherTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetPublicCloudProjectRancherTaskRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<CommonTask>,
+  input: __S(6432, __c201, 0) as any as S.Schema<GetPublicCloudProjectRancherTaskRequest>,
+  output: __S(6466, __c202, 2) as any as S.Schema<CommonTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6222,8 +6278,12 @@ export const getPublicCloudProjectReferenceInstanceFlavor: API.OperationMethod<
   GetPublicCloudProjectReferenceInstanceFlavorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<GetPublicCloudProjectReferenceInstanceFlavorRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<PublicCloudReferenceInstanceFlavor>,
+  input: __S(
+    6496,
+    __c203,
+    0,
+  ) as any as S.Schema<GetPublicCloudProjectReferenceInstanceFlavorRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<PublicCloudReferenceInstanceFlavor>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6237,8 +6297,12 @@ export const getPublicCloudProjectReferenceInstanceImage: API.OperationMethod<
   GetPublicCloudProjectReferenceInstanceImageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetPublicCloudProjectReferenceInstanceImageRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<PublicCloudReferenceInstanceImage>,
+  input: __S(
+    6560,
+    __c205,
+    0,
+  ) as any as S.Schema<GetPublicCloudProjectReferenceInstanceImageRequest>,
+  output: __S(6592, __c206, 0) as any as S.Schema<PublicCloudReferenceInstanceImage>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6253,11 +6317,11 @@ export const getPublicCloudProjectReferenceRancherEligibility: API.OperationMeth
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    272,
-    __c34,
+    6720,
+    __c210,
     0,
   ) as any as S.Schema<GetPublicCloudProjectReferenceRancherEligibilityRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<PublicCloudRancherEligibilityReference>,
+  output: __S(6721, __c210, 1) as any as S.Schema<PublicCloudRancherEligibilityReference>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6271,8 +6335,8 @@ export const getPublicCloudProjectReferenceRegion: API.OperationMethod<
   GetPublicCloudProjectReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetPublicCloudProjectReferenceRegionRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<PublicCloudReferenceRegion>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetPublicCloudProjectReferenceRegionRequest>,
+  output: __S(6784, __c212, 0) as any as S.Schema<PublicCloudReferenceRegion>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6286,8 +6350,8 @@ export const getPublicCloudProjectSecurityGroup: API.OperationMethod<
   GetPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<GetPublicCloudProjectSecurityGroupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetPublicCloudProjectSecurityGroupRequest>,
+  output: __S(3527, __c110, 7) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6301,8 +6365,8 @@ export const getPublicCloudProjectSshKey: API.OperationMethod<
   GetPublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetPublicCloudProjectSshKeyRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
+  input: __S(6848, __c214, 0) as any as S.Schema<GetPublicCloudProjectSshKeyRequest>,
+  output: __S(3584, __c112, 0) as any as S.Schema<PublicCloudSshKeySSHKey>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6316,8 +6380,8 @@ export const getPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   GetPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: __S(6880, __c215, 0) as any as S.Schema<GetPublicCloudProjectStorageBlockBackupRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageBackup>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6331,8 +6395,8 @@ export const getPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   GetPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: __S(6912, __c216, 0) as any as S.Schema<GetPublicCloudProjectStorageBlockSnapshotRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6346,8 +6410,8 @@ export const getPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   GetPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: __S(6944, __c217, 0) as any as S.Schema<GetPublicCloudProjectStorageBlockVolumeRequest>,
+  output: __S(3940, __c123, 4) as any as S.Schema<PublicCloudBlockStorageBlock>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6361,8 +6425,8 @@ export const getPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   GetPublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetPublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
+  input: __S(6976, __c218, 0) as any as S.Schema<GetPublicCloudProjectStorageFileNetworkRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<PublicCloudStorageFileFileStorageNetwork>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6376,8 +6440,8 @@ export const getPublicCloudProjectStorageFileShare: API.OperationMethod<
   GetPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<GetPublicCloudProjectStorageFileShareRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetPublicCloudProjectStorageFileShareRequest>,
+  output: __S(5320, __c166, 8) as any as S.Schema<PublicCloudStorageFileFileStorage>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6391,8 +6455,8 @@ export const getPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   GetPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: __S(7040, __c220, 0) as any as S.Schema<GetPublicCloudProjectStorageFileSnapshotRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6406,8 +6470,8 @@ export const getPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   GetPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<GetPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetPublicCloudProjectStorageObjectBucketRequest>,
+  output: __S(4198, __c131, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
   errors: [NotFound, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6421,8 +6485,8 @@ export const listPublicCloudProject: API.OperationMethod<
   ListPublicCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListPublicCloudProjectRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<ListPublicCloudProjectResponse>,
+  input: __S(99, __c3, 3) as any as S.Schema<ListPublicCloudProjectRequest>,
+  output: __S(101, __c3, 5) as any as S.Schema<ListPublicCloudProjectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6436,8 +6500,8 @@ export const listPublicCloudProjectComputeAutobackup: API.OperationMethod<
   ListPublicCloudProjectComputeAutobackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<ListPublicCloudProjectComputeAutobackupRequest>,
-  output: __S(293, __c36, 5) as any as S.Schema<ListPublicCloudProjectComputeAutobackupResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListPublicCloudProjectComputeAutobackupRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListPublicCloudProjectComputeAutobackupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6451,8 +6515,8 @@ export const listPublicCloudProjectComputeBackup: API.OperationMethod<
   ListPublicCloudProjectComputeBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<ListPublicCloudProjectComputeBackupRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<ListPublicCloudProjectComputeBackupResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListPublicCloudProjectComputeBackupRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListPublicCloudProjectComputeBackupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6466,8 +6530,8 @@ export const listPublicCloudProjectComputeInstance: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<ListPublicCloudProjectComputeInstanceRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<ListPublicCloudProjectComputeInstanceResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListPublicCloudProjectComputeInstanceRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListPublicCloudProjectComputeInstanceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6481,12 +6545,8 @@ export const listPublicCloudProjectComputeInstanceEvents: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceEventsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsRequest>,
-  output: __S(
-    303,
-    __c37,
-    7,
-  ) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ListPublicCloudProjectComputeInstanceEventsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6500,8 +6560,8 @@ export const listPublicCloudProjectComputeInstanceGroup: API.OperationMethod<
   ListPublicCloudProjectComputeInstanceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListPublicCloudProjectComputeInstanceGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6515,8 +6575,8 @@ export const listPublicCloudProjectFloatingIp: API.OperationMethod<
   ListPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ListPublicCloudProjectFloatingIpRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<ListPublicCloudProjectFloatingIpResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListPublicCloudProjectFloatingIpRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<ListPublicCloudProjectFloatingIpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6530,8 +6590,8 @@ export const listPublicCloudProjectGateway: API.OperationMethod<
   ListPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<ListPublicCloudProjectGatewayRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<ListPublicCloudProjectGatewayResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListPublicCloudProjectGatewayRequest>,
+  output: __S(354, __c11, 2) as any as S.Schema<ListPublicCloudProjectGatewayResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6545,8 +6605,8 @@ export const listPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   ListPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6561,14 +6621,14 @@ export const listPublicCloudProjectKeyManagerContainerConsumer: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    316,
-    __c39,
-    4,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerRequest>,
   output: __S(
-    318,
-    __c39,
-    6,
+    482,
+    __c15,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectKeyManagerContainerConsumerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6583,8 +6643,8 @@ export const listPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   ListPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6599,14 +6659,14 @@ export const listPublicCloudProjectKeyManagerSecretConsumer: API.OperationMethod
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    322,
-    __c40,
-    2,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerRequest>,
   output: __S(
-    324,
-    __c40,
-    4,
+    546,
+    __c17,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectKeyManagerSecretConsumerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6621,8 +6681,8 @@ export const listPublicCloudProjectLoadbalancer: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<ListPublicCloudProjectLoadbalancerRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<ListPublicCloudProjectLoadbalancerResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<ListPublicCloudProjectLoadbalancerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6636,8 +6696,8 @@ export const listPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6652,14 +6712,14 @@ export const listPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMe
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    331,
-    __c41,
-    3,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyRequest>,
   output: __S(
-    333,
-    __c41,
-    5,
+    642,
+    __c20,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectLoadbalancerListenerL7policyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6674,8 +6734,8 @@ export const listPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6689,11 +6749,11 @@ export const listPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   ListPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberRequest>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberRequest>,
   output: __S(
-    339,
-    __c42,
-    3,
+    706,
+    __c22,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectLoadbalancerPoolMemberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6708,8 +6768,8 @@ export const listPublicCloudProjectNetwork: API.OperationMethod<
   ListPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<ListPublicCloudProjectNetworkRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<ListPublicCloudProjectNetworkResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListPublicCloudProjectNetworkRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListPublicCloudProjectNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6723,8 +6783,8 @@ export const listPublicCloudProjectNetworkSubnet: API.OperationMethod<
   ListPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ListPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ListPublicCloudProjectNetworkSubnetResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListPublicCloudProjectNetworkSubnetRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ListPublicCloudProjectNetworkSubnetResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6738,8 +6798,8 @@ export const listPublicCloudProjectPublicIp: API.OperationMethod<
   ListPublicCloudProjectPublicIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListPublicCloudProjectPublicIpRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<ListPublicCloudProjectPublicIpResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListPublicCloudProjectPublicIpRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<ListPublicCloudProjectPublicIpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6753,8 +6813,8 @@ export const listPublicCloudProjectPublicIpAdditional: API.OperationMethod<
   ListPublicCloudProjectPublicIpAdditionalError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalRequest>,
+  output: __S(898, __c28, 2) as any as S.Schema<ListPublicCloudProjectPublicIpAdditionalResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6768,8 +6828,8 @@ export const listPublicCloudProjectPublicIpExtNet: API.OperationMethod<
   ListPublicCloudProjectPublicIpExtNetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<ListPublicCloudProjectPublicIpExtNetResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6783,8 +6843,8 @@ export const listPublicCloudProjectPublicIpFloating: API.OperationMethod<
   ListPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListPublicCloudProjectPublicIpFloatingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6798,8 +6858,8 @@ export const listPublicCloudProjectRancher: API.OperationMethod<
   ListPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<ListPublicCloudProjectRancherRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<ListPublicCloudProjectRancherResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListPublicCloudProjectRancherRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ListPublicCloudProjectRancherResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6813,11 +6873,11 @@ export const listPublicCloudProjectRancherCapabilityPlan: API.OperationMethod<
   ListPublicCloudProjectRancherCapabilityPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanRequest>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanRequest>,
   output: __S(
-    365,
-    __c45,
-    5,
+    1058,
+    __c33,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectRancherCapabilityPlanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6833,14 +6893,14 @@ export const listPublicCloudProjectRancherCapabilityVersion: API.OperationMethod
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    366,
-    __c45,
-    6,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionRequest>,
   output: __S(
-    369,
-    __c46,
-    1,
+    1122,
+    __c35,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectRancherCapabilityVersionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6855,8 +6915,8 @@ export const listPublicCloudProjectRancherEvent: API.OperationMethod<
   ListPublicCloudProjectRancherEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<ListPublicCloudProjectRancherEventRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<ListPublicCloudProjectRancherEventResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListPublicCloudProjectRancherEventRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ListPublicCloudProjectRancherEventResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6870,8 +6930,8 @@ export const listPublicCloudProjectRancherTask: API.OperationMethod<
   ListPublicCloudProjectRancherTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<ListPublicCloudProjectRancherTaskRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<ListPublicCloudProjectRancherTaskResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListPublicCloudProjectRancherTaskRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<ListPublicCloudProjectRancherTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6886,14 +6946,14 @@ export const listPublicCloudProjectReferenceInstanceFlavor: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    374,
-    __c46,
-    6,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorRequest>,
   output: __S(
-    376,
-    __c47,
-    0,
+    1218,
+    __c38,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectReferenceInstanceFlavorResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6908,11 +6968,15 @@ export const listPublicCloudProjectReferenceInstanceImage: API.OperationMethod<
   ListPublicCloudProjectReferenceInstanceImageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageRequest>,
+  input: __S(
+    1344,
+    __c42,
+    0,
+  ) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageRequest>,
   output: __S(
-    379,
-    __c47,
-    3,
+    1346,
+    __c42,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectReferenceInstanceImageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6927,8 +6991,12 @@ export const listPublicCloudProjectReferenceRancherPlan: API.OperationMethod<
   ListPublicCloudProjectReferenceRancherPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanRequest>,
+  output: __S(
+    1058,
+    __c33,
+    2,
+  ) as any as S.Schema<ListPublicCloudProjectReferenceRancherPlanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6943,14 +7011,14 @@ export const listPublicCloudProjectReferenceRancherVersion: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    381,
-    __c47,
-    5,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionRequest>,
   output: __S(
-    369,
-    __c46,
-    1,
+    1122,
+    __c35,
+    2,
   ) as any as S.Schema<ListPublicCloudProjectReferenceRancherVersionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -6965,8 +7033,8 @@ export const listPublicCloudProjectReferenceRegion: API.OperationMethod<
   ListPublicCloudProjectReferenceRegionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<ListPublicCloudProjectReferenceRegionRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<ListPublicCloudProjectReferenceRegionResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListPublicCloudProjectReferenceRegionRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<ListPublicCloudProjectReferenceRegionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6980,8 +7048,8 @@ export const listPublicCloudProjectSecurityGroup: API.OperationMethod<
   ListPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListPublicCloudProjectSecurityGroupRequest>,
-  output: __S(387, __c48, 3) as any as S.Schema<ListPublicCloudProjectSecurityGroupResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListPublicCloudProjectSecurityGroupRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<ListPublicCloudProjectSecurityGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6995,8 +7063,8 @@ export const listPublicCloudProjectSshKey: API.OperationMethod<
   ListPublicCloudProjectSshKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ListPublicCloudProjectSshKeyRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<ListPublicCloudProjectSshKeyResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListPublicCloudProjectSshKeyRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<ListPublicCloudProjectSshKeyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7010,8 +7078,8 @@ export const listPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   ListPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<ListPublicCloudProjectStorageBlockBackupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7025,8 +7093,12 @@ export const listPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   ListPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotRequest>,
+  output: __S(
+    1569,
+    __c49,
+    1,
+  ) as any as S.Schema<ListPublicCloudProjectStorageBlockSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7040,8 +7112,8 @@ export const listPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   ListPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<ListPublicCloudProjectStorageBlockVolumeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7055,8 +7127,8 @@ export const listPublicCloudProjectStorageFileNetwork: API.OperationMethod<
   ListPublicCloudProjectStorageFileNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<ListPublicCloudProjectStorageFileNetworkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7070,8 +7142,8 @@ export const listPublicCloudProjectStorageFileShare: API.OperationMethod<
   ListPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListPublicCloudProjectStorageFileShareRequest>,
-  output: __S(403, __c50, 3) as any as S.Schema<ListPublicCloudProjectStorageFileShareResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListPublicCloudProjectStorageFileShareRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<ListPublicCloudProjectStorageFileShareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7085,8 +7157,8 @@ export const listPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   ListPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<ListPublicCloudProjectStorageFileSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7100,8 +7172,8 @@ export const listPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   ListPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7116,11 +7188,11 @@ export const listPublicCloudProjectStorageObjectBucketLifecycle: API.OperationMe
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    410,
-    __c51,
-    2,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketLifecycleRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
+  output: __S(1866, __c58, 10) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7135,11 +7207,11 @@ export const listPublicCloudProjectStorageObjectBucketReplication: API.Operation
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    422,
-    __c52,
-    6,
+    1888,
+    __c59,
+    0,
   ) as any as S.Schema<ListPublicCloudProjectStorageObjectBucketReplicationRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
+  output: __S(1924, __c60, 4) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7157,8 +7229,8 @@ export const putPublicCloudProjectComputeInstance: API.OperationMethod<
   PutPublicCloudProjectComputeInstanceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<PutPublicCloudProjectComputeInstanceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PublicCloudInstanceInstance>,
+  input: __S(1953, __c61, 1) as any as S.Schema<PutPublicCloudProjectComputeInstanceRequest>,
+  output: __S(4876, __c152, 12) as any as S.Schema<PublicCloudInstanceInstance>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7172,8 +7244,8 @@ export const putPublicCloudProjectFloatingIp: API.OperationMethod<
   PutPublicCloudProjectFloatingIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<PutPublicCloudProjectFloatingIpRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
+  input: __S(1984, __c62, 0) as any as S.Schema<PutPublicCloudProjectFloatingIpRequest>,
+  output: __S(6689, __c209, 1) as any as S.Schema<PublicCloudFloatingIpFloatingIP>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7187,8 +7259,8 @@ export const putPublicCloudProjectGateway: API.OperationMethod<
   PutPublicCloudProjectGatewayError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<PutPublicCloudProjectGatewayRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PublicCloudGatewayGateway>,
+  input: __S(2049, __c64, 1) as any as S.Schema<PutPublicCloudProjectGatewayRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<PublicCloudGatewayGateway>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7274,8 @@ export const putPublicCloudProjectKeyManagerContainer: API.OperationMethod<
   PutPublicCloudProjectKeyManagerContainerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<PutPublicCloudProjectKeyManagerContainerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<PublicCloudKeyManagerContainer>,
+  input: __S(2081, __c65, 1) as any as S.Schema<PutPublicCloudProjectKeyManagerContainerRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<PublicCloudKeyManagerContainer>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7221,8 +7293,8 @@ export const putPublicCloudProjectKeyManagerSecret: API.OperationMethod<
   PutPublicCloudProjectKeyManagerSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<PutPublicCloudProjectKeyManagerSecretRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PublicCloudKeyManagerSecret>,
+  input: __S(2113, __c66, 1) as any as S.Schema<PutPublicCloudProjectKeyManagerSecretRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<PublicCloudKeyManagerSecret>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7236,8 +7308,8 @@ export const putPublicCloudProjectLoadbalancer: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<PutPublicCloudProjectLoadbalancerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
+  input: __S(2177, __c68, 1) as any as S.Schema<PutPublicCloudProjectLoadbalancerRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<PublicCloudLoadbalancerLoadbalancer>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7251,8 +7323,8 @@ export const putPublicCloudProjectLoadbalancerListener: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerListenerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PublicCloudLoadbalancerListener>,
+  input: __S(2209, __c69, 1) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerRequest>,
+  output: __S(2948, __c92, 4) as any as S.Schema<PublicCloudLoadbalancerListener>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7270,11 +7342,11 @@ export const putPublicCloudProjectLoadbalancerListenerL7policy: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    442,
-    __c55,
-    2,
+    2240,
+    __c70,
+    0,
   ) as any as S.Schema<PutPublicCloudProjectLoadbalancerListenerL7policyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
+  output: __S(3014, __c94, 6) as any as S.Schema<PublicCloudLoadbalancerL7Policy>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7288,8 +7360,8 @@ export const putPublicCloudProjectLoadbalancerPool: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerPoolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
+  input: __S(2274, __c71, 2) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolRequest>,
+  output: __S(3077, __c96, 5) as any as S.Schema<PublicCloudLoadbalancerPool>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7303,8 +7375,8 @@ export const putPublicCloudProjectLoadbalancerPoolMember: API.OperationMethod<
   PutPublicCloudProjectLoadbalancerPoolMemberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolMemberRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<PublicCloudLoadbalancerMember>,
+  input: __S(2305, __c72, 1) as any as S.Schema<PutPublicCloudProjectLoadbalancerPoolMemberRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<PublicCloudLoadbalancerMember>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7318,8 +7390,8 @@ export const putPublicCloudProjectNetwork: API.OperationMethod<
   PutPublicCloudProjectNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<PutPublicCloudProjectNetworkRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<PublicCloudNetworkNetwork>,
+  input: __S(2337, __c73, 1) as any as S.Schema<PutPublicCloudProjectNetworkRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<PublicCloudNetworkNetwork>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7333,8 +7405,8 @@ export const putPublicCloudProjectNetworkSubnet: API.OperationMethod<
   PutPublicCloudProjectNetworkSubnetError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<PutPublicCloudProjectNetworkSubnetRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
+  input: __S(2369, __c74, 1) as any as S.Schema<PutPublicCloudProjectNetworkSubnetRequest>,
+  output: __S(3270, __c102, 6) as any as S.Schema<PublicCloudNetworkSubnet>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7348,8 +7420,8 @@ export const putPublicCloudProjectPublicIpFloating: API.OperationMethod<
   PutPublicCloudProjectPublicIpFloatingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<PutPublicCloudProjectPublicIpFloatingRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
+  input: __S(2400, __c75, 0) as any as S.Schema<PutPublicCloudProjectPublicIpFloatingRequest>,
+  output: __S(3361, __c105, 1) as any as S.Schema<PublicCloudPublicIpFloatingIP>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7363,8 +7435,8 @@ export const putPublicCloudProjectQuota: API.OperationMethod<
   PutPublicCloudProjectQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<PutPublicCloudProjectQuotaRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<PublicCloudQuotaQuota>,
+  input: __S(2433, __c76, 1) as any as S.Schema<PutPublicCloudProjectQuotaRequest>,
+  output: __S(6393, __c199, 25) as any as S.Schema<PublicCloudQuotaQuota>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7378,8 +7450,8 @@ export const putPublicCloudProjectRancher: API.OperationMethod<
   PutPublicCloudProjectRancherError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<PutPublicCloudProjectRancherRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PublicCloudRancherRancher>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PutPublicCloudProjectRancherRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<PublicCloudRancherRancher>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7393,8 +7465,8 @@ export const putPublicCloudProjectSecurityGroup: API.OperationMethod<
   PutPublicCloudProjectSecurityGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<PutPublicCloudProjectSecurityGroupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
+  input: __S(2561, __c80, 1) as any as S.Schema<PutPublicCloudProjectSecurityGroupRequest>,
+  output: __S(3527, __c110, 7) as any as S.Schema<PublicCloudSecurityGroupSecurityGroup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7408,8 +7480,8 @@ export const putPublicCloudProjectStorageBlockBackup: API.OperationMethod<
   PutPublicCloudProjectStorageBlockBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<PutPublicCloudProjectStorageBlockBackupRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageBackup>,
+  input: __S(2593, __c81, 1) as any as S.Schema<PutPublicCloudProjectStorageBlockBackupRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageBackup>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7423,8 +7495,8 @@ export const putPublicCloudProjectStorageBlockSnapshot: API.OperationMethod<
   PutPublicCloudProjectStorageBlockSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<PutPublicCloudProjectStorageBlockSnapshotRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
+  input: __S(2625, __c82, 1) as any as S.Schema<PutPublicCloudProjectStorageBlockSnapshotRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<PublicCloudBlockStorageSnapshot>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7442,8 +7514,8 @@ export const putPublicCloudProjectStorageBlockVolume: API.OperationMethod<
   PutPublicCloudProjectStorageBlockVolumeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<PutPublicCloudProjectStorageBlockVolumeRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PublicCloudBlockStorageBlock>,
+  input: __S(2657, __c83, 1) as any as S.Schema<PutPublicCloudProjectStorageBlockVolumeRequest>,
+  output: __S(3940, __c123, 4) as any as S.Schema<PublicCloudBlockStorageBlock>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7461,8 +7533,8 @@ export const putPublicCloudProjectStorageFileShare: API.OperationMethod<
   PutPublicCloudProjectStorageFileShareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<PutPublicCloudProjectStorageFileShareRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: __S(2690, __c84, 2) as any as S.Schema<PutPublicCloudProjectStorageFileShareRequest>,
+  output: __S(5320, __c166, 8) as any as S.Schema<PublicCloudStorageFileFileStorage>,
   errors: [BadRequest, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7476,8 +7548,8 @@ export const putPublicCloudProjectStorageFileSnapshot: API.OperationMethod<
   PutPublicCloudProjectStorageFileSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<PutPublicCloudProjectStorageFileSnapshotRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
+  input: __S(2721, __c85, 1) as any as S.Schema<PutPublicCloudProjectStorageFileSnapshotRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<PublicCloudStorageFileFileStorageSnapshot>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7491,8 +7563,8 @@ export const putPublicCloudProjectStorageObjectBucket: API.OperationMethod<
   PutPublicCloudProjectStorageObjectBucketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
+  input: __S(2753, __c86, 1) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketRequest>,
+  output: __S(4198, __c131, 6) as any as S.Schema<PublicCloudStorageObjectBucket>,
   errors: [NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7507,11 +7579,11 @@ export const putPublicCloudProjectStorageObjectBucketLifecycle: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    472,
-    __c59,
-    0,
+    2785,
+    __c87,
+    1,
   ) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketLifecycleRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
+  output: __S(1866, __c58, 10) as any as S.Schema<PublicCloudStorageObjectLifecycleRulesResponse>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7526,11 +7598,11 @@ export const putPublicCloudProjectStorageObjectBucketReplication: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    474,
-    __c59,
-    2,
+    2817,
+    __c88,
+    1,
   ) as any as S.Schema<PutPublicCloudProjectStorageObjectBucketReplicationRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
+  output: __S(1924, __c60, 4) as any as S.Schema<PublicCloudStorageObjectReplicationRulesResponse>,
   errors: [Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7544,8 +7616,8 @@ export const sharePublicCloudProjectStorageFile: API.OperationMethod<
   SharePublicCloudProjectStorageFileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<SharePublicCloudProjectStorageFileRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<PublicCloudStorageFileFileStorage>,
+  input: __S(2848, __c89, 0) as any as S.Schema<SharePublicCloudProjectStorageFileRequest>,
+  output: __S(5320, __c166, 8) as any as S.Schema<PublicCloudStorageFileFileStorage>,
   errors: [BadRequest, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7557,88 +7629,13 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          imageName: S.String,
-          region: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceAutobackupDistant",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceAutobackupInstanceRef",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZone: S.optional(S.NullOr(S.String)),
-          region: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudCommonLocation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cron: S.String,
-          distant: S.optional(S.NullOr(__S(0, __c0, 0))),
-          imageName: S.String,
-          instance: __S(1, __c0, 1),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          rotation: S.Number,
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceAutobackupTargetSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(3, __c0, 3),
+          targetSpec: __S(33, __c1, 1),
         }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/autobackup",
-            code: 200,
-          }),
+          T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/gateway", code: 200 }),
         ),
       ).annotate({
-        identifier: "CreatePublicCloudProjectComputeAutobackupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          startedAt: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
-          updatedAt: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceAutobackupExecution",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cron: S.optional(S.String),
-          distant: S.optional(S.NullOr(__S(0, __c0, 0))),
-          imageName: S.optional(S.String),
-          instance: S.optional(__S(1, __c0, 1)),
-          lastExecutions: S.optional(S.NullOr(__S(6, __c0, 6))),
-          location: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          nextExecutionTime: S.optional(S.NullOr(S.String)),
-          rotation: S.optional(S.Number),
-          workflowName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceAutobackupCurrentState",
+        identifier: "CreatePublicCloudProjectGatewayRequest",
       });
   }
 }
@@ -7647,77 +7644,52 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
+          enabled: S.Boolean,
+          model: S.optional(S.NullOr(S.String)),
         }),
-      ).annotate({ identifier: "CommonTaskError" });
+      ).annotate({
+        identifier: "PublicCloudGatewayExternalGateway",
+      });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          externalGateway: __S(32, __c1, 0),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          subnets: S.optional(S.NullOr(__S(4832, __c151, 0))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudGatewayGatewayTargetSpec",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(S.NullOr(__S(9, __c1, 1))),
-          id: S.optional(S.String),
-          link: S.optional(S.String),
-          status: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          externalGateway: S.optional(__S(32, __c1, 0)),
+          externalIp: S.optional(S.NullOr(S.String)),
+          location: S.optional(__S(3872, __c121, 0)),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          subnets: S.optional(S.NullOr(__S(4832, __c151, 0))),
         }),
-      ).annotate({ identifier: "CommonCurrentTask" });
+      ).annotate({
+        identifier: "PublicCloudGatewayGatewayCurrentState",
+      });
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(7, __c0, 7))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(34, __c1, 2))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(3, __c0, 3)),
+          targetSpec: S.optional(__S(33, __c1, 1)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "PublicCloudInstanceAutobackup",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          instance: __S(1, __c0, 1),
-          location: __S(2, __c0, 2),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceBackupTargetSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(13, __c1, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectComputeBackupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          instance: S.optional(__S(1, __c0, 1)),
-          location: S.optional(__S(2, __c0, 2)),
-          minDisk: S.optional(S.NullOr(S.Number)),
-          minRam: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.String),
-          size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.String),
-          visibility: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceBackupCurrentState",
+        identifier: "PublicCloudGatewayGateway",
       });
   }
 }
@@ -7726,168 +7698,45 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(15, __c1, 7))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(13, __c1, 5)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceBackup",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          floatingIpId: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.String)),
-          public: S.Boolean,
-          subnetId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceNetworkRef",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flavor: __S(1, __c0, 1),
-          group: S.optional(S.NullOr(__S(1, __c0, 1))),
-          image: __S(1, __c0, 1),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          networks: S.NullOr(__S(18, __c2, 2)),
-          powerState: S.optional(S.NullOr(S.String)),
-          securityGroups: S.optional(S.NullOr(__S(19, __c2, 3))),
-          sshKeyName: S.optional(S.NullOr(S.String)),
-          volumes: S.NullOr(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(20, __c2, 4),
+          bucketName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/instance",
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}",
             code: 200,
           }),
         ),
       ).annotate({
-        identifier: "CreatePublicCloudProjectComputeInstanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disk: S.optional(S.Number),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          ram: S.optional(S.Number),
-          vcpus: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceFlavor",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deprecated: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceImage",
+        identifier: "GetPublicCloudProjectStorageObjectBucketRequest",
       });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(S.String),
-          mac: S.optional(S.String),
-          type: S.optional(S.String),
-          version: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceNetworkAddress",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
       });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(96, __c3, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          addresses: S.optional(S.NullOr(__S(25, __c3, 1))),
-          floatingIpId: S.optional(S.NullOr(S.String)),
-          gatewayId: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          public: S.optional(S.Boolean),
-          subnetId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceNetwork",
-      });
+      return S.Record(S.String, __S(97, __c3, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(98, __c3, 2).pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(T.Http({ method: "GET", uri: "/publicCloud/project", code: 200 })),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRequest",
+      });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceVolume",
-      });
+      return S.Array(__S(5443, __c170, 3));
     case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          flavor: S.optional(__S(22, __c2, 6)),
-          group: S.optional(S.NullOr(__S(1, __c0, 1))),
-          hostId: S.optional(S.NullOr(S.String)),
-          image: S.optional(__S(23, __c2, 7)),
-          location: S.optional(__S(2, __c0, 2)),
-          locked: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          networks: S.optional(S.NullOr(__S(27, __c3, 3))),
-          powerState: S.optional(S.String),
-          projectId: S.optional(S.String),
-          securityGroups: S.optional(S.NullOr(__S(19, __c2, 3))),
-          sshKeyName: S.optional(S.NullOr(S.String)),
-          userId: S.optional(S.String),
-          volumes: S.optional(S.NullOr(__S(29, __c3, 5))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceCurrentState",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(30, __c3, 6))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(20, __c2, 4)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstance",
+      return S.suspend(() => __S(100, __c3, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectResponse",
       });
   }
 }
@@ -7896,92 +7745,25 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hard: S.optional(S.NullOr(S.Boolean)),
-          imageId: S.optional(S.NullOr(S.String)),
-        }),
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/compute/autobackup",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "PublicCloudInstanceInstanceActionParameters",
+        identifier: "ListPublicCloudProjectComputeAutobackupRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          parameters: S.optional(S.NullOr(__S(32, __c4, 0))),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/action",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectComputeInstanceActionRequest",
-      });
+      return S.Array(__S(3749, __c117, 5));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          protocol: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/console",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectComputeInstanceConsoleRequest",
+      return S.suspend(() => __S(129, __c4, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectComputeAutobackupResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceRemoteConsole",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: __S(2, __c0, 2),
-          name: S.String,
-          policy: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceGroupInstanceGroupTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(36, __c4, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/compute/instanceGroup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectComputeInstanceGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceGroupInstanceGroupMemberRef",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
 function __c5(j: number): any {
@@ -7989,96 +7771,24 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(__S(2, __c0, 2)),
-          members: S.optional(S.NullOr(__S(39, __c4, 7))),
-          name: S.optional(S.String),
-          policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceGroupInstanceGroupCurrentState",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(40, __c5, 0))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(36, __c4, 4)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceGroupInstanceGroup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-        }),
-      ).annotate({
-        identifier: "PublicCloudFloatingIpFloatingIPTargetSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(42, __c5, 2),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(
-          T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/floatingIp", code: 200 }),
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/compute/backup",
+            code: 200,
+          }),
         ),
       ).annotate({
-        identifier: "CreatePublicCloudProjectFloatingIpRequest",
+        identifier: "ListPublicCloudProjectComputeBackupRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          ip: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
-          network: S.optional(__S(38, __c4, 6)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudFloatingIpFloatingIPCurrentState",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(44, __c5, 4))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(42, __c5, 2)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudFloatingIpFloatingIP",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          model: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudGatewayExternalGateway",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          externalGateway: __S(46, __c5, 6),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          subnets: S.optional(S.NullOr(__S(19, __c2, 3))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudGatewayGatewayTargetSpec",
+    case 1:
+      return S.Array(__S(4450, __c139, 2));
+    case 2:
+      return S.suspend(() => __S(161, __c5, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectComputeBackupResponse",
       });
   }
 }
@@ -8088,69 +7798,170 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(47, __c5, 7),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(
-          T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/gateway", code: 200 }),
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/compute/instance",
+            code: 200,
+          }),
         ),
       ).annotate({
-        identifier: "CreatePublicCloudProjectGatewayRequest",
+        identifier: "ListPublicCloudProjectComputeInstanceRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          externalGateway: S.optional(__S(46, __c5, 6)),
-          externalIp: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          subnets: S.optional(S.NullOr(__S(19, __c2, 3))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudGatewayGatewayCurrentState",
-      });
+      return S.Array(__S(4876, __c152, 12));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          checksum: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(49, __c6, 1))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          id: S.optional(S.String),
-          resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(47, __c5, 7)),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudGatewayGateway",
+      return S.suspend(() => __S(193, __c6, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectComputeInstanceResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          secret: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "PublicCloudKeyManagerContainerSecretRef",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: __S(2, __c0, 2),
-          name: S.String,
-          secretRefs: S.optional(S.NullOr(__S(52, __c6, 4))),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudKeyManagerContainerTargetSpec",
-      });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(53, __c6, 5),
+          instanceId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectComputeInstanceEventsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          kind: S.optional(S.String),
+          link: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommonEvent" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() => __S(257, __c8, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectComputeInstanceEventsResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/compute/instanceGroup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectComputeInstanceGroupRequest",
+      });
+    case 1:
+      return S.Array(__S(6082, __c190, 2));
+    case 2:
+      return S.suspend(() => __S(289, __c9, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectComputeInstanceGroupResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/floatingIp", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectFloatingIpRequest",
+      });
+    case 1:
+      return S.Array(__S(6689, __c209, 1));
+    case 2:
+      return S.suspend(() => __S(321, __c10, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectFloatingIpResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/gateway", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectGatewayRequest",
+      });
+    case 1:
+      return S.Array(__S(35, __c1, 3));
+    case 2:
+      return S.suspend(() => __S(353, __c11, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectGatewayResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/keyManager/container",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerContainerRequest",
+      });
+    case 1:
+      return S.Array(__S(452, __c14, 4));
+    case 2:
+      return S.suspend(() => __S(385, __c12, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerContainerResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(450, __c14, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8161,39 +7972,330 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectKeyManagerContainerRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          secret: __S(3776, __c118, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudKeyManagerContainerSecretRef",
+      });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          secretRefs: S.optional(S.NullOr(__S(449, __c14, 1))),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudKeyManagerContainerTargetSpec",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           creatorId: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
-          secretRefs: S.optional(S.NullOr(__S(52, __c6, 4))),
+          secretRefs: S.optional(S.NullOr(__S(449, __c14, 1))),
           status: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerCurrentState",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(55, __c6, 7))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(451, __c14, 3))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(53, __c6, 5)),
+          targetSpec: S.optional(__S(450, __c14, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudKeyManagerContainer",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          containerId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/keyManager/container/{containerId}/consumer",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerContainerConsumerRequest",
+      });
     case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
+      return S.suspend(() => __S(481, __c15, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerContainerConsumerResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/keyManager/secret",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerSecretRequest",
+      });
+    case 1:
+      return S.Array(__S(1314, __c41, 2));
+    case 2:
+      return S.suspend(() => __S(513, __c16, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerSecretResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/keyManager/secret/{secretId}/consumer",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerSecretConsumerRequest",
+      });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
+      return S.suspend(() => __S(545, __c17, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectKeyManagerSecretConsumerResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/loadbalancer",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerRequest",
+      });
+    case 1:
+      return S.Array(__S(2531, __c79, 3));
+    case 2:
+      return S.suspend(() => __S(577, __c18, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerListenerRequest",
+      });
+    case 1:
+      return S.Array(__S(2948, __c92, 4));
+    case 2:
+      return S.suspend(() => __S(609, __c19, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerListenerResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          listenerId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyRequest",
+      });
+    case 1:
+      return S.Array(__S(3014, __c94, 6));
+    case 2:
+      return S.suspend(() => __S(641, __c20, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerPoolRequest",
+      });
+    case 1:
+      return S.Array(__S(3077, __c96, 5));
+    case 2:
+      return S.suspend(() => __S(673, __c21, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerPoolResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          poolId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}/member",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerPoolMemberRequest",
+      });
+    case 1:
+      return S.Array(__S(3139, __c98, 3));
+    case 2:
+      return S.suspend(() => __S(705, __c22, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectLoadbalancerPoolMemberResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/network", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectNetworkRequest",
+      });
+    case 1:
+      return S.Array(__S(3202, __c100, 2));
+    case 2:
+      return S.suspend(() => __S(737, __c23, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectNetworkResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          networkId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/network/{networkId}/subnet",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectNetworkSubnetRequest",
+      });
+    case 1:
+      return S.Array(__S(3270, __c102, 6));
+    case 2:
+      return S.suspend(() => __S(769, __c24, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectNetworkSubnetResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -8211,7 +8313,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectKeyManagerContainerConsumerRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -8222,30 +8328,306 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PublicCloudKeyManagerContainerConsumer",
       });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.optional(S.NullOr(S.String)),
-          bitLength: S.optional(S.NullOr(S.Number)),
-          expiration: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          metadata: S.optional(S.NullOr(__S(59, __c7, 3))),
-          mode: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          payload: S.optional(S.NullOr(S.String)),
-          payloadContentType: S.optional(S.NullOr(S.String)),
-          secretType: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudKeyManagerSecretTargetSpec",
-      });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(60, __c7, 4),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/publicIp", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectPublicIpRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudPublicIpPublicIPSummary",
+      });
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() => __S(866, __c27, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectPublicIpResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/publicIp/additional",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectPublicIpAdditionalRequest",
+      });
+    case 1:
+      return S.Array(__S(6241, __c195, 1));
+    case 2:
+      return S.suspend(() => __S(897, __c28, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectPublicIpAdditionalResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/publicIp/extNet",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectPublicIpExtNetRequest",
+      });
+    case 1:
+      return S.Array(__S(4961, __c155, 1));
+    case 2:
+      return S.suspend(() => __S(929, __c29, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectPublicIpExtNetResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/publicIp/floating",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectPublicIpFloatingRequest",
+      });
+    case 1:
+      return S.Array(__S(3361, __c105, 1));
+    case 2:
+      return S.suspend(() => __S(961, __c30, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectPublicIpFloatingResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/rancher", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRancherRequest",
+      });
+    case 1:
+      return S.Array(__S(3430, __c107, 6));
+    case 2:
+      return S.suspend(() => __S(993, __c31, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectRancherResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          rancherId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/capabilities/plan",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRancherCapabilityPlanRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cause: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudRancherPlanCapability",
+      });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
+      return S.suspend(() => __S(1057, __c33, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectRancherCapabilityPlanResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          rancherId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/capabilities/version",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRancherCapabilityVersionRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cause: S.optional(S.NullOr(S.String)),
+          changelogUrl: S.optional(S.String),
+          message: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudRancherVersionCapability",
+      });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+    case 2:
+      return S.suspend(() => __S(1121, __c35, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectRancherCapabilityVersionResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          rancherId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/event",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRancherEventRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          rancherId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/task",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectRancherTaskRequest",
+      });
+    case 1:
+      return S.Array(__S(6466, __c202, 2));
+    case 2:
+      return S.suspend(() => __S(1185, __c37, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectRancherTaskResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.optional(S.String.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/reference/instance/flavor",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectReferenceInstanceFlavorRequest",
+      });
+    case 1:
+      return S.Array(__S(6528, __c204, 0));
+    case 2:
+      return S.suspend(() => __S(1217, __c38, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectReferenceInstanceFlavorResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(1312, __c41, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8256,15 +8638,42 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectKeyManagerSecretRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.optional(S.NullOr(S.String)),
+          bitLength: S.optional(S.NullOr(S.Number)),
+          expiration: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+          metadata: S.optional(S.NullOr(__S(1280, __c40, 0))),
+          mode: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          payload: S.optional(S.NullOr(S.String)),
+          payloadContentType: S.optional(S.NullOr(S.String)),
+          secretType: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudKeyManagerSecretTargetSpec",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.optional(S.NullOr(S.String)),
           bitLength: S.optional(S.NullOr(S.Number)),
           creatorId: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(S.NullOr(__S(59, __c7, 3))),
+          location: S.optional(__S(3872, __c121, 0)),
+          metadata: S.optional(S.NullOr(__S(1280, __c40, 0))),
           mode: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           payloadContentType: S.optional(S.NullOr(S.String)),
@@ -8274,16 +8683,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PublicCloudKeyManagerSecretCurrentState",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(62, __c7, 6))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(1313, __c41, 1))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(60, __c7, 4)),
+          targetSpec: S.optional(__S(1312, __c41, 0)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8291,7 +8700,250 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.optional(S.String.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/reference/instance/image",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectReferenceInstanceImageRequest",
+      });
+    case 1:
+      return S.Array(__S(6592, __c206, 0));
+    case 2:
+      return S.suspend(() => __S(1345, __c42, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectReferenceInstanceImageResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/reference/rancher/plan",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectReferenceRancherPlanRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/reference/rancher/version",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectReferenceRancherVersionRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/reference/region",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectReferenceRegionRequest",
+      });
+    case 1:
+      return S.Array(__S(6784, __c212, 0));
+    case 2:
+      return S.suspend(() => __S(1441, __c45, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectReferenceRegionResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/securityGroup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectSecurityGroupRequest",
+      });
+    case 1:
+      return S.Array(__S(3527, __c110, 7));
+    case 2:
+      return S.suspend(() => __S(1473, __c46, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectSecurityGroupResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/sshKey", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectSshKeyRequest",
+      });
+    case 1:
+      return S.Array(__S(3584, __c112, 0));
+    case 2:
+      return S.suspend(() => __S(1505, __c47, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectSshKeyResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          volumeId: S.optional(S.String.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/block/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageBlockBackupRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3650, __c114, 2));
+    case 1:
+      return S.suspend(() => __S(1568, __c49, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageBlockBackupResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          volumeId: S.optional(S.String.pipe(T.Query())),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/block/snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageBlockSnapshotRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/block/volume",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageBlockVolumeRequest",
+      });
+    case 1:
+      return S.Array(__S(3940, __c123, 4));
+    case 2:
+      return S.suspend(() => __S(1633, __c51, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageBlockVolumeResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/file/network",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageFileNetworkRequest",
+      });
+    case 1:
+      return S.Array(__S(4033, __c126, 1));
+    case 2:
+      return S.suspend(() => __S(1665, __c52, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageFileNetworkResponse",
+      });
+  }
+}
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8311,7 +8963,422 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectKeyManagerSecretConsumerRequest",
       });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/file/share",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageFileShareRequest",
+      });
     case 1:
+      return S.Array(__S(5320, __c166, 8));
+    case 2:
+      return S.suspend(() => __S(1729, __c54, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageFileShareResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/file/snapshot",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageFileSnapshotRequest",
+      });
+    case 1:
+      return S.Array(__S(4099, __c128, 3));
+    case 2:
+      return S.suspend(() => __S(1761, __c55, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageFileSnapshotResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageObjectBucketRequest",
+      });
+    case 1:
+      return S.Array(__S(4198, __c131, 6));
+    case 2:
+      return S.suspend(() => __S(1793, __c56, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPublicCloudProjectStorageObjectBucketResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/lifecycle",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageObjectBucketLifecycleRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          daysAfterInitiation: S.Number,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.NullOr(S.String)),
+          days: S.optional(S.NullOr(S.Number)),
+          expiredObjectDeleteMarker: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleExpiration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          objectSizeGreaterThan: S.optional(S.NullOr(S.Number)),
+          objectSizeLessThan: S.optional(S.NullOr(S.Number)),
+          prefix: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleFilter",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          newerNoncurrentVersions: S.optional(S.NullOr(S.Number)),
+          noncurrentDays: S.Number,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          newerNoncurrentVersions: S.optional(S.NullOr(S.Number)),
+          noncurrentDays: S.Number,
+          storageClass: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition",
+      });
+    case 5:
+      return S.Array(__S(1860, __c58, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.NullOr(S.String)),
+          days: S.optional(S.NullOr(S.Number)),
+          storageClass: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRuleTransition",
+      });
+    case 7:
+      return S.Array(__S(1862, __c58, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          abortIncompleteMultipartUpload: S.optional(S.NullOr(__S(1856, __c58, 0))),
+          expiration: S.optional(S.NullOr(__S(1857, __c58, 1))),
+          filter: S.optional(S.NullOr(__S(1858, __c58, 2))),
+          id: S.String,
+          noncurrentVersionExpiration: S.optional(S.NullOr(__S(1859, __c58, 3))),
+          noncurrentVersionTransitions: S.optional(S.NullOr(__S(1861, __c58, 5))),
+          status: S.String,
+          transitions: S.optional(S.NullOr(__S(1863, __c58, 7))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRule",
+      });
+    case 9:
+      return S.Array(__S(1864, __c58, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1865, __c58, 9)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectLifecycleRulesResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/replication",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPublicCloudProjectStorageObjectBucketReplicationRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          region: S.String,
+          storageClass: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectReplicationRuleDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectReplicationRuleFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deleteMarkerReplication: S.String,
+          destination: __S(1920, __c60, 0),
+          filter: S.optional(S.NullOr(__S(1921, __c60, 1))),
+          id: S.String,
+          priority: S.Number,
+          status: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectReplicationRule",
+      });
+    case 3:
+      return S.Array(__S(1922, __c60, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(1923, __c60, 3)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectReplicationRulesResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          flavor: __S(3776, __c118, 0),
+          image: __S(3776, __c118, 0),
+          name: S.String,
+          networks: S.NullOr(__S(4865, __c152, 1)),
+          powerState: S.optional(S.NullOr(S.String)),
+          securityGroups: S.optional(S.NullOr(__S(4832, __c151, 0))),
+          volumes: S.NullOr(__S(4832, __c151, 0)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(1952, __c61, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectComputeInstanceRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          floatingIpId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2016, __c63, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/floatingIp/{floatingIpId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectFloatingIpRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudFloatingIpFloatingIPUpdateTargetSpec",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          externalGateway: __S(32, __c1, 0),
+          name: S.String,
+          subnets: S.optional(S.NullOr(__S(4832, __c151, 0))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudGatewayGatewayUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2048, __c64, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/gateway/{gatewayId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectGatewayRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secretRefs: __S(449, __c14, 1),
+        }),
+      ).annotate({
+        identifier: "PublicCloudKeyManagerContainerUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          containerId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2080, __c65, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/keyManager/container/{containerId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectKeyManagerContainerRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(1280, __c40, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudKeyManagerSecretUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          secretId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2112, __c66, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/keyManager/secret/{secretId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectKeyManagerSecretRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -8326,7 +9393,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectKeyManagerSecretPayloadRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           payload: S.optional(S.String),
@@ -8334,32 +9401,325 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PublicCloudKeyManagerSecretPayload",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerLoadbalancerFlavorRef",
-      });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          flavor: __S(67, __c8, 3),
-          location: __S(2, __c0, 2),
           name: S.String,
-          vipNetwork: __S(1, __c0, 1),
-          vipSubnet: __S(1, __c0, 1),
         }),
       ).annotate({
-        identifier: "PublicCloudLoadbalancerLoadbalancerTargetSpec",
+        identifier: "PublicCloudLoadbalancerLoadbalancerPutTargetSpec",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(68, __c8, 4),
+          loadbalancerId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2176, __c68, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectLoadbalancerRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCidrs: S.optional(S.NullOr(__S(2912, __c91, 0))),
+          connectionLimit: S.optional(S.NullOr(S.Number)),
+          defaultPool: S.optional(S.NullOr(__S(3776, __c118, 0))),
+          defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          insertHeaders: S.optional(S.NullOr(__S(2944, __c92, 0))),
+          name: S.String,
+          sniContainerRefs: S.optional(S.NullOr(__S(2946, __c92, 2))),
+          timeoutClientData: S.optional(S.NullOr(S.Number)),
+          timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
+          timeoutMemberData: S.optional(S.NullOr(S.Number)),
+          timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
+          tlsVersions: S.optional(S.NullOr(__S(2912, __c91, 0))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerListenerPutTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          listenerId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2208, __c69, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectLoadbalancerListenerRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          listenerId: S.String.pipe(T.Label()),
+          l7PolicyId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(3010, __c94, 2),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy/{l7PolicyId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectLoadbalancerListenerL7policyRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delay: S.Number,
+          domainName: S.optional(S.NullOr(S.String)),
+          expectedCodes: S.optional(S.NullOr(S.String)),
+          httpMethod: S.optional(S.NullOr(S.String)),
+          httpVersion: S.optional(S.NullOr(S.String)),
+          maxRetries: S.Number,
+          maxRetriesDown: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.NullOr(S.String)),
+          timeout: S.Number,
+          urlPath: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          healthMonitor: S.optional(S.NullOr(__S(2272, __c71, 0))),
+          name: S.optional(S.NullOr(S.String)),
+          persistence: S.optional(S.NullOr(__S(3073, __c96, 1))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerPoolUpdateTargetSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          poolId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2273, __c71, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectLoadbalancerPoolRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backup: S.optional(S.NullOr(S.Boolean)),
+          monitor: S.optional(S.NullOr(__S(3136, __c98, 0))),
+          name: S.optional(S.NullOr(S.String)),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerMemberUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          poolId: S.String.pipe(T.Label()),
+          memberId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2304, __c72, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}/member/{memberId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectLoadbalancerPoolMemberRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudNetworkNetworkPutTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          networkId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2336, __c73, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/network/{networkId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectNetworkRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allocationPools: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          description: S.optional(S.NullOr(S.String)),
+          dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
+          dnsNameservers: S.optional(S.NullOr(__S(2912, __c91, 0))),
+          gatewayIp: S.optional(S.NullOr(S.String)),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudNetworkSubnetPutTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          networkId: S.String.pipe(T.Label()),
+          subnetId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2368, __c74, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/network/{networkId}/subnet/{subnetId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectNetworkSubnetRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2016, __c63, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/publicIp/floating/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectPublicIpFloatingRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preventAutomaticQuotaUpgrade: S.Boolean,
+          regions: __S(6391, __c199, 23),
+        }),
+      ).annotate({
+        identifier: "PublicCloudQuotaQuotaUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2432, __c76, 0),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/publicCloud/project/{projectId}/quota", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectQuotaRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          rancherId: S.String.pipe(T.Label()),
+          targetSpec: __S(3429, __c107, 5),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectRancherRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(2529, __c79, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8370,32 +9730,57 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectLoadbalancerRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerLoadbalancerFlavorRef",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          flavor: __S(2528, __c79, 0),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          vipNetwork: __S(3776, __c118, 0),
+          vipSubnet: __S(3776, __c118, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerLoadbalancerTargetSpec",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          flavor: S.optional(__S(67, __c8, 3)),
-          location: S.optional(__S(2, __c0, 2)),
+          flavor: S.optional(__S(2528, __c79, 0)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
           operatingStatus: S.optional(S.String),
           provisioningStatus: S.optional(S.String),
           vipAddress: S.optional(S.String),
-          vipNetwork: S.optional(__S(1, __c0, 1)),
-          vipSubnet: S.optional(__S(1, __c0, 1)),
+          vipNetwork: S.optional(__S(3776, __c118, 0)),
+          vipSubnet: S.optional(__S(3776, __c118, 0)),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerLoadbalancerCurrentState",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(70, __c8, 6))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(2530, __c79, 2))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(68, __c8, 4)),
+          targetSpec: S.optional(__S(2529, __c79, 1)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -8403,11 +9788,317 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          rules: S.optional(S.NullOr(__S(3521, __c110, 1))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          securityGroupId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2560, __c80, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/securityGroup/{securityGroupId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectSecurityGroupRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBackupUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2592, __c81, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/block/backup/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageBlockBackupRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageSnapshotUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2624, __c82, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/block/snapshot/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageBlockSnapshotRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          size: S.Number,
+          volumeType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBlockUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2656, __c83, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/block/volume/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageBlockVolumeRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5317, __c166, 5));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessRules: S.optional(S.NullOr(__S(2688, __c84, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          size: S.Number,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageFileFileStorageUpdateTargetSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          fileStorageId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2689, __c84, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/file/share/{fileStorageId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageFileShareRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          snapshotId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2720, __c85, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/file/snapshot/{snapshotId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageFileSnapshotRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryption: S.optional(S.NullOr(__S(4192, __c131, 0))),
+          objectLock: S.optional(S.NullOr(__S(4160, __c130, 0))),
+          ownerUserId: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+          versioning: S.optional(S.NullOr(__S(4194, __c131, 2))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectBucketUpdateTargetSpecInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+          checksum: S.String,
+          targetSpec: __S(2752, __c86, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageObjectBucketRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1864, __c58, 8));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+          rules: __S(2784, __c87, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/lifecycle",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageObjectBucketLifecycleRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1922, __c60, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+          rules: __S(2816, __c88, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/replication",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPublicCloudProjectStorageObjectBucketReplicationRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(5319, __c166, 7),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/storage/file/share",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SharePublicCloudProjectStorageFileRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          targetSpec: __S(2945, __c92, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectLoadbalancerListenerRequest",
+      });
+  }
+}
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
-    case 1:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xForwardedFor: S.optional(S.NullOr(S.Boolean)),
@@ -8420,86 +10111,95 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerInsertHeaders",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72, __c9, 0))),
+          allowedCidrs: S.optional(S.NullOr(__S(2912, __c91, 0))),
           connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(1, __c0, 1))),
+          defaultPool: S.optional(S.NullOr(__S(3776, __c118, 0))),
           defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73, __c9, 1))),
+          insertHeaders: S.optional(S.NullOr(__S(2944, __c92, 0))),
           name: S.String,
           protocol: S.String,
           protocolPort: S.Number,
-          sniContainerRefs: S.optional(S.NullOr(__S(72, __c9, 0))),
+          sniContainerRefs: S.optional(S.NullOr(__S(2912, __c91, 0))),
           timeoutClientData: S.optional(S.NullOr(S.Number)),
           timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
           timeoutMemberData: S.optional(S.NullOr(S.Number)),
           timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tlsVersions: S.optional(S.NullOr(__S(2912, __c91, 0))),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerTargetSpec",
       });
+    case 2:
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          targetSpec: __S(74, __c9, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectLoadbalancerListenerRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72, __c9, 0))),
+          allowedCidrs: S.optional(S.NullOr(__S(2912, __c91, 0))),
           connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(38, __c4, 6))),
+          defaultPool: S.optional(S.NullOr(__S(6112, __c191, 0))),
           defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73, __c9, 1))),
+          insertHeaders: S.optional(S.NullOr(__S(2944, __c92, 0))),
           name: S.optional(S.String),
           operatingStatus: S.optional(S.String),
           protocol: S.optional(S.String),
           protocolPort: S.optional(S.Number),
           provisioningStatus: S.optional(S.String),
-          sniContainerRefs: S.optional(S.NullOr(__S(76, __c9, 4))),
+          sniContainerRefs: S.optional(S.NullOr(__S(2946, __c92, 2))),
           timeoutClientData: S.optional(S.NullOr(S.Number)),
           timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
           timeoutMemberData: S.optional(S.NullOr(S.Number)),
           timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tlsVersions: S.optional(S.NullOr(__S(2912, __c91, 0))),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListenerCurrentState",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(77, __c9, 5))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(2947, __c92, 3))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(74, __c9, 2)),
+          targetSpec: S.optional(__S(2945, __c92, 1)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerListener",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          listenerId: S.String.pipe(T.Label()),
+          targetSpec: __S(3010, __c94, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectLoadbalancerListenerL7policyRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           compareType: S.String,
@@ -8511,13 +10211,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7RuleSpec",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(3008, __c94, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -8525,30 +10221,13 @@ function __c10(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           position: S.optional(S.NullOr(S.Number)),
           redirectHttpCode: S.optional(S.NullOr(S.Number)),
-          redirectPool: S.optional(S.NullOr(__S(1, __c0, 1))),
+          redirectPool: S.optional(S.NullOr(__S(3776, __c118, 0))),
           redirectPrefix: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(80, __c10, 0))),
+          rules: S.optional(S.NullOr(__S(3009, __c94, 1))),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7PolicyTargetSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          listenerId: S.String.pipe(T.Label()),
-          targetSpec: __S(81, __c10, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectLoadbalancerListenerL7policyRequest",
       });
     case 3:
       return S.suspend(() =>
@@ -8566,7 +10245,7 @@ function __c10(j: number): any {
         identifier: "PublicCloudLoadbalancerL7RuleState",
       });
     case 4:
-      return S.Array(__S(83, __c10, 3));
+      return S.Array(__S(3011, __c94, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8577,10 +10256,10 @@ function __c10(j: number): any {
           position: S.optional(S.NullOr(S.Number)),
           provisioningStatus: S.optional(S.NullOr(S.String)),
           redirectHttpCode: S.optional(S.NullOr(S.Number)),
-          redirectPool: S.optional(S.NullOr(__S(38, __c4, 6))),
+          redirectPool: S.optional(S.NullOr(__S(6112, __c191, 0))),
           redirectPrefix: S.optional(S.NullOr(S.String)),
           redirectUrl: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(__S(84, __c10, 4))),
+          rules: S.optional(S.NullOr(__S(3012, __c94, 4))),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7PolicyCurrentState",
@@ -8590,17 +10269,41 @@ function __c10(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(85, __c10, 5))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3013, __c94, 5))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(81, __c10, 1)),
+          targetSpec: S.optional(__S(3010, __c94, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerL7Policy",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          loadbalancerId: S.String.pipe(T.Label()),
+          targetSpec: __S(3074, __c96, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectLoadbalancerPoolRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           delay: S.Number,
@@ -8618,11 +10321,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PublicCloudLoadbalancerHealthMonitorTargetSpec",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cookieName: S.optional(S.NullOr(S.String)),
@@ -8631,34 +10330,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PublicCloudLoadbalancerSessionPersistence",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           algorithm: S.String,
           description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(87, __c10, 7))),
+          healthMonitor: S.optional(S.NullOr(__S(3072, __c96, 0))),
           name: S.optional(S.NullOr(S.String)),
-          persistence: S.optional(S.NullOr(__S(88, __c11, 0))),
+          persistence: S.optional(S.NullOr(__S(3073, __c96, 1))),
           protocol: S.String,
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerPoolTargetSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          targetSpec: __S(89, __c11, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectLoadbalancerPoolRequest",
       });
     case 3:
       return S.suspend(() =>
@@ -8686,10 +10369,10 @@ function __c11(j: number): any {
         S.Struct({
           algorithm: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(91, __c11, 3))),
+          healthMonitor: S.optional(S.NullOr(__S(3075, __c96, 3))),
           name: S.optional(S.NullOr(S.String)),
           operatingStatus: S.optional(S.String),
-          persistence: S.optional(S.NullOr(__S(88, __c11, 0))),
+          persistence: S.optional(S.NullOr(__S(3073, __c96, 1))),
           protocol: S.optional(S.String),
           provisioningStatus: S.optional(S.String),
         }),
@@ -8701,42 +10384,19 @@ function __c11(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(92, __c11, 4))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3076, __c96, 4))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(89, __c11, 1)),
+          targetSpec: S.optional(__S(3074, __c96, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerPool",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerMemberMonitor",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.String,
-          backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94, __c11, 6))),
-          name: S.optional(S.NullOr(S.String)),
-          protocolPort: S.Number,
-          subnet: S.optional(S.NullOr(__S(1, __c0, 1))),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerMemberTargetSpec",
-      });
   }
 }
-function __c12(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8744,7 +10404,7 @@ function __c12(j: number): any {
           projectId: S.String.pipe(T.Label()),
           loadbalancerId: S.String.pipe(T.Label()),
           poolId: S.String.pipe(T.Label()),
-          targetSpec: __S(95, __c11, 7),
+          targetSpec: __S(3137, __c98, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8755,121 +10415,130 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectLoadbalancerPoolMemberRequest",
       });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerMemberMonitor",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.String,
+          backup: S.optional(S.NullOr(S.Boolean)),
+          monitor: S.optional(S.NullOr(__S(3136, __c98, 0))),
+          name: S.optional(S.NullOr(S.String)),
+          protocolPort: S.Number,
+          subnet: S.optional(S.NullOr(__S(3776, __c118, 0))),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudLoadbalancerMemberTargetSpec",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
           backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94, __c11, 6))),
+          monitor: S.optional(S.NullOr(__S(3136, __c98, 0))),
           name: S.optional(S.String),
           operatingStatus: S.optional(S.String),
           protocolPort: S.optional(S.Number),
           provisioningStatus: S.optional(S.String),
-          subnet: S.optional(S.NullOr(__S(1, __c0, 1))),
+          subnet: S.optional(S.NullOr(__S(3776, __c118, 0))),
           weight: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerMemberCurrentState",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(97, __c12, 1))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3138, __c98, 2))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(95, __c11, 7)),
+          targetSpec: S.optional(__S(3137, __c98, 1)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudLoadbalancerMember",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          vlanId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudNetworkNetworkTargetSpec",
-      });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(99, __c12, 3),
+          targetSpec: __S(3200, __c100, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/network", code: 200 }),
         ),
       ).annotate({
         identifier: "CreatePublicCloudProjectNetworkRequest",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          vlanId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudNetworkNetworkTargetSpec",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
           vlanId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "PublicCloudNetworkNetworkCurrentState",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(101, __c12, 5))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3201, __c100, 1))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(99, __c12, 3)),
+          targetSpec: S.optional(__S(3200, __c100, 0)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudNetworkNetwork",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          end: S.String,
-          start: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudNetworkSubnetAllocationPool",
-      });
   }
 }
-function __c13(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104, __c13, 0))),
-          cidr: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
-          dnsNameservers: S.optional(S.NullOr(__S(72, __c9, 0))),
-          gatewayIp: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudNetworkSubnetTargetSpec",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           networkId: S.String.pipe(T.Label()),
-          targetSpec: __S(105, __c13, 1),
+          targetSpec: __S(3266, __c102, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8879,6 +10548,36 @@ function __c13(j: number): any {
         ),
       ).annotate({
         identifier: "CreatePublicCloudProjectNetworkSubnetRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          end: S.String,
+          start: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudNetworkSubnetAllocationPool",
+      });
+    case 1:
+      return S.Array(__S(3264, __c102, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allocationPools: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          cidr: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
+          dnsNameservers: S.optional(S.NullOr(__S(2912, __c91, 0))),
+          gatewayIp: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudNetworkSubnetTargetSpec",
       });
     case 3:
       return S.suspend(() =>
@@ -8890,18 +10589,18 @@ function __c13(j: number): any {
         identifier: "PublicCloudNetworkSubnetHostRoute",
       });
     case 4:
-      return S.Array(__S(107, __c13, 3));
+      return S.Array(__S(3267, __c102, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104, __c13, 0))),
+          allocationPools: S.optional(S.NullOr(__S(3265, __c102, 1))),
           cidr: S.optional(S.String),
           description: S.optional(S.String),
           dhcpEnabled: S.optional(S.Boolean),
-          dnsNameservers: S.optional(S.NullOr(__S(72, __c9, 0))),
+          dnsNameservers: S.optional(S.NullOr(__S(2912, __c91, 0))),
           gatewayIp: S.optional(S.NullOr(S.String)),
-          hostRoutes: S.optional(S.NullOr(__S(108, __c13, 4))),
-          location: S.optional(__S(2, __c0, 2)),
+          hostRoutes: S.optional(S.NullOr(__S(3268, __c102, 4))),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -8912,19 +10611,23 @@ function __c13(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(109, __c13, 5))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3269, __c102, 5))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(105, __c13, 1)),
+          targetSpec: S.optional(__S(3266, __c102, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudNetworkSubnet" });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(42, __c5, 2),
+          targetSpec: __S(6656, __c208, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8937,7 +10640,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8948,36 +10651,44 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PublicCloudPublicIpPublicIPAssociatedResource",
       });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112, __c14, 0))),
+          associatedResource: S.optional(S.NullOr(__S(3328, __c104, 0))),
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
-          network: S.optional(S.NullOr(__S(38, __c4, 6))),
+          location: S.optional(__S(3872, __c121, 0)),
+          network: S.optional(S.NullOr(__S(6112, __c191, 0))),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpFloatingIPCurrentState",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(113, __c14, 1))),
-          currentTasks: S.optional(__S(11, __c1, 3)),
+          currentState: S.optional(S.NullOr(__S(3360, __c105, 0))),
+          currentTasks: S.optional(__S(3841, __c120, 1)),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(42, __c5, 2)),
+          targetSpec: S.optional(__S(6656, __c208, 0)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpFloatingIP",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           iamAuthEnabled: S.optional(S.Boolean),
@@ -8988,18 +10699,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PublicCloudRancherRancherCreationTargetSpec",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(115, __c14, 3),
+          targetSpec: __S(3392, __c106, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/rancher", code: 200 }),
         ),
       ).annotate({
         identifier: "CreatePublicCloudProjectRancherRequest",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cidrBlock: S.String,
@@ -9008,49 +10723,45 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PublicCloudRancherIpRestriction",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(3424, __c107, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          egressCidrBlocks: S.optional(__S(72, __c9, 0)),
+          egressCidrBlocks: S.optional(__S(2912, __c91, 0)),
         }),
       ).annotate({
         identifier: "PublicCloudRancherNetworking",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           datetime: S.optional(S.String),
           orchestratedVcpus: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PublicCloudRancherUsage" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bootstrapPassword: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           iamAuthEnabled: S.optional(S.NullOr(S.Boolean)),
-          ipRestrictions: S.optional(S.NullOr(__S(118, __c14, 6))),
+          ipRestrictions: S.optional(S.NullOr(__S(3425, __c107, 1))),
           name: S.optional(S.String),
-          networking: S.optional(S.NullOr(__S(119, __c14, 7))),
+          networking: S.optional(S.NullOr(__S(3426, __c107, 2))),
           plan: S.optional(S.String),
           region: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
-          usage: S.optional(S.NullOr(__S(120, __c15, 0))),
+          usage: S.optional(S.NullOr(__S(3427, __c107, 3))),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudRancherRancherCurrentState",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           iamAuthEnabled: S.optional(S.Boolean),
-          ipRestrictions: S.optional(__S(118, __c14, 6)),
+          ipRestrictions: S.optional(__S(3425, __c107, 1)),
           name: S.String,
           plan: S.String,
           version: S.String,
@@ -9058,21 +10769,25 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PublicCloudRancherRancherTargetSpec",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(121, __c15, 1)),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(__S(3428, __c107, 4)),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(122, __c15, 2)),
+          targetSpec: S.optional(__S(3429, __c107, 5)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudRancherRancher",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9087,7 +10802,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectRancherAdminCredentialsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -9096,43 +10811,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PublicCloudRancherCredentials",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          direction: S.String,
-          ethernetType: S.String,
-          portRangeMax: S.optional(S.NullOr(S.Number)),
-          portRangeMin: S.optional(S.NullOr(S.Number)),
-          protocol: S.optional(S.NullOr(S.String)),
-          remoteGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
-          remoteIpPrefix: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudSecurityGroupSecurityGroupTargetRule",
-      });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
   }
 }
-function __c16(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          rules: S.optional(S.NullOr(__S(127, __c15, 7))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudSecurityGroupSecurityGroupTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(128, __c16, 0),
+          targetSpec: __S(3522, __c110, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9143,7 +10830,39 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectSecurityGroupRequest",
       });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          direction: S.String,
+          ethernetType: S.String,
+          portRangeMax: S.optional(S.NullOr(S.Number)),
+          portRangeMin: S.optional(S.NullOr(S.Number)),
+          protocol: S.optional(S.NullOr(S.String)),
+          remoteGroup: S.optional(S.NullOr(__S(3776, __c118, 0))),
+          remoteIpPrefix: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudSecurityGroupSecurityGroupTargetRule",
+      });
+    case 1:
+      return S.Array(__S(3520, __c110, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          rules: S.optional(S.NullOr(__S(3521, __c110, 1))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudSecurityGroupSecurityGroupTargetSpec",
+      });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
@@ -9153,44 +10872,48 @@ function __c16(j: number): any {
           portRangeMax: S.optional(S.NullOr(S.Number)),
           portRangeMin: S.optional(S.NullOr(S.Number)),
           protocol: S.optional(S.NullOr(S.String)),
-          remoteGroup: S.optional(S.NullOr(__S(1, __c0, 1))),
+          remoteGroup: S.optional(S.NullOr(__S(3776, __c118, 0))),
           remoteIpPrefix: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupStateRule",
       });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
     case 4:
-      return S.Array(__S(130, __c16, 2));
+      return S.Array(__S(3523, __c110, 3));
     case 5:
+      return S.Array(__S(3523, __c110, 3));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          defaultRules: S.optional(S.NullOr(__S(131, __c16, 3))),
+          defaultRules: S.optional(S.NullOr(__S(3524, __c110, 4))),
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
-          rules: S.optional(__S(132, __c16, 4)),
+          rules: S.optional(__S(3525, __c110, 5)),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroupCurrentState",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(133, __c16, 5))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3526, __c110, 6))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(128, __c16, 0)),
+          targetSpec: S.optional(__S(3522, __c110, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudSecurityGroupSecurityGroup",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9204,7 +10927,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9215,22 +10938,15 @@ function __c17(j: number): any {
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudSshKeySSHKey" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          volumeId: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageBackupTargetSpec",
-      });
-    case 2:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(137, __c17, 1),
+          targetSpec: __S(3648, __c114, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9241,11 +10957,26 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectStorageBlockBackupRequest",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          volumeId: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBackupTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
           size: S.optional(S.Number),
           volumeId: S.optional(S.String),
@@ -9253,26 +10984,30 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PublicCloudBlockStorageBackupCurrentState",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(139, __c17, 3))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(137, __c17, 1)),
+          targetSpec: S.optional(__S(3648, __c114, 0)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudBlockStorageBackup",
       });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(137, __c17, 1),
+          targetSpec: __S(3648, __c114, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9283,46 +11018,160 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectStorageBlockSnapshotRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          backupId: S.optional(S.NullOr(S.String)),
-          imageId: S.optional(S.NullOr(S.String)),
-          snapshotId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageBlockCreateFrom",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageBlockEncryption",
-      });
   }
 }
-function __c18(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createFrom: S.optional(S.NullOr(__S(142, __c17, 6))),
-          encryption: S.optional(S.NullOr(__S(143, __c17, 7))),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          size: S.Number,
-          volumeType: S.optional(S.NullOr(S.String)),
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(3745, __c117, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/autobackup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeAutobackupRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageName: S.String,
+          region: S.String,
         }),
       ).annotate({
-        identifier: "PublicCloudBlockStorageBlockTargetSpec",
+        identifier: "PublicCloudInstanceAutobackupDistant",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          cron: S.String,
+          distant: S.optional(S.NullOr(__S(3744, __c117, 0))),
+          imageName: S.String,
+          instance: __S(3776, __c118, 0),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          rotation: S.Number,
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceAutobackupTargetSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          startedAt: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.String),
+          updatedAt: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceAutobackupExecution",
+      });
+    case 3:
+      return S.Array(__S(3746, __c117, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cron: S.optional(S.String),
+          distant: S.optional(S.NullOr(__S(3744, __c117, 0))),
+          imageName: S.optional(S.String),
+          instance: S.optional(__S(3776, __c118, 0)),
+          lastExecutions: S.optional(S.NullOr(__S(3747, __c117, 3))),
+          location: S.optional(__S(3872, __c121, 0)),
+          name: S.optional(S.String),
+          nextExecutionTime: S.optional(S.NullOr(S.String)),
+          rotation: S.optional(S.Number),
+          workflowName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceAutobackupCurrentState",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(S.NullOr(__S(3748, __c117, 4))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(3745, __c117, 1)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceAutobackup",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceAutobackupInstanceRef",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommonTaskError" });
+    case 1:
+      return S.Array(__S(3808, __c119, 0));
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(S.NullOr(__S(3809, __c119, 1))),
+          id: S.optional(S.String),
+          link: S.optional(S.String),
+          status: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CommonCurrentTask" });
+    case 1:
+      return S.Array(__S(3840, __c120, 0));
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZone: S.optional(S.NullOr(S.String)),
+          region: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudCommonLocation",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(144, __c18, 0),
+          targetSpec: __S(3938, __c123, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9333,14 +11182,49 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectStorageBlockVolumeRequest",
       });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backupId: S.optional(S.NullOr(S.String)),
+          imageId: S.optional(S.NullOr(S.String)),
+          snapshotId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBlockCreateFrom",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBlockEncryption",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attachedInstances: S.optional(S.NullOr(__S(39, __c4, 7))),
+          createFrom: S.optional(S.NullOr(__S(3936, __c123, 0))),
+          encryption: S.optional(S.NullOr(__S(3937, __c123, 1))),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          size: S.Number,
+          volumeType: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudBlockStorageBlockTargetSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attachedInstances: S.optional(S.NullOr(__S(6048, __c189, 0))),
           bootable: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
-          encryption: S.optional(__S(143, __c17, 7)),
-          location: S.optional(__S(2, __c0, 2)),
+          encryption: S.optional(__S(3937, __c123, 1)),
+          location: S.optional(__S(3872, __c121, 0)),
           locked: S.optional(S.Boolean),
           name: S.optional(S.String),
           size: S.optional(S.Number),
@@ -9350,46 +11234,30 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PublicCloudBlockStorageBlockCurrentState",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(146, __c18, 2))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(3939, __c123, 3))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(144, __c18, 0)),
+          targetSpec: S.optional(__S(3938, __c123, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudBlockStorageBlock",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
-          name: S.String,
-          network: __S(148, __c18, 4),
-          subnet: __S(148, __c18, 4),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageFileFileStorageNetworkTargetSpec",
-      });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(149, __c18, 5),
+          targetSpec: __S(4032, __c126, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9400,36 +11268,54 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectStorageFileNetworkRequest",
       });
-    case 7:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageFileFileStorageNetworkTargetSpecNetwork",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          network: __S(4000, __c125, 0),
+          subnet: __S(4000, __c125, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageFileFileStorageNetworkTargetSpec",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(149, __c18, 5)),
-          currentState: S.optional(S.NullOr(__S(149, __c18, 5))),
+          targetSpec: S.optional(__S(4032, __c126, 0)),
+          currentState: S.optional(S.NullOr(__S(4032, __c126, 0))),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageNetwork",
       });
   }
 }
-function __c19(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          share: __S(148, __c18, 4),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageFileFileStorageSnapshotTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(152, __c19, 0),
+          targetSpec: __S(4096, __c128, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9440,7 +11326,21 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreatePublicCloudProjectStorageFileSnapshotRequest",
       });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          share: __S(4000, __c125, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageFileFileStorageSnapshotTargetSpec",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -9448,50 +11348,71 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageSnapshotCurrentStateShare",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.NullOr(S.String)),
-          share: S.optional(__S(154, __c19, 2)),
+          share: S.optional(__S(4097, __c128, 1)),
           size: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageSnapshotCurrentState",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(155, __c19, 3))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(4098, __c128, 2))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(152, __c19, 0)),
+          targetSpec: S.optional(__S(4096, __c128, 0)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageSnapshot",
       });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          algorithm: S.String,
+          encryption: S.optional(S.NullOr(__S(4192, __c131, 0))),
+          location: __S(4193, __c131, 1),
+          name: S.String,
+          objectLock: S.optional(S.NullOr(__S(4160, __c130, 0))),
+          ownerUserId: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+          versioning: S.optional(S.NullOr(__S(4194, __c131, 2))),
         }),
       ).annotate({
-        identifier: "PublicCloudStorageObjectBucketEncryptionConfig",
+        identifier: "PublicCloudStorageObjectBucketTargetSpecInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          region: S.String,
-        }),
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(4128, __c129, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/storage/object/bucket",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "PublicCloudStorageObjectBucketLocation",
+        identifier: "CreatePublicCloudProjectStorageObjectBucketRequest",
       });
-    case 7:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
@@ -9502,44 +11423,31 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectBucketEncryptionConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudStorageObjectBucketLocation",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketVersioningConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          encryption: S.optional(S.NullOr(__S(157, __c19, 5))),
-          location: __S(158, __c19, 6),
-          name: S.String,
-          objectLock: S.optional(S.NullOr(__S(159, __c19, 7))),
-          ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-          versioning: S.optional(S.NullOr(__S(160, __c20, 0))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectBucketTargetSpecInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(161, __c20, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePublicCloudProjectStorageObjectBucketRequest",
       });
     case 3:
       return S.suspend(() =>
@@ -9554,12 +11462,12 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157, __c19, 5))),
-          location: S.optional(__S(158, __c19, 6)),
+          encryption: S.optional(S.NullOr(__S(4192, __c131, 0))),
+          location: S.optional(__S(4193, __c131, 1)),
           name: S.optional(S.String),
-          objectLock: S.optional(S.NullOr(__S(163, __c20, 3))),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-          versioning: S.optional(S.NullOr(__S(160, __c20, 0))),
+          objectLock: S.optional(S.NullOr(__S(4195, __c131, 3))),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+          versioning: S.optional(S.NullOr(__S(4194, __c131, 2))),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketCurrentState",
@@ -9567,13 +11475,13 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(S.NullOr(__S(157, __c19, 5))),
-          location: __S(158, __c19, 6),
+          encryption: S.optional(S.NullOr(__S(4192, __c131, 0))),
+          location: __S(4193, __c131, 1),
           name: S.String,
-          objectLock: S.optional(S.NullOr(__S(163, __c20, 3))),
+          objectLock: S.optional(S.NullOr(__S(4195, __c131, 3))),
           ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-          versioning: S.optional(S.NullOr(__S(160, __c20, 0))),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
+          versioning: S.optional(S.NullOr(__S(4194, __c131, 2))),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucketTargetSpec",
@@ -9583,17 +11491,21 @@ function __c20(j: number): any {
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(164, __c20, 4))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(4196, __c131, 4))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(165, __c20, 5)),
+          targetSpec: S.optional(__S(4197, __c131, 5)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudStorageObjectBucket",
       });
-    case 7:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9610,7 +11522,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9627,7 +11539,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectComputeBackupRequest",
       });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9642,7 +11558,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectComputeInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9657,7 +11577,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectComputeInstanceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9672,7 +11596,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectFloatingIpRequest",
       });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9687,7 +11615,74 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectGatewayRequest",
       });
-    case 5:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(4448, __c139, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeBackupRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instance: __S(3776, __c118, 0),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceBackupTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instance: S.optional(__S(3776, __c118, 0)),
+          location: S.optional(__S(3872, __c121, 0)),
+          minDisk: S.optional(S.NullOr(S.Number)),
+          minRam: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.String),
+          size: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.String),
+          visibility: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceBackupCurrentState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(S.NullOr(__S(4449, __c139, 1))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(4448, __c139, 0)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceBackup",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9702,7 +11697,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectKeyManagerContainerRequest",
       });
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9718,7 +11717,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectKeyManagerContainerConsumerRequest",
       });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9735,7 +11738,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9753,7 +11756,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectKeyManagerSecretConsumerRequest",
       });
-    case 1:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9768,7 +11775,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectLoadbalancerRequest",
       });
-    case 2:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9784,7 +11795,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectLoadbalancerListenerRequest",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9801,7 +11816,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectLoadbalancerListenerL7policyRequest",
       });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9817,7 +11836,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectLoadbalancerPoolRequest",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9834,7 +11857,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectLoadbalancerPoolMemberRequest",
       });
-    case 6:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9849,7 +11876,170 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectNetworkRequest",
       });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(4866, __c152, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/instance",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeInstanceRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3776, __c118, 0));
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          floatingIpId: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.String)),
+          public: S.Boolean,
+          subnetId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceNetworkRef",
+      });
+    case 1:
+      return S.Array(__S(4864, __c152, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          flavor: __S(3776, __c118, 0),
+          group: S.optional(S.NullOr(__S(3776, __c118, 0))),
+          image: __S(3776, __c118, 0),
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          networks: S.NullOr(__S(4865, __c152, 1)),
+          powerState: S.optional(S.NullOr(S.String)),
+          securityGroups: S.optional(S.NullOr(__S(4832, __c151, 0))),
+          sshKeyName: S.optional(S.NullOr(S.String)),
+          volumes: S.NullOr(__S(4832, __c151, 0)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceTargetSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          disk: S.optional(S.Number),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          ram: S.optional(S.Number),
+          vcpus: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceFlavor",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deprecated: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceImage",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.String),
+          mac: S.optional(S.String),
+          type: S.optional(S.String),
+          version: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceNetworkAddress",
+      });
+    case 6:
+      return S.Array(__S(4869, __c152, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          addresses: S.optional(S.NullOr(__S(4870, __c152, 6))),
+          floatingIpId: S.optional(S.NullOr(S.String)),
+          gatewayId: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          public: S.optional(S.Boolean),
+          subnetId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceNetwork",
+      });
+    case 8:
+      return S.Array(__S(4871, __c152, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceVolume",
+      });
+    case 10:
+      return S.Array(__S(4873, __c152, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          flavor: S.optional(__S(4867, __c152, 3)),
+          group: S.optional(S.NullOr(__S(3776, __c118, 0))),
+          hostId: S.optional(S.NullOr(S.String)),
+          image: S.optional(__S(4868, __c152, 4)),
+          location: S.optional(__S(3872, __c121, 0)),
+          locked: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          networks: S.optional(S.NullOr(__S(4872, __c152, 8))),
+          powerState: S.optional(S.String),
+          projectId: S.optional(S.String),
+          securityGroups: S.optional(S.NullOr(__S(4832, __c151, 0))),
+          sshKeyName: S.optional(S.NullOr(S.String)),
+          userId: S.optional(S.String),
+          volumes: S.optional(S.NullOr(__S(4874, __c152, 10))),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceCurrentState",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(S.NullOr(__S(4875, __c152, 11))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(4866, __c152, 2)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstance",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9867,7 +12057,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9884,24 +12074,28 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectPublicIpExtNetRequest",
       });
-    case 1:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112, __c14, 0))),
+          associatedResource: S.optional(S.NullOr(__S(3328, __c104, 0))),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpExtNetIPCurrentState",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(185, __c23, 1)),
-          currentTasks: S.optional(__S(11, __c1, 3)),
+          currentState: S.optional(__S(4960, __c155, 0)),
+          currentTasks: S.optional(__S(3841, __c120, 1)),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
           updatedAt: S.optional(S.String),
@@ -9909,7 +12103,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PublicCloudPublicIpExtNetIP",
       });
-    case 3:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9924,7 +12122,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectPublicIpFloatingRequest",
       });
-    case 4:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9939,7 +12141,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectRancherRequest",
       });
-    case 5:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9954,7 +12160,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectSecurityGroupRequest",
       });
-    case 6:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9969,7 +12179,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectSshKeyRequest",
       });
-    case 7:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -9986,7 +12200,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10003,7 +12217,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageBlockSnapshotRequest",
       });
-    case 1:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10018,7 +12236,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageBlockVolumeRequest",
       });
-    case 2:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10033,7 +12255,42 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageFileNetworkRequest",
       });
-    case 3:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hard: S.optional(S.NullOr(S.Boolean)),
+          imageId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceInstanceActionParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          checksum: S.String,
+          parameters: S.optional(S.NullOr(__S(5248, __c164, 0))),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/action",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeInstanceActionRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10048,7 +12305,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageFileShareRequest",
       });
-    case 4:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessLevel: S.optional(S.String),
@@ -10060,9 +12321,9 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageAccessRule",
       });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(5312, __c166, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -10071,19 +12332,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageExportLocation",
       });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(5314, __c166, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(S.NullOr(__S(197, __c24, 5))),
+          accessRules: S.optional(S.NullOr(__S(5313, __c166, 1))),
           description: S.optional(S.NullOr(S.String)),
-          exportLocations: S.optional(S.NullOr(__S(199, __c24, 7))),
-          location: S.optional(__S(2, __c0, 2)),
+          exportLocations: S.optional(S.NullOr(__S(5315, __c166, 3))),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
           networkId: S.optional(S.String),
           protocol: S.optional(S.String),
@@ -10094,7 +12351,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageCurrentState",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accessLevel: S.String,
@@ -10103,16 +12360,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageAccessRuleInput",
       });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(5317, __c166, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          accessRules: S.optional(S.NullOr(__S(202, __c25, 2))),
+          accessRules: S.optional(S.NullOr(__S(5318, __c166, 6))),
           description: S.optional(S.NullOr(S.String)),
-          location: __S(2, __c0, 2),
+          location: __S(3872, __c121, 0),
           name: S.String,
-          shareNetwork: __S(1, __c0, 1),
+          shareNetwork: __S(3776, __c118, 0),
           protocol: S.String,
           shareType: S.String,
           size: S.Number,
@@ -10120,22 +12377,26 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorageTargetSpec",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(200, __c25, 0))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(5316, __c166, 4))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(203, __c25, 3)),
+          targetSpec: S.optional(__S(5319, __c166, 7)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudStorageFileFileStorage",
       });
-    case 5:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10150,7 +12411,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageFileSnapshotRequest",
       });
-    case 6:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10165,7 +12430,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeletePublicCloudProjectStorageObjectBucketRequest",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10175,7 +12444,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10192,7 +12461,7 @@ function __c26(j: number): any {
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           state: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
+          tags: S.optional(S.NullOr(__S(1280, __c40, 0))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -10209,19 +12478,23 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          currentState: S.optional(__S(208, __c26, 0)),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
-          iam: S.optional(S.NullOr(__S(209, __c26, 1))),
+          currentState: S.optional(__S(5440, __c170, 0)),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          iam: S.optional(S.NullOr(__S(5441, __c170, 1))),
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(210, __c26, 2)),
+          targetSpec: S.optional(__S(5442, __c170, 2)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudProjectProjectAsyncWithIAM",
       });
-    case 4:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10236,7 +12509,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectComputeAutobackupRequest",
       });
-    case 5:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10251,7 +12528,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectComputeBackupRequest",
       });
-    case 6:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10266,7 +12547,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectComputeInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10282,11 +12567,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectComputeInstanceConsoleOutputRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           output: S.optional(S.String),
@@ -10294,7 +12575,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "PublicCloudInstanceConsoleOutput",
       });
-    case 1:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10309,7 +12594,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectComputeInstanceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10324,7 +12613,42 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectFloatingIpRequest",
       });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          protocol: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/console",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeInstanceConsoleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceRemoteConsole",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10339,7 +12663,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectGatewayRequest",
       });
-    case 4:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10354,7 +12682,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectKeyManagerContainerRequest",
       });
-    case 5:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10370,7 +12702,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectKeyManagerContainerConsumerRequest",
       });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10385,7 +12721,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectKeyManagerSecretRequest",
       });
-    case 7:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10403,7 +12743,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10420,7 +12760,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectLoadbalancerRequest",
       });
-    case 1:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10436,7 +12780,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectLoadbalancerListenerRequest",
       });
-    case 2:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10453,7 +12801,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectLoadbalancerListenerL7policyRequest",
       });
-    case 3:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10469,7 +12821,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectLoadbalancerPoolRequest",
       });
-    case 4:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10486,7 +12842,88 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectLoadbalancerPoolMemberRequest",
       });
-    case 5:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(6080, __c190, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/publicCloud/project/{projectId}/compute/instanceGroup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectComputeInstanceGroupRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6112, __c191, 0));
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: __S(3872, __c121, 0),
+          name: S.String,
+          policy: S.String,
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceGroupInstanceGroupTargetSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(__S(3872, __c121, 0)),
+          members: S.optional(S.NullOr(__S(6048, __c189, 0))),
+          name: S.optional(S.String),
+          policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceGroupInstanceGroupCurrentState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(S.NullOr(__S(6081, __c190, 1))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(6080, __c190, 0)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceGroupInstanceGroup",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudInstanceGroupInstanceGroupMemberRef",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10501,7 +12938,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectNetworkRequest",
       });
-    case 6:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10517,7 +12958,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectNetworkSubnetRequest",
       });
-    case 7:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10534,12 +12979,12 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          associatedResource: S.optional(S.NullOr(__S(112, __c14, 0))),
+          associatedResource: S.optional(S.NullOr(__S(3328, __c104, 0))),
           block: S.optional(S.NullOr(S.String)),
           id: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
@@ -10551,15 +12996,19 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
-          currentState: S.optional(__S(232, __c29, 0)),
-          currentTasks: S.optional(__S(11, __c1, 3)),
+          currentState: S.optional(__S(6240, __c195, 0)),
+          currentTasks: S.optional(__S(3841, __c120, 1)),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudPublicIpAdditionalIP",
       });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10574,7 +13023,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectPublicIpExtNetRequest",
       });
-    case 3:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10589,7 +13042,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectPublicIpFloatingRequest",
       });
-    case 4:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10600,7 +13057,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectQuotaRequest",
       });
-    case 5:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cores: S.optional(S.Number),
@@ -10610,7 +13071,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileCompute",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           containers: S.optional(S.Number),
@@ -10619,7 +13080,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileKeyManager",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           keypairs: S.optional(S.Number),
@@ -10627,11 +13088,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileKeypair",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           healthMonitors: S.optional(S.Number),
@@ -10645,7 +13102,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileLoadbalancer",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           floatingIps: S.optional(S.Number),
@@ -10658,7 +13115,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileNetwork",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           backupSizeTotal: S.optional(S.Number),
@@ -10670,7 +13127,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileShare",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           backupSizeTotal: S.optional(S.Number),
@@ -10682,24 +13139,24 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfileVolume",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          compute: S.optional(S.NullOr(__S(237, __c29, 5))),
-          keyManager: S.optional(S.NullOr(__S(238, __c29, 6))),
-          keypair: S.optional(S.NullOr(__S(239, __c29, 7))),
-          loadbalancer: S.optional(S.NullOr(__S(240, __c30, 0))),
+          compute: S.optional(S.NullOr(__S(6368, __c199, 0))),
+          keyManager: S.optional(S.NullOr(__S(6369, __c199, 1))),
+          keypair: S.optional(S.NullOr(__S(6370, __c199, 2))),
+          loadbalancer: S.optional(S.NullOr(__S(6371, __c199, 3))),
           name: S.optional(S.String),
-          network: S.optional(S.NullOr(__S(241, __c30, 1))),
-          share: S.optional(S.NullOr(__S(242, __c30, 2))),
-          volume: S.optional(S.NullOr(__S(243, __c30, 3))),
+          network: S.optional(S.NullOr(__S(6372, __c199, 4))),
+          share: S.optional(S.NullOr(__S(6373, __c199, 5))),
+          volume: S.optional(S.NullOr(__S(6374, __c199, 6))),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaProfile",
       });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(6375, __c199, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
@@ -10709,65 +13166,61 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaUsage",
       });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          cores: S.optional(__S(246, __c30, 6)),
-          instances: S.optional(__S(246, __c30, 6)),
-          memory: S.optional(__S(246, __c30, 6)),
+          cores: S.optional(__S(6377, __c199, 9)),
+          instances: S.optional(__S(6377, __c199, 9)),
+          memory: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionCompute",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          containers: S.optional(__S(246, __c30, 6)),
-          secrets: S.optional(__S(246, __c30, 6)),
+          containers: S.optional(__S(6377, __c199, 9)),
+          secrets: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionKeyManager",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          keypairs: S.optional(__S(246, __c30, 6)),
+          keypairs: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionKeypair",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          healthMonitors: S.optional(__S(246, __c30, 6)),
-          l7Policies: S.optional(__S(246, __c30, 6)),
-          l7Rules: S.optional(__S(246, __c30, 6)),
-          listeners: S.optional(__S(246, __c30, 6)),
-          loadbalancers: S.optional(__S(246, __c30, 6)),
-          members: S.optional(__S(246, __c30, 6)),
-          pools: S.optional(__S(246, __c30, 6)),
+          healthMonitors: S.optional(__S(6377, __c199, 9)),
+          l7Policies: S.optional(__S(6377, __c199, 9)),
+          l7Rules: S.optional(__S(6377, __c199, 9)),
+          listeners: S.optional(__S(6377, __c199, 9)),
+          loadbalancers: S.optional(__S(6377, __c199, 9)),
+          members: S.optional(__S(6377, __c199, 9)),
+          pools: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionLoadbalancer",
       });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          floatingIps: S.optional(__S(246, __c30, 6)),
-          gateways: S.optional(__S(246, __c30, 6)),
-          networks: S.optional(__S(246, __c30, 6)),
-          securityGroupRules: S.optional(__S(246, __c30, 6)),
-          securityGroups: S.optional(__S(246, __c30, 6)),
-          subnets: S.optional(__S(246, __c30, 6)),
+          floatingIps: S.optional(__S(6377, __c199, 9)),
+          gateways: S.optional(__S(6377, __c199, 9)),
+          networks: S.optional(__S(6377, __c199, 9)),
+          securityGroupRules: S.optional(__S(6377, __c199, 9)),
+          securityGroups: S.optional(__S(6377, __c199, 9)),
+          subnets: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionNetwork",
       });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
@@ -10776,108 +13229,108 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PublicCloudQuotaQuotaLimit",
       });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          backupSizeTotal: S.optional(__S(246, __c30, 6)),
-          backups: S.optional(__S(246, __c30, 6)),
-          perShareSize: S.optional(__S(252, __c31, 4)),
-          shareNetworks: S.optional(__S(246, __c30, 6)),
-          shares: S.optional(__S(246, __c30, 6)),
-          sizeTotal: S.optional(__S(246, __c30, 6)),
-          snapshotSizeTotal: S.optional(__S(246, __c30, 6)),
-          snapshots: S.optional(__S(246, __c30, 6)),
+          backupSizeTotal: S.optional(__S(6377, __c199, 9)),
+          backups: S.optional(__S(6377, __c199, 9)),
+          perShareSize: S.optional(__S(6383, __c199, 15)),
+          shareNetworks: S.optional(__S(6377, __c199, 9)),
+          shares: S.optional(__S(6377, __c199, 9)),
+          sizeTotal: S.optional(__S(6377, __c199, 9)),
+          snapshotSizeTotal: S.optional(__S(6377, __c199, 9)),
+          snapshots: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionShare",
       });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          backupSizeTotal: S.optional(__S(246, __c30, 6)),
-          backups: S.optional(__S(246, __c30, 6)),
-          perVolumeSize: S.optional(__S(252, __c31, 4)),
-          sizeTotal: S.optional(__S(246, __c30, 6)),
-          snapshots: S.optional(__S(246, __c30, 6)),
-          volumes: S.optional(__S(246, __c30, 6)),
+          backupSizeTotal: S.optional(__S(6377, __c199, 9)),
+          backups: S.optional(__S(6377, __c199, 9)),
+          perVolumeSize: S.optional(__S(6383, __c199, 15)),
+          sizeTotal: S.optional(__S(6377, __c199, 9)),
+          snapshots: S.optional(__S(6377, __c199, 9)),
+          volumes: S.optional(__S(6377, __c199, 9)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionVolume",
       });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          compute: S.optional(S.NullOr(__S(247, __c30, 7))),
-          keyManager: S.optional(S.NullOr(__S(248, __c31, 0))),
-          keypair: S.optional(S.NullOr(__S(249, __c31, 1))),
-          loadbalancer: S.optional(S.NullOr(__S(250, __c31, 2))),
-          network: S.optional(S.NullOr(__S(251, __c31, 3))),
-          share: S.optional(S.NullOr(__S(253, __c31, 5))),
-          volume: S.optional(S.NullOr(__S(254, __c31, 6))),
+          compute: S.optional(S.NullOr(__S(6378, __c199, 10))),
+          keyManager: S.optional(S.NullOr(__S(6379, __c199, 11))),
+          keypair: S.optional(S.NullOr(__S(6380, __c199, 12))),
+          loadbalancer: S.optional(S.NullOr(__S(6381, __c199, 13))),
+          network: S.optional(S.NullOr(__S(6382, __c199, 14))),
+          share: S.optional(S.NullOr(__S(6384, __c199, 16))),
+          volume: S.optional(S.NullOr(__S(6385, __c199, 17))),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaUsageDetails",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           profile: S.optional(S.String),
-          usage: S.optional(S.NullOr(__S(255, __c31, 7))),
+          usage: S.optional(S.NullOr(__S(6386, __c199, 18))),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionCurrentState",
       });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 20:
+      return S.Array(__S(6387, __c199, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          availableProfiles: S.optional(S.NullOr(__S(245, __c30, 5))),
+          availableProfiles: S.optional(S.NullOr(__S(6376, __c199, 8))),
           preventAutomaticQuotaUpgrade: S.optional(S.Boolean),
-          regions: S.optional(S.NullOr(__S(257, __c32, 1))),
+          regions: S.optional(S.NullOr(__S(6388, __c199, 20))),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaCurrentState",
       });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          location: __S(2, __c0, 2),
+          location: __S(3872, __c121, 0),
           profile: S.String,
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaRegionTargetSpec",
       });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
+    case 23:
+      return S.Array(__S(6390, __c199, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           preventAutomaticQuotaUpgrade: S.optional(S.Boolean),
-          regions: S.optional(__S(260, __c32, 4)),
+          regions: S.optional(__S(6391, __c199, 23)),
         }),
       ).annotate({
         identifier: "PublicCloudQuotaQuotaTargetSpec",
       });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           checksum: S.optional(S.String),
           createdAt: S.optional(S.String),
-          currentState: S.optional(S.NullOr(__S(258, __c32, 2))),
-          currentTasks: S.optional(S.NullOr(__S(11, __c1, 3))),
+          currentState: S.optional(S.NullOr(__S(6389, __c199, 21))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
           id: S.optional(S.String),
           resourceStatus: S.optional(S.String),
-          targetSpec: S.optional(__S(261, __c32, 5)),
+          targetSpec: S.optional(__S(6392, __c199, 24)),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublicCloudQuotaQuota" });
-    case 7:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10894,7 +13347,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10912,32 +13365,40 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectRancherTaskRequest",
       });
-    case 1:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTaskProgress" });
+    case 1:
+      return S.Array(__S(6464, __c202, 0));
     case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          errors: S.optional(S.NullOr(__S(9, __c1, 1))),
+          errors: S.optional(S.NullOr(__S(3809, __c119, 1))),
           finishedAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           link: S.optional(S.String),
           message: S.optional(S.String),
-          progress: S.optional(__S(266, __c33, 2)),
+          progress: S.optional(__S(6465, __c202, 1)),
           startedAt: S.optional(S.NullOr(S.String)),
           status: S.optional(S.String),
           type: S.optional(S.String),
           updatedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommonTask" });
-    case 4:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10952,7 +13413,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectReferenceInstanceFlavorRequest",
       });
-    case 5:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
@@ -10960,7 +13425,7 @@ function __c33(j: number): any {
           ephemeral: S.optional(S.Number),
           id: S.optional(S.String),
           isPublic: S.optional(S.Boolean),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           name: S.optional(S.String),
           ram: S.optional(S.Number),
           swap: S.optional(S.Number),
@@ -10969,7 +13434,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "PublicCloudReferenceInstanceFlavor",
       });
-    case 6:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -10984,12 +13453,16 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectReferenceInstanceImageRequest",
       });
-    case 7:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
           id: S.optional(S.String),
-          location: S.optional(__S(2, __c0, 2)),
+          location: S.optional(__S(3872, __c121, 0)),
           minDisk: S.optional(S.Number),
           minRam: S.optional(S.Number),
           name: S.optional(S.String),
@@ -11003,7 +13476,66 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          targetSpec: __S(6656, __c208, 0),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/publicCloud/project/{projectId}/floatingIp", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreatePublicCloudProjectFloatingIpRequest",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          location: __S(3872, __c121, 0),
+        }),
+      ).annotate({
+        identifier: "PublicCloudFloatingIpFloatingIPTargetSpec",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          ip: S.optional(S.String),
+          location: S.optional(__S(3872, __c121, 0)),
+          network: S.optional(__S(6112, __c191, 0)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudFloatingIpFloatingIPCurrentState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          checksum: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          currentState: S.optional(S.NullOr(__S(6688, __c209, 0))),
+          currentTasks: S.optional(S.NullOr(__S(3841, __c120, 1))),
+          id: S.optional(S.String),
+          resourceStatus: S.optional(S.String),
+          targetSpec: S.optional(__S(6656, __c208, 0)),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PublicCloudFloatingIpFloatingIP",
+      });
+  }
+}
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11027,7 +13559,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "PublicCloudRancherEligibilityReference",
       });
-    case 2:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11042,21 +13578,29 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectReferenceRegionRequest",
       });
-    case 3:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          availabilityZones: S.optional(S.NullOr(__S(72, __c9, 0))),
+          availabilityZones: S.optional(S.NullOr(__S(2912, __c91, 0))),
           continent: S.optional(S.String),
           country: S.optional(S.NullOr(S.String)),
           datacenterName: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          services: S.optional(__S(72, __c9, 0)),
+          services: S.optional(__S(2912, __c91, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicCloudReferenceRegion",
       });
-    case 4:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11071,7 +13615,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectSecurityGroupRequest",
       });
-    case 5:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11086,7 +13634,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectSshKeyRequest",
       });
-    case 6:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11101,7 +13653,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectStorageBlockBackupRequest",
       });
-    case 7:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11118,7 +13674,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11135,7 +13691,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectStorageBlockVolumeRequest",
       });
-    case 1:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11150,7 +13710,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectStorageFileNetworkRequest",
       });
-    case 2:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11165,7 +13729,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectStorageFileShareRequest",
       });
-    case 3:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -11180,1861 +13748,8 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetPublicCloudProjectStorageFileSnapshotRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPublicCloudProjectStorageObjectBucketRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 6:
-      return S.Array(__S(285, __c35, 5));
-    case 7:
-      return S.Record(S.String, __S(286, __c35, 6));
   }
 }
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(287, __c35, 7).pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(T.Http({ method: "GET", uri: "/publicCloud/project", code: 200 })),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRequest",
-      });
-    case 1:
-      return S.Array(__S(211, __c26, 3));
-    case 2:
-      return S.suspend(() => __S(289, __c36, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/compute/autobackup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectComputeAutobackupRequest",
-      });
-    case 4:
-      return S.Array(__S(12, __c1, 4));
-    case 5:
-      return S.suspend(() => __S(292, __c36, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectComputeAutobackupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/compute/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectComputeBackupRequest",
-      });
-    case 7:
-      return S.Array(__S(16, __c2, 0));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(295, __c36, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectComputeBackupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/compute/instance",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceRequest",
-      });
-    case 2:
-      return S.Array(__S(31, __c3, 7));
-    case 3:
-      return S.suspend(() => __S(298, __c37, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceEventsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          kind: S.optional(S.String),
-          link: S.optional(S.NullOr(S.String)),
-          message: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CommonEvent" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
-      return S.suspend(() => __S(302, __c37, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceEventsResponse",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/compute/instanceGroup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceGroupRequest",
-      });
-    case 1:
-      return S.Array(__S(41, __c5, 1));
-    case 2:
-      return S.suspend(() => __S(305, __c38, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectComputeInstanceGroupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/floatingIp", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectFloatingIpRequest",
-      });
-    case 4:
-      return S.Array(__S(45, __c5, 5));
-    case 5:
-      return S.suspend(() => __S(308, __c38, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectFloatingIpResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/gateway", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectGatewayRequest",
-      });
-    case 7:
-      return S.Array(__S(50, __c6, 2));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(311, __c38, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectGatewayResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/keyManager/container",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerContainerRequest",
-      });
-    case 2:
-      return S.Array(__S(56, __c7, 0));
-    case 3:
-      return S.suspend(() => __S(314, __c39, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerContainerResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          containerId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/keyManager/container/{containerId}/consumer",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerContainerConsumerRequest",
-      });
-    case 5:
-      return S.Array(__S(58, __c7, 2));
-    case 6:
-      return S.suspend(() => __S(317, __c39, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerContainerConsumerResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/keyManager/secret",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerSecretRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() => __S(320, __c40, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerSecretResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/keyManager/secret/{secretId}/consumer",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerSecretConsumerRequest",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() => __S(323, __c40, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectKeyManagerSecretConsumerResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/loadbalancer",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerRequest",
-      });
-    case 6:
-      return S.Array(__S(71, __c8, 7));
-    case 7:
-      return S.suspend(() => __S(326, __c40, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerResponse",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerListenerRequest",
-      });
-    case 1:
-      return S.Array(__S(78, __c9, 6));
-    case 2:
-      return S.suspend(() => __S(329, __c41, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerListenerResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          listenerId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyRequest",
-      });
-    case 4:
-      return S.Array(__S(86, __c10, 6));
-    case 5:
-      return S.suspend(() => __S(332, __c41, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerListenerL7policyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerPoolRequest",
-      });
-    case 7:
-      return S.Array(__S(93, __c11, 5));
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(335, __c41, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerPoolResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          poolId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}/member",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerPoolMemberRequest",
-      });
-    case 2:
-      return S.Array(__S(98, __c12, 2));
-    case 3:
-      return S.suspend(() => __S(338, __c42, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectLoadbalancerPoolMemberResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/network", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectNetworkRequest",
-      });
-    case 5:
-      return S.Array(__S(102, __c12, 6));
-    case 6:
-      return S.suspend(() => __S(341, __c42, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectNetworkResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          networkId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/network/{networkId}/subnet",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectNetworkSubnetRequest",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(110, __c13, 6));
-    case 1:
-      return S.suspend(() => __S(344, __c43, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectNetworkSubnetResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/publicIp", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectPublicIpRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudPublicIpPublicIPSummary",
-      });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
-      return S.suspend(() => __S(348, __c43, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectPublicIpResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/publicIp/additional",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectPublicIpAdditionalRequest",
-      });
-    case 7:
-      return S.Array(__S(233, __c29, 1));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(351, __c43, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectPublicIpAdditionalResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/publicIp/extNet",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectPublicIpExtNetRequest",
-      });
-    case 2:
-      return S.Array(__S(186, __c23, 2));
-    case 3:
-      return S.suspend(() => __S(354, __c44, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectPublicIpExtNetResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/publicIp/floating",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectPublicIpFloatingRequest",
-      });
-    case 5:
-      return S.Array(__S(114, __c14, 2));
-    case 6:
-      return S.suspend(() => __S(357, __c44, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectPublicIpFloatingResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/rancher", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRancherRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(123, __c15, 3));
-    case 1:
-      return S.suspend(() => __S(360, __c45, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectRancherResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          rancherId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/capabilities/plan",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRancherCapabilityPlanRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cause: S.optional(S.NullOr(S.String)),
-          message: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudRancherPlanCapability",
-      });
-    case 4:
-      return S.Array(__S(363, __c45, 3));
-    case 5:
-      return S.suspend(() => __S(364, __c45, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectRancherCapabilityPlanResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          rancherId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/capabilities/version",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRancherCapabilityVersionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cause: S.optional(S.NullOr(S.String)),
-          changelogUrl: S.optional(S.String),
-          message: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudRancherVersionCapability",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
-      return S.suspend(() => __S(368, __c46, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectRancherCapabilityVersionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          rancherId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/event",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRancherEventRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          rancherId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}/task",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectRancherTaskRequest",
-      });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
-      return S.suspend(() => __S(372, __c46, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectRancherTaskResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.optional(S.String.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/reference/instance/flavor",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectReferenceInstanceFlavorRequest",
-      });
-    case 7:
-      return S.Array(__S(269, __c33, 5));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(375, __c46, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectReferenceInstanceFlavorResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.optional(S.String.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/reference/instance/image",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectReferenceInstanceImageRequest",
-      });
-    case 2:
-      return S.Array(__S(271, __c33, 7));
-    case 3:
-      return S.suspend(() => __S(378, __c47, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectReferenceInstanceImageResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/reference/rancher/plan",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectReferenceRancherPlanRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/reference/rancher/version",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectReferenceRancherVersionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/reference/region",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectReferenceRegionRequest",
-      });
-    case 7:
-      return S.Array(__S(275, __c34, 3));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(383, __c47, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectReferenceRegionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/securityGroup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectSecurityGroupRequest",
-      });
-    case 2:
-      return S.Array(__S(134, __c16, 6));
-    case 3:
-      return S.suspend(() => __S(386, __c48, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectSecurityGroupResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/publicCloud/project/{projectId}/sshKey", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectSshKeyRequest",
-      });
-    case 5:
-      return S.Array(__S(136, __c17, 0));
-    case 6:
-      return S.suspend(() => __S(389, __c48, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectSshKeyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          volumeId: S.optional(S.String.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/block/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageBlockBackupRequest",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(140, __c17, 4));
-    case 1:
-      return S.suspend(() => __S(392, __c49, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageBlockBackupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          volumeId: S.optional(S.String.pipe(T.Query())),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/block/snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageBlockSnapshotRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/block/volume",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageBlockVolumeRequest",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() => __S(396, __c49, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageBlockVolumeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/file/network",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageFileNetworkRequest",
-      });
-    case 7:
-      return S.Array(__S(151, __c18, 7));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(399, __c49, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageFileNetworkResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/file/share",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageFileShareRequest",
-      });
-    case 2:
-      return S.Array(__S(204, __c25, 4));
-    case 3:
-      return S.suspend(() => __S(402, __c50, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageFileShareResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/file/snapshot",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageFileSnapshotRequest",
-      });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageFileSnapshotResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-          xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageObjectBucketRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(166, __c20, 6));
-    case 1:
-      return S.suspend(() => __S(408, __c51, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPublicCloudProjectStorageObjectBucketResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/lifecycle",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageObjectBucketLifecycleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          daysAfterInitiation: S.Number,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleAbortIncompleteMultipartUpload",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.NullOr(S.String)),
-          days: S.optional(S.NullOr(S.Number)),
-          expiredObjectDeleteMarker: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleExpiration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          objectSizeGreaterThan: S.optional(S.NullOr(S.Number)),
-          objectSizeLessThan: S.optional(S.NullOr(S.Number)),
-          prefix: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          newerNoncurrentVersions: S.optional(S.NullOr(S.Number)),
-          noncurrentDays: S.Number,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleNoncurrentVersionExpiration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          newerNoncurrentVersions: S.optional(S.NullOr(S.Number)),
-          noncurrentDays: S.Number,
-          storageClass: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleNoncurrentVersionTransition",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(415, __c51, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.NullOr(S.String)),
-          days: S.optional(S.NullOr(S.Number)),
-          storageClass: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRuleTransition",
-      });
-    case 2:
-      return S.Array(__S(417, __c52, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          abortIncompleteMultipartUpload: S.optional(S.NullOr(__S(411, __c51, 3))),
-          expiration: S.optional(S.NullOr(__S(412, __c51, 4))),
-          filter: S.optional(S.NullOr(__S(413, __c51, 5))),
-          id: S.String,
-          noncurrentVersionExpiration: S.optional(S.NullOr(__S(414, __c51, 6))),
-          noncurrentVersionTransitions: S.optional(S.NullOr(__S(416, __c52, 0))),
-          status: S.String,
-          transitions: S.optional(S.NullOr(__S(418, __c52, 2))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRule",
-      });
-    case 4:
-      return S.Array(__S(419, __c52, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(420, __c52, 4)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectLifecycleRulesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/replication",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPublicCloudProjectStorageObjectBucketReplicationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          region: S.String,
-          storageClass: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectReplicationRuleDestination",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectReplicationRuleFilter",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deleteMarkerReplication: S.String,
-          destination: __S(423, __c52, 7),
-          filter: S.optional(S.NullOr(__S(424, __c53, 0))),
-          id: S.String,
-          priority: S.Number,
-          status: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectReplicationRule",
-      });
-    case 2:
-      return S.Array(__S(425, __c53, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(426, __c53, 2)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectReplicationRulesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flavor: __S(1, __c0, 1),
-          image: __S(1, __c0, 1),
-          name: S.String,
-          networks: S.NullOr(__S(18, __c2, 2)),
-          powerState: S.optional(S.NullOr(S.String)),
-          securityGroups: S.optional(S.NullOr(__S(19, __c2, 3))),
-          volumes: S.NullOr(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudInstanceInstanceUpdateTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(428, __c53, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/compute/instance/{instanceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectComputeInstanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudFloatingIpFloatingIPUpdateTargetSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          floatingIpId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(430, __c53, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/floatingIp/{floatingIpId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectFloatingIpRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          externalGateway: __S(46, __c5, 6),
-          name: S.String,
-          subnets: S.optional(S.NullOr(__S(19, __c2, 3))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudGatewayGatewayUpdateTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(432, __c54, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/gateway/{gatewayId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectGatewayRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          secretRefs: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "PublicCloudKeyManagerContainerUpdateTargetSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          containerId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(434, __c54, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/keyManager/container/{containerId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectKeyManagerContainerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "PublicCloudKeyManagerSecretUpdateTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          secretId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(436, __c54, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/keyManager/secret/{secretId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectKeyManagerSecretRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerLoadbalancerPutTargetSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(438, __c54, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectLoadbalancerRequest",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCidrs: S.optional(S.NullOr(__S(72, __c9, 0))),
-          connectionLimit: S.optional(S.NullOr(S.Number)),
-          defaultPool: S.optional(S.NullOr(__S(1, __c0, 1))),
-          defaultTlsContainerRef: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          insertHeaders: S.optional(S.NullOr(__S(73, __c9, 1))),
-          name: S.String,
-          sniContainerRefs: S.optional(S.NullOr(__S(76, __c9, 4))),
-          timeoutClientData: S.optional(S.NullOr(S.Number)),
-          timeoutMemberConnect: S.optional(S.NullOr(S.Number)),
-          timeoutMemberData: S.optional(S.NullOr(S.Number)),
-          timeoutTcpInspect: S.optional(S.NullOr(S.Number)),
-          tlsVersions: S.optional(S.NullOr(__S(72, __c9, 0))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerListenerPutTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          listenerId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(440, __c55, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectLoadbalancerListenerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          listenerId: S.String.pipe(T.Label()),
-          l7PolicyId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(81, __c10, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/listener/{listenerId}/l7policy/{l7PolicyId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectLoadbalancerListenerL7policyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          delay: S.Number,
-          domainName: S.optional(S.NullOr(S.String)),
-          expectedCodes: S.optional(S.NullOr(S.String)),
-          httpMethod: S.optional(S.NullOr(S.String)),
-          httpVersion: S.optional(S.NullOr(S.String)),
-          maxRetries: S.Number,
-          maxRetriesDown: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.NullOr(S.String)),
-          timeout: S.Number,
-          urlPath: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerHealthMonitorUpdateTargetSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          healthMonitor: S.optional(S.NullOr(__S(443, __c55, 3))),
-          name: S.optional(S.NullOr(S.String)),
-          persistence: S.optional(S.NullOr(__S(88, __c11, 0))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerPoolUpdateTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          poolId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(444, __c55, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectLoadbalancerPoolRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          backup: S.optional(S.NullOr(S.Boolean)),
-          monitor: S.optional(S.NullOr(__S(94, __c11, 6))),
-          name: S.optional(S.NullOr(S.String)),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudLoadbalancerMemberUpdateTargetSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          loadbalancerId: S.String.pipe(T.Label()),
-          poolId: S.String.pipe(T.Label()),
-          memberId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(446, __c55, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/loadbalancer/{loadbalancerId}/pool/{poolId}/member/{memberId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectLoadbalancerPoolMemberRequest",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudNetworkNetworkPutTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          networkId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(448, __c56, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/network/{networkId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectNetworkRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allocationPools: S.optional(S.NullOr(__S(104, __c13, 0))),
-          description: S.optional(S.NullOr(S.String)),
-          dhcpEnabled: S.optional(S.NullOr(S.Boolean)),
-          dnsNameservers: S.optional(S.NullOr(__S(72, __c9, 0))),
-          gatewayIp: S.optional(S.NullOr(S.String)),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudNetworkSubnetPutTargetSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          networkId: S.String.pipe(T.Label()),
-          subnetId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(450, __c56, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/network/{networkId}/subnet/{subnetId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectNetworkSubnetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(430, __c53, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/publicIp/floating/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectPublicIpFloatingRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          preventAutomaticQuotaUpgrade: S.Boolean,
-          regions: __S(260, __c32, 4),
-        }),
-      ).annotate({
-        identifier: "PublicCloudQuotaQuotaUpdateTargetSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(453, __c56, 5),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/publicCloud/project/{projectId}/quota", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectQuotaRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          rancherId: S.String.pipe(T.Label()),
-          targetSpec: __S(122, __c15, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/rancher/{rancherId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectRancherRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          rules: S.optional(S.NullOr(__S(127, __c15, 7))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudSecurityGroupSecurityGroupUpdateTargetSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          securityGroupId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(456, __c57, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/securityGroup/{securityGroupId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectSecurityGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageBackupUpdateTargetSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(458, __c57, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/block/backup/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageBlockBackupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageSnapshotUpdateTargetSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(460, __c57, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/block/snapshot/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageBlockSnapshotRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          size: S.Number,
-          volumeType: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudBlockStorageBlockUpdateTargetSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(462, __c57, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/block/volume/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageBlockVolumeRequest",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(201, __c25, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accessRules: S.optional(S.NullOr(__S(464, __c58, 0))),
-          description: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          size: S.Number,
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageFileFileStorageUpdateTargetSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          fileStorageId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(465, __c58, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/file/share/{fileStorageId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageFileShareRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageFileFileStorageSnapshotUpdateTargetSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          snapshotId: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(467, __c58, 3),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/file/snapshot/{snapshotId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageFileSnapshotRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          encryption: S.optional(S.NullOr(__S(157, __c19, 5))),
-          objectLock: S.optional(S.NullOr(__S(159, __c19, 7))),
-          ownerUserId: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(59, __c7, 3))),
-          versioning: S.optional(S.NullOr(__S(160, __c20, 0))),
-        }),
-      ).annotate({
-        identifier: "PublicCloudStorageObjectBucketUpdateTargetSpecInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-          checksum: S.String,
-          targetSpec: __S(469, __c58, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageObjectBucketRequest",
-      });
-    case 7:
-      return S.Array(__S(419, __c52, 3));
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-          rules: __S(471, __c58, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/lifecycle",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageObjectBucketLifecycleRequest",
-      });
-    case 1:
-      return S.Array(__S(425, __c53, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-          rules: __S(473, __c59, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/publicCloud/project/{projectId}/storage/object/bucket/{bucketName}/replication",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPublicCloudProjectStorageObjectBucketReplicationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          targetSpec: __S(203, __c25, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/publicCloud/project/{projectId}/storage/file/share",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SharePublicCloudProjectStorageFileRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

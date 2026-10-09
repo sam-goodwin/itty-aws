@@ -461,8 +461,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
+  output: __S(121, __c3, 25) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Empty>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Policy>,
+  input: __S(162, __c5, 2) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(199, __c6, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
+  output: __S(121, __c3, 25) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -532,8 +532,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
+  input: __S(320, __c10, 0) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
+  output: __S(121, __c3, 25) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Policy>,
+  input: __S(1, __c0, 1) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(199, __c6, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   TestIamPermissionsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,6 +602,79 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          policy: S.optional(__S(199, __c6, 7)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:setIamPolicy",
+            baseUrl: "https://bigqueryconnection.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:testIamPermissions",
+            baseUrl: "https://bigqueryconnection.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(121, __c3, 25).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/connections",
+            baseUrl: "https://bigqueryconnection.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -615,7 +688,7 @@ function __c0(j: number): any {
           instanceUri: S.optional(S.String),
           identity: S.optional(S.String),
           tenantId: S.optional(S.String),
-          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
+          crossCloudCacheOptions: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "SalesforceDataCloudProperties",
@@ -633,7 +706,7 @@ function __c0(j: number): any {
           instanceId: S.optional(S.String),
           type: S.optional(S.String),
           database: S.optional(S.String),
-          credential: S.optional(__S(2, __c0, 2)),
+          credential: S.optional(__S(98, __c3, 2)),
           serviceAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudSqlProperties" });
@@ -653,8 +726,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.optional(S.String),
-          metastoreServiceConfig: S.optional(__S(4, __c0, 4)),
-          sparkHistoryServerConfig: S.optional(__S(5, __c0, 5)),
+          metastoreServiceConfig: S.optional(__S(100, __c3, 4)),
+          sparkHistoryServerConfig: S.optional(__S(101, __c3, 5)),
         }),
       ).annotate({ identifier: "SparkProperties" });
     case 7:
@@ -666,29 +739,25 @@ function __c0(j: number): any {
           identity: S.optional(S.String),
           customerTenantId: S.optional(S.String),
           application: S.optional(S.String),
-          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
+          crossCloudCacheOptions: S.optional(__S(96, __c3, 0)),
           redirectUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureProperties" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           iamRoleId: S.optional(S.String),
           identity: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsAccessRole" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          crossCloudCacheOptions: S.optional(__S(0, __c0, 0)),
-          accessRole: S.optional(__S(8, __c1, 0)),
+          crossCloudCacheOptions: S.optional(__S(96, __c3, 0)),
+          accessRole: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({ identifier: "AwsProperties" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           maxParallelism: S.optional(S.Number),
@@ -699,7 +768,7 @@ function __c1(j: number): any {
           databaseRole: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudSpannerProperties" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           hostPort: S.optional(S.String),
@@ -707,7 +776,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConnectorConfigurationEndpoint",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           plaintext: S.optional(S.String),
@@ -716,44 +785,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConnectorConfigurationSecret",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           boolValue: S.optional(S.Boolean),
           stringValue: S.optional(S.String),
           doubleValue: S.optional(S.Number),
           int32Value: S.optional(S.Number),
-          secretValue: S.optional(__S(12, __c1, 4)),
+          secretValue: S.optional(__S(108, __c3, 12)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationParameterValue",
       });
-    case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
-    case 7:
+    case 14:
+      return S.Record(S.String, __S(109, __c3, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          password: S.optional(__S(12, __c1, 4)),
+          password: S.optional(__S(108, __c3, 12)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationUsernamePassword",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          usernamePassword: S.optional(__S(15, __c1, 7)),
-          parameters: S.optional(__S(14, __c1, 6)),
+          usernamePassword: S.optional(__S(111, __c3, 15)),
+          parameters: S.optional(__S(110, __c3, 14)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationAuthentication",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           networkAttachment: S.optional(S.String),
@@ -761,19 +826,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConnectorConfigurationPrivateServiceConnect",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          privateServiceConnect: S.optional(__S(17, __c2, 1)),
+          privateServiceConnect: S.optional(__S(113, __c3, 17)),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationNetwork",
       });
-    case 3:
+    case 19:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ConnectorConfigurationTlsWebPki",
       });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           trustedCertificatesPem: S.optional(S.String),
@@ -781,17 +846,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConnectorConfigurationTlsPrivatePki",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          webPki: S.optional(__S(19, __c2, 3)),
-          privatePki: S.optional(__S(20, __c2, 4)),
+          webPki: S.optional(__S(115, __c3, 19)),
+          privatePki: S.optional(__S(116, __c3, 20)),
           mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConnectorConfigurationTls",
       });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           database: S.optional(S.String),
@@ -800,65 +865,49 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ConnectorConfigurationAsset",
       });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          endpoint: S.optional(__S(11, __c1, 3)),
-          parameters: S.optional(__S(14, __c1, 6)),
-          authentication: S.optional(__S(16, __c2, 0)),
+          endpoint: S.optional(__S(107, __c3, 11)),
+          parameters: S.optional(__S(110, __c3, 14)),
+          authentication: S.optional(__S(112, __c3, 16)),
           connectorId: S.optional(S.String),
-          network: S.optional(__S(18, __c2, 2)),
-          tls: S.optional(__S(21, __c2, 5)),
-          asset: S.optional(__S(22, __c2, 6)),
+          network: S.optional(__S(114, __c3, 18)),
+          tls: S.optional(__S(117, __c3, 21)),
+          asset: S.optional(__S(118, __c3, 22)),
         }),
       ).annotate({ identifier: "ConnectorConfiguration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           serviceAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudResourceProperties" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          salesforceDataCloud: S.optional(__S(1, __c0, 1)),
+          salesforceDataCloud: S.optional(__S(97, __c3, 1)),
           creationTime: S.optional(S.String),
           description: S.optional(S.String),
           hasCredential: S.optional(S.Boolean),
           friendlyName: S.optional(S.String),
-          cloudSql: S.optional(__S(3, __c0, 3)),
-          spark: S.optional(__S(6, __c0, 6)),
-          azure: S.optional(__S(7, __c0, 7)),
-          aws: S.optional(__S(9, __c1, 1)),
+          cloudSql: S.optional(__S(99, __c3, 3)),
+          spark: S.optional(__S(102, __c3, 6)),
+          azure: S.optional(__S(103, __c3, 7)),
+          aws: S.optional(__S(105, __c3, 9)),
           lastModifiedTime: S.optional(S.String),
-          cloudSpanner: S.optional(__S(10, __c1, 2)),
-          configuration: S.optional(__S(23, __c2, 7)),
-          cloudResource: S.optional(__S(24, __c3, 0)),
+          cloudSpanner: S.optional(__S(106, __c3, 10)),
+          configuration: S.optional(__S(119, __c3, 23)),
+          cloudResource: S.optional(__S(120, __c3, 24)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connection" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          connectionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/connections",
-            baseUrl: "https://bigqueryconnection.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsConnectionsRequest",
-      });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -872,27 +921,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestedPolicyVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetPolicyOptions" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(29, __c3, 5)),
+          options: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -905,29 +958,27 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(32, __c4, 0)),
+          exemptedMembers: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(34, __c4, 2)),
+          auditLogConfigs: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "AuditConfig" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -936,30 +987,36 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(37, __c4, 5)),
-          members: S.optional(__S(32, __c4, 0)),
+          condition: S.optional(__S(196, __c6, 4)),
+          members: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "Binding" });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(36, __c4, 4)),
-          bindings: S.optional(__S(39, __c4, 7)),
+          auditConfigs: S.optional(__S(195, __c6, 3)),
+          bindings: S.optional(__S(198, __c6, 6)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -973,7 +1030,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConnectionsRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -989,21 +1050,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
-    case 3:
-      return S.Array(__S(25, __c3, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(121, __c3, 25));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(43, __c5, 3)),
+          connections: S.optional(__S(289, __c9, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(121, __c3, 25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1014,58 +1079,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectionsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          policy: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:setIamPolicy",
-            baseUrl: "https://bigqueryconnection.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
-      });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:testIamPermissions",
-            baseUrl: "https://bigqueryconnection.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsProjectsLocationsConnectionsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

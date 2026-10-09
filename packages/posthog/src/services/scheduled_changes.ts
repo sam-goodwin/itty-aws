@@ -185,7 +185,7 @@ export const createScheduledChange: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateScheduledChangeRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ScheduledChange>,
+  output: __S(7, __c1, 3) as any as S.Schema<ScheduledChange>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -199,8 +199,8 @@ export const getScheduledChange: API.OperationMethod<
   GetScheduledChangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetScheduledChangeRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ScheduledChange>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetScheduledChangeRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ScheduledChange>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const listScheduledChanges: API.OperationMethod<
   ListScheduledChangesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListScheduledChangesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PaginatedScheduledChangeList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListScheduledChangesRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedScheduledChangeList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -229,8 +229,8 @@ export const scheduledChangesDestroy: API.OperationMethod<
   ScheduledChangesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ScheduledChangesDestroyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ScheduledChangesDestroyResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ScheduledChangesDestroyRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<ScheduledChangesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const updateScheduledChange: API.OperationMethod<
   UpdateScheduledChangeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateScheduledChangeRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ScheduledChange>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateScheduledChangeRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ScheduledChange>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const updateScheduledChangesPartial: API.OperationMethod<
   UpdateScheduledChangesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<UpdateScheduledChangesPartialRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ScheduledChange>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateScheduledChangesPartialRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ScheduledChange>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -291,9 +291,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateScheduledChangeRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -303,18 +307,18 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           state: S.String,
         }),
       ).annotate({ identifier: "ChangeRequestSummary" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -326,7 +330,7 @@ function __c0(j: number): any {
           executed_at: S.NullOr(S.String),
           failure_reason: S.NullOr(S.String),
           created_at: S.String,
-          created_by: __S(2, __c0, 2),
+          created_by: __S(5, __c1, 1),
           updated_at: S.String,
           is_recurring: S.optional(S.Boolean),
           recurrence_interval: S.optional(S.NullOr(S.String)),
@@ -334,10 +338,14 @@ function __c0(j: number): any {
           last_executed_at: S.NullOr(S.String),
           end_date: S.optional(S.NullOr(S.String)),
           timezone: S.NullOr(S.String),
-          change_request: S.NullOr(__S(3, __c0, 3)),
+          change_request: S.NullOr(__S(6, __c1, 2)),
         }),
       ).annotate({ identifier: "ScheduledChange" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -352,7 +360,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetScheduledChangeRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -370,24 +382,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListScheduledChangesRequest",
       });
-    case 7:
-      return S.Array(__S(4, __c0, 4));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(7, __c1, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(7, __c0, 7),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "PaginatedScheduledChangeList",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -402,11 +414,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ScheduledChangesDestroyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ScheduledChangesDestroyResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -429,7 +445,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateScheduledChangeRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -454,7 +474,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -114,7 +114,7 @@ export const deleteSharedVolume: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteSharedVolumeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSharedVolumeResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteSharedVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -127,8 +127,8 @@ export const listSharedVolume: API.OperationMethod<
   ListSharedVolumeError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListSharedVolumeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListSharedVolumeResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListSharedVolumeRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListSharedVolumeResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -141,8 +141,8 @@ export const sharedVolumeGetFile: API.OperationMethod<
   SharedVolumeGetFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<SharedVolumeGetFileRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<SharedVolumeGetFileResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<SharedVolumeGetFileRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<SharedVolumeGetFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -155,8 +155,8 @@ export const sharedVolumeGetOrCreate: API.OperationMethod<
   SharedVolumeGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<SharedVolumeGetOrCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SharedVolumeGetOrCreateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<SharedVolumeGetOrCreateRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<SharedVolumeGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -169,8 +169,8 @@ export const sharedVolumeHeartbeat: API.OperationMethod<
   SharedVolumeHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<SharedVolumeHeartbeatRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SharedVolumeHeartbeatResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<SharedVolumeHeartbeatRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SharedVolumeHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const sharedVolumeListFiles: API.OperationMethod<
   SharedVolumeListFilesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<SharedVolumeListFilesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SharedVolumeListFilesResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<SharedVolumeListFilesRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<SharedVolumeListFilesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -197,8 +197,8 @@ export const sharedVolumePutFile: API.OperationMethod<
   SharedVolumePutFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<SharedVolumePutFileRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SharedVolumePutFileResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<SharedVolumePutFileRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<SharedVolumePutFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -211,8 +211,8 @@ export const sharedVolumeRemoveFile: API.OperationMethod<
   SharedVolumeRemoveFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<SharedVolumeRemoveFileRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SharedVolumeRemoveFileResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<SharedVolumeRemoveFileRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<SharedVolumeRemoveFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -235,11 +235,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteSharedVolumeRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSharedVolumeResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentName: S.optional(S.String),
@@ -247,7 +255,7 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/SharedVolumeList", code: 200 }),
         ),
       ).annotate({ identifier: "ListSharedVolumeRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -256,16 +264,20 @@ function __c0(j: number): any {
           cloudProvider: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedVolumeListItem" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(10, __c2, 2)),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSharedVolumeResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sharedVolumeId: S.optional(S.String),
@@ -280,7 +292,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SharedVolumeGetFileRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
@@ -291,7 +303,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -318,7 +330,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SharedVolumeGetOrCreateResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sharedVolumeId: S.optional(S.String),
@@ -332,7 +348,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SharedVolumeHeartbeatRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sharedVolumeId: S.optional(S.String),
@@ -347,7 +367,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SharedVolumeListFilesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -356,17 +376,21 @@ function __c1(j: number): any {
           size: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileEntry" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(13, __c1, 5)),
+          entries: S.optional(__S(26, __c6, 2)),
         }),
       ).annotate({
         identifier: "SharedVolumeListFilesResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sharedVolumeId: S.optional(S.String),
@@ -385,11 +409,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SharedVolumePutFileRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exists: S.optional(S.Boolean),
@@ -397,7 +417,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SharedVolumePutFileResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sharedVolumeId: S.optional(S.String),
@@ -415,7 +439,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

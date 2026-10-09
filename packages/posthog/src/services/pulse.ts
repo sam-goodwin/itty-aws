@@ -288,8 +288,8 @@ export const createPulseBriefConfig: API.OperationMethod<
   CreatePulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreatePulseBriefConfigRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BriefConfig>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePulseBriefConfigRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BriefConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -302,8 +302,8 @@ export const getPulseBrief: API.OperationMethod<
   GetPulseBriefError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetPulseBriefRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ProductBrief>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetPulseBriefRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ProductBrief>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -316,8 +316,8 @@ export const getPulseBriefConfig: API.OperationMethod<
   GetPulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetPulseBriefConfigRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BriefConfig>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetPulseBriefConfigRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BriefConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const listPulseBriefConfigs: API.OperationMethod<
   ListPulseBriefConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListPulseBriefConfigsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PaginatedBriefConfigList>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListPulseBriefConfigsRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<PaginatedBriefConfigList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -344,8 +344,8 @@ export const listPulseBriefs: API.OperationMethod<
   ListPulseBriefsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListPulseBriefsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<PaginatedProductBriefListList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListPulseBriefsRequest>,
+  output: __S(67, __c8, 3) as any as S.Schema<PaginatedProductBriefListList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -358,8 +358,8 @@ export const pulseBriefConfigsDestroy: API.OperationMethod<
   PulseBriefConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PulseBriefConfigsDestroyRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PulseBriefConfigsDestroyResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<PulseBriefConfigsDestroyRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<PulseBriefConfigsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -372,8 +372,8 @@ export const pulseBriefsGenerateCreate: API.OperationMethod<
   PulseBriefsGenerateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PulseBriefsGenerateCreateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ProductBrief>,
+  input: __S(80, __c10, 0) as any as S.Schema<PulseBriefsGenerateCreateRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ProductBrief>,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const updatePulseBriefConfig: API.OperationMethod<
   UpdatePulseBriefConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdatePulseBriefConfigRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BriefConfig>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdatePulseBriefConfigRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BriefConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -400,8 +400,8 @@ export const updatePulseBriefConfigsPartial: API.OperationMethod<
   UpdatePulseBriefConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdatePulseBriefConfigsPartialRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BriefConfig>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdatePulseBriefConfigsPartialRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<BriefConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -411,36 +411,13 @@ export const updatePulseBriefConfigsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dashboards: S.optional(__S(0, __c0, 0)),
-          insights: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "BriefAnchors" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          min_abs_change_pct: S.optional(S.Number),
-          min_baseline_value: S.optional(S.Number),
-          max_anchor_insights: S.optional(S.Number),
-          fallback_dashboard_count: S.optional(S.Number),
-          confidence_threshold: S.optional(S.Number),
-          max_opportunities: S.optional(S.Number),
-          max_annotations: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BriefSettings" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2, __c0, 2)),
-          settings: S.optional(__S(3, __c0, 3)),
+          anchors: S.optional(__S(17, __c2, 1)),
+          settings: S.optional(__S(18, __c2, 2)),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -453,9 +430,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreatePulseBriefConfigRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -465,28 +448,53 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
+          hedgehog_config: S.optional(S.NullOr(__S(9, __c1, 1))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dashboards: S.optional(__S(16, __c2, 0)),
+          insights: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({ identifier: "BriefAnchors" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          min_abs_change_pct: S.optional(S.Number),
+          min_baseline_value: S.optional(S.Number),
+          max_anchor_insights: S.optional(S.Number),
+          fallback_dashboard_count: S.optional(S.Number),
+          confidence_threshold: S.optional(S.Number),
+          max_opportunities: S.optional(S.Number),
+          max_annotations: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BriefSettings" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2, __c0, 2)),
-          settings: S.optional(__S(3, __c0, 3)),
+          anchors: S.optional(__S(17, __c2, 1)),
+          settings: S.optional(__S(18, __c2, 2)),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           created_at: S.String,
-          created_by: S.NullOr(__S(6, __c0, 6)),
+          created_by: S.NullOr(__S(10, __c1, 2)),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BriefConfig" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -501,14 +509,22 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPulseBriefRequest" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           period_type: S.String,
           days: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Period" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -517,37 +533,41 @@ function __c1(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "BriefSectionCitation" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
           title: S.String,
           markdown: S.String,
-          citations: __S(11, __c1, 3),
+          citations: __S(41, __c5, 1),
           confidence: S.Number,
         }),
       ).annotate({ identifier: "BriefSection" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           config: S.NullOr(S.String),
           status: S.String,
           trigger: S.String,
-          period: __S(9, __c1, 1),
-          sections: __S(13, __c1, 5),
-          sources_used: __S(1, __c0, 1),
+          period: __S(32, __c4, 0),
+          sections: __S(43, __c5, 3),
+          sources_used: __S(8, __c1, 0),
           error: S.NullOr(S.String),
           created_at: S.String,
-          created_by: S.NullOr(__S(6, __c0, 6)),
+          created_by: S.NullOr(__S(10, __c1, 2)),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ProductBrief" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -564,7 +584,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -583,17 +603,21 @@ function __c2(j: number): any {
         identifier: "ListPulseBriefConfigsRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(19, __c2, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(17, __c2, 1),
+          results: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "PaginatedBriefConfigList" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -603,35 +627,39 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/pulse/briefs/", code: 200 }),
         ),
       ).annotate({ identifier: "ListPulseBriefsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           config: S.NullOr(S.String),
           status: S.String,
           trigger: S.String,
-          period: __S(9, __c1, 1),
-          sources_used: __S(1, __c0, 1),
+          period: __S(32, __c4, 0),
+          sources_used: __S(8, __c1, 0),
           error: S.NullOr(S.String),
           created_at: S.String,
-          created_by: S.NullOr(__S(6, __c0, 6)),
+          created_by: S.NullOr(__S(10, __c1, 2)),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ProductBriefList" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(21, __c2, 5),
+          results: __S(66, __c8, 2),
         }),
       ).annotate({
         identifier: "PaginatedProductBriefListList",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -646,20 +674,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PulseBriefConfigsDestroyRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PulseBriefConfigsDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           config_id: S.optional(S.NullOr(S.String)),
-          period: S.optional(__S(9, __c1, 1)),
+          period: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -670,15 +698,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PulseBriefsGenerateCreateRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.String,
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2, __c0, 2)),
-          settings: S.optional(__S(3, __c0, 3)),
+          anchors: S.optional(__S(17, __c2, 1)),
+          settings: S.optional(__S(18, __c2, 2)),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -691,15 +723,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdatePulseBriefConfigRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           focus_prompt: S.optional(S.String),
-          anchors: S.optional(__S(2, __c0, 2)),
-          settings: S.optional(__S(3, __c0, 3)),
+          anchors: S.optional(__S(17, __c2, 1)),
+          settings: S.optional(__S(18, __c2, 2)),
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
         }).pipe(
@@ -714,7 +750,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

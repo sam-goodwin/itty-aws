@@ -145,7 +145,7 @@ export class ValidationException
         identifier: "ValidationExceptionErrorCode",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(95, __c11, 7)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(513, __c16, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -717,8 +717,8 @@ export const batchDeleteTaxRegistration: API.OperationMethod<
   BatchDeleteTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchDeleteTaxRegistrationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BatchDeleteTaxRegistrationResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<BatchDeleteTaxRegistrationRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<BatchDeleteTaxRegistrationResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -739,8 +739,8 @@ export const batchGetTaxExemptions: API.OperationMethod<
   BatchGetTaxExemptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BatchGetTaxExemptionsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BatchGetTaxExemptionsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<BatchGetTaxExemptionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<BatchGetTaxExemptionsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -901,8 +901,8 @@ export const batchPutTaxRegistration: API.OperationMethod<
   BatchPutTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<BatchPutTaxRegistrationRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<BatchPutTaxRegistrationResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<BatchPutTaxRegistrationRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<BatchPutTaxRegistrationResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -924,8 +924,8 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
   DeleteSupplementalTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteSupplementalTaxRegistrationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSupplementalTaxRegistrationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteSupplementalTaxRegistrationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteSupplementalTaxRegistrationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -954,8 +954,8 @@ export const deleteTaxRegistration: API.OperationMethod<
   DeleteTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteTaxRegistrationRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DeleteTaxRegistrationResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteTaxRegistrationRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteTaxRegistrationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -981,8 +981,8 @@ export const getTaxExemptionTypes: API.OperationMethod<
   GetTaxExemptionTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetTaxExemptionTypesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetTaxExemptionTypesResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetTaxExemptionTypesRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<GetTaxExemptionTypesResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1003,8 +1003,8 @@ export const getTaxInheritance: API.OperationMethod<
   GetTaxInheritanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetTaxInheritanceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetTaxInheritanceResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetTaxInheritanceRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<GetTaxInheritanceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1025,8 +1025,8 @@ export const getTaxRegistration: API.OperationMethod<
   GetTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetTaxRegistrationRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetTaxRegistrationResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetTaxRegistrationRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<GetTaxRegistrationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1046,8 +1046,8 @@ export const getTaxRegistrationDocument: API.OperationMethod<
   GetTaxRegistrationDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetTaxRegistrationDocumentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetTaxRegistrationDocumentResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<GetTaxRegistrationDocumentRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<GetTaxRegistrationDocumentResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1069,8 +1069,8 @@ export const listSupplementalTaxRegistrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SupplementalTaxRegistration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListSupplementalTaxRegistrationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListSupplementalTaxRegistrationsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListSupplementalTaxRegistrationsRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<ListSupplementalTaxRegistrationsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1098,8 +1098,8 @@ export const listTaxExemptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListTaxExemptionsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListTaxExemptionsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListTaxExemptionsRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<ListTaxExemptionsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1127,8 +1127,8 @@ export const listTaxRegistrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListTaxRegistrationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListTaxRegistrationsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListTaxRegistrationsRequest>,
+  output: __S(360, __c11, 8) as any as S.Schema<ListTaxRegistrationsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1155,8 +1155,8 @@ export const putSupplementalTaxRegistration: API.OperationMethod<
   PutSupplementalTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PutSupplementalTaxRegistrationRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<PutSupplementalTaxRegistrationResponse>,
+  input: __S(385, __c12, 1) as any as S.Schema<PutSupplementalTaxRegistrationRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<PutSupplementalTaxRegistrationResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1180,8 +1180,8 @@ export const putTaxExemption: API.OperationMethod<
   PutTaxExemptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<PutTaxExemptionRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<PutTaxExemptionResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<PutTaxExemptionRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<PutTaxExemptionResponse>,
   errors: [
     AccessDeniedException,
     AttachmentUploadException,
@@ -1210,8 +1210,8 @@ export const putTaxInheritance: API.OperationMethod<
   PutTaxInheritanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PutTaxInheritanceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<PutTaxInheritanceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<PutTaxInheritanceRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<PutTaxInheritanceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1377,8 +1377,8 @@ export const putTaxRegistration: API.OperationMethod<
   PutTaxRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<PutTaxRegistrationRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<PutTaxRegistrationResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<PutTaxRegistrationRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<PutTaxRegistrationResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1389,374 +1389,6 @@ export const putTaxRegistration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ accountIds: __S(0, __c0, 0) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/BatchDeleteTaxRegistration" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteTaxRegistrationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchDeleteTaxRegistrationError",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ errors: __S(3, __c0, 3) })).annotate({
-        identifier: "BatchDeleteTaxRegistrationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ accountIds: __S(0, __c0, 0) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/BatchGetTaxExemptions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetTaxExemptionsRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ country: S.String, state: S.optional(S.String) })).annotate(
-        { identifier: "Authority" },
-      );
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          applicableJurisdictions: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "TaxExemptionType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          authority: __S(6, __c0, 6),
-          taxExemptionType: __S(8, __c1, 0),
-          effectiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          systemEffectiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaxExemption" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taxExemptions: S.optional(__S(10, __c1, 2)),
-          heritageObtainedDetails: S.optional(S.Boolean),
-          heritageObtainedParentEntity: S.optional(S.String),
-          heritageObtainedReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaxExemptionDetails" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(11, __c1, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taxExemptionDetailsMap: S.optional(__S(12, __c1, 4)),
-          failedAccounts: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchGetTaxExemptionsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          addressLine1: S.optional(S.String),
-          addressLine2: S.optional(S.String),
-          addressLine3: S.optional(S.String),
-          districtOrCounty: S.optional(S.String),
-          city: S.optional(S.String),
-          stateOrRegion: S.optional(S.String),
-          postalCode: S.String,
-          countryCode: S.String,
-        }),
-      ).annotate({ identifier: "Address" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceTaxCodes: S.optional(__S(15, __c1, 7)),
-          taxInformationNumber: S.optional(S.String),
-          businessRegistrationNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MalaysiaAdditionalInfo" });
-    case 1:
-      return S.suspend(() => S.Struct({ dealerType: S.String, customerType: S.String })).annotate({
-        identifier: "IsraelAdditionalInfo",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ registryCommercialCode: S.String })).annotate({
-        identifier: "EstoniaAdditionalInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provincialSalesTaxId: S.optional(S.String),
-          canadaQuebecSalesTaxNumber: S.optional(S.String),
-          canadaRetailSalesTaxNumber: S.optional(S.String),
-          isResellerAccount: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CanadaAdditionalInfo" });
-    case 4:
-      return S.suspend(() => S.Struct({ registrationType: S.String })).annotate({
-        identifier: "SpainAdditionalInfo",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ personType: S.String })).annotate({
-        identifier: "KenyaAdditionalInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          businessRepresentativeName: S.String,
-          lineOfBusiness: S.String,
-          itemOfBusiness: S.String,
-        }),
-      ).annotate({ identifier: "SouthKoreaAdditionalInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          taxOffice: S.optional(S.String),
-          kepEmailId: S.optional(S.String),
-          secondaryTaxId: S.optional(S.String),
-          industries: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TurkeyAdditionalInfo" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sdiAccountId: S.optional(S.String),
-          cigNumber: S.optional(S.String),
-          cupNumber: S.optional(S.String),
-          taxCode: S.optional(S.String),
-          customerType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ItalyAdditionalInfo" });
-    case 1:
-      return S.suspend(() => S.Struct({ taxRegistrationNumberType: S.String })).annotate({
-        identifier: "RomaniaAdditionalInfo",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ ukraineTrnType: S.String })).annotate({
-        identifier: "UkraineAdditionalInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          individualRegistrationNumber: S.optional(S.String),
-          isGroupVatEnabled: S.optional(S.Boolean),
-          taxRegistrationNumberType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PolandAdditionalInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ taxRegistrationNumberType: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SaudiArabiaAdditionalInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taxRegistrationNumberType: S.optional(S.String),
-          ppnExceptionDesignationCode: S.optional(S.String),
-          decisionNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IndonesiaAdditionalInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enterpriseIdentificationNumber: S.optional(S.String),
-          electronicTransactionCodeNumber: S.optional(S.String),
-          paymentVoucherNumber: S.optional(S.String),
-          paymentVoucherNumberDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VietnamAdditionalInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueIdentificationNumber: S.optional(S.String),
-          uniqueIdentificationNumberExpirationDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EgyptAdditionalInfo" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ contractingAuthorityCode: S.optional(S.String) })).annotate(
-        { identifier: "GreeceAdditionalInfo" },
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          taxRegistrationNumberType: S.optional(S.String),
-          vatRegistrationNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UzbekistanAdditionalInfo" });
-    case 2:
-      return S.suspend(() => S.Struct({ isVatRegistered: S.optional(S.Boolean) })).annotate({
-        identifier: "PhilippinesAdditionalInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ peppolId: S.optional(S.String), isMercuriusBoxEnabled: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "BelgiumAdditionalInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          documentType: S.optional(S.String),
-          businessActivity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChileAdditionalInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ sirenNumber: S.String, eInvoiceRoutingCode: S.optional(S.String) }),
-      ).annotate({ identifier: "FranceAdditionalInfo" });
-    case 6:
-      return S.suspend(() => S.Struct({ businessNumber: S.String })).annotate({
-        identifier: "MonacoAdditionalInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          malaysiaAdditionalInfo: S.optional(__S(16, __c2, 0)),
-          israelAdditionalInfo: S.optional(__S(17, __c2, 1)),
-          estoniaAdditionalInfo: S.optional(__S(18, __c2, 2)),
-          canadaAdditionalInfo: S.optional(__S(19, __c2, 3)),
-          spainAdditionalInfo: S.optional(__S(20, __c2, 4)),
-          kenyaAdditionalInfo: S.optional(__S(21, __c2, 5)),
-          southKoreaAdditionalInfo: S.optional(__S(22, __c2, 6)),
-          turkeyAdditionalInfo: S.optional(__S(23, __c2, 7)),
-          georgiaAdditionalInfo: S.optional(__S(21, __c2, 5)),
-          italyAdditionalInfo: S.optional(__S(24, __c3, 0)),
-          romaniaAdditionalInfo: S.optional(__S(25, __c3, 1)),
-          ukraineAdditionalInfo: S.optional(__S(26, __c3, 2)),
-          polandAdditionalInfo: S.optional(__S(27, __c3, 3)),
-          saudiArabiaAdditionalInfo: S.optional(__S(28, __c3, 4)),
-          indonesiaAdditionalInfo: S.optional(__S(29, __c3, 5)),
-          vietnamAdditionalInfo: S.optional(__S(30, __c3, 6)),
-          egyptAdditionalInfo: S.optional(__S(31, __c3, 7)),
-          greeceAdditionalInfo: S.optional(__S(32, __c4, 0)),
-          uzbekistanAdditionalInfo: S.optional(__S(33, __c4, 1)),
-          philippinesAdditionalInfo: S.optional(__S(34, __c4, 2)),
-          belgiumAdditionalInfo: S.optional(__S(35, __c4, 3)),
-          chileAdditionalInfo: S.optional(__S(36, __c4, 4)),
-          franceAdditionalInfo: S.optional(__S(37, __c4, 5)),
-          monacoAdditionalInfo: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "AdditionalInfoRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
-        identifier: "SourceS3Location",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ fileName: S.String, fileContent: T.Blob })).annotate({
-        identifier: "TaxRegistrationDocFile",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          s3Location: S.optional(__S(40, __c5, 0)),
-          file: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "TaxRegistrationDocument" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dateOfBirth: S.optional(S.String),
-          taxRegistrationDocuments: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "VerificationDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          registrationId: S.String,
-          registrationType: S.String,
-          legalName: S.optional(S.String),
-          legalAddress: S.optional(__S(14, __c1, 6)),
-          sector: S.optional(S.String),
-          additionalTaxInformation: S.optional(__S(39, __c4, 7)),
-          verificationDetails: S.optional(__S(44, __c5, 4)),
-          certifiedEmailId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaxRegistrationEntry" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ accountIds: __S(0, __c0, 0), taxRegistrationEntry: __S(45, __c5, 5) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/BatchPutTaxRegistration" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationError",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          errors: __S(48, __c6, 0),
-        }),
-      ).annotate({
-        identifier: "BatchPutTaxRegistrationResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({ authorityId: S.String }).pipe(
           T.all(
@@ -1771,11 +1403,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSupplementalTaxRegistrationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSupplementalTaxRegistrationResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ accountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1790,11 +1426,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteTaxRegistrationRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteTaxRegistrationResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1809,19 +1453,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetTaxExemptionTypesRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(641, __c20, 1));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ taxExemptionTypes: S.optional(__S(55, __c6, 7)) }),
+        S.Struct({ taxExemptionTypes: S.optional(__S(97, __c3, 1)) }),
       ).annotate({
         identifier: "GetTaxExemptionTypesResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -1834,11 +1478,15 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTaxInheritanceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ heritageStatus: S.optional(S.String) })).annotate({
         identifier: "GetTaxInheritanceResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ accountId: S.optional(S.String) }).pipe(
           T.all(
@@ -1853,55 +1501,6 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetTaxRegistrationRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ taxDocumentAccessToken: S.String, taxDocumentName: S.String }),
-      ).annotate({ identifier: "TaxDocumentMetadata" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ccmCode: S.optional(S.String), legalNatureCode: S.optional(S.String) }),
-      ).annotate({ identifier: "BrazilAdditionalInfo" });
-    case 7:
-      return S.suspend(() => S.Struct({ pan: S.optional(S.String) })).annotate({
-        identifier: "IndiaAdditionalInfo",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          malaysiaAdditionalInfo: S.optional(__S(16, __c2, 0)),
-          israelAdditionalInfo: S.optional(__S(17, __c2, 1)),
-          estoniaAdditionalInfo: S.optional(__S(18, __c2, 2)),
-          canadaAdditionalInfo: S.optional(__S(19, __c2, 3)),
-          brazilAdditionalInfo: S.optional(__S(62, __c7, 6)),
-          spainAdditionalInfo: S.optional(__S(20, __c2, 4)),
-          kenyaAdditionalInfo: S.optional(__S(21, __c2, 5)),
-          southKoreaAdditionalInfo: S.optional(__S(22, __c2, 6)),
-          turkeyAdditionalInfo: S.optional(__S(23, __c2, 7)),
-          georgiaAdditionalInfo: S.optional(__S(21, __c2, 5)),
-          italyAdditionalInfo: S.optional(__S(24, __c3, 0)),
-          romaniaAdditionalInfo: S.optional(__S(25, __c3, 1)),
-          ukraineAdditionalInfo: S.optional(__S(26, __c3, 2)),
-          polandAdditionalInfo: S.optional(__S(27, __c3, 3)),
-          saudiArabiaAdditionalInfo: S.optional(__S(28, __c3, 4)),
-          indiaAdditionalInfo: S.optional(__S(63, __c7, 7)),
-          indonesiaAdditionalInfo: S.optional(__S(29, __c3, 5)),
-          vietnamAdditionalInfo: S.optional(__S(30, __c3, 6)),
-          egyptAdditionalInfo: S.optional(__S(31, __c3, 7)),
-          greeceAdditionalInfo: S.optional(__S(32, __c4, 0)),
-          uzbekistanAdditionalInfo: S.optional(__S(33, __c4, 1)),
-          philippinesAdditionalInfo: S.optional(__S(34, __c4, 2)),
-          belgiumAdditionalInfo: S.optional(__S(35, __c4, 3)),
-          chileAdditionalInfo: S.optional(__S(36, __c4, 4)),
-          franceAdditionalInfo: S.optional(__S(37, __c4, 5)),
-          monacoAdditionalInfo: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "AdditionalInfoResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1910,25 +1509,84 @@ function __c8(j: number): any {
           legalName: S.String,
           status: S.String,
           sector: S.optional(S.String),
-          taxDocumentMetadatas: S.optional(__S(61, __c7, 5)),
+          taxDocumentMetadatas: S.optional(__S(224, __c7, 0)),
           certifiedEmailId: S.optional(S.String),
-          additionalTaxInformation: S.optional(__S(64, __c8, 0)),
-          legalAddress: __S(14, __c1, 6),
+          additionalTaxInformation: S.optional(__S(227, __c7, 3)),
+          legalAddress: __S(768, __c24, 0),
         }),
       ).annotate({ identifier: "TaxRegistration" });
     case 2:
-      return S.suspend(() => S.Struct({ taxRegistration: S.optional(__S(65, __c8, 1)) })).annotate({
-        identifier: "GetTaxRegistrationResponse",
+      return S.suspend(() => S.Struct({ taxRegistration: S.optional(__S(161, __c5, 1)) })).annotate(
+        {
+          identifier: "GetTaxRegistrationResponse",
+        },
+      );
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ taxDocumentAccessToken: S.String, taxDocumentName: S.String }),
+      ).annotate({ identifier: "TaxDocumentMetadata" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c6, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ccmCode: S.optional(S.String), legalNatureCode: S.optional(S.String) }),
+      ).annotate({ identifier: "BrazilAdditionalInfo" });
+    case 2:
+      return S.suspend(() => S.Struct({ pan: S.optional(S.String) })).annotate({
+        identifier: "IndiaAdditionalInfo",
       });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          malaysiaAdditionalInfo: S.optional(__S(801, __c25, 1)),
+          israelAdditionalInfo: S.optional(__S(802, __c25, 2)),
+          estoniaAdditionalInfo: S.optional(__S(803, __c25, 3)),
+          canadaAdditionalInfo: S.optional(__S(804, __c25, 4)),
+          brazilAdditionalInfo: S.optional(__S(225, __c7, 1)),
+          spainAdditionalInfo: S.optional(__S(805, __c25, 5)),
+          kenyaAdditionalInfo: S.optional(__S(806, __c25, 6)),
+          southKoreaAdditionalInfo: S.optional(__S(807, __c25, 7)),
+          turkeyAdditionalInfo: S.optional(__S(808, __c25, 8)),
+          georgiaAdditionalInfo: S.optional(__S(806, __c25, 6)),
+          italyAdditionalInfo: S.optional(__S(809, __c25, 9)),
+          romaniaAdditionalInfo: S.optional(__S(810, __c25, 10)),
+          ukraineAdditionalInfo: S.optional(__S(811, __c25, 11)),
+          polandAdditionalInfo: S.optional(__S(812, __c25, 12)),
+          saudiArabiaAdditionalInfo: S.optional(__S(813, __c25, 13)),
+          indiaAdditionalInfo: S.optional(__S(226, __c7, 2)),
+          indonesiaAdditionalInfo: S.optional(__S(814, __c25, 14)),
+          vietnamAdditionalInfo: S.optional(__S(815, __c25, 15)),
+          egyptAdditionalInfo: S.optional(__S(816, __c25, 16)),
+          greeceAdditionalInfo: S.optional(__S(817, __c25, 17)),
+          uzbekistanAdditionalInfo: S.optional(__S(818, __c25, 18)),
+          philippinesAdditionalInfo: S.optional(__S(819, __c25, 19)),
+          belgiumAdditionalInfo: S.optional(__S(820, __c25, 20)),
+          chileAdditionalInfo: S.optional(__S(821, __c25, 21)),
+          franceAdditionalInfo: S.optional(__S(822, __c25, 22)),
+          monacoAdditionalInfo: S.optional(__S(823, __c25, 23)),
+        }),
+      ).annotate({ identifier: "AdditionalInfoResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ bucket: S.String, prefix: S.optional(S.String) })).annotate(
         { identifier: "DestinationS3Location" },
       );
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          destinationS3Location: S.optional(__S(67, __c8, 3)),
-          taxDocumentMetadata: __S(60, __c7, 4),
+          destinationS3Location: S.optional(__S(256, __c8, 0)),
+          taxDocumentMetadata: __S(192, __c6, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/GetTaxRegistrationDocument" }),
@@ -1942,7 +1600,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetTaxRegistrationDocumentRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           destinationFilePath: S.optional(S.String),
@@ -1951,7 +1609,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetTaxRegistrationDocumentResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -1966,35 +1628,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListSupplementalTaxRegistrationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           registrationId: S.String,
           registrationType: S.String,
           legalName: S.String,
-          address: __S(14, __c1, 6),
+          address: __S(768, __c24, 0),
           authorityId: S.String,
           status: S.String,
         }),
       ).annotate({
         identifier: "SupplementalTaxRegistration",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          taxRegistrations: __S(72, __c9, 0),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ taxRegistrations: __S(290, __c9, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSupplementalTaxRegistrationsResponse",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2007,16 +1666,20 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTaxExemptionsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          taxExemptionDetailsMap: S.optional(__S(12, __c1, 4)),
+          taxExemptionDetailsMap: S.optional(__S(707, __c22, 3)),
         }),
       ).annotate({
         identifier: "ListTaxExemptionsResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2031,11 +1694,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListTaxRegistrationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ stateOrRegion: S.optional(S.String), countryCode: S.String }),
       ).annotate({ identifier: "Jurisdiction" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           registrationId: S.String,
@@ -2043,68 +1706,68 @@ function __c9(j: number): any {
           legalName: S.String,
           status: S.String,
           sector: S.optional(S.String),
-          taxDocumentMetadatas: S.optional(__S(61, __c7, 5)),
+          taxDocumentMetadatas: S.optional(__S(224, __c7, 0)),
           certifiedEmailId: S.optional(S.String),
-          additionalTaxInformation: S.optional(__S(64, __c8, 0)),
-          jurisdiction: __S(77, __c9, 5),
+          additionalTaxInformation: S.optional(__S(227, __c7, 3)),
+          jurisdiction: __S(353, __c11, 1),
         }),
       ).annotate({
         identifier: "TaxRegistrationWithJurisdiction",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           parentEntityId: S.optional(S.String),
           inheritanceObtainedReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaxInheritanceDetails" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(77, __c9, 5).pipe(S.optional));
-    case 1:
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(353, __c11, 1).pipe(S.optional));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
           seller: S.optional(S.String),
-          address: S.optional(__S(14, __c1, 6)),
+          address: S.optional(__S(768, __c24, 0)),
           addressType: S.optional(S.String),
-          addressRoleMap: S.optional(__S(80, __c10, 0)),
+          addressRoleMap: S.optional(__S(356, __c11, 4)),
         }),
       ).annotate({ identifier: "AccountMetaData" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          taxRegistration: S.optional(__S(78, __c9, 6)),
-          taxInheritanceDetails: S.optional(__S(79, __c9, 7)),
-          accountMetaData: S.optional(__S(81, __c10, 1)),
+          taxRegistration: S.optional(__S(354, __c11, 2)),
+          taxInheritanceDetails: S.optional(__S(355, __c11, 3)),
+          accountMetaData: S.optional(__S(357, __c11, 5)),
         }),
       ).annotate({ identifier: "AccountDetails" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(358, __c11, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({ accountDetails: __S(83, __c10, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ accountDetails: __S(359, __c11, 7), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTaxRegistrationsResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registrationId: S.String,
           registrationType: S.String,
           legalName: S.String,
-          address: __S(14, __c1, 6),
+          address: __S(768, __c24, 0),
         }),
       ).annotate({
         identifier: "SupplementalTaxRegistrationEntry",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ taxRegistrationEntry: __S(85, __c10, 5) }).pipe(
+        S.Struct({ taxRegistrationEntry: __S(384, __c12, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/PutSupplementalTaxRegistration" }),
             svc,
@@ -2117,13 +1780,13 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutSupplementalTaxRegistrationRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({ authorityId: S.String, status: S.String })).annotate({
         identifier: "PutSupplementalTaxRegistrationResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ documentName: S.String, documentFile: T.Blob })).annotate({
@@ -2132,10 +1795,10 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accountIds: __S(0, __c0, 0),
-          authority: __S(6, __c0, 6),
+          accountIds: __S(576, __c18, 0),
+          authority: __S(672, __c21, 0),
           exemptionType: S.String,
-          exemptionCertificate: __S(88, __c11, 0),
+          exemptionCertificate: __S(416, __c13, 0),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/PutTaxExemption" }), svc, auth, proto, ver, rules),
         ),
@@ -2144,7 +1807,11 @@ function __c11(j: number): any {
       return S.suspend(() => S.Struct({ caseId: S.optional(S.String) })).annotate({
         identifier: "PutTaxExemptionResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ heritageStatus: S.optional(S.String) }).pipe(
           T.all(
@@ -2157,11 +1824,15 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutTaxInheritanceRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          taxRegistrationEntry: __S(45, __c5, 5),
+          taxRegistrationEntry: __S(838, __c26, 6),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/PutTaxRegistration" }),
@@ -2175,19 +1846,400 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PutTaxRegistrationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "PutTaxRegistrationResponse",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
+    case 1:
+      return S.Array(__S(512, __c16, 0));
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accountIds: __S(576, __c18, 0) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/BatchDeleteTaxRegistration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteTaxRegistrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BatchDeleteTaxRegistrationError",
+      });
+    case 2:
+      return S.Array(__S(545, __c17, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ errors: __S(546, __c17, 2) })).annotate({
+        identifier: "BatchDeleteTaxRegistrationResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accountIds: __S(576, __c18, 0) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/BatchGetTaxExemptions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetTaxExemptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taxExemptionDetailsMap: S.optional(__S(707, __c22, 3)),
+          failedAccounts: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetTaxExemptionsResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(672, __c21, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          applicableJurisdictions: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({ identifier: "TaxExemptionType" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ country: S.String, state: S.optional(S.String) })).annotate(
+        { identifier: "Authority" },
+      );
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authority: __S(672, __c21, 0),
+          taxExemptionType: __S(641, __c20, 1),
+          effectiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          systemEffectiveDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaxExemption" });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taxExemptions: S.optional(__S(705, __c22, 1)),
+          heritageObtainedDetails: S.optional(S.Boolean),
+          heritageObtainedParentEntity: S.optional(S.String),
+          heritageObtainedReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaxExemptionDetails" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(706, __c22, 2).pipe(S.optional));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ accountIds: __S(576, __c18, 0), taxRegistrationEntry: __S(838, __c26, 6) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/BatchPutTaxRegistration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchPutTaxRegistrationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ accountId: S.String, message: SensitiveString, code: S.optional(S.String) }),
+      ).annotate({
+        identifier: "BatchPutTaxRegistrationError",
+      });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(S.String), errors: __S(738, __c23, 2) }),
+      ).annotate({
+        identifier: "BatchPutTaxRegistrationResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addressLine1: S.optional(S.String),
+          addressLine2: S.optional(S.String),
+          addressLine3: S.optional(S.String),
+          districtOrCounty: S.optional(S.String),
+          city: S.optional(S.String),
+          stateOrRegion: S.optional(S.String),
+          postalCode: S.String,
+          countryCode: S.String,
+        }),
+      ).annotate({ identifier: "Address" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceTaxCodes: S.optional(__S(800, __c25, 0)),
+          taxInformationNumber: S.optional(S.String),
+          businessRegistrationNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MalaysiaAdditionalInfo" });
+    case 2:
+      return S.suspend(() => S.Struct({ dealerType: S.String, customerType: S.String })).annotate({
+        identifier: "IsraelAdditionalInfo",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ registryCommercialCode: S.String })).annotate({
+        identifier: "EstoniaAdditionalInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provincialSalesTaxId: S.optional(S.String),
+          canadaQuebecSalesTaxNumber: S.optional(S.String),
+          canadaRetailSalesTaxNumber: S.optional(S.String),
+          isResellerAccount: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CanadaAdditionalInfo" });
+    case 5:
+      return S.suspend(() => S.Struct({ registrationType: S.String })).annotate({
+        identifier: "SpainAdditionalInfo",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ personType: S.String })).annotate({
+        identifier: "KenyaAdditionalInfo",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          businessRepresentativeName: S.String,
+          lineOfBusiness: S.String,
+          itemOfBusiness: S.String,
+        }),
+      ).annotate({ identifier: "SouthKoreaAdditionalInfo" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          taxOffice: S.optional(S.String),
+          kepEmailId: S.optional(S.String),
+          secondaryTaxId: S.optional(S.String),
+          industries: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TurkeyAdditionalInfo" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sdiAccountId: S.optional(S.String),
+          cigNumber: S.optional(S.String),
+          cupNumber: S.optional(S.String),
+          taxCode: S.optional(S.String),
+          customerType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ItalyAdditionalInfo" });
+    case 10:
+      return S.suspend(() => S.Struct({ taxRegistrationNumberType: S.String })).annotate({
+        identifier: "RomaniaAdditionalInfo",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({ ukraineTrnType: S.String })).annotate({
+        identifier: "UkraineAdditionalInfo",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          individualRegistrationNumber: S.optional(S.String),
+          isGroupVatEnabled: S.optional(S.Boolean),
+          taxRegistrationNumberType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolandAdditionalInfo" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ taxRegistrationNumberType: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SaudiArabiaAdditionalInfo",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          taxRegistrationNumberType: S.optional(S.String),
+          ppnExceptionDesignationCode: S.optional(S.String),
+          decisionNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IndonesiaAdditionalInfo" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          enterpriseIdentificationNumber: S.optional(S.String),
+          electronicTransactionCodeNumber: S.optional(S.String),
+          paymentVoucherNumber: S.optional(S.String),
+          paymentVoucherNumberDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VietnamAdditionalInfo" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueIdentificationNumber: S.optional(S.String),
+          uniqueIdentificationNumberExpirationDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EgyptAdditionalInfo" });
+    case 17:
+      return S.suspend(() => S.Struct({ contractingAuthorityCode: S.optional(S.String) })).annotate(
+        { identifier: "GreeceAdditionalInfo" },
+      );
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          taxRegistrationNumberType: S.optional(S.String),
+          vatRegistrationNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UzbekistanAdditionalInfo" });
+    case 19:
+      return S.suspend(() => S.Struct({ isVatRegistered: S.optional(S.Boolean) })).annotate({
+        identifier: "PhilippinesAdditionalInfo",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({ peppolId: S.optional(S.String), isMercuriusBoxEnabled: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "BelgiumAdditionalInfo" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ documentType: S.optional(S.String), businessActivity: S.optional(S.String) }),
+      ).annotate({ identifier: "ChileAdditionalInfo" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({ sirenNumber: S.String, eInvoiceRoutingCode: S.optional(S.String) }),
+      ).annotate({ identifier: "FranceAdditionalInfo" });
+    case 23:
+      return S.suspend(() => S.Struct({ businessNumber: S.String })).annotate({
+        identifier: "MonacoAdditionalInfo",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          malaysiaAdditionalInfo: S.optional(__S(801, __c25, 1)),
+          israelAdditionalInfo: S.optional(__S(802, __c25, 2)),
+          estoniaAdditionalInfo: S.optional(__S(803, __c25, 3)),
+          canadaAdditionalInfo: S.optional(__S(804, __c25, 4)),
+          spainAdditionalInfo: S.optional(__S(805, __c25, 5)),
+          kenyaAdditionalInfo: S.optional(__S(806, __c25, 6)),
+          southKoreaAdditionalInfo: S.optional(__S(807, __c25, 7)),
+          turkeyAdditionalInfo: S.optional(__S(808, __c25, 8)),
+          georgiaAdditionalInfo: S.optional(__S(806, __c25, 6)),
+          italyAdditionalInfo: S.optional(__S(809, __c25, 9)),
+          romaniaAdditionalInfo: S.optional(__S(810, __c25, 10)),
+          ukraineAdditionalInfo: S.optional(__S(811, __c25, 11)),
+          polandAdditionalInfo: S.optional(__S(812, __c25, 12)),
+          saudiArabiaAdditionalInfo: S.optional(__S(813, __c25, 13)),
+          indonesiaAdditionalInfo: S.optional(__S(814, __c25, 14)),
+          vietnamAdditionalInfo: S.optional(__S(815, __c25, 15)),
+          egyptAdditionalInfo: S.optional(__S(816, __c25, 16)),
+          greeceAdditionalInfo: S.optional(__S(817, __c25, 17)),
+          uzbekistanAdditionalInfo: S.optional(__S(818, __c25, 18)),
+          philippinesAdditionalInfo: S.optional(__S(819, __c25, 19)),
+          belgiumAdditionalInfo: S.optional(__S(820, __c25, 20)),
+          chileAdditionalInfo: S.optional(__S(821, __c25, 21)),
+          franceAdditionalInfo: S.optional(__S(822, __c25, 22)),
+          monacoAdditionalInfo: S.optional(__S(823, __c25, 23)),
+        }),
+      ).annotate({ identifier: "AdditionalInfoRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ bucket: S.String, key: S.String })).annotate({
+        identifier: "SourceS3Location",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ fileName: S.String, fileContent: T.Blob })).annotate({
+        identifier: "TaxRegistrationDocFile",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          s3Location: S.optional(__S(833, __c26, 1)),
+          file: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({ identifier: "TaxRegistrationDocument" });
+    case 4:
+      return S.Array(__S(835, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dateOfBirth: S.optional(S.String),
+          taxRegistrationDocuments: S.optional(__S(836, __c26, 4)),
+        }),
+      ).annotate({ identifier: "VerificationDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          registrationId: S.String,
+          registrationType: S.String,
+          legalName: S.optional(S.String),
+          legalAddress: S.optional(__S(768, __c24, 0)),
+          sector: S.optional(S.String),
+          additionalTaxInformation: S.optional(__S(832, __c26, 0)),
+          verificationDetails: S.optional(__S(837, __c26, 5)),
+          certifiedEmailId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaxRegistrationEntry" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

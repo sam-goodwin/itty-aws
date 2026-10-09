@@ -153,7 +153,7 @@ export class ValidationException
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(62, __c7, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(289, __c18, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -651,8 +651,8 @@ export const acceptChannelHandshake: API.OperationMethod<
   AcceptChannelHandshakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptChannelHandshakeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AcceptChannelHandshakeResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<AcceptChannelHandshakeRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<AcceptChannelHandshakeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -681,8 +681,8 @@ export const cancelChannelHandshake: API.OperationMethod<
   CancelChannelHandshakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelChannelHandshakeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelChannelHandshakeResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CancelChannelHandshakeRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<CancelChannelHandshakeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -713,8 +713,8 @@ export const createChannelHandshake: API.OperationMethod<
   CreateChannelHandshakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateChannelHandshakeRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateChannelHandshakeResponse>,
+  input: __S(355, __c22, 3) as any as S.Schema<CreateChannelHandshakeRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<CreateChannelHandshakeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -747,8 +747,8 @@ export const createProgramManagementAccount: API.OperationMethod<
   CreateProgramManagementAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProgramManagementAccountRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateProgramManagementAccountResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProgramManagementAccountRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateProgramManagementAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -781,8 +781,8 @@ export const createRelationship: API.OperationMethod<
   CreateRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateRelationshipRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateRelationshipResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateRelationshipRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<CreateRelationshipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -814,8 +814,8 @@ export const deleteProgramManagementAccount: API.OperationMethod<
   DeleteProgramManagementAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteProgramManagementAccountRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteProgramManagementAccountResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteProgramManagementAccountRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DeleteProgramManagementAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -846,8 +846,8 @@ export const deleteRelationship: API.OperationMethod<
   DeleteRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteRelationshipRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteRelationshipResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteRelationshipRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteRelationshipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -877,8 +877,8 @@ export const getRelationship: API.OperationMethod<
   GetRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetRelationshipRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetRelationshipResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetRelationshipRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GetRelationshipResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -908,8 +908,8 @@ export const listChannelHandshakes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChannelHandshakeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListChannelHandshakesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListChannelHandshakesResponse>,
+  input: __S(116, __c7, 4) as any as S.Schema<ListChannelHandshakesRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<ListChannelHandshakesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,8 +945,8 @@ export const listProgramManagementAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgramManagementAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListProgramManagementAccountsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListProgramManagementAccountsResponse>,
+  input: __S(161, __c10, 1) as any as S.Schema<ListProgramManagementAccountsRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<ListProgramManagementAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -982,8 +982,8 @@ export const listRelationships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelationshipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListRelationshipsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListRelationshipsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListRelationshipsRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<ListRelationshipsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1018,8 +1018,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1048,8 +1048,8 @@ export const rejectChannelHandshake: API.OperationMethod<
   RejectChannelHandshakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<RejectChannelHandshakeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RejectChannelHandshakeResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<RejectChannelHandshakeRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<RejectChannelHandshakeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1079,8 +1079,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1111,8 +1111,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1143,8 +1143,8 @@ export const updateProgramManagementAccount: API.OperationMethod<
   UpdateProgramManagementAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UpdateProgramManagementAccountRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<UpdateProgramManagementAccountResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateProgramManagementAccountRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<UpdateProgramManagementAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1175,8 +1175,8 @@ export const updateRelationship: API.OperationMethod<
   UpdateRelationshipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateRelationshipRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UpdateRelationshipResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<UpdateRelationshipRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<UpdateRelationshipResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1195,126 +1195,13 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ catalog: S.String, identifier: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/AcceptChannelHandshake" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeDetail",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ channelHandshakeDetail: S.optional(__S(1, __c0, 1)) }),
-      ).annotate({
-        identifier: "AcceptChannelHandshakeResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ catalog: S.String, identifier: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/CancelChannelHandshake" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelChannelHandshakeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          programManagementAccountIdentifier: S.String,
-          note: S.optional(S.String),
-          servicePeriodType: S.String,
-          minimumNoticeDays: S.optional(S.String),
-          endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "StartServicePeriodPayload",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ programManagementAccountIdentifier: S.String, note: S.optional(S.String) }),
-      ).annotate({
-        identifier: "RevokeServicePeriodPayload",
-      });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ startServicePeriodPayload: __S(4, __c0, 4) }),
-        /*@__PURE__*/ S.Struct({ revokeServicePeriodPayload: __S(5, __c0, 5) }),
-      ]);
-    case 7:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          handshakeType: S.String,
-          catalog: S.String,
-          associatedResourceIdentifier: S.String,
-          payload: S.optional(__S(6, __c0, 6)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/CreateChannelHandshake" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateChannelHandshakeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), arn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CreateChannelHandshakeDetail",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ channelHandshakeDetail: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({
-        identifier: "CreateChannelHandshakeResponse",
-      });
-    case 4:
-      return S.suspend(() =>
         S.Struct({
           catalog: S.String,
           program: S.String,
           displayName: S.String,
           accountId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(385, __c24, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateProgramManagementAccount" }),
@@ -1328,37 +1215,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateProgramManagementAccountRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          programManagementAccountDetail: S.optional(__S(10, __c1, 2)),
-        }),
+        S.Struct({ programManagementAccountDetail: S.optional(__S(368, __c23, 0)) }),
       ).annotate({
         identifier: "CreateProgramManagementAccountResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          coverage: S.String,
-          tamLocation: S.String,
-          chargeAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResoldEnterprise" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ coverage: S.String, provider: S.optional(S.String), tamLocation: S.String }),
-      ).annotate({ identifier: "PartnerLedSupport" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ resoldEnterprise: __S(14, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({ partnerLedSupport: __S(15, __c1, 7) }),
-        /*@__PURE__*/ S.Struct({ resoldUnifiedOperations: __S(14, __c1, 6) }),
-      ]);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1369,8 +1236,8 @@ function __c2(j: number): any {
           resaleAccountModel: S.optional(S.String),
           sector: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(8, __c1, 0)),
-          requestedSupportPlan: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(385, __c24, 1)),
+          requestedSupportPlan: S.optional(__S(34, __c2, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateRelationship" }),
@@ -1384,17 +1251,43 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateRelationshipRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.optional(S.String), id: S.optional(S.String) }),
       ).annotate({ identifier: "CreateRelationshipDetail" });
-    case 3:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ relationshipDetail: S.optional(__S(18, __c2, 2)) }),
+        S.Struct({ relationshipDetail: S.optional(__S(17, __c1, 1)) }),
       ).annotate({
         identifier: "CreateRelationshipResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          coverage: S.String,
+          tamLocation: S.String,
+          chargeAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResoldEnterprise" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ coverage: S.String, provider: S.optional(S.String), tamLocation: S.String }),
+      ).annotate({ identifier: "PartnerLedSupport" });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ resoldEnterprise: __S(32, __c2, 0) }),
+        /*@__PURE__*/ S.Struct({ partnerLedSupport: __S(33, __c2, 1) }),
+        /*@__PURE__*/ S.Struct({ resoldUnifiedOperations: __S(32, __c2, 0) }),
+      ]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1413,11 +1306,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProgramManagementAccountRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteProgramManagementAccountResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1437,13 +1334,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteRelationshipRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRelationshipResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1475,57 +1376,47 @@ function __c3(j: number): any {
       ).annotate({ identifier: "RelationshipDetail" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ relationshipDetail: S.optional(__S(25, __c3, 1)) }),
+        S.Struct({ relationshipDetail: S.optional(__S(97, __c6, 1)) }),
       ).annotate({ identifier: "GetRelationshipResponse" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ servicePeriodTypes: S.optional(__S(27, __c3, 3)) }),
+        S.Struct({ servicePeriodTypes: S.optional(__S(128, __c8, 0)) }),
       ).annotate({
         identifier: "StartServicePeriodTypeFilters",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ programs: S.optional(__S(27, __c3, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ programs: S.optional(__S(128, __c8, 0)) })).annotate({
         identifier: "ProgramManagementAccountTypeFilters",
       });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ startServicePeriodTypeFilters: __S(29, __c3, 5) }),
-        /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeFilters: __S(29, __c3, 5) }),
-        /*@__PURE__*/ S.Struct({
-          programManagementAccountTypeFilters: __S(30, __c3, 6),
-        }),
-      ]);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ sortOrder: S.String, sortBy: S.String })).annotate({
-        identifier: "StartServicePeriodTypeSort",
-      });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ startServicePeriodTypeSort: __S(32, __c4, 0) }),
-        /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeSort: __S(32, __c4, 0) }),
-        /*@__PURE__*/ S.Struct({
-          programManagementAccountTypeSort: __S(32, __c4, 0),
-        }),
-      ]);
     case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ startServicePeriodTypeFilters: __S(112, __c7, 0) }),
+        /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeFilters: __S(112, __c7, 0) }),
+        /*@__PURE__*/ S.Struct({
+          programManagementAccountTypeFilters: __S(113, __c7, 1),
+        }),
+      ]);
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ startServicePeriodTypeSort: __S(129, __c8, 1) }),
+        /*@__PURE__*/ S.Struct({ revokeServicePeriodTypeSort: __S(129, __c8, 1) }),
+        /*@__PURE__*/ S.Struct({ programManagementAccountTypeSort: __S(129, __c8, 1) }),
+      ]);
+    case 4:
       return S.suspend(() =>
         S.Struct({
           handshakeType: S.String,
           catalog: S.String,
           participantType: S.String,
           maxResults: S.optional(S.Number),
-          statuses: S.optional(__S(27, __c3, 3)),
-          associatedResourceIdentifiers: S.optional(__S(28, __c3, 4)),
-          handshakeTypeFilters: S.optional(__S(31, __c3, 7)),
-          handshakeTypeSort: S.optional(__S(33, __c4, 1)),
+          statuses: S.optional(__S(128, __c8, 0)),
+          associatedResourceIdentifiers: S.optional(__S(144, __c9, 0)),
+          handshakeTypeFilters: S.optional(__S(114, __c7, 2)),
+          handshakeTypeSort: S.optional(__S(115, __c7, 3)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1540,7 +1431,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListChannelHandshakesRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           note: S.optional(S.String),
@@ -1552,23 +1443,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StartServicePeriodHandshakeDetail",
       });
-    case 4:
+    case 6:
       return S.suspend(() => S.Struct({ program: S.optional(S.String) })).annotate({
         identifier: "ProgramManagementAccountHandshakeDetail",
       });
-    case 5:
+    case 7:
       return S.Union([
+        /*@__PURE__*/ S.Struct({ startServicePeriodHandshakeDetail: __S(117, __c7, 5) }),
         /*@__PURE__*/ S.Struct({
-          startServicePeriodHandshakeDetail: __S(35, __c4, 3),
+          revokeServicePeriodHandshakeDetail: __S(117, __c7, 5),
         }),
         /*@__PURE__*/ S.Struct({
-          revokeServicePeriodHandshakeDetail: __S(35, __c4, 3),
-        }),
-        /*@__PURE__*/ S.Struct({
-          programManagementAccountHandshakeDetail: __S(36, __c4, 4),
+          programManagementAccountHandshakeDetail: __S(118, __c7, 6),
         }),
       ]);
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1580,36 +1469,52 @@ function __c4(j: number): any {
           senderDisplayName: S.optional(S.String),
           receiverAccountId: S.optional(S.String),
           associatedResourceId: S.optional(S.String),
-          detail: S.optional(__S(37, __c4, 5)),
+          detail: S.optional(__S(119, __c7, 7)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChannelHandshakeSummary" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(120, __c7, 8));
+    case 10:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(39, __c4, 7)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(121, __c7, 9)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListChannelHandshakesResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ sortOrder: S.String, sortBy: S.String })).annotate({
+        identifier: "StartServicePeriodTypeSort",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
           maxResults: S.optional(S.Number),
-          displayNames: S.optional(__S(28, __c3, 4)),
-          programs: S.optional(__S(27, __c3, 3)),
-          accountIds: S.optional(__S(28, __c3, 4)),
-          statuses: S.optional(__S(41, __c5, 1)),
-          sort: S.optional(__S(32, __c4, 0)),
+          displayNames: S.optional(__S(144, __c9, 0)),
+          programs: S.optional(__S(128, __c8, 0)),
+          accountIds: S.optional(__S(144, __c9, 0)),
+          statuses: S.optional(__S(160, __c10, 0)),
+          sort: S.optional(__S(129, __c8, 1)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1624,7 +1529,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProgramManagementAccountsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1642,27 +1547,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ProgramManagementAccountSummary",
       });
+    case 3:
+      return S.Array(__S(162, __c10, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(44, __c5, 4)),
+          items: S.optional(__S(163, __c10, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProgramManagementAccountsResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
           maxResults: S.optional(S.Number),
-          associatedAccountIds: S.optional(__S(28, __c3, 4)),
-          associationTypes: S.optional(__S(27, __c3, 3)),
-          displayNames: S.optional(__S(28, __c3, 4)),
-          programManagementAccountIdentifiers: S.optional(__S(28, __c3, 4)),
-          sort: S.optional(__S(32, __c4, 0)),
+          associatedAccountIds: S.optional(__S(144, __c9, 0)),
+          associationTypes: S.optional(__S(128, __c8, 0)),
+          displayNames: S.optional(__S(144, __c9, 0)),
+          programManagementAccountIdentifiers: S.optional(__S(144, __c9, 0)),
+          sort: S.optional(__S(129, __c8, 1)),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1675,7 +1584,7 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListRelationshipsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -1692,19 +1601,19 @@ function __c5(j: number): any {
           startDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RelationshipSummary" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(48, __c6, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(178, __c11, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRelationshipsResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(
@@ -1719,11 +1628,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c1, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(385, __c24, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ catalog: S.String, identifier: S.String }).pipe(
           T.all(
@@ -1738,19 +1651,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RejectChannelHandshakeRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(8, __c1, 0) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(385, __c24, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(28, __c3, 4) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(144, __c9, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1770,11 +1695,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateProgramManagementAccountRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1785,15 +1706,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateProgramManagementAccountDetail",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          programManagementAccountDetail: S.optional(__S(56, __c7, 0)),
-        }),
+        S.Struct({ programManagementAccountDetail: S.optional(__S(257, __c16, 1)) }),
       ).annotate({
         identifier: "UpdateProgramManagementAccountResponse",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String,
@@ -1801,7 +1724,7 @@ function __c7(j: number): any {
           programManagementAccountIdentifier: S.String,
           revision: S.optional(S.String),
           displayName: S.optional(S.String),
-          requestedSupportPlan: S.optional(__S(16, __c2, 0)),
+          requestedSupportPlan: S.optional(__S(34, __c2, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateRelationship" }),
@@ -1815,7 +1738,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateRelationshipRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -1824,21 +1747,157 @@ function __c7(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRelationshipDetail" });
-    case 4:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ relationshipDetail: S.optional(__S(59, __c7, 3)) }),
+        S.Struct({ relationshipDetail: S.optional(__S(273, __c17, 1)) }),
       ).annotate({
         identifier: "UpdateRelationshipResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ name: S.String, code: S.String, message: S.String }),
       ).annotate({ identifier: "ValidationExceptionField" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
+    case 1:
+      return S.Array(__S(288, __c18, 0));
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ catalog: S.String, identifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/AcceptChannelHandshake" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AcceptChannelHandshakeRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AcceptChannelHandshakeDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ channelHandshakeDetail: S.optional(__S(320, __c20, 0)) }),
+      ).annotate({
+        identifier: "AcceptChannelHandshakeResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ catalog: S.String, identifier: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CancelChannelHandshake" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelChannelHandshakeRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          programManagementAccountIdentifier: S.String,
+          note: S.optional(S.String),
+          servicePeriodType: S.String,
+          minimumNoticeDays: S.optional(S.String),
+          endDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "StartServicePeriodPayload",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ programManagementAccountIdentifier: S.String, note: S.optional(S.String) }),
+      ).annotate({
+        identifier: "RevokeServicePeriodPayload",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ startServicePeriodPayload: __S(352, __c22, 0) }),
+        /*@__PURE__*/ S.Struct({ revokeServicePeriodPayload: __S(353, __c22, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          handshakeType: S.String,
+          catalog: S.String,
+          associatedResourceIdentifier: S.String,
+          payload: S.optional(__S(354, __c22, 2)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(385, __c24, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/CreateChannelHandshake" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateChannelHandshakeRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ channelHandshakeDetail: S.optional(__S(368, __c23, 0)) }),
+      ).annotate({
+        identifier: "CreateChannelHandshakeResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), arn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "CreateChannelHandshakeDetail",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

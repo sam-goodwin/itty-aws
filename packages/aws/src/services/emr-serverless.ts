@@ -703,8 +703,8 @@ export const cancelJobRun: API.OperationMethod<
   CancelJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelJobRunRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelJobRunResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CancelJobRunRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<CancelJobRunResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -726,8 +726,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -753,8 +753,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -775,8 +775,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetApplicationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetApplicationResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<GetApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -801,8 +801,8 @@ export const getDashboardForJobRun: API.OperationMethod<
   GetDashboardForJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetDashboardForJobRunRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetDashboardForJobRunResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetDashboardForJobRunRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<GetDashboardForJobRunResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -823,8 +823,8 @@ export const getJobRun: API.OperationMethod<
   GetJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetJobRunRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetJobRunResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetJobRunRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetJobRunResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -849,8 +849,8 @@ export const getResourceDashboard: API.OperationMethod<
   GetResourceDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetResourceDashboardRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetResourceDashboardResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetResourceDashboardRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<GetResourceDashboardResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -871,8 +871,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetSessionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetSessionResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(66, __c4, 2) as any as S.Schema<GetSessionResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -893,8 +893,8 @@ export const getSessionEndpoint: API.OperationMethod<
   GetSessionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetSessionEndpointRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetSessionEndpointResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetSessionEndpointRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetSessionEndpointResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -912,8 +912,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -941,8 +941,8 @@ export const listJobRunAttempts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobRunAttemptSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListJobRunAttemptsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListJobRunAttemptsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListJobRunAttemptsRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ListJobRunAttemptsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -966,8 +966,8 @@ export const listJobRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobRunSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListJobRunsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListJobRunsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListJobRunsRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<ListJobRunsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -995,8 +995,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListSessionsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<ListSessionsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListSessionsRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<ListSessionsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1023,8 +1023,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1046,8 +1046,8 @@ export const startApplication: API.OperationMethod<
   StartApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<StartApplicationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StartApplicationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<StartApplicationRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<StartApplicationResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1074,8 +1074,8 @@ export const startJobRun: API.OperationMethod<
   StartJobRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<StartJobRunRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<StartJobRunResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<StartJobRunRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<StartJobRunResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1103,8 +1103,8 @@ export const startSession: API.OperationMethod<
   StartSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<StartSessionRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<StartSessionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<StartSessionRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<StartSessionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1131,8 +1131,8 @@ export const stopApplication: API.OperationMethod<
   StopApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<StopApplicationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StopApplicationResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<StopApplicationRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<StopApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1153,8 +1153,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1175,8 +1175,8 @@ export const terminateSession: API.OperationMethod<
   TerminateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<TerminateSessionRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<TerminateSessionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<TerminateSessionRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<TerminateSessionResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1197,8 +1197,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1219,8 +1219,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1229,6 +1229,663 @@ export const updateApplication: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          jobRunId: S.String.pipe(T.HttpLabel("jobRunId")),
+          attempt: S.optional(S.Number).pipe(T.HttpQuery("attempt")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/jobruns/{jobRunId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetJobRunRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          jobRunId: S.String,
+          name: S.optional(S.String),
+          arn: S.String,
+          createdBy: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          executionRole: S.String,
+          executionIamPolicy: S.optional(__S(32, __c2, 0)),
+          state: S.String,
+          stateDetails: S.String,
+          releaseLabel: S.String,
+          configurationOverrides: S.optional(__S(33, __c2, 1)),
+          jobDriver: __S(37, __c2, 5),
+          tags: S.optional(__S(384, __c24, 0)),
+          totalResourceUtilization: S.optional(__S(16, __c1, 0)),
+          networkConfiguration: S.optional(__S(416, __c26, 0)),
+          totalExecutionDurationSeconds: S.optional(S.Number),
+          executionTimeoutMinutes: S.optional(S.Number),
+          billedResourceUtilization: S.optional(__S(16, __c1, 0)),
+          mode: S.optional(S.String),
+          retryPolicy: S.optional(__S(38, __c2, 6)),
+          attempt: S.optional(S.Number),
+          attemptCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          attemptUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          queuedDurationMilliseconds: S.optional(S.Number),
+          imageConfiguration: S.optional(__S(512, __c32, 0)),
+          workerTypeSpecifications: S.optional(__S(514, __c32, 2)),
+        }),
+      ).annotate({ identifier: "JobRun" });
+    case 2:
+      return S.suspend(() => S.Struct({ jobRun: __S(1, __c0, 1) })).annotate({
+        identifier: "GetJobRunResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vCPUHour: S.optional(S.Number),
+          memoryGBHour: S.optional(S.Number),
+          storageGBHour: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TotalResourceUtilization" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ policy: S.optional(S.String), policyArns: S.optional(__S(368, __c23, 0)) }),
+      ).annotate({ identifier: "JobRunExecutionIamPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationConfiguration: S.optional(__S(402, __c25, 2)),
+          monitoringConfiguration: S.optional(__S(437, __c27, 5)),
+          diskEncryptionConfiguration: S.optional(__S(438, __c27, 6)),
+        }),
+      ).annotate({ identifier: "ConfigurationOverrides" });
+    case 2:
+      return S.Array(SensitiveString);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entryPoint: SensitiveString,
+          entryPointArguments: S.optional(__S(34, __c2, 2)),
+          sparkSubmitParameters: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "SparkSubmit" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          query: SensitiveString,
+          initQueryFile: S.optional(SensitiveString),
+          parameters: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Hive" });
+    case 5:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ sparkSubmit: __S(35, __c2, 3) }),
+        /*@__PURE__*/ S.Struct({ hive: __S(36, __c2, 4) }),
+      ]);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          maxAttempts: S.optional(S.Number),
+          maxFailedAttemptsPerHour: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RetryPolicy" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          resourceId: S.String.pipe(T.HttpQuery("resourceId")),
+          resourceType: S.String.pipe(T.HttpQuery("resourceType")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/dashboard" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetResourceDashboardRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/sessions/{sessionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          sessionId: S.String,
+          arn: S.String,
+          name: S.optional(S.String),
+          state: S.String,
+          stateDetails: S.String,
+          releaseLabel: S.String,
+          executionRoleArn: S.String,
+          createdBy: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          idleSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          configurationOverrides: S.optional(__S(80, __c5, 0)),
+          networkConfiguration: S.optional(__S(416, __c26, 0)),
+          idleTimeoutMinutes: S.optional(S.Number),
+          tags: S.optional(__S(384, __c24, 0)),
+          totalResourceUtilization: S.optional(__S(16, __c1, 0)),
+          billedResourceUtilization: S.optional(__S(16, __c1, 0)),
+          totalExecutionDurationSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Session" });
+    case 2:
+      return S.suspend(() => S.Struct({ session: __S(65, __c4, 1) })).annotate({
+        identifier: "GetSessionResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ runtimeConfiguration: S.optional(__S(402, __c25, 2)) }),
+      ).annotate({
+        identifier: "SessionConfigurationOverrides",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/sessions/{sessionId}/endpoint",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSessionEndpointRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          sessionId: S.String,
+          endpoint: S.String,
+          authToken: SensitiveString,
+          authTokenExpiresAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "GetSessionEndpointResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          states: S.optional(__S(368, __c23, 0)).pipe(T.HttpQuery("states")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+          arn: S.String,
+          releaseLabel: S.String,
+          type: S.String,
+          state: S.String,
+          stateDetails: S.optional(S.String),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          architecture: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationSummary" });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ applications: __S(114, __c7, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          jobRunId: S.String.pipe(T.HttpLabel("jobRunId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{applicationId}/jobruns/{jobRunId}/attempts",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListJobRunAttemptsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          id: S.String,
+          name: S.optional(S.String),
+          mode: S.optional(S.String),
+          arn: S.String,
+          createdBy: S.String,
+          jobCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          executionRole: S.String,
+          state: S.String,
+          stateDetails: S.String,
+          releaseLabel: S.String,
+          type: S.optional(S.String),
+          attempt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JobRunAttemptSummary" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobRunAttempts: __S(130, __c8, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListJobRunAttemptsResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          createdAtAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("createdAtAfter"),
+          ),
+          createdAtBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("createdAtBefore"),
+          ),
+          states: S.optional(__S(368, __c23, 0)).pipe(T.HttpQuery("states")),
+          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/jobruns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListJobRunsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          id: S.String,
+          name: S.optional(S.String),
+          mode: S.optional(S.String),
+          arn: S.String,
+          createdBy: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          executionRole: S.String,
+          state: S.String,
+          stateDetails: S.String,
+          releaseLabel: S.String,
+          type: S.optional(S.String),
+          attempt: S.optional(S.Number),
+          attemptCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          attemptUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "JobRunSummary" });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobRuns: __S(146, __c9, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListJobRunsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          states: S.optional(__S(368, __c23, 0)).pipe(T.HttpQuery("states")),
+          createdAtAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("createdAtAfter"),
+          ),
+          createdAtBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+            T.HttpQuery("createdAtBefore"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{applicationId}/sessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListSessionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String,
+          sessionId: S.String,
+          arn: S.String,
+          name: S.optional(S.String),
+          state: S.String,
+          stateDetails: S.String,
+          releaseLabel: S.String,
+          executionRoleArn: S.String,
+          createdBy: S.String,
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "SessionSummary" });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ sessions: __S(162, __c10, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSessionsResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(384, __c24, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartApplicationRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          executionRoleArn: S.String,
+          executionIamPolicy: S.optional(__S(32, __c2, 0)),
+          jobDriver: S.optional(__S(37, __c2, 5)),
+          configurationOverrides: S.optional(__S(33, __c2, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
+          executionTimeoutMinutes: S.optional(S.Number),
+          name: S.optional(S.String),
+          mode: S.optional(S.String),
+          retryPolicy: S.optional(__S(38, __c2, 6)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/jobruns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartJobRunRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String, jobRunId: S.String, arn: S.String }),
+      ).annotate({ identifier: "StartJobRunResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          executionRoleArn: S.String,
+          configurationOverrides: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(384, __c24, 0)),
+          idleTimeoutMinutes: S.optional(S.Number),
+          name: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/sessions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String, sessionId: S.String, arn: S.String }),
+      ).annotate({ identifier: "StartSessionResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopApplicationRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(384, __c24, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/applications/{applicationId}/sessions/{sessionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TerminateSessionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ applicationId: S.String, sessionId: S.String })).annotate({
+        identifier: "TerminateSessionResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(368, __c23, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          initialCapacity: S.optional(__S(450, __c28, 2)),
+          maximumCapacity: S.optional(__S(451, __c28, 3)),
+          autoStartConfiguration: S.optional(__S(452, __c28, 4)),
+          autoStopConfiguration: S.optional(__S(453, __c28, 5)),
+          networkConfiguration: S.optional(__S(416, __c26, 0)),
+          architecture: S.optional(S.String),
+          imageConfiguration: S.optional(__S(352, __c22, 0)),
+          workerTypeSpecifications: S.optional(__S(354, __c22, 2)),
+          interactiveConfiguration: S.optional(__S(454, __c28, 6)),
+          releaseLabel: S.optional(S.String),
+          runtimeConfiguration: S.optional(__S(402, __c25, 2)),
+          monitoringConfiguration: S.optional(__S(437, __c27, 5)),
+          diskEncryptionConfiguration: S.optional(__S(438, __c27, 6)),
+          schedulerConfiguration: S.optional(__S(455, __c28, 7)),
+          identityCenterConfiguration: S.optional(__S(355, __c22, 3)),
+          jobLevelCostAllocationConfiguration: S.optional(__S(456, __c28, 8)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ application: __S(529, __c33, 1) })).annotate({
+        identifier: "UpdateApplicationResponse",
+      });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1253,153 +1910,63 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ applicationId: S.String, jobRunId: S.String })).annotate({
         identifier: "CancelJobRunResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cpu: S.String,
-          memory: S.String,
-          disk: S.optional(S.String),
-          diskType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerResourceConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ workerCount: S.Number, workerConfiguration: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "InitialCapacityConfig" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3, __c0, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ cpu: S.String, memory: S.String, disk: S.optional(S.String) }),
-      ).annotate({ identifier: "MaximumAllowedResources" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "AutoStartConfig",
-      });
   }
 }
-function __c1(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ enabled: S.optional(S.Boolean), idleTimeoutMinutes: S.optional(S.Number) }),
-      ).annotate({ identifier: "AutoStopConfig" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(__S(9, __c1, 1)),
-          securityGroupIds: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "NetworkConfiguration" });
-    case 3:
+          name: S.optional(S.String),
+          releaseLabel: S.String,
+          type: S.String,
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          initialCapacity: S.optional(__S(450, __c28, 2)),
+          maximumCapacity: S.optional(__S(451, __c28, 3)),
+          tags: S.optional(__S(384, __c24, 0)),
+          autoStartConfiguration: S.optional(__S(452, __c28, 4)),
+          autoStopConfiguration: S.optional(__S(453, __c28, 5)),
+          networkConfiguration: S.optional(__S(416, __c26, 0)),
+          architecture: S.optional(S.String),
+          imageConfiguration: S.optional(__S(352, __c22, 0)),
+          workerTypeSpecifications: S.optional(__S(354, __c22, 2)),
+          runtimeConfiguration: S.optional(__S(402, __c25, 2)),
+          monitoringConfiguration: S.optional(__S(437, __c27, 5)),
+          diskEncryptionConfiguration: S.optional(__S(438, __c27, 6)),
+          interactiveConfiguration: S.optional(__S(454, __c28, 6)),
+          schedulerConfiguration: S.optional(__S(455, __c28, 7)),
+          identityCenterConfiguration: S.optional(__S(355, __c22, 3)),
+          jobLevelCostAllocationConfiguration: S.optional(__S(456, __c28, 8)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationId: S.String, name: S.optional(S.String), arn: S.String }),
+      ).annotate({
+        identifier: "CreateApplicationResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageUri: S.optional(S.String),
           applicationLevelDigestResolution: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ImageConfigurationInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ imageConfiguration: S.optional(__S(11, __c1, 3)) }),
+        S.Struct({ imageConfiguration: S.optional(__S(352, __c22, 0)) }),
       ).annotate({
         identifier: "WorkerTypeSpecificationInput",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12, __c1, 4).pipe(S.optional));
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          classification: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-          configurations: S.optional(
-            S.suspend(() => __S(16, __c2, 0)).annotate({ identifier: "ConfigurationList" }),
-          ),
-        }),
-      ).annotate({ identifier: "Configuration" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(15, __c1, 7)).annotate({
-          identifier: "Configuration",
-        }),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ logUri: S.optional(S.String), encryptionKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "S3MonitoringConfiguration",
-      });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ enabled: S.optional(S.Boolean), encryptionKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ManagedPersistenceMonitoringConfiguration",
-      });
+      return S.Record(S.String, /*@__PURE__*/ __S(353, __c22, 1).pipe(S.optional));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(9, __c1, 1).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          logGroupName: S.optional(S.String),
-          logStreamNamePrefix: S.optional(S.String),
-          encryptionKeyArn: S.optional(S.String),
-          logTypes: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "CloudWatchLoggingConfiguration",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ remoteWriteUrl: S.optional(S.String) })).annotate({
-        identifier: "PrometheusMonitoringConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          s3MonitoringConfiguration: S.optional(__S(17, __c2, 1)),
-          managedPersistenceMonitoringConfiguration: S.optional(__S(18, __c2, 2)),
-          cloudWatchLoggingConfiguration: S.optional(__S(20, __c2, 4)),
-          prometheusMonitoringConfiguration: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "MonitoringConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionContext: S.optional(__S(14, __c1, 6)),
-          encryptionKeyArn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiskEncryptionConfiguration",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          studioEnabled: S.optional(S.Boolean),
-          livyEndpointEnabled: S.optional(S.Boolean),
-          sessionEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "InteractiveConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          queueTimeoutMinutes: S.optional(S.Number),
-          maxConcurrentRuns: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SchedulerConfiguration" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           identityCenterInstanceArn: S.optional(S.String),
@@ -1408,44 +1975,158 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "IdentityCenterConfigurationInput",
       });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          classification: S.String,
+          properties: S.optional(__S(400, __c25, 0)),
+          configurations: S.optional(
+            S.suspend(() => __S(402, __c25, 2)).annotate({ identifier: "ConfigurationList" }),
+          ),
+        }),
+      ).annotate({ identifier: "Configuration" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Configuration> => __S(401, __c25, 1)).annotate({
+          identifier: "Configuration",
+        }),
+      );
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subnetIds: S.optional(__S(368, __c23, 0)),
+          securityGroupIds: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({ identifier: "NetworkConfiguration" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ logUri: S.optional(S.String), encryptionKeyArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "S3MonitoringConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ enabled: S.optional(S.Boolean), encryptionKeyArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ManagedPersistenceMonitoringConfiguration",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(368, __c23, 0).pipe(S.optional));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          logGroupName: S.optional(S.String),
+          logStreamNamePrefix: S.optional(S.String),
+          encryptionKeyArn: S.optional(S.String),
+          logTypes: S.optional(__S(434, __c27, 2)),
+        }),
+      ).annotate({
+        identifier: "CloudWatchLoggingConfiguration",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ remoteWriteUrl: S.optional(S.String) })).annotate({
+        identifier: "PrometheusMonitoringConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          s3MonitoringConfiguration: S.optional(__S(432, __c27, 0)),
+          managedPersistenceMonitoringConfiguration: S.optional(__S(433, __c27, 1)),
+          cloudWatchLoggingConfiguration: S.optional(__S(435, __c27, 3)),
+          prometheusMonitoringConfiguration: S.optional(__S(436, __c27, 4)),
+        }),
+      ).annotate({ identifier: "MonitoringConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionContext: S.optional(__S(400, __c25, 0)),
+          encryptionKeyArn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiskEncryptionConfiguration",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cpu: S.String,
+          memory: S.String,
+          disk: S.optional(S.String),
+          diskType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerResourceConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ workerCount: S.Number, workerConfiguration: S.optional(__S(448, __c28, 0)) }),
+      ).annotate({ identifier: "InitialCapacityConfig" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(449, __c28, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ cpu: S.String, memory: S.String, disk: S.optional(S.String) }),
+      ).annotate({ identifier: "MaximumAllowedResources" });
+    case 4:
+      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "AutoStartConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ enabled: S.optional(S.Boolean), idleTimeoutMinutes: S.optional(S.Number) }),
+      ).annotate({ identifier: "AutoStopConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          studioEnabled: S.optional(S.Boolean),
+          livyEndpointEnabled: S.optional(S.Boolean),
+          sessionEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InteractiveConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          queueTimeoutMinutes: S.optional(S.Number),
+          maxConcurrentRuns: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SchedulerConfiguration" });
+    case 8:
       return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
         identifier: "JobLevelCostAllocationConfiguration",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          releaseLabel: S.String,
-          type: S.String,
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          initialCapacity: S.optional(__S(4, __c0, 4)),
-          maximumCapacity: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(6, __c0, 6)),
-          autoStartConfiguration: S.optional(__S(7, __c0, 7)),
-          autoStopConfiguration: S.optional(__S(8, __c1, 0)),
-          networkConfiguration: S.optional(__S(10, __c1, 2)),
-          architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(11, __c1, 3)),
-          workerTypeSpecifications: S.optional(__S(13, __c1, 5)),
-          runtimeConfiguration: S.optional(__S(16, __c2, 0)),
-          monitoringConfiguration: S.optional(__S(22, __c2, 6)),
-          diskEncryptionConfiguration: S.optional(__S(23, __c2, 7)),
-          interactiveConfiguration: S.optional(__S(24, __c3, 0)),
-          schedulerConfiguration: S.optional(__S(25, __c3, 1)),
-          identityCenterConfiguration: S.optional(__S(26, __c3, 2)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String, name: S.optional(S.String), arn: S.String }),
-      ).annotate({
-        identifier: "CreateApplicationResponse",
-      });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
           T.all(
@@ -1458,13 +2139,17 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteApplicationResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1480,6 +2165,14 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
     case 1:
+      return S.suspend(() => S.Struct({ application: __S(529, __c33, 1) })).annotate({
+        identifier: "GetApplicationResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageUri: S.String,
@@ -1487,13 +2180,17 @@ function __c4(j: number): any {
           applicationLevelDigestResolution: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ImageConfiguration" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ imageConfiguration: S.optional(__S(33, __c4, 1)) }),
+        S.Struct({ imageConfiguration: S.optional(__S(512, __c32, 0)) }),
       ).annotate({ identifier: "WorkerTypeSpecification" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(34, __c4, 2).pipe(S.optional));
-    case 4:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(513, __c32, 1).pipe(S.optional));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identityCenterInstanceArn: S.optional(S.String),
@@ -1503,7 +2200,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "IdentityCenterConfiguration",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
@@ -1513,31 +2210,31 @@ function __c4(j: number): any {
           type: S.String,
           state: S.String,
           stateDetails: S.optional(S.String),
-          initialCapacity: S.optional(__S(4, __c0, 4)),
-          maximumCapacity: S.optional(__S(5, __c0, 5)),
+          initialCapacity: S.optional(__S(450, __c28, 2)),
+          maximumCapacity: S.optional(__S(451, __c28, 3)),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(__S(6, __c0, 6)),
-          autoStartConfiguration: S.optional(__S(7, __c0, 7)),
-          autoStopConfiguration: S.optional(__S(8, __c1, 0)),
-          networkConfiguration: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(384, __c24, 0)),
+          autoStartConfiguration: S.optional(__S(452, __c28, 4)),
+          autoStopConfiguration: S.optional(__S(453, __c28, 5)),
+          networkConfiguration: S.optional(__S(416, __c26, 0)),
           architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(33, __c4, 1)),
-          workerTypeSpecifications: S.optional(__S(35, __c4, 3)),
-          runtimeConfiguration: S.optional(__S(16, __c2, 0)),
-          monitoringConfiguration: S.optional(__S(22, __c2, 6)),
-          diskEncryptionConfiguration: S.optional(__S(23, __c2, 7)),
-          interactiveConfiguration: S.optional(__S(24, __c3, 0)),
-          schedulerConfiguration: S.optional(__S(25, __c3, 1)),
-          identityCenterConfiguration: S.optional(__S(36, __c4, 4)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27, __c3, 3)),
+          imageConfiguration: S.optional(__S(512, __c32, 0)),
+          workerTypeSpecifications: S.optional(__S(514, __c32, 2)),
+          runtimeConfiguration: S.optional(__S(402, __c25, 2)),
+          monitoringConfiguration: S.optional(__S(437, __c27, 5)),
+          diskEncryptionConfiguration: S.optional(__S(438, __c27, 6)),
+          interactiveConfiguration: S.optional(__S(454, __c28, 6)),
+          schedulerConfiguration: S.optional(__S(455, __c28, 7)),
+          identityCenterConfiguration: S.optional(__S(528, __c33, 0)),
+          jobLevelCostAllocationConfiguration: S.optional(__S(456, __c28, 8)),
         }),
       ).annotate({ identifier: "Application" });
-    case 6:
-      return S.suspend(() => S.Struct({ application: __S(37, __c4, 5) })).annotate({
-        identifier: "GetApplicationResponse",
-      });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -1564,616 +2261,14 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ url: S.optional(S.String) })).annotate({
         identifier: "GetDashboardForJobRunResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          jobRunId: S.String.pipe(T.HttpLabel("jobRunId")),
-          attempt: S.optional(S.Number).pipe(T.HttpQuery("attempt")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/jobruns/{jobRunId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetJobRunRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ policy: S.optional(S.String), policyArns: S.optional(__S(9, __c1, 1)) }),
-      ).annotate({ identifier: "JobRunExecutionIamPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applicationConfiguration: S.optional(__S(16, __c2, 0)),
-          monitoringConfiguration: S.optional(__S(22, __c2, 6)),
-          diskEncryptionConfiguration: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "ConfigurationOverrides" });
-    case 4:
-      return S.Array(SensitiveString);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entryPoint: SensitiveString,
-          entryPointArguments: S.optional(__S(44, __c5, 4)),
-          sparkSubmitParameters: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "SparkSubmit" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query: SensitiveString,
-          initQueryFile: S.optional(SensitiveString),
-          parameters: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Hive" });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ sparkSubmit: __S(45, __c5, 5) }),
-        /*@__PURE__*/ S.Struct({ hive: __S(46, __c5, 6) }),
-      ]);
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vCPUHour: S.optional(S.Number),
-          memoryGBHour: S.optional(S.Number),
-          storageGBHour: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TotalResourceUtilization" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxAttempts: S.optional(S.Number),
-          maxFailedAttemptsPerHour: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RetryPolicy" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          jobRunId: S.String,
-          name: S.optional(S.String),
-          arn: S.String,
-          createdBy: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          executionRole: S.String,
-          executionIamPolicy: S.optional(__S(42, __c5, 2)),
-          state: S.String,
-          stateDetails: S.String,
-          releaseLabel: S.String,
-          configurationOverrides: S.optional(__S(43, __c5, 3)),
-          jobDriver: __S(47, __c5, 7),
-          tags: S.optional(__S(6, __c0, 6)),
-          totalResourceUtilization: S.optional(__S(48, __c6, 0)),
-          networkConfiguration: S.optional(__S(10, __c1, 2)),
-          totalExecutionDurationSeconds: S.optional(S.Number),
-          executionTimeoutMinutes: S.optional(S.Number),
-          billedResourceUtilization: S.optional(__S(48, __c6, 0)),
-          mode: S.optional(S.String),
-          retryPolicy: S.optional(__S(49, __c6, 1)),
-          attempt: S.optional(S.Number),
-          attemptCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          attemptUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          queuedDurationMilliseconds: S.optional(S.Number),
-          imageConfiguration: S.optional(__S(33, __c4, 1)),
-          workerTypeSpecifications: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "JobRun" });
-    case 3:
-      return S.suspend(() => S.Struct({ jobRun: __S(50, __c6, 2) })).annotate({
-        identifier: "GetJobRunResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          resourceId: S.String.pipe(T.HttpQuery("resourceId")),
-          resourceType: S.String.pipe(T.HttpQuery("resourceType")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/dashboard" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetResourceDashboardRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/sessions/{sessionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetSessionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ runtimeConfiguration: S.optional(__S(16, __c2, 0)) }),
-      ).annotate({
-        identifier: "SessionConfigurationOverrides",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          sessionId: S.String,
-          arn: S.String,
-          name: S.optional(S.String),
-          state: S.String,
-          stateDetails: S.String,
-          releaseLabel: S.String,
-          executionRoleArn: S.String,
-          createdBy: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          idleSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          configurationOverrides: S.optional(__S(54, __c6, 6)),
-          networkConfiguration: S.optional(__S(10, __c1, 2)),
-          idleTimeoutMinutes: S.optional(S.Number),
-          tags: S.optional(__S(6, __c0, 6)),
-          totalResourceUtilization: S.optional(__S(48, __c6, 0)),
-          billedResourceUtilization: S.optional(__S(48, __c6, 0)),
-          totalExecutionDurationSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Session" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ session: __S(55, __c6, 7) })).annotate({
-        identifier: "GetSessionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/sessions/{sessionId}/endpoint",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetSessionEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          sessionId: S.String,
-          endpoint: S.String,
-          authToken: SensitiveString,
-          authTokenExpiresAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "GetSessionEndpointResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          states: S.optional(__S(9, __c1, 1)).pipe(T.HttpQuery("states")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListApplicationsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          arn: S.String,
-          releaseLabel: S.String,
-          type: S.String,
-          state: S.String,
-          stateDetails: S.optional(S.String),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          architecture: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationSummary" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ applications: __S(61, __c7, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListApplicationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          jobRunId: S.String.pipe(T.HttpLabel("jobRunId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{applicationId}/jobruns/{jobRunId}/attempts",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListJobRunAttemptsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          id: S.String,
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-          arn: S.String,
-          createdBy: S.String,
-          jobCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          executionRole: S.String,
-          state: S.String,
-          stateDetails: S.String,
-          releaseLabel: S.String,
-          type: S.optional(S.String),
-          attempt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JobRunAttemptSummary" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ jobRunAttempts: __S(65, __c8, 1), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListJobRunAttemptsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          createdAtAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("createdAtAfter"),
-          ),
-          createdAtBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("createdAtBefore"),
-          ),
-          states: S.optional(__S(9, __c1, 1)).pipe(T.HttpQuery("states")),
-          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/jobruns" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListJobRunsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          id: S.String,
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-          arn: S.String,
-          createdBy: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          executionRole: S.String,
-          state: S.String,
-          stateDetails: S.String,
-          releaseLabel: S.String,
-          type: S.optional(S.String),
-          attempt: S.optional(S.Number),
-          attemptCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          attemptUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "JobRunSummary" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ jobRuns: __S(69, __c8, 5), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListJobRunsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          states: S.optional(__S(9, __c1, 1)).pipe(T.HttpQuery("states")),
-          createdAtAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("createdAtAfter"),
-          ),
-          createdAtBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-            T.HttpQuery("createdAtBefore"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{applicationId}/sessions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListSessionsRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String,
-          sessionId: S.String,
-          arn: S.String,
-          name: S.optional(S.String),
-          state: S.String,
-          stateDetails: S.String,
-          releaseLabel: S.String,
-          executionRoleArn: S.String,
-          createdBy: S.String,
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "SessionSummary" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ sessions: __S(73, __c9, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSessionsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(6, __c0, 6)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartApplicationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          executionRoleArn: S.String,
-          executionIamPolicy: S.optional(__S(42, __c5, 2)),
-          jobDriver: S.optional(__S(47, __c5, 7)),
-          configurationOverrides: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(6, __c0, 6)),
-          executionTimeoutMinutes: S.optional(S.Number),
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-          retryPolicy: S.optional(__S(49, __c6, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/jobruns" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartJobRunRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String, jobRunId: S.String, arn: S.String }),
-      ).annotate({ identifier: "StartJobRunResponse" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          executionRoleArn: S.String,
-          configurationOverrides: S.optional(__S(54, __c6, 6)),
-          tags: S.optional(__S(6, __c0, 6)),
-          idleTimeoutMinutes: S.optional(S.Number),
-          name: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/sessions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartSessionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String, sessionId: S.String, arn: S.String }),
-      ).annotate({ identifier: "StartSessionResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(6, __c0, 6),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/applications/{applicationId}/sessions/{sessionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TerminateSessionRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ applicationId: S.String, sessionId: S.String })).annotate({
-        identifier: "TerminateSessionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(9, __c1, 1).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          initialCapacity: S.optional(__S(4, __c0, 4)),
-          maximumCapacity: S.optional(__S(5, __c0, 5)),
-          autoStartConfiguration: S.optional(__S(7, __c0, 7)),
-          autoStopConfiguration: S.optional(__S(8, __c1, 0)),
-          networkConfiguration: S.optional(__S(10, __c1, 2)),
-          architecture: S.optional(S.String),
-          imageConfiguration: S.optional(__S(11, __c1, 3)),
-          workerTypeSpecifications: S.optional(__S(13, __c1, 5)),
-          interactiveConfiguration: S.optional(__S(24, __c3, 0)),
-          releaseLabel: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(16, __c2, 0)),
-          monitoringConfiguration: S.optional(__S(22, __c2, 6)),
-          diskEncryptionConfiguration: S.optional(__S(23, __c2, 7)),
-          schedulerConfiguration: S.optional(__S(25, __c3, 1)),
-          identityCenterConfiguration: S.optional(__S(26, __c3, 2)),
-          jobLevelCostAllocationConfiguration: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ application: __S(37, __c4, 5) })).annotate({
-        identifier: "UpdateApplicationResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

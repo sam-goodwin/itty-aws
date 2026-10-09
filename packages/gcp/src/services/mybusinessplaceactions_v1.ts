@@ -187,8 +187,8 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
   CreateLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<PlaceActionLink>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateLocationsPlaceActionLinksRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PlaceActionLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -207,8 +207,8 @@ export const deleteLocationsPlaceActionLinks: API.OperationMethod<
   DeleteLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Empty>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteLocationsPlaceActionLinksRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -222,8 +222,8 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
   GetLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetLocationsPlaceActionLinksRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<PlaceActionLink>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetLocationsPlaceActionLinksRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PlaceActionLink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlaceActionLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListLocationsPlaceActionLinksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListPlaceActionLinksResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListLocationsPlaceActionLinksRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListPlaceActionLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -255,8 +255,8 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlaceActionTypeMetadataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListPlaceActionTypeMetadataRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListPlaceActionTypeMetadataResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListPlaceActionTypeMetadataRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<ListPlaceActionTypeMetadataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -276,8 +276,8 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
   PatchLocationsPlaceActionLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<PlaceActionLink>,
+  input: __S(24, __c6, 0) as any as S.Schema<PatchLocationsPlaceActionLinksRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PlaceActionLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -285,6 +285,25 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/placeActionLinks",
+            baseUrl: "https://mybusinessplaceactions.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsPlaceActionLinksRequest",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -299,22 +318,11 @@ function __c0(j: number): any {
           isPreferred: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PlaceActionLink" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/placeActionLinks",
-            baseUrl: "https://mybusinessplaceactions.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsPlaceActionLinksRequest",
-      });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -328,11 +336,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsPlaceActionLinksRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -346,7 +358,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetLocationsPlaceActionLinksRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -363,20 +379,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListLocationsPlaceActionLinksRequest",
       });
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          placeActionLinks: S.optional(__S(6, __c0, 6)),
+          placeActionLinks: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "ListPlaceActionLinksResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -403,22 +419,26 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PlaceActionTypeMetadata" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(21, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          placeActionTypeMetadata: S.optional(__S(10, __c1, 2)),
+          placeActionTypeMetadata: S.optional(__S(22, __c5, 2)),
         }),
       ).annotate({
         identifier: "ListPlaceActionTypeMetadataResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -431,7 +451,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2837,8 +2837,8 @@ export const createFlag: API.OperationMethod<
   CreateFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateFlagRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateFlagResponse>,
+  input: __S(712, __c22, 8) as any as S.Schema<CreateFlagRequest>,
+  output: __S(721, __c22, 17) as any as S.Schema<CreateFlagResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2858,8 @@ export const createFlagSegment: API.OperationMethod<
   CreateFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateFlagSegmentRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateFlagSegmentResponse>,
+  input: __S(965, __c30, 5) as any as S.Schema<CreateFlagSegmentRequest>,
+  output: __S(971, __c30, 11) as any as S.Schema<CreateFlagSegmentResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2879,8 +2879,8 @@ export const createSdkKey: API.OperationMethod<
   CreateSdkKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateSdkKeyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<FlagsSdkKeyWithSecrets>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateSdkKeyRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<FlagsSdkKeyWithSecrets>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2900,8 +2900,8 @@ export const deleteFlag: API.OperationMethod<
   DeleteFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteFlagRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteFlagResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteFlagRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteFlagResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2921,8 +2921,8 @@ export const deleteFlagSegment: API.OperationMethod<
   DeleteFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteFlagSegmentRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteFlagSegmentResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteFlagSegmentRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteFlagSegmentResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2942,8 +2942,8 @@ export const deleteSdkKey: API.OperationMethod<
   DeleteSdkKeyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteSdkKeyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteSdkKeyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteSdkKeyRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteSdkKeyResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2957,8 +2957,8 @@ export const getDeploymentFeatureFlags: API.OperationMethod<
   GetDeploymentFeatureFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetDeploymentFeatureFlagsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetDeploymentFeatureFlagsResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<GetDeploymentFeatureFlagsRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<GetDeploymentFeatureFlagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2968,8 @@ export type GetFlagError = BadRequest | PaymentRequired | Forbidden | NotFound |
 /** Get a flag Retrieve a specific feature flag by its ID or slug. */
 export const getFlag: API.OperationMethod<GetFlagRequest, Flag, GetFlagError, VercelOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(50, __c6, 2) as any as S.Schema<GetFlagRequest>,
-    output: __S(62, __c7, 6) as any as S.Schema<Flag>,
+    input: __S(64, __c2, 0) as any as S.Schema<GetFlagRequest>,
+    output: __S(137, __c4, 9) as any as S.Schema<Flag>,
     errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
     protocol: VercelProtocol,
     retry: Retry.Retry,
@@ -2988,8 +2988,8 @@ export const getFlagSegment: API.OperationMethod<
   GetFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetFlagSegmentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<Segment>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetFlagSegmentRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<Segment>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3008,8 +3008,8 @@ export const getFlagSettings: API.OperationMethod<
   GetFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetFlagSettingsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetFlagSettingsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetFlagSettingsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GetFlagSettingsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3023,8 +3023,8 @@ export const getSdkKeys: API.OperationMethod<
   GetSdkKeysError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetSdkKeysRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetSdkKeysResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetSdkKeysRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<GetSdkKeysResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3038,8 @@ export const listFlags: API.OperationMethod<
   ListFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListFlagsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListFlagsResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListFlagsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ListFlagsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3058,8 +3058,8 @@ export const listFlagSegments: API.OperationMethod<
   ListFlagSegmentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListFlagSegmentsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListFlagSegmentsResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListFlagSegmentsRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ListFlagSegmentsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3073,8 +3073,8 @@ export const listFlagsV2: API.OperationMethod<
   ListFlagsV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListFlagsV2Request>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListFlagsV2Response>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListFlagsV2Request>,
+  output: __S(450, __c14, 2) as any as S.Schema<ListFlagsV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3093,8 +3093,8 @@ export const listFlagVersions: API.OperationMethod<
   ListFlagVersionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListFlagVersionsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListFlagVersionsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListFlagVersionsRequest>,
+  output: __S(497, __c15, 17) as any as S.Schema<ListFlagVersionsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3108,8 +3108,8 @@ export const listTeamFlags: API.OperationMethod<
   ListTeamFlagsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListTeamFlagsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListTeamFlagsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListTeamFlagsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<ListTeamFlagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3123,8 +3123,8 @@ export const listTeamFlagSettings: API.OperationMethod<
   ListTeamFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListTeamFlagSettingsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListTeamFlagSettingsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListTeamFlagSettingsRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<ListTeamFlagSettingsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3138,8 +3138,8 @@ export const listTeamFlagsV2: API.OperationMethod<
   ListTeamFlagsV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListTeamFlagsV2Request>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListTeamFlagsV2Response>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListTeamFlagsV2Request>,
+  output: __S(578, __c18, 2) as any as S.Schema<ListTeamFlagsV2Response>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3159,8 +3159,8 @@ export const updateFlag: API.OperationMethod<
   UpdateFlagError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<UpdateFlagRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateFlagResponse>,
+  input: __S(616, __c19, 8) as any as S.Schema<UpdateFlagRequest>,
+  output: __S(617, __c19, 9) as any as S.Schema<UpdateFlagResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3180,8 +3180,8 @@ export const updateFlagSegment: API.OperationMethod<
   UpdateFlagSegmentError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<UpdateFlagSegmentRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<UpdateFlagSegmentResponse>,
+  input: __S(647, __c20, 7) as any as S.Schema<UpdateFlagSegmentRequest>,
+  output: __S(648, __c20, 8) as any as S.Schema<UpdateFlagSegmentResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3201,8 +3201,8 @@ export const updateFlagSettings: API.OperationMethod<
   UpdateFlagSettingsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UpdateFlagSettingsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpdateFlagSettingsResponse>,
+  input: __S(676, __c21, 4) as any as S.Schema<UpdateFlagSettingsRequest>,
+  output: __S(677, __c21, 5) as any as S.Schema<UpdateFlagSettingsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3212,417 +3212,6 @@ export const updateFlagSettings: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          label: S.optional(S.String),
-          description: S.optional(S.String),
-          value: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestVariantsItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          environment: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValueReuse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(S.String),
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 7:
-      return S.Record(S.String, __S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.Unknown,
-          variantId: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValuePausedOutcome",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreCase: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValueRulesItemConditionsItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          conditions: __S(12, __c1, 4),
-          outcome: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValueRulesItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          reuse: S.optional(__S(3, __c0, 3)),
-          targets: S.optional(__S(8, __c1, 0)),
-          pausedOutcome: __S(9, __c1, 1),
-          rules: __S(14, __c1, 6),
-          fallthrough: S.Unknown,
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateFlagRequestEnvironmentsValue",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(15, __c1, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectIdOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          kind: S.String,
-          variants: S.optional(__S(2, __c0, 2)),
-          environments: __S(16, __c2, 0),
-          seed: S.optional(S.Number),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          maintainerIds: S.optional(__S(17, __c2, 1)),
-          permanent: S.optional(S.Boolean),
-          tags: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectIdOrName}/feature-flags/flags",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateFlagRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          variantId: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateFlagResponseEnvironmentsValueFallthroughCase0",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10, __c1, 2)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateFlagResponseEnvironmentsValueRulesItemConditionsItem",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(21, __c2, 5),
-          id: S.String,
-          outcome: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateFlagResponseEnvironmentsValueRulesItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          fallthrough: S.Unknown,
-          pausedOutcome: __S(19, __c2, 3),
-          reuse: S.optional(__S(3, __c0, 3)),
-          revision: S.optional(S.Number),
-          rules: __S(23, __c2, 7),
-          targets: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagResponseEnvironmentsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          id: S.String,
-          label: S.optional(S.String),
-          value: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateFlagResponseVariantsItem",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          createdBy: S.String,
-          description: S.optional(S.String),
-          environments: __S(25, __c3, 1),
-          id: S.String,
-          kind: S.String,
-          maintainerIds: S.optional(__S(17, __c2, 1)),
-          ownerId: S.String,
-          permanent: S.optional(S.Boolean),
-          projectId: S.String,
-          revision: S.Number,
-          seed: S.Number,
-          slug: S.String,
-          state: S.String,
-          tags: S.optional(__S(17, __c2, 1)),
-          typeName: S.String,
-          updatedAt: S.Number,
-          updatedBy: S.optional(S.String),
-          variants: __S(27, __c3, 3),
-        }),
-      ).annotate({ identifier: "CreateFlagResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lhs: S.Unknown,
-          cmp: S.String,
-          rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentRequestDataRulesItemConditionsItem",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          conditions: __S(30, __c3, 6),
-          outcome: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentRequestDataRulesItem",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(32, __c4, 0)),
-          include: S.optional(__S(7, __c0, 7)),
-          exclude: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentRequestData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectIdOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          createdBy: S.optional(S.String),
-          label: S.String,
-          description: S.optional(S.String),
-          data: __S(33, __c4, 1),
-          hint: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectIdOrName}/feature-flags/segments",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateFlagSegmentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cmp: S.String,
-          cmpOptions: S.optional(__S(10, __c1, 2)),
-          lhs: S.Unknown,
-          rhs: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentResponseDataRulesItemConditionsItem",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: __S(36, __c4, 4),
-          id: S.String,
-          outcome: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentResponseDataRulesItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(__S(7, __c0, 7)),
-          include: S.optional(__S(7, __c0, 7)),
-          rules: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentResponseData",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          createdBy: S.optional(S.String),
-          data: __S(39, __c4, 7),
-          description: S.optional(S.String),
-          hint: S.String,
-          id: S.String,
-          label: S.String,
-          projectId: S.String,
-          slug: S.String,
-          typeName: S.String,
-          updatedAt: S.Number,
-          usedByFlags: S.optional(__S(17, __c2, 1)),
-          usedBySegments: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateFlagSegmentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectIdOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          sdkKeyType: S.String,
-          environment: S.String,
-          label: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateSdkKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.Number,
-          createdBy: S.String,
-          deletedAt: S.optional(S.Number),
-          environment: S.String,
-          hashKey: S.String,
-          label: S.optional(S.String),
-          partialKeyValue: S.String,
-          projectId: S.String,
-          type: S.String,
-          updatedAt: S.Number,
-          keyValue: S.String,
-          tokenValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FlagsSdkKeyWithSecrets" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectIdOrName: S.String.pipe(T.Label()),
-          flagIdOrSlug: S.String.pipe(T.Label()),
-          ifMatch: S.optional(S.String.pipe(T.Query())),
-          withMetadata: S.optional(S.Boolean.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFlagRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteFlagResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectIdOrName: S.String.pipe(T.Label()),
-          segmentIdOrSlug: S.String.pipe(T.Label()),
-          withMetadata: S.optional(S.Boolean.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFlagSegmentRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3637,7 +3226,13 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSdkKeyRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String.pipe(T.Label()),
@@ -3649,11 +3244,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetDeploymentFeatureFlagsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
@@ -3665,16 +3256,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetDeploymentFeatureFlagsResponseStatus",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          flags: __S(0, __c0, 0),
-          status: S.NullOr(__S(48, __c6, 0)),
+          flags: __S(32, __c1, 0),
+          status: S.NullOr(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetDeploymentFeatureFlagsResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3691,52 +3286,69 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFlagRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "FlagMetadataCreator" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creator: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "FlagMetadata" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cmp: S.String,
-          cmpOptions: S.optional(__S(10, __c1, 2)),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
           lhs: S.Unknown,
           rhs: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "FlagEnvironmentsValueRulesItemConditionsItem",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(52, __c6, 4),
+          conditions: __S(129, __c4, 1),
           id: S.String,
           outcome: S.Unknown,
         }),
       ).annotate({
         identifier: "FlagEnvironmentsValueRulesItem",
       });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
           fallthrough: S.Unknown,
-          pausedOutcome: __S(19, __c2, 3),
-          reuse: S.optional(__S(3, __c0, 3)),
+          pausedOutcome: __S(768, __c24, 0),
+          reuse: S.optional(__S(736, __c23, 0)),
           revision: S.optional(S.Number),
-          rules: __S(54, __c6, 6),
-          targets: S.optional(__S(8, __c1, 0)),
+          rules: __S(131, __c4, 3),
+          targets: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "FlagEnvironmentsValue" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(55, __c6, 7));
-    case 1:
+    case 5:
+      return S.Record(S.String, __S(132, __c4, 4));
+    case 6:
       return S.Array(S.String);
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -3745,31 +3357,18 @@ function __c7(j: number): any {
           value: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "FlagVariantsItem" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "FlagMetadataCreator" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creator: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "FlagMetadata" });
-    case 6:
+    case 8:
+      return S.Array(__S(135, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
           createdBy: S.String,
           description: S.optional(S.String),
-          environments: __S(56, __c7, 0),
+          environments: __S(133, __c4, 5),
           id: S.String,
           kind: S.String,
-          maintainerIds: S.optional(__S(17, __c2, 1)),
+          maintainerIds: S.optional(__S(864, __c27, 0)),
           ownerId: S.String,
           permanent: S.optional(S.Boolean),
           projectId: S.String,
@@ -3777,15 +3376,19 @@ function __c7(j: number): any {
           seed: S.Number,
           slug: S.String,
           state: S.String,
-          tags: S.optional(__S(57, __c7, 1)),
+          tags: S.optional(__S(134, __c4, 6)),
           typeName: S.String,
           updatedAt: S.Number,
           updatedBy: S.optional(S.String),
-          variants: __S(59, __c7, 3),
-          metadata: S.optional(__S(61, __c7, 5)),
+          variants: __S(136, __c4, 8),
+          metadata: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "Flag" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3803,13 +3406,13 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetFlagSegmentRequest" });
   }
 }
-function __c8(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           cmp: S.String,
-          cmpOptions: S.optional(__S(10, __c1, 2)),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
           lhs: S.Unknown,
           rhs: S.optional(S.Unknown),
         }),
@@ -3817,23 +3420,23 @@ function __c8(j: number): any {
         identifier: "SegmentDataRulesItemConditionsItem",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(192, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(65, __c8, 1),
+          conditions: __S(193, __c6, 1),
           id: S.String,
           outcome: S.Unknown,
         }),
       ).annotate({ identifier: "SegmentDataRulesItem" });
     case 3:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(194, __c6, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(7, __c0, 7)),
-          include: S.optional(__S(7, __c0, 7)),
-          rules: S.optional(__S(67, __c8, 3)),
+          exclude: S.optional(__S(930, __c29, 2)),
+          include: S.optional(__S(930, __c29, 2)),
+          rules: S.optional(__S(195, __c6, 3)),
         }),
       ).annotate({ identifier: "SegmentData" });
     case 5:
@@ -3841,7 +3444,7 @@ function __c8(j: number): any {
         S.Struct({
           createdAt: S.Number,
           createdBy: S.optional(S.String),
-          data: __S(68, __c8, 4),
+          data: __S(196, __c6, 4),
           description: S.optional(S.String),
           hint: S.String,
           id: S.String,
@@ -3850,12 +3453,16 @@ function __c8(j: number): any {
           slug: S.String,
           typeName: S.String,
           updatedAt: S.Number,
-          usedByFlags: S.optional(__S(17, __c2, 1)),
-          usedBySegments: S.optional(__S(17, __c2, 1)),
-          metadata: S.optional(__S(61, __c7, 5)),
+          usedByFlags: S.optional(__S(864, __c27, 0)),
+          usedBySegments: S.optional(__S(864, __c27, 0)),
+          metadata: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "Segment" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3869,7 +3476,25 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFlagSettingsRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.Number),
+          enabled: S.Boolean,
+          entities: __S(261, __c8, 5),
+          environments: __S(864, __c27, 0),
+          metadata: __S(262, __c8, 6),
+          ownerId: S.optional(S.String),
+          projectId: S.String,
+          typeName: S.String,
+          updatedAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetFlagSettingsResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
@@ -3878,37 +3503,33 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetFlagSettingsResponseEntitiesItemAttributesItemLabelsItem",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
     case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(257, __c8, 1)),
           type: S.String,
         }),
       ).annotate({
         identifier: "GetFlagSettingsResponseEntitiesItemAttributesItem",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
     case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(74, __c9, 2),
+          attributes: __S(259, __c8, 3),
           kind: S.String,
           label: S.String,
         }),
       ).annotate({
         identifier: "GetFlagSettingsResponseEntitiesItem",
       });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
     case 5:
+      return S.Array(__S(260, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           activeFlagCount: S.Number,
@@ -3921,21 +3542,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetFlagSettingsResponseMetadata",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.Number),
-          enabled: S.Boolean,
-          entities: __S(76, __c9, 4),
-          environments: __S(17, __c2, 1),
-          metadata: __S(77, __c9, 5),
-          ownerId: S.optional(S.String),
-          projectId: S.String,
-          typeName: S.String,
-          updatedAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetFlagSettingsResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3949,11 +3560,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSdkKeysRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.Number,
@@ -3970,15 +3577,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSdkKeysResponseDataItem",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(81, __c10, 1),
+          data: __S(290, __c9, 2),
         }),
       ).annotate({ identifier: "GetSdkKeysResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -3987,7 +3598,7 @@ function __c10(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          tags: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3998,9 +3609,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlagsRequest" });
-    case 4:
-      return S.Array(__S(62, __c7, 6));
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           next: S.NullOr(S.String),
@@ -4008,14 +3621,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListFlagsResponsePagination",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(137, __c4, 9));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(84, __c10, 4),
-          pagination: __S(85, __c10, 5),
+          data: __S(384, __c12, 0),
+          pagination: __S(352, __c11, 0),
         }),
       ).annotate({ identifier: "ListFlagsResponse" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4030,19 +3653,19 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlagSegmentsRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(69, __c8, 5));
     case 1:
+      return S.Array(__S(197, __c6, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(88, __c11, 0),
+          data: __S(417, __c13, 1),
         }),
       ).annotate({ identifier: "ListFlagSegmentsResponse" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4050,9 +3673,9 @@ function __c11(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          tags: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           createdBy: S.optional(S.String.pipe(T.Query())),
-          maintainerIds: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          maintainerIds: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           includeMarketplaceFlags: S.optional(S.Boolean.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
@@ -4064,16 +3687,20 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlagsV2Request" });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(85, __c10, 5),
-          data: __S(91, __c11, 3),
+          pagination: __S(352, __c11, 0),
+          data: __S(449, __c14, 1),
         }),
       ).annotate({ identifier: "ListFlagsV2Response" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4092,7 +3719,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlagVersionsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -4101,11 +3728,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueFallthroughCase0",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cmp: S.String,
-          cmpOptions: S.optional(__S(10, __c1, 2)),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
           lhs: S.Unknown,
           rhs: S.optional(S.Unknown),
         }),
@@ -4113,53 +3740,45 @@ function __c11(j: number): any {
         identifier:
           "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItemConditionsItem",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(482, __c15, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(96, __c12, 0),
+          conditions: __S(483, __c15, 3),
           id: S.String,
           outcome: S.Unknown,
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValueRulesItem",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
-      return S.Record(S.String, __S(99, __c12, 3));
     case 5:
-      return S.Record(S.String, __S(100, __c12, 4));
+      return S.Array(__S(484, __c15, 4));
     case 6:
-      return S.Record(S.String, __S(101, __c12, 5));
+      return S.Array(__S(896, __c28, 0));
     case 7:
+      return S.Record(S.String, __S(486, __c15, 6));
+    case 8:
+      return S.Record(S.String, __S(487, __c15, 7));
+    case 9:
+      return S.Record(S.String, __S(488, __c15, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
           fallthrough: S.Unknown,
-          pausedOutcome: __S(94, __c11, 6),
-          reuse: S.optional(__S(3, __c0, 3)),
+          pausedOutcome: __S(481, __c15, 1),
+          reuse: S.optional(__S(736, __c23, 0)),
           revision: S.optional(S.Number),
-          rules: __S(98, __c12, 2),
-          targets: S.optional(__S(102, __c12, 6)),
+          rules: __S(485, __c15, 5),
+          targets: S.optional(__S(489, __c15, 9)),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataEnvironmentsValue",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(103, __c12, 7));
-    case 1:
+    case 11:
+      return S.Record(S.String, __S(490, __c15, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4170,49 +3789,53 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemDataVariantsItem",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 13:
+      return S.Array(__S(492, __c15, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          environments: __S(104, __c13, 0),
-          maintainerIds: S.optional(__S(17, __c2, 1)),
+          environments: __S(491, __c15, 11),
+          maintainerIds: S.optional(__S(864, __c27, 0)),
           permanent: S.optional(S.Boolean),
           seed: S.Number,
           state: S.String,
-          tags: S.optional(__S(17, __c2, 1)),
-          variants: __S(106, __c13, 2),
+          tags: S.optional(__S(864, __c27, 0)),
+          variants: __S(493, __c15, 13),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItemData",
       });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          changedEnvironments: __S(17, __c2, 1),
+          changedEnvironments: __S(864, __c27, 0),
           createdAt: S.Number,
           createdBy: S.optional(S.String),
           flagId: S.String,
           id: S.String,
           message: S.optional(S.String),
           revision: S.Number,
-          data: __S(107, __c13, 3),
-          metadata: S.optional(__S(61, __c7, 5)),
+          data: __S(494, __c15, 14),
+          metadata: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({
         identifier: "ListFlagVersionsResponseVersionsItem",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 16:
+      return S.Array(__S(495, __c15, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           pagination: S.Unknown,
-          versions: __S(109, __c13, 5),
+          versions: __S(496, __c15, 16),
         }),
       ).annotate({ identifier: "ListFlagVersionsResponse" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -4222,7 +3845,7 @@ function __c13(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           kind: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          tags: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/teams/{teamId}/feature-flags/flags", code: 200 }),
@@ -4230,7 +3853,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListTeamFlagsRequest" });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4249,7 +3872,11 @@ function __c14(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTeamFlagSettingsResponse",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -4258,25 +3885,29 @@ function __c14(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           kind: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          tags: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           createdBy: S.optional(S.String.pipe(T.Query())),
-          maintainerIds: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          maintainerIds: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           includeMarketplaceFlags: S.optional(S.Boolean.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v2/teams/{teamId}/feature-flags/flags", code: 200 }),
         ),
       ).annotate({ identifier: "ListTeamFlagsV2Request" });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(85, __c10, 5),
-          data: __S(115, __c14, 3),
+          pagination: __S(352, __c11, 0),
+          data: __S(577, __c18, 1),
         }),
       ).annotate({ identifier: "ListTeamFlagsV2Response" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4287,54 +3918,50 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateFlagRequestVariantsItem",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lhs: S.Unknown,
           cmp: S.String,
           rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10, __c1, 2)),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValueRulesItemConditionsItem",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(610, __c19, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(120, __c15, 0),
+          conditions: __S(611, __c19, 3),
           outcome: S.Unknown,
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValueRulesItem",
       });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(612, __c19, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
-          reuse: S.optional(__S(3, __c0, 3)),
-          targets: S.optional(__S(8, __c1, 0)),
-          pausedOutcome: __S(9, __c1, 1),
-          rules: __S(122, __c15, 2),
+          reuse: S.optional(__S(736, __c23, 0)),
+          targets: S.optional(__S(800, __c25, 0)),
+          pausedOutcome: __S(832, __c26, 0),
+          rules: __S(613, __c19, 5),
           fallthrough: S.Unknown,
           revision: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UpdateFlagRequestEnvironmentsValue",
       });
-    case 4:
-      return S.Record(S.String, __S(123, __c15, 3));
-    case 5:
+    case 7:
+      return S.Record(S.String, __S(614, __c19, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4345,14 +3972,14 @@ function __c15(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           createdBy: S.optional(S.String),
           message: S.optional(S.String),
-          variants: S.optional(__S(118, __c14, 6)),
-          environments: S.optional(__S(124, __c15, 4)),
+          variants: S.optional(__S(609, __c19, 1)),
+          environments: S.optional(__S(615, __c19, 7)),
           seed: S.optional(S.Number),
           description: S.optional(S.String),
           state: S.optional(S.String),
-          maintainerIds: S.optional(__S(17, __c2, 1)),
+          maintainerIds: S.optional(__S(864, __c27, 0)),
           permanent: S.optional(S.Boolean),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4361,64 +3988,64 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFlagRequest" });
-    case 6:
+    case 9:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateFlagResponse",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           field: S.String,
           entity: S.String,
           attribute: S.String,
-          value: __S(4, __c0, 4),
+          value: __S(896, __c28, 0),
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestOperationsItem",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
     case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lhs: S.Unknown,
           cmp: S.String,
           rhs: S.optional(S.Unknown),
-          cmpOptions: S.optional(__S(10, __c1, 2)),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestDataRulesItemConditionsItem",
       });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
     case 3:
+      return S.Array(__S(642, __c20, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: __S(130, __c16, 2),
+          conditions: __S(643, __c20, 3),
           outcome: S.Unknown,
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestDataRulesItem",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
     case 5:
+      return S.Array(__S(644, __c20, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(132, __c16, 4)),
-          include: S.optional(__S(7, __c0, 7)),
-          exclude: S.optional(__S(7, __c0, 7)),
+          rules: S.optional(__S(645, __c20, 5)),
+          include: S.optional(__S(930, __c29, 2)),
+          exclude: S.optional(__S(930, __c29, 2)),
         }),
       ).annotate({
         identifier: "UpdateFlagSegmentRequestData",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           projectIdOrName: S.String.pipe(T.Label()),
@@ -4426,10 +4053,10 @@ function __c16(j: number): any {
           withMetadata: S.optional(S.Boolean.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          operations: S.optional(__S(128, __c16, 0)),
+          operations: S.optional(__S(641, __c20, 1)),
           label: S.optional(S.String),
           description: S.optional(S.String),
-          data: S.optional(__S(133, __c16, 5)),
+          data: S.optional(__S(646, __c20, 6)),
           hint: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4439,38 +4066,38 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFlagSegmentRequest" });
-    case 7:
+    case 8:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateFlagSegmentResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           type: S.String,
-          labels: S.optional(__S(72, __c9, 0)),
+          labels: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({
         identifier: "UpdateFlagSettingsRequestEntitiesItemAttributesItem",
       });
     case 1:
-      return S.Array(__S(136, __c17, 0));
+      return S.Array(__S(672, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
           label: S.String,
-          attributes: __S(137, __c17, 1),
+          attributes: __S(673, __c21, 1),
         }),
       ).annotate({
         identifier: "UpdateFlagSettingsRequestEntitiesItem",
       });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(674, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4478,8 +4105,8 @@ function __c17(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           enabled: S.optional(S.Boolean),
-          entities: S.optional(__S(139, __c17, 3)),
-          environments: S.optional(__S(17, __c2, 1)),
+          entities: S.optional(__S(675, __c21, 3)),
+          environments: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4495,9 +4122,9 @@ function __c17(j: number): any {
         S.Struct({
           createdAt: S.optional(S.Number),
           enabled: S.Boolean,
-          entities: __S(76, __c9, 4),
-          environments: __S(17, __c2, 1),
-          metadata: __S(77, __c9, 5),
+          entities: __S(261, __c8, 5),
+          environments: __S(864, __c27, 0),
+          metadata: __S(262, __c8, 6),
           ownerId: S.optional(S.String),
           projectId: S.String,
           typeName: S.String,
@@ -4508,7 +4135,447 @@ function __c17(j: number): any {
       });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          label: S.optional(S.String),
+          description: S.optional(S.String),
+          value: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestVariantsItem",
+      });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lhs: S.Unknown,
+          cmp: S.String,
+          rhs: S.optional(S.Unknown),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValueRulesItemConditionsItem",
+      });
+    case 3:
+      return S.Array(__S(706, __c22, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          conditions: __S(707, __c22, 3),
+          outcome: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValueRulesItem",
+      });
+    case 5:
+      return S.Array(__S(708, __c22, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          reuse: S.optional(__S(736, __c23, 0)),
+          targets: S.optional(__S(800, __c25, 0)),
+          pausedOutcome: __S(832, __c26, 0),
+          rules: __S(709, __c22, 5),
+          fallthrough: S.Unknown,
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValue",
+      });
+    case 7:
+      return S.Record(S.String, __S(710, __c22, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          kind: S.String,
+          variants: S.optional(__S(705, __c22, 1)),
+          environments: __S(711, __c22, 7),
+          seed: S.optional(S.Number),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          maintainerIds: S.optional(__S(864, __c27, 0)),
+          permanent: S.optional(S.Boolean),
+          tags: S.optional(__S(864, __c27, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectIdOrName}/feature-flags/flags",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateFlagRequest" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          cmp: S.String,
+          cmpOptions: S.optional(__S(897, __c28, 1)),
+          lhs: S.Unknown,
+          rhs: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateFlagResponseEnvironmentsValueRulesItemConditionsItem",
+      });
+    case 10:
+      return S.Array(__S(713, __c22, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(714, __c22, 10),
+          id: S.String,
+          outcome: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateFlagResponseEnvironmentsValueRulesItem",
+      });
+    case 12:
+      return S.Array(__S(715, __c22, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          fallthrough: S.Unknown,
+          pausedOutcome: __S(768, __c24, 0),
+          reuse: S.optional(__S(736, __c23, 0)),
+          revision: S.optional(S.Number),
+          rules: __S(716, __c22, 12),
+          targets: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagResponseEnvironmentsValue",
+      });
+    case 14:
+      return S.Record(S.String, __S(717, __c22, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          id: S.String,
+          label: S.optional(S.String),
+          value: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateFlagResponseVariantsItem",
+      });
+    case 16:
+      return S.Array(__S(719, __c22, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          createdBy: S.String,
+          description: S.optional(S.String),
+          environments: __S(718, __c22, 14),
+          id: S.String,
+          kind: S.String,
+          maintainerIds: S.optional(__S(864, __c27, 0)),
+          ownerId: S.String,
+          permanent: S.optional(S.Boolean),
+          projectId: S.String,
+          revision: S.Number,
+          seed: S.Number,
+          slug: S.String,
+          state: S.String,
+          tags: S.optional(__S(864, __c27, 0)),
+          typeName: S.String,
+          updatedAt: S.Number,
+          updatedBy: S.optional(S.String),
+          variants: __S(720, __c22, 16),
+        }),
+      ).annotate({ identifier: "CreateFlagResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          environment: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValueReuse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          variantId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateFlagResponseEnvironmentsValueFallthroughCase0",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(930, __c29, 2));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.Unknown,
+          variantId: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValuePausedOutcome",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          note: S.optional(S.String),
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValueTargetsValueValueValueItem",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreCase: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateFlagRequestEnvironmentsValueRulesItemConditionsItemCmpOptions",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(896, __c28, 0));
+    case 1:
+      return S.Record(S.String, __S(928, __c29, 0));
+    case 2:
+      return S.Record(S.String, __S(929, __c29, 1));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lhs: S.Unknown,
+          cmp: S.String,
+          rhs: S.optional(S.Unknown),
+          cmpOptions: S.optional(__S(897, __c28, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentRequestDataRulesItemConditionsItem",
+      });
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          conditions: __S(961, __c30, 1),
+          outcome: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentRequestDataRulesItem",
+      });
+    case 3:
+      return S.Array(__S(962, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(963, __c30, 3)),
+          include: S.optional(__S(930, __c29, 2)),
+          exclude: S.optional(__S(930, __c29, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentRequestData",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          createdBy: S.optional(S.String),
+          label: S.String,
+          description: S.optional(S.String),
+          data: __S(964, __c30, 4),
+          hint: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectIdOrName}/feature-flags/segments",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateFlagSegmentRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cmp: S.String,
+          cmpOptions: S.optional(__S(897, __c28, 1)),
+          lhs: S.Unknown,
+          rhs: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentResponseDataRulesItemConditionsItem",
+      });
+    case 7:
+      return S.Array(__S(966, __c30, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: __S(967, __c30, 7),
+          id: S.String,
+          outcome: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentResponseDataRulesItem",
+      });
+    case 9:
+      return S.Array(__S(968, __c30, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(__S(930, __c29, 2)),
+          include: S.optional(__S(930, __c29, 2)),
+          rules: S.optional(__S(969, __c30, 9)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentResponseData",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          createdBy: S.optional(S.String),
+          data: __S(970, __c30, 10),
+          description: S.optional(S.String),
+          hint: S.String,
+          id: S.String,
+          label: S.String,
+          projectId: S.String,
+          slug: S.String,
+          typeName: S.String,
+          updatedAt: S.Number,
+          usedByFlags: S.optional(__S(864, __c27, 0)),
+          usedBySegments: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateFlagSegmentResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          sdkKeyType: S.String,
+          environment: S.String,
+          label: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateSdkKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.Number,
+          createdBy: S.String,
+          deletedAt: S.optional(S.Number),
+          environment: S.String,
+          hashKey: S.String,
+          label: S.optional(S.String),
+          partialKeyValue: S.String,
+          projectId: S.String,
+          type: S.String,
+          updatedAt: S.Number,
+          keyValue: S.String,
+          tokenValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FlagsSdkKeyWithSecrets" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdOrName: S.String.pipe(T.Label()),
+          flagIdOrSlug: S.String.pipe(T.Label()),
+          ifMatch: S.optional(S.String.pipe(T.Query())),
+          withMetadata: S.optional(S.Boolean.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFlagRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteFlagResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectIdOrName: S.String.pipe(T.Label()),
+          segmentIdOrSlug: S.String.pipe(T.Label()),
+          withMetadata: S.optional(S.Boolean.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFlagSegmentRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

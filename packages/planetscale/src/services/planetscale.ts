@@ -13027,8 +13027,8 @@ export const addOrganizationTeamMember: API.OperationMethod<
   AddOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddOrganizationTeamMemberRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OrganizationTeamMembership>,
+  input: __S(4704, __c294, 0) as any as S.Schema<AddOrganizationTeamMemberRequest>,
+  output: __S(4754, __c297, 2) as any as S.Schema<OrganizationTeamMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13046,8 +13046,8 @@ export const assignShardConfigurationProfileShards: API.OperationMethod<
   AssignShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AssignShardConfigurationProfileShardsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AssignShardConfigurationProfileShardsResponse>,
+  input: __S(5216, __c326, 0) as any as S.Schema<AssignShardConfigurationProfileShardsRequest>,
+  output: __S(5219, __c326, 3) as any as S.Schema<AssignShardConfigurationProfileShardsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13065,8 +13065,12 @@ export const bulkCreateShardConfigurationProfileShards: API.OperationMethod<
   BulkCreateShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<BulkCreateShardConfigurationProfileShardsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponse>,
+  input: __S(5472, __c342, 0) as any as S.Schema<BulkCreateShardConfigurationProfileShardsRequest>,
+  output: __S(
+    5473,
+    __c342,
+    1,
+  ) as any as S.Schema<BulkCreateShardConfigurationProfileShardsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13084,8 +13088,8 @@ export const cancelAdminChangeRequest: API.OperationMethod<
   CancelAdminChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CancelAdminChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelAdminChangeRequestResponse>,
+  input: __S(5648, __c353, 0) as any as S.Schema<CancelAdminChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelAdminChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13103,8 +13107,8 @@ export const cancelBouncerResizeRequest: API.OperationMethod<
   CancelBouncerResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CancelBouncerResizeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelBouncerResizeRequestResponse>,
+  input: __S(5840, __c365, 0) as any as S.Schema<CancelBouncerResizeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelBouncerResizeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13122,8 +13126,8 @@ export const cancelBranchChangeRequest: API.OperationMethod<
   CancelBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CancelBranchChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelBranchChangeRequestResponse>,
+  input: __S(6032, __c377, 0) as any as S.Schema<CancelBranchChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelBranchChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13141,8 +13145,8 @@ export const cancelBranchConfigChangeRequest: API.OperationMethod<
   CancelBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CancelBranchConfigChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelBranchConfigChangeRequestResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelBranchConfigChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelBranchConfigChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13160,8 +13164,8 @@ export const cancelDeployRequest: API.OperationMethod<
   CancelDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CancelDeployRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(240, __c15, 0) as any as S.Schema<CancelDeployRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13179,8 +13183,8 @@ export const cancelKeyspaceConfigChangeRequest: API.OperationMethod<
   CancelKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CancelKeyspaceConfigChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<CancelKeyspaceConfigChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelKeyspaceConfigChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13198,8 +13202,8 @@ export const cancelKeyspaceResizeRequest: API.OperationMethod<
   CancelKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CancelKeyspaceResizeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelKeyspaceResizeRequestResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<CancelKeyspaceResizeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelKeyspaceResizeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13217,8 +13221,8 @@ export const cancelMoveTablesWorkflow: API.OperationMethod<
   CancelMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CancelMoveTablesWorkflowRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelMoveTablesWorkflowResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<CancelMoveTablesWorkflowRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelMoveTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13236,8 +13240,8 @@ export const cancelNekiChangeRequest: API.OperationMethod<
   CancelNekiChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CancelNekiChangeRequestRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CancelNekiChangeRequestResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<CancelNekiChangeRequestRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<CancelNekiChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13255,8 +13259,8 @@ export const cancelOrganizationInvitation: API.OperationMethod<
   CancelOrganizationInvitationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CancelOrganizationInvitationRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelOrganizationInvitationResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<CancelOrganizationInvitationRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelOrganizationInvitationResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13274,8 +13278,8 @@ export const cancelRouterChangeRequest: API.OperationMethod<
   CancelRouterChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CancelRouterChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelRouterChangeRequestResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<CancelRouterChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelRouterChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13293,8 +13297,16 @@ export const cancelShardConfigurationProfileChangeRequest: API.OperationMethod<
   CancelShardConfigurationProfileChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CancelShardConfigurationProfileChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>,
+  input: __S(
+    1840,
+    __c115,
+    0,
+  ) as any as S.Schema<CancelShardConfigurationProfileChangeRequestRequest>,
+  output: __S(
+    5664,
+    __c354,
+    0,
+  ) as any as S.Schema<CancelShardConfigurationProfileChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13312,8 +13324,8 @@ export const cancelSidecarChangeRequest: API.OperationMethod<
   CancelSidecarChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CancelSidecarChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelSidecarChangeRequestResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<CancelSidecarChangeRequestRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CancelSidecarChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13327,8 +13339,8 @@ export const cancelWorkflow: API.OperationMethod<
   CancelWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CancelWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(2208, __c138, 0) as any as S.Schema<CancelWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13342,8 +13354,8 @@ export const completeRevert: API.OperationMethod<
   CompleteRevertError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CompleteRevertRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(2432, __c152, 0) as any as S.Schema<CompleteRevertRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13357,8 +13369,8 @@ export const completeWorkflow: API.OperationMethod<
   CompleteWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CompleteWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(2624, __c164, 0) as any as S.Schema<CompleteWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13376,8 +13388,8 @@ export const configureOrganizationSso: API.OperationMethod<
   ConfigureOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ConfigureOrganizationSsoRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ConfigureOrganizationSsoResponse>,
+  input: __S(2800, __c175, 0) as any as S.Schema<ConfigureOrganizationSsoRequest>,
+  output: __S(2816, __c176, 0) as any as S.Schema<ConfigureOrganizationSsoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13391,8 +13403,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateBackupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Backup>,
+  input: __S(3008, __c188, 0) as any as S.Schema<CreateBackupRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<Backup>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13410,8 +13422,8 @@ export const createBackupPolicy: API.OperationMethod<
   CreateBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateBackupPolicyRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<BackupPolicy>,
+  input: __S(3248, __c203, 0) as any as S.Schema<CreateBackupPolicyRequest>,
+  output: __S(3024, __c189, 0) as any as S.Schema<BackupPolicy>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13425,8 +13437,8 @@ export const createBouncer: API.OperationMethod<
   CreateBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateBouncerRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PostgresBouncer>,
+  input: __S(3424, __c214, 0) as any as S.Schema<CreateBouncerRequest>,
+  output: __S(3458, __c216, 2) as any as S.Schema<PostgresBouncer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13440,8 +13452,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateBranchRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(3648, __c228, 0) as any as S.Schema<CreateBranchRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13459,8 +13471,8 @@ export const createBranchConfigChangeRequest: API.OperationMethod<
   CreateBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateBranchConfigChangeRequestRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<BranchConfigChangeRequest>,
+  input: __S(3872, __c242, 0) as any as S.Schema<CreateBranchConfigChangeRequestRequest>,
+  output: __S(3888, __c243, 0) as any as S.Schema<BranchConfigChangeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13478,8 +13490,8 @@ export const createBranchLogSignature: API.OperationMethod<
   CreateBranchLogSignatureError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateBranchLogSignatureRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<CreateBranchLogSignatureResponse>,
+  input: __S(4064, __c254, 0) as any as S.Schema<CreateBranchLogSignatureRequest>,
+  output: __S(4065, __c254, 1) as any as S.Schema<CreateBranchLogSignatureResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13493,8 +13505,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Database>,
+  input: __S(4240, __c265, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<Database>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13512,8 +13524,8 @@ export const createDatabasePostgresCidr: API.OperationMethod<
   CreateDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateDatabasePostgresCidrRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PostgresClusterCidr>,
+  input: __S(4400, __c275, 0) as any as S.Schema<CreateDatabasePostgresCidrRequest>,
+  output: __S(4416, __c276, 0) as any as S.Schema<PostgresClusterCidr>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13531,8 +13543,8 @@ export const createDedicatedReadReplica: API.OperationMethod<
   CreateDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateDedicatedReadReplicaRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: __S(4432, __c277, 0) as any as S.Schema<CreateDedicatedReadReplicaRequest>,
+  output: __S(4450, __c278, 2) as any as S.Schema<PostgresReadOnlyReplica>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13550,8 +13562,8 @@ export const createDeployRequest: API.OperationMethod<
   CreateDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CreateDeployRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(4496, __c281, 0) as any as S.Schema<CreateDeployRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13569,8 +13581,8 @@ export const createInsightsAgentRun: API.OperationMethod<
   CreateInsightsAgentRunError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateInsightsAgentRunRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<InsightsAgentRun>,
+  input: __S(4512, __c282, 0) as any as S.Schema<CreateInsightsAgentRunRequest>,
+  output: __S(4528, __c283, 0) as any as S.Schema<InsightsAgentRun>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13584,8 +13596,8 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<CreateKeyspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: __S(4544, __c284, 0) as any as S.Schema<CreateKeyspaceRequest>,
+  output: __S(4577, __c286, 1) as any as S.Schema<DatabaseBranchKeyspace>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13603,8 +13615,8 @@ export const createKeyspaceConfigChangeRequest: API.OperationMethod<
   CreateKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateKeyspaceConfigChangeRequestRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<KeyspaceConfigChangeRequest>,
+  input: __S(4592, __c287, 0) as any as S.Schema<CreateKeyspaceConfigChangeRequestRequest>,
+  output: __S(4608, __c288, 0) as any as S.Schema<KeyspaceConfigChangeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13622,8 +13634,8 @@ export const createMoveTablesWorkflow: API.OperationMethod<
   CreateMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateMoveTablesWorkflowRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateMoveTablesWorkflowResponse>,
+  input: __S(4624, __c289, 0) as any as S.Schema<CreateMoveTablesWorkflowRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<CreateMoveTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13637,8 +13649,8 @@ export const createOauthToken: API.OperationMethod<
   CreateOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateOauthTokenRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ServiceToken>,
+  input: __S(4640, __c290, 0) as any as S.Schema<CreateOauthTokenRequest>,
+  output: __S(4665, __c291, 9) as any as S.Schema<ServiceToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13656,8 +13668,8 @@ export const createOrganizationInvitation: API.OperationMethod<
   CreateOrganizationInvitationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateOrganizationInvitationRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<OrganizationInvitation>,
+  input: __S(4688, __c293, 0) as any as S.Schema<CreateOrganizationInvitationRequest>,
+  output: __S(4689, __c293, 1) as any as S.Schema<OrganizationInvitation>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13675,8 +13687,8 @@ export const createOrganizationSsoDomain: API.OperationMethod<
   CreateOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateOrganizationSsoDomainRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateOrganizationSsoDomainResponse>,
+  input: __S(4848, __c303, 0) as any as S.Schema<CreateOrganizationSsoDomainRequest>,
+  output: __S(2816, __c176, 0) as any as S.Schema<CreateOrganizationSsoDomainResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13695,8 +13707,8 @@ export const createOrganizationTeam: API.OperationMethod<
   CreateOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateOrganizationTeamRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OrganizationTeam>,
+  input: __S(4864, __c304, 0) as any as S.Schema<CreateOrganizationTeamRequest>,
+  output: __S(4896, __c306, 0) as any as S.Schema<OrganizationTeam>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13710,8 +13722,8 @@ export const createPassword: API.OperationMethod<
   CreatePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<CreatePasswordRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
+  input: __S(4912, __c307, 0) as any as S.Schema<CreatePasswordRequest>,
+  output: __S(4928, __c308, 0) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13729,8 +13741,8 @@ export const createQueryPatternsReport: API.OperationMethod<
   CreateQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateQueryPatternsReportRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<QueryPatternsDownload>,
+  input: __S(4944, __c309, 0) as any as S.Schema<CreateQueryPatternsReportRequest>,
+  output: __S(4960, __c310, 0) as any as S.Schema<QueryPatternsDownload>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13744,8 +13756,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<CreateRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(4976, __c311, 0) as any as S.Schema<CreateRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13759,8 +13771,8 @@ export const createRouter: API.OperationMethod<
   CreateRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateRouterRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<NekiRouter>,
+  input: __S(5040, __c315, 0) as any as S.Schema<CreateRouterRequest>,
+  output: __S(5072, __c317, 0) as any as S.Schema<NekiRouter>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13778,8 +13790,8 @@ export const createServiceToken: API.OperationMethod<
   CreateServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreateServiceTokenRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ServiceToken>,
+  input: __S(5088, __c318, 0) as any as S.Schema<CreateServiceTokenRequest>,
+  output: __S(4665, __c291, 9) as any as S.Schema<ServiceToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13793,8 +13805,8 @@ export const createShard: API.OperationMethod<
   CreateShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateShardRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<CreateShardResponse>,
+  input: __S(5104, __c319, 0) as any as S.Schema<CreateShardRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<CreateShardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13812,8 +13824,8 @@ export const createShardConfigurationProfile: API.OperationMethod<
   CreateShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateShardConfigurationProfileRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: __S(5136, __c321, 0) as any as S.Schema<CreateShardConfigurationProfileRequest>,
+  output: __S(5168, __c323, 0) as any as S.Schema<NekiShardConfigurationProfile>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13831,8 +13843,8 @@ export const createShardConfigurationProfileShard: API.OperationMethod<
   CreateShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateShardConfigurationProfileShardRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<NekiShard>,
+  input: __S(5184, __c324, 0) as any as S.Schema<CreateShardConfigurationProfileShardRequest>,
+  output: __S(5200, __c325, 0) as any as S.Schema<NekiShard>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13851,8 +13863,8 @@ export const createSwitchover: API.OperationMethod<
   CreateSwitchoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<CreateSwitchoverRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<PostgresSwitchover>,
+  input: __S(5248, __c328, 0) as any as S.Schema<CreateSwitchoverRequest>,
+  output: __S(5264, __c329, 0) as any as S.Schema<PostgresSwitchover>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13870,8 +13882,8 @@ export const createTrafficBudget: API.OperationMethod<
   CreateTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<CreateTrafficBudgetRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<TrafficBudget>,
+  input: __S(5280, __c330, 0) as any as S.Schema<CreateTrafficBudgetRequest>,
+  output: __S(5314, __c332, 2) as any as S.Schema<TrafficBudget>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13889,8 +13901,8 @@ export const createTrafficRule: API.OperationMethod<
   CreateTrafficRuleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreateTrafficRuleRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<TrafficRule>,
+  input: __S(5328, __c333, 0) as any as S.Schema<CreateTrafficRuleRequest>,
+  output: __S(5331, __c333, 3) as any as S.Schema<TrafficRule>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13904,8 +13916,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DatabaseWebhook>,
+  input: __S(5344, __c334, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(5360, __c335, 0) as any as S.Schema<DatabaseWebhook>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13919,8 +13931,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(5376, __c336, 0) as any as S.Schema<CreateWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13934,8 +13946,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteBackupResponse>,
+  input: __S(5392, __c337, 0) as any as S.Schema<DeleteBackupRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteBackupResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13953,8 +13965,8 @@ export const deleteBackupPolicy: API.OperationMethod<
   DeleteBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<DeleteBackupPolicyRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteBackupPolicyResponse>,
+  input: __S(5408, __c338, 0) as any as S.Schema<DeleteBackupPolicyRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteBackupPolicyResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13968,8 +13980,8 @@ export const deleteBouncer: API.OperationMethod<
   DeleteBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DeleteBouncerRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteBouncerResponse>,
+  input: __S(5424, __c339, 0) as any as S.Schema<DeleteBouncerRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteBouncerResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13983,8 +13995,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteBranchRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteBranchResponse>,
+  input: __S(5440, __c340, 0) as any as S.Schema<DeleteBranchRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteBranchResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -13998,8 +14010,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(5456, __c341, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14017,8 +14029,8 @@ export const deleteDatabasePostgresCidr: API.OperationMethod<
   DeleteDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<DeleteDatabasePostgresCidrRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteDatabasePostgresCidrResponse>,
+  input: __S(5488, __c343, 0) as any as S.Schema<DeleteDatabasePostgresCidrRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteDatabasePostgresCidrResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14036,8 +14048,8 @@ export const deleteDedicatedReadReplica: API.OperationMethod<
   DeleteDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteDedicatedReadReplicaRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteDedicatedReadReplicaResponse>,
+  input: __S(5504, __c344, 0) as any as S.Schema<DeleteDedicatedReadReplicaRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteDedicatedReadReplicaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14051,8 +14063,8 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteKeyspaceRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteKeyspaceResponse>,
+  input: __S(5520, __c345, 0) as any as S.Schema<DeleteKeyspaceRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteKeyspaceResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14066,8 +14078,8 @@ export const deleteOauthToken: API.OperationMethod<
   DeleteOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteOauthTokenRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteOauthTokenResponse>,
+  input: __S(5536, __c346, 0) as any as S.Schema<DeleteOauthTokenRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteOauthTokenResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14085,8 +14097,8 @@ export const deleteOrganizationBillingPaymentMethod: API.OperationMethod<
   DeleteOrganizationBillingPaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteOrganizationBillingPaymentMethodRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>,
+  input: __S(5552, __c347, 0) as any as S.Schema<DeleteOrganizationBillingPaymentMethodRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteOrganizationBillingPaymentMethodResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14104,8 +14116,8 @@ export const deleteOrganizationSsoDomain: API.OperationMethod<
   DeleteOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteOrganizationSsoDomainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteOrganizationSsoDomainResponse>,
+  input: __S(5568, __c348, 0) as any as S.Schema<DeleteOrganizationSsoDomainRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteOrganizationSsoDomainResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14124,8 +14136,8 @@ export const deleteOrganizationTeam: API.OperationMethod<
   DeleteOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DeleteOrganizationTeamRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteOrganizationTeamResponse>,
+  input: __S(5584, __c349, 0) as any as S.Schema<DeleteOrganizationTeamRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteOrganizationTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14139,8 +14151,8 @@ export const deletePassword: API.OperationMethod<
   DeletePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DeletePasswordRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeletePasswordResponse>,
+  input: __S(5600, __c350, 0) as any as S.Schema<DeletePasswordRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeletePasswordResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14158,8 +14170,8 @@ export const deleteQueryPatternsReport: API.OperationMethod<
   DeleteQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteQueryPatternsReportRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteQueryPatternsReportResponse>,
+  input: __S(5616, __c351, 0) as any as S.Schema<DeleteQueryPatternsReportRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteQueryPatternsReportResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14173,8 +14185,8 @@ export const deleteRole: API.OperationMethod<
   DeleteRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteRoleResponse>,
+  input: __S(5632, __c352, 0) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteRoleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14188,8 +14200,8 @@ export const deleteRouter: API.OperationMethod<
   DeleteRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeleteRouterRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteRouterResponse>,
+  input: __S(5680, __c355, 0) as any as S.Schema<DeleteRouterRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteRouterResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14207,8 +14219,8 @@ export const deleteServiceToken: API.OperationMethod<
   DeleteServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteServiceTokenRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteServiceTokenResponse>,
+  input: __S(5696, __c356, 0) as any as S.Schema<DeleteServiceTokenRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteServiceTokenResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14222,8 +14234,8 @@ export const deleteShard: API.OperationMethod<
   DeleteShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<DeleteShardRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteShardResponse>,
+  input: __S(5712, __c357, 0) as any as S.Schema<DeleteShardRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteShardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14241,8 +14253,8 @@ export const deleteShardConfigurationProfile: API.OperationMethod<
   DeleteShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeleteShardConfigurationProfileRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteShardConfigurationProfileResponse>,
+  input: __S(5728, __c358, 0) as any as S.Schema<DeleteShardConfigurationProfileRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteShardConfigurationProfileResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14260,8 +14272,8 @@ export const deleteShardConfigurationProfileShard: API.OperationMethod<
   DeleteShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteShardConfigurationProfileShardRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteShardConfigurationProfileShardResponse>,
+  input: __S(5744, __c359, 0) as any as S.Schema<DeleteShardConfigurationProfileShardRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteShardConfigurationProfileShardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14279,8 +14291,8 @@ export const deleteShardConfigurationProfileShards: API.OperationMethod<
   DeleteShardConfigurationProfileShardsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteShardConfigurationProfileShardsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>,
+  input: __S(5760, __c360, 0) as any as S.Schema<DeleteShardConfigurationProfileShardsRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<DeleteShardConfigurationProfileShardsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14298,8 +14310,8 @@ export const deleteTrafficBudget: API.OperationMethod<
   DeleteTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteTrafficBudgetRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteTrafficBudgetResponse>,
+  input: __S(5776, __c361, 0) as any as S.Schema<DeleteTrafficBudgetRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteTrafficBudgetResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14317,8 +14329,8 @@ export const deleteTrafficRule: API.OperationMethod<
   DeleteTrafficRuleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteTrafficRuleRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteTrafficRuleResponse>,
+  input: __S(5792, __c362, 0) as any as S.Schema<DeleteTrafficRuleRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteTrafficRuleResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14332,8 +14344,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(5808, __c363, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14347,8 +14359,8 @@ export const demoteBranch: API.OperationMethod<
   DemoteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DemoteBranchRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(5824, __c364, 0) as any as S.Schema<DemoteBranchRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14366,8 +14378,8 @@ export const deployCheckRequestStorage: API.OperationMethod<
   DeployCheckRequestStorageError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeployCheckRequestStorageRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<DeployCheckRequestStorageResponse>,
+  input: __S(5856, __c366, 0) as any as S.Schema<DeployCheckRequestStorageRequest>,
+  output: __S(5860, __c366, 4) as any as S.Schema<DeployCheckRequestStorageResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14385,8 +14397,8 @@ export const deployCloseRequest: API.OperationMethod<
   DeployCloseRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeployCloseRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(5872, __c367, 0) as any as S.Schema<DeployCloseRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14404,8 +14416,8 @@ export const deployCompleteErrored: API.OperationMethod<
   DeployCompleteErroredError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeployCompleteErroredRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(5888, __c368, 0) as any as S.Schema<DeployCompleteErroredRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14423,8 +14435,8 @@ export const deployCompleteGatedRequest: API.OperationMethod<
   DeployCompleteGatedRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeployCompleteGatedRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(5904, __c369, 0) as any as S.Schema<DeployCompleteGatedRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14442,8 +14454,8 @@ export const deployForceCutoverRequest: API.OperationMethod<
   DeployForceCutoverRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<DeployForceCutoverRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(5920, __c370, 0) as any as S.Schema<DeployForceCutoverRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14461,8 +14473,8 @@ export const deployQueueRequest: API.OperationMethod<
   DeployQueueRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeployQueueRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(5936, __c371, 0) as any as S.Schema<DeployQueueRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14480,8 +14492,8 @@ export const deployReviewRequest: API.OperationMethod<
   DeployReviewRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeployReviewRequestRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<DeployRequestReview>,
+  input: __S(5952, __c372, 0) as any as S.Schema<DeployReviewRequestRequest>,
+  output: __S(5953, __c372, 1) as any as S.Schema<DeployRequestReview>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14499,8 +14511,8 @@ export const disableOrganizationSso: API.OperationMethod<
   DisableOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DisableOrganizationSsoRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<OrganizationSsoSerializer>,
+  input: __S(5968, __c373, 0) as any as S.Schema<DisableOrganizationSsoRequest>,
+  output: __S(5986, __c374, 2) as any as S.Schema<OrganizationSsoSerializer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14518,8 +14530,8 @@ export const disableOrganizationSsoDirectory: API.OperationMethod<
   DisableOrganizationSsoDirectoryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DisableOrganizationSsoDirectoryRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<OrganizationSsoSerializer>,
+  input: __S(6000, __c375, 0) as any as S.Schema<DisableOrganizationSsoDirectoryRequest>,
+  output: __S(5986, __c374, 2) as any as S.Schema<OrganizationSsoSerializer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14537,8 +14549,8 @@ export const disableSafeMigrations: API.OperationMethod<
   DisableSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DisableSafeMigrationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(6016, __c376, 0) as any as S.Schema<DisableSafeMigrationsRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14556,8 +14568,8 @@ export const dismissSchemaRecommendation: API.OperationMethod<
   DismissSchemaRecommendationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DismissSchemaRecommendationRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<SchemaRecommendation>,
+  input: __S(6048, __c378, 0) as any as S.Schema<DismissSchemaRecommendationRequest>,
+  output: __S(6064, __c379, 0) as any as S.Schema<SchemaRecommendation>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14575,8 +14587,8 @@ export const enableOrganizationSso: API.OperationMethod<
   EnableOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<EnableOrganizationSsoRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<OrganizationSsoSerializer>,
+  input: __S(6096, __c381, 0) as any as S.Schema<EnableOrganizationSsoRequest>,
+  output: __S(5986, __c374, 2) as any as S.Schema<OrganizationSsoSerializer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14594,8 +14606,8 @@ export const enableOrganizationSsoDirectory: API.OperationMethod<
   EnableOrganizationSsoDirectoryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<EnableOrganizationSsoDirectoryRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<EnableOrganizationSsoDirectoryResponse>,
+  input: __S(6112, __c382, 0) as any as S.Schema<EnableOrganizationSsoDirectoryRequest>,
+  output: __S(2816, __c176, 0) as any as S.Schema<EnableOrganizationSsoDirectoryResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14613,8 +14625,8 @@ export const enableSafeMigrations: API.OperationMethod<
   EnableSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<EnableSafeMigrationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(6128, __c383, 0) as any as S.Schema<EnableSafeMigrationsRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14628,8 +14640,8 @@ export const getAdmin: API.OperationMethod<
   GetAdminError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetAdminRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<NekiAdmin>,
+  input: __S(6144, __c384, 0) as any as S.Schema<GetAdminRequest>,
+  output: __S(6160, __c385, 0) as any as S.Schema<NekiAdmin>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14647,8 +14659,8 @@ export const getAdminChangeRequest: API.OperationMethod<
   GetAdminChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetAdminChangeRequestRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetAdminChangeRequestResponse>,
+  input: __S(6176, __c386, 0) as any as S.Schema<GetAdminChangeRequestRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<GetAdminChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14662,8 +14674,8 @@ export const getBackup: API.OperationMethod<
   GetBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetBackupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Backup>,
+  input: __S(6192, __c387, 0) as any as S.Schema<GetBackupRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<Backup>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14677,8 +14689,8 @@ export const getBackupPolicy: API.OperationMethod<
   GetBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetBackupPolicyRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<BackupPolicy>,
+  input: __S(6208, __c388, 0) as any as S.Schema<GetBackupPolicyRequest>,
+  output: __S(3024, __c189, 0) as any as S.Schema<BackupPolicy>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14692,8 +14704,8 @@ export const getBouncer: API.OperationMethod<
   GetBouncerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetBouncerRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PostgresBouncer>,
+  input: __S(6224, __c389, 0) as any as S.Schema<GetBouncerRequest>,
+  output: __S(3458, __c216, 2) as any as S.Schema<PostgresBouncer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14707,8 +14719,8 @@ export const getBranch: API.OperationMethod<
   GetBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetBranchRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(6240, __c390, 0) as any as S.Schema<GetBranchRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14722,8 +14734,8 @@ export const getBranchAnomaly: API.OperationMethod<
   GetBranchAnomalyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetBranchAnomalyRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<Anomaly>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetBranchAnomalyRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<Anomaly>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14741,8 +14753,8 @@ export const getBranchChangeRequest: API.OperationMethod<
   GetBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetBranchChangeRequestRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<PostgresClusterResizeRequest>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetBranchChangeRequestRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<PostgresClusterResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14760,8 +14772,8 @@ export const getBranchConfigChangeRequest: API.OperationMethod<
   GetBranchConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<GetBranchConfigChangeRequestRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<BranchConfigChangeRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetBranchConfigChangeRequestRequest>,
+  output: __S(3888, __c243, 0) as any as S.Schema<BranchConfigChangeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14779,8 +14791,8 @@ export const getBranchKeyspaceTableMetrics: API.OperationMethod<
   GetBranchKeyspaceTableMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetBranchKeyspaceTableMetricsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetBranchKeyspaceTableMetricsRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<GetBranchKeyspaceTableMetricsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14799,8 +14811,8 @@ export const getBranchMetrics: API.OperationMethod<
   GetBranchMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetBranchMetricsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<MetricSeries>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetBranchMetricsRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<MetricSeries>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14814,8 +14826,8 @@ export const getBranchQuery: API.OperationMethod<
   GetBranchQueryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetBranchQueryRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<Query>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetBranchQueryRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<Query>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14835,8 +14847,8 @@ export const getBranchQueryError: API.PaginatedOperationMethod<
   PaginatedQueryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(225, __c28, 1) as any as S.Schema<GetBranchQueryErrorRequest>,
-    output: __S(228, __c28, 4) as any as S.Schema<PaginatedQuery>,
+    input: __S(144, __c9, 0) as any as S.Schema<GetBranchQueryErrorRequest>,
+    output: __S(162, __c10, 2) as any as S.Schema<PaginatedQuery>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -14863,8 +14875,8 @@ export const getBranchQueryMetrics: API.OperationMethod<
   GetBranchQueryMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetBranchQueryMetricsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<MetricSeries>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetBranchQueryMetricsRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<MetricSeries>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14883,8 +14895,8 @@ export const getBranchQueryTag: API.OperationMethod<
   GetBranchQueryTagError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<GetBranchQueryTagRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<QueryTag>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetBranchQueryTagRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<QueryTag>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14902,8 +14914,8 @@ export const getBranchResizeRequest: API.OperationMethod<
   GetBranchResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetBranchResizeRequestRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<MysqlClusterResizeRequest>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetBranchResizeRequestRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<MysqlClusterResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14917,8 +14929,8 @@ export const getBranchSchema: API.OperationMethod<
   GetBranchSchemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetBranchSchemaRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GetBranchSchemaResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetBranchSchemaRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<GetBranchSchemaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14936,8 +14948,8 @@ export const getBranchTableMetrics: API.OperationMethod<
   GetBranchTableMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetBranchTableMetricsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetBranchTableMetricsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetBranchTableMetricsRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<GetBranchTableMetricsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14956,8 +14968,8 @@ export const getBranchTagMetrics: API.OperationMethod<
   GetBranchTagMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<GetBranchTagMetricsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<MetricSeries>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetBranchTagMetricsRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<MetricSeries>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14971,8 +14983,8 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetCurrentUserRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<User>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetCurrentUserRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<User>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -14986,8 +14998,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Database>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<Database>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15005,8 +15017,8 @@ export const getDatabasePostgresCidr: API.OperationMethod<
   GetDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<GetDatabasePostgresCidrRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PostgresClusterCidr>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetDatabasePostgresCidrRequest>,
+  output: __S(4416, __c276, 0) as any as S.Schema<PostgresClusterCidr>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15024,8 +15036,8 @@ export const getDatabaseThrottler: API.OperationMethod<
   GetDatabaseThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<GetDatabaseThrottlerRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ThrottlerConfigurations>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetDatabaseThrottlerRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<ThrottlerConfigurations>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15039,8 +15051,8 @@ export const getDataTopology: API.OperationMethod<
   GetDataTopologyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetDataTopologyRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<NekiDataTopology>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetDataTopologyRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<NekiDataTopology>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15058,8 +15070,8 @@ export const getDedicatedReadReplica: API.OperationMethod<
   GetDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<GetDedicatedReadReplicaRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetDedicatedReadReplicaRequest>,
+  output: __S(4450, __c278, 2) as any as S.Schema<PostgresReadOnlyReplica>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15073,8 +15085,8 @@ export const getDefaultRole: API.OperationMethod<
   GetDefaultRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetDefaultRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetDefaultRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15092,8 +15104,8 @@ export const getDefaultShardConfigurationProfile: API.OperationMethod<
   GetDefaultShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<GetDefaultShardConfigurationProfileRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetDefaultShardConfigurationProfileResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetDefaultShardConfigurationProfileRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<GetDefaultShardConfigurationProfileResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15107,8 +15119,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<Deployment>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(567, __c35, 7) as any as S.Schema<Deployment>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15124,8 +15136,8 @@ export const getDeployQueue: API.PaginatedOperationMethod<
   PaginatedDeploymentDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(263, __c32, 7) as any as S.Schema<GetDeployQueueRequest>,
-    output: __S(270, __c33, 6) as any as S.Schema<PaginatedDeployment>,
+    input: __S(576, __c36, 0) as any as S.Schema<GetDeployQueueRequest>,
+    output: __S(583, __c36, 7) as any as S.Schema<PaginatedDeployment>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15147,8 +15159,8 @@ export const getDeployRequest: API.OperationMethod<
   GetDeployRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<GetDeployRequestRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetDeployRequestRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15166,8 +15178,8 @@ export const getDeployRequestThrottler: API.OperationMethod<
   GetDeployRequestThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetDeployRequestThrottlerRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ThrottlerConfigurations>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetDeployRequestThrottlerRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<ThrottlerConfigurations>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15185,8 +15197,8 @@ export const getInsightsAgentRun: API.OperationMethod<
   GetInsightsAgentRunError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetInsightsAgentRunRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<InsightsAgentRun>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetInsightsAgentRunRequest>,
+  output: __S(4528, __c283, 0) as any as S.Schema<InsightsAgentRun>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15205,8 +15217,8 @@ export const getInstantBranchMetrics: API.OperationMethod<
   GetInstantBranchMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetInstantBranchMetricsRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<GetInstantBranchMetricsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetInstantBranchMetricsRequest>,
+  output: __S(660, __c41, 4) as any as S.Schema<GetInstantBranchMetricsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15225,8 +15237,8 @@ export const getInstantTabletMetrics: API.OperationMethod<
   GetInstantTabletMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<GetInstantTabletMetricsRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<GetInstantTabletMetricsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetInstantTabletMetricsRequest>,
+  output: __S(660, __c41, 4) as any as S.Schema<GetInstantTabletMetricsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15240,8 +15252,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<Invoice>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<Invoice>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15261,8 +15273,8 @@ export const getInvoiceLineItems: API.PaginatedOperationMethod<
   PaginatedLineItemDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(283, __c35, 3) as any as S.Schema<GetInvoiceLineItemsRequest>,
-    output: __S(286, __c35, 6) as any as S.Schema<PaginatedLineItem>,
+    input: __S(720, __c45, 0) as any as S.Schema<GetInvoiceLineItemsRequest>,
+    output: __S(723, __c45, 3) as any as S.Schema<PaginatedLineItem>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15284,8 +15296,8 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetKeyspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetKeyspaceRequest>,
+  output: __S(4577, __c286, 1) as any as S.Schema<DatabaseBranchKeyspace>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15303,8 +15315,8 @@ export const getKeyspaceConfigChangeRequest: API.OperationMethod<
   GetKeyspaceConfigChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetKeyspaceConfigChangeRequestRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<KeyspaceConfigChangeRequest>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetKeyspaceConfigChangeRequestRequest>,
+  output: __S(4608, __c288, 0) as any as S.Schema<KeyspaceConfigChangeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15322,8 +15334,8 @@ export const getKeyspaceResizeRequest: API.OperationMethod<
   GetKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<GetKeyspaceResizeRequestRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<KeyspaceResizeRequest>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetKeyspaceResizeRequestRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<KeyspaceResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15341,8 +15353,8 @@ export const getKeyspaceRolloutStatus: API.OperationMethod<
   GetKeyspaceRolloutStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetKeyspaceRolloutStatusRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<GetKeyspaceRolloutStatusResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetKeyspaceRolloutStatusRequest>,
+  output: __S(819, __c51, 3) as any as S.Schema<GetKeyspaceRolloutStatusResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15360,8 +15372,8 @@ export const getKeyspaceVschema: API.OperationMethod<
   GetKeyspaceVschemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetKeyspaceVschemaRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<GetKeyspaceVschemaResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetKeyspaceVschemaRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<GetKeyspaceVschemaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15379,8 +15391,8 @@ export const getMaintenanceSchedule: API.OperationMethod<
   GetMaintenanceScheduleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetMaintenanceScheduleRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<BranchMaintenanceSchedule>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetMaintenanceScheduleRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<BranchMaintenanceSchedule>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15398,8 +15410,8 @@ export const getMoveTablesWorkflow: API.OperationMethod<
   GetMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<GetMoveTablesWorkflowRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<GetMoveTablesWorkflowResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetMoveTablesWorkflowRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<GetMoveTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15417,8 +15429,8 @@ export const getMoveTablesWorkflowStatus: API.OperationMethod<
   GetMoveTablesWorkflowStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetMoveTablesWorkflowStatusRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<GetMoveTablesWorkflowStatusResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetMoveTablesWorkflowStatusRequest>,
+  output: __S(916, __c57, 4) as any as S.Schema<GetMoveTablesWorkflowStatusResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15436,8 +15448,8 @@ export const getNekiChangeRequest: API.OperationMethod<
   GetNekiChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<GetNekiChangeRequestRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<NekiChangeRequest>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetNekiChangeRequestRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<NekiChangeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15455,8 +15467,8 @@ export const getOauthApplication: API.OperationMethod<
   GetOauthApplicationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetOauthApplicationRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<OauthApplication>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetOauthApplicationRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<OauthApplication>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15470,8 +15482,8 @@ export const getOauthToken: API.OperationMethod<
   GetOauthTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetOauthTokenRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ServiceToken>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetOauthTokenRequest>,
+  output: __S(4665, __c291, 9) as any as S.Schema<ServiceToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15485,8 +15497,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<Organization>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15504,8 +15516,8 @@ export const getOrganizationBillingPaymentMethod: API.OperationMethod<
   GetOrganizationBillingPaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetOrganizationBillingPaymentMethodRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<BillingPaymentMethod>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetOrganizationBillingPaymentMethodRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<BillingPaymentMethod>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15523,8 +15535,8 @@ export const getOrganizationMembership: API.OperationMethod<
   GetOrganizationMembershipError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetOrganizationMembershipRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<OrganizationMembership>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetOrganizationMembershipRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<OrganizationMembership>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15542,8 +15554,8 @@ export const getOrganizationSso: API.OperationMethod<
   GetOrganizationSsoError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetOrganizationSsoRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<OrganizationSsoSerializer>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetOrganizationSsoRequest>,
+  output: __S(5986, __c374, 2) as any as S.Schema<OrganizationSsoSerializer>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15561,8 +15573,8 @@ export const getOrganizationSsoDomain: API.OperationMethod<
   GetOrganizationSsoDomainError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetOrganizationSsoDomainRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<OrganizationDomain>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetOrganizationSsoDomainRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<OrganizationDomain>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15581,8 +15593,8 @@ export const getOrganizationTeam: API.OperationMethod<
   GetOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetOrganizationTeamRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OrganizationTeam>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetOrganizationTeamRequest>,
+  output: __S(4896, __c306, 0) as any as S.Schema<OrganizationTeam>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15601,8 +15613,8 @@ export const getOrganizationTeamMember: API.OperationMethod<
   GetOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<GetOrganizationTeamMemberRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<OrganizationTeamMembership>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetOrganizationTeamMemberRequest>,
+  output: __S(4754, __c297, 2) as any as S.Schema<OrganizationTeamMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15616,8 +15628,8 @@ export const getPassword: API.OperationMethod<
   GetPasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<GetPasswordRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<DatabaseBranchPassword>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetPasswordRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DatabaseBranchPassword>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15635,8 +15647,8 @@ export const getPaymentMethodSetup: API.OperationMethod<
   GetPaymentMethodSetupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<GetPaymentMethodSetupRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<BillingPaymentMethodSetup>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetPaymentMethodSetupRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<BillingPaymentMethodSetup>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15654,8 +15666,8 @@ export const getQueryPatternsReport: API.OperationMethod<
   GetQueryPatternsReportError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetQueryPatternsReportRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetQueryPatternsReportResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetQueryPatternsReportRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<GetQueryPatternsReportResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15673,8 +15685,8 @@ export const getQueryPatternsReportStatus: API.OperationMethod<
   GetQueryPatternsReportStatusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetQueryPatternsReportStatusRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<QueryPatternsDownload>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetQueryPatternsReportStatusRequest>,
+  output: __S(4960, __c310, 0) as any as S.Schema<QueryPatternsDownload>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15694,8 +15706,8 @@ export const getQueryStatistics: API.PaginatedOperationMethod<
   PaginatedQueryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(330, __c41, 2) as any as S.Schema<GetQueryStatisticsRequest>,
-    output: __S(228, __c28, 4) as any as S.Schema<PaginatedQuery>,
+    input: __S(1296, __c81, 0) as any as S.Schema<GetQueryStatisticsRequest>,
+    output: __S(162, __c10, 2) as any as S.Schema<PaginatedQuery>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -15722,8 +15734,8 @@ export const getQuerySummary: API.OperationMethod<
   GetQuerySummaryError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetQuerySummaryRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<QuerySummary>,
+  input: __S(1312, __c82, 0) as any as S.Schema<GetQuerySummaryRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<QuerySummary>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15737,8 +15749,8 @@ export const getRole: API.OperationMethod<
   GetRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<GetRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15752,8 +15764,8 @@ export const getRouter: API.OperationMethod<
   GetRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetRouterRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<NekiRouter>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetRouterRequest>,
+  output: __S(5072, __c317, 0) as any as S.Schema<NekiRouter>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15771,8 +15783,8 @@ export const getRouterChangeRequest: API.OperationMethod<
   GetRouterChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<GetRouterChangeRequestRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetRouterChangeRequestResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<GetRouterChangeRequestRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<GetRouterChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15790,8 +15802,8 @@ export const getSchemaRecommendation: API.OperationMethod<
   GetSchemaRecommendationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<GetSchemaRecommendationRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<SchemaRecommendation>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetSchemaRecommendationRequest>,
+  output: __S(6064, __c379, 0) as any as S.Schema<SchemaRecommendation>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15805,8 +15817,8 @@ export const getServiceToken: API.OperationMethod<
   GetServiceTokenError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<GetServiceTokenRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ServiceToken>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetServiceTokenRequest>,
+  output: __S(4665, __c291, 9) as any as S.Schema<ServiceToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15820,8 +15832,8 @@ export const getShard: API.OperationMethod<
   GetShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<GetShardRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<NekiShard>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetShardRequest>,
+  output: __S(5200, __c325, 0) as any as S.Schema<NekiShard>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15839,8 +15851,8 @@ export const getShardConfigurationProfile: API.OperationMethod<
   GetShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<GetShardConfigurationProfileRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetShardConfigurationProfileRequest>,
+  output: __S(5168, __c323, 0) as any as S.Schema<NekiShardConfigurationProfile>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15858,8 +15870,12 @@ export const getShardConfigurationProfileChangeRequest: API.OperationMethod<
   GetShardConfigurationProfileChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<GetShardConfigurationProfileChangeRequestRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetShardConfigurationProfileChangeRequestRequest>,
+  output: __S(
+    5664,
+    __c354,
+    0,
+  ) as any as S.Schema<GetShardConfigurationProfileChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15877,8 +15893,8 @@ export const getShardConfigurationProfileShard: API.OperationMethod<
   GetShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<GetShardConfigurationProfileShardRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<NekiShard>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetShardConfigurationProfileShardRequest>,
+  output: __S(5200, __c325, 0) as any as S.Schema<NekiShard>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15892,8 +15908,8 @@ export const getSidecar: API.OperationMethod<
   GetSidecarError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<GetSidecarRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<NekiSidecar>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetSidecarRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<NekiSidecar>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15911,8 +15927,8 @@ export const getSidecarChangeRequest: API.OperationMethod<
   GetSidecarChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetSidecarChangeRequestRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetSidecarChangeRequestResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetSidecarChangeRequestRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<GetSidecarChangeRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15926,8 +15942,8 @@ export const getSwitchover: API.OperationMethod<
   GetSwitchoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<GetSwitchoverRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<PostgresSwitchover>,
+  input: __S(1536, __c96, 0) as any as S.Schema<GetSwitchoverRequest>,
+  output: __S(5264, __c329, 0) as any as S.Schema<PostgresSwitchover>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15946,8 +15962,8 @@ export const getTabletMetrics: API.OperationMethod<
   GetTabletMetricsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetTabletMetricsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<MetricSeries>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetTabletMetricsRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<MetricSeries>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15961,8 +15977,8 @@ export const getTrafficBudget: API.OperationMethod<
   GetTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<GetTrafficBudgetRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<TrafficBudget>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetTrafficBudgetRequest>,
+  output: __S(5314, __c332, 2) as any as S.Schema<TrafficBudget>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15980,8 +15996,8 @@ export const getVtctldOperation: API.OperationMethod<
   GetVtctldOperationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<GetVtctldOperationRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<GetVtctldOperationResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<GetVtctldOperationRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<GetVtctldOperationResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -15995,8 +16011,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetWebhookRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DatabaseWebhook>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(5360, __c335, 0) as any as S.Schema<DatabaseWebhook>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16010,8 +16026,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(1632, __c102, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16027,8 +16043,8 @@ export const lintBranchSchema: API.PaginatedOperationMethod<
   PaginatedSchemaLintErrorDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(352, __c44, 0) as any as S.Schema<LintBranchSchemaRequest>,
-    output: __S(355, __c44, 3) as any as S.Schema<PaginatedSchemaLintError>,
+    input: __S(1648, __c103, 0) as any as S.Schema<LintBranchSchemaRequest>,
+    output: __S(1651, __c103, 3) as any as S.Schema<PaginatedSchemaLintError>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16054,8 +16070,8 @@ export const listAdminChangeRequests: API.OperationMethod<
   ListAdminChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListAdminChangeRequestsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListAdminChangeRequestsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListAdminChangeRequestsRequest>,
+  output: __S(1248, __c78, 0) as any as S.Schema<ListAdminChangeRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16073,8 +16089,8 @@ export const listAdminParameters: API.OperationMethod<
   ListAdminParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListAdminParametersRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ListAdminParametersResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListAdminParametersRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<ListAdminParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16092,8 +16108,8 @@ export const listAdminSizeSkus: API.OperationMethod<
   ListAdminSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListAdminSizeSkusRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<ListAdminSizeSkusResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListAdminSizeSkusRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<ListAdminSizeSkusResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16107,8 +16123,8 @@ export const listAuditLogs: API.OperationMethod<
   ListAuditLogsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<ListAuditLogsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<PaginatedAuditLogEvent>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListAuditLogsRequest>,
+  output: __S(1731, __c108, 3) as any as S.Schema<PaginatedAuditLogEvent>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16128,8 +16144,8 @@ export const listBackupPolicies: API.PaginatedOperationMethod<
   PaginatedBackupPolicyDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(368, __c46, 0) as any as S.Schema<ListBackupPoliciesRequest>,
-    output: __S(371, __c46, 3) as any as S.Schema<PaginatedBackupPolicy>,
+    input: __S(1744, __c109, 0) as any as S.Schema<ListBackupPoliciesRequest>,
+    output: __S(1746, __c109, 2) as any as S.Schema<PaginatedBackupPolicy>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16153,8 +16169,8 @@ export const listBackups: API.PaginatedOperationMethod<
   PaginatedBackupDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(372, __c46, 4) as any as S.Schema<ListBackupsRequest>,
-    output: __S(375, __c46, 7) as any as S.Schema<PaginatedBackup>,
+    input: __S(1776, __c111, 0) as any as S.Schema<ListBackupsRequest>,
+    output: __S(1779, __c111, 3) as any as S.Schema<PaginatedBackup>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16182,8 +16198,8 @@ export const listBouncerResizeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(376, __c47, 0) as any as S.Schema<ListBouncerResizeRequestsRequest>,
-    output: __S(379, __c47, 3) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
+    input: __S(1792, __c112, 0) as any as S.Schema<ListBouncerResizeRequestsRequest>,
+    output: __S(1810, __c113, 2) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16207,8 +16223,8 @@ export const listBouncers: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(380, __c47, 4) as any as S.Schema<ListBouncersRequest>,
-    output: __S(385, __c48, 1) as any as S.Schema<PaginatedPostgresBouncer>,
+    input: __S(1824, __c114, 0) as any as S.Schema<ListBouncersRequest>,
+    output: __S(1829, __c114, 5) as any as S.Schema<PaginatedPostgresBouncer>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16236,8 +16252,8 @@ export const listBranchAnomalies: API.PaginatedOperationMethod<
   PaginatedAnomalyDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(386, __c48, 2) as any as S.Schema<ListBranchAnomaliesRequest>,
-    output: __S(391, __c48, 7) as any as S.Schema<PaginatedAnomaly>,
+    input: __S(1856, __c116, 0) as any as S.Schema<ListBranchAnomaliesRequest>,
+    output: __S(1861, __c116, 5) as any as S.Schema<PaginatedAnomaly>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16265,8 +16281,8 @@ export const listBranchBouncerResizeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresBouncerResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(392, __c49, 0) as any as S.Schema<ListBranchBouncerResizeRequestsRequest>,
-    output: __S(379, __c47, 3) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
+    input: __S(1872, __c117, 0) as any as S.Schema<ListBranchBouncerResizeRequestsRequest>,
+    output: __S(1810, __c113, 2) as any as S.Schema<PaginatedPostgresBouncerResizeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16294,8 +16310,8 @@ export const listBranchChangeRequests: API.PaginatedOperationMethod<
   PaginatedPostgresClusterResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(393, __c49, 1) as any as S.Schema<ListBranchChangeRequestsRequest>,
-    output: __S(396, __c49, 4) as any as S.Schema<PaginatedPostgresClusterResizeRequest>,
+    input: __S(1888, __c118, 0) as any as S.Schema<ListBranchChangeRequestsRequest>,
+    output: __S(1891, __c118, 3) as any as S.Schema<PaginatedPostgresClusterResizeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16323,8 +16339,8 @@ export const listBranchConfigChangeRequests: API.PaginatedOperationMethod<
   PaginatedConfigChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(397, __c49, 5) as any as S.Schema<ListBranchConfigChangeRequestsRequest>,
-    output: __S(400, __c50, 0) as any as S.Schema<PaginatedConfigChangeRequest>,
+    input: __S(1904, __c119, 0) as any as S.Schema<ListBranchConfigChangeRequestsRequest>,
+    output: __S(1907, __c119, 3) as any as S.Schema<PaginatedConfigChangeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16348,8 +16364,8 @@ export const listBranches: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(401, __c50, 1) as any as S.Schema<ListBranchesRequest>,
-    output: __S(404, __c50, 4) as any as S.Schema<PaginatedDatabaseBranch>,
+    input: __S(1920, __c120, 0) as any as S.Schema<ListBranchesRequest>,
+    output: __S(1923, __c120, 3) as any as S.Schema<PaginatedDatabaseBranch>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16378,8 +16394,8 @@ export const listBranchQueries: API.PaginatedOperationMethod<
   PaginatedQuerySummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(405, __c50, 5) as any as S.Schema<ListBranchQueriesRequest>,
-    output: __S(408, __c51, 0) as any as S.Schema<PaginatedQuerySummary>,
+    input: __S(1936, __c121, 0) as any as S.Schema<ListBranchQueriesRequest>,
+    output: __S(1939, __c121, 3) as any as S.Schema<PaginatedQuerySummary>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16407,8 +16423,8 @@ export const listBranchQueryErrors: API.PaginatedOperationMethod<
   PaginatedErrorSummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(409, __c51, 1) as any as S.Schema<ListBranchQueryErrorsRequest>,
-    output: __S(412, __c51, 4) as any as S.Schema<PaginatedErrorSummary>,
+    input: __S(1952, __c122, 0) as any as S.Schema<ListBranchQueryErrorsRequest>,
+    output: __S(1955, __c122, 3) as any as S.Schema<PaginatedErrorSummary>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16437,8 +16453,8 @@ export const listBranchQueryTags: API.PaginatedOperationMethod<
   PaginatedQueryTagDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(413, __c51, 5) as any as S.Schema<ListBranchQueryTagsRequest>,
-    output: __S(418, __c52, 2) as any as S.Schema<PaginatedQueryTag>,
+    input: __S(1968, __c123, 0) as any as S.Schema<ListBranchQueryTagsRequest>,
+    output: __S(1973, __c123, 5) as any as S.Schema<PaginatedQueryTag>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16467,8 +16483,8 @@ export const listBranchQueryTagSummaries: API.PaginatedOperationMethod<
   PaginatedDimensionsQuerySummaryDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(419, __c52, 3) as any as S.Schema<ListBranchQueryTagSummariesRequest>,
-    output: __S(422, __c52, 6) as any as S.Schema<PaginatedDimensionsQuerySummary>,
+    input: __S(1984, __c124, 0) as any as S.Schema<ListBranchQueryTagSummariesRequest>,
+    output: __S(1987, __c124, 3) as any as S.Schema<PaginatedDimensionsQuerySummary>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16496,8 +16512,8 @@ export const listBranchResizeRequests: API.PaginatedOperationMethod<
   PaginatedMysqlClusterResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(423, __c52, 7) as any as S.Schema<ListBranchResizeRequestsRequest>,
-    output: __S(425, __c53, 1) as any as S.Schema<PaginatedMysqlClusterResizeRequest>,
+    input: __S(2000, __c125, 0) as any as S.Schema<ListBranchResizeRequestsRequest>,
+    output: __S(2002, __c125, 2) as any as S.Schema<PaginatedMysqlClusterResizeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16523,8 +16539,8 @@ export const listBranchVitessParameters: API.OperationMethod<
   ListBranchVitessParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<ListBranchVitessParametersRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<ListBranchVitessParametersResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListBranchVitessParametersRequest>,
+  output: __S(2038, __c127, 6) as any as S.Schema<ListBranchVitessParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16542,8 +16558,8 @@ export const listClusterSizeSkus: API.OperationMethod<
   ListClusterSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ListClusterSizeSkusRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<ListClusterSizeSkusResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<ListClusterSizeSkusRequest>,
+  output: __S(2051, __c128, 3) as any as S.Schema<ListClusterSizeSkusResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16563,8 +16579,8 @@ export const listDatabasePostgresCidrs: API.PaginatedOperationMethod<
   PaginatedPostgresClusterCidrDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(437, __c54, 5) as any as S.Schema<ListDatabasePostgresCidrsRequest>,
-    output: __S(440, __c55, 0) as any as S.Schema<PaginatedPostgresClusterCidr>,
+    input: __S(2064, __c129, 0) as any as S.Schema<ListDatabasePostgresCidrsRequest>,
+    output: __S(2067, __c129, 3) as any as S.Schema<PaginatedPostgresClusterCidr>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16592,8 +16608,8 @@ export const listDatabaseRegions: API.PaginatedOperationMethod<
   PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(441, __c55, 1) as any as S.Schema<ListDatabaseRegionsRequest>,
-    output: __S(443, __c55, 3) as any as S.Schema<PaginatedPlanetscaleRegion>,
+    input: __S(2080, __c130, 0) as any as S.Schema<ListDatabaseRegionsRequest>,
+    output: __S(2097, __c131, 1) as any as S.Schema<PaginatedPlanetscaleRegion>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16617,8 +16633,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   PaginatedDatabaseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(444, __c55, 4) as any as S.Schema<ListDatabasesRequest>,
-    output: __S(447, __c55, 7) as any as S.Schema<PaginatedDatabase>,
+    input: __S(2112, __c132, 0) as any as S.Schema<ListDatabasesRequest>,
+    output: __S(2115, __c132, 3) as any as S.Schema<PaginatedDatabase>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16646,8 +16662,8 @@ export const listDedicatedReadReplicaChangeRequests: API.PaginatedOperationMetho
   PaginatedPostgresReadOnlyReplicaChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(448, __c56, 0) as any as S.Schema<ListDedicatedReadReplicaChangeRequestsRequest>,
-    output: __S(451, __c56, 3) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequest>,
+    input: __S(2128, __c133, 0) as any as S.Schema<ListDedicatedReadReplicaChangeRequestsRequest>,
+    output: __S(2131, __c133, 3) as any as S.Schema<PaginatedPostgresReadOnlyReplicaChangeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16673,8 +16689,8 @@ export const listDedicatedReadReplicas: API.OperationMethod<
   ListDedicatedReadReplicasError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<ListDedicatedReadReplicasRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<ListDedicatedReadReplicasResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListDedicatedReadReplicasRequest>,
+  output: __S(2146, __c134, 2) as any as S.Schema<ListDedicatedReadReplicasResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16694,8 +16710,8 @@ export const listDeployOperations: API.PaginatedOperationMethod<
   PaginatedDeployOperationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(455, __c56, 7) as any as S.Schema<ListDeployOperationsRequest>,
-    output: __S(458, __c57, 2) as any as S.Schema<PaginatedDeployOperation>,
+    input: __S(2160, __c135, 0) as any as S.Schema<ListDeployOperationsRequest>,
+    output: __S(2163, __c135, 3) as any as S.Schema<PaginatedDeployOperation>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16723,8 +16739,8 @@ export const listDeployRequestReviews: API.PaginatedOperationMethod<
   PaginatedDeployRequestReviewDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(459, __c57, 3) as any as S.Schema<ListDeployRequestReviewsRequest>,
-    output: __S(462, __c57, 6) as any as S.Schema<PaginatedDeployRequestReview>,
+    input: __S(2176, __c136, 0) as any as S.Schema<ListDeployRequestReviewsRequest>,
+    output: __S(2179, __c136, 3) as any as S.Schema<PaginatedDeployRequestReview>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16752,8 +16768,8 @@ export const listDeployRequests: API.PaginatedOperationMethod<
   PaginatedDatabaseDeployRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(463, __c57, 7) as any as S.Schema<ListDeployRequestsRequest>,
-    output: __S(474, __c59, 2) as any as S.Schema<PaginatedDatabaseDeployRequest>,
+    input: __S(2192, __c137, 0) as any as S.Schema<ListDeployRequestsRequest>,
+    output: __S(2203, __c137, 11) as any as S.Schema<PaginatedDatabaseDeployRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16775,8 +16791,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<ListExtensionsRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<ListExtensionsResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(2245, __c140, 5) as any as S.Schema<ListExtensionsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16794,8 +16810,8 @@ export const listGeneratedQueryPatternsReports: API.OperationMethod<
   ListGeneratedQueryPatternsReportsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<ListGeneratedQueryPatternsReportsRequest>,
-  output: __S(485, __c60, 5) as any as S.Schema<PaginatedQueryPatternsDownload>,
+  input: __S(2272, __c142, 0) as any as S.Schema<ListGeneratedQueryPatternsReportsRequest>,
+  output: __S(2275, __c142, 3) as any as S.Schema<PaginatedQueryPatternsDownload>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16815,8 +16831,8 @@ export const listInsightsAgentRuns: API.PaginatedOperationMethod<
   PaginatedInsightsAgentRunDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(486, __c60, 6) as any as S.Schema<ListInsightsAgentRunsRequest>,
-    output: __S(489, __c61, 1) as any as S.Schema<PaginatedInsightsAgentRun>,
+    input: __S(2288, __c143, 0) as any as S.Schema<ListInsightsAgentRunsRequest>,
+    output: __S(2291, __c143, 3) as any as S.Schema<PaginatedInsightsAgentRun>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16842,8 +16858,8 @@ export const listInsightsAgentSchedules: API.OperationMethod<
   ListInsightsAgentSchedulesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<ListInsightsAgentSchedulesRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<ListInsightsAgentSchedulesResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<ListInsightsAgentSchedulesRequest>,
+  output: __S(2306, __c144, 2) as any as S.Schema<ListInsightsAgentSchedulesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -16859,8 +16875,8 @@ export const listInvoices: API.PaginatedOperationMethod<
   PaginatedInvoiceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(494, __c61, 6) as any as S.Schema<ListInvoicesRequest>,
-    output: __S(496, __c62, 0) as any as S.Schema<PaginatedInvoice>,
+    input: __S(2336, __c146, 0) as any as S.Schema<ListInvoicesRequest>,
+    output: __S(2338, __c146, 2) as any as S.Schema<PaginatedInvoice>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16888,8 +16904,8 @@ export const listKeyspaceConfigChangeRequests: API.PaginatedOperationMethod<
   PaginatedKeyspaceConfigChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(497, __c62, 1) as any as S.Schema<ListKeyspaceConfigChangeRequestsRequest>,
-    output: __S(500, __c62, 4) as any as S.Schema<PaginatedKeyspaceConfigChangeRequest>,
+    input: __S(2352, __c147, 0) as any as S.Schema<ListKeyspaceConfigChangeRequestsRequest>,
+    output: __S(2355, __c147, 3) as any as S.Schema<PaginatedKeyspaceConfigChangeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16917,8 +16933,8 @@ export const listKeyspaceResizeRequests: API.PaginatedOperationMethod<
   PaginatedKeyspaceResizeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(501, __c62, 5) as any as S.Schema<ListKeyspaceResizeRequestsRequest>,
-    output: __S(504, __c63, 0) as any as S.Schema<PaginatedKeyspaceResizeRequest>,
+    input: __S(2368, __c148, 0) as any as S.Schema<ListKeyspaceResizeRequestsRequest>,
+    output: __S(2371, __c148, 3) as any as S.Schema<PaginatedKeyspaceResizeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16942,8 +16958,8 @@ export const listKeyspaces: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchKeyspaceDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(505, __c63, 1) as any as S.Schema<ListKeyspacesRequest>,
-    output: __S(509, __c63, 5) as any as S.Schema<PaginatedDatabaseBranchKeyspace>,
+    input: __S(2384, __c149, 0) as any as S.Schema<ListKeyspacesRequest>,
+    output: __S(2388, __c149, 4) as any as S.Schema<PaginatedDatabaseBranchKeyspace>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -16971,8 +16987,8 @@ export const listMaintenanceSchedules: API.PaginatedOperationMethod<
   PaginatedBranchMaintenanceScheduleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(510, __c63, 6) as any as S.Schema<ListMaintenanceSchedulesRequest>,
-    output: __S(512, __c64, 0) as any as S.Schema<PaginatedBranchMaintenanceSchedule>,
+    input: __S(2400, __c150, 0) as any as S.Schema<ListMaintenanceSchedulesRequest>,
+    output: __S(2402, __c150, 2) as any as S.Schema<PaginatedBranchMaintenanceSchedule>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17000,8 +17016,8 @@ export const listMaintenanceWindows: API.PaginatedOperationMethod<
   PaginatedBranchMaintenanceWindowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(513, __c64, 1) as any as S.Schema<ListMaintenanceWindowsRequest>,
-    output: __S(516, __c64, 4) as any as S.Schema<PaginatedBranchMaintenanceWindow>,
+    input: __S(2416, __c151, 0) as any as S.Schema<ListMaintenanceWindowsRequest>,
+    output: __S(2419, __c151, 3) as any as S.Schema<PaginatedBranchMaintenanceWindow>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17027,8 +17043,8 @@ export const listMoveTablesWorkflows: API.OperationMethod<
   ListMoveTablesWorkflowsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<ListMoveTablesWorkflowsRequest>,
-  output: __S(519, __c64, 7) as any as S.Schema<ListMoveTablesWorkflowsResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<ListMoveTablesWorkflowsRequest>,
+  output: __S(2450, __c153, 2) as any as S.Schema<ListMoveTablesWorkflowsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17048,8 +17064,8 @@ export const listNekiChangeRequests: API.PaginatedOperationMethod<
   PaginatedNekiChangeRequestDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(520, __c65, 0) as any as S.Schema<ListNekiChangeRequestsRequest>,
-    output: __S(523, __c65, 3) as any as S.Schema<PaginatedNekiChangeRequest>,
+    input: __S(2464, __c154, 0) as any as S.Schema<ListNekiChangeRequestsRequest>,
+    output: __S(2467, __c154, 3) as any as S.Schema<PaginatedNekiChangeRequest>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17077,8 +17093,8 @@ export const listOauthApplications: API.PaginatedOperationMethod<
   PaginatedOauthApplicationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(524, __c65, 4) as any as S.Schema<ListOauthApplicationsRequest>,
-    output: __S(527, __c65, 7) as any as S.Schema<PaginatedOauthApplication>,
+    input: __S(2480, __c155, 0) as any as S.Schema<ListOauthApplicationsRequest>,
+    output: __S(2483, __c155, 3) as any as S.Schema<PaginatedOauthApplication>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17102,8 +17118,8 @@ export const listOauthTokens: API.PaginatedOperationMethod<
   PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(528, __c66, 0) as any as S.Schema<ListOauthTokensRequest>,
-    output: __S(540, __c67, 4) as any as S.Schema<PaginatedServiceToken>,
+    input: __S(2496, __c156, 0) as any as S.Schema<ListOauthTokensRequest>,
+    output: __S(2523, __c157, 11) as any as S.Schema<PaginatedServiceToken>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17131,8 +17147,8 @@ export const listOrganizationInvitations: API.PaginatedOperationMethod<
   PaginatedOrganizationInvitationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(541, __c67, 5) as any as S.Schema<ListOrganizationInvitationsRequest>,
-    output: __S(544, __c68, 0) as any as S.Schema<PaginatedOrganizationInvitation>,
+    input: __S(2528, __c158, 0) as any as S.Schema<ListOrganizationInvitationsRequest>,
+    output: __S(2531, __c158, 3) as any as S.Schema<PaginatedOrganizationInvitation>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17160,8 +17176,8 @@ export const listOrganizationMembers: API.PaginatedOperationMethod<
   PaginatedOrganizationMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(545, __c68, 1) as any as S.Schema<ListOrganizationMembersRequest>,
-    output: __S(548, __c68, 4) as any as S.Schema<PaginatedOrganizationMembership>,
+    input: __S(2544, __c159, 0) as any as S.Schema<ListOrganizationMembersRequest>,
+    output: __S(2547, __c159, 3) as any as S.Schema<PaginatedOrganizationMembership>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17189,8 +17205,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   PaginatedOrganizationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(549, __c68, 5) as any as S.Schema<ListOrganizationsRequest>,
-    output: __S(552, __c69, 0) as any as S.Schema<PaginatedOrganization>,
+    input: __S(2560, __c160, 0) as any as S.Schema<ListOrganizationsRequest>,
+    output: __S(2563, __c160, 3) as any as S.Schema<PaginatedOrganization>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17216,8 +17232,8 @@ export const listOrganizationSsoDomains: API.OperationMethod<
   ListOrganizationSsoDomainsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(553, __c69, 1) as any as S.Schema<ListOrganizationSsoDomainsRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<ListOrganizationSsoDomainsResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<ListOrganizationSsoDomainsRequest>,
+  output: __S(2578, __c161, 2) as any as S.Schema<ListOrganizationSsoDomainsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17238,8 +17254,8 @@ export const listOrganizationTeamMembers: API.PaginatedOperationMethod<
   PaginatedOrganizationTeamMembershipDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(556, __c69, 4) as any as S.Schema<ListOrganizationTeamMembersRequest>,
-    output: __S(562, __c70, 2) as any as S.Schema<PaginatedOrganizationTeamMembership>,
+    input: __S(2592, __c162, 0) as any as S.Schema<ListOrganizationTeamMembersRequest>,
+    output: __S(2598, __c162, 6) as any as S.Schema<PaginatedOrganizationTeamMembership>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17268,8 +17284,8 @@ export const listOrganizationTeams: API.PaginatedOperationMethod<
   PaginatedOrganizationTeamDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(563, __c70, 3) as any as S.Schema<ListOrganizationTeamsRequest>,
-    output: __S(566, __c70, 6) as any as S.Schema<PaginatedOrganizationTeam>,
+    input: __S(2608, __c163, 0) as any as S.Schema<ListOrganizationTeamsRequest>,
+    output: __S(2611, __c163, 3) as any as S.Schema<PaginatedOrganizationTeam>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17291,8 +17307,8 @@ export const listParameters: API.OperationMethod<
   ListParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(567, __c70, 7) as any as S.Schema<ListParametersRequest>,
-  output: __S(570, __c71, 2) as any as S.Schema<ListParametersResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<ListParametersRequest>,
+  output: __S(2643, __c165, 3) as any as S.Schema<ListParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17308,8 +17324,8 @@ export const listPasswords: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchPasswordDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(571, __c71, 3) as any as S.Schema<ListPasswordsRequest>,
-    output: __S(574, __c71, 6) as any as S.Schema<PaginatedDatabaseBranchPassword>,
+    input: __S(2656, __c166, 0) as any as S.Schema<ListPasswordsRequest>,
+    output: __S(2659, __c166, 3) as any as S.Schema<PaginatedDatabaseBranchPassword>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17335,8 +17351,8 @@ export const listPostgresVersions: API.OperationMethod<
   ListPostgresVersionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<ListPostgresVersionsRequest>,
-  output: __S(578, __c72, 2) as any as S.Schema<ListPostgresVersionsResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<ListPostgresVersionsRequest>,
+  output: __S(2675, __c167, 3) as any as S.Schema<ListPostgresVersionsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17356,8 +17372,8 @@ export const listPublicRegions: API.PaginatedOperationMethod<
   PaginatedPublicPlanetscaleRegionSerializerDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(579, __c72, 3) as any as S.Schema<ListPublicRegionsRequest>,
-    output: __S(582, __c72, 6) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializer>,
+    input: __S(2688, __c168, 0) as any as S.Schema<ListPublicRegionsRequest>,
+    output: __S(2691, __c168, 3) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializer>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17385,8 +17401,8 @@ export const listReadOnlyRegions: API.PaginatedOperationMethod<
   PaginatedDatabaseBranchReadOnlyRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(583, __c72, 7) as any as S.Schema<ListReadOnlyRegionsRequest>,
-    output: __S(586, __c73, 2) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegion>,
+    input: __S(2704, __c169, 0) as any as S.Schema<ListReadOnlyRegionsRequest>,
+    output: __S(2707, __c169, 3) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegion>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17414,8 +17430,8 @@ export const listRegionsForOrganization: API.PaginatedOperationMethod<
   PaginatedPlanetscaleRegionDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(587, __c73, 3) as any as S.Schema<ListRegionsForOrganizationRequest>,
-    output: __S(443, __c55, 3) as any as S.Schema<PaginatedPlanetscaleRegion>,
+    input: __S(2720, __c170, 0) as any as S.Schema<ListRegionsForOrganizationRequest>,
+    output: __S(2097, __c131, 1) as any as S.Schema<PaginatedPlanetscaleRegion>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17439,8 +17455,8 @@ export const listRoles: API.PaginatedOperationMethod<
   PaginatedPostgresRoleDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(588, __c73, 4) as any as S.Schema<ListRolesRequest>,
-    output: __S(591, __c73, 7) as any as S.Schema<PaginatedPostgresRole>,
+    input: __S(2736, __c171, 0) as any as S.Schema<ListRolesRequest>,
+    output: __S(2739, __c171, 3) as any as S.Schema<PaginatedPostgresRole>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17466,8 +17482,8 @@ export const listRouterChangeRequests: API.OperationMethod<
   ListRouterChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<ListRouterChangeRequestsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListRouterChangeRequestsResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<ListRouterChangeRequestsRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<ListRouterChangeRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17485,8 +17501,8 @@ export const listRouterParameters: API.OperationMethod<
   ListRouterParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<ListRouterParametersRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ListRouterParametersResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<ListRouterParametersRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<ListRouterParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17500,8 +17516,8 @@ export const listRouters: API.OperationMethod<
   ListRoutersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(594, __c74, 2) as any as S.Schema<ListRoutersRequest>,
-  output: __S(596, __c74, 4) as any as S.Schema<ListRoutersResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<ListRoutersRequest>,
+  output: __S(2786, __c174, 2) as any as S.Schema<ListRoutersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17519,8 +17535,8 @@ export const listRouterSizeSkus: API.OperationMethod<
   ListRouterSizeSkusError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<ListRouterSizeSkusRequest>,
-  output: __S(599, __c74, 7) as any as S.Schema<ListRouterSizeSkusResponse>,
+  input: __S(2832, __c177, 0) as any as S.Schema<ListRouterSizeSkusRequest>,
+  output: __S(2834, __c177, 2) as any as S.Schema<ListRouterSizeSkusResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17540,8 +17556,8 @@ export const listSchemaRecommendations: API.PaginatedOperationMethod<
   PaginatedSchemaRecommendationDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(600, __c75, 0) as any as S.Schema<ListSchemaRecommendationsRequest>,
-    output: __S(603, __c75, 3) as any as S.Schema<PaginatedSchemaRecommendation>,
+    input: __S(2848, __c178, 0) as any as S.Schema<ListSchemaRecommendationsRequest>,
+    output: __S(2851, __c178, 3) as any as S.Schema<PaginatedSchemaRecommendation>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17569,8 +17585,8 @@ export const listServiceTokens: API.PaginatedOperationMethod<
   PaginatedServiceTokenDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(604, __c75, 4) as any as S.Schema<ListServiceTokensRequest>,
-    output: __S(540, __c67, 4) as any as S.Schema<PaginatedServiceToken>,
+    input: __S(2864, __c179, 0) as any as S.Schema<ListServiceTokensRequest>,
+    output: __S(2523, __c157, 11) as any as S.Schema<PaginatedServiceToken>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17596,8 +17612,16 @@ export const listShardConfigurationProfileChangeRequests: API.OperationMethod<
   ListShardConfigurationProfileChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<ListShardConfigurationProfileChangeRequestsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>,
+  input: __S(
+    2880,
+    __c180,
+    0,
+  ) as any as S.Schema<ListShardConfigurationProfileChangeRequestsRequest>,
+  output: __S(
+    5664,
+    __c354,
+    0,
+  ) as any as S.Schema<ListShardConfigurationProfileChangeRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17615,8 +17639,8 @@ export const listShardConfigurationProfileExtensions: API.OperationMethod<
   ListShardConfigurationProfileExtensionsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<ListShardConfigurationProfileExtensionsRequest>,
-  output: __S(611, __c76, 3) as any as S.Schema<ListShardConfigurationProfileExtensionsResponse>,
+  input: __S(2896, __c181, 0) as any as S.Schema<ListShardConfigurationProfileExtensionsRequest>,
+  output: __S(2901, __c181, 5) as any as S.Schema<ListShardConfigurationProfileExtensionsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17634,8 +17658,8 @@ export const listShardConfigurationProfileParameters: API.OperationMethod<
   ListShardConfigurationProfileParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(612, __c76, 4) as any as S.Schema<ListShardConfigurationProfileParametersRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ListShardConfigurationProfileParametersResponse>,
+  input: __S(2912, __c182, 0) as any as S.Schema<ListShardConfigurationProfileParametersRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<ListShardConfigurationProfileParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17653,8 +17677,8 @@ export const listShardConfigurationProfiles: API.OperationMethod<
   ListShardConfigurationProfilesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(613, __c76, 5) as any as S.Schema<ListShardConfigurationProfilesRequest>,
-  output: __S(615, __c76, 7) as any as S.Schema<ListShardConfigurationProfilesResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<ListShardConfigurationProfilesRequest>,
+  output: __S(2930, __c183, 2) as any as S.Schema<ListShardConfigurationProfilesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17674,8 +17698,8 @@ export const listShardConfigurationProfileShards: API.PaginatedOperationMethod<
   PaginatedNekiShardDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(616, __c77, 0) as any as S.Schema<ListShardConfigurationProfileShardsRequest>,
-    output: __S(619, __c77, 3) as any as S.Schema<PaginatedNekiShard>,
+    input: __S(2944, __c184, 0) as any as S.Schema<ListShardConfigurationProfileShardsRequest>,
+    output: __S(2962, __c185, 2) as any as S.Schema<PaginatedNekiShard>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17699,8 +17723,8 @@ export const listShards: API.PaginatedOperationMethod<
   PaginatedNekiShardDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(620, __c77, 4) as any as S.Schema<ListShardsRequest>,
-    output: __S(619, __c77, 3) as any as S.Schema<PaginatedNekiShard>,
+    input: __S(2976, __c186, 0) as any as S.Schema<ListShardsRequest>,
+    output: __S(2962, __c185, 2) as any as S.Schema<PaginatedNekiShard>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17726,8 +17750,8 @@ export const listSidecarChangeRequests: API.OperationMethod<
   ListSidecarChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(621, __c77, 5) as any as S.Schema<ListSidecarChangeRequestsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListSidecarChangeRequestsResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<ListSidecarChangeRequestsRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<ListSidecarChangeRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17745,8 +17769,8 @@ export const listSidecarParameters: API.OperationMethod<
   ListSidecarParametersError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(622, __c77, 6) as any as S.Schema<ListSidecarParametersRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<ListSidecarParametersResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<ListSidecarParametersRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<ListSidecarParametersResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17760,8 +17784,8 @@ export const listSidecars: API.OperationMethod<
   ListSidecarsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(623, __c77, 7) as any as S.Schema<ListSidecarsRequest>,
-  output: __S(625, __c78, 1) as any as S.Schema<ListSidecarsResponse>,
+  input: __S(3088, __c193, 0) as any as S.Schema<ListSidecarsRequest>,
+  output: __S(3090, __c193, 2) as any as S.Schema<ListSidecarsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17777,8 +17801,8 @@ export const listSwitchovers: API.PaginatedOperationMethod<
   PaginatedPostgresSwitchoverDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(626, __c78, 2) as any as S.Schema<ListSwitchoversRequest>,
-    output: __S(629, __c78, 5) as any as S.Schema<PaginatedPostgresSwitchover>,
+    input: __S(3104, __c194, 0) as any as S.Schema<ListSwitchoversRequest>,
+    output: __S(3107, __c194, 3) as any as S.Schema<PaginatedPostgresSwitchover>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17806,8 +17830,8 @@ export const listTrafficBudgets: API.PaginatedOperationMethod<
   PaginatedTrafficBudgetDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(630, __c78, 6) as any as S.Schema<ListTrafficBudgetsRequest>,
-    output: __S(635, __c79, 3) as any as S.Schema<PaginatedTrafficBudget>,
+    input: __S(3120, __c195, 0) as any as S.Schema<ListTrafficBudgetsRequest>,
+    output: __S(3140, __c196, 4) as any as S.Schema<PaginatedTrafficBudget>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17835,8 +17859,8 @@ export const listTrafficBudgetsForQuery: API.PaginatedOperationMethod<
   PaginatedTrafficBudgetDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(636, __c79, 4) as any as S.Schema<ListTrafficBudgetsForQueryRequest>,
-    output: __S(635, __c79, 3) as any as S.Schema<PaginatedTrafficBudget>,
+    input: __S(3152, __c197, 0) as any as S.Schema<ListTrafficBudgetsForQueryRequest>,
+    output: __S(3140, __c196, 4) as any as S.Schema<PaginatedTrafficBudget>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17860,8 +17884,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   PaginatedDatabaseWebhookDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(637, __c79, 5) as any as S.Schema<ListWebhooksRequest>,
-    output: __S(640, __c80, 0) as any as S.Schema<PaginatedDatabaseWebhook>,
+    input: __S(3168, __c198, 0) as any as S.Schema<ListWebhooksRequest>,
+    output: __S(3171, __c198, 3) as any as S.Schema<PaginatedDatabaseWebhook>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17885,8 +17909,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   PaginatedWorkflowDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(641, __c80, 1) as any as S.Schema<ListWorkflowsRequest>,
-    output: __S(644, __c80, 4) as any as S.Schema<PaginatedWorkflow>,
+    input: __S(3184, __c199, 0) as any as S.Schema<ListWorkflowsRequest>,
+    output: __S(3187, __c199, 3) as any as S.Schema<PaginatedWorkflow>,
     errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
     protocol: PlanetScaleProtocol,
     retry: Retry.Retry,
@@ -17912,8 +17936,8 @@ export const moveCompleteTablesWorkflow: API.OperationMethod<
   MoveCompleteTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(645, __c80, 5) as any as S.Schema<MoveCompleteTablesWorkflowRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MoveCompleteTablesWorkflowResponse>,
+  input: __S(3200, __c200, 0) as any as S.Schema<MoveCompleteTablesWorkflowRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<MoveCompleteTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17931,8 +17955,8 @@ export const moveReverseTrafficTablesWorkflow: API.OperationMethod<
   MoveReverseTrafficTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646, __c80, 6) as any as S.Schema<MoveReverseTrafficTablesWorkflowRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>,
+  input: __S(3216, __c201, 0) as any as S.Schema<MoveReverseTrafficTablesWorkflowRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<MoveReverseTrafficTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17950,8 +17974,8 @@ export const moveSwitchTrafficTablesWorkflow: API.OperationMethod<
   MoveSwitchTrafficTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(647, __c80, 7) as any as S.Schema<MoveSwitchTrafficTablesWorkflowRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>,
+  input: __S(3232, __c202, 0) as any as S.Schema<MoveSwitchTrafficTablesWorkflowRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<MoveSwitchTrafficTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17965,8 +17989,8 @@ export const promoteBranch: API.OperationMethod<
   PromoteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(648, __c81, 0) as any as S.Schema<PromoteBranchRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(3264, __c204, 0) as any as S.Schema<PromoteBranchRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -17984,8 +18008,8 @@ export const reassignRoleObjects: API.OperationMethod<
   ReassignRoleObjectsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<ReassignRoleObjectsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ReassignRoleObjectsResponse>,
+  input: __S(3280, __c205, 0) as any as S.Schema<ReassignRoleObjectsRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<ReassignRoleObjectsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18003,8 +18027,8 @@ export const removeOrganizationMember: API.OperationMethod<
   RemoveOrganizationMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<RemoveOrganizationMemberRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RemoveOrganizationMemberResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<RemoveOrganizationMemberRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<RemoveOrganizationMemberResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18023,8 +18047,8 @@ export const removeOrganizationTeamMember: API.OperationMethod<
   RemoveOrganizationTeamMemberError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(651, __c81, 3) as any as S.Schema<RemoveOrganizationTeamMemberRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RemoveOrganizationTeamMemberResponse>,
+  input: __S(3312, __c207, 0) as any as S.Schema<RemoveOrganizationTeamMemberRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<RemoveOrganizationTeamMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18038,8 +18062,8 @@ export const renewPassword: API.OperationMethod<
   RenewPasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652, __c81, 4) as any as S.Schema<RenewPasswordRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
+  input: __S(3328, __c208, 0) as any as S.Schema<RenewPasswordRequest>,
+  output: __S(4928, __c308, 0) as any as S.Schema<DatabaseBranchPasswordWithSecret>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18053,8 +18077,8 @@ export const renewRole: API.OperationMethod<
   RenewRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<RenewRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(3344, __c209, 0) as any as S.Schema<RenewRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18068,8 +18092,8 @@ export const resetDefaultRole: API.OperationMethod<
   ResetDefaultRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<ResetDefaultRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(3360, __c210, 0) as any as S.Schema<ResetDefaultRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18083,8 +18107,8 @@ export const resetRole: API.OperationMethod<
   ResetRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(655, __c81, 7) as any as S.Schema<ResetRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(3376, __c211, 0) as any as S.Schema<ResetRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18098,8 +18122,8 @@ export const retryWorkflow: API.OperationMethod<
   RetryWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c82, 0) as any as S.Schema<RetryWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(3392, __c212, 0) as any as S.Schema<RetryWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18117,8 +18141,8 @@ export const runBranchMaintenance: API.OperationMethod<
   RunBranchMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c82, 1) as any as S.Schema<RunBranchMaintenanceRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<RunBranchMaintenanceResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<RunBranchMaintenanceRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<RunBranchMaintenanceResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18136,8 +18160,8 @@ export const runShardConfigurationProfileMaintenance: API.OperationMethod<
   RunShardConfigurationProfileMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658, __c82, 2) as any as S.Schema<RunShardConfigurationProfileMaintenanceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>,
+  input: __S(3472, __c217, 0) as any as S.Schema<RunShardConfigurationProfileMaintenanceRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<RunShardConfigurationProfileMaintenanceResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18155,8 +18179,8 @@ export const runShardConfigurationProfilesMaintenance: API.OperationMethod<
   RunShardConfigurationProfilesMaintenanceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(659, __c82, 3) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>,
+  input: __S(3488, __c218, 0) as any as S.Schema<RunShardConfigurationProfilesMaintenanceRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<RunShardConfigurationProfilesMaintenanceResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18174,8 +18198,8 @@ export const setDefaultShardConfigurationProfile: API.OperationMethod<
   SetDefaultShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(660, __c82, 4) as any as S.Schema<SetDefaultShardConfigurationProfileRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: __S(3504, __c219, 0) as any as S.Schema<SetDefaultShardConfigurationProfileRequest>,
+  output: __S(5168, __c323, 0) as any as S.Schema<NekiShardConfigurationProfile>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18189,8 +18213,8 @@ export const skipRevertPeriod: API.OperationMethod<
   SkipRevertPeriodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661, __c82, 5) as any as S.Schema<SkipRevertPeriodRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(3520, __c220, 0) as any as S.Schema<SkipRevertPeriodRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18208,8 +18232,8 @@ export const startMoveTablesWorkflow: API.OperationMethod<
   StartMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<StartMoveTablesWorkflowRequest>,
-  output: __S(664, __c83, 0) as any as S.Schema<StartMoveTablesWorkflowResponse>,
+  input: __S(3536, __c221, 0) as any as S.Schema<StartMoveTablesWorkflowRequest>,
+  output: __S(3553, __c222, 1) as any as S.Schema<StartMoveTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18227,8 +18251,8 @@ export const stopMoveTablesWorkflow: API.OperationMethod<
   StopMoveTablesWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(665, __c83, 1) as any as S.Schema<StopMoveTablesWorkflowRequest>,
-  output: __S(664, __c83, 0) as any as S.Schema<StopMoveTablesWorkflowResponse>,
+  input: __S(3568, __c223, 0) as any as S.Schema<StopMoveTablesWorkflowRequest>,
+  output: __S(3553, __c222, 1) as any as S.Schema<StopMoveTablesWorkflowResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18246,8 +18270,8 @@ export const submitBranchConfigChangeRequests: API.OperationMethod<
   SubmitBranchConfigChangeRequestsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(666, __c83, 2) as any as S.Schema<SubmitBranchConfigChangeRequestsRequest>,
-  output: __S(667, __c83, 3) as any as S.Schema<SubmitBranchConfigChangeRequestsResponse>,
+  input: __S(3584, __c224, 0) as any as S.Schema<SubmitBranchConfigChangeRequestsRequest>,
+  output: __S(3585, __c224, 1) as any as S.Schema<SubmitBranchConfigChangeRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18261,8 +18285,8 @@ export const testWebhook: API.OperationMethod<
   TestWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<TestWebhookRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<TestWebhookResponse>,
+  input: __S(3600, __c225, 0) as any as S.Schema<TestWebhookRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<TestWebhookResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18276,8 +18300,8 @@ export const updateAdmin: API.OperationMethod<
   UpdateAdminError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(669, __c83, 5) as any as S.Schema<UpdateAdminRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<NekiAdmin>,
+  input: __S(3616, __c226, 0) as any as S.Schema<UpdateAdminRequest>,
+  output: __S(6160, __c385, 0) as any as S.Schema<NekiAdmin>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18291,8 +18315,8 @@ export const updateAutoApply: API.OperationMethod<
   UpdateAutoApplyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(670, __c83, 6) as any as S.Schema<UpdateAutoApplyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(3632, __c227, 0) as any as S.Schema<UpdateAutoApplyRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18310,8 +18334,8 @@ export const updateAutoDeleteBranch: API.OperationMethod<
   UpdateAutoDeleteBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<UpdateAutoDeleteBranchRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DatabaseDeployRequest>,
+  input: __S(3712, __c232, 0) as any as S.Schema<UpdateAutoDeleteBranchRequest>,
+  output: __S(325, __c20, 5) as any as S.Schema<DatabaseDeployRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18325,8 +18349,8 @@ export const updateBackup: API.OperationMethod<
   UpdateBackupError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<UpdateBackupRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<Backup>,
+  input: __S(3728, __c233, 0) as any as S.Schema<UpdateBackupRequest>,
+  output: __S(3056, __c191, 0) as any as S.Schema<Backup>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18344,8 +18368,8 @@ export const updateBackupPolicy: API.OperationMethod<
   UpdateBackupPolicyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c84, 1) as any as S.Schema<UpdateBackupPolicyRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<BackupPolicy>,
+  input: __S(3744, __c234, 0) as any as S.Schema<UpdateBackupPolicyRequest>,
+  output: __S(3024, __c189, 0) as any as S.Schema<BackupPolicy>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18363,8 +18387,8 @@ export const updateBouncerResizeRequest: API.OperationMethod<
   UpdateBouncerResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(674, __c84, 2) as any as S.Schema<UpdateBouncerResizeRequestRequest>,
-  output: __S(675, __c84, 3) as any as S.Schema<PostgresBouncerResizeRequest>,
+  input: __S(3760, __c235, 0) as any as S.Schema<UpdateBouncerResizeRequestRequest>,
+  output: __S(3761, __c235, 1) as any as S.Schema<PostgresBouncerResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18378,8 +18402,8 @@ export const updateBranch: API.OperationMethod<
   UpdateBranchError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(676, __c84, 4) as any as S.Schema<UpdateBranchRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(3776, __c236, 0) as any as S.Schema<UpdateBranchRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18397,8 +18421,8 @@ export const updateBranchChangeRequest: API.OperationMethod<
   UpdateBranchChangeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<UpdateBranchChangeRequestRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<PostgresClusterResizeRequest>,
+  input: __S(3793, __c237, 1) as any as S.Schema<UpdateBranchChangeRequestRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<PostgresClusterResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18416,8 +18440,8 @@ export const updateBranchClusterConfig: API.OperationMethod<
   UpdateBranchClusterConfigError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(679, __c84, 7) as any as S.Schema<UpdateBranchClusterConfigRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateBranchClusterConfigResponse>,
+  input: __S(3808, __c238, 0) as any as S.Schema<UpdateBranchClusterConfigRequest>,
+  output: __S(5664, __c354, 0) as any as S.Schema<UpdateBranchClusterConfigResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18435,8 +18459,8 @@ export const updateBranchResizeRequest: API.OperationMethod<
   UpdateBranchResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<UpdateBranchResizeRequestRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<MysqlClusterResizeRequest>,
+  input: __S(3824, __c239, 0) as any as S.Schema<UpdateBranchResizeRequestRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<MysqlClusterResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18454,8 +18478,8 @@ export const updateDatabasePostgresCidr: API.OperationMethod<
   UpdateDatabasePostgresCidrError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<UpdateDatabasePostgresCidrRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PostgresClusterCidr>,
+  input: __S(3840, __c240, 0) as any as S.Schema<UpdateDatabasePostgresCidrRequest>,
+  output: __S(4416, __c276, 0) as any as S.Schema<PostgresClusterCidr>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18473,8 +18497,8 @@ export const updateDatabaseSettings: API.OperationMethod<
   UpdateDatabaseSettingsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682, __c85, 2) as any as S.Schema<UpdateDatabaseSettingsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Database>,
+  input: __S(3856, __c241, 0) as any as S.Schema<UpdateDatabaseSettingsRequest>,
+  output: __S(4256, __c266, 0) as any as S.Schema<Database>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18492,8 +18516,8 @@ export const updateDatabaseThrottler: API.OperationMethod<
   UpdateDatabaseThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683, __c85, 3) as any as S.Schema<UpdateDatabaseThrottlerRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ThrottlerConfigurations>,
+  input: __S(3904, __c244, 0) as any as S.Schema<UpdateDatabaseThrottlerRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<ThrottlerConfigurations>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18511,8 +18535,8 @@ export const updateDataTopology: API.OperationMethod<
   UpdateDataTopologyError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(684, __c85, 4) as any as S.Schema<UpdateDataTopologyRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<NekiDataTopology>,
+  input: __S(3920, __c245, 0) as any as S.Schema<UpdateDataTopologyRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<NekiDataTopology>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18530,8 +18554,8 @@ export const updateDedicatedReadReplica: API.OperationMethod<
   UpdateDedicatedReadReplicaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685, __c85, 5) as any as S.Schema<UpdateDedicatedReadReplicaRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PostgresReadOnlyReplica>,
+  input: __S(3936, __c246, 0) as any as S.Schema<UpdateDedicatedReadReplicaRequest>,
+  output: __S(4450, __c278, 2) as any as S.Schema<PostgresReadOnlyReplica>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18549,8 +18573,8 @@ export const updateDeployRequestThrottler: API.OperationMethod<
   UpdateDeployRequestThrottlerError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<UpdateDeployRequestThrottlerRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ThrottlerConfigurations>,
+  input: __S(3952, __c247, 0) as any as S.Schema<UpdateDeployRequestThrottlerRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<ThrottlerConfigurations>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18568,8 +18592,8 @@ export const updateInsightsAgentSchedule: API.OperationMethod<
   UpdateInsightsAgentScheduleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(687, __c85, 7) as any as S.Schema<UpdateInsightsAgentScheduleRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<InsightsAgentSchedule>,
+  input: __S(3968, __c248, 0) as any as S.Schema<UpdateInsightsAgentScheduleRequest>,
+  output: __S(2320, __c145, 0) as any as S.Schema<InsightsAgentSchedule>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18583,8 +18607,8 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(691, __c86, 3) as any as S.Schema<UpdateKeyspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DatabaseBranchKeyspace>,
+  input: __S(3987, __c249, 3) as any as S.Schema<UpdateKeyspaceRequest>,
+  output: __S(4577, __c286, 1) as any as S.Schema<DatabaseBranchKeyspace>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18602,8 +18626,8 @@ export const updateKeyspaceResizeRequest: API.OperationMethod<
   UpdateKeyspaceResizeRequestError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692, __c86, 4) as any as S.Schema<UpdateKeyspaceResizeRequestRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<KeyspaceResizeRequest>,
+  input: __S(4000, __c250, 0) as any as S.Schema<UpdateKeyspaceResizeRequestRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<KeyspaceResizeRequest>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18621,8 +18645,8 @@ export const updateKeyspaceVschema: API.OperationMethod<
   UpdateKeyspaceVschemaError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<UpdateKeyspaceVschemaRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<UpdateKeyspaceVschemaResponse>,
+  input: __S(4016, __c251, 0) as any as S.Schema<UpdateKeyspaceVschemaRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<UpdateKeyspaceVschemaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18640,8 +18664,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<Organization>,
+  input: __S(4032, __c252, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18659,8 +18683,8 @@ export const updateOrganizationMembership: API.OperationMethod<
   UpdateOrganizationMembershipError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695, __c86, 7) as any as S.Schema<UpdateOrganizationMembershipRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<OrganizationMembership>,
+  input: __S(4048, __c253, 0) as any as S.Schema<UpdateOrganizationMembershipRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<OrganizationMembership>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18679,8 +18703,8 @@ export const updateOrganizationTeam: API.OperationMethod<
   UpdateOrganizationTeamError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<UpdateOrganizationTeamRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<OrganizationTeam>,
+  input: __S(4080, __c255, 0) as any as S.Schema<UpdateOrganizationTeamRequest>,
+  output: __S(4896, __c306, 0) as any as S.Schema<OrganizationTeam>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18694,8 +18718,8 @@ export const updatePassword: API.OperationMethod<
   UpdatePasswordError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697, __c87, 1) as any as S.Schema<UpdatePasswordRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<DatabaseBranchPassword>,
+  input: __S(4096, __c256, 0) as any as S.Schema<UpdatePasswordRequest>,
+  output: __S(1184, __c74, 0) as any as S.Schema<DatabaseBranchPassword>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18713,8 +18737,8 @@ export const updatePaymentMethod: API.OperationMethod<
   UpdatePaymentMethodError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698, __c87, 2) as any as S.Schema<UpdatePaymentMethodRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<BillingPaymentMethodSetup>,
+  input: __S(4112, __c257, 0) as any as S.Schema<UpdatePaymentMethodRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<BillingPaymentMethodSetup>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18728,8 +18752,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(699, __c87, 3) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<PostgresRole>,
+  input: __S(4128, __c258, 0) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(5008, __c313, 0) as any as S.Schema<PostgresRole>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18743,8 +18767,8 @@ export const updateRouter: API.OperationMethod<
   UpdateRouterError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700, __c87, 4) as any as S.Schema<UpdateRouterRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<NekiRouter>,
+  input: __S(4144, __c259, 0) as any as S.Schema<UpdateRouterRequest>,
+  output: __S(5072, __c317, 0) as any as S.Schema<NekiRouter>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18762,8 +18786,8 @@ export const updateSafeMigrations: API.OperationMethod<
   UpdateSafeMigrationsError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701, __c87, 5) as any as S.Schema<UpdateSafeMigrationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DatabaseBranch>,
+  input: __S(4160, __c260, 0) as any as S.Schema<UpdateSafeMigrationsRequest>,
+  output: __S(3696, __c231, 0) as any as S.Schema<DatabaseBranch>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18777,8 +18801,8 @@ export const updateShard: API.OperationMethod<
   UpdateShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702, __c87, 6) as any as S.Schema<UpdateShardRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<UpdateShardResponse>,
+  input: __S(4176, __c261, 0) as any as S.Schema<UpdateShardRequest>,
+  output: __S(5120, __c320, 0) as any as S.Schema<UpdateShardResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18796,8 +18820,8 @@ export const updateShardConfigurationProfile: API.OperationMethod<
   UpdateShardConfigurationProfileError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<UpdateShardConfigurationProfileRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<NekiShardConfigurationProfile>,
+  input: __S(4192, __c262, 0) as any as S.Schema<UpdateShardConfigurationProfileRequest>,
+  output: __S(5168, __c323, 0) as any as S.Schema<NekiShardConfigurationProfile>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18815,8 +18839,8 @@ export const updateShardConfigurationProfileShard: API.OperationMethod<
   UpdateShardConfigurationProfileShardError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<UpdateShardConfigurationProfileShardRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<NekiShard>,
+  input: __S(4208, __c263, 0) as any as S.Schema<UpdateShardConfigurationProfileShardRequest>,
+  output: __S(5200, __c325, 0) as any as S.Schema<NekiShard>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18830,8 +18854,8 @@ export const updateSidecar: API.OperationMethod<
   UpdateSidecarError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<UpdateSidecarRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<NekiSidecar>,
+  input: __S(4224, __c264, 0) as any as S.Schema<UpdateSidecarRequest>,
+  output: __S(1504, __c94, 0) as any as S.Schema<NekiSidecar>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18849,8 +18873,8 @@ export const updateTrafficBudget: API.OperationMethod<
   UpdateTrafficBudgetError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706, __c88, 2) as any as S.Schema<UpdateTrafficBudgetRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<TrafficBudget>,
+  input: __S(4272, __c267, 0) as any as S.Schema<UpdateTrafficBudgetRequest>,
+  output: __S(5314, __c332, 2) as any as S.Schema<TrafficBudget>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18864,8 +18888,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(707, __c88, 3) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DatabaseWebhook>,
+  input: __S(4288, __c268, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(5360, __c335, 0) as any as S.Schema<DatabaseWebhook>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18879,8 +18903,8 @@ export const verifyWorkflow: API.OperationMethod<
   VerifyWorkflowError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(708, __c88, 4) as any as S.Schema<VerifyWorkflowRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4304, __c269, 0) as any as S.Schema<VerifyWorkflowRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18894,8 +18918,8 @@ export const workflowCutover: API.OperationMethod<
   WorkflowCutoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(709, __c88, 5) as any as S.Schema<WorkflowCutoverRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4320, __c270, 0) as any as S.Schema<WorkflowCutoverRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18913,8 +18937,8 @@ export const workflowReverseCutover: API.OperationMethod<
   WorkflowReverseCutoverError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(710, __c88, 6) as any as S.Schema<WorkflowReverseCutoverRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4336, __c271, 0) as any as S.Schema<WorkflowReverseCutoverRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18932,8 +18956,8 @@ export const workflowReverseTraffic: API.OperationMethod<
   WorkflowReverseTrafficError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(711, __c88, 7) as any as S.Schema<WorkflowReverseTrafficRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4352, __c272, 0) as any as S.Schema<WorkflowReverseTrafficRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18951,8 +18975,8 @@ export const workflowSwitchPrimaries: API.OperationMethod<
   WorkflowSwitchPrimariesError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<WorkflowSwitchPrimariesRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4368, __c273, 0) as any as S.Schema<WorkflowSwitchPrimariesRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -18970,8 +18994,8 @@ export const workflowSwitchReplicas: API.OperationMethod<
   WorkflowSwitchReplicasError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(713, __c89, 1) as any as S.Schema<WorkflowSwitchReplicasRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Workflow>,
+  input: __S(4384, __c274, 0) as any as S.Schema<WorkflowSwitchReplicasRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<Workflow>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -19620,266 +19644,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
-          team: S.String.pipe(T.Label()),
-          user_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/teams/{team}/members",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AddOrganizationTeamMemberRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          deleted_at: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipUserDefaultOrganization",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          display_name: S.String,
-          name: S.NullOr(S.String),
-          email: S.String,
-          avatar_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1, __c0, 1))),
-          sso: S.optional(S.NullOr(S.Boolean)),
-          managed: S.optional(S.NullOr(S.Boolean)),
-          directory_managed: S.optional(S.NullOr(S.Boolean)),
-          email_verified: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipUser",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          display_name: S.String,
-          avatar_url: S.String,
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipActor",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          provider: S.String,
-          enabled: S.Boolean,
-          public_ip_addresses: __S(5, __c0, 5),
-          display_name: S.String,
-          location: S.String,
-          slug: S.String,
-          current_default: S.Boolean,
-          mysql_supported: S.Boolean,
-          postgresql_supported: S.Boolean,
-          neki_supported: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipPasswordsItemRegion",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-          production: S.Boolean,
-          mysql_edge_address: S.String,
-          private_edge_connectivity: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipPasswordsItemDatabaseBranch",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4, __c0, 4)),
-          created_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          last_used_at: S.NullOr(S.String),
-          expired: S.Boolean,
-          direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5, __c0, 5),
-          ttl_seconds: S.NullOr(S.Number),
-          access_host_url: S.String,
-          access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5, __c0, 5),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          region: __S(6, __c0, 6),
-          username: S.String,
-          plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-          replica: S.Boolean,
-          read_only_region: S.Boolean,
-          renewable: S.Boolean,
-          database_branch: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembershipPasswordsItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          user: __S(2, __c0, 2),
-          actor: __S(3, __c0, 3),
-          created_at: S.String,
-          updated_at: S.String,
-          passwords: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamMembership",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          shard_ids: __S(4, __c0, 4),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AssignShardConfigurationProfileShardsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          error: S.optional(S.NullOr(__S(12, __c1, 4))),
-        }),
-      ).annotate({ identifier: "NekiShardAssignment" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "AssignShardConfigurationProfileShardsResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          count: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards/bulk",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkCreateShardConfigurationProfileShardsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.Number,
-          shard_ids: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "BulkCreateShardConfigurationProfileShardsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin/changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelAdminChangeRequestRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelAdminChangeRequestResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          bouncer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelBouncerResizeRequestRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelBranchChangeRequestRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
@@ -19893,2807 +19657,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelBranchConfigChangeRequestRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelDeployRequestRequest",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          state: S.String,
-          keyspace_name: S.String,
-          table_name: S.String,
-          operation_name: S.String,
-          eta_seconds: S.NullOr(S.Number),
-          progress_percentage: S.NullOr(S.Number),
-          deploy_error_docs_url: S.NullOr(S.String),
-          ddl_statement: S.String,
-          syntax_highlighted_ddl: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          throttled_at: S.NullOr(S.String),
-          can_drop_data: S.Boolean,
-          table_locked: S.Boolean,
-          table_recently_used: S.Boolean,
-          table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5, __c0, 5)),
-          deploy_errors: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeployRequestDeploymentDeployOperationsItem",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          shard: S.String,
-          state: S.String,
-          progress_percentage: S.Number,
-          eta_seconds: S.Number,
-        }),
-      ).annotate({
-        identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          deploy_errors: S.String,
-          ddl_statement: S.String,
-          eta_seconds: S.Number,
-          keyspace_name: S.String,
-          operation_name: S.String,
-          progress_percentage: S.Number,
-          state: S.String,
-          syntax_highlighted_ddl: S.String,
-          table_name: S.String,
-          table_recently_used_at: S.NullOr(S.String),
-          throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5, __c0, 5),
-          shard_count: S.Number,
-          shard_names: __S(5, __c0, 5),
-          can_drop_data: S.Boolean,
-          table_recently_used: S.Boolean,
-          sharded: S.Boolean,
-          operations: __S(28, __c3, 4),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItem",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          auto_cutover: S.Boolean,
-          auto_delete_branch: S.Boolean,
-          created_at: S.String,
-          cutover_at: S.NullOr(S.String),
-          cutover_expiring: S.Boolean,
-          deploy_check_errors: S.optional(S.NullOr(S.String)),
-          finished_at: S.NullOr(S.String),
-          force_cutover_requested_at: S.NullOr(S.String),
-          queued_at: S.NullOr(S.String),
-          ready_to_cutover_at: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          state: S.String,
-          submitted_at: S.NullOr(S.String),
-          updated_at: S.String,
-          into_branch: S.String,
-          deploy_request_number: S.Number,
-          deployable: S.Boolean,
-          preceding_deployments: __S(24, __c3, 0),
-          deploy_operations: __S(26, __c3, 2),
-          deploy_operation_summaries: __S(30, __c3, 6),
-          lint_errors: __S(24, __c3, 0),
-          sequential_diff_dependencies: __S(32, __c4, 0),
-          lookup_vindex_operations: __S(24, __c3, 0),
-          throttler_configurations: S.optional(S.NullOr(__S(12, __c1, 4))),
-          deployment_revert_request: S.NullOr(__S(12, __c1, 4)),
-          actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cutover_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          schema_last_updated_at: S.NullOr(S.String),
-          table_locked: S.Boolean,
-          locked_table_name: S.optional(S.NullOr(S.String)),
-          instant_ddl: S.Boolean,
-          instant_ddl_eligible: S.Boolean,
-          queue_paused: S.Boolean,
-          queue_pause_reason: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseDeployRequestDeployment",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          number: S.Number,
-          actor: __S(3, __c0, 3),
-          closed_by: S.optional(S.NullOr(__S(3, __c0, 3))),
-          branch: S.String,
-          branch_id: S.String,
-          branch_deleted: S.Boolean,
-          branch_deleted_by: S.optional(S.NullOr(__S(3, __c0, 3))),
-          branch_deleted_at: S.NullOr(S.String),
-          into_branch: S.String,
-          into_branch_sharded: S.Boolean,
-          into_branch_shard_count: S.Number,
-          into_branch_keyspace_count: S.Number,
-          approved: S.Boolean,
-          state: S.String,
-          deployment_state: S.String,
-          deployment: __S(33, __c4, 1),
-          num_comments: S.Number,
-          html_url: S.String,
-          notes: S.String,
-          html_body: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          closed_at: S.NullOr(S.String),
-          deployed_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseDeployRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          keyspace: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/config-changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelKeyspaceConfigChangeRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          keyspace: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/resizes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelKeyspaceResizeRequestRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          workflow: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/move-tables/workflows/{workflow}/cancel",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelMoveTablesWorkflowRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/neki-changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelNekiChangeRequestRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelNekiChangeRequestResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/invitations/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationInvitationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          router: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers/{router}/changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelRouterChangeRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelShardConfigurationProfileChangeRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          sidecar: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/sidecars/{sidecar}/changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelSidecarChangeRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/workflows/{number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CancelWorkflowRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          number: S.Number,
-          state: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          cancelled_at: S.NullOr(S.String),
-          reversed_at: S.NullOr(S.String),
-          retried_at: S.NullOr(S.String),
-          data_copy_completed_at: S.NullOr(S.String),
-          cutover_at: S.NullOr(S.String),
-          replicas_switched: S.Boolean,
-          primaries_switched: S.Boolean,
-          switch_replicas_at: S.NullOr(S.String),
-          switch_primaries_at: S.NullOr(S.String),
-          verify_data_at: S.NullOr(S.String),
-          workflow_type: S.String,
-          workflow_subtype: S.String,
-          defer_secondary_keys: S.Boolean,
-          on_ddl: S.String,
-          workflow_errors: S.String,
-          may_retry: S.Boolean,
-          may_restart: S.Boolean,
-          verified_data_stale: S.Boolean,
-          sequence_tables_applied: S.Boolean,
-          actor: __S(3, __c0, 3),
-          verify_data_by: __S(3, __c0, 3),
-          reversed_by: __S(3, __c0, 3),
-          switch_replicas_by: __S(3, __c0, 3),
-          switch_primaries_by: __S(3, __c0, 3),
-          cancelled_by: __S(3, __c0, 3),
-          completed_by: __S(3, __c0, 3),
-          retried_by: __S(3, __c0, 3),
-          cutover_by: __S(3, __c0, 3),
-          reversed_cutover_by: __S(3, __c0, 3),
-          branch: __S(1, __c0, 1),
-          source_keyspace: __S(1, __c0, 1),
-          target_keyspace: __S(1, __c0, 1),
-          global_keyspace: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "Workflow" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/revert",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CompleteRevertRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization}/databases/{database}/workflows/{number}/complete",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CompleteWorkflowRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/configure", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ConfigureOrganizationSsoRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          portal_url: S.String,
-        }),
-      ).annotate({
-        identifier: "ConfigureOrganizationSsoResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          retention_unit: S.optional(S.String),
-          retention_value: S.optional(S.Number),
-          emergency: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateBackupRequest" });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          display_name: S.String,
-          name: S.String,
-          target: S.String,
-          retention_value: S.Number,
-          retention_unit: S.String,
-          frequency_value: S.Number,
-          frequency_unit: S.String,
-          schedule_time: S.optional(S.NullOr(S.String)),
-          schedule_day: S.NullOr(S.Number),
-          schedule_week: S.NullOr(S.Number),
-          created_at: S.String,
-          updated_at: S.String,
-          last_ran_at: S.NullOr(S.String),
-          next_run_at: S.NullOr(S.String),
-          required: S.Boolean,
-        }),
-      ).annotate({ identifier: "BackupBackupPolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          linted_at: S.NullOr(S.String),
-          url: S.String,
-        }),
-      ).annotate({ identifier: "BackupSchemaSnapshot" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          state: S.String,
-          size: S.Number,
-          estimated_storage_cost: S.Number,
-          created_at: S.String,
-          updated_at: S.String,
-          started_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          deleted_at: S.NullOr(S.String),
-          pvc_size: S.Number,
-          uncompressed_size: S.Number,
-          protected: S.Boolean,
-          required: S.Boolean,
-          restored_branches: __S(51, __c6, 3),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          backup_policy: S.optional(S.NullOr(__S(52, __c6, 4))),
-          schema_snapshot: S.optional(S.NullOr(__S(53, __c6, 5))),
-          database_branch: S.optional(S.NullOr(__S(1, __c0, 1))),
-        }),
-      ).annotate({ identifier: "Backup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          target: S.optional(S.String),
-          retention_value: S.optional(S.Number),
-          retention_unit: S.optional(S.String),
-          frequency_value: S.optional(S.Number),
-          frequency_unit: S.optional(S.String),
-          schedule_time: S.optional(S.String),
-          schedule_day: S.optional(S.Number),
-          schedule_week: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/backup-policies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBackupPolicyRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          target: S.optional(S.String),
-          bouncer_size: S.optional(S.String),
-          replicas_per_cell: S.optional(S.Number),
-          dedicated_read_replica_id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateBouncerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          display_name: S.String,
-          cpu: S.String,
-          ram: S.Number,
-          sort_order: S.Number,
-        }),
-      ).annotate({ identifier: "PostgresBouncerSku" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          namespace: S.String,
-          name: S.String,
-          display_name: S.String,
-          category: S.String,
-          description: S.String,
-          immutable: S.Boolean,
-          parameter_type: S.String,
-          default_value: S.String,
-          value: S.String,
-          required: S.Boolean,
-          created_at: S.String,
-          updated_at: S.String,
-          restart: S.Boolean,
-          max: S.Number,
-          min: S.Number,
-          url: S.String,
-          options: __S(4, __c0, 4),
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "PostgresBouncerParametersItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          sku: __S(57, __c7, 1),
-          target: S.String,
-          replicas_per_cell: S.Number,
-          created_at: S.String,
-          updated_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
-          branch: __S(1, __c0, 1),
-          parameters: __S(59, __c7, 3),
-        }),
-      ).annotate({ identifier: "PostgresBouncer" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimum_storage_bytes: S.optional(S.Number),
-          maximum_storage_bytes: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateBranchRequestStorage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          name: S.String,
-          deletion_protected: S.optional(S.Boolean),
-          parent_branch: S.optional(S.String),
-          backup_id: S.optional(S.String),
-          region: S.optional(S.String),
-          restore_point: S.optional(S.String),
-          replicas: S.optional(S.Number),
-          seed_data: S.optional(S.String),
-          cluster_size: S.optional(S.String),
-          keyspace_cluster_sizes: S.optional(__S(4, __c0, 4)),
-          configuration_profile_sizes: S.optional(__S(4, __c0, 4)),
-          router_sizes: S.optional(__S(4, __c0, 4)),
-          storage: S.optional(__S(61, __c7, 5)),
-          major_version: S.optional(S.String),
-          create_database_if_missing: S.optional(S.Boolean),
-          kind: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateBranchRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          provider: S.String,
-          enabled: S.Boolean,
-          public_ip_addresses: __S(4, __c0, 4),
-          display_name: S.String,
-          location: S.String,
-          slug: S.String,
-          current_default: S.Boolean,
-          mysql_supported: S.Boolean,
-          postgresql_supported: S.Boolean,
-          neki_supported: S.Boolean,
-        }),
-      ).annotate({ identifier: "DatabaseBranchRegion" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          restore_checklist_completed_at: S.NullOr(S.String),
-          schema_last_updated_at: S.NullOr(S.String),
-          kind: S.String,
-          mysql_address: S.optional(S.NullOr(S.String)),
-          mysql_edge_address: S.optional(S.NullOr(S.String)),
-          state: S.String,
-          direct_vtgate: S.optional(S.NullOr(S.Boolean)),
-          vtgate_size: S.optional(S.NullOr(S.String)),
-          vtgate_name: S.optional(S.NullOr(S.String)),
-          vtgate_count: S.optional(S.NullOr(S.Number)),
-          vtgate_autoscaling: S.optional(S.NullOr(S.Boolean)),
-          vtgate_max_count: S.optional(S.NullOr(S.Number)),
-          vtgate_target_cpu_utilization: S.optional(S.NullOr(S.Number)),
-          cluster_name: S.String,
-          cluster_iops: S.NullOr(S.Number),
-          ready: S.Boolean,
-          schema_ready: S.optional(S.NullOr(S.Boolean)),
-          metal: S.Boolean,
-          production: S.Boolean,
-          safe_migrations: S.Boolean,
-          deletion_protected: S.optional(S.Boolean),
-          sharded: S.optional(S.Boolean),
-          shard_count: S.optional(S.NullOr(S.Number)),
-          keyspace_count: S.optional(S.Number),
-          stale_schema: S.Boolean,
-          actor: S.NullOr(__S(3, __c0, 3)),
-          restored_from_branch: S.NullOr(__S(1, __c0, 1)),
-          private_edge_connectivity: S.Boolean,
-          has_replicas: S.Boolean,
-          has_read_only_replicas: S.Boolean,
-          html_url: S.String,
-          url: S.String,
-          region: __S(63, __c7, 7),
-          parent_branch: S.NullOr(S.String),
-          vtgate_options: S.optional(S.NullOr(__S(12, __c1, 4))),
-          cluster_architecture: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseBranch" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          change_type: S.String,
-          options: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/config-changes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBranchConfigChangeRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(12, __c1, 4),
-          new_options: __S(12, __c1, 4),
-          error_message: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          keyspace_name: S.NullOr(S.String),
-          queued_until: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "BranchConfigChangeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/logs/signatures",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBranchLogSignatureRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sig: S.String,
-          exp: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateBranchLogSignatureResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          name: S.String,
-          region: S.optional(S.String),
-          cluster_size: S.String,
-          replicas: S.optional(S.Number),
-          kind: S.optional(S.String),
-          major_version: S.optional(S.String),
-          storage: S.optional(__S(61, __c7, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/organizations/{organization}/databases", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-          branches_url: S.String,
-          branches_count: S.optional(S.Number),
-          open_schema_recommendations_count: S.optional(S.Number),
-          development_branches_count: S.optional(S.Number),
-          development_branches_limit: S.optional(S.Number),
-          production_branches_count: S.optional(S.Number),
-          issues_count: S.optional(S.NullOr(S.Number)),
-          multiple_admins_required_for_deletion: S.optional(S.Boolean),
-          ready: S.Boolean,
-          at_backup_restore_branches_limit: S.optional(S.Boolean),
-          at_development_branch_usage_limit: S.optional(S.Boolean),
-          region: __S(63, __c7, 7),
-          html_url: S.String,
-          name: S.String,
-          state: S.String,
-          sharded: S.optional(S.Boolean),
-          default_branch_shard_count: S.optional(S.Number),
-          default_branch_read_only_regions_count: S.optional(S.Number),
-          default_branch_table_count: S.optional(S.Number),
-          default_branch: S.optional(S.String),
-          require_approval_for_deploy: S.optional(S.Boolean),
-          deletion_protected: S.optional(S.Boolean),
-          resizing: S.optional(S.Boolean),
-          resize_queued: S.optional(S.Boolean),
-          config_changing: S.optional(S.Boolean),
-          config_change_queued: S.optional(S.Boolean),
-          allow_data_branching: S.optional(S.Boolean),
-          foreign_keys_enabled: S.optional(S.Boolean),
-          automatic_migrations: S.optional(S.NullOr(S.Boolean)),
-          restrict_branch_region: S.optional(S.Boolean),
-          prefer_instant: S.optional(S.Boolean),
-          insights_raw_queries: S.optional(S.Boolean),
-          plan: S.optional(S.String),
-          insights_enabled: S.optional(S.Boolean),
-          production_branch_web_console: S.optional(S.Boolean),
-          migration_table_name: S.optional(S.NullOr(S.String)),
-          migration_framework: S.optional(S.NullOr(S.String)),
-          created_at: S.String,
-          updated_at: S.String,
-          schema_last_updated_at: S.optional(S.NullOr(S.String)),
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "Database" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          schema: S.optional(S.String),
-          role: S.optional(S.String),
-          cidrs: __S(4, __c0, 4),
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/cidrs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDatabasePostgresCidrRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          schema: S.String,
-          role: S.String,
-          cidrs: __S(4, __c0, 4),
-          description: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "PostgresClusterCidr" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minimum_storage_bytes: S.optional(S.Number),
-          maximum_storage_bytes: S.optional(S.Number),
-          storage_autoscaling: S.optional(S.Boolean),
-          storage_iops: S.optional(S.Number),
-          storage_throughput_mibs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateDedicatedReadReplicaRequestStorage",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.String,
-          region: S.String,
-          replicas: S.optional(S.Number),
-          cluster_size: S.optional(S.String),
-          storage: S.optional(__S(73, __c9, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/dedicated-read-replicas",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDedicatedReadReplicaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          provider: S.String,
-          enabled: S.Boolean,
-          public_ip_addresses: __S(4, __c0, 4),
-          display_name: S.String,
-          location: S.String,
-          slug: S.String,
-          current_default: S.Boolean,
-          mysql_supported: S.Boolean,
-          postgresql_supported: S.Boolean,
-          neki_supported: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "PostgresReadOnlyReplicaRegion",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          namespace: S.String,
-          name: S.String,
-          display_name: S.String,
-          category: S.String,
-          description: S.String,
-          immutable: S.Boolean,
-          parameter_type: S.String,
-          default_value: S.String,
-          disabled_reason: S.optional(S.NullOr(S.String)),
-          value: S.String,
-          required: S.Boolean,
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          restart: S.Boolean,
-          max: S.Number,
-          min: S.Number,
-          url: S.String,
-          options: __S(4, __c0, 4),
-          units: __S(4, __c0, 4),
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "PostgresReadOnlyReplicaParametersItem",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          state: S.String,
-          replicas: S.Number,
-          cluster_name: S.String,
-          cluster_display_name: S.String,
-          access_host_url: S.String,
-          private_access_host_url: S.String,
-          private_connection_service_name: S.NullOr(S.String),
-          minimum_storage_bytes: S.NullOr(S.Number),
-          maximum_storage_bytes: S.NullOr(S.Number),
-          storage_autoscaling: S.NullOr(S.Boolean),
-          storage_type: S.NullOr(S.String),
-          storage_iops: S.NullOr(S.Number),
-          storage_throughput_mibs: S.NullOr(S.Number),
-          volume_modifications_blocked_until: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          ready_at: S.NullOr(S.String),
-          ready: S.Boolean,
-          actor: __S(3, __c0, 3),
-          region: __S(75, __c9, 3),
-          parameters: __S(77, __c9, 5),
-        }),
-      ).annotate({ identifier: "PostgresReadOnlyReplica" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String,
-          into_branch: S.String,
-          notes: S.optional(S.String),
-          auto_cutover: S.optional(S.Boolean),
-          auto_delete_branch: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDeployRequestRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          type: S.String,
-          query_patterns_attributes: S.optional(__S(4, __c0, 4)),
-          schema_numbers: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/agent/runs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateInsightsAgentRunRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          number: S.Number,
-          scheduled: S.Boolean,
-          type: S.String,
-          state: S.String,
-          repository: __S(12, __c1, 4),
-          agent: S.NullOr(__S(12, __c1, 4)),
-          schedule_id: S.NullOr(S.String),
-          scheduled_for: S.NullOr(S.String),
-          selected_targets: __S(24, __c3, 0),
-          outcome: S.NullOr(S.String),
-          title: S.NullOr(S.String),
-          summary: S.NullOr(S.String),
-          pull_request_url: S.NullOr(S.String),
-          failure_message: S.NullOr(S.String),
-          execution_duration_ms: S.NullOr(S.Number),
-          cost: S.NullOr(S.String),
-          failure_phase: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          finished_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "InsightsAgentRun" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.String,
-          cluster_size: S.String,
-          extra_replicas: S.optional(S.Number),
-          shards: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateKeyspaceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storage_bytes: S.Number,
-          max_storage_bytes: S.Number,
-          disk_scaling_strategy: S.String,
-        }),
-      ).annotate({
-        identifier: "DatabaseBranchKeyspaceStorage",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          strategy: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "DatabaseBranchKeyspaceReplicationDurabilityConstraints",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          optimize_inserts: S.Boolean,
-          allow_no_blob_binlog_row_image: S.Boolean,
-          vplayer_batching: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "DatabaseBranchKeyspaceVreplicationFlags",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          threshold: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "DatabaseBranchKeyspaceThrottler",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          shards: S.Number,
-          sharded: S.Boolean,
-          external: S.Boolean,
-          replicas: S.Number,
-          extra_replicas: S.Number,
-          created_at: S.String,
-          updated_at: S.String,
-          cluster_name: S.String,
-          cluster_display_name: S.String,
-          resizing: S.Boolean,
-          resize_in_progress: S.Boolean,
-          resize_pending: S.Boolean,
-          config_change_in_progress: S.Boolean,
-          ready: S.Boolean,
-          metal: S.Boolean,
-          default: S.Boolean,
-          imported: S.Boolean,
-          vector_pool_allocation: S.NullOr(S.Number),
-          node_ttl_strategy: S.String,
-          storage: __S(83, __c10, 3),
-          max_rollout: S.NullOr(S.Number),
-          replication_durability_constraints: __S(84, __c10, 4),
-          vreplication_flags: __S(85, __c10, 5),
-          throttler: __S(86, __c10, 6),
-          mysqld_options: __S(12, __c1, 4),
-          vttablet_options: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "DatabaseBranchKeyspace" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          keyspace: S.String.pipe(T.Label()),
-          change_type: S.String,
-          options: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/config-changes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateKeyspaceConfigChangeRequestRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          state: S.String,
-          change_type: S.String,
-          previous_options: __S(12, __c1, 4),
-          new_options: __S(12, __c1, 4),
-          error_message: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          keyspace_name: S.NullOr(S.String),
-          queued_until: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "KeyspaceConfigChangeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/move-tables/workflows",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateMoveTablesWorkflowRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          client_id: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          grant_type: S.String,
-          code: S.optional(S.String),
-          redirect_uri: S.optional(S.String),
-          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/oauth-applications/{id}/token",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateOauthTokenRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          access: S.String,
-          description: S.String,
-          resource_name: S.String,
-          resource_id: S.String,
-          resource_type: S.String,
-          resource: __S(1, __c0, 1),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenServiceTokenAccessesItem",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-          organization: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceDatabaseAccessesItem",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          databases: __S(95, __c11, 7),
-          accesses: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceDatabase",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organizations: __S(100, __c12, 4),
-          accesses: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceOrganization",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-          database: S.String,
-          organization: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceBranchBranchesItem",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          branches: __S(103, __c12, 7),
-          accesses: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceBranch",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceUserUsersItem",
-      });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          users: __S(106, __c13, 2),
-          accesses: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResourceUser",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          database: __S(98, __c12, 2),
-          organization: __S(101, __c12, 5),
-          branch: __S(104, __c13, 0),
-          user: __S(107, __c13, 3),
-        }),
-      ).annotate({
-        identifier: "ServiceTokenOauthAccessesByResource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          display_name: S.String,
-          token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          plain_text_refresh_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          avatar_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          expires_at: S.optional(S.NullOr(S.String)),
-          last_used_at: S.optional(S.NullOr(S.String)),
-          actor_id: S.NullOr(S.String),
-          actor_display_name: S.NullOr(S.String),
-          actor_type: S.NullOr(S.String),
-          service_token_accesses: S.optional(S.NullOr(__S(93, __c11, 5))),
-          oauth_accesses_by_resource: S.optional(S.NullOr(__S(108, __c13, 4))),
-        }),
-      ).annotate({ identifier: "ServiceToken" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          email: S.String,
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/organizations/{organization}/invitations", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationInvitationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          email: S.String,
-          role: S.String,
-          sender: __S(2, __c0, 2),
-          recipient: S.NullOr(__S(2, __c0, 2)),
-          expired: S.Boolean,
-          expires_at: S.String,
-          created_at: S.String,
-          avatar_url: S.String,
-        }),
-      ).annotate({ identifier: "OrganizationInvitation" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/domains", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationSsoDomainRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/organizations/{organization}/teams", code: 200 })),
-      ).annotate({
-        identifier: "CreateOrganizationTeamRequest",
-      });
-    case 2:
-      return S.Array(__S(2, __c0, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          url: S.String,
-          branches_url: S.String,
-        }),
-      ).annotate({
-        identifier: "OrganizationTeamDatabasesItem",
-      });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          display_name: S.String,
-          creator: __S(3, __c0, 3),
-          members: __S(114, __c14, 2),
-          databases: __S(116, __c14, 4),
-          analyst_databases: __S(116, __c14, 4),
-          name: S.String,
-          slug: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          description: S.NullOr(S.String),
-          managed: S.Boolean,
-        }),
-      ).annotate({ identifier: "OrganizationTeam" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-          replica: S.optional(S.Boolean),
-          ttl: S.optional(S.Number),
-          cidrs: S.optional(__S(4, __c0, 4)),
-          direct_vtgate: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/passwords",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreatePasswordRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          role: S.String,
-          cidrs: S.NullOr(__S(4, __c0, 4)),
-          created_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          last_used_at: S.NullOr(S.String),
-          expired: S.Boolean,
-          direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(4, __c0, 4),
-          ttl_seconds: S.NullOr(S.Number),
-          access_host_url: S.String,
-          access_host_regional_url: S.String,
-          access_host_regional_urls: __S(4, __c0, 4),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          region: __S(75, __c9, 3),
-          username: S.String,
-          plain_text: S.String.pipe(T.SensitiveValue({})),
-          replica: S.Boolean,
-          read_only_region: S.Boolean,
-          renewable: S.Boolean,
-          database_branch: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "DatabaseBranchPasswordWithSecret",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateQueryPatternsReportRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          state: S.String,
-          created_at: S.String,
-          finished_at: S.NullOr(S.String),
-          url: S.String,
-          download_url: S.String,
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "QueryPatternsDownload" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          ttl: S.optional(S.Number),
-          inherited_roles: S.optional(__S(122, __c15, 2)),
-          with_replication: S.optional(S.Boolean),
-          require_where_on_delete: S.optional(S.String),
-          require_where_on_update: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/roles",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateRoleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          require_where_on_delete: S.String,
-          require_where_on_update: S.String,
-        }),
-      ).annotate({
-        identifier: "PostgresRoleQuerySafetySettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          access_host_url: S.String,
-          private_access_host_url: S.String,
-          private_connection_service_name: S.String,
-          username: S.String,
-          base_username: S.String,
-          password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
-          database_name: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          deleted_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          dropped_at: S.NullOr(S.String),
-          disabled_at: S.NullOr(S.String),
-          drop_failed: S.NullOr(S.String),
-          ready: S.Boolean,
-          expired: S.Boolean,
-          default: S.Boolean,
-          ttl: S.NullOr(S.Number),
-          inherited_roles: __S(122, __c15, 2),
-          with_replication: S.Boolean,
-          branch: __S(1, __c0, 1),
-          actor: __S(3, __c0, 3),
-          query_safety_settings: __S(124, __c15, 4),
-        }),
-      ).annotate({ identifier: "PostgresRole" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.String,
-          router_size: S.optional(S.String),
-          replicas_per_cell: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateRouterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          display_name: S.String,
-          cpu: S.String,
-          ram: S.Number,
-          sort_order: S.Number,
-          rate: S.NullOr(S.Number),
-          enabled: S.Boolean,
-        }),
-      ).annotate({ identifier: "NekiRouterSku" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          default: S.Boolean,
-          sku: __S(127, __c15, 7),
-          router_size: S.String,
-          replicas_per_cell: S.Number,
-          autoscaling: S.Boolean,
-          max_replicas_per_cell: S.NullOr(S.Number),
-          target_cpu_utilization: S.NullOr(S.Number),
-          state: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "NekiRouter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          ttl: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/service-tokens",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateServiceTokenRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/shards",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateShardRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateShardResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.String,
-          cluster_size: S.optional(S.String),
-          replicas: S.optional(S.Number),
-          postgres_major_version: S.optional(S.String),
-          postgres_minor_version: S.optional(S.String),
-          storage: S.optional(__S(73, __c9, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateShardConfigurationProfileRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimum_storage_bytes: S.NullOr(S.Number),
-          maximum_storage_bytes: S.NullOr(S.Number),
-          storage_autoscaling: S.NullOr(S.Boolean),
-          storage_iops: S.NullOr(S.Number),
-          storage_throughput_mibs: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "NekiShardConfigurationProfileStorage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          architecture: S.String,
-          cluster_size: S.String,
-          cluster_display_name: S.String,
-          default: S.Boolean,
-          metal: S.Boolean,
-          replicas: S.Number,
-          postgres_image_version: S.String,
-          latest_postgres_image_version: S.String,
-          postgres_major_version: S.Number,
-          postgres_minor_version: S.Number,
-          latest_postgres_minor_version: S.Number,
-          shards: S.Number,
-          storage: __S(133, __c16, 5),
-          state: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({
-        identifier: "NekiShardConfigurationProfile",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          display_name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateShardConfigurationProfileShardRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          display_name: S.NullOr(S.String),
-          configuration_profile: S.String,
-          created_at: S.String,
-          ready: S.Boolean,
-          authoritative: S.Boolean,
-        }),
-      ).annotate({ identifier: "NekiShard" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          candidate: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/switchovers",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateSwitchoverRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          state: S.String,
-          method: S.optional(S.NullOr(S.String)),
-          error: S.optional(S.NullOr(S.String)),
-          started_at: S.NullOr(S.String),
-          completed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "PostgresSwitchover" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-          capacity: S.optional(S.Number),
-          rate: S.optional(S.Number),
-          burst: S.optional(S.Number),
-          concurrency: S.optional(S.Number),
-          warning_threshold: S.optional(S.Number),
-          rules: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTrafficBudgetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key_id: S.String,
-          key: S.String,
-          value: S.String,
-          source: S.String,
-        }),
-      ).annotate({
-        identifier: "TrafficBudgetRulesItemTagsItem",
-      });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          tags: __S(141, __c17, 5),
-          fingerprint: S.optional(S.NullOr(S.String)),
-          keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3, __c0, 3),
-          syntax_highlighted_sql: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "TrafficBudgetRulesItem" });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          mode: S.String,
-          capacity: S.optional(S.NullOr(S.Number)),
-          rate: S.optional(S.NullOr(S.Number)),
-          burst: S.optional(S.NullOr(S.Number)),
-          concurrency: S.optional(S.NullOr(S.Number)),
-          warning_threshold: S.optional(S.NullOr(S.Number)),
-          actor: __S(3, __c0, 3),
-          rules: __S(143, __c17, 7),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "TrafficBudget" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          budget_id: S.String.pipe(T.Label()),
-          kind: S.optional(S.String),
-          keyspace: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateTrafficRuleRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key_id: S.String,
-          key: S.String,
-          value: S.String,
-          source: S.String,
-        }),
-      ).annotate({ identifier: "TrafficRuleTagsItem" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          kind: S.String,
-          tags: __S(147, __c18, 3),
-          fingerprint: S.optional(S.NullOr(S.String)),
-          keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3, __c0, 3),
-          syntax_highlighted_sql: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "TrafficRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          url: S.String,
-          authorization_header: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          events: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/webhooks",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          url: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-          authorization_header_configured: S.Boolean,
-          enabled: S.Boolean,
-          last_sent_result: S.NullOr(S.String),
-          last_sent_success: S.NullOr(S.Boolean),
-          last_sent_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          events: __S(122, __c15, 2),
-        }),
-      ).annotate({ identifier: "DatabaseWebhook" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          name: S.String,
-          source_keyspace: S.String,
-          target_keyspace: S.String,
-          global_keyspace: S.optional(S.String),
-          defer_secondary_keys: S.optional(S.Boolean),
-          on_ddl: S.optional(S.String),
-          tables: __S(4, __c0, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/workflows",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateWorkflowRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBackupRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBackupPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          bouncer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBouncerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          delete_descendants: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBranchRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/cidrs/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDatabasePostgresCidrRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          dedicated_read_replica: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/dedicated-read-replicas/{dedicated_read_replica}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDedicatedReadReplicaRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          keyspace: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteKeyspaceRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          application_id: S.String.pipe(T.Label()),
-          token_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/oauth-applications/{application_id}/tokens/{token_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOauthTokenRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/billing/payment-method",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationBillingPaymentMethodRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/sso/domains/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationSsoDomainRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          team: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/teams/{team}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationTeamRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/passwords/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeletePasswordRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteQueryPatternsReportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          successor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/roles/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRoleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          router: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers/{router}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRouterRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/service-tokens/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/shards/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteShardRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteShardConfigurationProfileRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteShardConfigurationProfileShardRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          configuration_profile: S.String.pipe(T.Label()),
-          shard_ids: __S(4, __c0, 4).pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteShardConfigurationProfileShardsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTrafficBudgetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          budget_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTrafficRuleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/webhooks/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/demote",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DemoteBranchRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/storage-check",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployCheckRequestStorageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          used: S.optional(S.Number),
-          capacity: S.optional(S.Number),
-          remaining: S.optional(S.Number),
-          percentage_used: S.optional(S.Number),
-          storage_needed: S.optional(S.Number),
-          has_enough: S.optional(S.Boolean),
-          blocked_by_in_flight: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DeployCheckRequestStorageResponseStorageReportValueValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(178, __c22, 2));
-    case 4:
-      return S.Record(S.String, __S(179, __c22, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enough_storage: S.Boolean,
-          upgradeable: S.Boolean,
-          storage_bytes_needed: S.Number,
-          storage_report: __S(180, __c22, 4),
-        }),
-      ).annotate({
-        identifier: "DeployCheckRequestStorageResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployCloseRequestRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/complete-deploy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployCompleteErroredRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/apply-deploy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployCompleteGatedRequestRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/force-cutover",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployForceCutoverRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-          instant_ddl: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/deploy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployQueueRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-          state: S.optional(S.String),
-          body: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployReviewRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          body: S.String,
-          html_body: S.String,
-          state: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          actor: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "DeployRequestReview" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{organization}/sso", code: 200 })),
-      ).annotate({
-        identifier: "DisableOrganizationSsoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          id: S.String,
-          domain: S.String,
-          state: S.String,
-          verified_at: S.NullOr(S.String),
-          failure_reason: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({
-        identifier: "OrganizationSsoSerializerDomainsItem",
-      });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          id: S.String,
-          enabled: S.Boolean,
-          configured: S.Boolean,
-          directory: S.Boolean,
-          has_verified_domain: S.Boolean,
-          domains: __S(191, __c23, 7),
-          domain_verification_url: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "OrganizationSsoSerializer",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/sso/directory",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableOrganizationSsoDirectoryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/safe-migrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableSafeMigrationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          number: S.Number.pipe(T.Label()),
-          reason: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/schema-recommendations/{number}/dismiss",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DismissSchemaRecommendationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          branch_id: S.String,
-          number: S.Number,
-        }),
-      ).annotate({
-        identifier: "SchemaRecommendationClosedByDeployRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          html_url: S.String,
-          title: S.String,
-          table_name: S.String,
-          keyspace: S.String,
-          ddl_statement: S.String,
-          number: S.Number,
-          state: S.String,
-          recommendation_type: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          applied_at: S.NullOr(S.String),
-          dismissed_at: S.NullOr(S.String),
-          closed_by_deploy_request: S.NullOr(__S(196, __c24, 4)),
-          dismissed_by: S.NullOr(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "SchemaRecommendation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/organizations/{organization}/sso", code: 200 })),
-      ).annotate({
-        identifier: "EnableOrganizationSsoRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/directory", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "EnableOrganizationSsoDirectoryRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/safe-migrations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableSafeMigrationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetAdminRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          sku: __S(57, __c7, 1),
-          admin_size: S.String,
-          state: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "NekiAdmin" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin/changes/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAdminChangeRequestRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBackupRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBackupPolicyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-          bouncer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBouncerRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.String.pipe(T.Label()),
-          database: S.String.pipe(T.Label()),
-          branch: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization}/databases/{database}/branches/{branch}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetBranchRequest" });
-  }
-}
-function __c26(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22723,7 +19689,7 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "AnomalyCorrelationsItem" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22735,10 +19701,14 @@ function __c26(j: number): any {
           duration: S.Number,
           metrics_start: S.String,
           metrics_end: S.String,
-          correlations: S.optional(S.NullOr(__S(210, __c26, 2))),
+          correlations: S.optional(S.NullOr(__S(18, __c1, 2))),
         }),
       ).annotate({ identifier: "Anomaly" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -22755,7 +19725,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetBranchChangeRequestRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -22764,19 +19738,19 @@ function __c26(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
           cluster_name: S.String,
           cluster_display_name: S.String,
           cluster_metal: S.Boolean,
           replicas: S.Number,
           version: S.String,
-          parameters: __S(12, __c1, 4),
+          parameters: __S(5232, __c327, 0),
           previous_cluster_name: S.String,
           previous_cluster_display_name: S.String,
           previous_cluster_metal: S.Boolean,
           previous_replicas: S.Number,
           previous_version: S.String,
-          previous_parameters: __S(12, __c1, 4),
+          previous_parameters: __S(5232, __c327, 0),
           minimum_storage_bytes: S.Number,
           maximum_storage_bytes: S.Number,
           storage_autoscaling: S.Boolean,
@@ -22796,7 +19770,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PostgresClusterResizeRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -22813,7 +19791,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetBranchConfigChangeRequestRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -22831,7 +19813,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22839,7 +19821,7 @@ function __c27(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -22852,8 +19834,8 @@ function __c27(j: number): any {
           role: S.optional(S.String.pipe(T.Query())),
           container: S.optional(S.String.pipe(T.Query())),
           pod: S.optional(S.String.pipe(T.Query())),
-          pods: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          query_ids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          pods: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
+          query_ids: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           budget_id: S.optional(S.String.pipe(T.Query())),
           rule_id: S.optional(S.String.pipe(T.Query())),
@@ -22866,33 +19848,41 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchMetricsRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
+    case 1:
+      return S.Array(__S(112, __c7, 0));
     case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           metric: S.String,
           label: S.String,
-          labels: __S(12, __c1, 4),
-          points: __S(218, __c27, 2),
+          labels: __S(5232, __c327, 0),
+          points: __S(113, __c7, 1),
         }),
       ).annotate({ identifier: "MetricSeriesSeriesItem" });
+    case 3:
+      return S.Array(__S(114, __c7, 2));
     case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           start_date: S.String,
           end_date: S.String,
           interval: S.Number,
-          series: __S(220, __c27, 4),
+          series: __S(115, __c7, 3),
         }),
       ).annotate({ identifier: "MetricSeries" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -22907,23 +19897,19 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchQueryRequest" });
-    case 7:
+    case 1:
       return S.Array(S.String);
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          password: __S(12, __c1, 4),
-          tags: __S(24, __c3, 0),
+          password: __S(5232, __c327, 0),
+          tags: __S(256, __c16, 0),
           fingerprint: S.String,
           started_at: S.NullOr(S.String),
           statement_type: S.String,
           keyspace: S.String,
-          tables: __S(223, __c27, 7),
+          tables: __S(129, __c8, 1),
           username: S.String,
           remote_address: S.String,
           shard_queries: S.Number,
@@ -22942,7 +19928,11 @@ function __c28(j: number): any {
           truncated: S.Boolean,
         }),
       ).annotate({ identifier: "Query" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -22964,17 +19954,21 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetBranchQueryErrorRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          password: __S(12, __c1, 4),
-          tags: __S(24, __c3, 0),
+          password: __S(5232, __c327, 0),
+          tags: __S(256, __c16, 0),
           fingerprint: S.String,
           started_at: S.NullOr(S.String),
           statement_type: S.String,
           keyspace: S.String,
-          tables: __S(4, __c0, 4),
+          tables: __S(4832, __c302, 0),
           username: S.String,
           remote_address: S.String,
           shard_queries: S.Number,
@@ -22993,9 +19987,9 @@ function __c28(j: number): any {
           truncated: S.Boolean,
         }),
       ).annotate({ identifier: "PaginatedQueryDataItem" });
-    case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -23005,17 +19999,21 @@ function __c28(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(227, __c28, 3),
+          data: __S(161, __c10, 1),
         }),
       ).annotate({ identifier: "PaginatedQuery" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
-          query_ids: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
+          query_ids: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
@@ -23036,7 +20034,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetBranchQueryMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23059,7 +20061,7 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchQueryTagRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -23067,23 +20069,23 @@ function __c28(j: number): any {
           kind: S.String,
         }),
       ).annotate({ identifier: "QueryTagValuesItem" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           source: S.String,
           query_count: S.Number,
-          values: __S(232, __c29, 0),
+          values: __S(194, __c12, 2),
         }),
       ).annotate({ identifier: "QueryTag" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23100,7 +20102,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetBranchResizeRequestRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23123,12 +20129,206 @@ function __c29(j: number): any {
           vtgate_display_name: S.String,
           previous_vtgate_name: S.String,
           previous_vtgate_display_name: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "MysqlClusterResizeRequest",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelDeployRequestRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5232, __c327, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          shard: S.String,
+          state: S.String,
+          progress_percentage: S.Number,
+          eta_seconds: S.Number,
+        }),
+      ).annotate({
+        identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem",
+      });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(288, __c18, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.String,
+          keyspace_name: S.String,
+          table_name: S.String,
+          operation_name: S.String,
+          eta_seconds: S.NullOr(S.Number),
+          progress_percentage: S.NullOr(S.Number),
+          deploy_error_docs_url: S.NullOr(S.String),
+          ddl_statement: S.String,
+          syntax_highlighted_ddl: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          throttled_at: S.NullOr(S.String),
+          can_drop_data: S.Boolean,
+          table_locked: S.Boolean,
+          table_recently_used: S.Boolean,
+          table_recently_used_at: S.NullOr(S.String),
+          removed_foreign_key_names: S.NullOr(__S(4736, __c296, 0)),
+          deploy_errors: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeployRequestDeploymentDeployOperationsItem",
+      });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          deploy_errors: S.String,
+          ddl_statement: S.String,
+          eta_seconds: S.Number,
+          keyspace_name: S.String,
+          operation_name: S.String,
+          progress_percentage: S.Number,
+          state: S.String,
+          syntax_highlighted_ddl: S.String,
+          table_name: S.String,
+          table_recently_used_at: S.NullOr(S.String),
+          throttled_at: S.NullOr(S.String),
+          removed_foreign_key_names: __S(4736, __c296, 0),
+          shard_count: S.Number,
+          shard_names: __S(4736, __c296, 0),
+          can_drop_data: S.Boolean,
+          table_recently_used: S.Boolean,
+          sharded: S.Boolean,
+          operations: __S(273, __c17, 1),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeployRequestDeploymentDeployOperationSummariesItem",
+      });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          auto_cutover: S.Boolean,
+          auto_delete_branch: S.Boolean,
+          created_at: S.String,
+          cutover_at: S.NullOr(S.String),
+          cutover_expiring: S.Boolean,
+          deploy_check_errors: S.optional(S.NullOr(S.String)),
+          finished_at: S.NullOr(S.String),
+          force_cutover_requested_at: S.NullOr(S.String),
+          queued_at: S.NullOr(S.String),
+          ready_to_cutover_at: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          state: S.String,
+          submitted_at: S.NullOr(S.String),
+          updated_at: S.String,
+          into_branch: S.String,
+          deploy_request_number: S.Number,
+          deployable: S.Boolean,
+          preceding_deployments: __S(256, __c16, 0),
+          deploy_operations: __S(321, __c20, 1),
+          deploy_operation_summaries: __S(323, __c20, 3),
+          lint_errors: __S(256, __c16, 0),
+          sequential_diff_dependencies: __S(304, __c19, 0),
+          lookup_vindex_operations: __S(256, __c16, 0),
+          throttler_configurations: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          deployment_revert_request: S.NullOr(__S(5232, __c327, 0)),
+          actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cutover_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cancelled_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          schema_last_updated_at: S.NullOr(S.String),
+          table_locked: S.Boolean,
+          locked_table_name: S.optional(S.NullOr(S.String)),
+          instant_ddl: S.Boolean,
+          instant_ddl_eligible: S.Boolean,
+          queue_paused: S.Boolean,
+          queue_pause_reason: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseDeployRequestDeployment",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          number: S.Number,
+          actor: __S(4720, __c295, 0),
+          closed_by: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          branch: S.String,
+          branch_id: S.String,
+          branch_deleted: S.Boolean,
+          branch_deleted_by: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          branch_deleted_at: S.NullOr(S.String),
+          into_branch: S.String,
+          into_branch_sharded: S.Boolean,
+          into_branch_shard_count: S.Number,
+          into_branch_keyspace_count: S.Number,
+          approved: S.Boolean,
+          state: S.String,
+          deployment_state: S.String,
+          deployment: __S(324, __c20, 4),
+          num_comments: S.Number,
+          html_url: S.String,
+          notes: S.String,
+          html_body: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          closed_at: S.NullOr(S.String),
+          deployed_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseDeployRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23144,7 +20344,7 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBranchSchemaRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -23154,17 +20354,17 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetBranchSchemaResponseDataItem",
       });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(238, __c29, 6),
+          data: __S(338, __c21, 2),
         }),
       ).annotate({ identifier: "GetBranchSchemaResponse" });
   }
 }
-function __c30(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23182,14 +20382,18 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetBranchTableMetricsRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
-          tag_sets: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
+          tag_sets: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -23208,11 +20412,15 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetBranchTagMetricsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
       ).annotate({ identifier: "GetCurrentUserRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23223,14 +20431,18 @@ function __c30(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1, __c0, 1))),
+          default_organization: S.optional(S.NullOr(__S(4784, __c299, 0))),
           sso: S.optional(S.NullOr(S.Boolean)),
           managed: S.optional(S.NullOr(S.Boolean)),
           directory_managed: S.optional(S.NullOr(S.Boolean)),
           email_verified: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "User" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23243,7 +20455,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDatabaseRequest" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23259,7 +20475,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetDatabasePostgresCidrRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23274,7 +20494,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetDatabaseThrottlerRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyspace_name: S.String,
@@ -23283,21 +20507,21 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ThrottlerConfigurationsConfigurationsItem",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
     case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keyspaces: __S(4, __c0, 4),
-          configurable: __S(1, __c0, 1),
-          configurations: __S(248, __c31, 0),
+          keyspaces: __S(4832, __c302, 0),
+          configurable: __S(4784, __c299, 0),
+          configurations: __S(449, __c28, 1),
         }),
       ).annotate({ identifier: "ThrottlerConfigurations" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23311,14 +20535,22 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataTopologyRequest" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data_topology: __S(12, __c1, 4),
+          data_topology: __S(5232, __c327, 0),
           synced_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "NekiDataTopology" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23335,7 +20567,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetDedicatedReadReplicaRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23349,7 +20585,33 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDefaultRoleRequest" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          keyspace: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/config-changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelKeyspaceConfigChangeRequestRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23365,7 +20627,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetDefaultShardConfigurationProfileRequest",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23379,11 +20645,7 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeploymentRequest" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23403,15 +20665,15 @@ function __c32(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(4, __c0, 4)),
+          removed_foreign_key_names: S.NullOr(__S(4832, __c302, 0)),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "DeploymentDeployOperationsItem",
       });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
     case 2:
+      return S.Array(__S(561, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23423,9 +20685,9 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "DeploymentDeployOperationSummariesItemOperationsItem",
       });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
     case 4:
+      return S.Array(__S(563, __c35, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23441,20 +20703,20 @@ function __c32(j: number): any {
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5, __c0, 5),
+          removed_foreign_key_names: __S(4736, __c296, 0),
           shard_count: S.Number,
-          shard_names: __S(4, __c0, 4),
+          shard_names: __S(4832, __c302, 0),
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(259, __c32, 3),
+          operations: __S(564, __c35, 4),
         }),
       ).annotate({
         identifier: "DeploymentDeployOperationSummariesItem",
       });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
     case 6:
+      return S.Array(__S(565, __c35, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23475,17 +20737,17 @@ function __c32(j: number): any {
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(24, __c3, 0),
-          deploy_operations: __S(257, __c32, 1),
-          deploy_operation_summaries: __S(261, __c32, 5),
-          lint_errors: __S(24, __c3, 0),
-          sequential_diff_dependencies: __S(24, __c3, 0),
-          lookup_vindex_operations: __S(24, __c3, 0),
-          throttler_configurations: S.optional(S.NullOr(__S(12, __c1, 4))),
-          deployment_revert_request: S.NullOr(__S(12, __c1, 4)),
-          actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cutover_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
+          preceding_deployments: __S(256, __c16, 0),
+          deploy_operations: __S(562, __c35, 2),
+          deploy_operation_summaries: __S(566, __c35, 6),
+          lint_errors: __S(256, __c16, 0),
+          sequential_diff_dependencies: __S(256, __c16, 0),
+          lookup_vindex_operations: __S(256, __c16, 0),
+          throttler_configurations: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          deployment_revert_request: S.NullOr(__S(5232, __c327, 0)),
+          actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cutover_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cancelled_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -23495,7 +20757,11 @@ function __c32(j: number): any {
           queue_pause_reason: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Deployment" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23510,11 +20776,7 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeployQueueRequest" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23534,15 +20796,15 @@ function __c33(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5, __c0, 5)),
+          removed_foreign_key_names: S.NullOr(__S(4736, __c296, 0)),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDeploymentDataItemDeployOperationsItem",
       });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
     case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23558,20 +20820,20 @@ function __c33(j: number): any {
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5, __c0, 5),
+          removed_foreign_key_names: __S(4736, __c296, 0),
           shard_count: S.Number,
-          shard_names: __S(5, __c0, 5),
+          shard_names: __S(4736, __c296, 0),
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(28, __c3, 4),
+          operations: __S(273, __c17, 1),
         }),
       ).annotate({
         identifier: "PaginatedDeploymentDataItemDeployOperationSummariesItem",
       });
-    case 3:
-      return S.Array(__S(266, __c33, 2));
     case 4:
+      return S.Array(__S(579, __c36, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23592,17 +20854,17 @@ function __c33(j: number): any {
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(24, __c3, 0),
-          deploy_operations: __S(265, __c33, 1),
-          deploy_operation_summaries: __S(267, __c33, 3),
-          lint_errors: __S(24, __c3, 0),
-          sequential_diff_dependencies: __S(24, __c3, 0),
-          lookup_vindex_operations: __S(24, __c3, 0),
-          throttler_configurations: S.optional(S.NullOr(__S(12, __c1, 4))),
-          deployment_revert_request: S.NullOr(__S(12, __c1, 4)),
-          actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cutover_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
+          preceding_deployments: __S(256, __c16, 0),
+          deploy_operations: __S(578, __c36, 2),
+          deploy_operation_summaries: __S(580, __c36, 4),
+          lint_errors: __S(256, __c16, 0),
+          sequential_diff_dependencies: __S(256, __c16, 0),
+          lookup_vindex_operations: __S(256, __c16, 0),
+          throttler_configurations: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          deployment_revert_request: S.NullOr(__S(5232, __c327, 0)),
+          actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cutover_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cancelled_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -23614,9 +20876,9 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "PaginatedDeploymentDataItem",
       });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
     case 6:
+      return S.Array(__S(581, __c36, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -23626,10 +20888,14 @@ function __c33(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(269, __c33, 5),
+          data: __S(582, __c36, 6),
         }),
       ).annotate({ identifier: "PaginatedDeployment" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23645,7 +20911,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetDeployRequestRequest" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23663,7 +20929,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetDeployRequestThrottlerRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23680,13 +20950,17 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetInsightsAgentRunRequest",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
           role: S.optional(S.String.pipe(T.Query())),
           shard: S.optional(S.String.pipe(T.Query())),
           shard_config_profile: S.optional(S.String.pipe(T.Query())),
@@ -23702,7 +20976,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetInstantBranchMetricsRequest",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pod: S.String,
@@ -23712,33 +20990,33 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetInstantBranchMetricsResponseMetricsItemValuesItem",
       });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(656, __c41, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           metric: S.String,
           label: S.String,
-          values: __S(276, __c34, 4),
+          values: __S(657, __c41, 1),
         }),
       ).annotate({
         identifier: "GetInstantBranchMetricsResponseMetricsItem",
       });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(658, __c41, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          branch: __S(1, __c0, 1),
-          metrics: __S(278, __c34, 6),
+          branch: __S(4784, __c299, 0),
+          metrics: __S(659, __c41, 3),
         }),
       ).annotate({
         identifier: "GetInstantBranchMetricsResponse",
       });
   }
 }
-function __c35(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23746,7 +21024,7 @@ function __c35(j: number): any {
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
           keyspace: S.optional(S.String.pipe(T.Query())),
           shard: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -23759,7 +21037,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetInstantTabletMetricsRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23768,7 +21050,11 @@ function __c35(j: number): any {
           T.Http({ method: "GET", uri: "/organizations/{organization}/invoices/{id}", code: 200 }),
         ),
       ).annotate({ identifier: "GetInvoiceRequest" });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23779,7 +21065,11 @@ function __c35(j: number): any {
           overdue: S.Boolean,
         }),
       ).annotate({ identifier: "Invoice" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23796,7 +21086,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetInvoiceLineItemsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23806,14 +21096,14 @@ function __c35(j: number): any {
           cloudflare_billed: S.Boolean,
           database_id: S.String,
           database_name: S.String,
-          resource: __S(1, __c0, 1),
+          resource: __S(4784, __c299, 0),
         }),
       ).annotate({
         identifier: "PaginatedLineItemDataItem",
       });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -23823,10 +21113,35 @@ function __c35(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(285, __c35, 5),
+          data: __S(722, __c45, 2),
         }),
       ).annotate({ identifier: "PaginatedLineItem" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          keyspace: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/resizes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelKeyspaceResizeRequestRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23843,7 +21158,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetKeyspaceRequest" });
   }
 }
-function __c36(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23863,7 +21178,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetKeyspaceConfigChangeRequestRequest",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23881,7 +21200,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetKeyspaceResizeRequestRequest",
       });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -23899,10 +21222,14 @@ function __c36(j: number): any {
           previous_cluster_display_name: S.String,
           replicas: S.Number,
           previous_replicas: S.Number,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({ identifier: "KeyspaceResizeRequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23919,7 +21246,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetKeyspaceRolloutStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -23930,19 +21257,23 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetKeyspaceRolloutStatusResponseShardsItem",
       });
-    case 5:
-      return S.Array(__S(292, __c36, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(817, __c51, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           state: S.String,
-          shards: __S(293, __c36, 5),
+          shards: __S(818, __c51, 2),
         }),
       ).annotate({
         identifier: "GetKeyspaceRolloutStatusResponse",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23961,7 +21292,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23971,7 +21302,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetKeyspaceVschemaResponse",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -23987,7 +21322,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetMaintenanceScheduleRequest",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24014,7 +21353,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "BranchMaintenanceSchedule",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24032,23 +21375,27 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetMoveTablesWorkflowRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          workflows: S.optional(__S(24, __c3, 0)),
+          workflows: S.optional(__S(256, __c16, 0)),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowResponseData",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(300, __c37, 4),
+          data: __S(897, __c56, 1),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowResponse",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24066,7 +21413,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           rows_copied: S.optional(S.Number),
@@ -24079,31 +21426,31 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusResponseDataTableCopyStateValue",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(303, __c37, 7));
-    case 1:
+    case 2:
+      return S.Record(S.String, __S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           traffic_state: S.optional(S.String),
-          table_copy_state: S.optional(__S(304, __c38, 0)),
-          shard_streams: S.optional(__S(12, __c1, 4)),
+          table_copy_state: S.optional(__S(914, __c57, 2)),
+          shard_streams: S.optional(__S(5232, __c327, 0)),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusResponseData",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(305, __c38, 1),
+          data: __S(915, __c57, 3),
         }),
       ).annotate({
         identifier: "GetMoveTablesWorkflowStatusResponse",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24120,7 +21467,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetNekiChangeRequestRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -24131,19 +21478,19 @@ function __c38(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
           target_id: S.NullOr(S.String),
           target_type: S.String,
           target_name: S.String,
           admin_size: S.optional(S.NullOr(S.String)),
           admin_size_display_name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(5232, __c327, 0))),
           previous_admin_size: S.optional(S.NullOr(S.String)),
           previous_admin_size_display_name: S.optional(S.NullOr(S.String)),
-          previous_parameters: S.optional(S.NullOr(__S(12, __c1, 4))),
-          flags: S.optional(S.NullOr(__S(4, __c0, 4))),
+          previous_parameters: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          flags: S.optional(S.NullOr(__S(4832, __c302, 0))),
           neki_image_version: S.optional(S.NullOr(S.String)),
-          previous_flags: S.optional(S.NullOr(__S(4, __c0, 4))),
+          previous_flags: S.optional(S.NullOr(__S(4832, __c302, 0))),
           previous_neki_image_version: S.optional(S.NullOr(S.String)),
           replicas: S.optional(S.NullOr(S.Number)),
           previous_replicas: S.optional(S.NullOr(S.Number)),
@@ -24170,16 +21517,20 @@ function __c38(j: number): any {
           cluster_rank: S.optional(S.NullOr(S.Number)),
           shards: S.optional(S.NullOr(S.Number)),
           postgres_image_version: S.optional(S.NullOr(S.String)),
-          storage: S.optional(S.NullOr(__S(133, __c16, 5))),
+          storage: S.optional(S.NullOr(__S(5152, __c322, 0))),
           previous_cluster_size: S.optional(S.NullOr(S.String)),
           previous_metal: S.optional(S.NullOr(S.Boolean)),
           previous_cluster_rank: S.optional(S.NullOr(S.Number)),
           previous_shards: S.optional(S.NullOr(S.Number)),
           previous_postgres_image_version: S.optional(S.NullOr(S.String)),
-          previous_storage: S.optional(S.NullOr(__S(133, __c16, 5))),
+          previous_storage: S.optional(S.NullOr(__S(5152, __c322, 0))),
         }),
       ).annotate({ identifier: "NekiChangeRequest" });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24194,7 +21545,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetOauthApplicationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24210,12 +21561,37 @@ function __c38(j: number): any {
           dcr: S.Boolean,
           single_org_authorization: S.Boolean,
           requires_org_scope: S.Boolean,
-          scopes_by_resource: __S(12, __c1, 4),
-          all_scopes_by_resource: __S(12, __c1, 4),
-          mcp_tool_groups: S.optional(S.NullOr(__S(24, __c3, 0))),
+          scopes_by_resource: __S(5232, __c327, 0),
+          all_scopes_by_resource: __S(5232, __c327, 0),
+          mcp_tool_groups: S.optional(S.NullOr(__S(256, __c16, 0))),
         }),
       ).annotate({ identifier: "OauthApplication" });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          workflow: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/move-tables/workflows/{workflow}/cancel",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelMoveTablesWorkflowRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24231,7 +21607,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetOauthTokenRequest" });
   }
 }
-function __c39(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24239,7 +21615,11 @@ function __c39(j: number): any {
           organization: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/organizations/{organization}", code: 200 })),
       ).annotate({ identifier: "GetOrganizationRequest" });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24256,7 +21636,7 @@ function __c39(j: number): any {
           has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
           database_count: S.Number,
           sso_portal_url: S.optional(S.NullOr(S.String)),
-          features: __S(12, __c1, 4),
+          features: __S(5232, __c327, 0),
           idp_managed_roles: S.Boolean,
           invoice_budget_amount: S.String,
           keyspace_shard_limit: S.Number,
@@ -24265,7 +21645,11 @@ function __c39(j: number): any {
           payment_info_required: S.Boolean,
         }),
       ).annotate({ identifier: "Organization" });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24279,7 +21663,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetOrganizationBillingPaymentMethodRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -24291,7 +21675,11 @@ function __c39(j: number): any {
           name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "BillingPaymentMethod" });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24302,7 +21690,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetOrganizationMembershipRequest",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24313,7 +21705,7 @@ function __c39(j: number): any {
           created_at: S.String,
           updated_at: S.String,
           two_factor_auth_configured: S.Boolean,
-          default_organization: S.optional(S.NullOr(__S(1, __c0, 1))),
+          default_organization: S.optional(S.NullOr(__S(4784, __c299, 0))),
           sso: S.optional(S.NullOr(S.Boolean)),
           managed: S.optional(S.NullOr(S.Boolean)),
           directory_managed: S.optional(S.NullOr(S.Boolean)),
@@ -24322,17 +21714,25 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "OrganizationMembershipUser",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(317, __c39, 5),
+          user: __S(1056, __c66, 0),
           role: S.String,
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "OrganizationMembership" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24342,7 +21742,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24359,7 +21759,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetOrganizationSsoDomainRequest",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -24372,7 +21776,11 @@ function __c40(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "OrganizationDomain" });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24383,7 +21791,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetOrganizationTeamRequest",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24399,7 +21811,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetOrganizationTeamMemberRequest",
       });
-    case 4:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24414,35 +21830,43 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPasswordRequest" });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           role: S.String,
-          cidrs: S.NullOr(__S(4, __c0, 4)),
+          cidrs: S.NullOr(__S(4832, __c302, 0)),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(4, __c0, 4),
+          direct_vtgate_addresses: __S(4832, __c302, 0),
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(4, __c0, 4),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          region: __S(75, __c9, 3),
+          access_host_regional_urls: __S(4832, __c302, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          region: __S(4464, __c279, 0),
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7, __c0, 7),
+          database_branch: __S(4816, __c301, 0),
         }),
       ).annotate({ identifier: "DatabaseBranchPassword" });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24457,7 +21881,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetPaymentMethodSetupRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -24474,7 +21902,36 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/neki-changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelNekiChangeRequestRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelNekiChangeRequestResponse",
+      });
+  }
+}
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24493,7 +21950,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetQueryPatternsReportRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24510,7 +21971,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetQueryPatternsReportStatusRequest",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24533,7 +21998,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetQueryStatisticsRequest",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24552,7 +22021,7 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQuerySummaryRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24564,11 +22033,11 @@ function __c41(j: number): any {
           multishard: S.Boolean,
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4, __c0, 4),
-          qualified_tables: __S(4, __c0, 4),
-          table_keyspaces: __S(4, __c0, 4),
-          index_usages: __S(24, __c3, 0),
-          routing_index_usages: __S(24, __c3, 0),
+          tables: __S(4832, __c302, 0),
+          qualified_tables: __S(4832, __c302, 0),
+          table_keyspaces: __S(4832, __c302, 0),
+          index_usages: __S(256, __c16, 0),
+          routing_index_usages: __S(256, __c16, 0),
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -24607,7 +22076,11 @@ function __c41(j: number): any {
           traffic_control_checked: S.Number,
         }),
       ).annotate({ identifier: "QuerySummary" });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24627,7 +22100,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRoleRequest" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24642,7 +22119,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRouterRequest" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24662,7 +22143,7 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24680,7 +22161,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetSchemaRecommendationRequest",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24693,7 +22178,11 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceTokenRequest" });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24708,7 +22197,30 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetShardRequest" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/invitations/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationInvitationRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24725,7 +22237,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetShardConfigurationProfileRequest",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24743,7 +22259,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetShardConfigurationProfileChangeRequestRequest",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24761,7 +22281,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetShardConfigurationProfileShardRequest",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24776,7 +22300,11 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSidecarRequest" });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -24788,7 +22316,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "NekiSidecar" });
   }
 }
-function __c43(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24808,7 +22336,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetSidecarChangeRequestRequest",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24823,13 +22355,17 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSwitchoverRequest" });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          metrics: S.optional(__S(122, __c15, 2).pipe(T.Query())),
+          metrics: S.optional(__S(5024, __c314, 0).pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -24846,7 +22382,11 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTabletMetricsRequest" });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24861,7 +22401,11 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTrafficBudgetRequest" });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24878,7 +22422,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "GetVtctldOperationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -24889,14 +22433,18 @@ function __c43(j: number): any {
           completed_at: S.NullOr(S.String),
           state: S.String,
           completed: S.String,
-          metadata: S.optional(__S(12, __c1, 4)),
-          result: S.optional(__S(12, __c1, 4)),
+          metadata: S.optional(__S(5232, __c327, 0)),
+          result: S.optional(__S(5232, __c327, 0)),
           error: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVtctldOperationResponse",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24910,7 +22458,33 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          router: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers/{router}/changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelRouterChangeRequestRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -24926,7 +22500,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetWorkflowRequest" });
   }
 }
-function __c44(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -24954,8 +22528,8 @@ function __c44(j: number): any {
           error_description: S.NullOr(S.String),
           docs_url: S.String,
           column_name: S.NullOr(S.String),
-          foreign_key_column_names: S.NullOr(__S(4, __c0, 4)),
-          auto_increment_column_names: S.NullOr(__S(4, __c0, 4)),
+          foreign_key_column_names: S.NullOr(__S(4832, __c302, 0)),
+          auto_increment_column_names: S.NullOr(__S(4832, __c302, 0)),
           charset_name: S.NullOr(S.String),
           engine_name: S.NullOr(S.String),
           vindex_name: S.NullOr(S.String),
@@ -24969,7 +22543,7 @@ function __c44(j: number): any {
         identifier: "PaginatedSchemaLintErrorDataItem",
       });
     case 2:
-      return S.Array(__S(353, __c44, 1));
+      return S.Array(__S(1649, __c103, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -24980,10 +22554,14 @@ function __c44(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(354, __c44, 2),
+          data: __S(1650, __c103, 2),
         }),
       ).annotate({ identifier: "PaginatedSchemaLintError" });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25003,7 +22581,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListAdminChangeRequestsRequest",
       });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25019,7 +22601,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListAdminParametersRequest",
       });
-    case 6:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -25038,23 +22624,23 @@ function __c44(j: number): any {
           restart: S.Boolean,
           max: S.optional(S.NullOr(S.Number)),
           min: S.optional(S.NullOr(S.Number)),
-          options: S.optional(S.NullOr(__S(4, __c0, 4))),
-          units: S.optional(S.NullOr(__S(4, __c0, 4))),
+          options: S.optional(S.NullOr(__S(4832, __c302, 0))),
+          units: S.optional(S.NullOr(__S(4832, __c302, 0))),
           url: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({ identifier: "NekiParameter" });
-    case 7:
-      return S.Array(__S(358, __c44, 6));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(359, __c44, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(1696, __c106, 0));
+    case 2:
+      return S.suspend(() => __S(1697, __c106, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAdminParametersResponse",
       });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25068,13 +22654,17 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAdminSizeSkusRequest" });
+    case 1:
+      return S.Array(__S(3440, __c215, 0));
     case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() => __S(362, __c45, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1713, __c107, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAdminSizeSkusResponse",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25085,7 +22675,7 @@ function __c45(j: number): any {
           T.Http({ method: "GET", uri: "/organizations/{organization}/audit-log", code: 200 }),
         ),
       ).annotate({ identifier: "ListAuditLogsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25104,14 +22694,14 @@ function __c45(j: number): any {
           remote_ip: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          metadata: S.NullOr(__S(12, __c1, 4)),
+          metadata: S.NullOr(__S(5232, __c327, 0)),
         }),
       ).annotate({
         identifier: "PaginatedAuditLogEventDataItem",
       });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1729, __c108, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25119,12 +22709,12 @@ function __c45(j: number): any {
           has_prev: S.Boolean,
           cursor_start: S.NullOr(S.String),
           cursor_end: S.NullOr(S.String),
-          data: __S(366, __c45, 6),
+          data: __S(1730, __c108, 2),
         }),
       ).annotate({ identifier: "PaginatedAuditLogEvent" });
   }
 }
-function __c46(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25144,6 +22734,25 @@ function __c46(j: number): any {
         identifier: "ListBackupPoliciesRequest",
       });
     case 1:
+      return S.Array(__S(1760, __c110, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          current_page: S.Number,
+          per_page: S.Number,
+          next_page: S.NullOr(S.Number),
+          next_page_url: S.NullOr(S.String),
+          prev_page: S.NullOr(S.Number),
+          prev_page_url: S.NullOr(S.String),
+          data: __S(1745, __c109, 1),
+        }),
+      ).annotate({ identifier: "PaginatedBackupPolicy" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25166,22 +22775,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "PaginatedBackupPolicyDataItem",
       });
-    case 2:
-      return S.Array(__S(369, __c46, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          current_page: S.Number,
-          per_page: S.Number,
-          next_page: S.NullOr(S.Number),
-          next_page_url: S.NullOr(S.String),
-          prev_page: S.NullOr(S.Number),
-          prev_page_url: S.NullOr(S.String),
-          data: __S(370, __c46, 2),
-        }),
-      ).annotate({ identifier: "PaginatedBackupPolicy" });
-    case 4:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25204,7 +22802,7 @@ function __c46(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBackupsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25222,16 +22820,16 @@ function __c46(j: number): any {
           uncompressed_size: S.Number,
           protected: S.Boolean,
           required: S.Boolean,
-          restored_branches: __S(51, __c6, 3),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          backup_policy: S.optional(S.NullOr(__S(369, __c46, 1))),
-          schema_snapshot: S.optional(S.NullOr(__S(53, __c6, 5))),
-          database_branch: S.optional(S.NullOr(__S(1, __c0, 1))),
+          restored_branches: __S(3040, __c190, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          backup_policy: S.optional(S.NullOr(__S(1760, __c110, 0))),
+          schema_snapshot: S.optional(S.NullOr(__S(3041, __c190, 1))),
+          database_branch: S.optional(S.NullOr(__S(4784, __c299, 0))),
         }),
       ).annotate({ identifier: "PaginatedBackupDataItem" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1777, __c111, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25243,12 +22841,12 @@ function __c46(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(374, __c46, 6),
+          data: __S(1778, __c111, 2),
         }),
       ).annotate({ identifier: "PaginatedBackup" });
   }
 }
-function __c47(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25269,32 +22867,36 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListBouncerResizeRequestsRequest",
       });
-    case 1:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           state: S.String,
           replicas_per_cell: S.Number,
           target: S.String,
-          parameters: __S(12, __c1, 4),
+          parameters: __S(5232, __c327, 0),
           previous_replicas_per_cell: S.Number,
           previous_target: S.String,
-          previous_parameters: __S(31, __c3, 7),
+          previous_parameters: __S(288, __c18, 0),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
-          bouncer: __S(1, __c0, 1),
-          sku: __S(57, __c7, 1),
-          previous_sku: __S(57, __c7, 1),
+          actor: __S(4720, __c295, 0),
+          bouncer: __S(4784, __c299, 0),
+          sku: __S(3440, __c215, 0),
+          previous_sku: __S(3440, __c215, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerResizeRequestDataItem",
       });
+    case 1:
+      return S.Array(__S(1808, __c113, 0));
     case 2:
-      return S.Array(__S(377, __c47, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25304,12 +22906,16 @@ function __c47(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(378, __c47, 2),
+          data: __S(1809, __c113, 1),
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerResizeRequest",
       });
-    case 4:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25325,7 +22931,7 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBouncersRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25345,39 +22951,35 @@ function __c47(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4, __c0, 4),
-          actor: __S(3, __c0, 3),
+          options: __S(4832, __c302, 0),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerDataItemParametersItem",
       });
-    case 6:
-      return S.Array(__S(381, __c47, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1825, __c114, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
-          sku: __S(57, __c7, 1),
+          sku: __S(3440, __c215, 0),
           target: S.String,
           replicas_per_cell: S.Number,
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
-          branch: __S(1, __c0, 1),
-          parameters: __S(382, __c47, 6),
+          actor: __S(4720, __c295, 0),
+          branch: __S(4784, __c299, 0),
+          parameters: __S(1826, __c114, 2),
         }),
       ).annotate({
         identifier: "PaginatedPostgresBouncerDataItem",
       });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(383, __c47, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(1827, __c114, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25387,10 +22989,36 @@ function __c48(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(384, __c48, 0),
+          data: __S(1828, __c114, 4),
         }),
       ).annotate({ identifier: "PaginatedPostgresBouncer" });
-    case 2:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelShardConfigurationProfileChangeRequestRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25411,7 +23039,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListBranchAnomaliesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25425,9 +23053,9 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "PaginatedAnomalyDataItemCorrelationsItem",
       });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1857, __c116, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25438,12 +23066,12 @@ function __c48(j: number): any {
           duration: S.Number,
           metrics_start: S.String,
           metrics_end: S.String,
-          correlations: S.optional(S.NullOr(__S(388, __c48, 4))),
+          correlations: S.optional(S.NullOr(__S(1858, __c116, 2))),
         }),
       ).annotate({ identifier: "PaginatedAnomalyDataItem" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(1859, __c116, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25453,12 +23081,12 @@ function __c48(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(390, __c48, 6),
+          data: __S(1860, __c116, 4),
         }),
       ).annotate({ identifier: "PaginatedAnomaly" });
   }
 }
-function __c49(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -25478,7 +23106,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListBranchBouncerResizeRequestsRequest",
       });
-    case 1:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25496,7 +23128,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListBranchChangeRequestsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25505,19 +23137,19 @@ function __c49(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
           cluster_name: S.String,
           cluster_display_name: S.String,
           cluster_metal: S.Boolean,
           replicas: S.Number,
           version: S.String,
-          parameters: __S(12, __c1, 4),
+          parameters: __S(5232, __c327, 0),
           previous_cluster_name: S.String,
           previous_cluster_display_name: S.String,
           previous_cluster_metal: S.Boolean,
           previous_replicas: S.Number,
           previous_version: S.String,
-          previous_parameters: __S(31, __c3, 7),
+          previous_parameters: __S(288, __c18, 0),
           minimum_storage_bytes: S.Number,
           maximum_storage_bytes: S.Number,
           storage_autoscaling: S.Boolean,
@@ -25537,9 +23169,9 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PaginatedPostgresClusterResizeRequestDataItem",
       });
+    case 2:
+      return S.Array(__S(1889, __c118, 1));
     case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25549,12 +23181,16 @@ function __c49(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(395, __c49, 3),
+          data: __S(1890, __c118, 2),
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterResizeRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25572,14 +23208,14 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListBranchConfigChangeRequestsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           state: S.String,
           change_type: S.String,
-          previous_options: __S(12, __c1, 4),
-          new_options: __S(12, __c1, 4),
+          previous_options: __S(5232, __c327, 0),
+          new_options: __S(5232, __c327, 0),
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -25587,18 +23223,14 @@ function __c49(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedConfigChangeRequestDataItem",
       });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1905, __c119, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25608,12 +23240,16 @@ function __c50(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(399, __c49, 7),
+          data: __S(1906, __c119, 2),
         }),
       ).annotate({
         identifier: "PaginatedConfigChangeRequest",
       });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25632,7 +23268,7 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBranchesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25665,24 +23301,24 @@ function __c50(j: number): any {
           shard_count: S.optional(S.NullOr(S.Number)),
           keyspace_count: S.optional(S.Number),
           stale_schema: S.Boolean,
-          actor: S.NullOr(__S(3, __c0, 3)),
-          restored_from_branch: S.NullOr(__S(1, __c0, 1)),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          restored_from_branch: S.NullOr(__S(4784, __c299, 0)),
           private_edge_connectivity: S.Boolean,
           has_replicas: S.Boolean,
           has_read_only_replicas: S.Boolean,
           html_url: S.String,
           url: S.String,
-          region: __S(75, __c9, 3),
+          region: __S(4464, __c279, 0),
           parent_branch: S.NullOr(S.String),
-          vtgate_options: S.optional(S.NullOr(__S(12, __c1, 4))),
+          vtgate_options: S.optional(S.NullOr(__S(5232, __c327, 0))),
           cluster_architecture: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchDataItem",
       });
+    case 2:
+      return S.Array(__S(1921, __c120, 1));
     case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25694,10 +23330,14 @@ function __c50(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(403, __c50, 3),
+          data: __S(1922, __c120, 2),
         }),
       ).annotate({ identifier: "PaginatedDatabaseBranch" });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25711,7 +23351,7 @@ function __c50(j: number): any {
           dir: S.optional(S.String.pipe(T.Query())),
           tablet_type: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          fields: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25722,7 +23362,7 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBranchQueriesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25734,11 +23374,11 @@ function __c50(j: number): any {
           multishard: S.Boolean,
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4, __c0, 4),
-          qualified_tables: __S(4, __c0, 4),
-          table_keyspaces: __S(4, __c0, 4),
-          index_usages: __S(24, __c3, 0),
-          routing_index_usages: __S(24, __c3, 0),
+          tables: __S(4832, __c302, 0),
+          qualified_tables: __S(4832, __c302, 0),
+          table_keyspaces: __S(4832, __c302, 0),
+          index_usages: __S(256, __c16, 0),
+          routing_index_usages: __S(256, __c16, 0),
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -25779,13 +23419,9 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PaginatedQuerySummaryDataItem",
       });
-    case 7:
-      return S.Array(__S(406, __c50, 6));
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1937, __c121, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25795,10 +23431,14 @@ function __c51(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(407, __c50, 7),
+          data: __S(1938, __c121, 2),
         }),
       ).annotate({ identifier: "PaginatedQuerySummary" });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25823,7 +23463,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListBranchQueryErrorsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -25837,9 +23477,9 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PaginatedErrorSummaryDataItem",
       });
+    case 2:
+      return S.Array(__S(1953, __c122, 1));
     case 3:
-      return S.Array(__S(410, __c51, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25849,10 +23489,14 @@ function __c51(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(411, __c51, 3),
+          data: __S(1954, __c122, 2),
         }),
       ).annotate({ identifier: "PaginatedErrorSummary" });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -25879,7 +23523,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListBranchQueryTagsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -25889,27 +23533,23 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PaginatedQueryTagDataItemValuesItem",
       });
-    case 7:
-      return S.Array(__S(414, __c51, 6));
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1969, __c123, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           source: S.String,
           query_count: S.Number,
-          values: __S(415, __c51, 7),
+          values: __S(1970, __c123, 2),
         }),
       ).annotate({
         identifier: "PaginatedQueryTagDataItem",
       });
-    case 1:
-      return S.Array(__S(416, __c52, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1971, __c123, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -25919,16 +23559,20 @@ function __c52(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(417, __c52, 1),
+          data: __S(1972, __c123, 4),
         }),
       ).annotate({ identifier: "PaginatedQueryTag" });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          tags: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
@@ -25937,7 +23581,7 @@ function __c52(j: number): any {
           dir: S.optional(S.String.pipe(T.Query())),
           tablet_type: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          fields: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -25950,17 +23594,17 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListBranchQueryTagSummariesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensions: __S(12, __c1, 4),
+          dimensions: __S(5232, __c327, 0),
           query_count: S.Number,
           error_count: S.Number,
-          tables: __S(4, __c0, 4),
-          qualified_tables: __S(4, __c0, 4),
-          table_keyspaces: __S(4, __c0, 4),
-          index_usages: __S(24, __c3, 0),
-          routing_index_usages: __S(32, __c4, 0),
+          tables: __S(4832, __c302, 0),
+          qualified_tables: __S(4832, __c302, 0),
+          table_keyspaces: __S(4832, __c302, 0),
+          index_usages: __S(256, __c16, 0),
+          routing_index_usages: __S(304, __c19, 0),
           sum_shard_queries: S.Number,
           max_shard_queries: S.Number,
           avg_shard_queries: S.Number,
@@ -26001,9 +23645,9 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "PaginatedDimensionsQuerySummaryDataItem",
       });
-    case 5:
-      return S.Array(__S(420, __c52, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1985, __c124, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26013,12 +23657,16 @@ function __c52(j: number): any {
           next_page_url: S.optional(S.NullOr(S.String)),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.optional(S.NullOr(S.String)),
-          data: __S(421, __c52, 5),
+          data: __S(1986, __c124, 2),
         }),
       ).annotate({
         identifier: "PaginatedDimensionsQuerySummary",
       });
-    case 7:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26036,13 +23684,9 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListBranchResizeRequestsRequest",
       });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(235, __c29, 3));
     case 1:
+      return S.Array(__S(224, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26052,12 +23696,38 @@ function __c53(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(424, __c53, 0),
+          data: __S(2001, __c125, 1),
         }),
       ).annotate({
         identifier: "PaginatedMysqlClusterResizeRequest",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          sidecar: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/sidecars/{sidecar}/changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelSidecarChangeRequestRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26073,7 +23743,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ListBranchVitessParametersRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26086,41 +23756,41 @@ function __c53(j: number): any {
           default_value: S.NullOr(S.String),
           value: S.NullOr(S.String),
           override: S.Boolean,
-          options: S.optional(__S(4, __c0, 4)),
+          options: S.optional(__S(4832, __c302, 0)),
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponseVtgateItem",
       });
-    case 4:
-      return S.Array(__S(427, __c53, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2033, __c127, 1));
+    case 3:
       return S.Array(S.Unknown);
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          vttablet: S.optional(__S(429, __c53, 5)),
-          mysqld: S.optional(__S(429, __c53, 5)),
+          vttablet: S.optional(__S(2035, __c127, 3)),
+          mysqld: S.optional(__S(2035, __c127, 3)),
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponseKeyspacesValue",
       });
-    case 7:
-      return S.Record(S.String, __S(430, __c53, 6));
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Record(S.String, __S(2036, __c127, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          vtgate: __S(428, __c53, 4),
-          keyspaces: __S(431, __c53, 7),
+          vtgate: __S(2034, __c127, 2),
+          keyspaces: __S(2037, __c127, 5),
         }),
       ).annotate({
         identifier: "ListBranchVitessParametersResponse",
       });
-    case 1:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26139,7 +23809,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListClusterSizeSkusRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -26163,13 +23833,17 @@ function __c54(j: number): any {
           production: S.Boolean,
         }),
       ).annotate({ identifier: "ClusterSizeSku" });
+    case 2:
+      return S.Array(__S(2049, __c128, 1));
     case 3:
-      return S.Array(__S(434, __c54, 2));
-    case 4:
-      return S.suspend(() => __S(435, __c54, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2050, __c128, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListClusterSizeSkusResponse",
       });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26186,29 +23860,25 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListDatabasePostgresCidrsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           schema: S.String,
           role: S.String,
-          cidrs: __S(4, __c0, 4),
+          cidrs: __S(4832, __c302, 0),
           description: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
           deleted_at: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterCidrDataItem",
       });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2065, __c129, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26220,12 +23890,16 @@ function __c55(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(439, __c54, 7),
+          data: __S(2066, __c129, 2),
         }),
       ).annotate({
         identifier: "PaginatedPostgresClusterCidr",
       });
-    case 1:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26242,9 +23916,13 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListDatabaseRegionsRequest",
       });
-    case 2:
-      return S.Array(__S(75, __c9, 3));
-    case 3:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4464, __c279, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26254,12 +23932,16 @@ function __c55(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(442, __c55, 2),
+          data: __S(2096, __c131, 0),
         }),
       ).annotate({
         identifier: "PaginatedPlanetscaleRegion",
       });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26270,7 +23952,7 @@ function __c55(j: number): any {
           T.Http({ method: "GET", uri: "/organizations/{organization}/databases", code: 200 }),
         ),
       ).annotate({ identifier: "ListDatabasesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26286,7 +23968,7 @@ function __c55(j: number): any {
           ready: S.Boolean,
           at_backup_restore_branches_limit: S.optional(S.Boolean),
           at_development_branch_usage_limit: S.optional(S.Boolean),
-          region: __S(75, __c9, 3),
+          region: __S(4464, __c279, 0),
           html_url: S.String,
           name: S.String,
           state: S.String,
@@ -26320,9 +24002,9 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "PaginatedDatabaseDataItem",
       });
-    case 6:
-      return S.Array(__S(445, __c55, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2113, __c132, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26334,12 +24016,12 @@ function __c55(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(446, __c55, 6),
+          data: __S(2114, __c132, 2),
         }),
       ).annotate({ identifier: "PaginatedDatabase" });
   }
 }
-function __c56(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -26370,7 +24052,7 @@ function __c56(j: number): any {
           cluster_display_name: S.String,
           cluster_rank: S.Number,
           replicas: S.Number,
-          parameters: __S(31, __c3, 7),
+          parameters: __S(288, __c18, 0),
           minimum_storage_bytes: S.NullOr(S.Number),
           maximum_storage_bytes: S.NullOr(S.Number),
           storage_autoscaling: S.NullOr(S.Boolean),
@@ -26381,7 +24063,7 @@ function __c56(j: number): any {
           previous_cluster_display_name: S.String,
           previous_cluster_rank: S.Number,
           previous_replicas: S.Number,
-          previous_parameters: __S(31, __c3, 7),
+          previous_parameters: __S(288, __c18, 0),
           previous_minimum_storage_bytes: S.NullOr(S.Number),
           previous_maximum_storage_bytes: S.NullOr(S.Number),
           previous_storage_autoscaling: S.NullOr(S.Boolean),
@@ -26392,14 +24074,14 @@ function __c56(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
-          replica: __S(1, __c0, 1),
+          actor: __S(4720, __c295, 0),
+          replica: __S(4784, __c299, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresReadOnlyReplicaChangeRequestDataItem",
       });
     case 2:
-      return S.Array(__S(449, __c56, 1));
+      return S.Array(__S(2129, __c133, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -26410,12 +24092,16 @@ function __c56(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(450, __c56, 2),
+          data: __S(2130, __c133, 2),
         }),
       ).annotate({
         identifier: "PaginatedPostgresReadOnlyReplicaChangeRequest",
       });
-    case 4:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26431,13 +24117,17 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListDedicatedReadReplicasRequest",
       });
-    case 5:
-      return S.Array(__S(78, __c9, 6));
-    case 6:
-      return S.suspend(() => __S(453, __c56, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(4450, __c278, 2));
+    case 2:
+      return S.suspend(() => __S(2145, __c134, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedReadReplicasResponse",
       });
-    case 7:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26455,11 +24145,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListDeployOperationsRequest",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26479,15 +24165,15 @@ function __c57(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(4, __c0, 4)),
+          removed_foreign_key_names: S.NullOr(__S(4832, __c302, 0)),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDeployOperationDataItem",
       });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
     case 2:
+      return S.Array(__S(2161, __c135, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26497,10 +24183,14 @@ function __c57(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(457, __c57, 1),
+          data: __S(2162, __c135, 2),
         }),
       ).annotate({ identifier: "PaginatedDeployOperation" });
-    case 3:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26518,7 +24208,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListDeployRequestReviewsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26527,14 +24217,14 @@ function __c57(j: number): any {
           state: S.String,
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedDeployRequestReviewDataItem",
       });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2177, __c136, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26544,12 +24234,16 @@ function __c57(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(461, __c57, 5),
+          data: __S(2178, __c136, 2),
         }),
       ).annotate({
         identifier: "PaginatedDeployRequestReview",
       });
-    case 7:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26571,13 +24265,9 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListDeployRequestsRequest",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26597,15 +24287,15 @@ function __c58(j: number): any {
           table_locked: S.Boolean,
           table_recently_used: S.Boolean,
           table_recently_used_at: S.NullOr(S.String),
-          removed_foreign_key_names: S.NullOr(__S(5, __c0, 5)),
+          removed_foreign_key_names: S.NullOr(__S(4736, __c296, 0)),
           deploy_errors: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem",
       });
-    case 2:
-      return S.Array(__S(465, __c58, 1));
     case 3:
+      return S.Array(__S(2194, __c137, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26618,9 +24308,9 @@ function __c58(j: number): any {
         identifier:
           "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem",
       });
-    case 4:
-      return S.Array(__S(467, __c58, 3));
     case 5:
+      return S.Array(__S(2196, __c137, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26636,20 +24326,20 @@ function __c58(j: number): any {
           table_name: S.String,
           table_recently_used_at: S.NullOr(S.String),
           throttled_at: S.NullOr(S.String),
-          removed_foreign_key_names: __S(5, __c0, 5),
+          removed_foreign_key_names: __S(4736, __c296, 0),
           shard_count: S.Number,
-          shard_names: __S(5, __c0, 5),
+          shard_names: __S(4736, __c296, 0),
           can_drop_data: S.Boolean,
           table_recently_used: S.Boolean,
           sharded: S.Boolean,
-          operations: __S(468, __c58, 4),
+          operations: __S(2197, __c137, 5),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem",
       });
-    case 6:
-      return S.Array(__S(469, __c58, 5));
     case 7:
+      return S.Array(__S(2198, __c137, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26670,17 +24360,17 @@ function __c58(j: number): any {
           into_branch: S.String,
           deploy_request_number: S.Number,
           deployable: S.Boolean,
-          preceding_deployments: __S(464, __c58, 0),
-          deploy_operations: __S(466, __c58, 2),
-          deploy_operation_summaries: __S(470, __c58, 6),
-          lint_errors: __S(32, __c4, 0),
-          sequential_diff_dependencies: __S(464, __c58, 0),
-          lookup_vindex_operations: __S(464, __c58, 0),
-          throttler_configurations: S.optional(S.NullOr(__S(31, __c3, 7))),
-          deployment_revert_request: S.NullOr(__S(31, __c3, 7)),
-          actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cutover_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
-          cancelled_actor: S.optional(S.NullOr(__S(3, __c0, 3))),
+          preceding_deployments: __S(2193, __c137, 1),
+          deploy_operations: __S(2195, __c137, 3),
+          deploy_operation_summaries: __S(2199, __c137, 7),
+          lint_errors: __S(304, __c19, 0),
+          sequential_diff_dependencies: __S(2193, __c137, 1),
+          lookup_vindex_operations: __S(2193, __c137, 1),
+          throttler_configurations: S.optional(S.NullOr(__S(288, __c18, 0))),
+          deployment_revert_request: S.NullOr(__S(288, __c18, 0)),
+          actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cutover_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
+          cancelled_actor: S.optional(S.NullOr(__S(4720, __c295, 0))),
           schema_last_updated_at: S.NullOr(S.String),
           table_locked: S.Boolean,
           locked_table_name: S.optional(S.NullOr(S.String)),
@@ -26692,21 +24382,17 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItemDeployment",
       });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           number: S.Number,
-          actor: __S(3, __c0, 3),
-          closed_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          actor: __S(4720, __c295, 0),
+          closed_by: S.optional(S.NullOr(__S(4720, __c295, 0))),
           branch: S.String,
           branch_id: S.String,
           branch_deleted: S.Boolean,
-          branch_deleted_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          branch_deleted_by: S.optional(S.NullOr(__S(4720, __c295, 0))),
           branch_deleted_at: S.NullOr(S.String),
           into_branch: S.String,
           into_branch_sharded: S.Boolean,
@@ -26715,7 +24401,7 @@ function __c59(j: number): any {
           approved: S.Boolean,
           state: S.String,
           deployment_state: S.String,
-          deployment: __S(471, __c58, 7),
+          deployment: __S(2200, __c137, 8),
           num_comments: S.Number,
           html_url: S.String,
           notes: S.String,
@@ -26728,9 +24414,9 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequestDataItem",
       });
-    case 1:
-      return S.Array(__S(472, __c59, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(2201, __c137, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26742,12 +24428,84 @@ function __c59(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(473, __c59, 1),
+          data: __S(2202, __c137, 10),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseDeployRequest",
       });
-    case 3:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/workflows/{number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CancelWorkflowRequest" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          number: S.Number,
+          state: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          cancelled_at: S.NullOr(S.String),
+          reversed_at: S.NullOr(S.String),
+          retried_at: S.NullOr(S.String),
+          data_copy_completed_at: S.NullOr(S.String),
+          cutover_at: S.NullOr(S.String),
+          replicas_switched: S.Boolean,
+          primaries_switched: S.Boolean,
+          switch_replicas_at: S.NullOr(S.String),
+          switch_primaries_at: S.NullOr(S.String),
+          verify_data_at: S.NullOr(S.String),
+          workflow_type: S.String,
+          workflow_subtype: S.String,
+          defer_secondary_keys: S.Boolean,
+          on_ddl: S.String,
+          workflow_errors: S.String,
+          may_retry: S.Boolean,
+          may_restart: S.Boolean,
+          verified_data_stale: S.Boolean,
+          sequence_tables_applied: S.Boolean,
+          actor: __S(4720, __c295, 0),
+          verify_data_by: __S(4720, __c295, 0),
+          reversed_by: __S(4720, __c295, 0),
+          switch_replicas_by: __S(4720, __c295, 0),
+          switch_primaries_by: __S(4720, __c295, 0),
+          cancelled_by: __S(4720, __c295, 0),
+          completed_by: __S(4720, __c295, 0),
+          retried_by: __S(4720, __c295, 0),
+          cutover_by: __S(4720, __c295, 0),
+          reversed_cutover_by: __S(4720, __c295, 0),
+          branch: __S(4784, __c299, 0),
+          source_keyspace: __S(4784, __c299, 0),
+          target_keyspace: __S(4784, __c299, 0),
+          global_keyspace: __S(4784, __c299, 0),
+        }),
+      ).annotate({ identifier: "Workflow" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26761,15 +24519,7 @@ function __c59(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListExtensionsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          postgres_image_version: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PostgresExtensionDefinitionRequirements",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -26789,15 +24539,15 @@ function __c59(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4, __c0, 4),
-          actor: __S(3, __c0, 3),
+          options: __S(4832, __c302, 0),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PostgresExtensionDefinitionParametersItem",
       });
-    case 6:
-      return S.Array(__S(477, __c59, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2241, __c140, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -26805,24 +24555,36 @@ function __c59(j: number): any {
           description: S.String,
           enabled: S.optional(S.NullOr(S.Boolean)),
           internal: S.Boolean,
-          requirements: __S(476, __c59, 4),
+          requirements: __S(2256, __c141, 0),
           url: S.String,
-          parameters: __S(478, __c59, 6),
+          parameters: __S(2242, __c140, 2),
         }),
       ).annotate({
         identifier: "PostgresExtensionDefinition",
       });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(479, __c59, 7));
-    case 1:
-      return S.suspend(() => __S(480, __c60, 0).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(2243, __c140, 3));
+    case 5:
+      return S.suspend(() => __S(2244, __c140, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExtensionsResponse",
       });
-    case 2:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          postgres_image_version: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PostgresExtensionDefinitionRequirements",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26841,7 +24603,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListGeneratedQueryPatternsReportsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26850,14 +24612,14 @@ function __c60(j: number): any {
           finished_at: S.NullOr(S.String),
           url: S.String,
           download_url: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedQueryPatternsDownloadDataItem",
       });
-    case 4:
-      return S.Array(__S(483, __c60, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2273, __c142, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26865,12 +24627,16 @@ function __c60(j: number): any {
           has_prev: S.Boolean,
           cursor_start: S.NullOr(S.String),
           cursor_end: S.NullOr(S.String),
-          data: __S(484, __c60, 4),
+          data: __S(2274, __c142, 2),
         }),
       ).annotate({
         identifier: "PaginatedQueryPatternsDownload",
       });
-    case 6:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26888,7 +24654,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListInsightsAgentRunsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -26896,11 +24662,11 @@ function __c60(j: number): any {
           scheduled: S.Boolean,
           type: S.String,
           state: S.String,
-          repository: __S(12, __c1, 4),
-          agent: S.NullOr(__S(12, __c1, 4)),
+          repository: __S(5232, __c327, 0),
+          agent: S.NullOr(__S(5232, __c327, 0)),
           schedule_id: S.NullOr(S.String),
           scheduled_for: S.NullOr(S.String),
-          selected_targets: __S(24, __c3, 0),
+          selected_targets: __S(256, __c16, 0),
           outcome: S.NullOr(S.String),
           title: S.NullOr(S.String),
           summary: S.NullOr(S.String),
@@ -26917,13 +24683,9 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "PaginatedInsightsAgentRunDataItem",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(487, __c60, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2289, __c143, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -26933,12 +24695,16 @@ function __c61(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(488, __c61, 0),
+          data: __S(2290, __c143, 2),
         }),
       ).annotate({
         identifier: "PaginatedInsightsAgentRun",
       });
-    case 2:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26954,7 +24720,17 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListInsightsAgentSchedulesRequest",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(2320, __c145, 0));
+    case 2:
+      return S.suspend(() => __S(2305, __c144, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListInsightsAgentSchedulesResponse",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -26968,13 +24744,11 @@ function __c61(j: number): any {
           next_run_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "InsightsAgentSchedule" });
-    case 4:
-      return S.Array(__S(491, __c61, 3));
-    case 5:
-      return S.suspend(() => __S(492, __c61, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListInsightsAgentSchedulesResponse",
-      });
-    case 6:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -26984,13 +24758,9 @@ function __c61(j: number): any {
           T.Http({ method: "GET", uri: "/organizations/{organization}/invoices", code: 200 }),
         ),
       ).annotate({ identifier: "ListInvoicesRequest" });
-    case 7:
-      return S.Array(__S(282, __c35, 2));
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(704, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27000,10 +24770,14 @@ function __c62(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(495, __c61, 7),
+          data: __S(2337, __c146, 1),
         }),
       ).annotate({ identifier: "PaginatedInvoice" });
-    case 1:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27022,14 +24796,14 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListKeyspaceConfigChangeRequestsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           state: S.String,
           change_type: S.String,
-          previous_options: __S(31, __c3, 7),
-          new_options: __S(12, __c1, 4),
+          previous_options: __S(288, __c18, 0),
+          new_options: __S(5232, __c327, 0),
           error_message: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -27037,14 +24811,14 @@ function __c62(j: number): any {
           updated_at: S.String,
           keyspace_name: S.NullOr(S.String),
           queued_until: S.NullOr(S.String),
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceConfigChangeRequestDataItem",
       });
+    case 2:
+      return S.Array(__S(2353, __c147, 1));
     case 3:
-      return S.Array(__S(498, __c62, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27054,12 +24828,16 @@ function __c62(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(499, __c62, 3),
+          data: __S(2354, __c147, 2),
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceConfigChangeRequest",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27079,7 +24857,7 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ListKeyspaceResizeRequestsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27097,18 +24875,14 @@ function __c62(j: number): any {
           previous_cluster_display_name: S.String,
           replicas: S.Number,
           previous_replicas: S.Number,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceResizeRequestDataItem",
       });
-    case 7:
-      return S.Array(__S(502, __c62, 6));
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2369, __c148, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27118,12 +24892,16 @@ function __c63(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(503, __c62, 7),
+          data: __S(2370, __c148, 2),
         }),
       ).annotate({
         identifier: "PaginatedKeyspaceResizeRequest",
       });
-    case 1:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27139,7 +24917,7 @@ function __c63(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListKeyspacesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           strategy: S.optional(S.NullOr(S.String)),
@@ -27147,7 +24925,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27171,20 +24949,20 @@ function __c63(j: number): any {
           imported: S.Boolean,
           vector_pool_allocation: S.NullOr(S.Number),
           node_ttl_strategy: S.String,
-          storage: __S(83, __c10, 3),
+          storage: __S(4560, __c285, 0),
           max_rollout: S.NullOr(S.Number),
-          replication_durability_constraints: __S(506, __c63, 2),
-          vreplication_flags: __S(85, __c10, 5),
-          throttler: __S(86, __c10, 6),
-          mysqld_options: __S(12, __c1, 4),
-          vttablet_options: __S(12, __c1, 4),
+          replication_durability_constraints: __S(2385, __c149, 1),
+          vreplication_flags: __S(4561, __c285, 1),
+          throttler: __S(4562, __c285, 2),
+          mysqld_options: __S(5232, __c327, 0),
+          vttablet_options: __S(5232, __c327, 0),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspaceDataItem",
       });
+    case 3:
+      return S.Array(__S(2386, __c149, 2));
     case 4:
-      return S.Array(__S(507, __c63, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27194,12 +24972,16 @@ function __c63(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(508, __c63, 4),
+          data: __S(2387, __c149, 3),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchKeyspace",
       });
-    case 6:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27216,13 +24998,9 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "ListMaintenanceSchedulesRequest",
       });
-    case 7:
-      return S.Array(__S(298, __c37, 2));
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(880, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27232,12 +25010,16 @@ function __c64(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(511, __c63, 7),
+          data: __S(2401, __c150, 1),
         }),
       ).annotate({
         identifier: "PaginatedBranchMaintenanceSchedule",
       });
-    case 1:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27255,7 +25037,7 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListMaintenanceWindowsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27267,9 +25049,9 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "PaginatedBranchMaintenanceWindowDataItem",
       });
+    case 2:
+      return S.Array(__S(2417, __c151, 1));
     case 3:
-      return S.Array(__S(514, __c64, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27279,12 +25061,34 @@ function __c64(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(515, __c64, 3),
+          data: __S(2418, __c151, 2),
         }),
       ).annotate({
         identifier: "PaginatedBranchMaintenanceWindow",
       });
-    case 5:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/revert",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CompleteRevertRequest" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27301,25 +25105,25 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "ListMoveTablesWorkflowsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          workflows: __S(24, __c3, 0),
+          workflows: __S(256, __c16, 0),
         }),
       ).annotate({
         identifier: "ListMoveTablesWorkflowsResponseData",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(518, __c64, 6),
+          data: __S(2449, __c153, 1),
         }),
       ).annotate({
         identifier: "ListMoveTablesWorkflowsResponse",
       });
   }
 }
-function __c65(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27329,8 +25133,8 @@ function __c65(j: number): any {
           branch: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          state: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          target_types: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          state: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
+          target_types: S.optional(__S(4832, __c302, 0).pipe(T.Query())),
           target_id: S.optional(S.String.pipe(T.Query())),
           period: S.optional(S.String.pipe(T.Query())),
           completed_at: S.optional(S.String.pipe(T.Query())),
@@ -27355,19 +25159,19 @@ function __c65(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
           target_id: S.NullOr(S.String),
           target_type: S.String,
           target_name: S.String,
           admin_size: S.optional(S.NullOr(S.String)),
           admin_size_display_name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(__S(12, __c1, 4))),
+          parameters: S.optional(S.NullOr(__S(5232, __c327, 0))),
           previous_admin_size: S.optional(S.NullOr(S.String)),
           previous_admin_size_display_name: S.optional(S.NullOr(S.String)),
-          previous_parameters: S.optional(S.NullOr(__S(12, __c1, 4))),
-          flags: S.optional(S.NullOr(__S(4, __c0, 4))),
+          previous_parameters: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          flags: S.optional(S.NullOr(__S(4832, __c302, 0))),
           neki_image_version: S.optional(S.NullOr(S.String)),
-          previous_flags: S.optional(S.NullOr(__S(4, __c0, 4))),
+          previous_flags: S.optional(S.NullOr(__S(4832, __c302, 0))),
           previous_neki_image_version: S.optional(S.NullOr(S.String)),
           replicas: S.optional(S.NullOr(S.Number)),
           previous_replicas: S.optional(S.NullOr(S.Number)),
@@ -27394,19 +25198,19 @@ function __c65(j: number): any {
           cluster_rank: S.optional(S.NullOr(S.Number)),
           shards: S.optional(S.NullOr(S.Number)),
           postgres_image_version: S.optional(S.NullOr(S.String)),
-          storage: S.optional(S.NullOr(__S(133, __c16, 5))),
+          storage: S.optional(S.NullOr(__S(5152, __c322, 0))),
           previous_cluster_size: S.optional(S.NullOr(S.String)),
           previous_metal: S.optional(S.NullOr(S.Boolean)),
           previous_cluster_rank: S.optional(S.NullOr(S.Number)),
           previous_shards: S.optional(S.NullOr(S.Number)),
           previous_postgres_image_version: S.optional(S.NullOr(S.String)),
-          previous_storage: S.optional(S.NullOr(__S(133, __c16, 5))),
+          previous_storage: S.optional(S.NullOr(__S(5152, __c322, 0))),
         }),
       ).annotate({
         identifier: "PaginatedNekiChangeRequestDataItem",
       });
     case 2:
-      return S.Array(__S(521, __c65, 1));
+      return S.Array(__S(2465, __c154, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -27417,12 +25221,16 @@ function __c65(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(522, __c65, 2),
+          data: __S(2466, __c154, 2),
         }),
       ).annotate({
         identifier: "PaginatedNekiChangeRequest",
       });
-    case 4:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27438,7 +25246,7 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "ListOauthApplicationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27454,16 +25262,16 @@ function __c65(j: number): any {
           dcr: S.Boolean,
           single_org_authorization: S.Boolean,
           requires_org_scope: S.Boolean,
-          scopes_by_resource: __S(12, __c1, 4),
-          all_scopes_by_resource: __S(12, __c1, 4),
-          mcp_tool_groups: S.optional(S.NullOr(__S(24, __c3, 0))),
+          scopes_by_resource: __S(5232, __c327, 0),
+          all_scopes_by_resource: __S(5232, __c327, 0),
+          mcp_tool_groups: S.optional(S.NullOr(__S(256, __c16, 0))),
         }),
       ).annotate({
         identifier: "PaginatedOauthApplicationDataItem",
       });
-    case 6:
-      return S.Array(__S(525, __c65, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2481, __c155, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27475,14 +25283,14 @@ function __c65(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(526, __c65, 6),
+          data: __S(2482, __c155, 2),
         }),
       ).annotate({
         identifier: "PaginatedOauthApplication",
       });
   }
 }
-function __c66(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -27499,66 +25307,66 @@ function __c66(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOauthTokensRequest" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4674, __c292, 2));
     case 1:
-      return S.Array(__S(94, __c11, 6));
+      return S.Array(__S(4675, __c292, 3));
     case 2:
-      return S.Array(__S(96, __c12, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          databases: __S(529, __c66, 1),
-          accesses: __S(530, __c66, 2),
+          databases: __S(2512, __c157, 0),
+          accesses: __S(2513, __c157, 1),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          organizations: __S(100, __c12, 4),
-          accesses: __S(530, __c66, 2),
+          organizations: __S(4677, __c292, 5),
+          accesses: __S(2513, __c157, 1),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization",
       });
+    case 4:
+      return S.Array(__S(4678, __c292, 6));
     case 5:
-      return S.Array(__S(102, __c12, 6));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          branches: __S(533, __c66, 5),
-          accesses: __S(530, __c66, 2),
+          branches: __S(2516, __c157, 4),
+          accesses: __S(2513, __c157, 1),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceBranch",
       });
+    case 6:
+      return S.Array(__S(4679, __c292, 7));
     case 7:
-      return S.Array(__S(105, __c13, 1));
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
-          users: __S(535, __c66, 7),
-          accesses: __S(530, __c66, 2),
+          users: __S(2518, __c157, 6),
+          accesses: __S(2513, __c157, 1),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceUser",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          database: __S(531, __c66, 3),
-          organization: __S(532, __c66, 4),
-          branch: __S(534, __c66, 6),
-          user: __S(536, __c67, 0),
+          database: __S(2514, __c157, 2),
+          organization: __S(2515, __c157, 3),
+          branch: __S(2517, __c157, 5),
+          user: __S(2519, __c157, 7),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItemOauthAccessesByResource",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27574,15 +25382,15 @@ function __c67(j: number): any {
           actor_id: S.NullOr(S.String),
           actor_display_name: S.NullOr(S.String),
           actor_type: S.NullOr(S.String),
-          service_token_accesses: S.optional(S.NullOr(__S(93, __c11, 5))),
-          oauth_accesses_by_resource: S.optional(S.NullOr(__S(537, __c67, 1))),
+          service_token_accesses: S.optional(S.NullOr(__S(4673, __c292, 1))),
+          oauth_accesses_by_resource: S.optional(S.NullOr(__S(2520, __c157, 8))),
         }),
       ).annotate({
         identifier: "PaginatedServiceTokenDataItem",
       });
-    case 3:
-      return S.Array(__S(538, __c67, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(2521, __c157, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27594,10 +25402,14 @@ function __c67(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(539, __c67, 3),
+          data: __S(2522, __c157, 10),
         }),
       ).annotate({ identifier: "PaginatedServiceToken" });
-    case 5:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27609,14 +25421,14 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "ListOrganizationInvitationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           email: S.String,
           role: S.String,
-          sender: __S(2, __c0, 2),
-          recipient: S.NullOr(__S(2, __c0, 2)),
+          sender: __S(4800, __c300, 0),
+          recipient: S.NullOr(__S(4800, __c300, 0)),
           expired: S.Boolean,
           expires_at: S.String,
           created_at: S.String,
@@ -27625,13 +25437,9 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "PaginatedOrganizationInvitationDataItem",
       });
-    case 7:
-      return S.Array(__S(542, __c67, 6));
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2529, __c158, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27643,12 +25451,16 @@ function __c68(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(543, __c67, 7),
+          data: __S(2530, __c158, 2),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationInvitation",
       });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27659,11 +25471,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "ListOrganizationMembersRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(317, __c39, 5),
+          user: __S(1056, __c66, 0),
           role: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -27671,9 +25483,9 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "PaginatedOrganizationMembershipDataItem",
       });
+    case 2:
+      return S.Array(__S(2545, __c159, 1));
     case 3:
-      return S.Array(__S(546, __c68, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27685,19 +25497,23 @@ function __c68(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(547, __c68, 3),
+          data: __S(2546, __c159, 2),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationMembership",
       });
-    case 5:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
       ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -27714,7 +25530,7 @@ function __c68(j: number): any {
           has_past_due_invoices: S.optional(S.NullOr(S.Boolean)),
           database_count: S.Number,
           sso_portal_url: S.optional(S.NullOr(S.String)),
-          features: __S(12, __c1, 4),
+          features: __S(5232, __c327, 0),
           idp_managed_roles: S.Boolean,
           invoice_budget_amount: S.String,
           keyspace_shard_limit: S.Number,
@@ -27725,13 +25541,9 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "PaginatedOrganizationDataItem",
       });
-    case 7:
-      return S.Array(__S(550, __c68, 6));
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2561, __c160, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27741,10 +25553,14 @@ function __c69(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(551, __c68, 7),
+          data: __S(2562, __c160, 2),
         }),
       ).annotate({ identifier: "PaginatedOrganization" });
-    case 1:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27754,13 +25570,17 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListOrganizationSsoDomainsRequest",
       });
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
     case 2:
-      return S.Array(__S(321, __c40, 1));
-    case 3:
-      return S.suspend(() => __S(554, __c69, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(2577, __c161, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationSsoDomainsResponse",
       });
-    case 4:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27777,13 +25597,13 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTeamMembersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(5, __c0, 5),
+          public_ip_addresses: __S(4736, __c296, 0),
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -27795,58 +25615,54 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           role: S.String,
-          cidrs: S.NullOr(__S(5, __c0, 5)),
+          cidrs: S.NullOr(__S(4736, __c296, 0)),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5, __c0, 5),
+          direct_vtgate_addresses: __S(4736, __c296, 0),
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5, __c0, 5),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          region: __S(557, __c69, 5),
+          access_host_regional_urls: __S(4736, __c296, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          region: __S(2593, __c162, 1),
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7, __c0, 7),
+          database_branch: __S(4816, __c301, 0),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembershipDataItemPasswordsItem",
       });
-    case 7:
-      return S.Array(__S(558, __c69, 6));
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2594, __c162, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          user: __S(2, __c0, 2),
-          actor: __S(3, __c0, 3),
+          user: __S(4800, __c300, 0),
+          actor: __S(4720, __c295, 0),
           created_at: S.String,
           updated_at: S.String,
-          passwords: __S(559, __c69, 7),
+          passwords: __S(2595, __c162, 3),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembershipDataItem",
       });
-    case 1:
-      return S.Array(__S(560, __c70, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(2596, __c162, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27858,12 +25674,16 @@ function __c70(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(561, __c70, 1),
+          data: __S(2597, __c162, 5),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeamMembership",
       });
-    case 3:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27874,15 +25694,15 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ListOrganizationTeamsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           display_name: S.String,
-          creator: __S(3, __c0, 3),
-          members: __S(114, __c14, 2),
-          databases: __S(116, __c14, 4),
-          analyst_databases: __S(116, __c14, 4),
+          creator: __S(4720, __c295, 0),
+          members: __S(4880, __c305, 0),
+          databases: __S(4882, __c305, 2),
+          analyst_databases: __S(4882, __c305, 2),
           name: S.String,
           slug: S.String,
           created_at: S.String,
@@ -27893,9 +25713,9 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "PaginatedOrganizationTeamDataItem",
       });
-    case 5:
-      return S.Array(__S(564, __c70, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2609, __c163, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -27907,12 +25727,34 @@ function __c70(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(565, __c70, 5),
+          data: __S(2610, __c163, 2),
         }),
       ).annotate({
         identifier: "PaginatedOrganizationTeam",
       });
-    case 7:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization}/databases/{database}/workflows/{number}/complete",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CompleteWorkflowRequest" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27926,11 +25768,7 @@ function __c70(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListParametersRequest" });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -27950,17 +25788,21 @@ function __c71(j: number): any {
           max: S.Number,
           min: S.Number,
           url: S.String,
-          options: __S(4, __c0, 4),
-          actor: __S(3, __c0, 3),
+          options: __S(4832, __c302, 0),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({ identifier: "PostgresClusterParameter" });
-    case 1:
-      return S.Array(__S(568, __c71, 0));
     case 2:
-      return S.suspend(() => __S(569, __c71, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(2641, __c165, 1));
+    case 3:
+      return S.suspend(() => __S(2642, __c165, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListParametersResponse",
       });
-    case 3:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -27979,39 +25821,39 @@ function __c71(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPasswordsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           role: S.String,
-          cidrs: S.NullOr(__S(4, __c0, 4)),
+          cidrs: S.NullOr(__S(4832, __c302, 0)),
           created_at: S.String,
           deleted_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
           last_used_at: S.NullOr(S.String),
           expired: S.Boolean,
           direct_vtgate: S.Boolean,
-          direct_vtgate_addresses: __S(5, __c0, 5),
+          direct_vtgate_addresses: __S(4736, __c296, 0),
           ttl_seconds: S.NullOr(S.Number),
           access_host_url: S.String,
           access_host_regional_url: S.String,
-          access_host_regional_urls: __S(5, __c0, 5),
-          actor: S.NullOr(__S(3, __c0, 3)),
-          region: __S(6, __c0, 6),
+          access_host_regional_urls: __S(4736, __c296, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          region: __S(4768, __c298, 0),
           username: S.String,
           plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           replica: S.Boolean,
           read_only_region: S.Boolean,
           renewable: S.Boolean,
-          database_branch: __S(7, __c0, 7),
+          database_branch: __S(4816, __c301, 0),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchPasswordDataItem",
       });
-    case 5:
-      return S.Array(__S(572, __c71, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2657, __c166, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28023,12 +25865,16 @@ function __c71(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(573, __c71, 5),
+          data: __S(2658, __c166, 2),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchPassword",
       });
-    case 7:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           engine: S.String.pipe(T.Query()),
@@ -28036,11 +25882,7 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "ListPostgresVersionsRequest",
       });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28050,26 +25892,30 @@ function __c72(j: number): any {
           default: S.Boolean,
         }),
       ).annotate({ identifier: "NekiPostgresVersion" });
-    case 1:
-      return S.Array(__S(576, __c72, 0));
     case 2:
-      return S.suspend(() => __S(577, __c72, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(2673, __c167, 1));
+    case 3:
+      return S.suspend(() => __S(2674, __c167, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPostgresVersionsResponse",
       });
-    case 3:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/regions", code: 200 })),
       ).annotate({ identifier: "ListPublicRegionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           provider: S.String,
           enabled: S.Boolean,
-          public_ip_addresses: __S(5, __c0, 5),
+          public_ip_addresses: __S(4736, __c296, 0),
           display_name: S.String,
           location: S.String,
           slug: S.String,
@@ -28077,9 +25923,9 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "PaginatedPublicPlanetscaleRegionSerializerDataItem",
       });
-    case 5:
-      return S.Array(__S(580, __c72, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2689, __c168, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28089,12 +25935,16 @@ function __c72(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(581, __c72, 5),
+          data: __S(2690, __c168, 2),
         }),
       ).annotate({
         identifier: "PaginatedPublicPlanetscaleRegionSerializer",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28111,11 +25961,7 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "ListReadOnlyRegionsRequest",
       });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28124,15 +25970,15 @@ function __c73(j: number): any {
           updated_at: S.String,
           ready_at: S.NullOr(S.String),
           ready: S.Boolean,
-          actor: __S(3, __c0, 3),
-          region: __S(6, __c0, 6),
+          actor: __S(4720, __c295, 0),
+          region: __S(4768, __c298, 0),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchReadOnlyRegionDataItem",
       });
-    case 1:
-      return S.Array(__S(584, __c73, 0));
     case 2:
+      return S.Array(__S(2705, __c169, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28142,12 +25988,16 @@ function __c73(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(585, __c73, 1),
+          data: __S(2706, __c169, 2),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseBranchReadOnlyRegion",
       });
-    case 3:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28157,7 +26007,11 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "ListRegionsForOrganizationRequest",
       });
-    case 4:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28175,7 +26029,7 @@ function __c73(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRolesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28198,18 +26052,18 @@ function __c73(j: number): any {
           expired: S.Boolean,
           default: S.Boolean,
           ttl: S.NullOr(S.Number),
-          inherited_roles: __S(122, __c15, 2),
+          inherited_roles: __S(5024, __c314, 0),
           with_replication: S.Boolean,
-          branch: __S(1, __c0, 1),
-          actor: __S(3, __c0, 3),
-          query_safety_settings: __S(124, __c15, 4),
+          branch: __S(4784, __c299, 0),
+          actor: __S(4720, __c295, 0),
+          query_safety_settings: __S(4992, __c312, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresRoleDataItem",
       });
-    case 6:
-      return S.Array(__S(589, __c73, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2737, __c171, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28221,12 +26075,12 @@ function __c73(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(590, __c73, 6),
+          data: __S(2738, __c171, 2),
         }),
       ).annotate({ identifier: "PaginatedPostgresRole" });
   }
 }
-function __c74(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28249,7 +26103,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListRouterChangeRequestsRequest",
       });
-    case 1:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28266,7 +26124,11 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListRouterParametersRequest",
       });
-    case 2:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28280,13 +26142,43 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListRoutersRequest" });
-    case 3:
-      return S.Array(__S(128, __c16, 0));
-    case 4:
-      return S.suspend(() => __S(595, __c74, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5072, __c317, 0));
+    case 2:
+      return S.suspend(() => __S(2785, __c174, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRoutersResponse",
       });
-    case 5:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/configure", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ConfigureOrganizationSsoRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          portal_url: S.String,
+        }),
+      ).annotate({
+        identifier: "ConfigureOrganizationSsoResponse",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28302,15 +26194,15 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "ListRouterSizeSkusRequest",
       });
-    case 6:
-      return S.Array(__S(127, __c15, 7));
-    case 7:
-      return S.suspend(() => __S(598, __c74, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5056, __c316, 0));
+    case 2:
+      return S.suspend(() => __S(2833, __c177, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRouterSizeSkusResponse",
       });
   }
 }
-function __c75(j: number): any {
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28346,14 +26238,14 @@ function __c75(j: number): any {
           updated_at: S.String,
           applied_at: S.NullOr(S.String),
           dismissed_at: S.NullOr(S.String),
-          closed_by_deploy_request: S.NullOr(__S(196, __c24, 4)),
-          dismissed_by: S.NullOr(__S(3, __c0, 3)),
+          closed_by_deploy_request: S.NullOr(__S(6080, __c380, 0)),
+          dismissed_by: S.NullOr(__S(4720, __c295, 0)),
         }),
       ).annotate({
         identifier: "PaginatedSchemaRecommendationDataItem",
       });
     case 2:
-      return S.Array(__S(601, __c75, 1));
+      return S.Array(__S(2849, __c178, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -28366,12 +26258,16 @@ function __c75(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(602, __c75, 2),
+          data: __S(2850, __c178, 2),
         }),
       ).annotate({
         identifier: "PaginatedSchemaRecommendation",
       });
-    case 4:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28381,7 +26277,11 @@ function __c75(j: number): any {
           T.Http({ method: "GET", uri: "/organizations/{organization}/service-tokens", code: 200 }),
         ),
       ).annotate({ identifier: "ListServiceTokensRequest" });
-    case 5:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28402,7 +26302,11 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListShardConfigurationProfileChangeRequestsRequest",
       });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28419,7 +26323,7 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "ListShardConfigurationProfileExtensionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.String),
@@ -28438,21 +26342,17 @@ function __c75(j: number): any {
           restart: S.Boolean,
           max: S.optional(S.NullOr(S.Number)),
           min: S.optional(S.NullOr(S.Number)),
-          options: S.optional(S.NullOr(__S(4, __c0, 4))),
-          units: S.optional(S.NullOr(__S(4, __c0, 4))),
+          options: S.optional(S.NullOr(__S(4832, __c302, 0))),
+          units: S.optional(S.NullOr(__S(4832, __c302, 0))),
           url: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "NekiExtensionDefinitionParametersItem",
       });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(607, __c75, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2897, __c181, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -28460,18 +26360,22 @@ function __c76(j: number): any {
           description: S.String,
           enabled: S.optional(S.NullOr(S.Boolean)),
           internal: S.Boolean,
-          parameters: __S(608, __c76, 0),
-          requirements: __S(476, __c59, 4),
+          parameters: __S(2898, __c181, 2),
+          requirements: __S(2256, __c141, 0),
           url: S.String,
         }),
       ).annotate({ identifier: "NekiExtensionDefinition" });
-    case 2:
-      return S.Array(__S(609, __c76, 1));
-    case 3:
-      return S.suspend(() => __S(610, __c76, 2).pipe(T.RawResponseRoot())).annotate({
+    case 4:
+      return S.Array(__S(2899, __c181, 3));
+    case 5:
+      return S.suspend(() => __S(2900, __c181, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListShardConfigurationProfileExtensionsResponse",
       });
-    case 4:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28488,7 +26392,11 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListShardConfigurationProfileParametersRequest",
       });
-    case 5:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28504,15 +26412,15 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListShardConfigurationProfilesRequest",
       });
-    case 6:
-      return S.Array(__S(134, __c16, 6));
-    case 7:
-      return S.suspend(() => __S(614, __c76, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5168, __c323, 0));
+    case 2:
+      return S.suspend(() => __S(2929, __c183, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListShardConfigurationProfilesResponse",
       });
   }
 }
-function __c77(j: number): any {
+function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28534,7 +26442,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListShardConfigurationProfileShardsRequest",
       });
-    case 1:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28548,9 +26460,9 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "PaginatedNekiShardDataItem",
       });
+    case 1:
+      return S.Array(__S(2960, __c185, 0));
     case 2:
-      return S.Array(__S(617, __c77, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28562,10 +26474,14 @@ function __c77(j: number): any {
           prev_page_url: S.NullOr(S.String),
           total_count: S.Number,
           total_pages: S.Number,
-          data: __S(618, __c77, 2),
+          data: __S(2961, __c185, 1),
         }),
       ).annotate({ identifier: "PaginatedNekiShard" });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28583,7 +26499,11 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListShardsRequest" });
-    case 5:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28604,7 +26524,104 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListSidecarChangeRequestsRequest",
       });
-    case 6:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          retention_unit: S.optional(S.String),
+          retention_value: S.optional(S.Number),
+          emergency: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateBackupRequest" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          display_name: S.String,
+          name: S.String,
+          target: S.String,
+          retention_value: S.Number,
+          retention_unit: S.String,
+          frequency_value: S.Number,
+          frequency_unit: S.String,
+          schedule_time: S.optional(S.NullOr(S.String)),
+          schedule_day: S.NullOr(S.Number),
+          schedule_week: S.NullOr(S.Number),
+          created_at: S.String,
+          updated_at: S.String,
+          last_ran_at: S.NullOr(S.String),
+          next_run_at: S.NullOr(S.String),
+          required: S.Boolean,
+        }),
+      ).annotate({ identifier: "BackupBackupPolicy" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4784, __c299, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          linted_at: S.NullOr(S.String),
+          url: S.String,
+        }),
+      ).annotate({ identifier: "BackupSchemaSnapshot" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          state: S.String,
+          size: S.Number,
+          estimated_storage_cost: S.Number,
+          created_at: S.String,
+          updated_at: S.String,
+          started_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          deleted_at: S.NullOr(S.String),
+          pvc_size: S.Number,
+          uncompressed_size: S.Number,
+          protected: S.Boolean,
+          required: S.Boolean,
+          restored_branches: __S(3040, __c190, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          backup_policy: S.optional(S.NullOr(__S(3024, __c189, 0))),
+          schema_snapshot: S.optional(S.NullOr(__S(3041, __c190, 1))),
+          database_branch: S.optional(S.NullOr(__S(4784, __c299, 0))),
+        }),
+      ).annotate({ identifier: "Backup" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28621,7 +26638,11 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListSidecarParametersRequest",
       });
-    case 7:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28635,17 +26656,17 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSidecarsRequest" });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
     case 1:
-      return S.suspend(() => __S(624, __c78, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(1504, __c94, 0));
+    case 2:
+      return S.suspend(() => __S(3089, __c193, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSidecarsResponse",
       });
-    case 2:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28661,7 +26682,7 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSwitchoversRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28672,14 +26693,14 @@ function __c78(j: number): any {
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
         }),
       ).annotate({
         identifier: "PaginatedPostgresSwitchoverDataItem",
       });
-    case 4:
-      return S.Array(__S(627, __c78, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3105, __c194, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28689,12 +26710,16 @@ function __c78(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(628, __c78, 4),
+          data: __S(3106, __c194, 2),
         }),
       ).annotate({
         identifier: "PaginatedPostgresSwitchover",
       });
-    case 6:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28715,15 +26740,19 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListTrafficBudgetsRequest",
       });
-    case 7:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           kind: S.String,
-          tags: __S(141, __c17, 5),
+          tags: __S(5297, __c331, 1),
           fingerprint: S.optional(S.NullOr(S.String)),
           keyspace: S.optional(S.NullOr(S.String)),
-          actor: __S(3, __c0, 3),
+          actor: __S(4720, __c295, 0),
           syntax_highlighted_sql: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -28731,13 +26760,9 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "PaginatedTrafficBudgetDataItemRulesItem",
       });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(631, __c78, 7));
     case 1:
+      return S.Array(__S(3136, __c196, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28748,17 +26773,17 @@ function __c79(j: number): any {
           burst: S.optional(S.NullOr(S.Number)),
           concurrency: S.optional(S.NullOr(S.Number)),
           warning_threshold: S.optional(S.NullOr(S.Number)),
-          actor: __S(3, __c0, 3),
-          rules: __S(632, __c79, 0),
+          actor: __S(4720, __c295, 0),
+          rules: __S(3137, __c196, 1),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({
         identifier: "PaginatedTrafficBudgetDataItem",
       });
-    case 2:
-      return S.Array(__S(633, __c79, 1));
     case 3:
+      return S.Array(__S(3138, __c196, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28768,10 +26793,14 @@ function __c79(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(634, __c79, 2),
+          data: __S(3139, __c196, 3),
         }),
       ).annotate({ identifier: "PaginatedTrafficBudget" });
-    case 4:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28791,7 +26820,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListTrafficBudgetsForQueryRequest",
       });
-    case 5:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28806,7 +26839,7 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWebhooksRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28819,18 +26852,14 @@ function __c79(j: number): any {
           last_sent_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          events: __S(122, __c15, 2),
+          events: __S(5024, __c314, 0),
         }),
       ).annotate({
         identifier: "PaginatedDatabaseWebhookDataItem",
       });
-    case 7:
-      return S.Array(__S(638, __c79, 6));
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(3169, __c198, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28840,10 +26869,14 @@ function __c80(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(639, __c79, 7),
+          data: __S(3170, __c198, 2),
         }),
       ).annotate({ identifier: "PaginatedDatabaseWebhook" });
-    case 1:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28859,7 +26892,7 @@ function __c80(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWorkflowsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -28889,27 +26922,27 @@ function __c80(j: number): any {
           may_restart: S.Boolean,
           verified_data_stale: S.Boolean,
           sequence_tables_applied: S.Boolean,
-          actor: __S(3, __c0, 3),
-          verify_data_by: __S(3, __c0, 3),
-          reversed_by: __S(3, __c0, 3),
-          switch_replicas_by: __S(3, __c0, 3),
-          switch_primaries_by: __S(3, __c0, 3),
-          cancelled_by: __S(3, __c0, 3),
-          completed_by: __S(3, __c0, 3),
-          retried_by: __S(3, __c0, 3),
-          cutover_by: __S(3, __c0, 3),
-          reversed_cutover_by: __S(3, __c0, 3),
-          branch: __S(1, __c0, 1),
-          source_keyspace: __S(1, __c0, 1),
-          target_keyspace: __S(1, __c0, 1),
-          global_keyspace: __S(1, __c0, 1),
+          actor: __S(4720, __c295, 0),
+          verify_data_by: __S(4720, __c295, 0),
+          reversed_by: __S(4720, __c295, 0),
+          switch_replicas_by: __S(4720, __c295, 0),
+          switch_primaries_by: __S(4720, __c295, 0),
+          cancelled_by: __S(4720, __c295, 0),
+          completed_by: __S(4720, __c295, 0),
+          retried_by: __S(4720, __c295, 0),
+          cutover_by: __S(4720, __c295, 0),
+          reversed_cutover_by: __S(4720, __c295, 0),
+          branch: __S(4784, __c299, 0),
+          source_keyspace: __S(4784, __c299, 0),
+          target_keyspace: __S(4784, __c299, 0),
+          global_keyspace: __S(4784, __c299, 0),
         }),
       ).annotate({
         identifier: "PaginatedWorkflowDataItem",
       });
+    case 2:
+      return S.Array(__S(3185, __c199, 1));
     case 3:
-      return S.Array(__S(642, __c80, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -28919,10 +26952,14 @@ function __c80(j: number): any {
           next_page_url: S.NullOr(S.String),
           prev_page: S.NullOr(S.Number),
           prev_page_url: S.NullOr(S.String),
-          data: __S(643, __c80, 3),
+          data: __S(3186, __c199, 2),
         }),
       ).annotate({ identifier: "PaginatedWorkflow" });
-    case 5:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28939,7 +26976,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "MoveCompleteTablesWorkflowRequest",
       });
-    case 6:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28956,7 +26997,11 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "MoveReverseTrafficTablesWorkflowRequest",
       });
-    case 7:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -28975,7 +27020,35 @@ function __c80(j: number): any {
       });
   }
 }
-function __c81(j: number): any {
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          target: S.optional(S.String),
+          retention_value: S.optional(S.Number),
+          retention_unit: S.optional(S.String),
+          frequency_value: S.optional(S.Number),
+          frequency_unit: S.optional(S.String),
+          schedule_time: S.optional(S.String),
+          schedule_day: S.optional(S.Number),
+          schedule_week: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/backup-policies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBackupPolicyRequest",
+      });
+  }
+}
+function __c204(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -28991,7 +27064,11 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PromoteBranchRequest" });
-    case 1:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29009,7 +27086,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ReassignRoleObjectsRequest",
       });
-    case 2:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29026,7 +27107,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "RemoveOrganizationMemberRequest",
       });
-    case 3:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29043,7 +27128,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "RemoveOrganizationTeamMemberRequest",
       });
-    case 4:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29058,7 +27147,11 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenewPasswordRequest" });
-    case 5:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29073,7 +27166,11 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RenewRoleRequest" });
-    case 6:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29087,7 +27184,11 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResetDefaultRoleRequest" });
-    case 7:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29104,7 +27205,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "ResetRoleRequest" });
   }
 }
-function __c82(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29120,7 +27221,11 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RetryWorkflowRequest" });
-    case 1:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29137,7 +27242,96 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "RunBranchMaintenanceRequest",
       });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          target: S.optional(S.String),
+          bouncer_size: S.optional(S.String),
+          replicas_per_cell: S.optional(S.Number),
+          dedicated_read_replica_id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateBouncerRequest" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          display_name: S.String,
+          cpu: S.String,
+          ram: S.Number,
+          sort_order: S.Number,
+        }),
+      ).annotate({ identifier: "PostgresBouncerSku" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          namespace: S.String,
+          name: S.String,
+          display_name: S.String,
+          category: S.String,
+          description: S.String,
+          immutable: S.Boolean,
+          parameter_type: S.String,
+          default_value: S.String,
+          value: S.String,
+          required: S.Boolean,
+          created_at: S.String,
+          updated_at: S.String,
+          restart: S.Boolean,
+          max: S.Number,
+          min: S.Number,
+          url: S.String,
+          options: __S(4832, __c302, 0),
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({
+        identifier: "PostgresBouncerParametersItem",
+      });
+    case 1:
+      return S.Array(__S(3456, __c216, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          sku: __S(3440, __c215, 0),
+          target: S.String,
+          replicas_per_cell: S.Number,
+          created_at: S.String,
+          updated_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          actor: __S(4720, __c295, 0),
+          branch: __S(4784, __c299, 0),
+          parameters: __S(3457, __c216, 1),
+        }),
+      ).annotate({ identifier: "PostgresBouncer" });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29154,13 +27348,17 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "RunShardConfigurationProfileMaintenanceRequest",
       });
-    case 3:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          configuration_profile_names: __S(5, __c0, 5),
+          configuration_profile_names: __S(4736, __c296, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29171,7 +27369,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "RunShardConfigurationProfilesMaintenanceRequest",
       });
-    case 4:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29188,7 +27390,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "SetDefaultShardConfigurationProfileRequest",
       });
-    case 5:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29202,7 +27408,11 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SkipRevertPeriodRequest" });
-    case 6:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29219,7 +27429,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "StartMoveTablesWorkflowRequest",
       });
-    case 7:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           summary: S.optional(S.String),
@@ -29227,19 +27441,19 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "StartMoveTablesWorkflowResponseData",
       });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(663, __c82, 7),
+          data: __S(3552, __c222, 0),
         }),
       ).annotate({
         identifier: "StartMoveTablesWorkflowResponse",
       });
-    case 1:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29256,13 +27470,17 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "StopMoveTablesWorkflowRequest",
       });
-    case 2:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          ids: __S(4, __c0, 4),
+          ids: __S(4832, __c302, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -29273,7 +27491,7 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "SubmitBranchConfigChangeRequestsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           submitted: S.Number,
@@ -29281,7 +27499,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "SubmitBranchConfigChangeRequestsResponse",
       });
-    case 4:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29295,14 +27517,18 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TestWebhookRequest" });
-    case 5:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           admin_size: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(5232, __c327, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29311,7 +27537,11 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAdminRequest" });
-    case 6:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29326,7 +27556,127 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAutoApplyRequest" });
-    case 7:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          name: S.String,
+          deletion_protected: S.optional(S.Boolean),
+          parent_branch: S.optional(S.String),
+          backup_id: S.optional(S.String),
+          region: S.optional(S.String),
+          restore_point: S.optional(S.String),
+          replicas: S.optional(S.Number),
+          seed_data: S.optional(S.String),
+          cluster_size: S.optional(S.String),
+          keyspace_cluster_sizes: S.optional(__S(4832, __c302, 0)),
+          configuration_profile_sizes: S.optional(__S(4832, __c302, 0)),
+          router_sizes: S.optional(__S(4832, __c302, 0)),
+          storage: S.optional(__S(3664, __c229, 0)),
+          major_version: S.optional(S.String),
+          create_database_if_missing: S.optional(S.Boolean),
+          kind: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateBranchRequest" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minimum_storage_bytes: S.optional(S.Number),
+          maximum_storage_bytes: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateBranchRequestStorage",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          provider: S.String,
+          enabled: S.Boolean,
+          public_ip_addresses: __S(4832, __c302, 0),
+          display_name: S.String,
+          location: S.String,
+          slug: S.String,
+          current_default: S.Boolean,
+          mysql_supported: S.Boolean,
+          postgresql_supported: S.Boolean,
+          neki_supported: S.Boolean,
+        }),
+      ).annotate({ identifier: "DatabaseBranchRegion" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          restore_checklist_completed_at: S.NullOr(S.String),
+          schema_last_updated_at: S.NullOr(S.String),
+          kind: S.String,
+          mysql_address: S.optional(S.NullOr(S.String)),
+          mysql_edge_address: S.optional(S.NullOr(S.String)),
+          state: S.String,
+          direct_vtgate: S.optional(S.NullOr(S.Boolean)),
+          vtgate_size: S.optional(S.NullOr(S.String)),
+          vtgate_name: S.optional(S.NullOr(S.String)),
+          vtgate_count: S.optional(S.NullOr(S.Number)),
+          vtgate_autoscaling: S.optional(S.NullOr(S.Boolean)),
+          vtgate_max_count: S.optional(S.NullOr(S.Number)),
+          vtgate_target_cpu_utilization: S.optional(S.NullOr(S.Number)),
+          cluster_name: S.String,
+          cluster_iops: S.NullOr(S.Number),
+          ready: S.Boolean,
+          schema_ready: S.optional(S.NullOr(S.Boolean)),
+          metal: S.Boolean,
+          production: S.Boolean,
+          safe_migrations: S.Boolean,
+          deletion_protected: S.optional(S.Boolean),
+          sharded: S.optional(S.Boolean),
+          shard_count: S.optional(S.NullOr(S.Number)),
+          keyspace_count: S.optional(S.Number),
+          stale_schema: S.Boolean,
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          restored_from_branch: S.NullOr(__S(4784, __c299, 0)),
+          private_edge_connectivity: S.Boolean,
+          has_replicas: S.Boolean,
+          has_read_only_replicas: S.Boolean,
+          html_url: S.String,
+          url: S.String,
+          region: __S(3680, __c230, 0),
+          parent_branch: S.NullOr(S.String),
+          vtgate_options: S.optional(S.NullOr(__S(5232, __c327, 0))),
+          cluster_architecture: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseBranch" });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29345,7 +27695,7 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29363,7 +27713,11 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBackupRequest" });
-    case 1:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29388,7 +27742,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateBackupPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29398,7 +27756,7 @@ function __c84(j: number): any {
           bouncer_size: S.optional(S.String),
           replicas_per_cell: S.optional(S.Number),
           target: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(5232, __c327, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29409,30 +27767,34 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateBouncerResizeRequestRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           state: S.String,
           replicas_per_cell: S.Number,
           target: S.String,
-          parameters: __S(12, __c1, 4),
+          parameters: __S(5232, __c327, 0),
           previous_replicas_per_cell: S.Number,
           previous_target: S.String,
-          previous_parameters: __S(12, __c1, 4),
+          previous_parameters: __S(5232, __c327, 0),
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
-          actor: __S(3, __c0, 3),
-          bouncer: __S(1, __c0, 1),
-          sku: __S(57, __c7, 1),
-          previous_sku: __S(57, __c7, 1),
+          actor: __S(4720, __c295, 0),
+          bouncer: __S(4784, __c299, 0),
+          sku: __S(3440, __c215, 0),
+          previous_sku: __S(3440, __c215, 0),
         }),
       ).annotate({
         identifier: "PostgresBouncerResizeRequest",
       });
-    case 4:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29448,7 +27810,11 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBranchRequest" });
-    case 5:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           minimum_storage_bytes: S.optional(S.Number),
@@ -29461,7 +27827,7 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateBranchChangeRequestRequestStorage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29469,9 +27835,9 @@ function __c84(j: number): any {
           branch: S.String.pipe(T.Label()),
           cluster_size: S.optional(S.String),
           replicas: S.optional(S.Number),
-          extensions: S.optional(__S(4, __c0, 4)),
-          parameters: S.optional(__S(12, __c1, 4)),
-          storage: S.optional(__S(677, __c84, 5)),
+          extensions: S.optional(__S(4832, __c302, 0)),
+          parameters: S.optional(__S(5232, __c327, 0)),
+          storage: S.optional(__S(3792, __c237, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29482,7 +27848,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "UpdateBranchChangeRequestRequest",
       });
-    case 7:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29501,7 +27871,7 @@ function __c84(j: number): any {
       });
   }
 }
-function __c85(j: number): any {
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29524,7 +27894,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateBranchResizeRequestRequest",
       });
-    case 1:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29532,7 +27906,7 @@ function __c85(j: number): any {
           id: S.String.pipe(T.Label()),
           schema: S.optional(S.String),
           role: S.optional(S.String),
-          cidrs: S.optional(__S(4, __c0, 4)),
+          cidrs: S.optional(__S(4832, __c302, 0)),
           description: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -29544,7 +27918,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDatabasePostgresCidrRequest",
       });
-    case 2:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29572,13 +27950,63 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDatabaseSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          change_type: S.String,
+          options: __S(5232, __c327, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/config-changes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBranchConfigChangeRequestRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.String,
+          change_type: S.String,
+          previous_options: __S(5232, __c327, 0),
+          new_options: __S(5232, __c327, 0),
+          error_message: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          keyspace_name: S.NullOr(S.String),
+          queued_until: S.NullOr(S.String),
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({
+        identifier: "BranchConfigChangeRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           ratio: S.optional(S.Number),
-          configurations: S.optional(__S(4, __c0, 4)),
+          configurations: S.optional(__S(4832, __c302, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29589,13 +28017,17 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDatabaseThrottlerRequest",
       });
-    case 4:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
-          data_topology: __S(12, __c1, 4),
+          data_topology: __S(5232, __c327, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -29606,7 +28038,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDataTopologyRequest",
       });
-    case 5:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29615,8 +28051,8 @@ function __c85(j: number): any {
           dedicated_read_replica: S.String.pipe(T.Label()),
           replicas: S.optional(S.Number),
           cluster_size: S.optional(S.String),
-          parameters: S.optional(__S(12, __c1, 4)),
-          storage: S.optional(__S(73, __c9, 1)),
+          parameters: S.optional(__S(5232, __c327, 0)),
+          storage: S.optional(__S(4480, __c280, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29627,14 +28063,18 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDedicatedReadReplicaRequest",
       });
-    case 6:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           number: S.Number.pipe(T.Label()),
           ratio: S.optional(S.Number),
-          configurations: S.optional(__S(4, __c0, 4)),
+          configurations: S.optional(__S(4832, __c302, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29645,7 +28085,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "UpdateDeployRequestThrottlerRequest",
       });
-    case 7:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29670,7 +28114,7 @@ function __c85(j: number): any {
       });
   }
 }
-function __c86(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29706,10 +28150,10 @@ function __c86(j: number): any {
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           keyspace: S.String.pipe(T.Label()),
-          replication_durability_constraints: S.optional(__S(688, __c86, 0)),
-          vreplication_flags: S.optional(__S(689, __c86, 1)),
+          replication_durability_constraints: S.optional(__S(3984, __c249, 0)),
+          vreplication_flags: S.optional(__S(3985, __c249, 1)),
           max_rollout: S.optional(S.NullOr(S.Number)),
-          throttler: S.optional(__S(690, __c86, 2)),
+          throttler: S.optional(__S(3986, __c249, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29718,7 +28162,11 @@ function __c86(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateKeyspaceRequest" });
-    case 4:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29738,7 +28186,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "UpdateKeyspaceResizeRequestRequest",
       });
-    case 5:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29756,7 +28208,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "UpdateKeyspaceVschemaRequest",
       });
-    case 6:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29767,7 +28223,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationRequest",
       });
-    case 7:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29781,7 +28241,37 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/logs/signatures",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBranchLogSignatureRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sig: S.String,
+          exp: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateBranchLogSignatureResponse",
+      });
+  }
+}
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29796,7 +28286,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationTeamRequest",
       });
-    case 1:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29804,7 +28298,7 @@ function __c87(j: number): any {
           branch: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          cidrs: S.optional(__S(4, __c0, 4)),
+          cidrs: S.optional(__S(4832, __c302, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29813,7 +28307,11 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePasswordRequest" });
-    case 2:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29827,7 +28325,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "UpdatePaymentMethodRequest",
       });
-    case 3:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29845,7 +28347,11 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRoleRequest" });
-    case 4:
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29857,7 +28363,7 @@ function __c87(j: number): any {
           autoscaling: S.optional(S.Boolean),
           max_replicas_per_cell: S.optional(S.Number),
           target_cpu_utilization: S.optional(S.Number),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(5232, __c327, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29866,7 +28372,11 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRouterRequest" });
-    case 5:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29883,7 +28393,11 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "UpdateSafeMigrationsRequest",
       });
-    case 6:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29898,7 +28412,11 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateShardRequest" });
-    case 7:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29907,12 +28425,12 @@ function __c87(j: number): any {
           configuration_profile: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           cluster_size: S.optional(S.String),
-          extensions: S.optional(__S(4, __c0, 4)),
+          extensions: S.optional(__S(4832, __c302, 0)),
           replicas: S.optional(S.Number),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(5232, __c327, 0)),
           postgres_major_version: S.optional(S.String),
           postgres_minor_version: S.optional(S.String),
-          storage: S.optional(__S(73, __c9, 1)),
+          storage: S.optional(__S(4480, __c280, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29925,7 +28443,7 @@ function __c87(j: number): any {
       });
   }
 }
-function __c88(j: number): any {
+function __c263(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -29946,14 +28464,18 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "UpdateShardConfigurationProfileShardRequest",
       });
-    case 1:
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
           database: S.String.pipe(T.Label()),
           branch: S.String.pipe(T.Label()),
           sidecar: S.String.pipe(T.Label()),
-          parameters: S.optional(__S(12, __c1, 4)),
+          parameters: S.optional(__S(5232, __c327, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29962,7 +28484,82 @@ function __c88(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSidecarRequest" });
-    case 2:
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          name: S.String,
+          region: S.optional(S.String),
+          cluster_size: S.String,
+          replicas: S.optional(S.Number),
+          kind: S.optional(S.String),
+          major_version: S.optional(S.String),
+          storage: S.optional(__S(3664, __c229, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/organizations/{organization}/databases", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+          branches_url: S.String,
+          branches_count: S.optional(S.Number),
+          open_schema_recommendations_count: S.optional(S.Number),
+          development_branches_count: S.optional(S.Number),
+          development_branches_limit: S.optional(S.Number),
+          production_branches_count: S.optional(S.Number),
+          issues_count: S.optional(S.NullOr(S.Number)),
+          multiple_admins_required_for_deletion: S.optional(S.Boolean),
+          ready: S.Boolean,
+          at_backup_restore_branches_limit: S.optional(S.Boolean),
+          at_development_branch_usage_limit: S.optional(S.Boolean),
+          region: __S(3680, __c230, 0),
+          html_url: S.String,
+          name: S.String,
+          state: S.String,
+          sharded: S.optional(S.Boolean),
+          default_branch_shard_count: S.optional(S.Number),
+          default_branch_read_only_regions_count: S.optional(S.Number),
+          default_branch_table_count: S.optional(S.Number),
+          default_branch: S.optional(S.String),
+          require_approval_for_deploy: S.optional(S.Boolean),
+          deletion_protected: S.optional(S.Boolean),
+          resizing: S.optional(S.Boolean),
+          resize_queued: S.optional(S.Boolean),
+          config_changing: S.optional(S.Boolean),
+          config_change_queued: S.optional(S.Boolean),
+          allow_data_branching: S.optional(S.Boolean),
+          foreign_keys_enabled: S.optional(S.Boolean),
+          automatic_migrations: S.optional(S.NullOr(S.Boolean)),
+          restrict_branch_region: S.optional(S.Boolean),
+          prefer_instant: S.optional(S.Boolean),
+          insights_raw_queries: S.optional(S.Boolean),
+          plan: S.optional(S.String),
+          insights_enabled: S.optional(S.Boolean),
+          production_branch_web_console: S.optional(S.Boolean),
+          migration_table_name: S.optional(S.NullOr(S.String)),
+          migration_framework: S.optional(S.NullOr(S.String)),
+          created_at: S.String,
+          updated_at: S.String,
+          schema_last_updated_at: S.optional(S.NullOr(S.String)),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "Database" });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29976,7 +28573,7 @@ function __c88(j: number): any {
           burst: S.optional(S.Number),
           concurrency: S.optional(S.Number),
           warning_threshold: S.optional(S.Number),
-          rules: S.optional(__S(4, __c0, 4)),
+          rules: S.optional(__S(4832, __c302, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -29987,7 +28584,11 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "UpdateTrafficBudgetRequest",
       });
-    case 3:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -29996,7 +28597,7 @@ function __c88(j: number): any {
           url: S.optional(S.String),
           authorization_header: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          events: S.optional(__S(4, __c0, 4)),
+          events: S.optional(__S(4832, __c302, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -30005,7 +28606,11 @@ function __c88(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 4:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -30019,7 +28624,11 @@ function __c88(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VerifyWorkflowRequest" });
-    case 5:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -30033,7 +28642,11 @@ function __c88(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WorkflowCutoverRequest" });
-    case 6:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -30049,7 +28662,11 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "WorkflowReverseCutoverRequest",
       });
-    case 7:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -30067,7 +28684,7 @@ function __c88(j: number): any {
       });
   }
 }
-function __c89(j: number): any {
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -30085,7 +28702,11 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "WorkflowSwitchPrimariesRequest",
       });
-    case 1:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization: S.String.pipe(T.Label()),
@@ -30103,7 +28724,2613 @@ function __c89(j: number): any {
       });
   }
 }
-
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          schema: S.optional(S.String),
+          role: S.optional(S.String),
+          cidrs: __S(4832, __c302, 0),
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/cidrs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDatabasePostgresCidrRequest",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          schema: S.String,
+          role: S.String,
+          cidrs: __S(4832, __c302, 0),
+          description: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({ identifier: "PostgresClusterCidr" });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.String,
+          region: S.String,
+          replicas: S.optional(S.Number),
+          cluster_size: S.optional(S.String),
+          storage: S.optional(__S(4480, __c280, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/dedicated-read-replicas",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDedicatedReadReplicaRequest",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          namespace: S.String,
+          name: S.String,
+          display_name: S.String,
+          category: S.String,
+          description: S.String,
+          immutable: S.Boolean,
+          parameter_type: S.String,
+          default_value: S.String,
+          disabled_reason: S.optional(S.NullOr(S.String)),
+          value: S.String,
+          required: S.Boolean,
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          restart: S.Boolean,
+          max: S.Number,
+          min: S.Number,
+          url: S.String,
+          options: __S(4832, __c302, 0),
+          units: __S(4832, __c302, 0),
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({
+        identifier: "PostgresReadOnlyReplicaParametersItem",
+      });
+    case 1:
+      return S.Array(__S(4448, __c278, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          state: S.String,
+          replicas: S.Number,
+          cluster_name: S.String,
+          cluster_display_name: S.String,
+          access_host_url: S.String,
+          private_access_host_url: S.String,
+          private_connection_service_name: S.NullOr(S.String),
+          minimum_storage_bytes: S.NullOr(S.Number),
+          maximum_storage_bytes: S.NullOr(S.Number),
+          storage_autoscaling: S.NullOr(S.Boolean),
+          storage_type: S.NullOr(S.String),
+          storage_iops: S.NullOr(S.Number),
+          storage_throughput_mibs: S.NullOr(S.Number),
+          volume_modifications_blocked_until: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          ready_at: S.NullOr(S.String),
+          ready: S.Boolean,
+          actor: __S(4720, __c295, 0),
+          region: __S(4464, __c279, 0),
+          parameters: __S(4449, __c278, 1),
+        }),
+      ).annotate({ identifier: "PostgresReadOnlyReplica" });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          provider: S.String,
+          enabled: S.Boolean,
+          public_ip_addresses: __S(4832, __c302, 0),
+          display_name: S.String,
+          location: S.String,
+          slug: S.String,
+          current_default: S.Boolean,
+          mysql_supported: S.Boolean,
+          postgresql_supported: S.Boolean,
+          neki_supported: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "PostgresReadOnlyReplicaRegion",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minimum_storage_bytes: S.optional(S.Number),
+          maximum_storage_bytes: S.optional(S.Number),
+          storage_autoscaling: S.optional(S.Boolean),
+          storage_iops: S.optional(S.Number),
+          storage_throughput_mibs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateDedicatedReadReplicaRequestStorage",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String,
+          into_branch: S.String,
+          notes: S.optional(S.String),
+          auto_cutover: S.optional(S.Boolean),
+          auto_delete_branch: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDeployRequestRequest",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          type: S.String,
+          query_patterns_attributes: S.optional(__S(4832, __c302, 0)),
+          schema_numbers: S.optional(__S(4832, __c302, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/insights/agent/runs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateInsightsAgentRunRequest",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          number: S.Number,
+          scheduled: S.Boolean,
+          type: S.String,
+          state: S.String,
+          repository: __S(5232, __c327, 0),
+          agent: S.NullOr(__S(5232, __c327, 0)),
+          schedule_id: S.NullOr(S.String),
+          scheduled_for: S.NullOr(S.String),
+          selected_targets: __S(256, __c16, 0),
+          outcome: S.NullOr(S.String),
+          title: S.NullOr(S.String),
+          summary: S.NullOr(S.String),
+          pull_request_url: S.NullOr(S.String),
+          failure_message: S.NullOr(S.String),
+          execution_duration_ms: S.NullOr(S.Number),
+          cost: S.NullOr(S.String),
+          failure_phase: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          finished_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "InsightsAgentRun" });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.String,
+          cluster_size: S.String,
+          extra_replicas: S.optional(S.Number),
+          shards: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateKeyspaceRequest" });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storage_bytes: S.Number,
+          max_storage_bytes: S.Number,
+          disk_scaling_strategy: S.String,
+        }),
+      ).annotate({
+        identifier: "DatabaseBranchKeyspaceStorage",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          optimize_inserts: S.Boolean,
+          allow_no_blob_binlog_row_image: S.Boolean,
+          vplayer_batching: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "DatabaseBranchKeyspaceVreplicationFlags",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          threshold: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "DatabaseBranchKeyspaceThrottler",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          strategy: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "DatabaseBranchKeyspaceReplicationDurabilityConstraints",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          shards: S.Number,
+          sharded: S.Boolean,
+          external: S.Boolean,
+          replicas: S.Number,
+          extra_replicas: S.Number,
+          created_at: S.String,
+          updated_at: S.String,
+          cluster_name: S.String,
+          cluster_display_name: S.String,
+          resizing: S.Boolean,
+          resize_in_progress: S.Boolean,
+          resize_pending: S.Boolean,
+          config_change_in_progress: S.Boolean,
+          ready: S.Boolean,
+          metal: S.Boolean,
+          default: S.Boolean,
+          imported: S.Boolean,
+          vector_pool_allocation: S.NullOr(S.Number),
+          node_ttl_strategy: S.String,
+          storage: __S(4560, __c285, 0),
+          max_rollout: S.NullOr(S.Number),
+          replication_durability_constraints: __S(4576, __c286, 0),
+          vreplication_flags: __S(4561, __c285, 1),
+          throttler: __S(4562, __c285, 2),
+          mysqld_options: __S(5232, __c327, 0),
+          vttablet_options: __S(5232, __c327, 0),
+        }),
+      ).annotate({ identifier: "DatabaseBranchKeyspace" });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          keyspace: S.String.pipe(T.Label()),
+          change_type: S.String,
+          options: __S(5232, __c327, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}/config-changes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateKeyspaceConfigChangeRequestRequest",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.String,
+          change_type: S.String,
+          previous_options: __S(5232, __c327, 0),
+          new_options: __S(5232, __c327, 0),
+          error_message: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          keyspace_name: S.NullOr(S.String),
+          queued_until: S.NullOr(S.String),
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({
+        identifier: "KeyspaceConfigChangeRequest",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/move-tables/workflows",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateMoveTablesWorkflowRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          client_id: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          grant_type: S.String,
+          code: S.optional(S.String),
+          redirect_uri: S.optional(S.String),
+          refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/oauth-applications/{id}/token",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateOauthTokenRequest" });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4674, __c292, 2));
+    case 1:
+      return S.Array(__S(4675, __c292, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          databases: __S(4656, __c291, 0),
+          accesses: __S(4657, __c291, 1),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceDatabase",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          organizations: __S(4677, __c292, 5),
+          accesses: __S(4657, __c291, 1),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceOrganization",
+      });
+    case 4:
+      return S.Array(__S(4678, __c292, 6));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          branches: __S(4660, __c291, 4),
+          accesses: __S(4657, __c291, 1),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceBranch",
+      });
+    case 6:
+      return S.Array(__S(4679, __c292, 7));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          users: __S(4662, __c291, 6),
+          accesses: __S(4657, __c291, 1),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceUser",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          database: __S(4658, __c291, 2),
+          organization: __S(4659, __c291, 3),
+          branch: __S(4661, __c291, 5),
+          user: __S(4663, __c291, 7),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResource",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          display_name: S.String,
+          token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          plain_text_refresh_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          avatar_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          expires_at: S.optional(S.NullOr(S.String)),
+          last_used_at: S.optional(S.NullOr(S.String)),
+          actor_id: S.NullOr(S.String),
+          actor_display_name: S.NullOr(S.String),
+          actor_type: S.NullOr(S.String),
+          service_token_accesses: S.optional(S.NullOr(__S(4673, __c292, 1))),
+          oauth_accesses_by_resource: S.optional(S.NullOr(__S(4664, __c291, 8))),
+        }),
+      ).annotate({ identifier: "ServiceToken" });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          access: S.String,
+          description: S.String,
+          resource_name: S.String,
+          resource_id: S.String,
+          resource_type: S.String,
+          resource: __S(4784, __c299, 0),
+        }),
+      ).annotate({
+        identifier: "ServiceTokenServiceTokenAccessesItem",
+      });
+    case 1:
+      return S.Array(__S(4672, __c292, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+          organization: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceDatabaseAccessesItem",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem",
+      });
+    case 5:
+      return S.Array(__S(4676, __c292, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+          database: S.String,
+          organization: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceBranchBranchesItem",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "ServiceTokenOauthAccessesByResourceUserUsersItem",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          email: S.String,
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/organizations/{organization}/invitations", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationInvitationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          email: S.String,
+          role: S.String,
+          sender: __S(4800, __c300, 0),
+          recipient: S.NullOr(__S(4800, __c300, 0)),
+          expired: S.Boolean,
+          expires_at: S.String,
+          created_at: S.String,
+          avatar_url: S.String,
+        }),
+      ).annotate({ identifier: "OrganizationInvitation" });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          team: S.String.pipe(T.Label()),
+          user_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/teams/{team}/members",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AddOrganizationTeamMemberRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          display_name: S.String,
+          avatar_url: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipActor",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          role: S.String,
+          cidrs: S.NullOr(__S(4832, __c302, 0)),
+          created_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          last_used_at: S.NullOr(S.String),
+          expired: S.Boolean,
+          direct_vtgate: S.Boolean,
+          direct_vtgate_addresses: __S(4736, __c296, 0),
+          ttl_seconds: S.NullOr(S.Number),
+          access_host_url: S.String,
+          access_host_regional_url: S.String,
+          access_host_regional_urls: __S(4736, __c296, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          region: __S(4768, __c298, 0),
+          username: S.String,
+          plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+          replica: S.Boolean,
+          read_only_region: S.Boolean,
+          renewable: S.Boolean,
+          database_branch: __S(4816, __c301, 0),
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipPasswordsItem",
+      });
+    case 1:
+      return S.Array(__S(4752, __c297, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          user: __S(4800, __c300, 0),
+          actor: __S(4720, __c295, 0),
+          created_at: S.String,
+          updated_at: S.String,
+          passwords: __S(4753, __c297, 1),
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembership",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          provider: S.String,
+          enabled: S.Boolean,
+          public_ip_addresses: __S(4736, __c296, 0),
+          display_name: S.String,
+          location: S.String,
+          slug: S.String,
+          current_default: S.Boolean,
+          mysql_supported: S.Boolean,
+          postgresql_supported: S.Boolean,
+          neki_supported: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipPasswordsItemRegion",
+      });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          deleted_at: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipUserDefaultOrganization",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          display_name: S.String,
+          name: S.NullOr(S.String),
+          email: S.String,
+          avatar_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          two_factor_auth_configured: S.Boolean,
+          default_organization: S.optional(S.NullOr(__S(4784, __c299, 0))),
+          sso: S.optional(S.NullOr(S.Boolean)),
+          managed: S.optional(S.NullOr(S.Boolean)),
+          directory_managed: S.optional(S.NullOr(S.Boolean)),
+          email_verified: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipUser",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+          production: S.Boolean,
+          mysql_edge_address: S.String,
+          private_edge_connectivity: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamMembershipPasswordsItemDatabaseBranch",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/domains", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationSsoDomainRequest",
+      });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/organizations/{organization}/teams", code: 200 })),
+      ).annotate({
+        identifier: "CreateOrganizationTeamRequest",
+      });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4800, __c300, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          url: S.String,
+          branches_url: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationTeamDatabasesItem",
+      });
+    case 2:
+      return S.Array(__S(4881, __c305, 1));
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          display_name: S.String,
+          creator: __S(4720, __c295, 0),
+          members: __S(4880, __c305, 0),
+          databases: __S(4882, __c305, 2),
+          analyst_databases: __S(4882, __c305, 2),
+          name: S.String,
+          slug: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          description: S.NullOr(S.String),
+          managed: S.Boolean,
+        }),
+      ).annotate({ identifier: "OrganizationTeam" });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+          replica: S.optional(S.Boolean),
+          ttl: S.optional(S.Number),
+          cidrs: S.optional(__S(4832, __c302, 0)),
+          direct_vtgate: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/passwords",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreatePasswordRequest" });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          role: S.String,
+          cidrs: S.NullOr(__S(4832, __c302, 0)),
+          created_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          last_used_at: S.NullOr(S.String),
+          expired: S.Boolean,
+          direct_vtgate: S.Boolean,
+          direct_vtgate_addresses: __S(4832, __c302, 0),
+          ttl_seconds: S.NullOr(S.Number),
+          access_host_url: S.String,
+          access_host_regional_url: S.String,
+          access_host_regional_urls: __S(4832, __c302, 0),
+          actor: S.NullOr(__S(4720, __c295, 0)),
+          region: __S(4464, __c279, 0),
+          username: S.String,
+          plain_text: S.String.pipe(T.SensitiveValue({})),
+          replica: S.Boolean,
+          read_only_region: S.Boolean,
+          renewable: S.Boolean,
+          database_branch: __S(4816, __c301, 0),
+        }),
+      ).annotate({
+        identifier: "DatabaseBranchPasswordWithSecret",
+      });
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateQueryPatternsReportRequest",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.String,
+          created_at: S.String,
+          finished_at: S.NullOr(S.String),
+          url: S.String,
+          download_url: S.String,
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({ identifier: "QueryPatternsDownload" });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          ttl: S.optional(S.Number),
+          inherited_roles: S.optional(__S(5024, __c314, 0)),
+          with_replication: S.optional(S.Boolean),
+          require_where_on_delete: S.optional(S.String),
+          require_where_on_update: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/roles",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateRoleRequest" });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          require_where_on_delete: S.String,
+          require_where_on_update: S.String,
+        }),
+      ).annotate({
+        identifier: "PostgresRoleQuerySafetySettings",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          access_host_url: S.String,
+          private_access_host_url: S.String,
+          private_connection_service_name: S.String,
+          username: S.String,
+          base_username: S.String,
+          password: S.NullOr(S.String).pipe(T.SensitiveValue({})),
+          database_name: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          deleted_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          dropped_at: S.NullOr(S.String),
+          disabled_at: S.NullOr(S.String),
+          drop_failed: S.NullOr(S.String),
+          ready: S.Boolean,
+          expired: S.Boolean,
+          default: S.Boolean,
+          ttl: S.NullOr(S.Number),
+          inherited_roles: __S(5024, __c314, 0),
+          with_replication: S.Boolean,
+          branch: __S(4784, __c299, 0),
+          actor: __S(4720, __c295, 0),
+          query_safety_settings: __S(4992, __c312, 0),
+        }),
+      ).annotate({ identifier: "PostgresRole" });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.String,
+          router_size: S.optional(S.String),
+          replicas_per_cell: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateRouterRequest" });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          display_name: S.String,
+          cpu: S.String,
+          ram: S.Number,
+          sort_order: S.Number,
+          rate: S.NullOr(S.Number),
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "NekiRouterSku" });
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          default: S.Boolean,
+          sku: __S(5056, __c316, 0),
+          router_size: S.String,
+          replicas_per_cell: S.Number,
+          autoscaling: S.Boolean,
+          max_replicas_per_cell: S.NullOr(S.Number),
+          target_cpu_utilization: S.NullOr(S.Number),
+          state: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "NekiRouter" });
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          ttl: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/service-tokens",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateServiceTokenRequest",
+      });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/shards",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateShardRequest" });
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateShardResponse",
+      });
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.String,
+          cluster_size: S.optional(S.String),
+          replicas: S.optional(S.Number),
+          postgres_major_version: S.optional(S.String),
+          postgres_minor_version: S.optional(S.String),
+          storage: S.optional(__S(4480, __c280, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateShardConfigurationProfileRequest",
+      });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minimum_storage_bytes: S.NullOr(S.Number),
+          maximum_storage_bytes: S.NullOr(S.Number),
+          storage_autoscaling: S.NullOr(S.Boolean),
+          storage_iops: S.NullOr(S.Number),
+          storage_throughput_mibs: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "NekiShardConfigurationProfileStorage",
+      });
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          architecture: S.String,
+          cluster_size: S.String,
+          cluster_display_name: S.String,
+          default: S.Boolean,
+          metal: S.Boolean,
+          replicas: S.Number,
+          postgres_image_version: S.String,
+          latest_postgres_image_version: S.String,
+          postgres_major_version: S.Number,
+          postgres_minor_version: S.Number,
+          latest_postgres_minor_version: S.Number,
+          shards: S.Number,
+          storage: __S(5152, __c322, 0),
+          state: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({
+        identifier: "NekiShardConfigurationProfile",
+      });
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          display_name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateShardConfigurationProfileShardRequest",
+      });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          display_name: S.NullOr(S.String),
+          configuration_profile: S.String,
+          created_at: S.String,
+          ready: S.Boolean,
+          authoritative: S.Boolean,
+        }),
+      ).annotate({ identifier: "NekiShard" });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          shard_ids: __S(4832, __c302, 0),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AssignShardConfigurationProfileShardsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          error: S.optional(S.NullOr(__S(5232, __c327, 0))),
+        }),
+      ).annotate({ identifier: "NekiShardAssignment" });
+    case 2:
+      return S.Array(__S(5217, __c326, 1));
+    case 3:
+      return S.suspend(() => __S(5218, __c326, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "AssignShardConfigurationProfileShardsResponse",
+      });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          candidate: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/switchovers",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateSwitchoverRequest" });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          state: S.String,
+          method: S.optional(S.NullOr(S.String)),
+          error: S.optional(S.NullOr(S.String)),
+          started_at: S.NullOr(S.String),
+          completed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({ identifier: "PostgresSwitchover" });
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          mode: S.optional(S.String),
+          capacity: S.optional(S.Number),
+          rate: S.optional(S.Number),
+          burst: S.optional(S.Number),
+          concurrency: S.optional(S.Number),
+          warning_threshold: S.optional(S.Number),
+          rules: S.optional(__S(4832, __c302, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTrafficBudgetRequest",
+      });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key_id: S.String,
+          key: S.String,
+          value: S.String,
+          source: S.String,
+        }),
+      ).annotate({
+        identifier: "TrafficBudgetRulesItemTagsItem",
+      });
+    case 1:
+      return S.Array(__S(5296, __c331, 0));
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          tags: __S(5297, __c331, 1),
+          fingerprint: S.optional(S.NullOr(S.String)),
+          keyspace: S.optional(S.NullOr(S.String)),
+          actor: __S(4720, __c295, 0),
+          syntax_highlighted_sql: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "TrafficBudgetRulesItem" });
+    case 1:
+      return S.Array(__S(5312, __c332, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          mode: S.String,
+          capacity: S.optional(S.NullOr(S.Number)),
+          rate: S.optional(S.NullOr(S.Number)),
+          burst: S.optional(S.NullOr(S.Number)),
+          concurrency: S.optional(S.NullOr(S.Number)),
+          warning_threshold: S.optional(S.NullOr(S.Number)),
+          actor: __S(4720, __c295, 0),
+          rules: __S(5313, __c332, 1),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "TrafficBudget" });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          budget_id: S.String.pipe(T.Label()),
+          kind: S.optional(S.String),
+          keyspace: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          tags: S.optional(__S(4832, __c302, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateTrafficRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key_id: S.String,
+          key: S.String,
+          value: S.String,
+          source: S.String,
+        }),
+      ).annotate({ identifier: "TrafficRuleTagsItem" });
+    case 2:
+      return S.Array(__S(5329, __c333, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          tags: __S(5330, __c333, 2),
+          fingerprint: S.optional(S.NullOr(S.String)),
+          keyspace: S.optional(S.NullOr(S.String)),
+          actor: __S(4720, __c295, 0),
+          syntax_highlighted_sql: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "TrafficRule" });
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          url: S.String,
+          authorization_header: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          events: S.optional(__S(4832, __c302, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/webhooks",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          url: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+          authorization_header_configured: S.Boolean,
+          enabled: S.Boolean,
+          last_sent_result: S.NullOr(S.String),
+          last_sent_success: S.NullOr(S.Boolean),
+          last_sent_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          events: __S(5024, __c314, 0),
+        }),
+      ).annotate({ identifier: "DatabaseWebhook" });
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          name: S.String,
+          source_keyspace: S.String,
+          target_keyspace: S.String,
+          global_keyspace: S.optional(S.String),
+          defer_secondary_keys: S.optional(S.Boolean),
+          on_ddl: S.optional(S.String),
+          tables: __S(4832, __c302, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/workflows",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateWorkflowRequest" });
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBackupRequest" });
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBackupPolicyRequest",
+      });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          bouncer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBouncerRequest" });
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          delete_descendants: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBranchRequest" });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDatabaseRequest" });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          count: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards/bulk",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkCreateShardConfigurationProfileShardsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.Number,
+          shard_ids: __S(4832, __c302, 0),
+        }),
+      ).annotate({
+        identifier: "BulkCreateShardConfigurationProfileShardsResponse",
+      });
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/cidrs/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDatabasePostgresCidrRequest",
+      });
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          dedicated_read_replica: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/dedicated-read-replicas/{dedicated_read_replica}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDedicatedReadReplicaRequest",
+      });
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          keyspace: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/keyspaces/{keyspace}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteKeyspaceRequest" });
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          application_id: S.String.pipe(T.Label()),
+          token_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/oauth-applications/{application_id}/tokens/{token_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOauthTokenRequest" });
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/billing/payment-method",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationBillingPaymentMethodRequest",
+      });
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/sso/domains/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationSsoDomainRequest",
+      });
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          team: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/teams/{team}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationTeamRequest",
+      });
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/passwords/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeletePasswordRequest" });
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/query-patterns/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteQueryPatternsReportRequest",
+      });
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          successor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/roles/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRoleRequest" });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin/changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelAdminChangeRequestRequest",
+      });
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelAdminChangeRequestResponse",
+      });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          router: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/routers/{router}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRouterRequest" });
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/service-tokens/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceTokenRequest",
+      });
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/shards/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteShardRequest" });
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteShardConfigurationProfileRequest",
+      });
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteShardConfigurationProfileShardRequest",
+      });
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          configuration_profile: S.String.pipe(T.Label()),
+          shard_ids: __S(4832, __c302, 0).pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/configuration-profiles/{configuration_profile}/shards",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteShardConfigurationProfileShardsRequest",
+      });
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTrafficBudgetRequest",
+      });
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          budget_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/traffic/budgets/{budget_id}/rules/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTrafficRuleRequest" });
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/webhooks/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/demote",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DemoteBranchRequest" });
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          bouncer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}/resizes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelBouncerResizeRequestRequest",
+      });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/storage-check",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployCheckRequestStorageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          used: S.optional(S.Number),
+          capacity: S.optional(S.Number),
+          remaining: S.optional(S.Number),
+          percentage_used: S.optional(S.Number),
+          storage_needed: S.optional(S.Number),
+          has_enough: S.optional(S.Boolean),
+          blocked_by_in_flight: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DeployCheckRequestStorageResponseStorageReportValueValue",
+      });
+    case 2:
+      return S.Record(S.String, __S(5857, __c366, 1));
+    case 3:
+      return S.Record(S.String, __S(5858, __c366, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enough_storage: S.Boolean,
+          upgradeable: S.Boolean,
+          storage_bytes_needed: S.Number,
+          storage_report: __S(5859, __c366, 3),
+        }),
+      ).annotate({
+        identifier: "DeployCheckRequestStorageResponse",
+      });
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+          state: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployCloseRequestRequest",
+      });
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/complete-deploy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployCompleteErroredRequest",
+      });
+  }
+}
+function __c369(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/apply-deploy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployCompleteGatedRequestRequest",
+      });
+  }
+}
+function __c370(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/force-cutover",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployForceCutoverRequestRequest",
+      });
+  }
+}
+function __c371(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+          instant_ddl: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/deploy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployQueueRequestRequest",
+      });
+  }
+}
+function __c372(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+          state: S.optional(S.String),
+          body: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/deploy-requests/{number}/reviews",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployReviewRequestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          body: S.String,
+          html_body: S.String,
+          state: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          actor: __S(4720, __c295, 0),
+        }),
+      ).annotate({ identifier: "DeployRequestReview" });
+  }
+}
+function __c373(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{organization}/sso", code: 200 })),
+      ).annotate({
+        identifier: "DisableOrganizationSsoRequest",
+      });
+  }
+}
+function __c374(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          id: S.String,
+          domain: S.String,
+          state: S.String,
+          verified_at: S.NullOr(S.String),
+          failure_reason: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({
+        identifier: "OrganizationSsoSerializerDomainsItem",
+      });
+    case 1:
+      return S.Array(__S(5984, __c374, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          id: S.String,
+          enabled: S.Boolean,
+          configured: S.Boolean,
+          directory: S.Boolean,
+          has_verified_domain: S.Boolean,
+          domains: __S(5985, __c374, 1),
+          domain_verification_url: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "OrganizationSsoSerializer",
+      });
+  }
+}
+function __c375(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/sso/directory",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableOrganizationSsoDirectoryRequest",
+      });
+  }
+}
+function __c376(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/safe-migrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableSafeMigrationsRequest",
+      });
+  }
+}
+function __c377(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/resizes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelBranchChangeRequestRequest",
+      });
+  }
+}
+function __c378(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          number: S.Number.pipe(T.Label()),
+          reason: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/schema-recommendations/{number}/dismiss",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DismissSchemaRecommendationRequest",
+      });
+  }
+}
+function __c379(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          html_url: S.String,
+          title: S.String,
+          table_name: S.String,
+          keyspace: S.String,
+          ddl_statement: S.String,
+          number: S.Number,
+          state: S.String,
+          recommendation_type: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          applied_at: S.NullOr(S.String),
+          dismissed_at: S.NullOr(S.String),
+          closed_by_deploy_request: S.NullOr(__S(6080, __c380, 0)),
+          dismissed_by: S.NullOr(__S(4720, __c295, 0)),
+        }),
+      ).annotate({ identifier: "SchemaRecommendation" });
+  }
+}
+function __c380(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          branch_id: S.String,
+          number: S.Number,
+        }),
+      ).annotate({
+        identifier: "SchemaRecommendationClosedByDeployRequest",
+      });
+  }
+}
+function __c381(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/organizations/{organization}/sso", code: 200 })),
+      ).annotate({
+        identifier: "EnableOrganizationSsoRequest",
+      });
+  }
+}
+function __c382(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/organizations/{organization}/sso/directory", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "EnableOrganizationSsoDirectoryRequest",
+      });
+  }
+}
+function __c383(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/safe-migrations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableSafeMigrationsRequest",
+      });
+  }
+}
+function __c384(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetAdminRequest" });
+  }
+}
+function __c385(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          sku: __S(3440, __c215, 0),
+          admin_size: S.String,
+          state: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "NekiAdmin" });
+  }
+}
+function __c386(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/admin/changes/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAdminChangeRequestRequest",
+      });
+  }
+}
+function __c387(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/backups/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBackupRequest" });
+  }
+}
+function __c388(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/backup-policies/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBackupPolicyRequest" });
+  }
+}
+function __c389(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+          bouncer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}/bouncers/{bouncer}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBouncerRequest" });
+  }
+}
+function __c390(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.String.pipe(T.Label()),
+          database: S.String.pipe(T.Label()),
+          branch: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization}/databases/{database}/branches/{branch}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetBranchRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

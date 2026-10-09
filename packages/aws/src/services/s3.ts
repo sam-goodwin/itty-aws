@@ -4760,7 +4760,7 @@ export interface Bucket {
   BucketRegion?: string;
   BucketArn?: string;
 }
-const Bucket = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<Bucket>;
+const Bucket = /*@__PURE__*/ __L.at(__c79, 0) as any as S.Schema<Bucket>;
 export type Buckets = Bucket[];
 export interface ListBucketsOutput {
   Buckets?: Bucket[];
@@ -5899,8 +5899,8 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AbortMultipartUploadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AbortMultipartUploadOutput>,
+  input: __S(1248, __c78, 0) as any as S.Schema<AbortMultipartUploadRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<AbortMultipartUploadOutput>,
   errors: [NoSuchUpload, RequestLimitExceeded, SlowDown, NoSuchBucket, NotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6027,8 +6027,8 @@ export const completeMultipartUpload: API.OperationMethod<
   CompleteMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CompleteMultipartUploadRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CompleteMultipartUploadOutput>,
+  input: __S(1283, __c80, 3) as any as S.Schema<CompleteMultipartUploadRequest>,
+  output: __S(1284, __c80, 4) as any as S.Schema<CompleteMultipartUploadOutput>,
   errors: [NoSuchUpload],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6212,8 +6212,8 @@ export const copyObject: API.OperationMethod<
   CopyObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CopyObjectRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CopyObjectOutput>,
+  input: __S(1296, __c81, 0) as any as S.Schema<CopyObjectRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<CopyObjectOutput>,
   errors: [
     ObjectNotInActiveTierError,
     RequestLimitExceeded,
@@ -6359,8 +6359,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateBucketRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateBucketOutput>,
+  input: __S(1331, __c83, 3) as any as S.Schema<CreateBucketRequest>,
+  output: __S(1332, __c83, 4) as any as S.Schema<CreateBucketOutput>,
   errors: [
     BucketAlreadyExists,
     BucketAlreadyOwnedByYou,
@@ -6451,8 +6451,8 @@ export const createBucketMetadataConfiguration: API.OperationMethod<
   CreateBucketMetadataConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateBucketMetadataConfigurationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateBucketMetadataConfigurationResponse>,
+  input: __S(1364, __c85, 4) as any as S.Schema<CreateBucketMetadataConfigurationRequest>,
+  output: __S(1365, __c85, 5) as any as S.Schema<CreateBucketMetadataConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6514,8 +6514,8 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
   CreateBucketMetadataTableConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateBucketMetadataTableConfigurationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateBucketMetadataTableConfigurationResponse>,
+  input: __S(1410, __c88, 2) as any as S.Schema<CreateBucketMetadataTableConfigurationRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<CreateBucketMetadataTableConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6708,8 +6708,8 @@ export const createMultipartUpload: API.OperationMethod<
   CreateMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateMultipartUploadRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateMultipartUploadOutput>,
+  input: __S(1424, __c89, 0) as any as S.Schema<CreateMultipartUploadRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<CreateMultipartUploadOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6818,8 +6818,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateSessionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateSessionOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<CreateSessionOutput>,
   errors: [NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6875,8 +6875,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<DeleteBucketResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<DeleteBucketResponse>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -6925,8 +6925,8 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
   DeleteBucketAnalyticsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteBucketAnalyticsConfigurationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DeleteBucketAnalyticsConfigurationResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<DeleteBucketAnalyticsConfigurationRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<DeleteBucketAnalyticsConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6959,8 +6959,8 @@ export const deleteBucketCors: API.OperationMethod<
   DeleteBucketCorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteBucketCorsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteBucketCorsResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<DeleteBucketCorsRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<DeleteBucketCorsResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7016,8 +7016,8 @@ export const deleteBucketEncryption: API.OperationMethod<
   DeleteBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteBucketEncryptionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteBucketEncryptionResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<DeleteBucketEncryptionRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<DeleteBucketEncryptionResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7056,8 +7056,12 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
   DeleteBucketIntelligentTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteBucketIntelligentTieringConfigurationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteBucketIntelligentTieringConfigurationResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<DeleteBucketIntelligentTieringConfigurationRequest>,
+  output: __S(
+    1521,
+    __c95,
+    1,
+  ) as any as S.Schema<DeleteBucketIntelligentTieringConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7120,8 +7124,8 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
   DeleteBucketInventoryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteBucketInventoryConfigurationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteBucketInventoryConfigurationResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<DeleteBucketInventoryConfigurationRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<DeleteBucketInventoryConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7188,8 +7192,8 @@ export const deleteBucketLifecycle: API.OperationMethod<
   DeleteBucketLifecycleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteBucketLifecycleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteBucketLifecycleResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<DeleteBucketLifecycleRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<DeleteBucketLifecycleResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7238,8 +7242,8 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
   DeleteBucketMetadataConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteBucketMetadataConfigurationRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteBucketMetadataConfigurationResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<DeleteBucketMetadataConfigurationRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<DeleteBucketMetadataConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7294,8 +7298,8 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
   DeleteBucketMetadataTableConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteBucketMetadataTableConfigurationRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DeleteBucketMetadataTableConfigurationResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<DeleteBucketMetadataTableConfigurationRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<DeleteBucketMetadataTableConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7359,8 +7363,8 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
   DeleteBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteBucketMetricsConfigurationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DeleteBucketMetricsConfigurationResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteBucketMetricsConfigurationRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<DeleteBucketMetricsConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7396,8 +7400,8 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
   DeleteBucketOwnershipControlsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteBucketOwnershipControlsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DeleteBucketOwnershipControlsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<DeleteBucketOwnershipControlsRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<DeleteBucketOwnershipControlsResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7466,8 +7470,8 @@ export const deleteBucketPolicy: API.OperationMethod<
   DeleteBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteBucketPolicyRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteBucketPolicyResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<DeleteBucketPolicyRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<DeleteBucketPolicyResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect, SignatureDoesNotMatch],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7508,8 +7512,8 @@ export const deleteBucketReplication: API.OperationMethod<
   DeleteBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteBucketReplicationRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<DeleteBucketReplicationResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<DeleteBucketReplicationRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<DeleteBucketReplicationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7543,8 +7547,8 @@ export const deleteBucketTagging: API.OperationMethod<
   DeleteBucketTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteBucketTaggingRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteBucketTaggingResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<DeleteBucketTaggingRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<DeleteBucketTaggingResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7586,8 +7590,8 @@ export const deleteBucketWebsite: API.OperationMethod<
   DeleteBucketWebsiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteBucketWebsiteRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteBucketWebsiteResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<DeleteBucketWebsiteRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<DeleteBucketWebsiteResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7697,8 +7701,8 @@ export const deleteObject: API.OperationMethod<
   DeleteObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteObjectRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<DeleteObjectOutput>,
+  input: __S(1696, __c106, 0) as any as S.Schema<DeleteObjectRequest>,
+  output: __S(1697, __c106, 1) as any as S.Schema<DeleteObjectOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchKey, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7736,8 +7740,8 @@ export const deleteObjectAnnotation: API.OperationMethod<
   DeleteObjectAnnotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteObjectAnnotationRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DeleteObjectAnnotationOutput>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteObjectAnnotationRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<DeleteObjectAnnotationOutput>,
   errors: [NoSuchBucket, NoSuchKey],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7848,8 +7852,8 @@ export const deleteObjects: API.OperationMethod<
   DeleteObjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteObjectsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteObjectsOutput>,
+  input: __S(1731, __c108, 3) as any as S.Schema<DeleteObjectsRequest>,
+  output: __S(1736, __c108, 8) as any as S.Schema<DeleteObjectsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7891,8 +7895,8 @@ export const deleteObjectTagging: API.OperationMethod<
   DeleteObjectTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteObjectTaggingRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DeleteObjectTaggingOutput>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteObjectTaggingRequest>,
+  output: __S(1745, __c109, 1) as any as S.Schema<DeleteObjectTaggingOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -7940,8 +7944,8 @@ export const deletePublicAccessBlock: API.OperationMethod<
   DeletePublicAccessBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeletePublicAccessBlockRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<DeletePublicAccessBlockResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<DeletePublicAccessBlockRequest>,
+  output: __S(1761, __c110, 1) as any as S.Schema<DeletePublicAccessBlockResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7958,8 +7962,8 @@ export const getBucketAbac: API.OperationMethod<
   GetBucketAbacError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetBucketAbacRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetBucketAbacOutput>,
+  input: __S(1776, __c111, 0) as any as S.Schema<GetBucketAbacRequest>,
+  output: __S(1777, __c111, 1) as any as S.Schema<GetBucketAbacOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8007,8 +8011,8 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
   GetBucketAccelerateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetBucketAccelerateConfigurationRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetBucketAccelerateConfigurationOutput>,
+  input: __S(1808, __c113, 0) as any as S.Schema<GetBucketAccelerateConfigurationRequest>,
+  output: __S(1809, __c113, 1) as any as S.Schema<GetBucketAccelerateConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8054,8 +8058,8 @@ export const getBucketAcl: API.OperationMethod<
   GetBucketAclError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetBucketAclRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetBucketAclOutput>,
+  input: __S(1824, __c114, 0) as any as S.Schema<GetBucketAclRequest>,
+  output: __S(1825, __c114, 1) as any as S.Schema<GetBucketAclOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8098,8 +8102,8 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
   GetBucketAnalyticsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetBucketAnalyticsConfigurationRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetBucketAnalyticsConfigurationOutput>,
+  input: __S(1888, __c118, 0) as any as S.Schema<GetBucketAnalyticsConfigurationRequest>,
+  output: __S(1889, __c118, 1) as any as S.Schema<GetBucketAnalyticsConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8145,8 +8149,8 @@ export const getBucketCors: API.OperationMethod<
   GetBucketCorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetBucketCorsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetBucketCorsOutput>,
+  input: __S(1920, __c120, 0) as any as S.Schema<GetBucketCorsRequest>,
+  output: __S(1921, __c120, 1) as any as S.Schema<GetBucketCorsOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -8210,8 +8214,8 @@ export const getBucketEncryption: API.OperationMethod<
   GetBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetBucketEncryptionRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetBucketEncryptionOutput>,
+  input: __S(1952, __c122, 0) as any as S.Schema<GetBucketEncryptionRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<GetBucketEncryptionOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, ParseError, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8251,8 +8255,8 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
   GetBucketIntelligentTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetBucketIntelligentTieringConfigurationRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetBucketIntelligentTieringConfigurationOutput>,
+  input: __S(1984, __c124, 0) as any as S.Schema<GetBucketIntelligentTieringConfigurationRequest>,
+  output: __S(1985, __c124, 1) as any as S.Schema<GetBucketIntelligentTieringConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8314,8 +8318,8 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
   GetBucketInventoryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetBucketInventoryConfigurationRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetBucketInventoryConfigurationOutput>,
+  input: __S(2016, __c126, 0) as any as S.Schema<GetBucketInventoryConfigurationRequest>,
+  output: __S(2017, __c126, 1) as any as S.Schema<GetBucketInventoryConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8401,8 +8405,8 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   GetBucketLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetBucketLifecycleConfigurationRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetBucketLifecycleConfigurationOutput>,
+  input: __S(2048, __c128, 0) as any as S.Schema<GetBucketLifecycleConfigurationRequest>,
+  output: __S(2049, __c128, 1) as any as S.Schema<GetBucketLifecycleConfigurationOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -8457,8 +8461,8 @@ export const getBucketLocation: API.OperationMethod<
   GetBucketLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetBucketLocationRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetBucketLocationOutput>,
+  input: __S(2080, __c130, 0) as any as S.Schema<GetBucketLocationRequest>,
+  output: __S(2081, __c130, 1) as any as S.Schema<GetBucketLocationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8491,8 +8495,8 @@ export const getBucketLogging: API.OperationMethod<
   GetBucketLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetBucketLoggingRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GetBucketLoggingOutput>,
+  input: __S(2096, __c131, 0) as any as S.Schema<GetBucketLoggingRequest>,
+  output: __S(2097, __c131, 1) as any as S.Schema<GetBucketLoggingOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8540,8 +8544,8 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
   GetBucketMetadataConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetBucketMetadataConfigurationRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GetBucketMetadataConfigurationOutput>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetBucketMetadataConfigurationRequest>,
+  output: __S(2135, __c133, 7) as any as S.Schema<GetBucketMetadataConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8595,8 +8599,8 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
   GetBucketMetadataTableConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetBucketMetadataTableConfigurationRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GetBucketMetadataTableConfigurationOutput>,
+  input: __S(2160, __c135, 0) as any as S.Schema<GetBucketMetadataTableConfigurationRequest>,
+  output: __S(2164, __c135, 4) as any as S.Schema<GetBucketMetadataTableConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8662,8 +8666,8 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
   GetBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetBucketMetricsConfigurationRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GetBucketMetricsConfigurationOutput>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetBucketMetricsConfigurationRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<GetBucketMetricsConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8710,8 +8714,8 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
   GetBucketNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetBucketNotificationConfigurationRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<NotificationConfiguration>,
+  input: __S(2208, __c138, 0) as any as S.Schema<GetBucketNotificationConfigurationRequest>,
+  output: __S(2236, __c139, 12) as any as S.Schema<NotificationConfiguration>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8758,8 +8762,8 @@ export const getBucketOwnershipControls: API.OperationMethod<
   GetBucketOwnershipControlsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetBucketOwnershipControlsRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GetBucketOwnershipControlsOutput>,
+  input: __S(2240, __c140, 0) as any as S.Schema<GetBucketOwnershipControlsRequest>,
+  output: __S(2241, __c140, 1) as any as S.Schema<GetBucketOwnershipControlsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, OwnershipControlsNotFoundError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8835,8 +8839,8 @@ export const getBucketPolicy: API.OperationMethod<
   GetBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetBucketPolicyRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GetBucketPolicyOutput>,
+  input: __S(2272, __c142, 0) as any as S.Schema<GetBucketPolicyRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<GetBucketPolicyOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -8884,8 +8888,8 @@ export const getBucketPolicyStatus: API.OperationMethod<
   GetBucketPolicyStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetBucketPolicyStatusRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetBucketPolicyStatusOutput>,
+  input: __S(2288, __c143, 0) as any as S.Schema<GetBucketPolicyStatusRequest>,
+  output: __S(2290, __c143, 2) as any as S.Schema<GetBucketPolicyStatusOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8934,8 +8938,8 @@ export const getBucketReplication: API.OperationMethod<
   GetBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetBucketReplicationRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetBucketReplicationOutput>,
+  input: __S(2304, __c144, 0) as any as S.Schema<GetBucketReplicationRequest>,
+  output: __S(2305, __c144, 1) as any as S.Schema<GetBucketReplicationOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, ReplicationConfigurationNotFoundError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8966,8 +8970,8 @@ export const getBucketRequestPayment: API.OperationMethod<
   GetBucketRequestPaymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetBucketRequestPaymentRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<GetBucketRequestPaymentOutput>,
+  input: __S(2336, __c146, 0) as any as S.Schema<GetBucketRequestPaymentRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<GetBucketRequestPaymentOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9009,8 +9013,8 @@ export const getBucketTagging: API.OperationMethod<
   GetBucketTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetBucketTaggingRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<GetBucketTaggingOutput>,
+  input: __S(2352, __c147, 0) as any as S.Schema<GetBucketTaggingRequest>,
+  output: __S(2353, __c147, 1) as any as S.Schema<GetBucketTaggingOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchTagSet, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9050,8 +9054,8 @@ export const getBucketVersioning: API.OperationMethod<
   GetBucketVersioningError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetBucketVersioningRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<GetBucketVersioningOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetBucketVersioningRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetBucketVersioningOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9090,8 +9094,8 @@ export const getBucketWebsite: API.OperationMethod<
   GetBucketWebsiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetBucketWebsiteRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetBucketWebsiteOutput>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetBucketWebsiteRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetBucketWebsiteOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9252,8 +9256,8 @@ export const getObject: API.OperationMethod<
   GetObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetObjectRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetObjectOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetObjectRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetObjectOutput>,
   errors: [
     InvalidObjectState,
     NoSuchKey,
@@ -9312,8 +9316,8 @@ export const getObjectAcl: API.OperationMethod<
   GetObjectAclError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetObjectAclRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetObjectAclOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetObjectAclRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<GetObjectAclOutput>,
   errors: [NoSuchKey, RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9346,8 +9350,8 @@ export const getObjectAnnotation: API.OperationMethod<
   GetObjectAnnotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetObjectAnnotationRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<GetObjectAnnotationOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetObjectAnnotationRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetObjectAnnotationOutput>,
   errors: [NoSuchAnnotation, NoSuchBucket, NoSuchKey],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9501,8 +9505,8 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetObjectAttributesRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<GetObjectAttributesOutput>,
+  input: __S(97, __c6, 1) as any as S.Schema<GetObjectAttributesRequest>,
+  output: __S(102, __c6, 6) as any as S.Schema<GetObjectAttributesOutput>,
   errors: [NoSuchKey, NoSuchVersion, MethodNotAllowed],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9536,8 +9540,8 @@ export const getObjectLegalHold: API.OperationMethod<
   GetObjectLegalHoldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetObjectLegalHoldRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GetObjectLegalHoldOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetObjectLegalHoldRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<GetObjectLegalHoldOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9577,8 +9581,8 @@ export const getObjectLockConfiguration: API.OperationMethod<
   GetObjectLockConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GetObjectLockConfigurationRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<GetObjectLockConfigurationOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetObjectLockConfigurationRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetObjectLockConfigurationOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9618,8 +9622,8 @@ export const getObjectRetention: API.OperationMethod<
   GetObjectRetentionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<GetObjectRetentionRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<GetObjectRetentionOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetObjectRetentionRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GetObjectRetentionOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9674,8 +9678,8 @@ export const getObjectTagging: API.OperationMethod<
   GetObjectTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetObjectTaggingRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<GetObjectTaggingOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetObjectTaggingRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GetObjectTaggingOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9716,8 +9720,8 @@ export const getObjectTorrent: API.OperationMethod<
   GetObjectTorrentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<GetObjectTorrentRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GetObjectTorrentOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetObjectTorrentRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetObjectTorrentOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9770,8 +9774,8 @@ export const getPublicAccessBlock: API.OperationMethod<
   GetPublicAccessBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetPublicAccessBlockRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GetPublicAccessBlockOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetPublicAccessBlockRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<GetPublicAccessBlockOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -9860,8 +9864,8 @@ export const headBucket: API.OperationMethod<
   HeadBucketError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<HeadBucketRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<HeadBucketOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<HeadBucketRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<HeadBucketOutput>,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9990,8 +9994,8 @@ export const headObject: API.OperationMethod<
   HeadObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<HeadObjectRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<HeadObjectOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<HeadObjectRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<HeadObjectOutput>,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket, MethodNotAllowed],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10041,8 +10045,8 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
   ListBucketAnalyticsConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListBucketAnalyticsConfigurationsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListBucketAnalyticsConfigurationsOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListBucketAnalyticsConfigurationsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListBucketAnalyticsConfigurationsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10081,8 +10085,8 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
   ListBucketIntelligentTieringConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListBucketIntelligentTieringConfigurationsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListBucketIntelligentTieringConfigurationsOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListBucketIntelligentTieringConfigurationsRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListBucketIntelligentTieringConfigurationsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10150,8 +10154,8 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
   ListBucketInventoryConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListBucketInventoryConfigurationsRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<ListBucketInventoryConfigurationsOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListBucketInventoryConfigurationsRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<ListBucketInventoryConfigurationsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10221,8 +10225,8 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
   ListBucketMetricsConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListBucketMetricsConfigurationsRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<ListBucketMetricsConfigurationsOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListBucketMetricsConfigurationsRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<ListBucketMetricsConfigurationsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10255,8 +10259,8 @@ export const listBuckets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListBucketsRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<ListBucketsOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListBucketsRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<ListBucketsOutput>,
   errors: [RequestLimitExceeded, SlowDown, RequestError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10304,8 +10308,8 @@ export const listDirectoryBuckets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Bucket
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListDirectoryBucketsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<ListDirectoryBucketsOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListDirectoryBucketsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ListDirectoryBucketsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10417,8 +10421,8 @@ export const listMultipartUploads: API.OperationMethod<
   ListMultipartUploadsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListMultipartUploadsRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<ListMultipartUploadsOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListMultipartUploadsRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<ListMultipartUploadsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10452,8 +10456,8 @@ export const listObjectAnnotations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AnnotationEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListObjectAnnotationsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<ListObjectAnnotationsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListObjectAnnotationsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListObjectAnnotationsOutput>,
   errors: [InvalidPrefix, NoSuchBucket, NoSuchKey],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10504,8 +10508,8 @@ export const listObjects: API.OperationMethod<
   ListObjectsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<ListObjectsRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<ListObjectsOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListObjectsRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<ListObjectsOutput>,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10591,8 +10595,8 @@ export const listObjectsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ListObjectsV2Request>,
-  output: __S(308, __c38, 4) as any as S.Schema<ListObjectsV2Output>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListObjectsV2Request>,
+  output: __S(561, __c35, 1) as any as S.Schema<ListObjectsV2Output>,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10642,8 +10646,8 @@ export const listObjectVersions: API.OperationMethod<
   ListObjectVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListObjectVersionsRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ListObjectVersionsOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListObjectVersionsRequest>,
+  output: __S(581, __c36, 5) as any as S.Schema<ListObjectVersionsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10725,8 +10729,8 @@ export const listParts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Part
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<ListPartsRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<ListPartsOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListPartsRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<ListPartsOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchUpload],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10749,8 +10753,8 @@ export const putBucketAbac: API.OperationMethod<
   PutBucketAbacError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<PutBucketAbacRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<PutBucketAbacResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<PutBucketAbacRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<PutBucketAbacResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10805,8 +10809,8 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
   PutBucketAccelerateConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<PutBucketAccelerateConfigurationRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<PutBucketAccelerateConfigurationResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<PutBucketAccelerateConfigurationRequest>,
+  output: __S(626, __c39, 2) as any as S.Schema<PutBucketAccelerateConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10970,8 +10974,8 @@ export const putBucketAcl: API.OperationMethod<
   PutBucketAclError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<PutBucketAclRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<PutBucketAclResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<PutBucketAclRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<PutBucketAclResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11048,8 +11052,8 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
   PutBucketAnalyticsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<PutBucketAnalyticsConfigurationRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<PutBucketAnalyticsConfigurationResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<PutBucketAnalyticsConfigurationRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<PutBucketAnalyticsConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11114,8 +11118,8 @@ export const putBucketCors: API.OperationMethod<
   PutBucketCorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<PutBucketCorsRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<PutBucketCorsResponse>,
+  input: __S(689, __c43, 1) as any as S.Schema<PutBucketCorsRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<PutBucketCorsResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11219,8 +11223,8 @@ export const putBucketEncryption: API.OperationMethod<
   PutBucketEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<PutBucketEncryptionRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<PutBucketEncryptionResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<PutBucketEncryptionRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<PutBucketEncryptionResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11285,8 +11289,8 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
   PutBucketIntelligentTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<PutBucketIntelligentTieringConfigurationRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<PutBucketIntelligentTieringConfigurationResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<PutBucketIntelligentTieringConfigurationRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<PutBucketIntelligentTieringConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11394,8 +11398,8 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
   PutBucketInventoryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<PutBucketInventoryConfigurationRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<PutBucketInventoryConfigurationResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<PutBucketInventoryConfigurationRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<PutBucketInventoryConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11512,8 +11516,8 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   PutBucketLifecycleConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<PutBucketLifecycleConfigurationRequest>,
-  output: __S(340, __c42, 4) as any as S.Schema<PutBucketLifecycleConfigurationOutput>,
+  input: __S(753, __c47, 1) as any as S.Schema<PutBucketLifecycleConfigurationRequest>,
+  output: __S(754, __c47, 2) as any as S.Schema<PutBucketLifecycleConfigurationOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -11607,8 +11611,8 @@ export const putBucketLogging: API.OperationMethod<
   PutBucketLoggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<PutBucketLoggingRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<PutBucketLoggingResponse>,
+  input: __S(769, __c48, 1) as any as S.Schema<PutBucketLoggingRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<PutBucketLoggingResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11681,8 +11685,8 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
   PutBucketMetricsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<PutBucketMetricsConfigurationRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<PutBucketMetricsConfigurationResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<PutBucketMetricsConfigurationRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<PutBucketMetricsConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11753,8 +11757,8 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
   PutBucketNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<PutBucketNotificationConfigurationRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<PutBucketNotificationConfigurationResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<PutBucketNotificationConfigurationRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<PutBucketNotificationConfigurationResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11789,8 +11793,8 @@ export const putBucketOwnershipControls: API.OperationMethod<
   PutBucketOwnershipControlsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<PutBucketOwnershipControlsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<PutBucketOwnershipControlsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<PutBucketOwnershipControlsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<PutBucketOwnershipControlsResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -11872,8 +11876,8 @@ export const putBucketPolicy: API.OperationMethod<
   PutBucketPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<PutBucketPolicyRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<PutBucketPolicyResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<PutBucketPolicyRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<PutBucketPolicyResponse>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -11964,8 +11968,8 @@ export const putBucketReplication: API.OperationMethod<
   PutBucketReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<PutBucketReplicationRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<PutBucketReplicationResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<PutBucketReplicationRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<PutBucketReplicationResponse>,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest, NoSuchBucket],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12000,8 +12004,8 @@ export const putBucketRequestPayment: API.OperationMethod<
   PutBucketRequestPaymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<PutBucketRequestPaymentRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<PutBucketRequestPaymentResponse>,
+  input: __S(865, __c54, 1) as any as S.Schema<PutBucketRequestPaymentRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<PutBucketRequestPaymentResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12062,8 +12066,8 @@ export const putBucketTagging: API.OperationMethod<
   PutBucketTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<PutBucketTaggingRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<PutBucketTaggingResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<PutBucketTaggingRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<PutBucketTaggingResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12125,8 +12129,8 @@ export const putBucketVersioning: API.OperationMethod<
   PutBucketVersioningError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<PutBucketVersioningRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<PutBucketVersioningResponse>,
+  input: __S(913, __c57, 1) as any as S.Schema<PutBucketVersioningRequest>,
+  output: __S(914, __c57, 2) as any as S.Schema<PutBucketVersioningResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12216,8 +12220,8 @@ export const putBucketWebsite: API.OperationMethod<
   PutBucketWebsiteError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<PutBucketWebsiteRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<PutBucketWebsiteResponse>,
+  input: __S(929, __c58, 1) as any as S.Schema<PutBucketWebsiteRequest>,
+  output: __S(930, __c58, 2) as any as S.Schema<PutBucketWebsiteResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12365,8 +12369,8 @@ export const putObject: API.OperationMethod<
   PutObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<PutObjectRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<PutObjectOutput>,
+  input: __S(944, __c59, 0) as any as S.Schema<PutObjectRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<PutObjectOutput>,
   errors: [
     EncryptionTypeMismatch,
     InvalidRequest,
@@ -12539,8 +12543,8 @@ export const putObjectAcl: API.OperationMethod<
   PutObjectAclError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<PutObjectAclRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<PutObjectAclOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<PutObjectAclRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<PutObjectAclOutput>,
   errors: [NoSuchKey, RequestLimitExceeded, SlowDown, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12589,8 +12593,8 @@ export const putObjectAnnotation: API.OperationMethod<
   PutObjectAnnotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(370, __c46, 2) as any as S.Schema<PutObjectAnnotationRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<PutObjectAnnotationOutput>,
+  input: __S(976, __c61, 0) as any as S.Schema<PutObjectAnnotationRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<PutObjectAnnotationOutput>,
   errors: [
     AnnotationLimitExceeded,
     AnnotationNameTooLong,
@@ -12629,8 +12633,8 @@ export const putObjectLegalHold: API.OperationMethod<
   PutObjectLegalHoldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<PutObjectLegalHoldRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<PutObjectLegalHoldOutput>,
+  input: __S(992, __c62, 0) as any as S.Schema<PutObjectLegalHoldRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<PutObjectLegalHoldOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -12677,8 +12681,8 @@ export const putObjectLockConfiguration: API.OperationMethod<
   PutObjectLockConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<PutObjectLockConfigurationRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<PutObjectLockConfigurationOutput>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PutObjectLockConfigurationRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<PutObjectLockConfigurationOutput>,
   errors: [RequestLimitExceeded, SlowDown, InvalidBucketState, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12711,8 +12715,8 @@ export const putObjectRetention: API.OperationMethod<
   PutObjectRetentionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<PutObjectRetentionRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<PutObjectRetentionOutput>,
+  input: __S(1024, __c64, 0) as any as S.Schema<PutObjectRetentionRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<PutObjectRetentionOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -12780,8 +12784,8 @@ export const putObjectTagging: API.OperationMethod<
   PutObjectTaggingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<PutObjectTaggingRequest>,
-  output: __S(379, __c47, 3) as any as S.Schema<PutObjectTaggingOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<PutObjectTaggingRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<PutObjectTaggingOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -12837,8 +12841,8 @@ export const putPublicAccessBlock: API.OperationMethod<
   PutPublicAccessBlockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<PutPublicAccessBlockRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<PutPublicAccessBlockResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<PutPublicAccessBlockRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<PutPublicAccessBlockResponse>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -12897,8 +12901,8 @@ export const renameObject: API.OperationMethod<
   RenameObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<RenameObjectRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<RenameObjectOutput>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RenameObjectRequest>,
+  output: __S(1073, __c67, 1) as any as S.Schema<RenameObjectOutput>,
   errors: [IdempotencyParameterMismatch],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13061,8 +13065,8 @@ export const restoreObject: API.OperationMethod<
   RestoreObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<RestoreObjectRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<RestoreObjectOutput>,
+  input: __S(1096, __c68, 8) as any as S.Schema<RestoreObjectRequest>,
+  output: __S(1097, __c68, 9) as any as S.Schema<RestoreObjectOutput>,
   errors: [
     ObjectAlreadyInActiveTierError,
     RequestLimitExceeded,
@@ -13180,8 +13184,8 @@ export const selectObjectContent: API.OperationMethod<
   SelectObjectContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<SelectObjectContentRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<SelectObjectContentOutput>,
+  input: __S(1122, __c70, 2) as any as S.Schema<SelectObjectContentRequest>,
+  output: __S(1131, __c70, 11) as any as S.Schema<SelectObjectContentOutput>,
   errors: [RequestLimitExceeded, SlowDown, PermanentRedirect],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13220,14 +13224,14 @@ export const updateBucketMetadataAnnotationTableConfiguration: API.OperationMeth
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    414,
-    __c51,
-    6,
+    1137,
+    __c71,
+    1,
   ) as any as S.Schema<UpdateBucketMetadataAnnotationTableConfigurationRequest>,
   output: __S(
-    415,
-    __c51,
-    7,
+    1138,
+    __c71,
+    2,
   ) as any as S.Schema<UpdateBucketMetadataAnnotationTableConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
@@ -13289,13 +13293,13 @@ export const updateBucketMetadataInventoryTableConfiguration: API.OperationMetho
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    417,
-    __c52,
+    1153,
+    __c72,
     1,
   ) as any as S.Schema<UpdateBucketMetadataInventoryTableConfigurationRequest>,
   output: __S(
-    418,
-    __c52,
+    1154,
+    __c72,
     2,
   ) as any as S.Schema<UpdateBucketMetadataInventoryTableConfigurationResponse>,
   errors: [],
@@ -13336,14 +13340,14 @@ export const updateBucketMetadataJournalTableConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    420,
-    __c52,
-    4,
+    1169,
+    __c73,
+    1,
   ) as any as S.Schema<UpdateBucketMetadataJournalTableConfigurationRequest>,
   output: __S(
-    421,
-    __c52,
-    5,
+    1170,
+    __c73,
+    2,
   ) as any as S.Schema<UpdateBucketMetadataJournalTableConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
@@ -13467,8 +13471,8 @@ export const updateObjectEncryption: API.OperationMethod<
   UpdateObjectEncryptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateObjectEncryptionRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<UpdateObjectEncryptionResponse>,
+  input: __S(1186, __c74, 2) as any as S.Schema<UpdateObjectEncryptionRequest>,
+  output: __S(1187, __c74, 3) as any as S.Schema<UpdateObjectEncryptionResponse>,
   errors: [AccessDenied, InvalidRequest, NoSuchKey],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13628,8 +13632,8 @@ export const uploadPart: API.OperationMethod<
   UploadPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<UploadPartRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<UploadPartOutput>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UploadPartRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<UploadPartOutput>,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect, NoSuchUpload],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13812,8 +13816,8 @@ export const uploadPartCopy: API.OperationMethod<
   UploadPartCopyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<UploadPartCopyRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<UploadPartCopyOutput>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UploadPartCopyRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<UploadPartCopyOutput>,
   errors: [
     RequestLimitExceeded,
     SlowDown,
@@ -13878,8 +13882,8 @@ export const writeGetObjectResponse: API.OperationMethod<
   WriteGetObjectResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<WriteGetObjectResponseRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<WriteGetObjectResponseResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<WriteGetObjectResponseRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<WriteGetObjectResponseResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13889,6 +13893,3737 @@ export const writeGetObjectResponse: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?versioning" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetBucketVersioningRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
+        }).pipe(T.all(T.XmlName("VersioningConfiguration"), ns)),
+      ).annotate({
+        identifier: "GetBucketVersioningOutput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?website" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "GetBucketWebsiteRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RedirectAllRequestsTo: S.optional(__S(32, __c2, 0)),
+          IndexDocument: S.optional(__S(33, __c2, 1)),
+          ErrorDocument: S.optional(__S(34, __c2, 2)),
+          RoutingRules: S.optional(__S(38, __c2, 6)),
+        }).pipe(T.all(T.XmlName("WebsiteConfiguration"), ns)),
+      ).annotate({ identifier: "GetBucketWebsiteOutput" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ HostName: S.String, Protocol: S.optional(S.String) }),
+      ).annotate({ identifier: "RedirectAllRequestsTo" });
+    case 1:
+      return S.suspend(() => S.Struct({ Suffix: S.String })).annotate({
+        identifier: "IndexDocument",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Key: S.String })).annotate({
+        identifier: "ErrorDocument",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          HttpErrorCodeReturnedEquals: S.optional(S.String),
+          KeyPrefixEquals: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Condition" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          HostName: S.optional(S.String),
+          HttpRedirectCode: S.optional(S.String),
+          Protocol: S.optional(S.String),
+          ReplaceKeyPrefixWith: S.optional(S.String),
+          ReplaceKeyWith: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Redirect" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Condition: S.optional(__S(35, __c2, 3)), Redirect: __S(36, __c2, 4) }),
+      ).annotate({ identifier: "RoutingRule" });
+    case 6:
+      return S.Array(
+        /*@__PURE__*/ __S(37, __c2, 5).pipe(/*@__PURE__*/ T.XmlName("RoutingRule")).annotate({
+          identifier: "RoutingRule",
+        }),
+      );
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          IfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("If-Modified-Since"),
+          ),
+          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          IfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("If-Unmodified-Since"),
+          ),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          Range: S.optional(S.String).pipe(T.HttpHeader("Range")),
+          ResponseCacheControl: S.optional(S.String).pipe(T.HttpQuery("response-cache-control")),
+          ResponseContentDisposition: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-disposition"),
+          ),
+          ResponseContentEncoding: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-encoding"),
+          ),
+          ResponseContentLanguage: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-language"),
+          ),
+          ResponseContentType: S.optional(S.String).pipe(T.HttpQuery("response-content-type")),
+          ResponseExpires: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpQuery("response-expires"),
+          ),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          PartNumber: S.optional(S.Number).pipe(T.HttpQuery("partNumber")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?x-id=GetObject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              responseAlgorithms: [
+                "CRC64NVME",
+                "CRC32",
+                "CRC32C",
+                "SHA256",
+                "SHA1",
+                "SHA512",
+                "MD5",
+                "XXHASH64",
+                "XXHASH3",
+                "XXHASH128",
+              ],
+            }),
+          ),
+        ),
+      ).annotate({ identifier: "GetObjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
+          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("accept-ranges")),
+          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
+          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore")),
+          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Last-Modified"),
+          ),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
+          MissingMeta: S.optional(S.Number).pipe(T.HttpHeader("x-amz-missing-meta")),
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
+          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
+          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
+          ContentRange: S.optional(S.String).pipe(T.HttpHeader("Content-Range")),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
+          WebsiteRedirectLocation: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-website-redirect-location"),
+          ),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
+          PartsCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-mp-parts-count")),
+          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-tagging-count")),
+          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
+          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-object-lock-retain-until-date"),
+          ),
+          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-legal-hold"),
+          ),
+          ObjectLockEventHold: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold"),
+          ),
+          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
+          ),
+          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
+          ),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetObjectOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?acl" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetObjectAclRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Owner: S.optional(__S(1840, __c115, 0)),
+          Grants: S.optional(__S(1857, __c116, 1)).pipe(T.XmlName("AccessControlList")),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(T.all(T.XmlName("AccessControlPolicy"), ns)),
+      ).annotate({ identifier: "GetObjectAclOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?annotation&x-id=GetObjectAnnotation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              responseAlgorithms: [
+                "CRC64NVME",
+                "CRC32",
+                "CRC32C",
+                "SHA256",
+                "SHA1",
+                "SHA512",
+                "MD5",
+                "XXHASH64",
+                "XXHASH3",
+                "XXHASH128",
+              ],
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetObjectAnnotationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AnnotationPayload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
+          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Last-Modified"),
+          ),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetObjectAnnotationOutput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          MaxParts: S.optional(S.Number).pipe(T.HttpHeader("x-amz-max-parts")),
+          PartNumberMarker: S.optional(S.String).pipe(T.HttpHeader("x-amz-part-number-marker")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ObjectAttributes: __S(96, __c6, 0).pipe(T.HttpHeader("x-amz-object-attributes")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?attributes" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetObjectAttributesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChecksumCRC32: S.optional(S.String),
+          ChecksumCRC32C: S.optional(S.String),
+          ChecksumCRC64NVME: S.optional(S.String),
+          ChecksumSHA1: S.optional(S.String),
+          ChecksumSHA256: S.optional(S.String),
+          ChecksumSHA512: S.optional(S.String),
+          ChecksumMD5: S.optional(S.String),
+          ChecksumXXHASH64: S.optional(S.String),
+          ChecksumXXHASH3: S.optional(S.String),
+          ChecksumXXHASH128: S.optional(S.String),
+          ChecksumType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Checksum" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          PartNumber: S.optional(S.Number),
+          Size: S.optional(S.Number),
+          ChecksumCRC32: S.optional(S.String),
+          ChecksumCRC32C: S.optional(S.String),
+          ChecksumCRC64NVME: S.optional(S.String),
+          ChecksumSHA1: S.optional(S.String),
+          ChecksumSHA256: S.optional(S.String),
+          ChecksumSHA512: S.optional(S.String),
+          ChecksumMD5: S.optional(S.String),
+          ChecksumXXHASH64: S.optional(S.String),
+          ChecksumXXHASH3: S.optional(S.String),
+          ChecksumXXHASH128: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectPart" });
+    case 4:
+      return S.Array(__S(99, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TotalPartsCount: S.optional(S.Number).pipe(T.XmlName("PartsCount")),
+          PartNumberMarker: S.optional(S.String),
+          NextPartNumberMarker: S.optional(S.String),
+          MaxParts: S.optional(S.Number),
+          IsTruncated: S.optional(S.Boolean),
+          Parts: S.optional(__S(100, __c6, 4)).pipe(T.XmlName("Part"), T.XmlFlattened()),
+        }),
+      ).annotate({ identifier: "GetObjectAttributesParts" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
+          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Last-Modified"),
+          ),
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          ETag: S.optional(S.String),
+          Checksum: S.optional(__S(98, __c6, 2)),
+          ObjectParts: S.optional(__S(101, __c6, 5)),
+          StorageClass: S.optional(S.String),
+          ObjectSize: S.optional(S.Number),
+        }).pipe(T.all(T.XmlName("GetObjectAttributesResponse"), ns)),
+      ).annotate({
+        identifier: "GetObjectAttributesOutput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?legal-hold" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetObjectLegalHoldRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          LegalHold: S.optional(__S(128, __c8, 0))
+            .pipe(T.HttpPayload(), T.XmlName("LegalHold"))
+            .annotate({ identifier: "ObjectLockLegalHold" }),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetObjectLegalHoldOutput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "ObjectLockLegalHold",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?object-lock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetObjectLockConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ObjectLockConfiguration: S.optional(__S(178, __c11, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ObjectLockConfiguration" }),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetObjectLockConfigurationOutput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
+      ).annotate({ identifier: "EventHoldDuration" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Mode: S.optional(S.String),
+          Days: S.optional(S.Number),
+          Years: S.optional(S.Number),
+          DefaultEventHold: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "DefaultRetention" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DefaultRetention: S.optional(__S(176, __c11, 0)) }),
+      ).annotate({ identifier: "ObjectLockRule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ObjectLockEnabled: S.optional(S.String), Rule: S.optional(__S(177, __c11, 1)) }),
+      ).annotate({ identifier: "ObjectLockConfiguration" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?retention" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetObjectRetentionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Retention: S.optional(__S(208, __c13, 0))
+            .pipe(T.HttpPayload(), T.XmlName("Retention"))
+            .annotate({ identifier: "ObjectLockRetention" }),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetObjectRetentionOutput" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Mode: S.optional(S.String),
+          RetainUntilDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EventHold: S.optional(S.String),
+          EventHoldDuration: S.optional(__S(160, __c10, 0)),
+        }),
+      ).annotate({ identifier: "ObjectLockRetention" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetObjectTaggingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
+          TagSet: S.optional(__S(1345, __c84, 1)),
+        }).pipe(T.all(T.XmlName("Tagging"), ns)),
+      ).annotate({ identifier: "GetObjectTaggingOutput" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?torrent" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetObjectTorrentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetObjectTorrentOutput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?publicAccessBlock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "GetPublicAccessBlockRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PublicAccessBlockConfiguration: S.optional(__S(272, __c17, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetPublicAccessBlockOutput",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BlockPublicAcls: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicAcls")),
+          IgnorePublicAcls: S.optional(S.Boolean).pipe(T.XmlName("IgnorePublicAcls")),
+          BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
+          RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
+        }),
+      ).annotate({
+        identifier: "PublicAccessBlockConfiguration",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(ns, T.Http({ method: "HEAD", uri: "/{Bucket}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "HeadBucketRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BucketArn: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-arn")),
+          BucketLocationType: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-location-type")),
+          BucketLocationName: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-location-name")),
+          BucketRegion: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-region")),
+          AccessPointAlias: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-access-point-alias")),
+        }).pipe(ns),
+      ).annotate({ identifier: "HeadBucketOutput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          IfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("If-Modified-Since"),
+          ),
+          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          IfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("If-Unmodified-Since"),
+          ),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          Range: S.optional(S.String).pipe(T.HttpHeader("Range")),
+          ResponseCacheControl: S.optional(S.String).pipe(T.HttpQuery("response-cache-control")),
+          ResponseContentDisposition: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-disposition"),
+          ),
+          ResponseContentEncoding: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-encoding"),
+          ),
+          ResponseContentLanguage: S.optional(S.String).pipe(
+            T.HttpQuery("response-content-language"),
+          ),
+          ResponseContentType: S.optional(S.String).pipe(T.HttpQuery("response-content-type")),
+          ResponseExpires: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpQuery("response-expires"),
+          ),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          PartNumber: S.optional(S.Number).pipe(T.HttpQuery("partNumber")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "HEAD", uri: "/{Bucket}/{Key+}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "HeadObjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
+          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("accept-ranges")),
+          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
+          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore")),
+          ArchiveStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-archive-status")),
+          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("Last-Modified"),
+          ),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          MissingMeta: S.optional(S.Number).pipe(T.HttpHeader("x-amz-missing-meta")),
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
+          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
+          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          ContentRange: S.optional(S.String).pipe(T.HttpHeader("Content-Range")),
+          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
+          WebsiteRedirectLocation: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-website-redirect-location"),
+          ),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
+          PartsCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-mp-parts-count")),
+          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-tagging-count")),
+          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
+          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-object-lock-retain-until-date"),
+          ),
+          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-legal-hold"),
+          ),
+          ObjectLockEventHold: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold"),
+          ),
+          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
+          ),
+          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
+          ),
+        }).pipe(ns),
+      ).annotate({ identifier: "HeadObjectOutput" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/{Bucket}?analytics&x-id=ListBucketAnalyticsConfigurations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBucketAnalyticsConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1910, __c119, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          ContinuationToken: S.optional(S.String),
+          NextContinuationToken: S.optional(S.String),
+          AnalyticsConfigurationList: S.optional(__S(321, __c20, 1)).pipe(
+            T.XmlName("AnalyticsConfiguration"),
+            T.XmlFlattened(),
+          ),
+        }).pipe(T.all(T.XmlName("ListBucketAnalyticsConfigurationResult"), ns)),
+      ).annotate({
+        identifier: "ListBucketAnalyticsConfigurationsOutput",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/{Bucket}?intelligent-tiering&x-id=ListBucketIntelligentTieringConfigurations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBucketIntelligentTieringConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(2004, __c125, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          ContinuationToken: S.optional(S.String),
+          NextContinuationToken: S.optional(S.String),
+          IntelligentTieringConfigurationList: S.optional(__S(337, __c21, 1)).pipe(
+            T.XmlName("IntelligentTieringConfiguration"),
+            T.XmlFlattened(),
+          ),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListBucketIntelligentTieringConfigurationsOutput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/{Bucket}?inventory&x-id=ListBucketInventoryConfigurations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBucketInventoryConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(2040, __c127, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ContinuationToken: S.optional(S.String),
+          InventoryConfigurationList: S.optional(__S(353, __c22, 1)).pipe(
+            T.XmlName("InventoryConfiguration"),
+            T.XmlFlattened(),
+          ),
+          IsTruncated: S.optional(S.Boolean),
+          NextContinuationToken: S.optional(S.String),
+        }).pipe(T.all(T.XmlName("ListInventoryConfigurationsResult"), ns)),
+      ).annotate({
+        identifier: "ListBucketInventoryConfigurationsOutput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/{Bucket}?metrics&x-id=ListBucketMetricsConfigurations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListBucketMetricsConfigurationsRequest",
+      });
+    case 1:
+      return S.Array(__S(2194, __c137, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          ContinuationToken: S.optional(S.String),
+          NextContinuationToken: S.optional(S.String),
+          MetricsConfigurationList: S.optional(__S(369, __c23, 1)).pipe(
+            T.XmlName("MetricsConfiguration"),
+            T.XmlFlattened(),
+          ),
+        }).pipe(T.all(T.XmlName("ListMetricsConfigurationsResult"), ns)),
+      ).annotate({
+        identifier: "ListBucketMetricsConfigurationsOutput",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxBuckets: S.optional(S.Number).pipe(T.HttpQuery("max-buckets")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+          BucketRegion: S.optional(S.String).pipe(T.HttpQuery("bucket-region")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/?x-id=ListBuckets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListBucketsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Buckets: S.optional(__S(400, __c25, 0)),
+          Owner: S.optional(__S(1840, __c115, 0)),
+          ContinuationToken: S.optional(S.String),
+          Prefix: S.optional(S.String),
+        }).pipe(T.all(T.XmlName("ListAllMyBucketsResult"), ns)),
+      ).annotate({ identifier: "ListBucketsOutput" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(
+        /*@__PURE__*/ Bucket.pipe(/*@__PURE__*/ T.XmlName("Bucket")).annotate({
+          identifier: "Bucket",
+        }),
+      );
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          MaxDirectoryBuckets: S.optional(S.Number).pipe(T.HttpQuery("max-directory-buckets")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/?x-id=ListDirectoryBuckets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDirectoryBucketsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Buckets: S.optional(__S(400, __c25, 0)),
+          ContinuationToken: S.optional(S.String),
+        }).pipe(T.all(T.XmlName("ListAllMyDirectoryBucketsResult"), ns)),
+      ).annotate({
+        identifier: "ListDirectoryBucketsOutput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
+          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
+          KeyMarker: S.optional(S.String).pipe(T.HttpQuery("key-marker")),
+          MaxUploads: S.optional(S.Number).pipe(T.HttpQuery("max-uploads")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
+          UploadIdMarker: S.optional(S.String).pipe(T.HttpQuery("upload-id-marker")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?uploads" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMultipartUploadsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          UploadId: S.optional(S.String),
+          Key: S.optional(S.String),
+          Initiated: S.optional(T.DateFromString),
+          StorageClass: S.optional(S.String),
+          Owner: S.optional(__S(1840, __c115, 0)),
+          Initiator: S.optional(__S(464, __c29, 0)),
+          ChecksumAlgorithm: S.optional(S.String),
+          ChecksumType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MultipartUpload" });
+    case 2:
+      return S.Array(__S(433, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.optional(S.String),
+          KeyMarker: S.optional(S.String),
+          UploadIdMarker: S.optional(S.String),
+          NextKeyMarker: S.optional(S.String),
+          Prefix: S.optional(S.String),
+          Delimiter: S.optional(S.String),
+          NextUploadIdMarker: S.optional(S.String),
+          MaxUploads: S.optional(S.Number),
+          IsTruncated: S.optional(S.Boolean),
+          Uploads: S.optional(__S(434, __c27, 2)).pipe(T.XmlName("Upload"), T.XmlFlattened()),
+          CommonPrefixes: S.optional(__S(449, __c28, 1)).pipe(T.XmlFlattened()),
+          EncodingType: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(T.all(T.XmlName("ListMultipartUploadsResult"), ns)),
+      ).annotate({
+        identifier: "ListMultipartUploadsOutput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Prefix: S.optional(S.String) })).annotate({
+        identifier: "CommonPrefix",
+      });
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ID: S.optional(S.String), DisplayName: S.optional(S.String) }),
+      ).annotate({ identifier: "Initiator" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          MaxAnnotationResults: S.optional(S.Number).pipe(T.HttpQuery("max-annotation-results")),
+          AnnotationPrefix: S.optional(S.String).pipe(T.HttpQuery("annotation-prefix")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({
+              method: "GET",
+              uri: "/{Bucket}/{Key+}?annotation&x-id=ListObjectAnnotations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListObjectAnnotationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AnnotationName: S.String,
+          LastModified: T.DateFromString,
+          ETag: S.optional(S.String),
+          ChecksumAlgorithm: S.optional(__S(496, __c31, 0)).pipe(T.XmlFlattened()),
+          Size: S.Number,
+          ReplicationStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AnnotationEntry" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ __S(481, __c30, 1).pipe(/*@__PURE__*/ T.XmlName("AnnotationEntry")).annotate({
+          identifier: "AnnotationEntry",
+        }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Annotations: S.optional(__S(482, __c30, 2)),
+          Bucket: S.optional(S.String),
+          Key: S.optional(S.String),
+          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
+          AnnotationPrefix: S.optional(S.String),
+          MaxAnnotationResults: S.optional(S.Number),
+          AnnotationCount: S.optional(S.Number),
+          ContinuationToken: S.optional(S.String),
+          NextContinuationToken: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ListObjectAnnotationsOutput",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
+          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
+          Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
+          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          OptionalObjectAttributes: S.optional(__S(544, __c34, 0)).pipe(
+            T.HttpHeader("x-amz-optional-object-attributes"),
+          ),
+        }).pipe(
+          T.all(ns, T.Http({ method: "GET", uri: "/{Bucket}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListObjectsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          Marker: S.optional(S.String),
+          NextMarker: S.optional(S.String),
+          Contents: S.optional(__S(529, __c33, 1)).pipe(T.XmlFlattened()),
+          Name: S.optional(S.String),
+          Prefix: S.optional(S.String),
+          Delimiter: S.optional(S.String),
+          MaxKeys: S.optional(S.Number),
+          CommonPrefixes: S.optional(__S(449, __c28, 1)).pipe(T.XmlFlattened()),
+          EncodingType: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(T.all(T.XmlName("ListBucketResult"), ns)),
+      ).annotate({ identifier: "ListObjectsOutput" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          LastModified: S.optional(T.DateFromString),
+          ETag: S.optional(S.String),
+          ChecksumAlgorithm: S.optional(__S(496, __c31, 0)).pipe(T.XmlFlattened()),
+          ChecksumType: S.optional(S.String),
+          Size: S.optional(S.Number),
+          StorageClass: S.optional(S.String),
+          Owner: S.optional(__S(1840, __c115, 0)),
+          RestoreStatus: S.optional(__S(545, __c34, 1)),
+        }),
+      ).annotate({ identifier: "Object" });
+    case 1:
+      return S.Array(__S(528, __c33, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsRestoreInProgress: S.optional(S.Boolean),
+          RestoreExpiryDate: S.optional(T.DateFromString),
+        }),
+      ).annotate({ identifier: "RestoreStatus" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
+          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
+          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
+          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
+          FetchOwner: S.optional(S.Boolean).pipe(T.HttpQuery("fetch-owner")),
+          StartAfter: S.optional(S.String).pipe(T.HttpQuery("start-after")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          OptionalObjectAttributes: S.optional(__S(544, __c34, 0)).pipe(
+            T.HttpHeader("x-amz-optional-object-attributes"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?list-type=2" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListObjectsV2Request" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          Contents: S.optional(__S(529, __c33, 1)).pipe(T.XmlFlattened()),
+          Name: S.optional(S.String),
+          Prefix: S.optional(S.String),
+          Delimiter: S.optional(S.String),
+          MaxKeys: S.optional(S.Number),
+          CommonPrefixes: S.optional(__S(449, __c28, 1)).pipe(T.XmlFlattened()),
+          EncodingType: S.optional(S.String),
+          KeyCount: S.optional(S.Number),
+          ContinuationToken: S.optional(S.String),
+          NextContinuationToken: S.optional(S.String),
+          StartAfter: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(T.all(T.XmlName("ListBucketResult"), ns)),
+      ).annotate({ identifier: "ListObjectsV2Output" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
+          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
+          KeyMarker: S.optional(S.String).pipe(T.HttpQuery("key-marker")),
+          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
+          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
+          VersionIdMarker: S.optional(S.String).pipe(T.HttpQuery("version-id-marker")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          OptionalObjectAttributes: S.optional(__S(544, __c34, 0)).pipe(
+            T.HttpHeader("x-amz-optional-object-attributes"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}?versions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListObjectVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ETag: S.optional(S.String),
+          ChecksumAlgorithm: S.optional(__S(496, __c31, 0)).pipe(T.XmlFlattened()),
+          ChecksumType: S.optional(S.String),
+          Size: S.optional(S.Number),
+          StorageClass: S.optional(S.String),
+          Key: S.optional(S.String),
+          VersionId: S.optional(S.String),
+          IsLatest: S.optional(S.Boolean),
+          LastModified: S.optional(T.DateFromString),
+          Owner: S.optional(__S(1840, __c115, 0)),
+          RestoreStatus: S.optional(__S(545, __c34, 1)),
+        }),
+      ).annotate({ identifier: "ObjectVersion" });
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Owner: S.optional(__S(1840, __c115, 0)),
+          Key: S.optional(S.String),
+          VersionId: S.optional(S.String),
+          IsLatest: S.optional(S.Boolean),
+          LastModified: S.optional(T.DateFromString),
+        }),
+      ).annotate({ identifier: "DeleteMarkerEntry" });
+    case 4:
+      return S.Array(__S(579, __c36, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          IsTruncated: S.optional(S.Boolean),
+          KeyMarker: S.optional(S.String),
+          VersionIdMarker: S.optional(S.String),
+          NextKeyMarker: S.optional(S.String),
+          NextVersionIdMarker: S.optional(S.String),
+          Versions: S.optional(__S(578, __c36, 2)).pipe(T.XmlName("Version"), T.XmlFlattened()),
+          DeleteMarkers: S.optional(__S(580, __c36, 4)).pipe(
+            T.XmlName("DeleteMarker"),
+            T.XmlFlattened(),
+          ),
+          Name: S.optional(S.String),
+          Prefix: S.optional(S.String),
+          Delimiter: S.optional(S.String),
+          MaxKeys: S.optional(S.Number),
+          CommonPrefixes: S.optional(__S(449, __c28, 1)).pipe(T.XmlFlattened()),
+          EncodingType: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(T.all(T.XmlName("ListVersionsResult"), ns)),
+      ).annotate({ identifier: "ListObjectVersionsOutput" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          MaxParts: S.optional(S.Number).pipe(T.HttpQuery("max-parts")),
+          PartNumberMarker: S.optional(S.String).pipe(T.HttpQuery("part-number-marker")),
+          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?x-id=ListParts" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListPartsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PartNumber: S.optional(S.Number),
+          LastModified: S.optional(T.DateFromString),
+          ETag: S.optional(S.String),
+          Size: S.optional(S.Number),
+          ChecksumCRC32: S.optional(S.String),
+          ChecksumCRC32C: S.optional(S.String),
+          ChecksumCRC64NVME: S.optional(S.String),
+          ChecksumSHA1: S.optional(S.String),
+          ChecksumSHA256: S.optional(S.String),
+          ChecksumSHA512: S.optional(S.String),
+          ChecksumMD5: S.optional(S.String),
+          ChecksumXXHASH64: S.optional(S.String),
+          ChecksumXXHASH3: S.optional(S.String),
+          ChecksumXXHASH128: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Part" });
+    case 2:
+      return S.Array(__S(593, __c37, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AbortDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-abort-date"),
+          ),
+          AbortRuleId: S.optional(S.String).pipe(T.HttpHeader("x-amz-abort-rule-id")),
+          Bucket: S.optional(S.String),
+          Key: S.optional(S.String),
+          UploadId: S.optional(S.String),
+          PartNumberMarker: S.optional(S.String),
+          NextPartNumberMarker: S.optional(S.String),
+          MaxParts: S.optional(S.Number),
+          IsTruncated: S.optional(S.Boolean),
+          Parts: S.optional(__S(594, __c37, 2)).pipe(T.XmlName("Part"), T.XmlFlattened()),
+          Initiator: S.optional(__S(464, __c29, 0)),
+          Owner: S.optional(__S(1840, __c115, 0)),
+          StorageClass: S.optional(S.String),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          ChecksumAlgorithm: S.optional(S.String),
+          ChecksumType: S.optional(S.String),
+        }).pipe(T.all(T.XmlName("ListPartsResult"), ns)),
+      ).annotate({ identifier: "ListPartsOutput" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          AbacStatus: __S(1792, __c112, 0).pipe(T.HttpPayload(), T.XmlName("AbacStatus")).annotate({
+            identifier: "AbacStatus",
+          }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?abac" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketAbacRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketAbacResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "AccelerateConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          AccelerateConfiguration: __S(624, __c39, 0)
+            .pipe(T.HttpPayload(), T.XmlName("AccelerateConfiguration"))
+            .annotate({ identifier: "AccelerateConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?accelerate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketAccelerateConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketAccelerateConfigurationResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
+          AccessControlPolicy: S.optional(__S(656, __c41, 0))
+            .pipe(T.HttpPayload(), T.XmlName("AccessControlPolicy"))
+            .annotate({ identifier: "AccessControlPolicy" }),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
+          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
+          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
+          GrantWrite: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write")),
+          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?acl" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketAclRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketAclResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Grants: S.optional(__S(1857, __c116, 1)).pipe(T.XmlName("AccessControlList")),
+          Owner: S.optional(__S(1840, __c115, 0)),
+        }),
+      ).annotate({ identifier: "AccessControlPolicy" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Id: S.String.pipe(T.HttpQuery("id")),
+          AnalyticsConfiguration: __S(1910, __c119, 6)
+            .pipe(T.HttpPayload(), T.XmlName("AnalyticsConfiguration"))
+            .annotate({ identifier: "AnalyticsConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?analytics" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketAnalyticsConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketAnalyticsConfigurationResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CORSRules: __S(1941, __c121, 5).pipe(T.XmlName("CORSRule"), T.XmlFlattened()) }),
+      ).annotate({ identifier: "CORSConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          CORSConfiguration: __S(688, __c43, 0)
+            .pipe(T.HttpPayload(), T.XmlName("CORSConfiguration"))
+            .annotate({ identifier: "CORSConfiguration" }),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?cors" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketCorsRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketCorsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ServerSideEncryptionConfiguration: __S(1973, __c123, 5)
+            .pipe(T.HttpPayload(), T.XmlName("ServerSideEncryptionConfiguration"))
+            .annotate({ identifier: "ServerSideEncryptionConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?encryption" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketEncryptionRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketEncryptionResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Id: S.String.pipe(T.HttpQuery("id")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          IntelligentTieringConfiguration: __S(2004, __c125, 4)
+            .pipe(T.HttpPayload(), T.XmlName("IntelligentTieringConfiguration"))
+            .annotate({ identifier: "IntelligentTieringConfiguration" }),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?intelligent-tiering" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketIntelligentTieringConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketIntelligentTieringConfigurationResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Id: S.String.pipe(T.HttpQuery("id")),
+          InventoryConfiguration: __S(2040, __c127, 8)
+            .pipe(T.HttpPayload(), T.XmlName("InventoryConfiguration"))
+            .annotate({ identifier: "InventoryConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?inventory" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketInventoryConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketInventoryConfigurationResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Rules: __S(2074, __c129, 10).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
+      ).annotate({
+        identifier: "BucketLifecycleConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          LifecycleConfiguration: S.optional(__S(752, __c47, 0))
+            .pipe(T.HttpPayload(), T.XmlName("LifecycleConfiguration"))
+            .annotate({ identifier: "BucketLifecycleConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?lifecycle" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketLifecycleConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
+          ),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "PutBucketLifecycleConfigurationOutput",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LoggingEnabled: S.optional(__S(2117, __c132, 5)) }),
+      ).annotate({ identifier: "BucketLoggingStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          BucketLoggingStatus: __S(768, __c48, 0)
+            .pipe(T.HttpPayload(), T.XmlName("BucketLoggingStatus"))
+            .annotate({ identifier: "BucketLoggingStatus" }),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?logging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketLoggingRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketLoggingResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Id: S.String.pipe(T.HttpQuery("id")),
+          MetricsConfiguration: __S(2194, __c137, 2)
+            .pipe(T.HttpPayload(), T.XmlName("MetricsConfiguration"))
+            .annotate({ identifier: "MetricsConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?metrics" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketMetricsConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketMetricsConfigurationResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          NotificationConfiguration: __S(2236, __c139, 12)
+            .pipe(T.HttpPayload(), T.XmlName("NotificationConfiguration"))
+            .annotate({ identifier: "NotificationConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          SkipDestinationValidation: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-skip-destination-validation"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?notification" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketNotificationConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketNotificationConfigurationResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          OwnershipControls: __S(2258, __c141, 2)
+            .pipe(T.HttpPayload(), T.XmlName("OwnershipControls"))
+            .annotate({ identifier: "OwnershipControls" }),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?ownershipControls" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketOwnershipControlsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketOwnershipControlsResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ConfirmRemoveSelfBucketAccess: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-confirm-remove-self-bucket-access"),
+          ),
+          Policy: S.String.pipe(T.HttpPayload()),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketPolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketPolicyResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ReplicationConfiguration: __S(2335, __c145, 15)
+            .pipe(T.HttpPayload(), T.XmlName("ReplicationConfiguration"))
+            .annotate({ identifier: "ReplicationConfiguration" }),
+          Token: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-object-lock-token")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?replication" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketReplicationRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketReplicationResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Payer: S.String })).annotate({
+        identifier: "RequestPaymentConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          RequestPaymentConfiguration: __S(864, __c54, 0)
+            .pipe(T.HttpPayload(), T.XmlName("RequestPaymentConfiguration"))
+            .annotate({ identifier: "RequestPaymentConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?requestPayment" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketRequestPaymentRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketRequestPaymentResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          Tagging: __S(896, __c56, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
+            identifier: "Tagging",
+          }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketTaggingRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketTaggingResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ TagSet: __S(1345, __c84, 1) })).annotate({
+        identifier: "Tagging",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersioningConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
+          VersioningConfiguration: __S(912, __c57, 0)
+            .pipe(T.HttpPayload(), T.XmlName("VersioningConfiguration"))
+            .annotate({ identifier: "VersioningConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?versioning" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBucketVersioningRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketVersioningResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ErrorDocument: S.optional(__S(34, __c2, 2)),
+          IndexDocument: S.optional(__S(33, __c2, 1)),
+          RedirectAllRequestsTo: S.optional(__S(32, __c2, 0)),
+          RoutingRules: S.optional(__S(38, __c2, 6)),
+        }),
+      ).annotate({ identifier: "WebsiteConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          WebsiteConfiguration: __S(928, __c58, 0)
+            .pipe(T.HttpPayload(), T.XmlName("WebsiteConfiguration"))
+            .annotate({ identifier: "WebsiteConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?website" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "PutBucketWebsiteRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutBucketWebsiteResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
+          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
+          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
+          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
+          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
+          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
+          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
+          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          WriteOffsetBytes: S.optional(S.Number).pipe(T.HttpHeader("x-amz-write-offset-bytes")),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
+          WebsiteRedirectLocation: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-website-redirect-location"),
+          ),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          SSEKMSEncryptionContext: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-context"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          Tagging: S.optional(S.String).pipe(T.HttpHeader("x-amz-tagging")),
+          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
+          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-object-lock-retain-until-date"),
+          ),
+          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-legal-hold"),
+          ),
+          ObjectLockEventHold: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold"),
+          ),
+          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
+          ),
+          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=PutObject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+          ),
+        ),
+      ).annotate({ identifier: "PutObjectRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          SSEKMSEncryptionContext: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-context"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          Size: S.optional(S.Number).pipe(T.HttpHeader("x-amz-object-size")),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutObjectOutput" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
+          AccessControlPolicy: S.optional(__S(656, __c41, 0))
+            .pipe(T.HttpPayload(), T.XmlName("AccessControlPolicy"))
+            .annotate({ identifier: "AccessControlPolicy" }),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
+          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
+          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
+          GrantWrite: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write")),
+          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?acl" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({ identifier: "PutObjectAclRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutObjectAclOutput" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
+          AnnotationPayload: T.StreamingInput.pipe(T.HttpPayload()),
+          ObjectIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-if-match")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?annotation" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutObjectAnnotationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          AnnotationName: S.optional(S.String),
+          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "PutObjectAnnotationOutput",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          LegalHold: S.optional(__S(128, __c8, 0))
+            .pipe(T.HttpPayload(), T.XmlName("LegalHold"))
+            .annotate({ identifier: "ObjectLockLegalHold" }),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?legal-hold" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutObjectLegalHoldRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutObjectLegalHoldOutput" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ObjectLockConfiguration: S.optional(__S(178, __c11, 2))
+            .pipe(T.HttpPayload(), T.XmlName("ObjectLockConfiguration"))
+            .annotate({ identifier: "ObjectLockConfiguration" }),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          Token: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-object-lock-token")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?object-lock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutObjectLockConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "PutObjectLockConfigurationOutput",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          Retention: S.optional(__S(208, __c13, 0))
+            .pipe(T.HttpPayload(), T.XmlName("Retention"))
+            .annotate({ identifier: "ObjectLockRetention" }),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          BypassGovernanceRetention: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-bypass-governance-retention"),
+          ),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?retention" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutObjectRetentionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "PutObjectRetentionOutput" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          Tagging: __S(896, __c56, 0).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
+            identifier: "Tagging",
+          }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?tagging" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({ identifier: "PutObjectTaggingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")) }).pipe(
+          ns,
+        ),
+      ).annotate({ identifier: "PutObjectTaggingOutput" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          PublicAccessBlockConfiguration: __S(272, __c17, 0)
+            .pipe(T.HttpPayload(), T.XmlName("PublicAccessBlockConfiguration"))
+            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?publicAccessBlock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "PutPublicAccessBlockRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "PutPublicAccessBlockResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          RenameSource: S.String.pipe(T.HttpHeader("x-amz-rename-source")),
+          DestinationIfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
+          DestinationIfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
+          DestinationIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("If-Modified-Since"),
+          ),
+          DestinationIfUnmodifiedSince: S.optional(
+            S.Date.pipe(T.TimestampFormat("http-date")),
+          ).pipe(T.HttpHeader("If-Unmodified-Since")),
+          SourceIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-rename-source-if-match")),
+          SourceIfNoneMatch: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-rename-source-if-none-match"),
+          ),
+          SourceIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-rename-source-if-modified-since"),
+          ),
+          SourceIfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-rename-source-if-unmodified-since"),
+          ),
+          ClientToken: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-client-token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?renameObject" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "RenameObjectRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "RenameObjectOutput",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Tier: S.String })).annotate({
+        identifier: "GlacierJobParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          InputSerialization: __S(1107, __c69, 3),
+          ExpressionType: S.String,
+          Expression: S.String,
+          OutputSerialization: __S(1110, __c69, 6),
+        }),
+      ).annotate({ identifier: "SelectParameters" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EncryptionType: S.String,
+          KMSKeyId: S.optional(SensitiveString),
+          KMSContext: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Encryption" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "MetadataEntry" });
+    case 4:
+      return S.Array(
+        /*@__PURE__*/ __S(1091, __c68, 3).pipe(/*@__PURE__*/ T.XmlName("MetadataEntry")).annotate({
+          identifier: "MetadataEntry",
+        }),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BucketName: S.String,
+          Prefix: S.String,
+          Encryption: S.optional(__S(1090, __c68, 2)),
+          CannedACL: S.optional(S.String),
+          AccessControlList: S.optional(__S(1857, __c116, 1)),
+          Tagging: S.optional(__S(896, __c56, 0)),
+          UserMetadata: S.optional(__S(1092, __c68, 4)),
+          StorageClass: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Location" });
+    case 6:
+      return S.suspend(() => S.Struct({ S3: S.optional(__S(1093, __c68, 5)) })).annotate({
+        identifier: "OutputLocation",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Days: S.optional(S.Number),
+          GlacierJobParameters: S.optional(__S(1088, __c68, 0)),
+          Type: S.optional(S.String),
+          Tier: S.optional(S.String),
+          Description: S.optional(S.String),
+          SelectParameters: S.optional(__S(1089, __c68, 1)),
+          OutputLocation: S.optional(__S(1094, __c68, 6)),
+        }),
+      ).annotate({ identifier: "RestoreRequest" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          RestoreRequest: S.optional(__S(1095, __c68, 7))
+            .pipe(T.HttpPayload(), T.XmlName("RestoreRequest"))
+            .annotate({ identifier: "RestoreRequest" }),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/{Bucket}/{Key+}?restore" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+          ),
+        ),
+      ).annotate({ identifier: "RestoreObjectRequest" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+          RestoreOutputPath: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore-output-path")),
+        }).pipe(ns),
+      ).annotate({ identifier: "RestoreObjectOutput" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FileHeaderInfo: S.optional(S.String),
+          Comments: S.optional(S.String),
+          QuoteEscapeCharacter: S.optional(S.String),
+          RecordDelimiter: S.optional(S.String),
+          FieldDelimiter: S.optional(S.String),
+          QuoteCharacter: S.optional(S.String),
+          AllowQuotedRecordDelimiter: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CSVInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
+        identifier: "JSONInput",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ParquetInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CSV: S.optional(__S(1104, __c69, 0)),
+          CompressionType: S.optional(S.String),
+          JSON: S.optional(__S(1105, __c69, 1)),
+          Parquet: S.optional(__S(1106, __c69, 2)),
+        }),
+      ).annotate({ identifier: "InputSerialization" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          QuoteFields: S.optional(S.String),
+          QuoteEscapeCharacter: S.optional(S.String),
+          RecordDelimiter: S.optional(S.String),
+          FieldDelimiter: S.optional(S.String),
+          QuoteCharacter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CSVOutput" });
+    case 5:
+      return S.suspend(() => S.Struct({ RecordDelimiter: S.optional(S.String) })).annotate({
+        identifier: "JSONOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ CSV: S.optional(__S(1108, __c69, 4)), JSON: S.optional(__S(1109, __c69, 5)) }),
+      ).annotate({ identifier: "OutputSerialization" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "RequestProgress",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Start: S.optional(S.Number), End: S.optional(S.Number) }),
+      ).annotate({ identifier: "ScanRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          Expression: S.String,
+          ExpressionType: S.String,
+          RequestProgress: S.optional(__S(1120, __c70, 0)),
+          InputSerialization: __S(1107, __c69, 3),
+          OutputSerialization: __S(1110, __c69, 6),
+          ScanRange: S.optional(__S(1121, __c70, 1)),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/{Bucket}/{Key+}?select&select-type=2" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "SelectObjectContentRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Payload: S.optional(T.Blob).pipe(T.EventPayload()) }),
+      ).annotate({ identifier: "RecordsEvent" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BytesScanned: S.optional(S.Number),
+          BytesProcessed: S.optional(S.Number),
+          BytesReturned: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Stats" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Details: S.optional(__S(1124, __c70, 4))
+            .pipe(T.EventPayload())
+            .annotate({ identifier: "Stats" }),
+        }),
+      ).annotate({ identifier: "StatsEvent" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          BytesScanned: S.optional(S.Number),
+          BytesProcessed: S.optional(S.Number),
+          BytesReturned: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Progress" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Details: S.optional(__S(1126, __c70, 6))
+            .pipe(T.EventPayload())
+            .annotate({ identifier: "Progress" }),
+        }),
+      ).annotate({ identifier: "ProgressEvent" });
+    case 8:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ContinuationEvent",
+      });
+    case 9:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "EndEvent",
+      });
+    case 10:
+      return T.EventStream(
+        /*@__PURE__*/ S.Union([
+          /*@__PURE__*/ S.Struct({ Records: __S(1123, __c70, 3) }),
+          /*@__PURE__*/ S.Struct({ Stats: __S(1125, __c70, 5) }),
+          /*@__PURE__*/ S.Struct({ Progress: __S(1127, __c70, 7) }),
+          /*@__PURE__*/ S.Struct({ Cont: __S(1128, __c70, 8) }),
+          /*@__PURE__*/ S.Struct({ End: __S(1129, __c70, 9) }),
+        ]),
+      );
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Payload: S.optional(__S(1130, __c70, 10)).pipe(T.HttpPayload()) }).pipe(ns),
+      ).annotate({
+        identifier: "SelectObjectContentOutput",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationState: S.String,
+          EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
+          Role: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnnotationTableConfigurationUpdates",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          AnnotationTableConfiguration: __S(1136, __c71, 0)
+            .pipe(T.HttpPayload(), T.XmlName("AnnotationTableConfiguration"))
+            .annotate({ identifier: "AnnotationTableConfigurationUpdates" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?metadataAnnotationTable" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBucketMetadataAnnotationTableConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateBucketMetadataAnnotationTableConfigurationResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationState: S.String,
+          EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
+        }),
+      ).annotate({
+        identifier: "InventoryTableConfigurationUpdates",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          InventoryTableConfiguration: __S(1152, __c72, 0)
+            .pipe(T.HttpPayload(), T.XmlName("InventoryTableConfiguration"))
+            .annotate({ identifier: "InventoryTableConfigurationUpdates" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?metadataInventoryTable" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBucketMetadataInventoryTableConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateBucketMetadataInventoryTableConfigurationResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RecordExpiration: __S(1392, __c87, 0) })).annotate({
+        identifier: "JournalTableConfigurationUpdates",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          JournalTableConfiguration: __S(1168, __c73, 0)
+            .pipe(T.HttpPayload(), T.XmlName("JournalTableConfiguration"))
+            .annotate({ identifier: "JournalTableConfigurationUpdates" }),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}?metadataJournalTable" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBucketMetadataJournalTableConfigurationRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "UpdateBucketMetadataJournalTableConfigurationResponse",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KMSKeyArn: SensitiveString, BucketKeyEnabled: S.optional(S.Boolean) }).pipe(
+          T.XmlName("SSE-KMS"),
+        ),
+      ).annotate({ identifier: "SSEKMSEncryption" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          SSEKMS: /*@__PURE__*/ __S(1184, __c74, 0)
+            .pipe(/*@__PURE__*/ T.XmlName("SSE-KMS"))
+            .annotate({
+              identifier: "SSEKMSEncryption",
+            }),
+        }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+          ObjectEncryption: __S(1185, __c74, 1).pipe(T.HttpPayload()),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?encryption" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({
+              requestAlgorithmMember: "ChecksumAlgorithm",
+              requestChecksumRequired: true,
+            }),
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateObjectEncryptionRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "UpdateObjectEncryptionResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+          ChecksumAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+          ),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+          PartNumber: S.Number.pipe(T.HttpQuery("partNumber")),
+          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=UploadPart" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
+          ),
+        ),
+      ).annotate({ identifier: "UploadPartRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
+          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
+          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
+          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
+          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
+          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
+          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
+          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "UploadPartOutput" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+          CopySource: S.String.pipe(T.HttpHeader("x-amz-copy-source")),
+          CopySourceIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-copy-source-if-match")),
+          CopySourceIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-copy-source-if-modified-since"),
+          ),
+          CopySourceIfNoneMatch: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-copy-source-if-none-match"),
+          ),
+          CopySourceIfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-copy-source-if-unmodified-since"),
+          ),
+          CopySourceRange: S.optional(S.String).pipe(T.HttpHeader("x-amz-copy-source-range")),
+          Key: S.String.pipe(T.HttpLabel("Key")),
+          PartNumber: S.Number.pipe(T.HttpQuery("partNumber")),
+          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          CopySourceSSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-algorithm"),
+          ),
+          CopySourceSSECustomerKey: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-key"),
+          ),
+          CopySourceSSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-key-MD5"),
+          ),
+          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
+          ExpectedBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-expected-bucket-owner"),
+          ),
+          ExpectedSourceBucketOwner: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-source-expected-bucket-owner"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=UploadPartCopy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ DisableS3ExpressSessionAuth: { value: true } }),
+          ),
+        ),
+      ).annotate({ identifier: "UploadPartCopyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ETag: S.optional(S.String),
+          LastModified: S.optional(T.DateFromString),
+          ChecksumCRC32: S.optional(S.String),
+          ChecksumCRC32C: S.optional(S.String),
+          ChecksumCRC64NVME: S.optional(S.String),
+          ChecksumSHA1: S.optional(S.String),
+          ChecksumSHA256: S.optional(S.String),
+          ChecksumSHA512: S.optional(S.String),
+          ChecksumMD5: S.optional(S.String),
+          ChecksumXXHASH64: S.optional(S.String),
+          ChecksumXXHASH3: S.optional(S.String),
+          ChecksumXXHASH128: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CopyPartResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CopySourceVersionId: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-copy-source-version-id"),
+          ),
+          CopyPartResult: S.optional(__S(1217, __c76, 1))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CopyPartResult" }),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption"),
+          ),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
+        }).pipe(ns),
+      ).annotate({ identifier: "UploadPartCopyOutput" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RequestRoute: S.String.pipe(T.HttpHeader("x-amz-request-route"), T.HostLabel()),
+          RequestToken: S.String.pipe(T.HttpHeader("x-amz-request-token")),
+          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+          StatusCode: S.optional(S.Number).pipe(T.HttpHeader("x-amz-fwd-status")),
+          ErrorCode: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-error-code")),
+          ErrorMessage: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-error-message")),
+          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-accept-ranges")),
+          CacheControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Cache-Control")),
+          ContentDisposition: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-Content-Disposition"),
+          ),
+          ContentEncoding: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-Content-Encoding"),
+          ),
+          ContentLanguage: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-Content-Language"),
+          ),
+          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+          ContentRange: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Content-Range")),
+          ContentType: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Content-Type")),
+          ChecksumCRC32: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc32"),
+          ),
+          ChecksumCRC32C: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc32c"),
+          ),
+          ChecksumCRC64NVME: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc64nvme"),
+          ),
+          ChecksumSHA1: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha1"),
+          ),
+          ChecksumSHA256: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha256"),
+          ),
+          ChecksumSHA512: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha512"),
+          ),
+          ChecksumMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-md5"),
+          ),
+          ChecksumXXHASH64: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash64"),
+          ),
+          ChecksumXXHASH3: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash3"),
+          ),
+          ChecksumXXHASH128: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash128"),
+          ),
+          DeleteMarker: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-delete-marker"),
+          ),
+          ETag: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-ETag")),
+          Expires: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Expires")),
+          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-expiration")),
+          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-fwd-header-Last-Modified"),
+          ),
+          MissingMeta: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-missing-meta"),
+          ),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          ObjectLockMode: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-mode"),
+          ),
+          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-legal-hold"),
+          ),
+          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-retain-until-date"),
+          ),
+          PartsCount: S.optional(S.Number).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-mp-parts-count"),
+          ),
+          ReplicationStatus: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-replication-status"),
+          ),
+          RequestCharged: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-request-charged"),
+          ),
+          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-restore")),
+          ServerSideEncryption: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption"),
+          ),
+          SSECustomerAlgorithm: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm"),
+          ),
+          SSEKMSKeyId: S.optional(SensitiveString).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id"),
+          ),
+          SSECustomerKeyMD5: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5"),
+          ),
+          StorageClass: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-storage-class"),
+          ),
+          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-tagging-count")),
+          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-version-id")),
+          BucketKeyEnabled: S.optional(S.Boolean).pipe(
+            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled"),
+          ),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/WriteGetObjectResponse" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+            T.StaticContextParams({ UseObjectLambdaEndpoint: { value: true } }),
+          ),
+        ),
+      ).annotate({
+        identifier: "WriteGetObjectResponseRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "WriteGetObjectResponseResponse",
+      });
+  }
+}
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13925,7 +17660,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AbortMultipartUploadOutput",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          CreationDate: S.optional(T.DateFromString),
+          BucketRegion: S.optional(S.String),
+          BucketArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Bucket" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ETag: S.optional(S.String),
@@ -13942,20 +17694,20 @@ function __c0(j: number): any {
           PartNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CompletedPart" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Parts: S.optional(__S(3, __c0, 3)).pipe(T.XmlName("Part"), T.XmlFlattened()),
+          Parts: S.optional(__S(1281, __c80, 1)).pipe(T.XmlName("Part"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "CompletedMultipartUpload" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
           Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          MultipartUpload: S.optional(__S(4, __c0, 4))
+          MultipartUpload: S.optional(__S(1282, __c80, 2))
             .pipe(T.HttpPayload(), T.XmlName("CompleteMultipartUpload"))
             .annotate({ identifier: "CompletedMultipartUpload" }),
           UploadId: S.String.pipe(T.HttpQuery("uploadId")),
@@ -14000,7 +17752,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteMultipartUploadRequest",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String),
@@ -14034,11 +17786,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CompleteMultipartUploadOutput",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c1(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14073,7 +17823,7 @@ function __c1(j: number): any {
           IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
           IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
           Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
           MetadataDirective: S.optional(S.String).pipe(T.HttpHeader("x-amz-metadata-directive")),
           TaggingDirective: S.optional(S.String).pipe(T.HttpHeader("x-amz-tagging-directive")),
           AnnotationDirective: S.optional(S.String).pipe(
@@ -14171,7 +17921,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CopyObjectResult: S.optional(__S(9, __c1, 1))
+          CopyObjectResult: S.optional(__S(1297, __c81, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CopyObjectResult" }),
           Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
@@ -14200,45 +17950,41 @@ function __c1(j: number): any {
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
       ).annotate({ identifier: "CopyObjectOutput" });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "LocationInfo" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DataRedundancy: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "BucketInfo" });
-    case 5:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(13, __c1, 5)
-          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
-          .annotate({ identifier: "Tag" }),
-      );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           LocationConstraint: S.optional(S.String),
-          Location: S.optional(__S(11, __c1, 3)),
-          Bucket: S.optional(__S(12, __c1, 4)),
-          Tags: S.optional(__S(14, __c1, 6)),
+          Location: S.optional(__S(1328, __c83, 0)),
+          Bucket: S.optional(__S(1329, __c83, 1)),
+          Tags: S.optional(__S(1345, __c84, 1)),
         }),
       ).annotate({
         identifier: "CreateBucketConfiguration",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CreateBucketConfiguration: S.optional(__S(15, __c1, 7))
+          CreateBucketConfiguration: S.optional(__S(1330, __c83, 2))
             .pipe(T.HttpPayload(), T.XmlName("CreateBucketConfiguration"))
             .annotate({ identifier: "CreateBucketConfiguration" }),
           GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
@@ -14267,64 +18013,68 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateBucketRequest" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
           BucketArn: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-arn")),
         }).pipe(ns),
       ).annotate({ identifier: "CreateBucketOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Expiration: S.String, Days: S.optional(S.Number) }),
-      ).annotate({ identifier: "RecordExpiration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ SseAlgorithm: S.String, KmsKeyArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "MetadataTableEncryptionConfiguration",
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
       });
-    case 4:
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1344, __c84, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
+      );
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          RecordExpiration: __S(18, __c2, 2),
-          EncryptionConfiguration: S.optional(__S(19, __c2, 3)),
+          RecordExpiration: __S(1392, __c87, 0),
+          EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({
         identifier: "JournalTableConfiguration",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ConfigurationState: S.String,
-          EncryptionConfiguration: S.optional(__S(19, __c2, 3)),
+          EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({
         identifier: "InventoryTableConfiguration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ConfigurationState: S.String,
-          EncryptionConfiguration: S.optional(__S(19, __c2, 3)),
+          EncryptionConfiguration: S.optional(__S(1376, __c86, 0)),
           Role: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AnnotationTableConfiguration",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          JournalTableConfiguration: __S(20, __c2, 4),
-          InventoryTableConfiguration: S.optional(__S(21, __c2, 5)),
-          AnnotationTableConfiguration: S.optional(__S(22, __c2, 6)),
+          JournalTableConfiguration: __S(1360, __c85, 0),
+          InventoryTableConfiguration: S.optional(__S(1361, __c85, 1)),
+          AnnotationTableConfiguration: S.optional(__S(1362, __c85, 2)),
         }),
       ).annotate({ identifier: "MetadataConfiguration" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14332,7 +18082,7 @@ function __c3(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-sdk-checksum-algorithm"),
           ),
-          MetadataConfiguration: __S(23, __c2, 7)
+          MetadataConfiguration: __S(1363, __c85, 3)
             .pipe(T.HttpPayload(), T.XmlName("MetadataConfiguration"))
             .annotate({ identifier: "MetadataConfiguration" }),
           ExpectedBucketOwner: S.optional(S.String).pipe(
@@ -14357,19 +18107,41 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBucketMetadataConfigurationRequest",
       });
-    case 1:
+    case 5:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateBucketMetadataConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SseAlgorithm: S.String, KmsKeyArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "MetadataTableEncryptionConfiguration",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Expiration: S.String, Days: S.optional(S.Number) }),
+      ).annotate({ identifier: "RecordExpiration" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ TableBucketArn: S.String, TableName: S.String })).annotate({
         identifier: "S3TablesDestination",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ S3TablesDestination: __S(26, __c3, 2) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ S3TablesDestination: __S(1408, __c88, 0) })).annotate({
         identifier: "MetadataTableConfiguration",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14377,7 +18149,7 @@ function __c3(j: number): any {
           ChecksumAlgorithm: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-sdk-checksum-algorithm"),
           ),
-          MetadataTableConfiguration: __S(27, __c3, 3)
+          MetadataTableConfiguration: __S(1409, __c88, 1)
             .pipe(T.HttpPayload(), T.XmlName("MetadataTableConfiguration"))
             .annotate({ identifier: "MetadataTableConfiguration" }),
           ExpectedBucketOwner: S.optional(S.String).pipe(
@@ -14402,11 +18174,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBucketMetadataTableConfigurationRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateBucketMetadataTableConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
@@ -14422,7 +18198,7 @@ function __c3(j: number): any {
           GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
           GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
           Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
+          Metadata: S.optional(__S(1312, __c82, 0)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
           ServerSideEncryption: S.optional(S.String).pipe(
             T.HttpHeader("x-amz-server-side-encryption"),
           ),
@@ -14485,7 +18261,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateMultipartUploadRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AbortDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
@@ -14522,7 +18298,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14578,12 +18354,16 @@ function __c4(j: number): any {
           BucketKeyEnabled: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
           ),
-          Credentials: __S(33, __c4, 1).pipe(T.XmlName("Credentials")).annotate({
+          Credentials: __S(1441, __c90, 1).pipe(T.XmlName("Credentials")).annotate({
             identifier: "SessionCredentials",
           }),
         }).pipe(T.all(T.XmlName("CreateSessionResult"), ns)),
       ).annotate({ identifier: "CreateSessionOutput" });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14603,11 +18383,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteBucketRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketResponse",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14630,11 +18414,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteBucketAnalyticsConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketAnalyticsConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14654,15 +18442,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteBucketCorsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketCorsResponse",
       });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14684,11 +18472,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteBucketEncryptionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketEncryptionResponse",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14711,11 +18503,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteBucketIntelligentTieringConfigurationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketIntelligentTieringConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14738,11 +18534,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteBucketInventoryConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketInventoryConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14764,15 +18564,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteBucketLifecycleRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketLifecycleResponse",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14794,11 +18594,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteBucketMetadataConfigurationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetadataConfigurationResponse",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14820,11 +18624,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteBucketMetadataTableConfigurationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetadataTableConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14847,11 +18655,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteBucketMetricsConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketMetricsConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14873,15 +18685,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteBucketOwnershipControlsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketOwnershipControlsResponse",
       });
-    case 1:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14903,11 +18715,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteBucketPolicyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketPolicyResponse",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14929,11 +18745,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteBucketReplicationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketReplicationResponse",
       });
-    case 5:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14955,11 +18775,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteBucketTaggingRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketTaggingResponse",
       });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -14981,15 +18805,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteBucketWebsiteRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteBucketWebsiteResponse",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15020,7 +18844,7 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteObjectRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
@@ -15028,7 +18852,11 @@ function __c8(j: number): any {
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
         }).pipe(ns),
       ).annotate({ identifier: "DeleteObjectOutput" });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15054,7 +18882,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteObjectAnnotationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
@@ -15063,7 +18891,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteObjectAnnotationOutput",
       });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.String,
@@ -15073,26 +18905,22 @@ function __c8(j: number): any {
           Size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ObjectIdentifier" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1728, __c108, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Objects: __S(70, __c8, 6).pipe(T.XmlName("Object"), T.XmlFlattened()),
+          Objects: __S(1729, __c108, 1).pipe(T.XmlName("Object"), T.XmlFlattened()),
           Quiet: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Delete" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Delete: __S(71, __c8, 7).pipe(T.HttpPayload(), T.XmlName("Delete")).annotate({
-            identifier: "Delete",
-          }),
+          Delete: __S(1730, __c108, 2)
+            .pipe(T.HttpPayload(), T.XmlName("Delete"))
+            .annotate({ identifier: "Delete" }),
           MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
           RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
           BypassGovernanceRetention: S.optional(S.Boolean).pipe(
@@ -15120,7 +18948,7 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteObjectsRequest" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -15129,9 +18957,9 @@ function __c9(j: number): any {
           DeleteMarkerVersionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedObject" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(1732, __c108, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -15140,17 +18968,21 @@ function __c9(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Error" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(1734, __c108, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          Deleted: S.optional(__S(74, __c9, 2)).pipe(T.XmlFlattened()),
+          Deleted: S.optional(__S(1733, __c108, 5)).pipe(T.XmlFlattened()),
           RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          Errors: S.optional(__S(76, __c9, 4)).pipe(T.XmlName("Error"), T.XmlFlattened()),
+          Errors: S.optional(__S(1735, __c108, 7)).pipe(T.XmlName("Error"), T.XmlFlattened()),
         }).pipe(T.all(T.XmlName("DeleteResult"), ns)),
       ).annotate({ identifier: "DeleteObjectsOutput" });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15173,7 +19005,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteObjectTaggingRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")) }).pipe(
           ns,
@@ -15183,7 +19015,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15211,7 +19043,11 @@ function __c10(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeletePublicAccessBlockResponse",
       });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15222,19 +19058,27 @@ function __c10(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/{Bucket}?abac" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetBucketAbacRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "AbacStatus",
-      });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AbacStatus: S.optional(__S(83, __c10, 3))
+          AbacStatus: S.optional(__S(1792, __c112, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "AbacStatus" }),
         }).pipe(ns),
       ).annotate({ identifier: "GetBucketAbacOutput" });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "AbacStatus",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15257,7 +19101,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBucketAccelerateConfigurationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -15266,7 +19110,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBucketAccelerateConfigurationOutput",
       });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15286,15 +19134,40 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketAclRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Owner: S.optional(__S(1840, __c115, 0)),
+          Grants: S.optional(__S(1857, __c116, 1)).pipe(T.XmlName("AccessControlList")),
+        }).pipe(T.all(T.XmlName("AccessControlPolicy"), ns)),
+      ).annotate({ identifier: "GetBucketAclOutput" });
   }
 }
-function __c11(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({ DisplayName: S.optional(S.String), ID: S.optional(S.String) }),
       ).annotate({ identifier: "Owner" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Grantee: S.optional(__S(1872, __c117, 0)), Permission: S.optional(S.String) }),
+      ).annotate({ identifier: "Grant" });
     case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1856, __c116, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Grant"))
+          .annotate({ identifier: "Grant" }),
+      );
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DisplayName: S.optional(S.String),
@@ -15304,24 +19177,11 @@ function __c11(j: number): any {
           Type: S.String.pipe(T.XmlName("xsi:type"), T.XmlAttribute()),
         }),
       ).annotate({ identifier: "Grantee" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(__S(89, __c11, 1)), Permission: S.optional(S.String) }),
-      ).annotate({ identifier: "Grant" });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(90, __c11, 2).pipe(/*@__PURE__*/ T.XmlName("Grant")).annotate({
-          identifier: "Grant",
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Owner: S.optional(__S(88, __c11, 0)),
-          Grants: S.optional(__S(91, __c11, 3)).pipe(T.XmlName("AccessControlList")),
-        }).pipe(T.all(T.XmlName("AccessControlPolicy"), ns)),
-      ).annotate({ identifier: "GetBucketAclOutput" });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15347,24 +19207,34 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetBucketAnalyticsConfigurationRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AnalyticsConfiguration: S.optional(__S(1910, __c119, 6))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "AnalyticsConfiguration" }),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetBucketAnalyticsConfigurationOutput",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tags: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+          Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
         }),
       ).annotate({ identifier: "AnalyticsAndOperator" });
-    case 7:
+    case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Prefix: S.String }),
-        /*@__PURE__*/ S.Struct({ Tag: __S(13, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ And: __S(94, __c11, 6) }),
+        /*@__PURE__*/ S.Struct({ Tag: __S(1344, __c84, 0) }),
+        /*@__PURE__*/ S.Struct({ And: __S(1904, __c119, 0) }),
       ]);
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Format: S.String,
@@ -15375,42 +19245,36 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AnalyticsS3BucketDestination",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ S3BucketDestination: __S(96, __c12, 0) })).annotate({
-        identifier: "AnalyticsExportDestination",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          OutputSchemaVersion: S.String,
-          Destination: __S(97, __c12, 1),
-        }),
-      ).annotate({
-        identifier: "StorageClassAnalysisDataExport",
-      });
     case 3:
-      return S.suspend(() => S.Struct({ DataExport: S.optional(__S(98, __c12, 2)) })).annotate({
-        identifier: "StorageClassAnalysis",
+      return S.suspend(() => S.Struct({ S3BucketDestination: __S(1906, __c119, 2) })).annotate({
+        identifier: "AnalyticsExportDestination",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Id: S.String,
-          Filter: S.optional(__S(95, __c11, 7)),
-          StorageClassAnalysis: __S(99, __c12, 3),
+          OutputSchemaVersion: S.String,
+          Destination: __S(1907, __c119, 3),
         }),
-      ).annotate({ identifier: "AnalyticsConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AnalyticsConfiguration: S.optional(__S(100, __c12, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "AnalyticsConfiguration" }),
-        }).pipe(ns),
       ).annotate({
-        identifier: "GetBucketAnalyticsConfigurationOutput",
+        identifier: "StorageClassAnalysisDataExport",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ DataExport: S.optional(__S(1908, __c119, 4)) })).annotate({
+        identifier: "StorageClassAnalysis",
       });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Filter: S.optional(__S(1905, __c119, 1)),
+          StorageClassAnalysis: __S(1909, __c119, 5),
+        }),
+      ).annotate({ identifier: "AnalyticsConfiguration" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15430,11 +19294,15 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketCorsRequest" });
-    case 7:
-      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CORSRules: S.optional(__S(1941, __c121, 5)).pipe(T.XmlName("CORSRule"), T.XmlFlattened()),
+        }).pipe(T.all(T.XmlName("CORSConfiguration"), ns)),
+      ).annotate({ identifier: "GetBucketCorsOutput" });
   }
 }
-function __c13(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -15443,31 +19311,31 @@ function __c13(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
+      return S.Array(S.String);
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ID: S.optional(S.String),
-          AllowedHeaders: S.optional(__S(103, __c12, 7)).pipe(
+          AllowedHeaders: S.optional(__S(1936, __c121, 0)).pipe(
             T.XmlName("AllowedHeader"),
             T.XmlFlattened(),
           ),
-          AllowedMethods: __S(104, __c13, 0).pipe(T.XmlName("AllowedMethod"), T.XmlFlattened()),
-          AllowedOrigins: __S(105, __c13, 1).pipe(T.XmlName("AllowedOrigin"), T.XmlFlattened()),
-          ExposeHeaders: S.optional(__S(106, __c13, 2)).pipe(
+          AllowedMethods: __S(1937, __c121, 1).pipe(T.XmlName("AllowedMethod"), T.XmlFlattened()),
+          AllowedOrigins: __S(1938, __c121, 2).pipe(T.XmlName("AllowedOrigin"), T.XmlFlattened()),
+          ExposeHeaders: S.optional(__S(1939, __c121, 3)).pipe(
             T.XmlName("ExposeHeader"),
             T.XmlFlattened(),
           ),
           MaxAgeSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CORSRule" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CORSRules: S.optional(__S(108, __c13, 4)).pipe(T.XmlName("CORSRule"), T.XmlFlattened()),
-        }).pipe(T.all(T.XmlName("CORSConfiguration"), ns)),
-      ).annotate({ identifier: "GetBucketCorsOutput" });
-    case 6:
+      return S.Array(__S(1940, __c121, 4));
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15489,52 +19357,53 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetBucketEncryptionRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          SSEAlgorithm: S.String,
-          KMSMasterKeyID: S.optional(SensitiveString),
-        }),
-      ).annotate({
-        identifier: "ServerSideEncryptionByDefault",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EncryptionType")));
     case 1:
       return S.suspend(() =>
-        S.Struct({ EncryptionType: S.optional(__S(112, __c14, 0)).pipe(T.XmlFlattened()) }),
-      ).annotate({ identifier: "BlockedEncryptionTypes" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
-          ApplyServerSideEncryptionByDefault: S.optional(__S(111, __c13, 7)),
-          BucketKeyEnabled: S.optional(S.Boolean),
-          BlockedEncryptionTypes: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({ identifier: "ServerSideEncryptionRule" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Rules: __S(115, __c14, 3).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
-      ).annotate({
-        identifier: "ServerSideEncryptionConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServerSideEncryptionConfiguration: S.optional(__S(116, __c14, 4))
+          ServerSideEncryptionConfiguration: S.optional(__S(1973, __c123, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ServerSideEncryptionConfiguration" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketEncryptionOutput",
       });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SSEAlgorithm: S.String, KMSMasterKeyID: S.optional(SensitiveString) }),
+      ).annotate({
+        identifier: "ServerSideEncryptionByDefault",
+      });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EncryptionType")));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ EncryptionType: S.optional(__S(1969, __c123, 1)).pipe(T.XmlFlattened()) }),
+      ).annotate({ identifier: "BlockedEncryptionTypes" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplyServerSideEncryptionByDefault: S.optional(__S(1968, __c123, 0)),
+          BucketKeyEnabled: S.optional(S.Boolean),
+          BlockedEncryptionTypes: S.optional(__S(1970, __c123, 2)),
+        }),
+      ).annotate({ identifier: "ServerSideEncryptionRule" });
+    case 4:
+      return S.Array(__S(1971, __c123, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Rules: __S(1972, __c123, 4).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
+      ).annotate({
+        identifier: "ServerSideEncryptionConfiguration",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15560,55 +19429,59 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetBucketIntelligentTieringConfigurationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tags: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
-        }),
-      ).annotate({
-        identifier: "IntelligentTieringAndOperator",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tag: S.optional(__S(13, __c1, 5)),
-          And: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "IntelligentTieringFilter" });
     case 1:
-      return S.suspend(() => S.Struct({ Days: S.Number, AccessTier: S.String })).annotate({
-        identifier: "Tiering",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          Id: S.String,
-          Filter: S.optional(__S(120, __c15, 0)),
-          Status: S.String,
-          Tierings: __S(122, __c15, 2).pipe(T.XmlName("Tiering"), T.XmlFlattened()),
-        }),
-      ).annotate({
-        identifier: "IntelligentTieringConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          IntelligentTieringConfiguration: S.optional(__S(123, __c15, 3))
+          IntelligentTieringConfiguration: S.optional(__S(2004, __c125, 4))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "IntelligentTieringConfiguration" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketIntelligentTieringConfigurationOutput",
       });
-    case 5:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+        }),
+      ).annotate({
+        identifier: "IntelligentTieringAndOperator",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tag: S.optional(__S(1344, __c84, 0)),
+          And: S.optional(__S(2000, __c125, 0)),
+        }),
+      ).annotate({ identifier: "IntelligentTieringFilter" });
+    case 2:
+      return S.suspend(() => S.Struct({ Days: S.Number, AccessTier: S.String })).annotate({
+        identifier: "Tiering",
+      });
+    case 3:
+      return S.Array(__S(2002, __c125, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.String,
+          Filter: S.optional(__S(2001, __c125, 1)),
+          Status: S.String,
+          Tierings: __S(2003, __c125, 3).pipe(T.XmlName("Tiering"), T.XmlFlattened()),
+        }),
+      ).annotate({
+        identifier: "IntelligentTieringConfiguration",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15634,71 +19507,10 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetBucketInventoryConfigurationRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
-        identifier: "SSES3",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ KeyId: SensitiveString }).pipe(T.XmlName("SSE-KMS")),
-      ).annotate({ identifier: "SSEKMS" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SSES3: S.optional(__S(126, __c15, 6))
-            .pipe(T.XmlName("SSE-S3"))
-            .annotate({ identifier: "SSES3" }),
-          SSEKMS: S.optional(__S(127, __c15, 7))
-            .pipe(T.XmlName("SSE-KMS"))
-            .annotate({ identifier: "SSEKMS" }),
-        }),
-      ).annotate({ identifier: "InventoryEncryption" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountId: S.optional(S.String),
-          Bucket: S.String,
-          Format: S.String,
-          Prefix: S.optional(S.String),
-          Encryption: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({
-        identifier: "InventoryS3BucketDestination",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ S3BucketDestination: __S(129, __c16, 1) })).annotate({
-        identifier: "InventoryDestination",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Prefix: S.String })).annotate({
-        identifier: "InventoryFilter",
-      });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Field")));
-    case 5:
-      return S.suspend(() => S.Struct({ Frequency: S.String })).annotate({
-        identifier: "InventorySchedule",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Destination: __S(130, __c16, 2),
-          IsEnabled: S.Boolean,
-          Filter: S.optional(__S(131, __c16, 3)),
-          Id: S.String,
-          IncludedObjectVersions: S.String,
-          OptionalFields: S.optional(__S(132, __c16, 4)),
-          Schedule: __S(133, __c16, 5),
-        }),
-      ).annotate({ identifier: "InventoryConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          InventoryConfiguration: S.optional(__S(134, __c16, 6))
+          InventoryConfiguration: S.optional(__S(2040, __c127, 8))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InventoryConfiguration" }),
         }).pipe(ns),
@@ -15707,7 +19519,68 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.XmlName("SSE-S3"))).annotate({
+        identifier: "SSES3",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ KeyId: SensitiveString }).pipe(T.XmlName("SSE-KMS")),
+      ).annotate({ identifier: "SSEKMS" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          SSES3: S.optional(__S(2032, __c127, 0))
+            .pipe(T.XmlName("SSE-S3"))
+            .annotate({ identifier: "SSES3" }),
+          SSEKMS: S.optional(__S(2033, __c127, 1))
+            .pipe(T.XmlName("SSE-KMS"))
+            .annotate({ identifier: "SSEKMS" }),
+        }),
+      ).annotate({ identifier: "InventoryEncryption" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          Bucket: S.String,
+          Format: S.String,
+          Prefix: S.optional(S.String),
+          Encryption: S.optional(__S(2034, __c127, 2)),
+        }),
+      ).annotate({
+        identifier: "InventoryS3BucketDestination",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ S3BucketDestination: __S(2035, __c127, 3) })).annotate({
+        identifier: "InventoryDestination",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ Prefix: S.String })).annotate({
+        identifier: "InventoryFilter",
+      });
+    case 6:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Field")));
+    case 7:
+      return S.suspend(() => S.Struct({ Frequency: S.String })).annotate({
+        identifier: "InventorySchedule",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Destination: __S(2036, __c127, 4),
+          IsEnabled: S.Boolean,
+          Filter: S.optional(__S(2037, __c127, 5)),
+          Id: S.String,
+          IncludedObjectVersions: S.String,
+          OptionalFields: S.optional(__S(2038, __c127, 6)),
+          Schedule: __S(2039, __c127, 7),
+        }),
+      ).annotate({ identifier: "InventoryConfiguration" });
+  }
+}
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15734,31 +19607,46 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          Rules: S.optional(__S(2074, __c129, 10)).pipe(T.XmlName("Rule"), T.XmlFlattened()),
+          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
+            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
+          ),
+        }).pipe(T.all(T.XmlName("LifecycleConfiguration"), ns)),
+      ).annotate({
+        identifier: "GetBucketLifecycleConfigurationOutput",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           Date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Days: S.optional(S.Number),
           ExpiredObjectDeleteMarker: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LifecycleExpiration" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tags: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+          Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LifecycleRuleAndOperator" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tag: S.optional(__S(13, __c1, 5)),
+          Tag: S.optional(__S(1344, __c84, 0)),
           ObjectSizeGreaterThan: S.optional(S.Number),
           ObjectSizeLessThan: S.optional(S.Number),
-          And: S.optional(__S(138, __c17, 2)),
+          And: S.optional(__S(2065, __c129, 1)),
         }),
       ).annotate({ identifier: "LifecycleRuleFilter" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -15766,9 +19654,9 @@ function __c17(j: number): any {
           StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transition" });
+    case 4:
+      return S.Array(__S(2067, __c129, 3));
     case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           NoncurrentDays: S.optional(S.Number),
@@ -15778,13 +19666,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "NoncurrentVersionTransition",
       });
+    case 6:
+      return S.Array(__S(2069, __c129, 5));
     case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           NoncurrentDays: S.optional(S.Number),
@@ -15793,44 +19677,37 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "NoncurrentVersionExpiration",
       });
-    case 1:
+    case 8:
       return S.suspend(() => S.Struct({ DaysAfterInitiation: S.optional(S.Number) })).annotate({
         identifier: "AbortIncompleteMultipartUpload",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          Expiration: S.optional(__S(137, __c17, 1)),
+          Expiration: S.optional(__S(2064, __c129, 0)),
           ID: S.optional(S.String),
           Prefix: S.optional(S.String),
-          Filter: S.optional(__S(139, __c17, 3)),
+          Filter: S.optional(__S(2066, __c129, 2)),
           Status: S.String,
-          Transitions: S.optional(__S(141, __c17, 5)).pipe(
+          Transitions: S.optional(__S(2068, __c129, 4)).pipe(
             T.XmlName("Transition"),
             T.XmlFlattened(),
           ),
-          NoncurrentVersionTransitions: S.optional(__S(143, __c17, 7)).pipe(
+          NoncurrentVersionTransitions: S.optional(__S(2070, __c129, 6)).pipe(
             T.XmlName("NoncurrentVersionTransition"),
             T.XmlFlattened(),
           ),
-          NoncurrentVersionExpiration: S.optional(__S(144, __c18, 0)),
-          AbortIncompleteMultipartUpload: S.optional(__S(145, __c18, 1)),
+          NoncurrentVersionExpiration: S.optional(__S(2071, __c129, 7)),
+          AbortIncompleteMultipartUpload: S.optional(__S(2072, __c129, 8)),
         }),
       ).annotate({ identifier: "LifecycleRule" });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Rules: S.optional(__S(147, __c18, 3)).pipe(T.XmlName("Rule"), T.XmlFlattened()),
-          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
-          ),
-        }).pipe(T.all(T.XmlName("LifecycleConfiguration"), ns)),
-      ).annotate({
-        identifier: "GetBucketLifecycleConfigurationOutput",
-      });
-    case 5:
+    case 10:
+      return S.Array(__S(2073, __c129, 9));
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15850,13 +19727,17 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketLocationRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ LocationConstraint: S.optional(S.String) }).pipe(
           T.all(T.XmlName("LocationConstraint"), ns, T.S3UnwrappedXmlOutput()),
         ),
       ).annotate({ identifier: "GetBucketLocationOutput" });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15876,17 +19757,23 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketLoggingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ LoggingEnabled: S.optional(__S(2117, __c132, 5)) }).pipe(
+          T.all(T.XmlName("BucketLoggingStatus"), ns),
+        ),
+      ).annotate({ identifier: "GetBucketLoggingOutput" });
   }
 }
-function __c19(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(__S(89, __c11, 1)), Permission: S.optional(S.String) }),
+        S.Struct({ Grantee: S.optional(__S(1872, __c117, 0)), Permission: S.optional(S.String) }),
       ).annotate({ identifier: "TargetGrant" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(152, __c19, 0).pipe(/*@__PURE__*/ T.XmlName("Grant")).annotate({
+        /*@__PURE__*/ __S(2112, __c132, 0).pipe(/*@__PURE__*/ T.XmlName("Grant")).annotate({
           identifier: "TargetGrant",
         }),
       );
@@ -15903,10 +19790,10 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SimplePrefix: S.optional(__S(154, __c19, 2))
+          SimplePrefix: S.optional(__S(2114, __c132, 2))
             .pipe(T.XmlName("SimplePrefix"))
             .annotate({ identifier: "SimplePrefix" }),
-          PartitionedPrefix: S.optional(__S(155, __c19, 3))
+          PartitionedPrefix: S.optional(__S(2115, __c132, 3))
             .pipe(T.XmlName("PartitionedPrefix"))
             .annotate({ identifier: "PartitionedPrefix" }),
         }),
@@ -15915,18 +19802,16 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetBucket: S.String,
-          TargetGrants: S.optional(__S(153, __c19, 1)),
+          TargetGrants: S.optional(__S(2113, __c132, 1)),
           TargetPrefix: S.String,
-          TargetObjectKeyFormat: S.optional(__S(156, __c19, 4)),
+          TargetObjectKeyFormat: S.optional(__S(2116, __c132, 4)),
         }),
       ).annotate({ identifier: "LoggingEnabled" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ LoggingEnabled: S.optional(__S(157, __c19, 5)) }).pipe(
-          T.all(T.XmlName("BucketLoggingStatus"), ns),
-        ),
-      ).annotate({ identifier: "GetBucketLoggingOutput" });
-    case 7:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -15948,11 +19833,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetBucketMetadataConfigurationRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TableBucketType: S.optional(S.String),
@@ -15960,18 +19841,14 @@ function __c20(j: number): any {
           TableNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           TableStatus: S.String,
-          Error: S.optional(__S(161, __c20, 1)),
+          Error: S.optional(__S(2144, __c134, 0)),
           TableName: S.String,
           TableArn: S.optional(S.String),
-          RecordExpiration: __S(18, __c2, 2),
+          RecordExpiration: __S(1392, __c87, 0),
         }),
       ).annotate({
         identifier: "JournalTableConfigurationResult",
@@ -15981,7 +19858,7 @@ function __c20(j: number): any {
         S.Struct({
           ConfigurationState: S.String,
           TableStatus: S.optional(S.String),
-          Error: S.optional(__S(161, __c20, 1)),
+          Error: S.optional(__S(2144, __c134, 0)),
           TableName: S.optional(S.String),
           TableArn: S.optional(S.String),
         }),
@@ -15993,7 +19870,7 @@ function __c20(j: number): any {
         S.Struct({
           ConfigurationState: S.String,
           TableStatus: S.optional(S.String),
-          Error: S.optional(__S(161, __c20, 1)),
+          Error: S.optional(__S(2144, __c134, 0)),
           TableName: S.optional(S.String),
           TableArn: S.optional(S.String),
           Role: S.optional(S.String),
@@ -16004,24 +19881,24 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DestinationResult: __S(160, __c20, 0),
-          JournalTableConfigurationResult: S.optional(__S(162, __c20, 2)),
-          InventoryTableConfigurationResult: S.optional(__S(163, __c20, 3)),
-          AnnotationTableConfigurationResult: S.optional(__S(164, __c20, 4)),
+          DestinationResult: __S(2129, __c133, 1),
+          JournalTableConfigurationResult: S.optional(__S(2130, __c133, 2)),
+          InventoryTableConfigurationResult: S.optional(__S(2131, __c133, 3)),
+          AnnotationTableConfigurationResult: S.optional(__S(2132, __c133, 4)),
         }),
       ).annotate({
         identifier: "MetadataConfigurationResult",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ MetadataConfigurationResult: __S(165, __c20, 5) }),
+        S.Struct({ MetadataConfigurationResult: __S(2133, __c133, 5) }),
       ).annotate({
         identifier: "GetBucketMetadataConfigurationResult",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          GetBucketMetadataConfigurationResult: S.optional(__S(166, __c20, 6))
+          GetBucketMetadataConfigurationResult: S.optional(__S(2134, __c133, 6))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GetBucketMetadataConfigurationResult" }),
         }).pipe(ns),
@@ -16030,7 +19907,15 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorDetails" });
+  }
+}
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16066,15 +19951,17 @@ function __c21(j: number): any {
         identifier: "S3TablesDestinationResult",
       });
     case 2:
-      return S.suspend(() => S.Struct({ S3TablesDestinationResult: __S(169, __c21, 1) })).annotate({
+      return S.suspend(() =>
+        S.Struct({ S3TablesDestinationResult: __S(2161, __c135, 1) }),
+      ).annotate({
         identifier: "MetadataTableConfigurationResult",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          MetadataTableConfigurationResult: __S(170, __c21, 2),
+          MetadataTableConfigurationResult: __S(2162, __c135, 2),
           Status: S.String,
-          Error: S.optional(__S(161, __c20, 1)),
+          Error: S.optional(__S(2144, __c134, 0)),
         }),
       ).annotate({
         identifier: "GetBucketMetadataTableConfigurationResult",
@@ -16082,14 +19969,18 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          GetBucketMetadataTableConfigurationResult: S.optional(__S(171, __c21, 3))
+          GetBucketMetadataTableConfigurationResult: S.optional(__S(2163, __c135, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GetBucketMetadataTableConfigurationResult" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketMetadataTableConfigurationOutput",
       });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16112,40 +20003,44 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetBucketMetricsConfigurationRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tags: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
-          AccessPointArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricsAndOperator" });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ Prefix: S.String }),
-        /*@__PURE__*/ S.Struct({ Tag: __S(13, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ AccessPointArn: S.String }),
-        /*@__PURE__*/ S.Struct({ And: __S(174, __c21, 6) }),
-      ]);
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Id: S.String, Filter: S.optional(__S(175, __c21, 7)) }),
-      ).annotate({ identifier: "MetricsConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MetricsConfiguration: S.optional(__S(176, __c22, 0))
+          MetricsConfiguration: S.optional(__S(2194, __c137, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MetricsConfiguration" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketMetricsConfigurationOutput",
       });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+          AccessPointArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricsAndOperator" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ Prefix: S.String }),
+        /*@__PURE__*/ S.Struct({ Tag: __S(1344, __c84, 0) }),
+        /*@__PURE__*/ S.Struct({ AccessPointArn: S.String }),
+        /*@__PURE__*/ S.Struct({ And: __S(2192, __c137, 0) }),
+      ]);
     case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.String, Filter: S.optional(__S(2193, __c137, 1)) }),
+      ).annotate({ identifier: "MetricsConfiguration" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16167,99 +20062,99 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetBucketNotificationConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "FilterRule" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2225, __c139, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          FilterRules: S.optional(__S(181, __c22, 5)).pipe(
+          FilterRules: S.optional(__S(2226, __c139, 2)).pipe(
             T.XmlName("FilterRule"),
             T.XmlFlattened(),
           ),
         }),
       ).annotate({ identifier: "S3KeyFilter" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          Key: S.optional(__S(182, __c22, 6))
+          Key: S.optional(__S(2227, __c139, 3))
             .pipe(T.XmlName("S3Key"))
             .annotate({ identifier: "S3KeyFilter" }),
         }),
       ).annotate({
         identifier: "NotificationConfigurationFilter",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           TopicArn: S.String.pipe(T.XmlName("Topic")),
-          Events: __S(179, __c22, 3).pipe(T.XmlName("Event"), T.XmlFlattened()),
-          Filter: S.optional(__S(183, __c22, 7)),
+          Events: __S(2224, __c139, 0).pipe(T.XmlName("Event"), T.XmlFlattened()),
+          Filter: S.optional(__S(2228, __c139, 4)),
         }),
       ).annotate({ identifier: "TopicConfiguration" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(2229, __c139, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           QueueArn: S.String.pipe(T.XmlName("Queue")),
-          Events: __S(179, __c22, 3).pipe(T.XmlName("Event"), T.XmlFlattened()),
-          Filter: S.optional(__S(183, __c22, 7)),
+          Events: __S(2224, __c139, 0).pipe(T.XmlName("Event"), T.XmlFlattened()),
+          Filter: S.optional(__S(2228, __c139, 4)),
         }),
       ).annotate({ identifier: "QueueConfiguration" });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(2231, __c139, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           LambdaFunctionArn: S.String.pipe(T.XmlName("CloudFunction")),
-          Events: __S(179, __c22, 3).pipe(T.XmlName("Event"), T.XmlFlattened()),
-          Filter: S.optional(__S(183, __c22, 7)),
+          Events: __S(2224, __c139, 0).pipe(T.XmlName("Event"), T.XmlFlattened()),
+          Filter: S.optional(__S(2228, __c139, 4)),
         }),
       ).annotate({
         identifier: "LambdaFunctionConfiguration",
       });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(2233, __c139, 9));
+    case 11:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "EventBridgeConfiguration",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          TopicConfigurations: S.optional(__S(185, __c23, 1)).pipe(
+          TopicConfigurations: S.optional(__S(2230, __c139, 6)).pipe(
             T.XmlName("TopicConfiguration"),
             T.XmlFlattened(),
           ),
-          QueueConfigurations: S.optional(__S(187, __c23, 3)).pipe(
+          QueueConfigurations: S.optional(__S(2232, __c139, 8)).pipe(
             T.XmlName("QueueConfiguration"),
             T.XmlFlattened(),
           ),
-          LambdaFunctionConfigurations: S.optional(__S(189, __c23, 5)).pipe(
+          LambdaFunctionConfigurations: S.optional(__S(2234, __c139, 10)).pipe(
             T.XmlName("CloudFunctionConfiguration"),
             T.XmlFlattened(),
           ),
-          EventBridgeConfiguration: S.optional(__S(190, __c23, 6)),
+          EventBridgeConfiguration: S.optional(__S(2235, __c139, 11)),
         }).pipe(ns),
       ).annotate({
         identifier: "NotificationConfiguration",
       });
   }
 }
-function __c24(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16284,26 +20179,34 @@ function __c24(j: number): any {
         identifier: "GetBucketOwnershipControlsRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ ObjectOwnership: S.String })).annotate({
-        identifier: "OwnershipControlsRule",
-      });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Rules: __S(194, __c24, 2).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
-      ).annotate({ identifier: "OwnershipControls" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          OwnershipControls: S.optional(__S(195, __c24, 3))
+          OwnershipControls: S.optional(__S(2258, __c141, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "OwnershipControls" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketOwnershipControlsOutput",
       });
-    case 5:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ObjectOwnership: S.String })).annotate({
+        identifier: "OwnershipControlsRule",
+      });
+    case 1:
+      return S.Array(__S(2256, __c141, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Rules: __S(2257, __c141, 1).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
+      ).annotate({ identifier: "OwnershipControls" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16323,11 +20226,15 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketPolicyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Policy: S.optional(S.String).pipe(T.HttpPayload()) }).pipe(ns),
       ).annotate({ identifier: "GetBucketPolicyOutput" });
-    case 7:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16349,25 +20256,25 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetBucketPolicyStatusRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ IsPublic: S.optional(S.Boolean).pipe(T.XmlName("IsPublic")) }),
       ).annotate({ identifier: "PolicyStatus" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          PolicyStatus: S.optional(__S(200, __c25, 0))
+          PolicyStatus: S.optional(__S(2289, __c143, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PolicyStatus" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketPolicyStatusOutput",
       });
-    case 2:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16389,120 +20296,120 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetBucketReplicationRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tags: S.optional(__S(14, __c1, 6)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
-        }),
-      ).annotate({
-        identifier: "ReplicationRuleAndOperator",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Prefix: S.optional(S.String),
-          Tag: S.optional(__S(13, __c1, 5)),
-          And: S.optional(__S(203, __c25, 3)),
-        }),
-      ).annotate({ identifier: "ReplicationRuleFilter" });
-    case 5:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "SseKmsEncryptedObjects",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "ReplicaModifications",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          SseKmsEncryptedObjects: S.optional(__S(205, __c25, 5)),
-          ReplicaModifications: S.optional(__S(206, __c25, 6)),
-        }),
-      ).annotate({ identifier: "SourceSelectionCriteria" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
-        identifier: "ExistingObjectReplication",
-      });
     case 1:
-      return S.suspend(() => S.Struct({ Owner: S.String })).annotate({
-        identifier: "AccessControlTranslation",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ ReplicaKmsKeyID: S.optional(S.String) })).annotate({
-        identifier: "EncryptionConfiguration",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Minutes: S.optional(S.Number) })).annotate({
-        identifier: "ReplicationTimeValue",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ Status: S.String, Time: __S(211, __c26, 3) })).annotate({
-        identifier: "ReplicationTime",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Status: S.String, EventThreshold: S.optional(__S(211, __c26, 3)) }),
-      ).annotate({ identifier: "Metrics" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          Bucket: S.String,
-          Account: S.optional(S.String),
-          StorageClass: S.optional(S.String),
-          AccessControlTranslation: S.optional(__S(209, __c26, 1)),
-          EncryptionConfiguration: S.optional(__S(210, __c26, 2)),
-          ReplicationTime: S.optional(__S(212, __c26, 4)),
-          Metrics: S.optional(__S(213, __c26, 5)),
-        }),
-      ).annotate({ identifier: "Destination" });
-    case 7:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "DeleteMarkerReplication",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ID: S.optional(S.String),
-          Priority: S.optional(S.Number),
-          Prefix: S.optional(S.String),
-          Filter: S.optional(__S(204, __c25, 4)),
-          Status: S.String,
-          SourceSelectionCriteria: S.optional(__S(207, __c25, 7)),
-          ExistingObjectReplication: S.optional(__S(208, __c26, 0)),
-          Destination: __S(214, __c26, 6),
-          DeleteMarkerReplication: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({ identifier: "ReplicationRule" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Role: S.String,
-          Rules: __S(217, __c27, 1).pipe(T.XmlName("Rule"), T.XmlFlattened()),
-        }),
-      ).annotate({ identifier: "ReplicationConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ReplicationConfiguration: S.optional(__S(218, __c27, 2))
+          ReplicationConfiguration: S.optional(__S(2335, __c145, 15))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ReplicationConfiguration" }),
         }).pipe(ns),
       ).annotate({
         identifier: "GetBucketReplicationOutput",
       });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tags: S.optional(__S(1345, __c84, 1)).pipe(T.XmlName("Tag"), T.XmlFlattened()),
+        }),
+      ).annotate({
+        identifier: "ReplicationRuleAndOperator",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Prefix: S.optional(S.String),
+          Tag: S.optional(__S(1344, __c84, 0)),
+          And: S.optional(__S(2320, __c145, 0)),
+        }),
+      ).annotate({ identifier: "ReplicationRuleFilter" });
+    case 2:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "SseKmsEncryptedObjects",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "ReplicaModifications",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SseKmsEncryptedObjects: S.optional(__S(2322, __c145, 2)),
+          ReplicaModifications: S.optional(__S(2323, __c145, 3)),
+        }),
+      ).annotate({ identifier: "SourceSelectionCriteria" });
+    case 5:
+      return S.suspend(() => S.Struct({ Status: S.String })).annotate({
+        identifier: "ExistingObjectReplication",
+      });
+    case 6:
+      return S.suspend(() => S.Struct({ Owner: S.String })).annotate({
+        identifier: "AccessControlTranslation",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ ReplicaKmsKeyID: S.optional(S.String) })).annotate({
+        identifier: "EncryptionConfiguration",
+      });
+    case 8:
+      return S.suspend(() => S.Struct({ Minutes: S.optional(S.Number) })).annotate({
+        identifier: "ReplicationTimeValue",
+      });
+    case 9:
+      return S.suspend(() => S.Struct({ Status: S.String, Time: __S(2328, __c145, 8) })).annotate({
+        identifier: "ReplicationTime",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ Status: S.String, EventThreshold: S.optional(__S(2328, __c145, 8)) }),
+      ).annotate({ identifier: "Metrics" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String,
+          Account: S.optional(S.String),
+          StorageClass: S.optional(S.String),
+          AccessControlTranslation: S.optional(__S(2326, __c145, 6)),
+          EncryptionConfiguration: S.optional(__S(2327, __c145, 7)),
+          ReplicationTime: S.optional(__S(2329, __c145, 9)),
+          Metrics: S.optional(__S(2330, __c145, 10)),
+        }),
+      ).annotate({ identifier: "Destination" });
+    case 12:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "DeleteMarkerReplication",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          ID: S.optional(S.String),
+          Priority: S.optional(S.Number),
+          Prefix: S.optional(S.String),
+          Filter: S.optional(__S(2321, __c145, 1)),
+          Status: S.String,
+          SourceSelectionCriteria: S.optional(__S(2324, __c145, 4)),
+          ExistingObjectReplication: S.optional(__S(2325, __c145, 5)),
+          Destination: __S(2331, __c145, 11),
+          DeleteMarkerReplication: S.optional(__S(2332, __c145, 12)),
+        }),
+      ).annotate({ identifier: "ReplicationRule" });
+    case 14:
+      return S.Array(__S(2333, __c145, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          Role: S.String,
+          Rules: __S(2334, __c145, 14).pipe(T.XmlName("Rule"), T.XmlFlattened()),
+        }),
+      ).annotate({ identifier: "ReplicationConfiguration" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16524,7 +20431,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetBucketRequestPaymentRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Payer: S.optional(S.String) }).pipe(
           T.all(T.XmlName("RequestPaymentConfiguration"), ns),
@@ -16532,7 +20439,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetBucketRequestPaymentOutput",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
@@ -16552,3556 +20463,12 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBucketTaggingRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ TagSet: __S(14, __c1, 6) }).pipe(T.all(T.XmlName("Tagging"), ns)),
+        S.Struct({ TagSet: __S(1345, __c84, 1) }).pipe(T.all(T.XmlName("Tagging"), ns)),
       ).annotate({ identifier: "GetBucketTaggingOutput" });
   }
 }
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?versioning" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "GetBucketVersioningRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
-        }).pipe(T.all(T.XmlName("VersioningConfiguration"), ns)),
-      ).annotate({
-        identifier: "GetBucketVersioningOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?website" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "GetBucketWebsiteRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ HostName: S.String, Protocol: S.optional(S.String) }),
-      ).annotate({ identifier: "RedirectAllRequestsTo" });
-    case 4:
-      return S.suspend(() => S.Struct({ Suffix: S.String })).annotate({
-        identifier: "IndexDocument",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Key: S.String })).annotate({
-        identifier: "ErrorDocument",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          HttpErrorCodeReturnedEquals: S.optional(S.String),
-          KeyPrefixEquals: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Condition" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          HostName: S.optional(S.String),
-          HttpRedirectCode: S.optional(S.String),
-          Protocol: S.optional(S.String),
-          ReplaceKeyPrefixWith: S.optional(S.String),
-          ReplaceKeyWith: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Redirect" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Condition: S.optional(__S(230, __c28, 6)), Redirect: __S(231, __c28, 7) }),
-      ).annotate({ identifier: "RoutingRule" });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(232, __c29, 0).pipe(/*@__PURE__*/ T.XmlName("RoutingRule")).annotate({
-          identifier: "RoutingRule",
-        }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          RedirectAllRequestsTo: S.optional(__S(227, __c28, 3)),
-          IndexDocument: S.optional(__S(228, __c28, 4)),
-          ErrorDocument: S.optional(__S(229, __c28, 5)),
-          RoutingRules: S.optional(__S(233, __c29, 1)),
-        }).pipe(T.all(T.XmlName("WebsiteConfiguration"), ns)),
-      ).annotate({ identifier: "GetBucketWebsiteOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          IfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("If-Modified-Since"),
-          ),
-          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          IfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("If-Unmodified-Since"),
-          ),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          Range: S.optional(S.String).pipe(T.HttpHeader("Range")),
-          ResponseCacheControl: S.optional(S.String).pipe(T.HttpQuery("response-cache-control")),
-          ResponseContentDisposition: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-disposition"),
-          ),
-          ResponseContentEncoding: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-encoding"),
-          ),
-          ResponseContentLanguage: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-language"),
-          ),
-          ResponseContentType: S.optional(S.String).pipe(T.HttpQuery("response-content-type")),
-          ResponseExpires: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpQuery("response-expires"),
-          ),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          PartNumber: S.optional(S.Number).pipe(T.HttpQuery("partNumber")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?x-id=GetObject" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              responseAlgorithms: [
-                "CRC64NVME",
-                "CRC32",
-                "CRC32C",
-                "SHA256",
-                "SHA1",
-                "SHA512",
-                "MD5",
-                "XXHASH64",
-                "XXHASH3",
-                "XXHASH128",
-              ],
-            }),
-          ),
-        ),
-      ).annotate({ identifier: "GetObjectRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
-          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("accept-ranges")),
-          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
-          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore")),
-          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("Last-Modified"),
-          ),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
-          MissingMeta: S.optional(S.Number).pipe(T.HttpHeader("x-amz-missing-meta")),
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
-          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
-          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
-          ContentRange: S.optional(S.String).pipe(T.HttpHeader("Content-Range")),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
-          WebsiteRedirectLocation: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-website-redirect-location"),
-          ),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
-          PartsCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-mp-parts-count")),
-          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-tagging-count")),
-          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
-          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-object-lock-retain-until-date"),
-          ),
-          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-legal-hold"),
-          ),
-          ObjectLockEventHold: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold"),
-          ),
-          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
-          ),
-          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
-          ),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetObjectOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?acl" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetObjectAclRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Owner: S.optional(__S(88, __c11, 0)),
-          Grants: S.optional(__S(91, __c11, 3)).pipe(T.XmlName("AccessControlList")),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(T.all(T.XmlName("AccessControlPolicy"), ns)),
-      ).annotate({ identifier: "GetObjectAclOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?annotation&x-id=GetObjectAnnotation" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              responseAlgorithms: [
-                "CRC64NVME",
-                "CRC32",
-                "CRC32C",
-                "SHA256",
-                "SHA1",
-                "SHA512",
-                "MD5",
-                "XXHASH64",
-                "XXHASH3",
-                "XXHASH128",
-              ],
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "GetObjectAnnotationRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AnnotationPayload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
-          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("Last-Modified"),
-          ),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetObjectAnnotationOutput",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          MaxParts: S.optional(S.Number).pipe(T.HttpHeader("x-amz-max-parts")),
-          PartNumberMarker: S.optional(S.String).pipe(T.HttpHeader("x-amz-part-number-marker")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ObjectAttributes: __S(241, __c30, 1).pipe(T.HttpHeader("x-amz-object-attributes")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?attributes" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetObjectAttributesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ChecksumCRC32: S.optional(S.String),
-          ChecksumCRC32C: S.optional(S.String),
-          ChecksumCRC64NVME: S.optional(S.String),
-          ChecksumSHA1: S.optional(S.String),
-          ChecksumSHA256: S.optional(S.String),
-          ChecksumSHA512: S.optional(S.String),
-          ChecksumMD5: S.optional(S.String),
-          ChecksumXXHASH64: S.optional(S.String),
-          ChecksumXXHASH3: S.optional(S.String),
-          ChecksumXXHASH128: S.optional(S.String),
-          ChecksumType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Checksum" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PartNumber: S.optional(S.Number),
-          Size: S.optional(S.Number),
-          ChecksumCRC32: S.optional(S.String),
-          ChecksumCRC32C: S.optional(S.String),
-          ChecksumCRC64NVME: S.optional(S.String),
-          ChecksumSHA1: S.optional(S.String),
-          ChecksumSHA256: S.optional(S.String),
-          ChecksumSHA512: S.optional(S.String),
-          ChecksumMD5: S.optional(S.String),
-          ChecksumXXHASH64: S.optional(S.String),
-          ChecksumXXHASH3: S.optional(S.String),
-          ChecksumXXHASH128: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectPart" });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TotalPartsCount: S.optional(S.Number).pipe(T.XmlName("PartsCount")),
-          PartNumberMarker: S.optional(S.String),
-          NextPartNumberMarker: S.optional(S.String),
-          MaxParts: S.optional(S.Number),
-          IsTruncated: S.optional(S.Boolean),
-          Parts: S.optional(__S(245, __c30, 5)).pipe(T.XmlName("Part"), T.XmlFlattened()),
-        }),
-      ).annotate({ identifier: "GetObjectAttributesParts" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
-          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("Last-Modified"),
-          ),
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          ETag: S.optional(S.String),
-          Checksum: S.optional(__S(243, __c30, 3)),
-          ObjectParts: S.optional(__S(246, __c30, 6)),
-          StorageClass: S.optional(S.String),
-          ObjectSize: S.optional(S.Number),
-        }).pipe(T.all(T.XmlName("GetObjectAttributesResponse"), ns)),
-      ).annotate({
-        identifier: "GetObjectAttributesOutput",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?legal-hold" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetObjectLegalHoldRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "ObjectLockLegalHold",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          LegalHold: S.optional(__S(249, __c31, 1))
-            .pipe(T.HttpPayload(), T.XmlName("LegalHold"))
-            .annotate({ identifier: "ObjectLockLegalHold" }),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetObjectLegalHoldOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?object-lock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetObjectLockConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Days: S.optional(S.Number), Years: S.optional(S.Number) }),
-      ).annotate({ identifier: "EventHoldDuration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Mode: S.optional(S.String),
-          Days: S.optional(S.Number),
-          Years: S.optional(S.Number),
-          DefaultEventHold: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({ identifier: "DefaultRetention" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DefaultRetention: S.optional(__S(253, __c31, 5)) }),
-      ).annotate({ identifier: "ObjectLockRule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ObjectLockEnabled: S.optional(S.String),
-          Rule: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({ identifier: "ObjectLockConfiguration" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ObjectLockConfiguration: S.optional(__S(255, __c31, 7))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "ObjectLockConfiguration" }),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetObjectLockConfigurationOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?retention" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetObjectRetentionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Mode: S.optional(S.String),
-          RetainUntilDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          EventHold: S.optional(S.String),
-          EventHoldDuration: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({ identifier: "ObjectLockRetention" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Retention: S.optional(__S(258, __c32, 2))
-            .pipe(T.HttpPayload(), T.XmlName("Retention"))
-            .annotate({ identifier: "ObjectLockRetention" }),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetObjectRetentionOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetObjectTaggingRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-          TagSet: S.optional(__S(14, __c1, 6)),
-        }).pipe(T.all(T.XmlName("Tagging"), ns)),
-      ).annotate({ identifier: "GetObjectTaggingOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?torrent" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetObjectTorrentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetObjectTorrentOutput" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?publicAccessBlock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "GetPublicAccessBlockRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BlockPublicAcls: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicAcls")),
-          IgnorePublicAcls: S.optional(S.Boolean).pipe(T.XmlName("IgnorePublicAcls")),
-          BlockPublicPolicy: S.optional(S.Boolean).pipe(T.XmlName("BlockPublicPolicy")),
-          RestrictPublicBuckets: S.optional(S.Boolean).pipe(T.XmlName("RestrictPublicBuckets")),
-        }),
-      ).annotate({
-        identifier: "PublicAccessBlockConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          PublicAccessBlockConfiguration: S.optional(__S(265, __c33, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetPublicAccessBlockOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(ns, T.Http({ method: "HEAD", uri: "/{Bucket}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "HeadBucketRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BucketArn: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-arn")),
-          BucketLocationType: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-location-type")),
-          BucketLocationName: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-location-name")),
-          BucketRegion: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-region")),
-          AccessPointAlias: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-access-point-alias")),
-        }).pipe(ns),
-      ).annotate({ identifier: "HeadBucketOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          IfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("If-Modified-Since"),
-          ),
-          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          IfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("If-Unmodified-Since"),
-          ),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          Range: S.optional(S.String).pipe(T.HttpHeader("Range")),
-          ResponseCacheControl: S.optional(S.String).pipe(T.HttpQuery("response-cache-control")),
-          ResponseContentDisposition: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-disposition"),
-          ),
-          ResponseContentEncoding: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-encoding"),
-          ),
-          ResponseContentLanguage: S.optional(S.String).pipe(
-            T.HttpQuery("response-content-language"),
-          ),
-          ResponseContentType: S.optional(S.String).pipe(T.HttpQuery("response-content-type")),
-          ResponseExpires: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpQuery("response-expires"),
-          ),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          PartNumber: S.optional(S.Number).pipe(T.HttpQuery("partNumber")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ChecksumMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-mode")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "HEAD", uri: "/{Bucket}/{Key+}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "HeadObjectRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DeleteMarker: S.optional(S.Boolean).pipe(T.HttpHeader("x-amz-delete-marker")),
-          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("accept-ranges")),
-          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
-          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore")),
-          ArchiveStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-archive-status")),
-          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("Last-Modified"),
-          ),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          MissingMeta: S.optional(S.Number).pipe(T.HttpHeader("x-amz-missing-meta")),
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
-          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
-          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          ContentRange: S.optional(S.String).pipe(T.HttpHeader("Content-Range")),
-          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
-          WebsiteRedirectLocation: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-website-redirect-location"),
-          ),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          ReplicationStatus: S.optional(S.String).pipe(T.HttpHeader("x-amz-replication-status")),
-          PartsCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-mp-parts-count")),
-          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-tagging-count")),
-          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
-          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-object-lock-retain-until-date"),
-          ),
-          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-legal-hold"),
-          ),
-          ObjectLockEventHold: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold"),
-          ),
-          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
-          ),
-          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
-          ),
-        }).pipe(ns),
-      ).annotate({ identifier: "HeadObjectOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "GET",
-              uri: "/{Bucket}?analytics&x-id=ListBucketAnalyticsConfigurations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBucketAnalyticsConfigurationsRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(100, __c12, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          ContinuationToken: S.optional(S.String),
-          NextContinuationToken: S.optional(S.String),
-          AnalyticsConfigurationList: S.optional(__S(272, __c34, 0)).pipe(
-            T.XmlName("AnalyticsConfiguration"),
-            T.XmlFlattened(),
-          ),
-        }).pipe(T.all(T.XmlName("ListBucketAnalyticsConfigurationResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketAnalyticsConfigurationsOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "GET",
-              uri: "/{Bucket}?intelligent-tiering&x-id=ListBucketIntelligentTieringConfigurations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBucketIntelligentTieringConfigurationsRequest",
-      });
-    case 3:
-      return S.Array(__S(123, __c15, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          ContinuationToken: S.optional(S.String),
-          NextContinuationToken: S.optional(S.String),
-          IntelligentTieringConfigurationList: S.optional(__S(275, __c34, 3)).pipe(
-            T.XmlName("IntelligentTieringConfiguration"),
-            T.XmlFlattened(),
-          ),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListBucketIntelligentTieringConfigurationsOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "GET",
-              uri: "/{Bucket}?inventory&x-id=ListBucketInventoryConfigurations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBucketInventoryConfigurationsRequest",
-      });
-    case 6:
-      return S.Array(__S(134, __c16, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ContinuationToken: S.optional(S.String),
-          InventoryConfigurationList: S.optional(__S(278, __c34, 6)).pipe(
-            T.XmlName("InventoryConfiguration"),
-            T.XmlFlattened(),
-          ),
-          IsTruncated: S.optional(S.Boolean),
-          NextContinuationToken: S.optional(S.String),
-        }).pipe(T.all(T.XmlName("ListInventoryConfigurationsResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketInventoryConfigurationsOutput",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "GET",
-              uri: "/{Bucket}?metrics&x-id=ListBucketMetricsConfigurations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "ListBucketMetricsConfigurationsRequest",
-      });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          ContinuationToken: S.optional(S.String),
-          NextContinuationToken: S.optional(S.String),
-          MetricsConfigurationList: S.optional(__S(281, __c35, 1)).pipe(
-            T.XmlName("MetricsConfiguration"),
-            T.XmlFlattened(),
-          ),
-        }).pipe(T.all(T.XmlName("ListMetricsConfigurationsResult"), ns)),
-      ).annotate({
-        identifier: "ListBucketMetricsConfigurationsOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          MaxBuckets: S.optional(S.Number).pipe(T.HttpQuery("max-buckets")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-          BucketRegion: S.optional(S.String).pipe(T.HttpQuery("bucket-region")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/?x-id=ListBuckets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListBucketsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          CreationDate: S.optional(T.DateFromString),
-          BucketRegion: S.optional(S.String),
-          BucketArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Bucket" });
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ Bucket.pipe(/*@__PURE__*/ T.XmlName("Bucket")).annotate({
-          identifier: "Bucket",
-        }),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Buckets: S.optional(__S(285, __c35, 5)),
-          Owner: S.optional(__S(88, __c11, 0)),
-          ContinuationToken: S.optional(S.String),
-          Prefix: S.optional(S.String),
-        }).pipe(T.all(T.XmlName("ListAllMyBucketsResult"), ns)),
-      ).annotate({ identifier: "ListBucketsOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          MaxDirectoryBuckets: S.optional(S.Number).pipe(T.HttpQuery("max-directory-buckets")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/?x-id=ListDirectoryBuckets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "ListDirectoryBucketsRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Buckets: S.optional(__S(285, __c35, 5)),
-          ContinuationToken: S.optional(S.String),
-        }).pipe(T.all(T.XmlName("ListAllMyDirectoryBucketsResult"), ns)),
-      ).annotate({
-        identifier: "ListDirectoryBucketsOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
-          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
-          KeyMarker: S.optional(S.String).pipe(T.HttpQuery("key-marker")),
-          MaxUploads: S.optional(S.Number).pipe(T.HttpQuery("max-uploads")),
-          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
-          UploadIdMarker: S.optional(S.String).pipe(T.HttpQuery("upload-id-marker")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?uploads" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListMultipartUploadsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ID: S.optional(S.String), DisplayName: S.optional(S.String) }),
-      ).annotate({ identifier: "Initiator" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          UploadId: S.optional(S.String),
-          Key: S.optional(S.String),
-          Initiated: S.optional(T.DateFromString),
-          StorageClass: S.optional(S.String),
-          Owner: S.optional(__S(88, __c11, 0)),
-          Initiator: S.optional(__S(290, __c36, 2)),
-          ChecksumAlgorithm: S.optional(S.String),
-          ChecksumType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MultipartUpload" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ Prefix: S.optional(S.String) })).annotate({
-        identifier: "CommonPrefix",
-      });
-    case 6:
-      return S.Array(__S(293, __c36, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.optional(S.String),
-          KeyMarker: S.optional(S.String),
-          UploadIdMarker: S.optional(S.String),
-          NextKeyMarker: S.optional(S.String),
-          Prefix: S.optional(S.String),
-          Delimiter: S.optional(S.String),
-          NextUploadIdMarker: S.optional(S.String),
-          MaxUploads: S.optional(S.Number),
-          IsTruncated: S.optional(S.Boolean),
-          Uploads: S.optional(__S(292, __c36, 4)).pipe(T.XmlName("Upload"), T.XmlFlattened()),
-          CommonPrefixes: S.optional(__S(294, __c36, 6)).pipe(T.XmlFlattened()),
-          EncodingType: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(T.all(T.XmlName("ListMultipartUploadsResult"), ns)),
-      ).annotate({
-        identifier: "ListMultipartUploadsOutput",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          MaxAnnotationResults: S.optional(S.Number).pipe(T.HttpQuery("max-annotation-results")),
-          AnnotationPrefix: S.optional(S.String).pipe(T.HttpQuery("annotation-prefix")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({
-              method: "GET",
-              uri: "/{Bucket}/{Key+}?annotation&x-id=ListObjectAnnotations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListObjectAnnotationsRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AnnotationName: S.String,
-          LastModified: T.DateFromString,
-          ETag: S.optional(S.String),
-          ChecksumAlgorithm: S.optional(__S(297, __c37, 1)).pipe(T.XmlFlattened()),
-          Size: S.Number,
-          ReplicationStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AnnotationEntry" });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(298, __c37, 2).pipe(/*@__PURE__*/ T.XmlName("AnnotationEntry")).annotate({
-          identifier: "AnnotationEntry",
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Annotations: S.optional(__S(299, __c37, 3)),
-          Bucket: S.optional(S.String),
-          Key: S.optional(S.String),
-          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
-          AnnotationPrefix: S.optional(S.String),
-          MaxAnnotationResults: S.optional(S.Number),
-          AnnotationCount: S.optional(S.Number),
-          ContinuationToken: S.optional(S.String),
-          NextContinuationToken: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ListObjectAnnotationsOutput",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
-          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
-          Marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
-          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
-          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          OptionalObjectAttributes: S.optional(__S(301, __c37, 5)).pipe(
-            T.HttpHeader("x-amz-optional-object-attributes"),
-          ),
-        }).pipe(
-          T.all(ns, T.Http({ method: "GET", uri: "/{Bucket}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListObjectsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          IsRestoreInProgress: S.optional(S.Boolean),
-          RestoreExpiryDate: S.optional(T.DateFromString),
-        }),
-      ).annotate({ identifier: "RestoreStatus" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(S.String),
-          LastModified: S.optional(T.DateFromString),
-          ETag: S.optional(S.String),
-          ChecksumAlgorithm: S.optional(__S(297, __c37, 1)).pipe(T.XmlFlattened()),
-          ChecksumType: S.optional(S.String),
-          Size: S.optional(S.Number),
-          StorageClass: S.optional(S.String),
-          Owner: S.optional(__S(88, __c11, 0)),
-          RestoreStatus: S.optional(__S(303, __c37, 7)),
-        }),
-      ).annotate({ identifier: "Object" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          Marker: S.optional(S.String),
-          NextMarker: S.optional(S.String),
-          Contents: S.optional(__S(305, __c38, 1)).pipe(T.XmlFlattened()),
-          Name: S.optional(S.String),
-          Prefix: S.optional(S.String),
-          Delimiter: S.optional(S.String),
-          MaxKeys: S.optional(S.Number),
-          CommonPrefixes: S.optional(__S(294, __c36, 6)).pipe(T.XmlFlattened()),
-          EncodingType: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(T.all(T.XmlName("ListBucketResult"), ns)),
-      ).annotate({ identifier: "ListObjectsOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
-          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
-          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
-          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
-          ContinuationToken: S.optional(S.String).pipe(T.HttpQuery("continuation-token")),
-          FetchOwner: S.optional(S.Boolean).pipe(T.HttpQuery("fetch-owner")),
-          StartAfter: S.optional(S.String).pipe(T.HttpQuery("start-after")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          OptionalObjectAttributes: S.optional(__S(301, __c37, 5)).pipe(
-            T.HttpHeader("x-amz-optional-object-attributes"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?list-type=2" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListObjectsV2Request" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          Contents: S.optional(__S(305, __c38, 1)).pipe(T.XmlFlattened()),
-          Name: S.optional(S.String),
-          Prefix: S.optional(S.String),
-          Delimiter: S.optional(S.String),
-          MaxKeys: S.optional(S.Number),
-          CommonPrefixes: S.optional(__S(294, __c36, 6)).pipe(T.XmlFlattened()),
-          EncodingType: S.optional(S.String),
-          KeyCount: S.optional(S.Number),
-          ContinuationToken: S.optional(S.String),
-          NextContinuationToken: S.optional(S.String),
-          StartAfter: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(T.all(T.XmlName("ListBucketResult"), ns)),
-      ).annotate({ identifier: "ListObjectsV2Output" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Delimiter: S.optional(S.String).pipe(T.HttpQuery("delimiter")),
-          EncodingType: S.optional(S.String).pipe(T.HttpQuery("encoding-type")),
-          KeyMarker: S.optional(S.String).pipe(T.HttpQuery("key-marker")),
-          MaxKeys: S.optional(S.Number).pipe(T.HttpQuery("max-keys")),
-          Prefix: S.optional(S.String).pipe(T.HttpQuery("prefix"), T.ContextParam("Prefix")),
-          VersionIdMarker: S.optional(S.String).pipe(T.HttpQuery("version-id-marker")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          OptionalObjectAttributes: S.optional(__S(301, __c37, 5)).pipe(
-            T.HttpHeader("x-amz-optional-object-attributes"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}?versions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListObjectVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ETag: S.optional(S.String),
-          ChecksumAlgorithm: S.optional(__S(297, __c37, 1)).pipe(T.XmlFlattened()),
-          ChecksumType: S.optional(S.String),
-          Size: S.optional(S.Number),
-          StorageClass: S.optional(S.String),
-          Key: S.optional(S.String),
-          VersionId: S.optional(S.String),
-          IsLatest: S.optional(S.Boolean),
-          LastModified: S.optional(T.DateFromString),
-          Owner: S.optional(__S(88, __c11, 0)),
-          RestoreStatus: S.optional(__S(303, __c37, 7)),
-        }),
-      ).annotate({ identifier: "ObjectVersion" });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Owner: S.optional(__S(88, __c11, 0)),
-          Key: S.optional(S.String),
-          VersionId: S.optional(S.String),
-          IsLatest: S.optional(S.Boolean),
-          LastModified: S.optional(T.DateFromString),
-        }),
-      ).annotate({ identifier: "DeleteMarkerEntry" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          IsTruncated: S.optional(S.Boolean),
-          KeyMarker: S.optional(S.String),
-          VersionIdMarker: S.optional(S.String),
-          NextKeyMarker: S.optional(S.String),
-          NextVersionIdMarker: S.optional(S.String),
-          Versions: S.optional(__S(311, __c38, 7)).pipe(T.XmlName("Version"), T.XmlFlattened()),
-          DeleteMarkers: S.optional(__S(313, __c39, 1)).pipe(
-            T.XmlName("DeleteMarker"),
-            T.XmlFlattened(),
-          ),
-          Name: S.optional(S.String),
-          Prefix: S.optional(S.String),
-          Delimiter: S.optional(S.String),
-          MaxKeys: S.optional(S.Number),
-          CommonPrefixes: S.optional(__S(294, __c36, 6)).pipe(T.XmlFlattened()),
-          EncodingType: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(T.all(T.XmlName("ListVersionsResult"), ns)),
-      ).annotate({ identifier: "ListObjectVersionsOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          MaxParts: S.optional(S.Number).pipe(T.HttpQuery("max-parts")),
-          PartNumberMarker: S.optional(S.String).pipe(T.HttpQuery("part-number-marker")),
-          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "GET", uri: "/{Bucket}/{Key+}?x-id=ListParts" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListPartsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          PartNumber: S.optional(S.Number),
-          LastModified: S.optional(T.DateFromString),
-          ETag: S.optional(S.String),
-          Size: S.optional(S.Number),
-          ChecksumCRC32: S.optional(S.String),
-          ChecksumCRC32C: S.optional(S.String),
-          ChecksumCRC64NVME: S.optional(S.String),
-          ChecksumSHA1: S.optional(S.String),
-          ChecksumSHA256: S.optional(S.String),
-          ChecksumSHA512: S.optional(S.String),
-          ChecksumMD5: S.optional(S.String),
-          ChecksumXXHASH64: S.optional(S.String),
-          ChecksumXXHASH3: S.optional(S.String),
-          ChecksumXXHASH128: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Part" });
-    case 5:
-      return S.Array(__S(316, __c39, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AbortDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-abort-date"),
-          ),
-          AbortRuleId: S.optional(S.String).pipe(T.HttpHeader("x-amz-abort-rule-id")),
-          Bucket: S.optional(S.String),
-          Key: S.optional(S.String),
-          UploadId: S.optional(S.String),
-          PartNumberMarker: S.optional(S.String),
-          NextPartNumberMarker: S.optional(S.String),
-          MaxParts: S.optional(S.Number),
-          IsTruncated: S.optional(S.Boolean),
-          Parts: S.optional(__S(317, __c39, 5)).pipe(T.XmlName("Part"), T.XmlFlattened()),
-          Initiator: S.optional(__S(290, __c36, 2)),
-          Owner: S.optional(__S(88, __c11, 0)),
-          StorageClass: S.optional(S.String),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          ChecksumAlgorithm: S.optional(S.String),
-          ChecksumType: S.optional(S.String),
-        }).pipe(T.all(T.XmlName("ListPartsResult"), ns)),
-      ).annotate({ identifier: "ListPartsOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          AbacStatus: __S(83, __c10, 3).pipe(T.HttpPayload(), T.XmlName("AbacStatus")).annotate({
-            identifier: "AbacStatus",
-          }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?abac" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketAbacRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketAbacResponse",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "AccelerateConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          AccelerateConfiguration: __S(321, __c40, 1)
-            .pipe(T.HttpPayload(), T.XmlName("AccelerateConfiguration"))
-            .annotate({ identifier: "AccelerateConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?accelerate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketAccelerateConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketAccelerateConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Grants: S.optional(__S(91, __c11, 3)).pipe(T.XmlName("AccessControlList")),
-          Owner: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "AccessControlPolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
-          AccessControlPolicy: S.optional(__S(324, __c40, 4))
-            .pipe(T.HttpPayload(), T.XmlName("AccessControlPolicy"))
-            .annotate({ identifier: "AccessControlPolicy" }),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
-          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
-          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
-          GrantWrite: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write")),
-          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?acl" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketAclRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketAclResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Id: S.String.pipe(T.HttpQuery("id")),
-          AnalyticsConfiguration: __S(100, __c12, 4)
-            .pipe(T.HttpPayload(), T.XmlName("AnalyticsConfiguration"))
-            .annotate({ identifier: "AnalyticsConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?analytics" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketAnalyticsConfigurationRequest",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketAnalyticsConfigurationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ CORSRules: __S(108, __c13, 4).pipe(T.XmlName("CORSRule"), T.XmlFlattened()) }),
-      ).annotate({ identifier: "CORSConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CORSConfiguration: __S(329, __c41, 1)
-            .pipe(T.HttpPayload(), T.XmlName("CORSConfiguration"))
-            .annotate({ identifier: "CORSConfiguration" }),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?cors" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketCorsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketCorsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ServerSideEncryptionConfiguration: __S(116, __c14, 4)
-            .pipe(T.HttpPayload(), T.XmlName("ServerSideEncryptionConfiguration"))
-            .annotate({ identifier: "ServerSideEncryptionConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?encryption" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketEncryptionRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketEncryptionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Id: S.String.pipe(T.HttpQuery("id")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          IntelligentTieringConfiguration: __S(123, __c15, 3)
-            .pipe(T.HttpPayload(), T.XmlName("IntelligentTieringConfiguration"))
-            .annotate({ identifier: "IntelligentTieringConfiguration" }),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?intelligent-tiering" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketIntelligentTieringConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketIntelligentTieringConfigurationResponse",
-      });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Id: S.String.pipe(T.HttpQuery("id")),
-          InventoryConfiguration: __S(134, __c16, 6)
-            .pipe(T.HttpPayload(), T.XmlName("InventoryConfiguration"))
-            .annotate({ identifier: "InventoryConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?inventory" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketInventoryConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketInventoryConfigurationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Rules: __S(147, __c18, 3).pipe(T.XmlName("Rule"), T.XmlFlattened()) }),
-      ).annotate({
-        identifier: "BucketLifecycleConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          LifecycleConfiguration: S.optional(__S(338, __c42, 2))
-            .pipe(T.HttpPayload(), T.XmlName("LifecycleConfiguration"))
-            .annotate({ identifier: "BucketLifecycleConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?lifecycle" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          TransitionDefaultMinimumObjectSize: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-transition-default-minimum-object-size"),
-          ),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "PutBucketLifecycleConfigurationOutput",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ LoggingEnabled: S.optional(__S(157, __c19, 5)) })).annotate(
-        {
-          identifier: "BucketLoggingStatus",
-        },
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          BucketLoggingStatus: __S(341, __c42, 5)
-            .pipe(T.HttpPayload(), T.XmlName("BucketLoggingStatus"))
-            .annotate({ identifier: "BucketLoggingStatus" }),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?logging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketLoggingRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketLoggingResponse",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Id: S.String.pipe(T.HttpQuery("id")),
-          MetricsConfiguration: __S(176, __c22, 0)
-            .pipe(T.HttpPayload(), T.XmlName("MetricsConfiguration"))
-            .annotate({ identifier: "MetricsConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?metrics" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketMetricsConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketMetricsConfigurationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          NotificationConfiguration: __S(191, __c23, 7)
-            .pipe(T.HttpPayload(), T.XmlName("NotificationConfiguration"))
-            .annotate({ identifier: "NotificationConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          SkipDestinationValidation: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-skip-destination-validation"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?notification" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketNotificationConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketNotificationConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          OwnershipControls: __S(195, __c24, 3)
-            .pipe(T.HttpPayload(), T.XmlName("OwnershipControls"))
-            .annotate({ identifier: "OwnershipControls" }),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?ownershipControls" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketOwnershipControlsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketOwnershipControlsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ConfirmRemoveSelfBucketAccess: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-confirm-remove-self-bucket-access"),
-          ),
-          Policy: S.String.pipe(T.HttpPayload()),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketPolicyRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketPolicyResponse",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ReplicationConfiguration: __S(218, __c27, 2)
-            .pipe(T.HttpPayload(), T.XmlName("ReplicationConfiguration"))
-            .annotate({ identifier: "ReplicationConfiguration" }),
-          Token: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-object-lock-token")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?replication" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketReplicationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketReplicationResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Payer: S.String })).annotate({
-        identifier: "RequestPaymentConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          RequestPaymentConfiguration: __S(354, __c44, 2)
-            .pipe(T.HttpPayload(), T.XmlName("RequestPaymentConfiguration"))
-            .annotate({ identifier: "RequestPaymentConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?requestPayment" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketRequestPaymentRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketRequestPaymentResponse",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ TagSet: __S(14, __c1, 6) })).annotate({
-        identifier: "Tagging",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          Tagging: __S(357, __c44, 5).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketTaggingRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketTaggingResponse",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MFADelete: S.optional(S.String).pipe(T.XmlName("MfaDelete")),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersioningConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          MFA: S.optional(S.String).pipe(T.HttpHeader("x-amz-mfa")),
-          VersioningConfiguration: __S(360, __c45, 0)
-            .pipe(T.HttpPayload(), T.XmlName("VersioningConfiguration"))
-            .annotate({ identifier: "VersioningConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?versioning" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBucketVersioningRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketVersioningResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ErrorDocument: S.optional(__S(229, __c28, 5)),
-          IndexDocument: S.optional(__S(228, __c28, 4)),
-          RedirectAllRequestsTo: S.optional(__S(227, __c28, 3)),
-          RoutingRules: S.optional(__S(233, __c29, 1)),
-        }),
-      ).annotate({ identifier: "WebsiteConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          WebsiteConfiguration: __S(363, __c45, 3)
-            .pipe(T.HttpPayload(), T.XmlName("WebsiteConfiguration"))
-            .annotate({ identifier: "WebsiteConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?website" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "PutBucketWebsiteRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutBucketWebsiteResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
-          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-          ContentDisposition: S.optional(S.String).pipe(T.HttpHeader("Content-Disposition")),
-          ContentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
-          ContentLanguage: S.optional(S.String).pipe(T.HttpHeader("Content-Language")),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
-          IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          IfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
-          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
-          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
-          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          WriteOffsetBytes: S.optional(S.Number).pipe(T.HttpHeader("x-amz-write-offset-bytes")),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          StorageClass: S.optional(S.String).pipe(T.HttpHeader("x-amz-storage-class")),
-          WebsiteRedirectLocation: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-website-redirect-location"),
-          ),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          SSEKMSEncryptionContext: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-context"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          Tagging: S.optional(S.String).pipe(T.HttpHeader("x-amz-tagging")),
-          ObjectLockMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-lock-mode")),
-          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-object-lock-retain-until-date"),
-          ),
-          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-legal-hold"),
-          ),
-          ObjectLockEventHold: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold"),
-          ),
-          ObjectLockEventHoldDurationDays: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-days"),
-          ),
-          ObjectLockEventHoldDurationYears: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-object-lock-event-hold-duration-years"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=PutObject" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-          ),
-        ),
-      ).annotate({ identifier: "PutObjectRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-expiration")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          SSEKMSEncryptionContext: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-context"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          Size: S.optional(S.Number).pipe(T.HttpHeader("x-amz-object-size")),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "PutObjectOutput" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ACL: S.optional(S.String).pipe(T.HttpHeader("x-amz-acl")),
-          AccessControlPolicy: S.optional(__S(324, __c40, 4))
-            .pipe(T.HttpPayload(), T.XmlName("AccessControlPolicy"))
-            .annotate({ identifier: "AccessControlPolicy" }),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          GrantFullControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-full-control")),
-          GrantRead: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read")),
-          GrantReadACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-read-acp")),
-          GrantWrite: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write")),
-          GrantWriteACP: S.optional(S.String).pipe(T.HttpHeader("x-amz-grant-write-acp")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?acl" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({ identifier: "PutObjectAclRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "PutObjectAclOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
-          AnnotationPayload: T.StreamingInput.pipe(T.HttpPayload()),
-          ObjectIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-if-match")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?annotation" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutObjectAnnotationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(S.String),
-          AnnotationName: S.optional(S.String),
-          ObjectVersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-object-version-id")),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          ChecksumType: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-type")),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "PutObjectAnnotationOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          LegalHold: S.optional(__S(249, __c31, 1))
-            .pipe(T.HttpPayload(), T.XmlName("LegalHold"))
-            .annotate({ identifier: "ObjectLockLegalHold" }),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?legal-hold" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutObjectLegalHoldRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "PutObjectLegalHoldOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ObjectLockConfiguration: S.optional(__S(255, __c31, 7))
-            .pipe(T.HttpPayload(), T.XmlName("ObjectLockConfiguration"))
-            .annotate({ identifier: "ObjectLockConfiguration" }),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          Token: S.optional(S.String).pipe(T.HttpHeader("x-amz-bucket-object-lock-token")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?object-lock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutObjectLockConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "PutObjectLockConfigurationOutput",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          Retention: S.optional(__S(258, __c32, 2))
-            .pipe(T.HttpPayload(), T.XmlName("Retention"))
-            .annotate({ identifier: "ObjectLockRetention" }),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          BypassGovernanceRetention: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-bypass-governance-retention"),
-          ),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?retention" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutObjectRetentionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "PutObjectRetentionOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          Tagging: __S(357, __c44, 5).pipe(T.HttpPayload(), T.XmlName("Tagging")).annotate({
-            identifier: "Tagging",
-          }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?tagging" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({ identifier: "PutObjectTaggingRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-version-id")) }).pipe(
-          ns,
-        ),
-      ).annotate({ identifier: "PutObjectTaggingOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          PublicAccessBlockConfiguration: __S(265, __c33, 1)
-            .pipe(T.HttpPayload(), T.XmlName("PublicAccessBlockConfiguration"))
-            .annotate({ identifier: "PublicAccessBlockConfiguration" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?publicAccessBlock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "PutPublicAccessBlockRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "PutPublicAccessBlockResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          RenameSource: S.String.pipe(T.HttpHeader("x-amz-rename-source")),
-          DestinationIfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
-          DestinationIfNoneMatch: S.optional(S.String).pipe(T.HttpHeader("If-None-Match")),
-          DestinationIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("If-Modified-Since"),
-          ),
-          DestinationIfUnmodifiedSince: S.optional(
-            S.Date.pipe(T.TimestampFormat("http-date")),
-          ).pipe(T.HttpHeader("If-Unmodified-Since")),
-          SourceIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-rename-source-if-match")),
-          SourceIfNoneMatch: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-rename-source-if-none-match"),
-          ),
-          SourceIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-rename-source-if-modified-since"),
-          ),
-          SourceIfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-rename-source-if-unmodified-since"),
-          ),
-          ClientToken: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-client-token"),
-            T.IdempotencyToken(),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?renameObject" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "RenameObjectRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "RenameObjectOutput",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tier: S.String })).annotate({
-        identifier: "GlacierJobParameters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FileHeaderInfo: S.optional(S.String),
-          Comments: S.optional(S.String),
-          QuoteEscapeCharacter: S.optional(S.String),
-          RecordDelimiter: S.optional(S.String),
-          FieldDelimiter: S.optional(S.String),
-          QuoteCharacter: S.optional(S.String),
-          AllowQuotedRecordDelimiter: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CSVInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
-        identifier: "JSONInput",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ParquetInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CSV: S.optional(__S(385, __c48, 1)),
-          CompressionType: S.optional(S.String),
-          JSON: S.optional(__S(386, __c48, 2)),
-          Parquet: S.optional(__S(387, __c48, 3)),
-        }),
-      ).annotate({ identifier: "InputSerialization" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          QuoteFields: S.optional(S.String),
-          QuoteEscapeCharacter: S.optional(S.String),
-          RecordDelimiter: S.optional(S.String),
-          FieldDelimiter: S.optional(S.String),
-          QuoteCharacter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CSVOutput" });
-    case 6:
-      return S.suspend(() => S.Struct({ RecordDelimiter: S.optional(S.String) })).annotate({
-        identifier: "JSONOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ CSV: S.optional(__S(389, __c48, 5)), JSON: S.optional(__S(390, __c48, 6)) }),
-      ).annotate({ identifier: "OutputSerialization" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          InputSerialization: __S(388, __c48, 4),
-          ExpressionType: S.String,
-          Expression: S.String,
-          OutputSerialization: __S(391, __c48, 7),
-        }),
-      ).annotate({ identifier: "SelectParameters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EncryptionType: S.String,
-          KMSKeyId: S.optional(SensitiveString),
-          KMSContext: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Encryption" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "MetadataEntry" });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(394, __c49, 2).pipe(/*@__PURE__*/ T.XmlName("MetadataEntry")).annotate({
-          identifier: "MetadataEntry",
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BucketName: S.String,
-          Prefix: S.String,
-          Encryption: S.optional(__S(393, __c49, 1)),
-          CannedACL: S.optional(S.String),
-          AccessControlList: S.optional(__S(91, __c11, 3)),
-          Tagging: S.optional(__S(357, __c44, 5)),
-          UserMetadata: S.optional(__S(395, __c49, 3)),
-          StorageClass: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3Location" });
-    case 5:
-      return S.suspend(() => S.Struct({ S3: S.optional(__S(396, __c49, 4)) })).annotate({
-        identifier: "OutputLocation",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Days: S.optional(S.Number),
-          GlacierJobParameters: S.optional(__S(384, __c48, 0)),
-          Type: S.optional(S.String),
-          Tier: S.optional(S.String),
-          Description: S.optional(S.String),
-          SelectParameters: S.optional(__S(392, __c49, 0)),
-          OutputLocation: S.optional(__S(397, __c49, 5)),
-        }),
-      ).annotate({ identifier: "RestoreRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          RestoreRequest: S.optional(__S(398, __c49, 6))
-            .pipe(T.HttpPayload(), T.XmlName("RestoreRequest"))
-            .annotate({ identifier: "RestoreRequest" }),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/{Bucket}/{Key+}?restore" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-          ),
-        ),
-      ).annotate({ identifier: "RestoreObjectRequest" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-          RestoreOutputPath: S.optional(S.String).pipe(T.HttpHeader("x-amz-restore-output-path")),
-        }).pipe(ns),
-      ).annotate({ identifier: "RestoreObjectOutput" });
-    case 1:
-      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "RequestProgress",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Start: S.optional(S.Number), End: S.optional(S.Number) }),
-      ).annotate({ identifier: "ScanRange" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          Expression: S.String,
-          ExpressionType: S.String,
-          RequestProgress: S.optional(__S(401, __c50, 1)),
-          InputSerialization: __S(388, __c48, 4),
-          OutputSerialization: __S(391, __c48, 7),
-          ScanRange: S.optional(__S(402, __c50, 2)),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/{Bucket}/{Key+}?select&select-type=2" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "SelectObjectContentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Payload: S.optional(T.Blob).pipe(T.EventPayload()) }),
-      ).annotate({ identifier: "RecordsEvent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BytesScanned: S.optional(S.Number),
-          BytesProcessed: S.optional(S.Number),
-          BytesReturned: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Stats" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Details: S.optional(__S(405, __c50, 5))
-            .pipe(T.EventPayload())
-            .annotate({ identifier: "Stats" }),
-        }),
-      ).annotate({ identifier: "StatsEvent" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          BytesScanned: S.optional(S.Number),
-          BytesProcessed: S.optional(S.Number),
-          BytesReturned: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Progress" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Details: S.optional(__S(407, __c50, 7))
-            .pipe(T.EventPayload())
-            .annotate({ identifier: "Progress" }),
-        }),
-      ).annotate({ identifier: "ProgressEvent" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ContinuationEvent",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EndEvent",
-      });
-    case 3:
-      return T.EventStream(
-        /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ Records: __S(404, __c50, 4) }),
-          /*@__PURE__*/ S.Struct({ Stats: __S(406, __c50, 6) }),
-          /*@__PURE__*/ S.Struct({ Progress: __S(408, __c51, 0) }),
-          /*@__PURE__*/ S.Struct({ Cont: __S(409, __c51, 1) }),
-          /*@__PURE__*/ S.Struct({ End: __S(410, __c51, 2) }),
-        ]),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Payload: S.optional(__S(411, __c51, 3)).pipe(T.HttpPayload()),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "SelectObjectContentOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationState: S.String,
-          EncryptionConfiguration: S.optional(__S(19, __c2, 3)),
-          Role: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnnotationTableConfigurationUpdates",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          AnnotationTableConfiguration: __S(413, __c51, 5)
-            .pipe(T.HttpPayload(), T.XmlName("AnnotationTableConfiguration"))
-            .annotate({ identifier: "AnnotationTableConfigurationUpdates" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?metadataAnnotationTable" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataAnnotationTableConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateBucketMetadataAnnotationTableConfigurationResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationState: S.String,
-          EncryptionConfiguration: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "InventoryTableConfigurationUpdates",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          InventoryTableConfiguration: __S(416, __c52, 0)
-            .pipe(T.HttpPayload(), T.XmlName("InventoryTableConfiguration"))
-            .annotate({ identifier: "InventoryTableConfigurationUpdates" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?metadataInventoryTable" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataInventoryTableConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateBucketMetadataInventoryTableConfigurationResponse",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ RecordExpiration: __S(18, __c2, 2) })).annotate({
-        identifier: "JournalTableConfigurationUpdates",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          JournalTableConfiguration: __S(419, __c52, 3)
-            .pipe(T.HttpPayload(), T.XmlName("JournalTableConfiguration"))
-            .annotate({ identifier: "JournalTableConfigurationUpdates" }),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}?metadataJournalTable" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-            T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateBucketMetadataJournalTableConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "UpdateBucketMetadataJournalTableConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ KMSKeyArn: SensitiveString, BucketKeyEnabled: S.optional(S.Boolean) }).pipe(
-          T.XmlName("SSE-KMS"),
-        ),
-      ).annotate({ identifier: "SSEKMSEncryption" });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          SSEKMS: /*@__PURE__*/ __S(422, __c52, 6)
-            .pipe(/*@__PURE__*/ T.XmlName("SSE-KMS"))
-            .annotate({
-              identifier: "SSEKMSEncryption",
-            }),
-        }),
-      ]);
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
-          ObjectEncryption: __S(423, __c52, 7).pipe(T.HttpPayload()),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?encryption" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({
-              requestAlgorithmMember: "ChecksumAlgorithm",
-              requestChecksumRequired: true,
-            }),
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateObjectEncryptionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "UpdateObjectEncryptionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
-          ChecksumAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-sdk-checksum-algorithm"),
-          ),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
-          PartNumber: S.Number.pipe(T.HttpQuery("partNumber")),
-          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=UploadPart" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.AwsProtocolsHttpChecksum({ requestAlgorithmMember: "ChecksumAlgorithm" }),
-          ),
-        ),
-      ).annotate({ identifier: "UploadPartRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-          ChecksumCRC32: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32")),
-          ChecksumCRC32C: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc32c")),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-crc64nvme")),
-          ChecksumSHA1: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha1")),
-          ChecksumSHA256: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha256")),
-          ChecksumSHA512: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-sha512")),
-          ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
-          ChecksumXXHASH64: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash64")),
-          ChecksumXXHASH3: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash3")),
-          ChecksumXXHASH128: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-xxhash128")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "UploadPartOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
-          CopySource: S.String.pipe(T.HttpHeader("x-amz-copy-source")),
-          CopySourceIfMatch: S.optional(S.String).pipe(T.HttpHeader("x-amz-copy-source-if-match")),
-          CopySourceIfModifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-copy-source-if-modified-since"),
-          ),
-          CopySourceIfNoneMatch: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-copy-source-if-none-match"),
-          ),
-          CopySourceIfUnmodifiedSince: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-copy-source-if-unmodified-since"),
-          ),
-          CopySourceRange: S.optional(S.String).pipe(T.HttpHeader("x-amz-copy-source-range")),
-          Key: S.String.pipe(T.HttpLabel("Key")),
-          PartNumber: S.Number.pipe(T.HttpQuery("partNumber")),
-          UploadId: S.String.pipe(T.HttpQuery("uploadId")),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          CopySourceSSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-algorithm"),
-          ),
-          CopySourceSSECustomerKey: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-key"),
-          ),
-          CopySourceSSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-copy-source-server-side-encryption-customer-key-MD5"),
-          ),
-          RequestPayer: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-payer")),
-          ExpectedBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-expected-bucket-owner"),
-          ),
-          ExpectedSourceBucketOwner: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-source-expected-bucket-owner"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?x-id=UploadPartCopy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ DisableS3ExpressSessionAuth: { value: true } }),
-          ),
-        ),
-      ).annotate({ identifier: "UploadPartCopyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ETag: S.optional(S.String),
-          LastModified: S.optional(T.DateFromString),
-          ChecksumCRC32: S.optional(S.String),
-          ChecksumCRC32C: S.optional(S.String),
-          ChecksumCRC64NVME: S.optional(S.String),
-          ChecksumSHA1: S.optional(S.String),
-          ChecksumSHA256: S.optional(S.String),
-          ChecksumSHA512: S.optional(S.String),
-          ChecksumMD5: S.optional(S.String),
-          ChecksumXXHASH64: S.optional(S.String),
-          ChecksumXXHASH3: S.optional(S.String),
-          ChecksumXXHASH128: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CopyPartResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CopySourceVersionId: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-copy-source-version-id"),
-          ),
-          CopyPartResult: S.optional(__S(429, __c53, 5))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "CopyPartResult" }),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption"),
-          ),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-          RequestCharged: S.optional(S.String).pipe(T.HttpHeader("x-amz-request-charged")),
-        }).pipe(ns),
-      ).annotate({ identifier: "UploadPartCopyOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RequestRoute: S.String.pipe(T.HttpHeader("x-amz-request-route"), T.HostLabel()),
-          RequestToken: S.String.pipe(T.HttpHeader("x-amz-request-token")),
-          Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-          StatusCode: S.optional(S.Number).pipe(T.HttpHeader("x-amz-fwd-status")),
-          ErrorCode: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-error-code")),
-          ErrorMessage: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-error-message")),
-          AcceptRanges: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-accept-ranges")),
-          CacheControl: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Cache-Control")),
-          ContentDisposition: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-Content-Disposition"),
-          ),
-          ContentEncoding: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-Content-Encoding"),
-          ),
-          ContentLanguage: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-Content-Language"),
-          ),
-          ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
-          ContentRange: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Content-Range")),
-          ContentType: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Content-Type")),
-          ChecksumCRC32: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc32"),
-          ),
-          ChecksumCRC32C: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc32c"),
-          ),
-          ChecksumCRC64NVME: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-crc64nvme"),
-          ),
-          ChecksumSHA1: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha1"),
-          ),
-          ChecksumSHA256: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha256"),
-          ),
-          ChecksumSHA512: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha512"),
-          ),
-          ChecksumMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-md5"),
-          ),
-          ChecksumXXHASH64: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash64"),
-          ),
-          ChecksumXXHASH3: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash3"),
-          ),
-          ChecksumXXHASH128: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash128"),
-          ),
-          DeleteMarker: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-delete-marker"),
-          ),
-          ETag: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-ETag")),
-          Expires: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-Expires")),
-          Expiration: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-expiration")),
-          LastModified: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-fwd-header-Last-Modified"),
-          ),
-          MissingMeta: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-missing-meta"),
-          ),
-          Metadata: S.optional(__S(7, __c0, 7)).pipe(T.HttpPrefixHeaders("x-amz-meta-")),
-          ObjectLockMode: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-mode"),
-          ),
-          ObjectLockLegalHoldStatus: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-legal-hold"),
-          ),
-          ObjectLockRetainUntilDate: S.optional(S.Date.pipe(T.TimestampFormat("http-date"))).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-object-lock-retain-until-date"),
-          ),
-          PartsCount: S.optional(S.Number).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-mp-parts-count"),
-          ),
-          ReplicationStatus: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-replication-status"),
-          ),
-          RequestCharged: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-request-charged"),
-          ),
-          Restore: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-restore")),
-          ServerSideEncryption: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption"),
-          ),
-          SSECustomerAlgorithm: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm"),
-          ),
-          SSEKMSKeyId: S.optional(SensitiveString).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id"),
-          ),
-          SSECustomerKeyMD5: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5"),
-          ),
-          StorageClass: S.optional(S.String).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-storage-class"),
-          ),
-          TagCount: S.optional(S.Number).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-tagging-count")),
-          VersionId: S.optional(S.String).pipe(T.HttpHeader("x-amz-fwd-header-x-amz-version-id")),
-          BucketKeyEnabled: S.optional(S.Boolean).pipe(
-            T.HttpHeader("x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled"),
-          ),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/WriteGetObjectResponse" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-            T.StaticContextParams({ UseObjectLambdaEndpoint: { value: true } }),
-          ),
-        ),
-      ).annotate({
-        identifier: "WriteGetObjectResponseRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "WriteGetObjectResponseResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

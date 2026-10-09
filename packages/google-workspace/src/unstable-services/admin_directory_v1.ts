@@ -2633,8 +2633,8 @@ export const actionChromeosdevices: API.OperationMethod<
   ActionChromeosdevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ActionChromeosdevicesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ActionChromeosdevicesResponse>,
+  input: __S(2209, __c69, 1) as any as S.Schema<ActionChromeosdevicesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<ActionChromeosdevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2653,8 +2653,8 @@ export const actionMobiledevices: API.OperationMethod<
   ActionMobiledevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ActionMobiledevicesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ActionMobiledevicesResponse>,
+  input: __S(2881, __c90, 1) as any as S.Schema<ActionMobiledevicesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<ActionMobiledevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2673,8 +2673,8 @@ export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
   BatchChangeStatusCustomerDevicesChromeosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>,
+  input: __S(3425, __c107, 1) as any as S.Schema<BatchChangeStatusCustomerDevicesChromeosRequest>,
+  output: __S(3430, __c107, 6) as any as S.Schema<BatchChangeChromeOsDeviceStatusResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
   BatchCreatePrintersCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<BatchCreatePrintersResponse>,
+  input: __S(3907, __c122, 3) as any as S.Schema<BatchCreatePrintersCustomersChromePrintersRequest>,
+  output: __S(3908, __c122, 4) as any as S.Schema<BatchCreatePrintersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2714,11 +2714,11 @@ export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMe
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    4355,
+    __c136,
+    3,
   ) as any as S.Schema<BatchCreatePrintServersCustomersChromePrintServersRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<BatchCreatePrintServersResponse>,
+  output: __S(4356, __c136, 4) as any as S.Schema<BatchCreatePrintServersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2737,8 +2737,8 @@ export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
   BatchDeletePrintersCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<BatchDeletePrintersResponse>,
+  input: __S(4833, __c151, 1) as any as S.Schema<BatchDeletePrintersCustomersChromePrintersRequest>,
+  output: __S(4834, __c151, 2) as any as S.Schema<BatchDeletePrintersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2758,11 +2758,11 @@ export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMe
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    1,
+    __c0,
+    1,
   ) as any as S.Schema<BatchDeletePrintServersCustomersChromePrintServersRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<BatchDeletePrintServersResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<BatchDeletePrintServersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2779,8 +2779,8 @@ export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
   CountChromeOsDevicesCustomerDevicesChromeosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<CountChromeOsDevicesResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CountChromeOsDevicesCustomerDevicesChromeosRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<CountChromeOsDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2799,8 +2799,8 @@ export const createCustomersChromePrinters: API.OperationMethod<
   CreateCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateCustomersChromePrintersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Printer>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateCustomersChromePrintersRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<Printer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2819,8 +2819,8 @@ export const createCustomersChromePrintServers: API.OperationMethod<
   CreateCustomersChromePrintServersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateCustomersChromePrintServersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PrintServer>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateCustomersChromePrintServersRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<PrintServer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2839,8 +2839,8 @@ export const createGuestUsers: API.OperationMethod<
   CreateGuestUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateGuestUsersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<User>,
+  input: __S(1185, __c37, 1) as any as S.Schema<CreateGuestUsersRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2854,8 @@ export const deleteAsps: API.OperationMethod<
   DeleteAspsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteAspsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteAspsResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DeleteAspsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteAspsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2874,8 +2874,8 @@ export const deleteCustomersChromePrinters: API.OperationMethod<
   DeleteCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteCustomersChromePrintersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteCustomersChromePrintersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2894,8 +2894,8 @@ export const deleteCustomersChromePrintServers: API.OperationMethod<
   DeleteCustomersChromePrintServersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteCustomersChromePrintServersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteCustomersChromePrintServersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2914,8 @@ export const deleteDomainAliases: API.OperationMethod<
   DeleteDomainAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteDomainAliasesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteDomainAliasesResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteDomainAliasesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteDomainAliasesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2934,8 +2934,8 @@ export const deleteDomains: API.OperationMethod<
   DeleteDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteDomainsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteDomainsResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DeleteDomainsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteDomainsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2954,8 +2954,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteGroupsResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteGroupsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteGroupsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2974,8 @@ export const deleteGroupsAliases: API.OperationMethod<
   DeleteGroupsAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteGroupsAliasesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteGroupsAliasesResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DeleteGroupsAliasesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteGroupsAliasesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2994,8 +2994,8 @@ export const deleteMembers: API.OperationMethod<
   DeleteMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteMembersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMembersResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteMembersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3014,8 +3014,8 @@ export const deleteMobiledevices: API.OperationMethod<
   DeleteMobiledevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteMobiledevicesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteMobiledevicesResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteMobiledevicesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteMobiledevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3034,8 +3034,8 @@ export const deleteOrgunits: API.OperationMethod<
   DeleteOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteOrgunitsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteOrgunitsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteOrgunitsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteOrgunitsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3054,8 +3054,8 @@ export const deleteResourcesBuildings: API.OperationMethod<
   DeleteResourcesBuildingsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteResourcesBuildingsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteResourcesBuildingsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DeleteResourcesBuildingsRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<DeleteResourcesBuildingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3074,8 +3074,8 @@ export const deleteResourcesCalendars: API.OperationMethod<
   DeleteResourcesCalendarsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteResourcesCalendarsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteResourcesCalendarsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<DeleteResourcesCalendarsRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<DeleteResourcesCalendarsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3094,8 +3094,8 @@ export const deleteResourcesFeatures: API.OperationMethod<
   DeleteResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteResourcesFeaturesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DeleteResourcesFeaturesResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DeleteResourcesFeaturesRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<DeleteResourcesFeaturesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3114,8 +3114,8 @@ export const deleteRoleAssignments: API.OperationMethod<
   DeleteRoleAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteRoleAssignmentsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteRoleAssignmentsResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteRoleAssignmentsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteRoleAssignmentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3134,8 +3134,8 @@ export const deleteRoles: API.OperationMethod<
   DeleteRolesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteRolesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteRolesResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteRolesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteRolesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const deleteSchemas: API.OperationMethod<
   DeleteSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteSchemasRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteSchemasResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeleteSchemasRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteSchemasResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3174,8 +3174,8 @@ export const deleteTokens: API.OperationMethod<
   DeleteTokensError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteTokensRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteTokensResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteTokensRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteTokensResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3194,8 +3194,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteUsersResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DeleteUsersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3214,8 +3214,8 @@ export const deleteUsersAliases: API.OperationMethod<
   DeleteUsersAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteUsersAliasesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteUsersAliasesResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DeleteUsersAliasesRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteUsersAliasesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3234,8 +3234,8 @@ export const deleteUsersPhotos: API.OperationMethod<
   DeleteUsersPhotosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteUsersPhotosRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteUsersPhotosResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<DeleteUsersPhotosRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<DeleteUsersPhotosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3254,8 +3254,8 @@ export const generateVerificationCodes: API.OperationMethod<
   GenerateVerificationCodesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GenerateVerificationCodesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GenerateVerificationCodesResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GenerateVerificationCodesRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<GenerateVerificationCodesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3269,8 +3269,8 @@ export const getAsps: API.OperationMethod<
   GetAspsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetAspsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Asp>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetAspsRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<Asp>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3284,8 +3284,8 @@ export const getChromeosdevices: API.OperationMethod<
   GetChromeosdevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetChromeosdevicesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ChromeOsDevice>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetChromeosdevicesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ChromeOsDevice>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3299,8 +3299,8 @@ export const getCustomerDevicesChromeosCommands: API.OperationMethod<
   GetCustomerDevicesChromeosCommandsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<DirectoryChromeosdevicesCommand>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetCustomerDevicesChromeosCommandsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<DirectoryChromeosdevicesCommand>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3314,8 +3314,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetCustomersRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<Customer>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetCustomersRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3329,8 +3329,8 @@ export const getCustomersChromePrinters: API.OperationMethod<
   GetCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetCustomersChromePrintersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Printer>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetCustomersChromePrintersRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<Printer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3344,8 +3344,8 @@ export const getCustomersChromePrintServers: API.OperationMethod<
   GetCustomersChromePrintServersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetCustomersChromePrintServersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PrintServer>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetCustomersChromePrintServersRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<PrintServer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3359,8 +3359,8 @@ export const getDomainAliases: API.OperationMethod<
   GetDomainAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetDomainAliasesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<DomainAlias>,
+  input: __S(2336, __c73, 0) as any as S.Schema<GetDomainAliasesRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DomainAlias>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3374,8 +3374,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetDomainsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Domains>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<Domains>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3389,8 +3389,8 @@ export const getGroups: API.OperationMethod<
   GetGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetGroupsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<Group>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetGroupsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3404,8 +3404,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetMembersRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Member>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetMembersRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3419,8 +3419,8 @@ export const getMobiledevices: API.OperationMethod<
   GetMobiledevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetMobiledevicesRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<MobileDevice>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetMobiledevicesRequest>,
+  output: __S(2658, __c83, 2) as any as S.Schema<MobileDevice>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3434,8 +3434,8 @@ export const getOrgunits: API.OperationMethod<
   GetOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetOrgunitsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<OrgUnit>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetOrgunitsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<OrgUnit>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3449,8 +3449,8 @@ export const getResourcesBuildings: API.OperationMethod<
   GetResourcesBuildingsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetResourcesBuildingsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<Building>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetResourcesBuildingsRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<Building>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3464,8 +3464,8 @@ export const getResourcesCalendars: API.OperationMethod<
   GetResourcesCalendarsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetResourcesCalendarsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CalendarResource>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetResourcesCalendarsRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<CalendarResource>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3479,8 +3479,8 @@ export const getResourcesFeatures: API.OperationMethod<
   GetResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetResourcesFeaturesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<Feature>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetResourcesFeaturesRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Feature>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3494,8 +3494,8 @@ export const getRoleAssignments: API.OperationMethod<
   GetRoleAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetRoleAssignmentsRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<RoleAssignment>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetRoleAssignmentsRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RoleAssignment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3509,8 +3509,8 @@ export const getRoles: API.OperationMethod<
   GetRolesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetRolesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<Role>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetRolesRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3524,8 +3524,8 @@ export const getSchemas: API.OperationMethod<
   GetSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetSchemasRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<Admin_Schema>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetSchemasRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<Admin_Schema>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3539,8 +3539,8 @@ export const getTokens: API.OperationMethod<
   GetTokensError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetTokensRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<Token>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetTokensRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<Token>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3554,8 +3554,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetUsersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<User>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetUsersRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3569,8 +3569,8 @@ export const getUsersPhotos: API.OperationMethod<
   GetUsersPhotosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetUsersPhotosRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<UserPhoto>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetUsersPhotosRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<UserPhoto>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3584,8 +3584,8 @@ export const hasMemberMembers: API.OperationMethod<
   HasMemberMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<HasMemberMembersRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<MembersHasMember>,
+  input: __S(3328, __c104, 0) as any as S.Schema<HasMemberMembersRequest>,
+  output: __S(3329, __c104, 1) as any as S.Schema<MembersHasMember>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3604,8 +3604,8 @@ export const insertDomainAliases: API.OperationMethod<
   InsertDomainAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<InsertDomainAliasesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<DomainAlias>,
+  input: __S(3360, __c105, 0) as any as S.Schema<InsertDomainAliasesRequest>,
+  output: __S(2368, __c74, 0) as any as S.Schema<DomainAlias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3624,8 +3624,8 @@ export const insertDomains: API.OperationMethod<
   InsertDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<InsertDomainsRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<Domains>,
+  input: __S(3392, __c106, 0) as any as S.Schema<InsertDomainsRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<Domains>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3644,8 +3644,8 @@ export const insertGroups: API.OperationMethod<
   InsertGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<InsertGroupsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<Group>,
+  input: __S(3552, __c111, 0) as any as S.Schema<InsertGroupsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3664,8 +3664,8 @@ export const insertGroupsAliases: API.OperationMethod<
   InsertGroupsAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<InsertGroupsAliasesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<Alias>,
+  input: __S(3584, __c112, 0) as any as S.Schema<InsertGroupsAliasesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<Alias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3684,8 +3684,8 @@ export const insertMembers: API.OperationMethod<
   InsertMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<InsertMembersRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Member>,
+  input: __S(3648, __c114, 0) as any as S.Schema<InsertMembersRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3704,8 +3704,8 @@ export const insertOrgunits: API.OperationMethod<
   InsertOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<InsertOrgunitsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<OrgUnit>,
+  input: __S(3680, __c115, 0) as any as S.Schema<InsertOrgunitsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<OrgUnit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3724,8 @@ export const insertResourcesBuildings: API.OperationMethod<
   InsertResourcesBuildingsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<InsertResourcesBuildingsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<Building>,
+  input: __S(3712, __c116, 0) as any as S.Schema<InsertResourcesBuildingsRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<Building>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3744,8 +3744,8 @@ export const insertResourcesCalendars: API.OperationMethod<
   InsertResourcesCalendarsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<InsertResourcesCalendarsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CalendarResource>,
+  input: __S(3744, __c117, 0) as any as S.Schema<InsertResourcesCalendarsRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<CalendarResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3764,8 +3764,8 @@ export const insertResourcesFeatures: API.OperationMethod<
   InsertResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<InsertResourcesFeaturesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<Feature>,
+  input: __S(3776, __c118, 0) as any as S.Schema<InsertResourcesFeaturesRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Feature>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3784,8 @@ export const insertRoleAssignments: API.OperationMethod<
   InsertRoleAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<InsertRoleAssignmentsRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<RoleAssignment>,
+  input: __S(3808, __c119, 0) as any as S.Schema<InsertRoleAssignmentsRequest>,
+  output: __S(3009, __c94, 1) as any as S.Schema<RoleAssignment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3804,8 +3804,8 @@ export const insertRoles: API.OperationMethod<
   InsertRolesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<InsertRolesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<Role>,
+  input: __S(3840, __c120, 0) as any as S.Schema<InsertRolesRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3824,8 +3824,8 @@ export const insertSchemas: API.OperationMethod<
   InsertSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<InsertSchemasRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<Admin_Schema>,
+  input: __S(3872, __c121, 0) as any as S.Schema<InsertSchemasRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<Admin_Schema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3844,8 @@ export const insertUsers: API.OperationMethod<
   InsertUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<InsertUsersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<User>,
+  input: __S(4032, __c126, 0) as any as S.Schema<InsertUsersRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3864,8 +3864,8 @@ export const insertUsersAliases: API.OperationMethod<
   InsertUsersAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<InsertUsersAliasesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<Alias>,
+  input: __S(4064, __c127, 0) as any as S.Schema<InsertUsersAliasesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<Alias>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3884,8 +3884,8 @@ export const invalidateVerificationCodes: API.OperationMethod<
   InvalidateVerificationCodesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<InvalidateVerificationCodesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<InvalidateVerificationCodesResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<InvalidateVerificationCodesRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<InvalidateVerificationCodesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3904,8 +3904,8 @@ export const issueCommandCustomerDevicesChromeos: API.OperationMethod<
   IssueCommandCustomerDevicesChromeosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>,
+  input: __S(4129, __c129, 1) as any as S.Schema<IssueCommandCustomerDevicesChromeosRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<DirectoryChromeosdevicesIssueCommandResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3919,8 +3919,8 @@ export const listAsps: API.OperationMethod<
   ListAspsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ListAspsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<Asps>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ListAspsRequest>,
+  output: __S(4162, __c130, 2) as any as S.Schema<Asps>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3935,8 +3935,8 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ChromeOsDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListChromeosdevicesRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ChromeOsDevices>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ListChromeosdevicesRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<ChromeOsDevices>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3952,8 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListPrintersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListCustomersChromePrintersRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListPrintersResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<ListCustomersChromePrintersRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<ListPrintersResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3969,8 +3969,8 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListPrintServersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListCustomersChromePrintServersRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListPrintServersResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<ListCustomersChromePrintServersRequest>,
+  output: __S(4257, __c133, 1) as any as S.Schema<ListPrintServersResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3985,8 +3985,8 @@ export const listDomainAliases: API.OperationMethod<
   ListDomainAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListDomainAliasesRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<DomainAliases>,
+  input: __S(4288, __c134, 0) as any as S.Schema<ListDomainAliasesRequest>,
+  output: __S(4289, __c134, 1) as any as S.Schema<DomainAliases>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4000,8 +4000,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListDomainsRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<Domains2>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(4322, __c135, 2) as any as S.Schema<Domains2>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4016,8 +4016,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Groups
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ListGroupsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Groups>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(4482, __c140, 2) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4032,8 +4032,8 @@ export const listGroupsAliases: API.OperationMethod<
   ListGroupsAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListGroupsAliasesRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<Aliases>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListGroupsAliasesRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<Aliases>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4048,8 +4048,8 @@ export const listMembers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Members
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListMembersRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<Members>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(4578, __c143, 2) as any as S.Schema<Members>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4065,8 +4065,8 @@ export const listMobiledevices: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   MobileDevices
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListMobiledevicesRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<MobileDevices>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListMobiledevicesRequest>,
+  output: __S(4610, __c144, 2) as any as S.Schema<MobileDevices>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4081,8 +4081,8 @@ export const listOrgunits: API.OperationMethod<
   ListOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListOrgunitsRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<OrgUnits>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListOrgunitsRequest>,
+  output: __S(4642, __c145, 2) as any as S.Schema<OrgUnits>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4100,8 +4100,8 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
   GoogleWorkspaceOpContext,
   ListPrinterModelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<ListPrinterModelsResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<ListPrinterModelsCustomersChromePrintersRequest>,
+  output: __S(4675, __c146, 3) as any as S.Schema<ListPrinterModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4116,8 +4116,8 @@ export const listPrivileges: API.OperationMethod<
   ListPrivilegesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListPrivilegesRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<Privileges>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListPrivilegesRequest>,
+  output: __S(4707, __c147, 3) as any as S.Schema<Privileges>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4132,8 +4132,8 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Buildings
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListResourcesBuildingsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<Buildings>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListResourcesBuildingsRequest>,
+  output: __S(4738, __c148, 2) as any as S.Schema<Buildings>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4149,8 +4149,8 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   CalendarResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListResourcesCalendarsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<CalendarResources>,
+  input: __S(4768, __c149, 0) as any as S.Schema<ListResourcesCalendarsRequest>,
+  output: __S(4770, __c149, 2) as any as S.Schema<CalendarResources>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4166,8 +4166,8 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Features
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListResourcesFeaturesRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<Features>,
+  input: __S(4800, __c150, 0) as any as S.Schema<ListResourcesFeaturesRequest>,
+  output: __S(4802, __c150, 2) as any as S.Schema<Features>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4183,8 +4183,8 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   RoleAssignment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<ListRoleAssignmentsRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<RoleAssignments>,
+  input: __S(4864, __c152, 0) as any as S.Schema<ListRoleAssignmentsRequest>,
+  output: __S(4866, __c152, 2) as any as S.Schema<RoleAssignments>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4200,8 +4200,8 @@ export const listRoles: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Role
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListRolesRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<Roles>,
+  input: __S(4896, __c153, 0) as any as S.Schema<ListRolesRequest>,
+  output: __S(4898, __c153, 2) as any as S.Schema<Roles>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4216,8 +4216,8 @@ export const listSchemas: API.OperationMethod<
   ListSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListSchemasRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<Schemas>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ListSchemasRequest>,
+  output: __S(4930, __c154, 2) as any as S.Schema<Schemas>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4231,8 +4231,8 @@ export const listTokens: API.OperationMethod<
   ListTokensError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListTokensRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<Tokens>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListTokensRequest>,
+  output: __S(4962, __c155, 2) as any as S.Schema<Tokens>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4247,8 +4247,8 @@ export const listUsers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Users
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListUsersRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<Users>,
+  input: __S(4992, __c156, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(4994, __c156, 2) as any as S.Schema<Users>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4263,8 +4263,8 @@ export const listUsersAliases: API.OperationMethod<
   ListUsersAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListUsersAliasesRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<Aliases>,
+  input: __S(5024, __c157, 0) as any as S.Schema<ListUsersAliasesRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<Aliases>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4278,8 +4278,8 @@ export const listVerificationCodes: API.OperationMethod<
   ListVerificationCodesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListVerificationCodesRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<VerificationCodes>,
+  input: __S(5056, __c158, 0) as any as S.Schema<ListVerificationCodesRequest>,
+  output: __S(5059, __c158, 3) as any as S.Schema<VerificationCodes>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4298,8 +4298,8 @@ export const makeAdminUsers: API.OperationMethod<
   MakeAdminUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<MakeAdminUsersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MakeAdminUsersResponse>,
+  input: __S(5089, __c159, 1) as any as S.Schema<MakeAdminUsersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<MakeAdminUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4318,8 +4318,8 @@ export const moveDevicesToOuChromeosdevices: API.OperationMethod<
   MoveDevicesToOuChromeosdevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>,
+  input: __S(5121, __c160, 1) as any as S.Schema<MoveDevicesToOuChromeosdevicesRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<MoveDevicesToOuChromeosdevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4338,8 +4338,8 @@ export const patchChromeosdevices: API.OperationMethod<
   PatchChromeosdevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<PatchChromeosdevicesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ChromeOsDevice>,
+  input: __S(5152, __c161, 0) as any as S.Schema<PatchChromeosdevicesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ChromeOsDevice>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4358,8 +4358,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<PatchCustomersRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<Customer>,
+  input: __S(32, __c1, 0) as any as S.Schema<PatchCustomersRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4378,8 +4378,8 @@ export const patchCustomersChromePrinters: API.OperationMethod<
   PatchCustomersChromePrintersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<PatchCustomersChromePrintersRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Printer>,
+  input: __S(64, __c2, 0) as any as S.Schema<PatchCustomersChromePrintersRequest>,
+  output: __S(4002, __c125, 2) as any as S.Schema<Printer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4398,8 +4398,8 @@ export const patchCustomersChromePrintServers: API.OperationMethod<
   PatchCustomersChromePrintServersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<PatchCustomersChromePrintServersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PrintServer>,
+  input: __S(96, __c3, 0) as any as S.Schema<PatchCustomersChromePrintServersRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<PrintServer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4418,8 +4418,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<Group>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchGroupsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4438,8 +4438,8 @@ export const patchMembers: API.OperationMethod<
   PatchMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<PatchMembersRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Member>,
+  input: __S(160, __c5, 0) as any as S.Schema<PatchMembersRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4458,8 +4458,8 @@ export const patchOrgunits: API.OperationMethod<
   PatchOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<PatchOrgunitsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<OrgUnit>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchOrgunitsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<OrgUnit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4478,8 +4478,8 @@ export const patchResourcesBuildings: API.OperationMethod<
   PatchResourcesBuildingsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<PatchResourcesBuildingsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<Building>,
+  input: __S(224, __c7, 0) as any as S.Schema<PatchResourcesBuildingsRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<Building>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4498,8 +4498,8 @@ export const patchResourcesCalendars: API.OperationMethod<
   PatchResourcesCalendarsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<PatchResourcesCalendarsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CalendarResource>,
+  input: __S(256, __c8, 0) as any as S.Schema<PatchResourcesCalendarsRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<CalendarResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4518,8 +4518,8 @@ export const patchResourcesFeatures: API.OperationMethod<
   PatchResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<PatchResourcesFeaturesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<Feature>,
+  input: __S(288, __c9, 0) as any as S.Schema<PatchResourcesFeaturesRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Feature>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4533,8 +4533,8 @@ export const patchRoles: API.OperationMethod<
   PatchRolesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<PatchRolesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<Role>,
+  input: __S(320, __c10, 0) as any as S.Schema<PatchRolesRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4553,8 +4553,8 @@ export const patchSchemas: API.OperationMethod<
   PatchSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<PatchSchemasRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<Admin_Schema>,
+  input: __S(384, __c12, 0) as any as S.Schema<PatchSchemasRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<Admin_Schema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4568,8 +4568,8 @@ export const patchUsers: API.OperationMethod<
   PatchUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<PatchUsersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<User>,
+  input: __S(416, __c13, 0) as any as S.Schema<PatchUsersRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4588,8 +4588,8 @@ export const patchUsersPhotos: API.OperationMethod<
   PatchUsersPhotosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<PatchUsersPhotosRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<UserPhoto>,
+  input: __S(448, __c14, 0) as any as S.Schema<PatchUsersPhotosRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<UserPhoto>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4608,8 +4608,8 @@ export const renameResourcesFeatures: API.OperationMethod<
   RenameResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<RenameResourcesFeaturesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<RenameResourcesFeaturesResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<RenameResourcesFeaturesRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<RenameResourcesFeaturesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4628,8 +4628,8 @@ export const signOutUsers: API.OperationMethod<
   SignOutUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<SignOutUsersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<SignOutUsersResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<SignOutUsersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<SignOutUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4648,8 +4648,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<StopChannelsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StopChannelsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<StopChannelsRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4668,8 +4668,8 @@ export const turnOffTwoStepVerification: API.OperationMethod<
   TurnOffTwoStepVerificationError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<TurnOffTwoStepVerificationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<TurnOffTwoStepVerificationResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<TurnOffTwoStepVerificationRequest>,
+  output: __S(3488, __c109, 0) as any as S.Schema<TurnOffTwoStepVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4688,8 +4688,8 @@ export const undeleteUsers: API.OperationMethod<
   UndeleteUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<UndeleteUsersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UndeleteUsersResponse>,
+  input: __S(641, __c20, 1) as any as S.Schema<UndeleteUsersRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<UndeleteUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4708,8 +4708,8 @@ export const updateChromeosdevices: API.OperationMethod<
   UpdateChromeosdevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<UpdateChromeosdevicesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ChromeOsDevice>,
+  input: __S(672, __c21, 0) as any as S.Schema<UpdateChromeosdevicesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ChromeOsDevice>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4728,8 +4728,8 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<UpdateCustomersRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<Customer>,
+  input: __S(704, __c22, 0) as any as S.Schema<UpdateCustomersRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4748,8 +4748,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<Group>,
+  input: __S(768, __c24, 0) as any as S.Schema<UpdateGroupsRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4768,8 +4768,8 @@ export const updateMembers: API.OperationMethod<
   UpdateMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<UpdateMembersRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<Member>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateMembersRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4788,8 +4788,8 @@ export const updateOrgunits: API.OperationMethod<
   UpdateOrgunitsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UpdateOrgunitsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<OrgUnit>,
+  input: __S(832, __c26, 0) as any as S.Schema<UpdateOrgunitsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<OrgUnit>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4808,8 +4808,8 @@ export const updateResourcesBuildings: API.OperationMethod<
   UpdateResourcesBuildingsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<UpdateResourcesBuildingsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<Building>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateResourcesBuildingsRequest>,
+  output: __S(2786, __c87, 2) as any as S.Schema<Building>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4828,8 +4828,8 @@ export const updateResourcesCalendars: API.OperationMethod<
   UpdateResourcesCalendarsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<UpdateResourcesCalendarsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CalendarResource>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateResourcesCalendarsRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<CalendarResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4848,8 +4848,8 @@ export const updateResourcesFeatures: API.OperationMethod<
   UpdateResourcesFeaturesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<UpdateResourcesFeaturesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<Feature>,
+  input: __S(928, __c29, 0) as any as S.Schema<UpdateResourcesFeaturesRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Feature>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4868,8 +4868,8 @@ export const updateRoles: API.OperationMethod<
   UpdateRolesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<UpdateRolesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<Role>,
+  input: __S(960, __c30, 0) as any as S.Schema<UpdateRolesRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<Role>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4888,8 +4888,8 @@ export const updateSchemas: API.OperationMethod<
   UpdateSchemasError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<UpdateSchemasRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<Admin_Schema>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateSchemasRequest>,
+  output: __S(3139, __c98, 3) as any as S.Schema<Admin_Schema>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4908,8 +4908,8 @@ export const updateUsers: API.OperationMethod<
   UpdateUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<UpdateUsersRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<User>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateUsersRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4928,8 +4928,8 @@ export const updateUsersPhotos: API.OperationMethod<
   UpdateUsersPhotosError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<UpdateUsersPhotosRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<UserPhoto>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateUsersPhotosRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<UserPhoto>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4943,8 +4943,8 @@ export const watchUsers: API.OperationMethod<
   WatchUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<WatchUsersRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<Channel>,
+  input: __S(1120, __c35, 0) as any as S.Schema<WatchUsersRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4963,8 +4963,8 @@ export const watchUsersAliases: API.OperationMethod<
   WatchUsersAliasesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<WatchUsersAliasesRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<Channel>,
+  input: __S(1152, __c36, 0) as any as S.Schema<WatchUsersAliasesRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4976,321 +4976,16 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(S.String),
-          deprovisionReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChromeOsDeviceAction" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{resourceId}/action",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActionChromeosdevicesRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ActionChromeosdevicesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobileDeviceAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}/action",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActionMobiledevicesRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deviceIds: S.optional(__S(5, __c0, 5)),
-          changeChromeOsDeviceStatusAction: S.optional(S.String),
-          deprovisionReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchChangeChromeOsDeviceStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos:batchChangeStatus",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchChangeStatusCustomerDevicesChromeosRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ChangeChromeOsDeviceStatusSucceeded",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deviceId: S.optional(S.String),
-          response: S.optional(__S(8, __c1, 0)),
-          error: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ChangeChromeOsDeviceStatusResult",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          changeChromeOsDeviceStatusResults: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchChangeChromeOsDeviceStatusResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fieldMask: S.optional(S.String),
-          auxiliaryMessage: S.optional(S.String),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuxiliaryMessage" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          uri: S.optional(S.String),
-          auxiliaryMessages: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          makeAndModel: S.optional(S.String),
-          displayName: S.optional(S.String),
-          orgUnitId: S.optional(S.String),
-          useDriverlessConfig: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Printer" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          printer: S.optional(__S(17, __c2, 1)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatePrinterRequest" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "BatchCreatePrintersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/{+parent}/chrome/printers:batchCreatePrinters",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreatePrintersCustomersChromePrintersRequest",
-      });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          printerId: S.optional(S.String),
-          printer: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "FailureInfo" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          printers: S.optional(__S(22, __c2, 6)),
-          failures: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchCreatePrintersResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          uri: S.optional(S.String),
-          orgUnitId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrintServer" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          printServer: S.optional(__S(26, __c3, 2)),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreatePrintServerRequest" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "BatchCreatePrintServersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/{+parent}/chrome/printServers:batchCreatePrintServers",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreatePrintServersCustomersChromePrintServersRequest",
-      });
-    case 7:
-      return S.Array(__S(26, __c3, 2));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          printServerId: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          printServer: S.optional(__S(26, __c3, 2)),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrintServerFailureInfo" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          printServers: S.optional(__S(31, __c3, 7)),
-          failures: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "BatchCreatePrintServersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          printerIds: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchDeletePrintersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/{+parent}/chrome/printers:batchDeletePrinters",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeletePrintersCustomersChromePrintersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failedPrinters: S.optional(__S(24, __c3, 0)),
-          printerIds: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchDeletePrintersResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          printServerIds: S.optional(__S(5, __c0, 5)),
+          printServerIds: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({
         identifier: "BatchDeletePrintServersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5301,6 +4996,90 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BatchDeletePrintServersCustomersChromePrintServersRequest",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          printServerIds: S.optional(__S(3520, __c110, 0)),
+          failedPrintServers: S.optional(__S(4385, __c137, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchDeletePrintServersResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2177, __c68, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customers/{customerKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchCustomersRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clearMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(4002, __c125, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/{+name}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchCustomersChromePrintersRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(4416, __c138, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/{+name}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchCustomersChromePrintServersRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/groups/{groupKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchGroupsRequest" });
   }
 }
 function __c5(j: number): any {
@@ -5308,13 +5087,119 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          printServerIds: S.optional(__S(5, __c0, 5)),
-          failedPrintServers: S.optional(__S(33, __c4, 1)),
-        }),
+          groupKey: S.String.pipe(T.Label()),
+          memberKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchMembersRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          orgUnitPath: S.String.pipe(T.Label()),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchOrgunitsRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.String.pipe(T.Label()),
+          buildingId: S.String.pipe(T.Label()),
+          coordinatesSource: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2786, __c87, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "BatchDeletePrintServersResponse",
+        identifier: "PatchResourcesBuildingsRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.String.pipe(T.Label()),
+          calendarResourceId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchResourcesCalendarsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          featureKey: S.String.pipe(T.Label()),
+          customer: S.String.pipe(T.Label()),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchResourcesFeaturesRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          roleId: S.String.pipe(T.Label()),
+          customer: S.String.pipe(T.Label()),
+          body: S.optional(__S(3074, __c96, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchRolesRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgUnitPath: S.optional(S.String.pipe(T.Query())),
@@ -5331,7 +5216,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CountChromeOsDevicesCustomerDevicesChromeosRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
@@ -5339,11 +5224,225 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CountChromeOsDevicesResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaKey: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3139, __c98, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchSchemasRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(1219, __c38, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/users/{userKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchUsersRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(3296, __c103, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchUsersPhotosRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FeatureRename" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.String.pipe(T.Label()),
+          oldName: S.String.pipe(T.Label()),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/customer/{customer}/resources/features/{oldName}/rename",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RenameResourcesFeaturesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/users/{userKey}/signOut",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SignOutUsersRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(577, __c18, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory_v1/channels/stop",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "StopChannelsRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+          payload: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          expiration: S.optional(S.String),
+          kind: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          id: S.optional(S.String),
+          address: S.optional(S.String),
+          params: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "Channel" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/users/{userKey}/twoStepVerification/turnOff",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TurnOffTwoStepVerificationRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgUnitPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserUndelete" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/users/{userKey}/undelete",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UndeleteUsersRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          deviceId: S.String.pipe(T.Label()),
+          projection: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateChromeosdevicesRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2177, __c68, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customers/{customerKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCustomersRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4002, __c125, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5354,11 +5453,199 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateCustomersChromePrintersRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/groups/{groupKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateGroupsRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupKey: S.String.pipe(T.Label()),
+          memberKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateMembersRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orgUnitPath: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateOrgunitsRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildingId: S.String.pipe(T.Label()),
+          customer: S.String.pipe(T.Label()),
+          coordinatesSource: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(2786, __c87, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateResourcesBuildingsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          calendarResourceId: S.String.pipe(T.Label()),
+          customer: S.String.pipe(T.Label()),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateResourcesCalendarsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          featureKey: S.String.pipe(T.Label()),
+          customer: S.String.pipe(T.Label()),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateResourcesFeaturesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.String.pipe(T.Label()),
+          roleId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3074, __c96, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRolesRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          schemaKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(3139, __c98, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateSchemasRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(1219, __c38, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/users/{userKey}",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateUsersRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(3296, __c103, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateUsersPhotosRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4416, __c138, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5369,7 +5656,57 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateCustomersChromePrintServersRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          showDeleted: S.optional(S.String.pipe(T.Query())),
+          customer: S.optional(S.String.pipe(T.Query())),
+          projection: S.optional(S.String.pipe(T.Query())),
+          customFieldMask: S.optional(S.String.pipe(T.Query())),
+          domain: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+          viewType: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          event: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(577, __c18, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/users/watch",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "WatchUsersRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.optional(S.String.pipe(T.Query())),
+          userKey: S.String.pipe(T.Label()),
+          body: S.optional(__S(577, __c18, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/users/{userKey}/aliases/watch",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "WatchUsersAliasesRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primaryGuestEmail: S.optional(S.String),
@@ -5378,10 +5715,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DirectoryUsersCreateGuestRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1184, __c37, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5390,19 +5727,19 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateGuestUsersRequest" });
-    case 7:
-      return S.Record(S.String, __S(9, __c1, 1));
   }
 }
-function __c6(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, __S(3456, __c108, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primaryGuestEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestAccountInfo" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -5411,7 +5748,7 @@ function __c6(j: number): any {
           familyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserName" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           notes: S.optional(S.Unknown),
@@ -5428,9 +5765,9 @@ function __c6(j: number): any {
           includeInGlobalAddressList: S.optional(S.Boolean),
           id: S.optional(S.String),
           gender: S.optional(S.Unknown),
-          customSchemas: S.optional(__S(47, __c5, 7)),
+          customSchemas: S.optional(__S(1216, __c38, 0)),
           kind: S.optional(S.String),
-          aliases: S.optional(__S(5, __c0, 5)),
+          aliases: S.optional(__S(3520, __c110, 0)),
           sshPublicKeys: S.optional(S.Unknown),
           externalIds: S.optional(S.Unknown),
           thumbnailPhotoUrl: S.optional(S.String),
@@ -5451,14 +5788,14 @@ function __c6(j: number): any {
           keywords: S.optional(S.Unknown),
           changePasswordAtNextLogin: S.optional(S.Boolean),
           isMailboxSetup: S.optional(S.Boolean),
-          nonEditableAliases: S.optional(__S(5, __c0, 5)),
+          nonEditableAliases: S.optional(__S(3520, __c110, 0)),
           etag: S.optional(S.String),
-          guestAccountInfo: S.optional(__S(48, __c6, 0)),
+          guestAccountInfo: S.optional(__S(1217, __c38, 1)),
           archived: S.optional(S.Boolean),
           emails: S.optional(S.Unknown),
           relations: S.optional(S.Unknown),
           isAdmin: S.optional(S.Boolean),
-          name: S.optional(__S(49, __c6, 1)),
+          name: S.optional(__S(1218, __c38, 2)),
           ipWhitelisted: S.optional(S.Boolean),
           agreedToTerms: S.optional(S.Boolean),
           primaryEmail: S.optional(S.String),
@@ -5466,7 +5803,11 @@ function __c6(j: number): any {
           organizations: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "User" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           codeId: S.Number.pipe(T.Label()),
@@ -5479,7 +5820,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAspsRequest" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5493,7 +5838,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersChromePrintersRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5507,7 +5856,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersChromePrintServersRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domainAliasName: S.String.pipe(T.Label()),
@@ -5522,7 +5875,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteDomainAliasesRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5537,7 +5894,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeleteDomainsRequest" });
   }
 }
-function __c7(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5551,7 +5908,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteGroupsRequest" });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
@@ -5566,7 +5927,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteGroupsAliasesRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
@@ -5579,7 +5944,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMembersRequest" });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -5594,7 +5963,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteMobiledevicesRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgUnitPath: S.String.pipe(T.Label()),
@@ -5607,7 +5980,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOrgunitsRequest" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5622,7 +5999,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteResourcesBuildingsRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarResourceId: S.String.pipe(T.Label()),
@@ -5637,7 +6018,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteResourcesCalendarsRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5654,13 +6039,17 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteResourcesFeaturesResponse",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5675,7 +6064,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteRoleAssignmentsRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -5688,7 +6081,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRolesRequest" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaKey: S.String.pipe(T.Label()),
@@ -5701,7 +6098,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSchemasRequest" });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.Label()),
@@ -5714,7 +6115,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTokensRequest" });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -5726,7 +6131,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUsersRequest" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alias: S.String.pipe(T.Label()),
@@ -5741,7 +6150,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteUsersAliasesRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -5755,7 +6168,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "DeleteUsersPhotosRequest" });
   }
 }
-function __c9(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5771,7 +6184,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GenerateVerificationCodesRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           codeId: S.Number.pipe(T.Label()),
@@ -5784,7 +6201,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAspsRequest" });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5796,7 +6217,11 @@ function __c9(j: number): any {
           userKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "Asp" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
@@ -5812,18 +6237,22 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetChromeosdevicesRequest",
       });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reportTime: S.optional(S.String),
-          systemRamFreeInfo: S.optional(__S(5, __c0, 5)),
+          systemRamFreeInfo: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceSystemRamFreeReportsItem",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(2048, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -5832,60 +6261,52 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItemCStatesItem",
       });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(2050, __c64, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           maxScalingFrequencyKhz: S.optional(S.Number),
-          cStates: S.optional(__S(79, __c9, 7)),
+          cStates: S.optional(__S(2051, __c64, 3)),
           idleDuration: S.optional(S.String),
           currentScalingFrequencyKhz: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceCpuInfoItemLogicalCpusItem",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(2052, __c64, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           maxClockSpeedKhz: S.optional(S.Number),
           architecture: S.optional(S.String),
           model: S.optional(S.String),
-          logicalCpus: S.optional(__S(81, __c10, 1)),
+          logicalCpus: S.optional(__S(2053, __c64, 5)),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceCpuInfoItem",
       });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(2054, __c64, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
           numConnectedDevices: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BluetoothAdapterInfo" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 9:
+      return S.Array(__S(2056, __c64, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           speedRpm: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FanInfo" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(2058, __c64, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           downloadUrl: S.optional(S.String),
@@ -5896,16 +6317,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceScreenshotFilesItem",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(2060, __c64, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           capacityBytes: S.optional(S.String),
           usedBytes: S.optional(S.String),
         }),
       ).annotate({ identifier: "ByteUsage" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5914,9 +6335,9 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceRecentUsersItem",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 16:
+      return S.Array(__S(2063, __c64, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           maxBrightness: S.optional(S.Number),
@@ -5924,9 +6345,9 @@ function __c11(j: number): any {
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "BacklightInfo" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 18:
+      return S.Array(__S(2065, __c64, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
@@ -5937,13 +6358,9 @@ function __c11(j: number): any {
           rebootTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsUpdateStatus" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.Array(S.Number);
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -5952,21 +6369,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceCpuStatusReportsItemCpuTemperatureInfoItem",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 22:
+      return S.Array(__S(2069, __c64, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          cpuUtilizationPercentageInfo: S.optional(__S(96, __c12, 0)),
-          cpuTemperatureInfo: S.optional(__S(98, __c12, 2)),
+          cpuUtilizationPercentageInfo: S.optional(__S(2068, __c64, 20)),
+          cpuTemperatureInfo: S.optional(__S(2070, __c64, 22)),
           reportTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceCpuStatusReportsItem",
       });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 24:
+      return S.Array(__S(2071, __c64, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           wanIpAddress: S.optional(S.String),
@@ -5975,9 +6392,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceLastKnownNetworkItem",
       });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 26:
+      return S.Array(__S(2073, __c64, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           activeTime: S.optional(S.Number),
@@ -5986,13 +6403,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceActiveTimeRangesItem",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 28:
+      return S.Array(__S(2075, __c64, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           storageFree: S.optional(S.String),
@@ -6002,19 +6415,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceDiskVolumeReportsItemVolumeInfoItem",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 30:
+      return S.Array(__S(2077, __c64, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          volumeInfo: S.optional(__S(106, __c13, 2)),
+          volumeInfo: S.optional(__S(2078, __c64, 30)),
         }),
       ).annotate({
         identifier: "ChromeOsDeviceDiskVolumeReportsItem",
       });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2079, __c64, 31));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           specLevel: S.optional(S.String),
@@ -6027,58 +6444,58 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ChromeOsDeviceTpmVersionInfo",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String),
-          systemRamFreeReports: S.optional(__S(77, __c9, 5)),
+          systemRamFreeReports: S.optional(__S(2049, __c64, 1)),
           kind: S.optional(S.String),
           orgUnitPath: S.optional(S.String),
           serialNumber: S.optional(S.String),
           deviceLicenseType: S.optional(S.String),
-          cpuInfo: S.optional(__S(83, __c10, 3)),
+          cpuInfo: S.optional(__S(2055, __c64, 7)),
           ethernetMacAddress0: S.optional(S.String),
           systemRamTotal: S.optional(S.String),
           orgUnitId: S.optional(S.String),
-          bluetoothAdapterInfo: S.optional(__S(85, __c10, 5)),
+          bluetoothAdapterInfo: S.optional(__S(2057, __c64, 9)),
           chromeOsType: S.optional(S.String),
-          fanInfo: S.optional(__S(87, __c10, 7)),
+          fanInfo: S.optional(__S(2059, __c64, 11)),
           manufactureDate: S.optional(S.String),
-          screenshotFiles: S.optional(__S(89, __c11, 1)),
+          screenshotFiles: S.optional(__S(2061, __c64, 13)),
           lastSync: S.optional(S.String),
           dockMacAddress: S.optional(S.String),
           willAutoRenew: S.optional(S.Boolean),
           annotatedLocation: S.optional(S.String),
-          deviceFiles: S.optional(__S(89, __c11, 1)),
+          deviceFiles: S.optional(__S(2061, __c64, 13)),
           supportEndDate: S.optional(S.String),
           firstEnrollmentTime: S.optional(S.String),
-          diskSpaceUsage: S.optional(__S(90, __c11, 2)),
-          recentUsers: S.optional(__S(92, __c11, 4)),
+          diskSpaceUsage: S.optional(__S(2062, __c64, 14)),
+          recentUsers: S.optional(__S(2064, __c64, 16)),
           firmwareVersion: S.optional(S.String),
-          backlightInfo: S.optional(__S(94, __c11, 6)),
+          backlightInfo: S.optional(__S(2066, __c64, 18)),
           ethernetMacAddress: S.optional(S.String),
           deviceId: S.optional(S.String),
           annotatedAssetId: S.optional(S.String),
           extendedSupportEligible: S.optional(S.Boolean),
           autoUpdateThrough: S.optional(S.String),
           status: S.optional(S.String),
-          osUpdateStatus: S.optional(__S(95, __c11, 7)),
+          osUpdateStatus: S.optional(__S(2067, __c64, 19)),
           osVersion: S.optional(S.String),
           lastEnrollmentTime: S.optional(S.String),
           etag: S.optional(S.String),
-          cpuStatusReports: S.optional(__S(100, __c12, 4)),
+          cpuStatusReports: S.optional(__S(2072, __c64, 24)),
           platformVersion: S.optional(S.String),
           annotatedUser: S.optional(S.String),
           notes: S.optional(S.String),
-          lastKnownNetwork: S.optional(__S(102, __c12, 6)),
-          activeTimeRanges: S.optional(__S(104, __c13, 0)),
+          lastKnownNetwork: S.optional(__S(2074, __c64, 26)),
+          activeTimeRanges: S.optional(__S(2076, __c64, 28)),
           orderNumber: S.optional(S.String),
           lastDeprovisionTimestamp: S.optional(S.String),
           meid: S.optional(S.String),
           macAddress: S.optional(S.String),
-          diskVolumeReports: S.optional(__S(108, __c13, 4)),
+          diskVolumeReports: S.optional(__S(2080, __c65, 0)),
           extendedSupportEnabled: S.optional(S.Boolean),
-          tpmVersionInfo: S.optional(__S(109, __c13, 5)),
+          tpmVersionInfo: S.optional(__S(2081, __c65, 1)),
           extendedSupportStart: S.optional(S.String),
           deprovisionReason: S.optional(S.String),
           bootMode: S.optional(S.String),
@@ -6086,7 +6503,11 @@ function __c13(j: number): any {
           autoUpdateExpiration: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChromeOsDevice" });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -6102,11 +6523,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetCustomerDevicesChromeosCommandsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executeTime: S.optional(S.String),
@@ -6117,10 +6534,10 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DirectoryChromeosdevicesCommandResult",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          commandResult: S.optional(__S(112, __c14, 0)),
+          commandResult: S.optional(__S(2113, __c66, 1)),
           issueTime: S.optional(S.String),
           commandExpireTime: S.optional(S.String),
           payload: S.optional(S.String),
@@ -6131,7 +6548,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DirectoryChromeosdevicesCommand",
       });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerKey: S.String.pipe(T.Label()),
@@ -6143,7 +6564,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCustomersRequest" });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locality: S.optional(S.String),
@@ -6157,7 +6582,7 @@ function __c14(j: number): any {
           addressLine2: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerPostalAddress" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerDomain: S.optional(S.String),
@@ -6165,13 +6590,52 @@ function __c14(j: number): any {
           kind: S.optional(S.String),
           phoneNumber: S.optional(S.String),
           customerCreationTime: S.optional(S.String),
-          postalAddress: S.optional(__S(115, __c14, 3)),
+          postalAddress: S.optional(__S(2176, __c68, 0)),
           alternateEmail: S.optional(S.String),
           language: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Customer" });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+          deprovisionReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChromeOsDeviceAction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2208, __c69, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{resourceId}/action",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActionChromeosdevicesRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ActionChromeosdevicesResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6185,7 +6649,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetCustomersChromePrintersRequest",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -6199,7 +6667,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetCustomersChromePrintServersRequest",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -6214,7 +6686,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetDomainAliasesRequest" });
   }
 }
-function __c15(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6227,7 +6699,11 @@ function __c15(j: number): any {
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainAlias" });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -6240,12 +6716,20 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDomainsRequest" });
-    case 2:
-      return S.Array(__S(120, __c15, 0));
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2368, __c74, 0));
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          domainAliases: S.optional(__S(122, __c15, 2)),
+          domainAliases: S.optional(__S(2432, __c76, 0)),
           creationTime: S.optional(S.String),
           isPrimary: S.optional(S.Boolean),
           kind: S.optional(S.String),
@@ -6254,7 +6738,11 @@ function __c15(j: number): any {
           verified: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Domains" });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
@@ -6266,16 +6754,20 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupsRequest" });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalId" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2528, __c79, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6283,17 +6775,17 @@ function __c15(j: number): any {
           email: S.optional(S.String),
           etag: S.optional(S.String),
           description: S.optional(S.String),
-          nonEditableAliases: S.optional(__S(5, __c0, 5)),
+          nonEditableAliases: S.optional(__S(3520, __c110, 0)),
           kind: S.optional(S.String),
-          externalIds: S.optional(__S(126, __c15, 6)),
-          aliases: S.optional(__S(5, __c0, 5)),
+          externalIds: S.optional(__S(2529, __c79, 1)),
+          aliases: S.optional(__S(3520, __c110, 0)),
           id: S.optional(S.String),
           adminCreated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Group" });
   }
 }
-function __c16(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6308,7 +6800,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMembersRequest" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
@@ -6321,7 +6817,11 @@ function __c16(j: number): any {
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "Member" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -6335,21 +6835,25 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMobiledevicesRequest" });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionCode: S.optional(S.Number),
           displayName: S.optional(S.String),
           versionName: S.optional(S.String),
-          permission: S.optional(__S(5, __c0, 5)),
+          permission: S.optional(__S(3520, __c110, 0)),
           packageName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MobileDeviceApplicationsItem",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2656, __c83, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lastSync: S.optional(S.String),
@@ -6359,7 +6863,7 @@ function __c16(j: number): any {
           kernelVersion: S.optional(S.String),
           imei: S.optional(S.String),
           adbStatus: S.optional(S.Boolean),
-          applications: S.optional(__S(132, __c16, 4)),
+          applications: S.optional(__S(2657, __c83, 1)),
           firstSync: S.optional(S.String),
           deviceId: S.optional(S.String),
           bootloaderVersion: S.optional(S.String),
@@ -6371,11 +6875,11 @@ function __c16(j: number): any {
           securityPatchLevel: S.optional(S.String),
           unknownSourcesStatus: S.optional(S.Boolean),
           hardwareId: S.optional(S.String),
-          otherAccountsInfo: S.optional(__S(5, __c0, 5)),
+          otherAccountsInfo: S.optional(__S(3520, __c110, 0)),
           type: S.optional(S.String),
           os: S.optional(S.String),
           supportsWorkProfile: S.optional(S.Boolean),
-          name: S.optional(__S(5, __c0, 5)),
+          name: S.optional(__S(3520, __c110, 0)),
           userAgent: S.optional(S.String),
           encryptionStatus: S.optional(S.String),
           managedAccountIsOnOwnerProfile: S.optional(S.Boolean),
@@ -6385,7 +6889,7 @@ function __c16(j: number): any {
           status: S.optional(S.String),
           developerOptionsStatus: S.optional(S.Boolean),
           buildNumber: S.optional(S.String),
-          email: S.optional(__S(5, __c0, 5)),
+          email: S.optional(__S(3520, __c110, 0)),
           brand: S.optional(S.String),
           devicePasswordStatus: S.optional(S.String),
           kind: S.optional(S.String),
@@ -6394,7 +6898,11 @@ function __c16(j: number): any {
           wifiMacAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileDevice" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orgUnitPath: S.String.pipe(T.Label()),
@@ -6407,7 +6915,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOrgunitsRequest" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           blockInheritance: S.optional(S.Boolean),
@@ -6423,7 +6935,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "OrgUnit" });
   }
 }
-function __c17(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6440,39 +6952,47 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetResourcesBuildingsRequest",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
           regionCode: S.optional(S.String),
           locality: S.optional(S.String),
           postalCode: S.optional(S.String),
-          addressLines: S.optional(__S(5, __c0, 5)),
+          addressLines: S.optional(__S(3520, __c110, 0)),
           administrativeArea: S.optional(S.String),
           sublocality: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildingAddress" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           latitude: S.optional(S.Number),
           longitude: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BuildingCoordinates" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etags: S.optional(S.String),
           description: S.optional(S.String),
-          floorNames: S.optional(__S(5, __c0, 5)),
-          address: S.optional(__S(137, __c17, 1)),
+          floorNames: S.optional(__S(3520, __c110, 0)),
+          address: S.optional(__S(2784, __c87, 0)),
           buildingName: S.optional(S.String),
           buildingId: S.optional(S.String),
           kind: S.optional(S.String),
-          coordinates: S.optional(__S(138, __c17, 2)),
+          coordinates: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({ identifier: "Building" });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           calendarResourceId: S.String.pipe(T.Label()),
@@ -6487,7 +7007,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetResourcesCalendarsRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceEmail: S.optional(S.String),
@@ -6507,7 +7031,37 @@ function __c17(j: number): any {
           resourceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalendarResource" });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobileDeviceAction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String.pipe(T.Label()),
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(2880, __c90, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/customer/{customerId}/devices/mobile/{resourceId}/action",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActionMobiledevicesRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -6522,7 +7076,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetResourcesFeaturesRequest",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -6532,7 +7090,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "Feature" });
   }
 }
-function __c18(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6549,13 +7107,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetRoleAssignmentsRequest",
       });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpirationDetails" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
@@ -6564,13 +7126,17 @@ function __c18(j: number): any {
           etag: S.optional(S.String),
           orgUnitId: S.optional(S.String),
           assigneeType: S.optional(S.String),
-          expirationDetails: S.optional(__S(145, __c18, 1)),
+          expirationDetails: S.optional(__S(3008, __c94, 0)),
           roleId: S.optional(S.String),
           scopeType: S.optional(S.String),
           roleAssignmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignment" });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           roleId: S.String.pipe(T.Label()),
@@ -6583,20 +7149,24 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRolesRequest" });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           privilegeName: S.optional(S.String),
           serviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleRolePrivilegesItem" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(3072, __c96, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           roleId: S.optional(S.String),
-          rolePrivileges: S.optional(__S(149, __c18, 5)),
+          rolePrivileges: S.optional(__S(3073, __c96, 1)),
           isSystemRole: S.optional(S.Boolean),
           isSuperAdminRole: S.optional(S.Boolean),
           roleName: S.optional(S.String),
@@ -6605,7 +7175,11 @@ function __c18(j: number): any {
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Role" });
-    case 7:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           schemaKey: S.String.pipe(T.Label()),
@@ -6620,7 +7194,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetSchemasRequest" });
   }
 }
-function __c19(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6642,12 +7216,12 @@ function __c19(j: number): any {
           etag: S.optional(S.String),
           displayName: S.optional(S.String),
           indexed: S.optional(S.Boolean),
-          numericIndexingSpec: S.optional(__S(152, __c19, 0)),
+          numericIndexingSpec: S.optional(__S(3136, __c98, 0)),
           fieldId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaFieldSpec" });
     case 2:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(3137, __c98, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6656,10 +7230,14 @@ function __c19(j: number): any {
           displayName: S.optional(S.String),
           kind: S.optional(S.String),
           schemaId: S.optional(S.String),
-          fields: S.optional(__S(154, __c19, 2)),
+          fields: S.optional(__S(3138, __c98, 2)),
         }),
       ).annotate({ identifier: "Admin_Schema" });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.Label()),
@@ -6672,20 +7250,28 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTokensRequest" });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          scopes: S.optional(__S(5, __c0, 5)),
+          scopes: S.optional(__S(3520, __c110, 0)),
           anonymous: S.optional(S.Boolean),
           nativeApp: S.optional(S.Boolean),
           displayText: S.optional(S.String),
           userKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "Token" });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customFieldMask: S.optional(S.String.pipe(T.Query())),
@@ -6700,7 +7286,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersRequest" });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -6714,7 +7304,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetUsersPhotosRequest" });
   }
 }
-function __c20(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6729,7 +7319,11 @@ function __c20(j: number): any {
           primaryEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPhoto" });
-    case 1:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
@@ -6742,17 +7336,21 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HasMemberMembersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isMember: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MembersHasMember" });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(2368, __c74, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6763,11 +7361,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InsertDomainAliasesRequest",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(123, __c15, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2464, __c77, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6776,10 +7378,93 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertDomainsRequest" });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(127, __c15, 7).pipe(T.HttpBody())),
+          deviceIds: S.optional(__S(3520, __c110, 0)),
+          changeChromeOsDeviceStatusAction: S.optional(S.String),
+          deprovisionReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchChangeChromeOsDeviceStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(3424, __c107, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos:batchChangeStatus",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchChangeStatusCustomerDevicesChromeosRequest",
+      });
+    case 2:
+      return S.Array(__S(3456, __c108, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(3426, __c107, 2)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          deviceId: S.optional(S.String),
+          response: S.optional(__S(3488, __c109, 0)),
+          error: S.optional(__S(3427, __c107, 3)),
+        }),
+      ).annotate({
+        identifier: "ChangeChromeOsDeviceStatusResult",
+      });
+    case 5:
+      return S.Array(__S(3428, __c107, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          changeChromeOsDeviceStatusResults: S.optional(__S(3429, __c107, 5)),
+        }),
+      ).annotate({
+        identifier: "BatchChangeChromeOsDeviceStatusResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ChangeChromeOsDeviceStatusSucceeded",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2530, __c79, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6788,21 +7473,15 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertGroupsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.optional(S.String),
-          kind: S.optional(S.String),
-          primaryEmail: S.optional(S.String),
-          etag: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Alias" });
-    case 7:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6815,13 +7494,27 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.optional(S.String),
+          kind: S.optional(S.String),
+          primaryEmail: S.optional(S.String),
+          etag: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alias" });
+  }
+}
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2592, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6830,11 +7523,15 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertMembersRequest" });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2720, __c85, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6843,12 +7540,16 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertOrgunitsRequest" });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
           coordinatesSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2786, __c87, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6859,11 +7560,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertResourcesBuildingsRequest",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2848, __c89, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6874,11 +7579,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertResourcesCalendarsRequest",
       });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6889,11 +7598,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertResourcesFeaturesRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(146, __c18, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3009, __c94, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6904,11 +7617,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "InsertRoleAssignmentsRequest",
       });
-    case 6:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3074, __c96, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6917,11 +7634,15 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertRolesRequest" });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(3139, __c98, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6932,13 +7653,108 @@ function __c21(j: number): any {
       ).annotate({ identifier: "InsertSchemasRequest" });
   }
 }
-function __c22(j: number): any {
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          printer: S.optional(__S(4002, __c125, 2)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatePrinterRequest" });
+    case 1:
+      return S.Array(__S(3904, __c122, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(3905, __c122, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreatePrintersRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3906, __c122, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/{+parent}/chrome/printers:batchCreatePrinters",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreatePrintersCustomersChromePrintersRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          printers: S.optional(__S(3936, __c123, 0)),
+          failures: S.optional(__S(3969, __c124, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreatePrintersResponse",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4002, __c125, 2));
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          printerId: S.optional(S.String),
+          printer: S.optional(__S(4002, __c125, 2)),
+        }),
+      ).annotate({ identifier: "FailureInfo" });
+    case 1:
+      return S.Array(__S(3968, __c124, 0));
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldMask: S.optional(S.String),
+          auxiliaryMessage: S.optional(S.String),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuxiliaryMessage" });
+    case 1:
+      return S.Array(__S(4000, __c125, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          uri: S.optional(S.String),
+          auxiliaryMessages: S.optional(__S(4001, __c125, 1)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          makeAndModel: S.optional(S.String),
+          displayName: S.optional(S.String),
+          orgUnitId: S.optional(S.String),
+          useDriverlessConfig: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Printer" });
+  }
+}
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resolveConflictAccount: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1219, __c38, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6947,11 +7763,15 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertUsersRequest" });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(166, __c20, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3616, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6962,7 +7782,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InsertUsersAliasesRequest",
       });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -6976,7 +7800,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "InvalidateVerificationCodesRequest",
       });
-    case 3:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           payload: S.optional(S.String),
@@ -6985,12 +7813,12 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DirectoryChromeosdevicesIssueCommandRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(179, __c22, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(4128, __c129, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7001,7 +7829,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "IssueCommandCustomerDevicesChromeosRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           commandId: S.optional(S.String),
@@ -7009,7 +7837,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DirectoryChromeosdevicesIssueCommandResponse",
       });
-    case 6:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -7021,21 +7853,21 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAspsRequest" });
-    case 7:
-      return S.Array(__S(74, __c9, 2));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(183, __c22, 7)),
+          items: S.optional(__S(4161, __c130, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Asps" });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -7057,18 +7889,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListChromeosdevicesRequest",
       });
+    case 1:
+      return S.Array(__S(2082, __c65, 2));
     case 2:
-      return S.Array(__S(110, __c13, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          chromeosdevices: S.optional(__S(186, __c23, 2)),
+          chromeosdevices: S.optional(__S(4193, __c131, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChromeOsDevices" });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -7087,14 +7923,18 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListCustomersChromePrintersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          printers: S.optional(__S(22, __c2, 6)),
+          printers: S.optional(__S(3936, __c123, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrintersResponse" });
-    case 6:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -7113,16 +7953,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListCustomersChromePrintServersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          printServers: S.optional(__S(31, __c3, 7)),
+          printServers: S.optional(__S(4448, __c139, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPrintServersResponse" });
   }
 }
-function __c24(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7140,12 +7980,16 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domainAliases: S.optional(__S(122, __c15, 2)),
+          domainAliases: S.optional(__S(2432, __c76, 0)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainAliases" });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -7157,17 +8001,103 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
-    case 3:
-      return S.Array(__S(123, __c15, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          domains: S.optional(__S(195, __c24, 3)),
+          domains: S.optional(__S(4321, __c135, 1)),
         }),
       ).annotate({ identifier: "Domains2" });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          printServer: S.optional(__S(4416, __c138, 0)),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreatePrintServerRequest" });
+    case 1:
+      return S.Array(__S(4352, __c136, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(4353, __c136, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreatePrintServersRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4354, __c136, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/{+parent}/chrome/printServers:batchCreatePrintServers",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreatePrintServersCustomersChromePrintServersRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          printServers: S.optional(__S(4448, __c139, 0)),
+          failures: S.optional(__S(4385, __c137, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreatePrintServersResponse",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          printServerId: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          printServer: S.optional(__S(4416, __c138, 0)),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrintServerFailureInfo" });
+    case 1:
+      return S.Array(__S(4384, __c137, 0));
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          uri: S.optional(S.String),
+          orgUnitId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrintServer" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4416, __c138, 0));
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -7186,20 +8116,20 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 6:
-      return S.Array(__S(127, __c15, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(2530, __c79, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          groups: S.optional(__S(198, __c24, 6)),
+          groups: S.optional(__S(4481, __c140, 1)),
         }),
       ).annotate({ identifier: "Groups" });
   }
 }
-function __c25(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7213,17 +8143,25 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupsAliasesRequest" });
-    case 1:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aliases: S.optional(__S(201, __c25, 1)),
+          aliases: S.optional(__S(4544, __c142, 0)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Aliases" });
-    case 3:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7239,18 +8177,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMembersRequest" });
-    case 4:
-      return S.Array(__S(129, __c16, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(2592, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          members: S.optional(__S(204, __c25, 4)),
+          members: S.optional(__S(4577, __c143, 1)),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Members" });
-    case 6:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -7268,22 +8210,22 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMobiledevicesRequest" });
-    case 7:
-      return S.Array(__S(133, __c16, 5));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2658, __c83, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          mobiledevices: S.optional(__S(207, __c25, 7)),
+          mobiledevices: S.optional(__S(4609, __c144, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileDevices" });
-    case 1:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
@@ -7297,17 +8239,21 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOrgunitsRequest" });
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
     case 2:
-      return S.Array(__S(135, __c16, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          organizationUnits: S.optional(__S(210, __c26, 2)),
+          organizationUnits: S.optional(__S(4641, __c145, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrgUnits" });
-    case 4:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -7324,7 +8270,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListPrinterModelsCustomersChromePrintersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -7332,20 +8278,20 @@ function __c26(j: number): any {
           makeAndModel: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrinterModel" });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4673, __c146, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          printerModels: S.optional(__S(214, __c26, 6)),
+          printerModels: S.optional(__S(4674, __c146, 2)),
         }),
       ).annotate({
         identifier: "ListPrinterModelsResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7366,22 +8312,26 @@ function __c27(j: number): any {
           privilegeName: S.optional(S.String),
           serviceName: S.optional(S.String),
           etag: S.optional(S.String),
-          childPrivileges: S.optional(S.suspend(() => __S(218, __c27, 2))),
+          childPrivileges: S.optional(S.suspend(() => __S(4706, __c147, 2))),
           isOuScopable: S.optional(S.Boolean),
           serviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Privilege" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(4705, __c147, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(218, __c27, 2)),
+          items: S.optional(__S(4706, __c147, 2)),
         }),
       ).annotate({ identifier: "Privileges" });
-    case 4:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7397,18 +8347,22 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListResourcesBuildingsRequest",
       });
-    case 5:
-      return S.Array(__S(139, __c17, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(2786, __c87, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          buildings: S.optional(__S(221, __c27, 5)),
+          buildings: S.optional(__S(4737, __c148, 1)),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Buildings" });
-    case 7:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -7426,22 +8380,22 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListResourcesCalendarsRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(141, __c17, 5));
     case 1:
+      return S.Array(__S(2848, __c89, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(224, __c28, 0),
+          items: __S(4769, __c149, 1),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CalendarResources" });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -7457,18 +8411,58 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListResourcesFeaturesRequest",
       });
-    case 3:
-      return S.Array(__S(143, __c17, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(2944, __c92, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          features: S.optional(__S(227, __c28, 3)),
+          features: S.optional(__S(4801, __c150, 1)),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Features" });
-    case 5:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          printerIds: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeletePrintersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4832, __c151, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "admin/directory/v1/{+parent}/chrome/printers:batchDeletePrinters",
+            baseUrl: "https://admin.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeletePrintersCustomersChromePrintersRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failedPrinters: S.optional(__S(3969, __c124, 1)),
+          printerIds: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeletePrintersResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.String.pipe(T.Label()),
@@ -7487,20 +8481,20 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListRoleAssignmentsRequest",
       });
-    case 6:
-      return S.Array(__S(146, __c18, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(3009, __c94, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          items: __S(230, __c28, 6),
+          items: __S(4865, __c152, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignments" });
   }
 }
-function __c29(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7517,17 +8511,21 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListRolesRequest" });
     case 1:
-      return S.Array(__S(150, __c18, 6));
+      return S.Array(__S(3074, __c96, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(233, __c29, 1),
+          items: __S(4897, __c153, 1),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Roles" });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -7539,17 +8537,21 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSchemasRequest" });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3139, __c98, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          schemas: S.optional(__S(236, __c29, 4)),
+          schemas: S.optional(__S(4929, __c154, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schemas" });
-    case 6:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -7561,21 +8563,21 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTokensRequest" });
-    case 7:
-      return S.Array(__S(157, __c19, 5));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3200, __c100, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(239, __c29, 7)),
+          items: S.optional(__S(4961, __c155, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tokens" });
-    case 1:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7598,19 +8600,23 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
+    case 1:
+      return S.Array(__S(1219, __c38, 3));
     case 2:
-      return S.Array(__S(50, __c6, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           trigger_event: S.optional(S.String),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
-          users: S.optional(__S(242, __c30, 2)),
+          users: S.optional(__S(4993, __c156, 1)),
         }),
       ).annotate({ identifier: "Users" });
-    case 4:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -7623,7 +8629,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersAliasesRequest" });
-    case 5:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
@@ -7637,7 +8647,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListVerificationCodesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
@@ -7646,31 +8656,31 @@ function __c30(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerificationCode" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5057, __c158, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(__S(247, __c30, 7)),
+          items: S.optional(__S(5058, __c158, 2)),
         }),
       ).annotate({ identifier: "VerificationCodes" });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserMakeAdmin" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(5088, __c159, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7679,18 +8689,22 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MakeAdminUsersRequest" });
-    case 3:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceIds: S.optional(__S(5, __c0, 5)),
+          deviceIds: S.optional(__S(3520, __c110, 0)),
         }),
       ).annotate({ identifier: "ChromeOsMoveDevicesToOu" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           orgUnitPath: S.String.pipe(T.Query()),
-          body: S.optional(__S(251, __c31, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(5120, __c160, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7701,13 +8715,17 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "MoveDevicesToOuChromeosdevicesRequest",
       });
-    case 5:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           projection: S.optional(S.String.pipe(T.Query())),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2082, __c65, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7718,527 +8736,8 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "PatchChromeosdevicesRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customerKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customers/{customerKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchCustomersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clearMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/{+name}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchCustomersChromePrintersRequest",
-      });
   }
 }
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/{+name}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchCustomersChromePrintServersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(127, __c15, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/groups/{groupKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchGroupsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          groupKey: S.String.pipe(T.Label()),
-          memberKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchMembersRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          orgUnitPath: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchOrgunitsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.String.pipe(T.Label()),
-          buildingId: S.String.pipe(T.Label()),
-          coordinatesSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchResourcesBuildingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.String.pipe(T.Label()),
-          calendarResourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchResourcesCalendarsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          featureKey: S.String.pipe(T.Label()),
-          customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchResourcesFeaturesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleId: S.String.pipe(T.Label()),
-          customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchRolesRequest" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schemaKey: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchSchemasRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/users/{userKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchUsersRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchUsersPhotosRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FeatureRename" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.String.pipe(T.Label()),
-          oldName: S.String.pipe(T.Label()),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/customer/{customer}/resources/features/{oldName}/rename",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RenameResourcesFeaturesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/users/{userKey}/signOut",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SignOutUsersRequest" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-          payload: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          expiration: S.optional(S.String),
-          kind: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          id: S.optional(S.String),
-          address: S.optional(S.String),
-          params: S.optional(__S(270, __c33, 6)),
-        }),
-      ).annotate({ identifier: "Channel" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(271, __c33, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory_v1/channels/stop",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "StopChannelsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/users/{userKey}/twoStepVerification/turnOff",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TurnOffTwoStepVerificationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orgUnitPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserUndelete" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(274, __c34, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/users/{userKey}/undelete",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UndeleteUsersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          deviceId: S.String.pipe(T.Label()),
-          projection: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customerId}/devices/chromeos/{deviceId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateChromeosdevicesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customerKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customers/{customerKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCustomersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(127, __c15, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/groups/{groupKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateGroupsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupKey: S.String.pipe(T.Label()),
-          memberKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/groups/{groupKey}/members/{memberKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateMembersRequest" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          orgUnitPath: S.String.pipe(T.Label()),
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(135, __c16, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customerId}/orgunits/{+orgUnitPath}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateOrgunitsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          buildingId: S.String.pipe(T.Label()),
-          customer: S.String.pipe(T.Label()),
-          coordinatesSource: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(139, __c17, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customer}/resources/buildings/{buildingId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateResourcesBuildingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          calendarResourceId: S.String.pipe(T.Label()),
-          customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(141, __c17, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customer}/resources/calendars/{calendarResourceId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateResourcesCalendarsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          featureKey: S.String.pipe(T.Label()),
-          customer: S.String.pipe(T.Label()),
-          body: S.optional(__S(143, __c17, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customer}/resources/features/{featureKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateResourcesFeaturesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.String.pipe(T.Label()),
-          roleId: S.String.pipe(T.Label()),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customer}/roles/{roleId}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRolesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          schemaKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/customer/{customerId}/schemas/{schemaKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateSchemasRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(50, __c6, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/users/{userKey}",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateUsersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(160, __c20, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "admin/directory/v1/users/{userKey}/photos/thumbnail",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateUsersPhotosRequest" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          showDeleted: S.optional(S.String.pipe(T.Query())),
-          customer: S.optional(S.String.pipe(T.Query())),
-          projection: S.optional(S.String.pipe(T.Query())),
-          customFieldMask: S.optional(S.String.pipe(T.Query())),
-          domain: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-          viewType: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          event: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(271, __c33, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/users/watch",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "WatchUsersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          event: S.optional(S.String.pipe(T.Query())),
-          userKey: S.String.pipe(T.Label()),
-          body: S.optional(__S(271, __c33, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "admin/directory/v1/users/{userKey}/aliases/watch",
-            baseUrl: "https://admin.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "WatchUsersAliasesRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

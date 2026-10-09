@@ -68,8 +68,8 @@ export const createWebAnalyticsBotRule: API.OperationMethod<
   CreateWebAnalyticsBotRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateWebAnalyticsBotRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WebAnalyticsBotRule>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebAnalyticsBotRuleRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<WebAnalyticsBotRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -83,8 +83,8 @@ export const listWebAnalyticsBotRules: API.OperationMethod<
   ListWebAnalyticsBotRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListWebAnalyticsBotRulesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListWebAnalyticsBotRulesResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListWebAnalyticsBotRulesRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListWebAnalyticsBotRulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -98,8 +98,8 @@ export const webAnalyticsBotRulesDestroy: API.OperationMethod<
   WebAnalyticsBotRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<WebAnalyticsBotRulesDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<WebAnalyticsBotRulesDestroyResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<WebAnalyticsBotRulesDestroyRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<WebAnalyticsBotRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -111,22 +111,11 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          key: S.String,
-          matcher: S.String,
-          pattern: S.String,
-        }),
-      ).annotate({ identifier: "WebAnalyticsBotCondition" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           category: S.optional(S.String),
           combiner: S.optional(S.String),
-          items: __S(1, __c0, 1),
+          items: __S(5, __c1, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -137,17 +126,36 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWebAnalyticsBotRuleRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          key: S.String,
+          matcher: S.String,
+          pattern: S.String,
+        }),
+      ).annotate({ identifier: "WebAnalyticsBotCondition" });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           category: S.optional(S.String),
           combiner: S.optional(S.String),
-          items: __S(1, __c0, 1),
+          items: __S(5, __c1, 1),
         }),
       ).annotate({ identifier: "WebAnalyticsBotRule" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -161,13 +169,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWebAnalyticsBotRulesRequest",
       });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
-      return S.suspend(() => __S(5, __c0, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
+      return S.suspend(() => __S(9, __c2, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebAnalyticsBotRulesResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -182,17 +194,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsBotRulesDestroyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WebAnalyticsBotRulesDestroyResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

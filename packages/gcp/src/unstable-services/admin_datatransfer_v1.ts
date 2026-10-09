@@ -182,7 +182,7 @@ export const getApplications: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetApplicationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Application>,
+  output: __S(8, __c2, 0) as any as S.Schema<Application>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const getTransfers: API.OperationMethod<
   GetTransfersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetTransfersRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DataTransfer>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetTransfersRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<DataTransfer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -211,8 +211,8 @@ export const insertTransfers: API.OperationMethod<
   InsertTransfersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<InsertTransfersRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DataTransfer>,
+  input: __S(20, __c5, 0) as any as S.Schema<InsertTransfersRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<DataTransfer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -227,8 +227,8 @@ export const listApplications: API.PaginatedOperationMethod<
   GcpOpContext,
   ApplicationsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ApplicationsListResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<ApplicationsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const listTransfers: API.PaginatedOperationMethod<
   GcpOpContext,
   DataTransfersListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListTransfersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataTransfersListResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListTransfersRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<DataTransfersListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -267,28 +267,40 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationsRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(__S(1, __c0, 1)),
+          value: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "ApplicationTransferParam" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          transferParams: S.optional(__S(3, __c0, 3)),
+          transferParams: S.optional(__S(6, __c1, 2)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Application" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dataTransferId: S.String.pipe(T.Label()),
@@ -300,26 +312,26 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTransfersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationTransferParams: S.optional(__S(3, __c0, 3)),
-          applicationId: S.optional(S.String),
-          applicationTransferStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationDataTransfer" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          applicationTransferParams: S.optional(__S(6, __c1, 2)),
+          applicationId: S.optional(S.String),
+          applicationTransferStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationDataTransfer" });
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           etag: S.optional(S.String),
           newOwnerUserId: S.optional(S.String),
-          applicationDataTransfers: S.optional(__S(7, __c0, 7)),
+          applicationDataTransfers: S.optional(__S(17, __c4, 1)),
           kind: S.optional(S.String),
           id: S.optional(S.String),
           oldOwnerUserId: S.optional(S.String),
@@ -327,10 +339,14 @@ function __c1(j: number): any {
           overallTransferStatusCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataTransfer" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(18, __c4, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -339,7 +355,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertTransfersRequest" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -353,18 +373,22 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          applications: S.optional(__S(11, __c1, 3)),
+          applications: S.optional(__S(25, __c6, 1)),
           nextPageToken: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationsListResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String.pipe(T.Query())),
@@ -381,22 +405,21 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTransfersRequest" });
-    case 6:
-      return S.Array(__S(8, __c1, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(18, __c4, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          dataTransfers: S.optional(__S(14, __c1, 6)),
+          dataTransfers: S.optional(__S(29, __c7, 1)),
         }),
       ).annotate({
         identifier: "DataTransfersListResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

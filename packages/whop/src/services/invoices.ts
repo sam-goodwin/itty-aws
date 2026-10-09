@@ -1015,8 +1015,8 @@ export const createInvoice: API.OperationMethod<
   CreateInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateInvoiceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Invoice>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateInvoiceRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1035,8 @@ export const deleteInvoice: API.OperationMethod<
   DeleteInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteInvoiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteInvoiceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteInvoiceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<DeleteInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1050,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Invoice>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1072,8 @@ export const listInvoice: API.PaginatedOperationMethod<
   InvoiceListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListInvoiceRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListInvoiceResponse>,
+    input: __S(73, __c9, 1) as any as S.Schema<ListInvoiceRequest>,
+    output: __S(79, __c9, 7) as any as S.Schema<ListInvoiceResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1102,8 +1102,8 @@ export const markPaidInvoice: API.OperationMethod<
   MarkPaidInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<MarkPaidInvoiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<MarkPaidInvoiceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<MarkPaidInvoiceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<MarkPaidInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1122,8 +1122,8 @@ export const markUncollectibleInvoice: API.OperationMethod<
   MarkUncollectibleInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<MarkUncollectibleInvoiceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<MarkUncollectibleInvoiceResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<MarkUncollectibleInvoiceRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<MarkUncollectibleInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1142,8 @@ export const resendInvoice: API.OperationMethod<
   ResendInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ResendInvoiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ResendInvoiceResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ResendInvoiceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<ResendInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1162,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateInvoiceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Invoice>,
+  input: __S(15, __c1, 7) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1182,8 +1182,8 @@ export const voidInvoice: API.OperationMethod<
   VoidInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<VoidInvoiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<VoidInvoiceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<VoidInvoiceRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<VoidInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1191,6 +1191,16 @@ export const voidInvoice: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/resend", code: 200 })),
+      ).annotate({ identifier: "ResendInvoiceRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1220,7 +1230,7 @@ function __c0(j: number): any {
         identifier: "CreateInvoiceRequestBodyCase0LineItemsItem",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(9, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1235,20 +1245,90 @@ function __c0(j: number): any {
         identifier: "CreateInvoiceRequestBodyCase0PlanCustomFieldsItem",
       });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(11, __c1, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: __S(80, __c10, 0),
+          enabled: __S(80, __c10, 0),
+          include_platform_defaults: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "UpdateInvoiceRequestPlanPaymentMethodConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          adaptive_pricing_enabled: S.optional(S.NullOr(S.Boolean)),
+          billing_period: S.optional(S.NullOr(S.Number)),
+          currency: S.optional(S.NullOr(S.String)),
+          custom_fields: S.optional(S.NullOr(__S(12, __c1, 4))),
+          description: S.optional(S.NullOr(S.String)),
+          expiration_days: S.optional(S.NullOr(S.Number)),
+          initial_price: S.optional(S.NullOr(S.Number)),
+          internal_notes: S.optional(S.NullOr(S.String)),
+          legacy_payment_method_controls: S.optional(S.NullOr(S.Boolean)),
+          payment_method_configuration: S.optional(S.NullOr(__S(13, __c1, 5))),
+          plan_type: S.optional(S.NullOr(S.String)),
+          release_method: S.optional(S.NullOr(S.String)),
+          renewal_price: S.optional(S.NullOr(S.Number)),
+          stock: S.optional(S.NullOr(S.Number)),
+          trial_period_days: S.optional(S.NullOr(S.Number)),
+          unlimited_stock: S.optional(S.NullOr(S.Boolean)),
+          visibility: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UpdateInvoiceRequestPlan" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          automatically_finalizes_at: S.optional(S.NullOr(S.String)),
+          billing_address: S.optional(S.NullOr(__S(8, __c1, 0))),
+          charge_buyer_fee: S.optional(S.NullOr(S.Boolean)),
+          collection_method: S.optional(S.NullOr(S.String)),
+          customer_name: S.optional(S.NullOr(S.String)),
+          due_date: S.optional(S.NullOr(S.String)),
+          email_address: S.optional(S.NullOr(S.String)),
+          line_items: S.optional(S.NullOr(__S(10, __c1, 2))),
+          mailing_address_id: S.optional(S.NullOr(S.String)),
+          member_id: S.optional(S.NullOr(S.String)),
+          payment_method_id: S.optional(S.NullOr(S.String)),
+          plan: S.optional(S.NullOr(__S(14, __c1, 6))),
+          product_id: S.optional(S.NullOr(S.String)),
+          subscription_billing_anchor_at: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/invoices/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateInvoiceRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/void", code: 200 })),
+      ).annotate({ identifier: "VoidInvoiceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/invoices", code: 200 })),
       ).annotate({ identifier: "CreateInvoiceRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }),
       ).annotate({ identifier: "InvoiceCompany" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
@@ -1257,22 +1337,6 @@ function __c0(j: number): any {
           id: S.String,
         }),
       ).annotate({ identifier: "InvoiceCurrentPlan" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          position: S.Number,
-          quantity: S.Number,
-          total: S.Number,
-          unit_price: S.Number,
-        }),
-      ).annotate({ identifier: "InvoiceLineItemsItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1308,41 +1372,65 @@ function __c1(j: number): any {
           automatically_finalizes_at: S.NullOr(S.String),
           charge_buyer_fee: S.Boolean,
           collection_method: S.String,
-          company: __S(6, __c0, 6),
+          company: __S(32, __c4, 0),
           created_at: S.String,
-          current_plan: __S(7, __c0, 7),
+          current_plan: __S(33, __c4, 1),
           customer_name: S.NullOr(S.String),
           due_date: S.NullOr(S.String),
           email_address: S.NullOr(S.String),
           fetch_invoice_token: S.String,
           id: S.String,
-          line_items: __S(9, __c1, 1),
-          mailing_address: S.NullOr(__S(10, __c1, 2)),
-          member: S.NullOr(__S(6, __c0, 6)),
+          line_items: __S(41, __c5, 1),
+          mailing_address: S.NullOr(__S(34, __c4, 2)),
+          member: S.NullOr(__S(32, __c4, 0)),
           number: S.String,
           pay_online_url: S.NullOr(S.String),
-          payment: S.NullOr(__S(6, __c0, 6)),
+          payment: S.NullOr(__S(32, __c4, 0)),
           payment_processing: S.Boolean,
-          product: __S(11, __c1, 3),
+          product: __S(35, __c4, 3),
           status: S.String,
           subscription_billing_anchor_at: S.NullOr(S.String),
           updated_at: S.String,
-          user: S.NullOr(__S(12, __c1, 4)),
+          user: S.NullOr(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "Invoice" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          position: S.Number,
+          quantity: S.Number,
+          total: S.Number,
+          unit_price: S.Number,
+        }),
+      ).annotate({ identifier: "InvoiceLineItemsItem" });
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/invoices/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteInvoiceRequest" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteInvoiceResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1350,11 +1438,13 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/invoices/{id}", code: 200 })),
       ).annotate({ identifier: "GetInvoiceRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
     case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -1362,16 +1452,16 @@ function __c2(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          product_ids: S.optional(__S(17, __c2, 1).pipe(T.Query())),
-          collection_methods: S.optional(__S(18, __c2, 2).pipe(T.Query())),
-          statuses: S.optional(__S(18, __c2, 2).pipe(T.Query())),
+          product_ids: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          collection_methods: S.optional(__S(80, __c10, 0).pipe(T.Query())),
+          statuses: S.optional(__S(80, __c10, 0).pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/invoices", code: 200 })),
       ).annotate({ identifier: "ListInvoiceRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
@@ -1381,7 +1471,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "InvoiceListItemCurrentPlan",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1389,29 +1479,25 @@ function __c2(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "InvoiceListItemUser" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
-          current_plan: __S(20, __c2, 4),
+          current_plan: __S(74, __c9, 2),
           due_date: S.NullOr(S.String),
           email_address: S.NullOr(S.String),
           fetch_invoice_token: S.String,
           id: S.String,
-          line_items: __S(9, __c1, 1),
+          line_items: __S(41, __c5, 1),
           number: S.String,
           payment_processing: S.Boolean,
           status: S.String,
-          user: S.NullOr(__S(21, __c2, 5)),
+          user: S.NullOr(__S(75, __c9, 3)),
         }),
       ).annotate({ identifier: "InvoiceListItem" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(76, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1420,20 +1506,34 @@ function __c3(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          data: __S(23, __c2, 7),
-          page_info: __S(24, __c3, 0),
+          data: __S(77, __c9, 5),
+          page_info: __S(78, __c9, 6),
         }),
       ).annotate({ identifier: "ListInvoiceResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/mark_paid", code: 200 })),
       ).annotate({ identifier: "MarkPaidInvoiceRequest" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1441,81 +1541,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MarkUncollectibleInvoiceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "MarkUncollectibleInvoiceResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/resend", code: 200 })),
-      ).annotate({ identifier: "ResendInvoiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: __S(18, __c2, 2),
-          enabled: __S(18, __c2, 2),
-          include_platform_defaults: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "UpdateInvoiceRequestPlanPaymentMethodConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adaptive_pricing_enabled: S.optional(S.NullOr(S.Boolean)),
-          billing_period: S.optional(S.NullOr(S.Number)),
-          currency: S.optional(S.NullOr(S.String)),
-          custom_fields: S.optional(S.NullOr(__S(4, __c0, 4))),
-          description: S.optional(S.NullOr(S.String)),
-          expiration_days: S.optional(S.NullOr(S.Number)),
-          initial_price: S.optional(S.NullOr(S.Number)),
-          internal_notes: S.optional(S.NullOr(S.String)),
-          legacy_payment_method_controls: S.optional(S.NullOr(S.Boolean)),
-          payment_method_configuration: S.optional(S.NullOr(__S(30, __c3, 6))),
-          plan_type: S.optional(S.NullOr(S.String)),
-          release_method: S.optional(S.NullOr(S.String)),
-          renewal_price: S.optional(S.NullOr(S.Number)),
-          stock: S.optional(S.NullOr(S.Number)),
-          trial_period_days: S.optional(S.NullOr(S.Number)),
-          unlimited_stock: S.optional(S.NullOr(S.Boolean)),
-          visibility: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UpdateInvoiceRequestPlan" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          automatically_finalizes_at: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(0, __c0, 0))),
-          charge_buyer_fee: S.optional(S.NullOr(S.Boolean)),
-          collection_method: S.optional(S.NullOr(S.String)),
-          customer_name: S.optional(S.NullOr(S.String)),
-          due_date: S.optional(S.NullOr(S.String)),
-          email_address: S.optional(S.NullOr(S.String)),
-          line_items: S.optional(S.NullOr(__S(2, __c0, 2))),
-          mailing_address_id: S.optional(S.NullOr(S.String)),
-          member_id: S.optional(S.NullOr(S.String)),
-          payment_method_id: S.optional(S.NullOr(S.String)),
-          plan: S.optional(S.NullOr(__S(31, __c3, 7))),
-          product_id: S.optional(S.NullOr(S.String)),
-          subscription_billing_anchor_at: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/invoices/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateInvoiceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/void", code: 200 })),
-      ).annotate({ identifier: "VoidInvoiceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

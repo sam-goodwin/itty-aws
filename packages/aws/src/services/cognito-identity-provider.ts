@@ -2559,8 +2559,8 @@ export const addCustomAttributes: API.OperationMethod<
   AddCustomAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AddCustomAttributesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AddCustomAttributesResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<AddCustomAttributesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AddCustomAttributesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2592,8 +2592,8 @@ export const addUserPoolClientSecret: API.OperationMethod<
   AddUserPoolClientSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AddUserPoolClientSecretRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddUserPoolClientSecretResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<AddUserPoolClientSecretRequest>,
+  output: __S(3649, __c114, 1) as any as S.Schema<AddUserPoolClientSecretResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2637,8 +2637,8 @@ export const adminAddUserToGroup: API.OperationMethod<
   AdminAddUserToGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AdminAddUserToGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminAddUserToGroupResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<AdminAddUserToGroupRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminAddUserToGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2694,8 +2694,8 @@ export const adminConfirmSignUp: API.OperationMethod<
   AdminConfirmSignUpError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AdminConfirmSignUpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminConfirmSignUpResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<AdminConfirmSignUpRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminConfirmSignUpResponse>,
   errors: [
     InternalErrorException,
     InvalidLambdaResponseException,
@@ -2788,8 +2788,8 @@ export const adminCreateUser: API.OperationMethod<
   AdminCreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AdminCreateUserRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AdminCreateUserResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<AdminCreateUserRequest>,
+  output: __S(3809, __c119, 1) as any as S.Schema<AdminCreateUserResponse>,
   errors: [
     CodeDeliveryFailureException,
     InternalErrorException,
@@ -2848,8 +2848,8 @@ export const adminDeleteSoftwareToken: API.OperationMethod<
   AdminDeleteSoftwareTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<AdminDeleteSoftwareTokenRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminDeleteSoftwareTokenResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<AdminDeleteSoftwareTokenRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminDeleteSoftwareTokenResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2893,8 +2893,8 @@ export const adminDeleteUser: API.OperationMethod<
   AdminDeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<AdminDeleteUserRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AdminDeleteUserResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<AdminDeleteUserRequest>,
+  output: __S(4032, __c126, 0) as any as S.Schema<AdminDeleteUserResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -2939,8 +2939,8 @@ export const adminDeleteUserAttributes: API.OperationMethod<
   AdminDeleteUserAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<AdminDeleteUserAttributesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminDeleteUserAttributesResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<AdminDeleteUserAttributesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminDeleteUserAttributesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3010,8 +3010,8 @@ export const adminDisableProviderForUser: API.OperationMethod<
   AdminDisableProviderForUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<AdminDisableProviderForUserRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminDisableProviderForUserResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<AdminDisableProviderForUserRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminDisableProviderForUserResponse>,
   errors: [
     AliasExistsException,
     InternalErrorException,
@@ -3057,8 +3057,8 @@ export const adminDisableUser: API.OperationMethod<
   AdminDisableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<AdminDisableUserRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AdminDisableUserResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<AdminDisableUserRequest>,
+  output: __S(4032, __c126, 0) as any as S.Schema<AdminDisableUserResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3102,8 +3102,8 @@ export const adminEnableUser: API.OperationMethod<
   AdminEnableUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<AdminEnableUserRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AdminEnableUserResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<AdminEnableUserRequest>,
+  output: __S(4032, __c126, 0) as any as S.Schema<AdminEnableUserResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3149,8 +3149,8 @@ export const adminForgetDevice: API.OperationMethod<
   AdminForgetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<AdminForgetDeviceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminForgetDeviceResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<AdminForgetDeviceRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminForgetDeviceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3195,8 +3195,8 @@ export const adminGetDevice: API.OperationMethod<
   AdminGetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<AdminGetDeviceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<AdminGetDeviceResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<AdminGetDeviceRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<AdminGetDeviceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3243,8 +3243,8 @@ export const adminGetUser: API.OperationMethod<
   AdminGetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<AdminGetUserRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<AdminGetUserResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<AdminGetUserRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<AdminGetUserResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3293,8 +3293,8 @@ export const adminGetUserAuthFactors: API.OperationMethod<
   AdminGetUserAuthFactorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<AdminGetUserAuthFactorsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<AdminGetUserAuthFactorsResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<AdminGetUserAuthFactorsRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<AdminGetUserAuthFactorsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3370,8 +3370,8 @@ export const adminInitiateAuth: API.OperationMethod<
   AdminInitiateAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<AdminInitiateAuthRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<AdminInitiateAuthResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<AdminInitiateAuthRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<AdminInitiateAuthResponse>,
   errors: [
     FeatureUnavailableInTierException,
     InternalErrorException,
@@ -3442,8 +3442,8 @@ export const adminLinkProviderForUser: API.OperationMethod<
   AdminLinkProviderForUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<AdminLinkProviderForUserRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminLinkProviderForUserResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<AdminLinkProviderForUserRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminLinkProviderForUserResponse>,
   errors: [
     AliasExistsException,
     InternalErrorException,
@@ -3491,8 +3491,8 @@ export const adminListDevices: API.OperationMethod<
   AdminListDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<AdminListDevicesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<AdminListDevicesResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<AdminListDevicesRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<AdminListDevicesResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3538,8 +3538,8 @@ export const adminListGroupsForUser: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<AdminListGroupsForUserRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<AdminListGroupsForUserResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<AdminListGroupsForUserRequest>,
+  output: __S(4737, __c148, 1) as any as S.Schema<AdminListGroupsForUserResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3591,8 +3591,8 @@ export const adminListUserAuthEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AuthEventType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<AdminListUserAuthEventsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<AdminListUserAuthEventsResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<AdminListUserAuthEventsRequest>,
+  output: __S(4840, __c151, 8) as any as S.Schema<AdminListUserAuthEventsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3644,8 +3644,8 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
   AdminRemoveUserFromGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<AdminRemoveUserFromGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminRemoveUserFromGroupResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<AdminRemoveUserFromGroupRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminRemoveUserFromGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3720,8 +3720,8 @@ export const adminResetUserPassword: API.OperationMethod<
   AdminResetUserPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<AdminResetUserPasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminResetUserPasswordResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<AdminResetUserPasswordRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminResetUserPasswordResponse>,
   errors: [
     InternalErrorException,
     InvalidEmailRoleAccessPolicyException,
@@ -3811,8 +3811,8 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
   AdminRespondToAuthChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<AdminRespondToAuthChallengeRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<AdminRespondToAuthChallengeResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<AdminRespondToAuthChallengeRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<AdminRespondToAuthChallengeResponse>,
   errors: [
     AliasExistsException,
     CodeMismatchException,
@@ -3876,8 +3876,8 @@ export const adminSetUserMFAPreference: API.OperationMethod<
   AdminSetUserMFAPreferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<AdminSetUserMFAPreferenceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminSetUserMFAPreferenceResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<AdminSetUserMFAPreferenceRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminSetUserMFAPreferenceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3951,8 +3951,8 @@ export const adminSetUserPassword: API.OperationMethod<
   AdminSetUserPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<AdminSetUserPasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminSetUserPasswordResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<AdminSetUserPasswordRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminSetUserPasswordResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -3998,8 +3998,8 @@ export const adminSetUserSettings: API.OperationMethod<
   AdminSetUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<AdminSetUserSettingsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminSetUserSettingsResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<AdminSetUserSettingsRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminSetUserSettingsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4052,8 +4052,8 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
   AdminUpdateAuthEventFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<AdminUpdateAuthEventFeedbackRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminUpdateAuthEventFeedbackResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<AdminUpdateAuthEventFeedbackRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminUpdateAuthEventFeedbackResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4103,8 +4103,8 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
   AdminUpdateDeviceStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<AdminUpdateDeviceStatusRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminUpdateDeviceStatusResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<AdminUpdateDeviceStatusRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminUpdateDeviceStatusResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4181,8 +4181,8 @@ export const adminUpdateUserAttributes: API.OperationMethod<
   AdminUpdateUserAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<AdminUpdateUserAttributesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminUpdateUserAttributesResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<AdminUpdateUserAttributesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminUpdateUserAttributesResponse>,
   errors: [
     AliasExistsException,
     InternalErrorException,
@@ -4255,8 +4255,8 @@ export const adminUserGlobalSignOut: API.OperationMethod<
   AdminUserGlobalSignOutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<AdminUserGlobalSignOutRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AdminUserGlobalSignOutResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<AdminUserGlobalSignOutRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<AdminUserGlobalSignOutResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4301,8 +4301,8 @@ export const associateSoftwareToken: API.OperationMethod<
   AssociateSoftwareTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<AssociateSoftwareTokenRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<AssociateSoftwareTokenResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<AssociateSoftwareTokenRequest>,
+  output: __S(5217, __c163, 1) as any as S.Schema<AssociateSoftwareTokenResponse>,
   errors: [
     ConcurrentModificationException,
     ForbiddenException,
@@ -4349,8 +4349,8 @@ export const changePassword: API.OperationMethod<
   ChangePasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ChangePasswordRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ChangePasswordResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<ChangePasswordRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<ChangePasswordResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -4399,8 +4399,8 @@ export const completeWebAuthnRegistration: API.OperationMethod<
   CompleteWebAuthnRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<CompleteWebAuthnRegistrationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CompleteWebAuthnRegistrationResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<CompleteWebAuthnRegistrationRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<CompleteWebAuthnRegistrationResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -4458,8 +4458,8 @@ export const confirmDevice: API.OperationMethod<
   ConfirmDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ConfirmDeviceRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ConfirmDeviceResponse>,
+  input: __S(5345, __c167, 1) as any as S.Schema<ConfirmDeviceRequest>,
+  output: __S(5346, __c167, 2) as any as S.Schema<ConfirmDeviceResponse>,
   errors: [
     DeviceKeyExistsException,
     ForbiddenException,
@@ -4517,8 +4517,8 @@ export const confirmForgotPassword: API.OperationMethod<
   ConfirmForgotPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ConfirmForgotPasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ConfirmForgotPasswordResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<ConfirmForgotPasswordRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<ConfirmForgotPasswordResponse>,
   errors: [
     CodeMismatchException,
     ExpiredCodeException,
@@ -4585,8 +4585,8 @@ export const confirmSignUp: API.OperationMethod<
   ConfirmSignUpError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ConfirmSignUpRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ConfirmSignUpResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ConfirmSignUpRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<ConfirmSignUpResponse>,
   errors: [
     AliasExistsException,
     CodeMismatchException,
@@ -4640,8 +4640,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateGroupRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CreateGroupResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<CreateGroupResponse>,
   errors: [
     GroupExistsException,
     InternalErrorException,
@@ -4687,8 +4687,8 @@ export const createIdentityProvider: API.OperationMethod<
   CreateIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateIdentityProviderRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateIdentityProviderResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<CreateIdentityProviderRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<CreateIdentityProviderResponse>,
   errors: [
     DuplicateProviderException,
     InternalErrorException,
@@ -4748,8 +4748,8 @@ export const createManagedLoginBranding: API.OperationMethod<
   CreateManagedLoginBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateManagedLoginBrandingRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CreateManagedLoginBrandingResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<CreateManagedLoginBrandingRequest>,
+  output: __S(5635, __c176, 3) as any as S.Schema<CreateManagedLoginBrandingResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -4796,8 +4796,8 @@ export const createResourceServer: API.OperationMethod<
   CreateResourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateResourceServerRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CreateResourceServerResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<CreateResourceServerRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<CreateResourceServerResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4855,8 +4855,8 @@ export const createTerms: API.OperationMethod<
   CreateTermsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CreateTermsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CreateTermsResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<CreateTermsRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<CreateTermsResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -4903,8 +4903,8 @@ export const createUserImportJob: API.OperationMethod<
   CreateUserImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateUserImportJobRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<CreateUserImportJobResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateUserImportJobRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<CreateUserImportJobResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -4972,8 +4972,8 @@ export const createUserPool: API.OperationMethod<
   CreateUserPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateUserPoolRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<CreateUserPoolResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateUserPoolRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<CreateUserPoolResponse>,
   errors: [
     FeatureUnavailableInTierException,
     InternalErrorException,
@@ -5030,8 +5030,8 @@ export const createUserPoolClient: API.OperationMethod<
   CreateUserPoolClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreateUserPoolClientRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<CreateUserPoolClientResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateUserPoolClientRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<CreateUserPoolClientResponse>,
   errors: [
     FeatureUnavailableInTierException,
     InternalErrorException,
@@ -5089,8 +5089,8 @@ export const createUserPoolDomain: API.OperationMethod<
   CreateUserPoolDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<CreateUserPoolDomainRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<CreateUserPoolDomainResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateUserPoolDomainRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<CreateUserPoolDomainResponse>,
   errors: [
     ConcurrentModificationException,
     FeatureUnavailableInTierException,
@@ -5138,8 +5138,8 @@ export const createUserPoolReplica: API.OperationMethod<
   CreateUserPoolReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<CreateUserPoolReplicaRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<CreateUserPoolReplicaResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateUserPoolReplicaRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<CreateUserPoolReplicaResponse>,
   errors: [
     FeatureUnavailableInTierException,
     InternalErrorException,
@@ -5187,8 +5187,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5232,8 +5232,8 @@ export const deleteIdentityProvider: API.OperationMethod<
   DeleteIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DeleteIdentityProviderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteIdentityProviderResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteIdentityProviderRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteIdentityProviderResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -5279,8 +5279,8 @@ export const deleteManagedLoginBranding: API.OperationMethod<
   DeleteManagedLoginBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteManagedLoginBrandingRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteManagedLoginBrandingResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteManagedLoginBrandingRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteManagedLoginBrandingResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -5326,8 +5326,8 @@ export const deleteResourceServer: API.OperationMethod<
   DeleteResourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<DeleteResourceServerRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteResourceServerResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteResourceServerRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteResourceServerResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5369,8 +5369,8 @@ export const deleteTerms: API.OperationMethod<
   DeleteTermsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DeleteTermsRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DeleteTermsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteTermsRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteTermsResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -5414,8 +5414,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteUserRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DeleteUserResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -5463,8 +5463,8 @@ export const deleteUserAttributes: API.OperationMethod<
   DeleteUserAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DeleteUserAttributesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUserAttributesResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteUserAttributesRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteUserAttributesResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -5510,8 +5510,8 @@ export const deleteUserPool: API.OperationMethod<
   DeleteUserPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<DeleteUserPoolRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeleteUserPoolResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteUserPoolRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<DeleteUserPoolResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5545,8 +5545,8 @@ export const deleteUserPoolClient: API.OperationMethod<
   DeleteUserPoolClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteUserPoolClientRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUserPoolClientResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteUserPoolClientRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteUserPoolClientResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -5577,8 +5577,8 @@ export const deleteUserPoolClientSecret: API.OperationMethod<
   DeleteUserPoolClientSecretError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteUserPoolClientSecretRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUserPoolClientSecretResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteUserPoolClientSecretRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteUserPoolClientSecretResponse>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -5610,8 +5610,8 @@ export const deleteUserPoolDomain: API.OperationMethod<
   DeleteUserPoolDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteUserPoolDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUserPoolDomainResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteUserPoolDomainRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteUserPoolDomainResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -5653,8 +5653,8 @@ export const deleteUserPoolReplica: API.OperationMethod<
   DeleteUserPoolReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteUserPoolReplicaRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteUserPoolReplicaResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteUserPoolReplicaRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<DeleteUserPoolReplicaResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5696,8 +5696,8 @@ export const deleteWebAuthnCredential: API.OperationMethod<
   DeleteWebAuthnCredentialError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteWebAuthnCredentialRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebAuthnCredentialResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteWebAuthnCredentialRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteWebAuthnCredentialResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -5731,8 +5731,8 @@ export const describeIdentityProvider: API.OperationMethod<
   DescribeIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DescribeIdentityProviderRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<DescribeIdentityProviderResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DescribeIdentityProviderRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<DescribeIdentityProviderResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5763,8 +5763,8 @@ export const describeManagedLoginBranding: API.OperationMethod<
   DescribeManagedLoginBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DescribeManagedLoginBrandingRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DescribeManagedLoginBrandingResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DescribeManagedLoginBrandingRequest>,
+  output: __S(5635, __c176, 3) as any as S.Schema<DescribeManagedLoginBrandingResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5796,8 +5796,8 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
   DescribeManagedLoginBrandingByClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DescribeManagedLoginBrandingByClientRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DescribeManagedLoginBrandingByClientResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DescribeManagedLoginBrandingByClientRequest>,
+  output: __S(5635, __c176, 3) as any as S.Schema<DescribeManagedLoginBrandingByClientResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5828,8 +5828,8 @@ export const describeResourceServer: API.OperationMethod<
   DescribeResourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DescribeResourceServerRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DescribeResourceServerResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DescribeResourceServerRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<DescribeResourceServerResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5864,8 +5864,8 @@ export const describeRiskConfiguration: API.OperationMethod<
   DescribeRiskConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DescribeRiskConfigurationRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DescribeRiskConfigurationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DescribeRiskConfigurationRequest>,
+  output: __S(1129, __c35, 9) as any as S.Schema<DescribeRiskConfigurationResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5907,8 +5907,8 @@ export const describeTerms: API.OperationMethod<
   DescribeTermsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DescribeTermsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<DescribeTermsResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DescribeTermsRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<DescribeTermsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5956,8 +5956,8 @@ export const describeTermsByClient: API.OperationMethod<
   DescribeTermsByClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DescribeTermsByClientRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<DescribeTermsByClientResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DescribeTermsByClientRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<DescribeTermsByClientResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -5988,8 +5988,8 @@ export const describeUserImportJob: API.OperationMethod<
   DescribeUserImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DescribeUserImportJobRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<DescribeUserImportJobResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DescribeUserImportJobRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DescribeUserImportJobResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6033,8 +6033,8 @@ export const describeUserPool: API.OperationMethod<
   DescribeUserPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DescribeUserPoolRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DescribeUserPoolResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DescribeUserPoolRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<DescribeUserPoolResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6078,8 +6078,8 @@ export const describeUserPoolClient: API.OperationMethod<
   DescribeUserPoolClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DescribeUserPoolClientRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<DescribeUserPoolClientResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DescribeUserPoolClientRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<DescribeUserPoolClientResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6125,8 +6125,8 @@ export const describeUserPoolDomain: API.OperationMethod<
   DescribeUserPoolDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DescribeUserPoolDomainRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<DescribeUserPoolDomainResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DescribeUserPoolDomainRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<DescribeUserPoolDomainResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6169,8 +6169,8 @@ export const forgetDevice: API.OperationMethod<
   ForgetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ForgetDeviceRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ForgetDeviceResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ForgetDeviceRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ForgetDeviceResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6249,8 +6249,8 @@ export const forgotPassword: API.OperationMethod<
   ForgotPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ForgotPasswordRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ForgotPasswordResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ForgotPasswordRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<ForgotPasswordResponse>,
   errors: [
     CodeDeliveryFailureException,
     ForbiddenException,
@@ -6305,8 +6305,8 @@ export const getClientToken: API.OperationMethod<
   GetClientTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetClientTokenRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<GetClientTokenResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetClientTokenRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GetClientTokenResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6353,8 +6353,8 @@ export const getCSVHeader: API.OperationMethod<
   GetCSVHeaderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetCSVHeaderRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<GetCSVHeaderResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetCSVHeaderRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<GetCSVHeaderResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6398,8 +6398,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<GetDeviceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetDeviceResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<GetDeviceResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6448,8 +6448,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetGroupRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetGroupResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetGroupRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<GetGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6481,8 +6481,8 @@ export const getIdentityProviderByIdentifier: API.OperationMethod<
   GetIdentityProviderByIdentifierError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetIdentityProviderByIdentifierRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GetIdentityProviderByIdentifierResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetIdentityProviderByIdentifierRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<GetIdentityProviderByIdentifierResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6522,8 +6522,8 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
   GetLogDeliveryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetLogDeliveryConfigurationRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetLogDeliveryConfigurationResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetLogDeliveryConfigurationRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<GetLogDeliveryConfigurationResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6562,8 +6562,8 @@ export const getProvisionedLimit: API.OperationMethod<
   GetProvisionedLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetProvisionedLimitRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetProvisionedLimitResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetProvisionedLimitRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<GetProvisionedLimitResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6608,8 +6608,8 @@ export const getSigningCertificate: API.OperationMethod<
   GetSigningCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetSigningCertificateRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetSigningCertificateResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetSigningCertificateRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<GetSigningCertificateResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6648,8 +6648,8 @@ export const getTokensFromRefreshToken: API.OperationMethod<
   GetTokensFromRefreshTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetTokensFromRefreshTokenRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<GetTokensFromRefreshTokenResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetTokensFromRefreshTokenRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<GetTokensFromRefreshTokenResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6690,8 +6690,8 @@ export const getUICustomization: API.OperationMethod<
   GetUICustomizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetUICustomizationRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetUICustomizationResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetUICustomizationRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<GetUICustomizationResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6733,8 +6733,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetUserRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetUserResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<GetUserResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6806,8 +6806,8 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
   GetUserAttributeVerificationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetUserAttributeVerificationCodeRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<GetUserAttributeVerificationCodeResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetUserAttributeVerificationCodeRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GetUserAttributeVerificationCodeResponse>,
   errors: [
     CodeDeliveryFailureException,
     ForbiddenException,
@@ -6867,8 +6867,8 @@ export const getUserAuthFactors: API.OperationMethod<
   GetUserAuthFactorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetUserAuthFactorsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetUserAuthFactorsResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetUserAuthFactorsRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<GetUserAuthFactorsResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -6924,8 +6924,8 @@ export const getUserPoolMfaConfig: API.OperationMethod<
   GetUserPoolMfaConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetUserPoolMfaConfigRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GetUserPoolMfaConfigResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetUserPoolMfaConfigRequest>,
+  output: __S(2020, __c63, 4) as any as S.Schema<GetUserPoolMfaConfigResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -6988,8 +6988,8 @@ export const globalSignOut: API.OperationMethod<
   GlobalSignOutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GlobalSignOutRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GlobalSignOutResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GlobalSignOutRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<GlobalSignOutResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -7062,8 +7062,8 @@ export const initiateAuth: API.OperationMethod<
   InitiateAuthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<InitiateAuthRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<InitiateAuthResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<InitiateAuthRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<InitiateAuthResponse>,
   errors: [
     FeatureUnavailableInTierException,
     ForbiddenException,
@@ -7120,8 +7120,8 @@ export const listDevices: API.OperationMethod<
   ListDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListDevicesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListDevicesResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListDevicesRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<ListDevicesResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -7168,8 +7168,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ListGroupsRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<ListGroupsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<ListGroupsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7217,8 +7217,8 @@ export const listIdentityProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProviderDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListIdentityProvidersRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<ListIdentityProvidersResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListIdentityProvidersRequest>,
+  output: __S(2179, __c68, 3) as any as S.Schema<ListIdentityProvidersResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7266,8 +7266,8 @@ export const listResourceServers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceServerType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListResourceServersRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<ListResourceServersResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListResourceServersRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ListResourceServersResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7306,8 +7306,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7348,8 +7348,8 @@ export const listTerms: API.OperationMethod<
   ListTermsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListTermsRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<ListTermsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListTermsRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<ListTermsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7392,8 +7392,8 @@ export const listUserImportJobs: API.OperationMethod<
   ListUserImportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListUserImportJobsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<ListUserImportJobsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListUserImportJobsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<ListUserImportJobsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7436,8 +7436,8 @@ export const listUserPoolClients: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserPoolClientDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListUserPoolClientsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<ListUserPoolClientsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListUserPoolClientsRequest>,
+  output: __S(2339, __c73, 3) as any as S.Schema<ListUserPoolClientsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7473,8 +7473,8 @@ export const listUserPoolClientSecrets: API.OperationMethod<
   ListUserPoolClientSecretsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListUserPoolClientSecretsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListUserPoolClientSecretsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListUserPoolClientSecretsRequest>,
+  output: __S(2370, __c74, 2) as any as S.Schema<ListUserPoolClientSecretsResponse>,
   errors: [
     InternalServerException,
     InvalidParameterException,
@@ -7516,8 +7516,8 @@ export const listUserPoolReplicas: API.OperationMethod<
   ListUserPoolReplicasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListUserPoolReplicasRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<ListUserPoolReplicasResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListUserPoolReplicasRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListUserPoolReplicasResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7557,8 +7557,8 @@ export const listUserPools: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserPoolDescriptionType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListUserPoolsRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListUserPoolsResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListUserPoolsRequest>,
+  output: __S(2435, __c76, 3) as any as S.Schema<ListUserPoolsResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7609,8 +7609,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListUsersRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<ListUsersResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(2465, __c77, 1) as any as S.Schema<ListUsersResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7659,8 +7659,8 @@ export const listUsersInGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UserType
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListUsersInGroupRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<ListUsersInGroupResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListUsersInGroupRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ListUsersInGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -7707,8 +7707,8 @@ export const listWebAuthnCredentials: API.OperationMethod<
   ListWebAuthnCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListWebAuthnCredentialsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListWebAuthnCredentialsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListWebAuthnCredentialsRequest>,
+  output: __S(2563, __c80, 3) as any as S.Schema<ListWebAuthnCredentialsResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -7777,8 +7777,8 @@ export const resendConfirmationCode: API.OperationMethod<
   ResendConfirmationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ResendConfirmationCodeRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<ResendConfirmationCodeResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ResendConfirmationCodeRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<ResendConfirmationCodeResponse>,
   errors: [
     CodeDeliveryFailureException,
     ForbiddenException,
@@ -7866,8 +7866,8 @@ export const respondToAuthChallenge: API.OperationMethod<
   RespondToAuthChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<RespondToAuthChallengeRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<RespondToAuthChallengeResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<RespondToAuthChallengeRequest>,
+  output: __S(4576, __c143, 0) as any as S.Schema<RespondToAuthChallengeResponse>,
   errors: [
     AliasExistsException,
     CodeMismatchException,
@@ -7925,8 +7925,8 @@ export const revokeToken: API.OperationMethod<
   RevokeTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<RevokeTokenRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<RevokeTokenResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<RevokeTokenRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<RevokeTokenResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -7962,8 +7962,8 @@ export const setLogDeliveryConfiguration: API.OperationMethod<
   SetLogDeliveryConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<SetLogDeliveryConfigurationRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<SetLogDeliveryConfigurationResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<SetLogDeliveryConfigurationRequest>,
+  output: __S(1638, __c51, 6) as any as S.Schema<SetLogDeliveryConfigurationResponse>,
   errors: [
     FeatureUnavailableInTierException,
     InternalErrorException,
@@ -8021,8 +8021,8 @@ export const setRiskConfiguration: API.OperationMethod<
   SetRiskConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<SetRiskConfigurationRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<SetRiskConfigurationResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<SetRiskConfigurationRequest>,
+  output: __S(1129, __c35, 9) as any as S.Schema<SetRiskConfigurationResponse>,
   errors: [
     CodeDeliveryFailureException,
     InternalErrorException,
@@ -8072,8 +8072,8 @@ export const setUICustomization: API.OperationMethod<
   SetUICustomizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<SetUICustomizationRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<SetUICustomizationResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<SetUICustomizationRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<SetUICustomizationResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8122,8 +8122,8 @@ export const setUserMFAPreference: API.OperationMethod<
   SetUserMFAPreferenceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<SetUserMFAPreferenceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<SetUserMFAPreferenceResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<SetUserMFAPreferenceRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<SetUserMFAPreferenceResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -8179,8 +8179,8 @@ export const setUserPoolMfaConfig: API.OperationMethod<
   SetUserPoolMfaConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<SetUserPoolMfaConfigRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<SetUserPoolMfaConfigResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<SetUserPoolMfaConfigRequest>,
+  output: __S(2020, __c63, 4) as any as S.Schema<SetUserPoolMfaConfigResponse>,
   errors: [
     ConcurrentModificationException,
     FeatureUnavailableInTierException,
@@ -8227,8 +8227,8 @@ export const setUserSettings: API.OperationMethod<
   SetUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<SetUserSettingsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SetUserSettingsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<SetUserSettingsRequest>,
+  output: __S(4032, __c126, 0) as any as S.Schema<SetUserSettingsResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -8302,8 +8302,8 @@ export const signUp: API.OperationMethod<
   SignUpError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<SignUpRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<SignUpResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<SignUpRequest>,
+  output: __S(2881, __c90, 1) as any as S.Schema<SignUpResponse>,
   errors: [
     CodeDeliveryFailureException,
     ForbiddenException,
@@ -8348,8 +8348,8 @@ export const startUserImportJob: API.OperationMethod<
   StartUserImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<StartUserImportJobRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StartUserImportJobResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<StartUserImportJobRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<StartUserImportJobResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8390,8 +8390,8 @@ export const startWebAuthnRegistration: API.OperationMethod<
   StartWebAuthnRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<StartWebAuthnRegistrationRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<StartWebAuthnRegistrationResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<StartWebAuthnRegistrationRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<StartWebAuthnRegistrationResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -8429,8 +8429,8 @@ export const stopUserImportJob: API.OperationMethod<
   StopUserImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<StopUserImportJobRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<StopUserImportJobResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<StopUserImportJobRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<StopUserImportJobResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8478,8 +8478,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8510,8 +8510,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8562,8 +8562,8 @@ export const updateAuthEventFeedback: API.OperationMethod<
   UpdateAuthEventFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<UpdateAuthEventFeedbackRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateAuthEventFeedbackResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<UpdateAuthEventFeedbackRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<UpdateAuthEventFeedbackResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8613,8 +8613,8 @@ export const updateDeviceStatus: API.OperationMethod<
   UpdateDeviceStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<UpdateDeviceStatusRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateDeviceStatusResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpdateDeviceStatusRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<UpdateDeviceStatusResponse>,
   errors: [
     ForbiddenException,
     InternalErrorException,
@@ -8661,8 +8661,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<UpdateGroupResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(5504, __c172, 0) as any as S.Schema<UpdateGroupResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8707,8 +8707,8 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<UpdateIdentityProviderRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<UpdateIdentityProviderResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<UpdateIdentityProviderRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<UpdateIdentityProviderResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -8761,8 +8761,8 @@ export const updateManagedLoginBranding: API.OperationMethod<
   UpdateManagedLoginBrandingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<UpdateManagedLoginBrandingRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<UpdateManagedLoginBrandingResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<UpdateManagedLoginBrandingRequest>,
+  output: __S(5635, __c176, 3) as any as S.Schema<UpdateManagedLoginBrandingResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -8809,8 +8809,8 @@ export const updateProvisionedLimit: API.OperationMethod<
   UpdateProvisionedLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateProvisionedLimitRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<UpdateProvisionedLimitResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<UpdateProvisionedLimitRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<UpdateProvisionedLimitResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8855,8 +8855,8 @@ export const updateResourceServer: API.OperationMethod<
   UpdateResourceServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<UpdateResourceServerRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<UpdateResourceServerResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateResourceServerRequest>,
+  output: __S(5728, __c179, 0) as any as S.Schema<UpdateResourceServerResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -8912,8 +8912,8 @@ export const updateTerms: API.OperationMethod<
   UpdateTermsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<UpdateTermsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<UpdateTermsResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UpdateTermsRequest>,
+  output: __S(5824, __c182, 0) as any as S.Schema<UpdateTermsResponse>,
   errors: [
     ConcurrentModificationException,
     InternalErrorException,
@@ -8988,8 +8988,8 @@ export const updateUserAttributes: API.OperationMethod<
   UpdateUserAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<UpdateUserAttributesRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<UpdateUserAttributesResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<UpdateUserAttributesRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<UpdateUserAttributesResponse>,
   errors: [
     AliasExistsException,
     CodeDeliveryFailureException,
@@ -9078,8 +9078,8 @@ export const updateUserPool: API.OperationMethod<
   UpdateUserPoolError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<UpdateUserPoolRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdateUserPoolResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<UpdateUserPoolRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<UpdateUserPoolResponse>,
   errors: [
     ConcurrentModificationException,
     FeatureUnavailableInTierException,
@@ -9141,8 +9141,8 @@ export const updateUserPoolClient: API.OperationMethod<
   UpdateUserPoolClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<UpdateUserPoolClientRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<UpdateUserPoolClientResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<UpdateUserPoolClientRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<UpdateUserPoolClientResponse>,
   errors: [
     ConcurrentModificationException,
     FeatureUnavailableInTierException,
@@ -9210,8 +9210,8 @@ export const updateUserPoolDomain: API.OperationMethod<
   UpdateUserPoolDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateUserPoolDomainRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<UpdateUserPoolDomainResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<UpdateUserPoolDomainRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<UpdateUserPoolDomainResponse>,
   errors: [
     ConcurrentModificationException,
     FeatureUnavailableInTierException,
@@ -9256,8 +9256,8 @@ export const updateUserPoolReplica: API.OperationMethod<
   UpdateUserPoolReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<UpdateUserPoolReplicaRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateUserPoolReplicaResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UpdateUserPoolReplicaRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UpdateUserPoolReplicaResponse>,
   errors: [
     InternalErrorException,
     InvalidParameterException,
@@ -9304,8 +9304,8 @@ export const verifySoftwareToken: API.OperationMethod<
   VerifySoftwareTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<VerifySoftwareTokenRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<VerifySoftwareTokenResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<VerifySoftwareTokenRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<VerifySoftwareTokenResponse>,
   errors: [
     CodeMismatchException,
     EnableSoftwareTokenMFAException,
@@ -9365,8 +9365,8 @@ export const verifyUserAttribute: API.OperationMethod<
   VerifyUserAttributeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<VerifyUserAttributeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VerifyUserAttributeResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<VerifyUserAttributeRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<VerifyUserAttributeResponse>,
   errors: [
     AliasExistsException,
     CodeMismatchException,
@@ -9393,872 +9393,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ MinValue: S.optional(S.String), MaxValue: S.optional(S.String) }),
-      ).annotate({
-        identifier: "NumberAttributeConstraintsType",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ MinLength: S.optional(S.String), MaxLength: S.optional(S.String) }),
-      ).annotate({
-        identifier: "StringAttributeConstraintsType",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          AttributeDataType: S.optional(S.String),
-          DeveloperOnlyAttribute: S.optional(S.Boolean),
-          Mutable: S.optional(S.Boolean),
-          Required: S.optional(S.Boolean),
-          NumberAttributeConstraints: S.optional(__S(0, __c0, 0)),
-          StringAttributeConstraints: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "SchemaAttributeType" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, CustomAttributes: __S(3, __c0, 3) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AddCustomAttributesRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AddCustomAttributesResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          ClientSecret: S.optional(SensitiveString),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AddUserPoolClientSecretRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ClientSecretId: S.optional(S.String),
-          ClientSecretValue: S.optional(SensitiveString),
-          ClientSecretCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "ClientSecretDescriptorType",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ClientSecretDescriptor: S.optional(__S(7, __c0, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "AddUserPoolClientSecretResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString, GroupName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminAddUserToGroupRequest",
-      });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminConfirmSignUpRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Value: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "AttributeType" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          UserAttributes: S.optional(__S(13, __c1, 5)),
-          ValidationData: S.optional(__S(13, __c1, 5)),
-          TemporaryPassword: S.optional(SensitiveString),
-          ForceAliasCreation: S.optional(S.Boolean),
-          MessageAction: S.optional(S.String),
-          DesiredDeliveryMediums: S.optional(__S(14, __c1, 6)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AdminCreateUserRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DeliveryMedium: S.optional(S.String),
-          AttributeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MFAOptionType" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Username: S.optional(SensitiveString),
-          Attributes: S.optional(__S(13, __c1, 5)),
-          UserCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UserLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Enabled: S.optional(S.Boolean),
-          UserStatus: S.optional(S.String),
-          MFAOptions: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "UserType" });
-    case 3:
-      return S.suspend(() => S.Struct({ User: S.optional(__S(18, __c2, 2)) }).pipe(ns)).annotate({
-        identifier: "AdminCreateUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminDeleteSoftwareTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminDeleteUserRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AdminDeleteUserResponse",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          UserAttributeNames: __S(23, __c2, 7),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminDeleteUserAttributesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ProviderName: S.optional(S.String),
-          ProviderAttributeName: S.optional(S.String),
-          ProviderAttributeValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProviderUserIdentifierType",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, User: __S(25, __c3, 1) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminDisableProviderForUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminDisableUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminEnableUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString, DeviceKey: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminForgetDeviceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DeviceKey: S.String, UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminGetDeviceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DeviceKey: S.optional(S.String),
-          DeviceAttributes: S.optional(__S(13, __c1, 5)),
-          DeviceCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeviceLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeviceLastAuthenticatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DeviceType" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Device: __S(31, __c3, 7) }).pipe(ns)).annotate({
-        identifier: "AdminGetDeviceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AdminGetUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Username: SensitiveString,
-          UserAttributes: S.optional(__S(13, __c1, 5)),
-          UserCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UserLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Enabled: S.optional(S.Boolean),
-          UserStatus: S.optional(S.String),
-          MFAOptions: S.optional(__S(17, __c2, 1)),
-          PreferredMfaSetting: S.optional(S.String),
-          UserMFASettingList: S.optional(__S(23, __c2, 7)),
-        }).pipe(ns),
-      ).annotate({ identifier: "AdminGetUserResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminGetUserAuthFactorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Username: SensitiveString,
-          PreferredMfaSetting: S.optional(S.String),
-          UserMFASettingList: S.optional(__S(23, __c2, 7)),
-          ConfiguredUserAuthFactors: S.optional(__S(14, __c1, 6)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "AdminGetUserAuthFactorsResponse",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ AnalyticsEndpointId: S.optional(S.String) })).annotate({
-        identifier: "AnalyticsMetadataType",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ headerName: S.optional(S.String), headerValue: S.optional(S.String) }),
-      ).annotate({ identifier: "HttpHeader" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          IpAddress: S.String,
-          ServerName: S.String,
-          ServerPath: S.String,
-          HttpHeaders: __S(39, __c4, 7),
-          EncodedData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContextDataType" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          AuthFlow: S.String,
-          AuthParameters: S.optional(__S(10, __c1, 2)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          ContextData: S.optional(__S(40, __c5, 0)),
-          Session: S.optional(SensitiveString),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AdminInitiateAuthRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DeviceKey: S.optional(S.String), DeviceGroupKey: S.optional(S.String) }),
-      ).annotate({ identifier: "NewDeviceMetadataType" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccessToken: S.optional(SensitiveString),
-          ExpiresIn: S.optional(S.Number),
-          TokenType: S.optional(S.String),
-          RefreshToken: S.optional(SensitiveString),
-          IdToken: S.optional(SensitiveString),
-          NewDeviceMetadata: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "AuthenticationResultType" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ChallengeName: S.optional(S.String),
-          Session: S.optional(SensitiveString),
-          ChallengeParameters: S.optional(__S(10, __c1, 2)),
-          AuthenticationResult: S.optional(__S(43, __c5, 3)),
-          AvailableChallenges: S.optional(__S(14, __c1, 6)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "AdminInitiateAuthResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          DestinationUser: __S(25, __c3, 1),
-          SourceUser: __S(25, __c3, 1),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminLinkProviderForUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          Limit: S.optional(S.Number),
-          PaginationToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AdminListDevicesRequest" });
-    case 7:
-      return S.Array(__S(31, __c3, 7));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Devices: S.optional(__S(47, __c5, 7)),
-          PaginationToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "AdminListDevicesResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Username: SensitiveString,
-          UserPoolId: S.String,
-          Limit: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminListGroupsForUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          GroupName: S.optional(S.String),
-          UserPoolId: S.optional(S.String),
-          Description: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          Precedence: S.optional(S.Number),
-          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "GroupType" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(51, __c6, 3)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "AdminListGroupsForUserResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminListUserAuthEventsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          RiskDecision: S.optional(S.String),
-          RiskLevel: S.optional(S.String),
-          CompromisedCredentialsDetected: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EventRiskType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ChallengeName: S.optional(S.String),
-          ChallengeResponse: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChallengeResponseType" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IpAddress: S.optional(S.String),
-          DeviceName: S.optional(S.String),
-          Timezone: S.optional(S.String),
-          City: S.optional(S.String),
-          Country: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventContextDataType" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          FeedbackValue: S.String,
-          Provider: S.String,
-          FeedbackDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "EventFeedbackType" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          EventId: S.optional(S.String),
-          EventType: S.optional(S.String),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EventResponse: S.optional(S.String),
-          EventRisk: S.optional(__S(54, __c6, 6)),
-          ChallengeResponses: S.optional(__S(56, __c7, 0)),
-          EventContextData: S.optional(__S(57, __c7, 1)),
-          EventFeedback: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "AuthEventType" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AuthEvents: S.optional(__S(60, __c7, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "AdminListUserAuthEventsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString, GroupName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminRemoveUserFromGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminResetUserPasswordRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          ChallengeName: S.String,
-          ChallengeResponses: S.optional(__S(10, __c1, 2)),
-          Session: S.optional(SensitiveString),
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          ContextData: S.optional(__S(40, __c5, 0)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminRespondToAuthChallengeRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Enabled: S.optional(S.Boolean), PreferredMfa: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "SMSMfaSettingsType" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Enabled: S.optional(S.Boolean), PreferredMfa: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "SoftwareTokenMfaSettingsType",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "WebAuthnMfaSettingsType",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SMSMfaSettings: S.optional(__S(65, __c8, 1)),
-          SoftwareTokenMfaSettings: S.optional(__S(66, __c8, 2)),
-          EmailMfaSettings: S.optional(__S(65, __c8, 1)),
-          WebAuthnMfaSettings: S.optional(__S(67, __c8, 3)),
-          Username: SensitiveString,
-          UserPoolId: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminSetUserMFAPreferenceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          Password: SensitiveString,
-          Permanent: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminSetUserPasswordRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          MFAOptions: __S(17, __c2, 1),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminSetUserSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          EventId: S.String,
-          FeedbackValue: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminUpdateAuthEventFeedbackRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          DeviceKey: S.String,
-          DeviceRememberedStatus: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminUpdateDeviceStatusRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Username: SensitiveString,
-          UserAttributes: __S(13, __c1, 5),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AdminUpdateUserAttributesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AdminUserGlobalSignOutRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccessToken: S.optional(SensitiveString),
-          Session: S.optional(SensitiveString),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AssociateSoftwareTokenRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SecretCode: S.optional(SensitiveString),
-          Session: S.optional(SensitiveString),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "AssociateSoftwareTokenResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          PreviousPassword: S.optional(SensitiveString),
-          ProposedPassword: SensitiveString,
-          AccessToken: SensitiveString,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ChangePasswordRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "ChangePasswordResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AccessToken: SensitiveString, Credential: S.Any }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CompleteWebAuthnRegistrationRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ PasswordVerifier: S.optional(S.String), Salt: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DeviceSecretVerifierConfigType",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccessToken: SensitiveString,
-          DeviceKey: S.String,
-          DeviceSecretVerifierConfig: S.optional(__S(80, __c10, 0)),
-          DeviceName: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ConfirmDeviceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ UserConfirmationNecessary: S.optional(S.Boolean) }).pipe(ns),
-      ).annotate({ identifier: "ConfirmDeviceResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ IpAddress: S.optional(S.String), EncodedData: S.optional(S.String) }),
-      ).annotate({ identifier: "UserContextDataType" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ClientId: SensitiveString,
-          SecretHash: S.optional(SensitiveString),
-          Username: SensitiveString,
-          ConfirmationCode: S.String,
-          Password: SensitiveString,
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          UserContextData: S.optional(__S(83, __c10, 3)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ConfirmForgotPasswordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ClientId: SensitiveString,
-          SecretHash: S.optional(SensitiveString),
-          Username: SensitiveString,
-          ConfirmationCode: S.String,
-          ForceAliasCreation: S.optional(S.Boolean),
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          UserContextData: S.optional(__S(83, __c10, 3)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
-          Session: S.optional(SensitiveString),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ConfirmSignUpRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ Session: S.optional(SensitiveString) }).pipe(ns)).annotate({
-        identifier: "ConfirmSignUpResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          GroupName: S.String,
-          UserPoolId: S.String,
-          Description: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          Precedence: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateGroupRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Group: S.optional(__S(50, __c6, 2)) }).pipe(ns)).annotate({
-        identifier: "CreateGroupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ProviderName: S.String,
-          ProviderType: S.String,
-          ProviderDetails: __S(10, __c1, 2),
-          AttributeMapping: S.optional(__S(10, __c1, 2)),
-          IdpIdentifiers: S.optional(__S(23, __c2, 7)),
-          AcrMapping: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateIdentityProviderRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.optional(S.String),
-          ProviderName: S.optional(S.String),
-          ProviderType: S.optional(S.String),
-          ProviderDetails: S.optional(__S(10, __c1, 2)),
-          AttributeMapping: S.optional(__S(10, __c1, 2)),
-          IdpIdentifiers: S.optional(__S(23, __c2, 7)),
-          AcrMapping: S.optional(__S(10, __c1, 2)),
-          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "IdentityProviderType" });
-    case 3:
-      return S.suspend(() => S.Struct({ IdentityProvider: __S(90, __c11, 2) }).pipe(ns)).annotate({
-        identifier: "CreateIdentityProviderResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Category: S.String,
-          ColorMode: S.String,
-          Extension: S.String,
-          Bytes: S.optional(T.Blob),
-          ResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetType" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          UseCognitoProvidedValues: S.optional(S.Boolean),
-          Settings: S.optional(S.Any),
-          Assets: S.optional(__S(93, __c11, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateManagedLoginBrandingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ManagedLoginBrandingId: S.optional(S.String),
-          UserPoolId: S.optional(S.String),
-          UseCognitoProvidedValues: S.optional(S.Boolean),
-          Settings: S.optional(S.Any),
-          Assets: S.optional(__S(93, __c11, 5)),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "ManagedLoginBrandingType" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ManagedLoginBranding: S.optional(__S(95, __c11, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateManagedLoginBrandingResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ScopeName: S.String, ScopeDescription: S.String }),
-      ).annotate({ identifier: "ResourceServerScopeType" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          Identifier: S.String,
-          Name: S.String,
-          Scopes: S.optional(__S(98, __c12, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateResourceServerRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.optional(S.String),
-          Identifier: S.optional(S.String),
-          Name: S.optional(S.String),
-          Scopes: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({ identifier: "ResourceServerType" });
-    case 5:
-      return S.suspend(() => S.Struct({ ResourceServer: __S(100, __c12, 4) }).pipe(ns)).annotate({
-        identifier: "CreateResourceServerResponse",
-      });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          TermsName: S.String,
-          TermsSource: S.String,
-          Enforcement: S.String,
-          Links: S.optional(__S(102, __c12, 6)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTermsRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TermsId: S.String,
-          UserPoolId: S.String,
-          ClientId: SensitiveString,
-          TermsName: S.String,
-          TermsSource: S.String,
-          Enforcement: S.String,
-          Links: __S(102, __c12, 6),
-          CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          LastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "TermsType" });
-    case 1:
-      return S.suspend(() => S.Struct({ Terms: S.optional(__S(104, __c13, 0)) }).pipe(ns)).annotate(
-        {
-          identifier: "CreateTermsResponse",
-        },
-      );
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           JobName: S.String,
           UserPoolId: S.String,
@@ -10268,7 +9402,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateUserImportJobRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           JobName: S.optional(S.String),
@@ -10287,38 +9425,134 @@ function __c13(j: number): any {
           PasswordHashingAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserImportJobType" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ UserImportJob: S.optional(__S(107, __c13, 3)) }).pipe(ns),
+        S.Struct({ UserImportJob: S.optional(__S(32, __c1, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateUserImportJobResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MinimumLength: S.optional(S.Number),
-          RequireUppercase: S.optional(S.Boolean),
-          RequireLowercase: S.optional(S.Boolean),
-          RequireNumbers: S.optional(S.Boolean),
-          RequireSymbols: S.optional(S.Boolean),
-          PasswordHistorySize: S.optional(S.Number),
-          TemporaryPasswordValidityDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PasswordPolicyType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AllowedFirstAuthFactors: S.optional(__S(14, __c1, 6)) }),
-      ).annotate({ identifier: "SignInPolicyType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          PasswordPolicy: S.optional(__S(109, __c13, 5)),
-          SignInPolicy: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "UserPoolPolicyType" });
   }
 }
-function __c14(j: number): any {
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PoolName: S.String,
+          Policies: S.optional(__S(226, __c7, 2)),
+          DeletionProtection: S.optional(S.String),
+          LambdaConfig: S.optional(__S(193, __c6, 1)),
+          AutoVerifiedAttributes: S.optional(__S(3936, __c123, 0)),
+          AliasAttributes: S.optional(__S(3936, __c123, 0)),
+          UsernameAttributes: S.optional(__S(3936, __c123, 0)),
+          SmsVerificationMessage: S.optional(S.String),
+          EmailVerificationMessage: S.optional(S.String),
+          EmailVerificationSubject: S.optional(S.String),
+          VerificationMessageTemplate: S.optional(__S(227, __c7, 3)),
+          SmsAuthenticationMessage: S.optional(S.String),
+          MfaConfiguration: S.optional(S.String),
+          UserAttributeUpdateSettings: S.optional(__S(228, __c7, 4)),
+          DeviceConfiguration: S.optional(__S(229, __c7, 5)),
+          EmailConfiguration: S.optional(__S(230, __c7, 6)),
+          SmsConfiguration: S.optional(__S(161, __c5, 1)),
+          UserPoolTags: S.optional(__S(3776, __c118, 0)),
+          AdminCreateUserConfig: S.optional(__S(232, __c7, 8)),
+          Schema: S.optional(__S(3587, __c112, 3)),
+          UserPoolAddOns: S.optional(__S(234, __c7, 10)),
+          UsernameConfiguration: S.optional(__S(128, __c4, 0)),
+          AccountRecoverySetting: S.optional(__S(237, __c7, 13)),
+          UserPoolTier: S.optional(S.String),
+          KeyConfiguration: S.optional(__S(238, __c7, 14)),
+          IssuerConfiguration: S.optional(__S(239, __c7, 15)),
+          AcrConfiguration: S.optional(__S(241, __c7, 17)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateUserPoolRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ CaseSensitive: S.Boolean })).annotate({
+        identifier: "UsernameConfigurationType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Policies: S.optional(__S(226, __c7, 2)),
+          DeletionProtection: S.optional(S.String),
+          LambdaConfig: S.optional(__S(193, __c6, 1)),
+          Status: S.optional(S.String),
+          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SchemaAttributes: S.optional(__S(3587, __c112, 3)),
+          AutoVerifiedAttributes: S.optional(__S(3936, __c123, 0)),
+          AliasAttributes: S.optional(__S(3936, __c123, 0)),
+          UsernameAttributes: S.optional(__S(3936, __c123, 0)),
+          SmsVerificationMessage: S.optional(S.String),
+          EmailVerificationMessage: S.optional(S.String),
+          EmailVerificationSubject: S.optional(S.String),
+          VerificationMessageTemplate: S.optional(__S(227, __c7, 3)),
+          SmsAuthenticationMessage: S.optional(S.String),
+          UserAttributeUpdateSettings: S.optional(__S(228, __c7, 4)),
+          MfaConfiguration: S.optional(S.String),
+          DeviceConfiguration: S.optional(__S(229, __c7, 5)),
+          EstimatedNumberOfUsers: S.optional(S.Number),
+          EmailConfiguration: S.optional(__S(230, __c7, 6)),
+          SmsConfiguration: S.optional(__S(161, __c5, 1)),
+          UserPoolTags: S.optional(__S(3776, __c118, 0)),
+          SmsConfigurationFailure: S.optional(S.String),
+          EmailConfigurationFailure: S.optional(S.String),
+          Domain: S.optional(S.String),
+          CustomDomain: S.optional(S.String),
+          AdminCreateUserConfig: S.optional(__S(232, __c7, 8)),
+          UserPoolAddOns: S.optional(__S(234, __c7, 10)),
+          UsernameConfiguration: S.optional(__S(128, __c4, 0)),
+          Arn: S.optional(S.String),
+          AccountRecoverySetting: S.optional(__S(237, __c7, 13)),
+          UserPoolTier: S.optional(S.String),
+          KeyConfiguration: S.optional(__S(238, __c7, 14)),
+          IssuerConfiguration: S.optional(__S(239, __c7, 15)),
+          AcrConfiguration: S.optional(__S(241, __c7, 17)),
+        }),
+      ).annotate({ identifier: "UserPoolType" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ UserPool: S.optional(__S(129, __c4, 1)) }).pipe(ns),
+      ).annotate({ identifier: "CreateUserPoolResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CallerArn: S.String,
+          ExternalId: S.optional(S.String),
+          OriginationIdentity: S.optional(S.String),
+          ConfigurationSetName: S.optional(S.String),
+          InEntityId: S.optional(S.String),
+          InTemplateId: S.optional(S.String),
+          Region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EumsSmsConfigurationType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SnsCallerArn: S.optional(S.String),
+          ExternalId: S.optional(S.String),
+          SnsRegion: S.optional(S.String),
+          EumsSms: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "SmsConfigurationType" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ LambdaVersion: S.String, LambdaArn: S.String })).annotate({
@@ -10337,14 +9571,41 @@ function __c14(j: number): any {
           VerifyAuthChallengeResponse: S.optional(S.String),
           PreTokenGeneration: S.optional(S.String),
           UserMigration: S.optional(S.String),
-          PreTokenGenerationConfig: S.optional(__S(112, __c14, 0)),
-          CustomSMSSender: S.optional(__S(112, __c14, 0)),
-          CustomEmailSender: S.optional(__S(112, __c14, 0)),
+          PreTokenGenerationConfig: S.optional(__S(192, __c6, 0)),
+          CustomSMSSender: S.optional(__S(192, __c6, 0)),
+          CustomEmailSender: S.optional(__S(192, __c6, 0)),
           KMSKeyID: S.optional(S.String),
-          InboundFederation: S.optional(__S(112, __c14, 0)),
+          InboundFederation: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "LambdaConfigType" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MinimumLength: S.optional(S.Number),
+          RequireUppercase: S.optional(S.Boolean),
+          RequireLowercase: S.optional(S.Boolean),
+          RequireNumbers: S.optional(S.Boolean),
+          RequireSymbols: S.optional(S.Boolean),
+          PasswordHistorySize: S.optional(S.Number),
+          TemporaryPasswordValidityDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PasswordPolicyType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AllowedFirstAuthFactors: S.optional(__S(3936, __c123, 0)) }),
+      ).annotate({ identifier: "SignInPolicyType" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          PasswordPolicy: S.optional(__S(224, __c7, 0)),
+          SignInPolicy: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "UserPoolPolicyType" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SmsMessage: S.optional(S.String),
@@ -10357,22 +9618,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VerificationMessageTemplateType",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          AttributesRequireVerificationBeforeUpdate: S.optional(__S(14, __c1, 6)),
+          AttributesRequireVerificationBeforeUpdate: S.optional(__S(3936, __c123, 0)),
         }),
       ).annotate({
         identifier: "UserAttributeUpdateSettingsType",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ChallengeRequiredOnNewDevice: S.optional(S.Boolean),
           DeviceOnlyRememberedOnUserPrompt: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeviceConfigurationType" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           SourceArn: S.optional(S.String),
@@ -10382,32 +9643,7 @@ function __c14(j: number): any {
           ConfigurationSet: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailConfigurationType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CallerArn: S.String,
-          ExternalId: S.optional(S.String),
-          OriginationIdentity: S.optional(S.String),
-          ConfigurationSetName: S.optional(S.String),
-          InEntityId: S.optional(S.String),
-          InTemplateId: S.optional(S.String),
-          Region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EumsSmsConfigurationType" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({
-          SnsCallerArn: S.optional(S.String),
-          ExternalId: S.optional(S.String),
-          SnsRegion: S.optional(S.String),
-          EumsSms: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({ identifier: "SmsConfigurationType" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           SMSMessage: S.optional(S.String),
@@ -10415,142 +9651,93 @@ function __c15(j: number): any {
           EmailSubject: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageTemplateType" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           AllowAdminCreateUserOnly: S.optional(S.Boolean),
           UnusedAccountValidityDays: S.optional(S.Number),
-          InviteMessageTemplate: S.optional(__S(120, __c15, 0)),
+          InviteMessageTemplate: S.optional(__S(231, __c7, 7)),
         }),
       ).annotate({
         identifier: "AdminCreateUserConfigType",
       });
-    case 2:
+    case 9:
       return S.suspend(() => S.Struct({ CustomAuthMode: S.optional(S.String) })).annotate({
         identifier: "AdvancedSecurityAdditionalFlowsType",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           AdvancedSecurityMode: S.String,
-          AdvancedSecurityAdditionalFlows: S.optional(__S(122, __c15, 2)),
+          AdvancedSecurityAdditionalFlows: S.optional(__S(233, __c7, 9)),
         }),
       ).annotate({ identifier: "UserPoolAddOnsType" });
-    case 4:
-      return S.suspend(() => S.Struct({ CaseSensitive: S.Boolean })).annotate({
-        identifier: "UsernameConfigurationType",
-      });
-    case 5:
+    case 11:
       return S.suspend(() => S.Struct({ Priority: S.Number, Name: S.String })).annotate({
         identifier: "RecoveryOptionType",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(235, __c7, 11));
+    case 13:
       return S.suspend(() =>
-        S.Struct({ RecoveryMechanisms: S.optional(__S(126, __c15, 6)) }),
+        S.Struct({ RecoveryMechanisms: S.optional(__S(236, __c7, 12)) }),
       ).annotate({
         identifier: "AccountRecoverySettingType",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({ KeyType: S.optional(S.String), KmsKeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "KeyConfigurationType" });
-    case 1:
+    case 15:
       return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
         identifier: "IssuerConfigurationType",
       });
-    case 2:
+    case 16:
       return S.suspend(() => S.Struct({ AcrValue: S.String })).annotate({
         identifier: "AcrLevelConfigType",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(130, __c16, 2).pipe(S.optional));
-    case 4:
+    case 17:
+      return S.Record(S.String, /*@__PURE__*/ __S(240, __c7, 16).pipe(S.optional));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          PoolName: S.String,
-          Policies: S.optional(__S(111, __c13, 7)),
-          DeletionProtection: S.optional(S.String),
-          LambdaConfig: S.optional(__S(113, __c14, 1)),
-          AutoVerifiedAttributes: S.optional(__S(14, __c1, 6)),
-          AliasAttributes: S.optional(__S(14, __c1, 6)),
-          UsernameAttributes: S.optional(__S(14, __c1, 6)),
-          SmsVerificationMessage: S.optional(S.String),
-          EmailVerificationMessage: S.optional(S.String),
-          EmailVerificationSubject: S.optional(S.String),
-          VerificationMessageTemplate: S.optional(__S(114, __c14, 2)),
-          SmsAuthenticationMessage: S.optional(S.String),
-          MfaConfiguration: S.optional(S.String),
-          UserAttributeUpdateSettings: S.optional(__S(115, __c14, 3)),
-          DeviceConfiguration: S.optional(__S(116, __c14, 4)),
-          EmailConfiguration: S.optional(__S(117, __c14, 5)),
-          SmsConfiguration: S.optional(__S(119, __c14, 7)),
-          UserPoolTags: S.optional(__S(10, __c1, 2)),
-          AdminCreateUserConfig: S.optional(__S(121, __c15, 1)),
-          Schema: S.optional(__S(3, __c0, 3)),
-          UserPoolAddOns: S.optional(__S(123, __c15, 3)),
-          UsernameConfiguration: S.optional(__S(124, __c15, 4)),
-          AccountRecoverySetting: S.optional(__S(127, __c15, 7)),
-          UserPoolTier: S.optional(S.String),
-          KeyConfiguration: S.optional(__S(128, __c16, 0)),
-          IssuerConfiguration: S.optional(__S(129, __c16, 1)),
-          AcrConfiguration: S.optional(__S(131, __c16, 3)),
+          UserPoolId: S.String,
+          ClientName: S.String,
+          GenerateSecret: S.optional(S.Boolean),
+          ClientSecret: S.optional(SensitiveString),
+          RefreshTokenValidity: S.optional(S.Number),
+          AccessTokenValidity: S.optional(S.Number),
+          IdTokenValidity: S.optional(S.Number),
+          TokenValidityUnits: S.optional(__S(288, __c9, 0)),
+          ReadAttributes: S.optional(__S(4096, __c128, 0)),
+          WriteAttributes: S.optional(__S(4096, __c128, 0)),
+          ExplicitAuthFlows: S.optional(__S(3936, __c123, 0)),
+          SupportedIdentityProviders: S.optional(__S(4096, __c128, 0)),
+          CallbackURLs: S.optional(__S(4096, __c128, 0)),
+          LogoutURLs: S.optional(__S(4096, __c128, 0)),
+          DefaultRedirectURI: S.optional(S.String),
+          AllowedOAuthFlows: S.optional(__S(3936, __c123, 0)),
+          AllowedOAuthScopes: S.optional(__S(4096, __c128, 0)),
+          AllowedOAuthFlowsUserPoolClient: S.optional(S.Boolean),
+          AnalyticsConfiguration: S.optional(__S(289, __c9, 1)),
+          PreventUserExistenceErrors: S.optional(S.String),
+          EnableTokenRevocation: S.optional(S.Boolean),
+          EnablePropagateAdditionalUserContextData: S.optional(S.Boolean),
+          AuthSessionValidity: S.optional(S.Number),
+          RefreshTokenRotation: S.optional(__S(290, __c9, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateUserPoolRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          Policies: S.optional(__S(111, __c13, 7)),
-          DeletionProtection: S.optional(S.String),
-          LambdaConfig: S.optional(__S(113, __c14, 1)),
-          Status: S.optional(S.String),
-          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SchemaAttributes: S.optional(__S(3, __c0, 3)),
-          AutoVerifiedAttributes: S.optional(__S(14, __c1, 6)),
-          AliasAttributes: S.optional(__S(14, __c1, 6)),
-          UsernameAttributes: S.optional(__S(14, __c1, 6)),
-          SmsVerificationMessage: S.optional(S.String),
-          EmailVerificationMessage: S.optional(S.String),
-          EmailVerificationSubject: S.optional(S.String),
-          VerificationMessageTemplate: S.optional(__S(114, __c14, 2)),
-          SmsAuthenticationMessage: S.optional(S.String),
-          UserAttributeUpdateSettings: S.optional(__S(115, __c14, 3)),
-          MfaConfiguration: S.optional(S.String),
-          DeviceConfiguration: S.optional(__S(116, __c14, 4)),
-          EstimatedNumberOfUsers: S.optional(S.Number),
-          EmailConfiguration: S.optional(__S(117, __c14, 5)),
-          SmsConfiguration: S.optional(__S(119, __c14, 7)),
-          UserPoolTags: S.optional(__S(10, __c1, 2)),
-          SmsConfigurationFailure: S.optional(S.String),
-          EmailConfigurationFailure: S.optional(S.String),
-          Domain: S.optional(S.String),
-          CustomDomain: S.optional(S.String),
-          AdminCreateUserConfig: S.optional(__S(121, __c15, 1)),
-          UserPoolAddOns: S.optional(__S(123, __c15, 3)),
-          UsernameConfiguration: S.optional(__S(124, __c15, 4)),
-          Arn: S.optional(S.String),
-          AccountRecoverySetting: S.optional(__S(127, __c15, 7)),
-          UserPoolTier: S.optional(S.String),
-          KeyConfiguration: S.optional(__S(128, __c16, 0)),
-          IssuerConfiguration: S.optional(__S(129, __c16, 1)),
-          AcrConfiguration: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "UserPoolType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ UserPool: S.optional(__S(133, __c16, 5)) }).pipe(ns),
       ).annotate({
-        identifier: "CreateUserPoolResponse",
+        identifier: "CreateUserPoolClientRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessToken: S.optional(S.String),
@@ -10558,11 +9745,7 @@ function __c16(j: number): any {
           RefreshToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenValidityUnitsType" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10574,41 +9757,10 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "AnalyticsConfigurationType",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Feature: S.String, RetryGracePeriodSeconds: S.optional(S.Number) }),
       ).annotate({ identifier: "RefreshTokenRotationType" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          ClientName: S.String,
-          GenerateSecret: S.optional(S.Boolean),
-          ClientSecret: S.optional(SensitiveString),
-          RefreshTokenValidity: S.optional(S.Number),
-          AccessTokenValidity: S.optional(S.Number),
-          IdTokenValidity: S.optional(S.Number),
-          TokenValidityUnits: S.optional(__S(135, __c16, 7)),
-          ReadAttributes: S.optional(__S(23, __c2, 7)),
-          WriteAttributes: S.optional(__S(23, __c2, 7)),
-          ExplicitAuthFlows: S.optional(__S(14, __c1, 6)),
-          SupportedIdentityProviders: S.optional(__S(23, __c2, 7)),
-          CallbackURLs: S.optional(__S(23, __c2, 7)),
-          LogoutURLs: S.optional(__S(23, __c2, 7)),
-          DefaultRedirectURI: S.optional(S.String),
-          AllowedOAuthFlows: S.optional(__S(14, __c1, 6)),
-          AllowedOAuthScopes: S.optional(__S(23, __c2, 7)),
-          AllowedOAuthFlowsUserPoolClient: S.optional(S.Boolean),
-          AnalyticsConfiguration: S.optional(__S(136, __c17, 0)),
-          PreventUserExistenceErrors: S.optional(S.String),
-          EnableTokenRevocation: S.optional(S.Boolean),
-          EnablePropagateAdditionalUserContextData: S.optional(S.Boolean),
-          AuthSessionValidity: S.optional(S.Number),
-          RefreshTokenRotation: S.optional(__S(137, __c17, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateUserPoolClientRequest",
-      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10621,46 +9773,34 @@ function __c17(j: number): any {
           RefreshTokenValidity: S.optional(S.Number),
           AccessTokenValidity: S.optional(S.Number),
           IdTokenValidity: S.optional(S.Number),
-          TokenValidityUnits: S.optional(__S(135, __c16, 7)),
-          ReadAttributes: S.optional(__S(23, __c2, 7)),
-          WriteAttributes: S.optional(__S(23, __c2, 7)),
-          ExplicitAuthFlows: S.optional(__S(14, __c1, 6)),
-          SupportedIdentityProviders: S.optional(__S(23, __c2, 7)),
-          CallbackURLs: S.optional(__S(23, __c2, 7)),
-          LogoutURLs: S.optional(__S(23, __c2, 7)),
+          TokenValidityUnits: S.optional(__S(288, __c9, 0)),
+          ReadAttributes: S.optional(__S(4096, __c128, 0)),
+          WriteAttributes: S.optional(__S(4096, __c128, 0)),
+          ExplicitAuthFlows: S.optional(__S(3936, __c123, 0)),
+          SupportedIdentityProviders: S.optional(__S(4096, __c128, 0)),
+          CallbackURLs: S.optional(__S(4096, __c128, 0)),
+          LogoutURLs: S.optional(__S(4096, __c128, 0)),
           DefaultRedirectURI: S.optional(S.String),
-          AllowedOAuthFlows: S.optional(__S(14, __c1, 6)),
-          AllowedOAuthScopes: S.optional(__S(23, __c2, 7)),
+          AllowedOAuthFlows: S.optional(__S(3936, __c123, 0)),
+          AllowedOAuthScopes: S.optional(__S(4096, __c128, 0)),
           AllowedOAuthFlowsUserPoolClient: S.optional(S.Boolean),
-          AnalyticsConfiguration: S.optional(__S(136, __c17, 0)),
+          AnalyticsConfiguration: S.optional(__S(289, __c9, 1)),
           PreventUserExistenceErrors: S.optional(S.String),
           EnableTokenRevocation: S.optional(S.Boolean),
           EnablePropagateAdditionalUserContextData: S.optional(S.Boolean),
           AuthSessionValidity: S.optional(S.Number),
-          RefreshTokenRotation: S.optional(__S(137, __c17, 1)),
+          RefreshTokenRotation: S.optional(__S(290, __c9, 2)),
         }),
       ).annotate({ identifier: "UserPoolClientType" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ UserPoolClient: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ UserPoolClient: S.optional(__S(291, __c9, 3)) }).pipe(ns),
       ).annotate({
         identifier: "CreateUserPoolClientResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ CertificateArn: S.String, SecurityPolicy: S.optional(S.String) }),
-      ).annotate({ identifier: "CustomDomainConfigType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ SecondaryRegion: S.String, PrimaryRoute53HealthCheckId: S.String }),
-      ).annotate({ identifier: "FailoverType" });
-    case 7:
-      return S.suspend(() => S.Struct({ Failover: S.optional(__S(142, __c17, 6)) })).annotate({
-        identifier: "RoutingType",
-      });
   }
 }
-function __c18(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10668,33 +9808,61 @@ function __c18(j: number): any {
           Domain: S.String,
           UserPoolId: S.String,
           ManagedLoginVersion: S.optional(S.Number),
-          CustomDomainConfig: S.optional(__S(141, __c17, 5)),
-          Routing: S.optional(__S(143, __c17, 7)),
+          CustomDomainConfig: S.optional(__S(352, __c11, 0)),
+          Routing: S.optional(__S(354, __c11, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateUserPoolDomainRequest",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CertificateArn: S.String, SecurityPolicy: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomDomainConfigType" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ SecondaryRegion: S.String, PrimaryRoute53HealthCheckId: S.String }),
+      ).annotate({ identifier: "FailoverType" });
+    case 2:
+      return S.suspend(() => S.Struct({ Failover: S.optional(__S(353, __c11, 1)) })).annotate({
+        identifier: "RoutingType",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ManagedLoginVersion: S.optional(S.Number),
           CloudFrontDomain: S.optional(S.String),
-          Routing: S.optional(__S(143, __c17, 7)),
+          Routing: S.optional(__S(354, __c11, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateUserPoolDomainResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
           RegionName: S.String,
-          UserPoolTags: S.optional(__S(10, __c1, 2)),
+          UserPoolTags: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateUserPoolReplicaRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.optional(S.String),
@@ -10703,23 +9871,39 @@ function __c18(j: number): any {
           UserPoolArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPoolReplicaType" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ UserPoolReplica: S.optional(__S(147, __c18, 3)) }).pipe(ns),
+        S.Struct({ UserPoolReplica: S.optional(__S(448, __c14, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateUserPoolReplicaResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupName: S.String, UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteGroupResponse",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ProviderName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10739,7 +9923,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteManagedLoginBrandingRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, Identifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10747,33 +9935,53 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteResourceServerRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TermsId: S.String, UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTermsRequest" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ UserAttributeNames: __S(23, __c2, 7), AccessToken: SensitiveString }).pipe(
+        S.Struct({ UserAttributeNames: __S(4096, __c128, 0), AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DeleteUserAttributesRequest",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteUserPoolRequest" });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ClientId: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10781,7 +9989,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteUserPoolClientRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -10793,7 +10005,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10803,7 +10015,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteUserPoolDomainRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, RegionName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10811,7 +10027,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteUserPoolReplicaRequest",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString, CredentialId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10819,7 +10039,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteWebAuthnCredentialRequest",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ProviderName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10827,7 +10051,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DescribeIdentityProviderRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -10837,7 +10065,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DescribeManagedLoginBrandingRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -10847,7 +10079,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DescribeManagedLoginBrandingByClientRequest",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, Identifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10855,7 +10091,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DescribeResourceServerRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ClientId: S.optional(SensitiveString) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10865,7 +10105,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ EventAction: S.String })).annotate({
@@ -10874,8 +10114,8 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EventFilter: S.optional(__S(14, __c1, 6)),
-          Actions: __S(168, __c21, 0),
+          EventFilter: S.optional(__S(3936, __c123, 0)),
+          Actions: __S(1120, __c35, 0),
         }),
       ).annotate({
         identifier: "CompromisedCredentialsRiskConfigurationType",
@@ -10894,9 +10134,9 @@ function __c21(j: number): any {
           From: S.optional(S.String),
           ReplyTo: S.optional(S.String),
           SourceArn: S.String,
-          BlockEmail: S.optional(__S(170, __c21, 2)),
-          NoActionEmail: S.optional(__S(170, __c21, 2)),
-          MfaEmail: S.optional(__S(170, __c21, 2)),
+          BlockEmail: S.optional(__S(1122, __c35, 2)),
+          NoActionEmail: S.optional(__S(1122, __c35, 2)),
+          MfaEmail: S.optional(__S(1122, __c35, 2)),
         }),
       ).annotate({ identifier: "NotifyConfigurationType" });
     case 4:
@@ -10906,9 +10146,9 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          LowAction: S.optional(__S(172, __c21, 4)),
-          MediumAction: S.optional(__S(172, __c21, 4)),
-          HighAction: S.optional(__S(172, __c21, 4)),
+          LowAction: S.optional(__S(1124, __c35, 4)),
+          MediumAction: S.optional(__S(1124, __c35, 4)),
+          HighAction: S.optional(__S(1124, __c35, 4)),
         }),
       ).annotate({
         identifier: "AccountTakeoverActionsType",
@@ -10916,8 +10156,8 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          NotifyConfiguration: S.optional(__S(171, __c21, 3)),
-          Actions: __S(173, __c21, 5),
+          NotifyConfiguration: S.optional(__S(1123, __c35, 3)),
+          Actions: __S(1125, __c35, 5),
         }),
       ).annotate({
         identifier: "AccountTakeoverRiskConfigurationType",
@@ -10925,40 +10165,44 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          BlockedIPRangeList: S.optional(__S(23, __c2, 7)),
-          SkippedIPRangeList: S.optional(__S(23, __c2, 7)),
+          BlockedIPRangeList: S.optional(__S(4096, __c128, 0)),
+          SkippedIPRangeList: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({
         identifier: "RiskExceptionConfigurationType",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.optional(S.String),
           ClientId: S.optional(SensitiveString),
-          CompromisedCredentialsRiskConfiguration: S.optional(__S(169, __c21, 1)),
-          AccountTakeoverRiskConfiguration: S.optional(__S(174, __c21, 6)),
-          RiskExceptionConfiguration: S.optional(__S(175, __c21, 7)),
+          CompromisedCredentialsRiskConfiguration: S.optional(__S(1121, __c35, 1)),
+          AccountTakeoverRiskConfiguration: S.optional(__S(1126, __c35, 6)),
+          RiskExceptionConfiguration: S.optional(__S(1127, __c35, 7)),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RiskConfigurationType" });
-    case 1:
-      return S.suspend(() => S.Struct({ RiskConfiguration: __S(176, __c22, 0) }).pipe(ns)).annotate(
-        {
-          identifier: "DescribeRiskConfigurationResponse",
-        },
-      );
-    case 2:
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ RiskConfiguration: __S(1128, __c35, 8) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeRiskConfigurationResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TermsId: S.String, UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeTermsRequest" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ClientId: SensitiveString, UserPoolId: S.String, TermsName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10966,13 +10210,17 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DescribeTermsByClientRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Terms: S.optional(__S(104, __c13, 0)) }).pipe(ns)).annotate(
-        {
-          identifier: "DescribeTermsByClientResponse",
-        },
-      );
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Terms: S.optional(__S(5793, __c181, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeTermsByClientResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, JobId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10980,13 +10228,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DescribeUserImportJobRequest",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeUserPoolRequest" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ClientId: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -10996,7 +10252,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11016,35 +10272,51 @@ function __c23(j: number): any {
           CloudFrontDistribution: S.optional(S.String),
           Version: S.optional(S.String),
           Status: S.optional(S.String),
-          CustomDomainConfig: S.optional(__S(141, __c17, 5)),
+          CustomDomainConfig: S.optional(__S(352, __c11, 0)),
           ManagedLoginVersion: S.optional(S.Number),
-          Routing: S.optional(__S(143, __c17, 7)),
+          Routing: S.optional(__S(354, __c11, 2)),
         }),
       ).annotate({ identifier: "DomainDescriptionType" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DomainDescription: S.optional(__S(185, __c23, 1)) }).pipe(ns),
+        S.Struct({ DomainDescription: S.optional(__S(1313, __c41, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeUserPoolDomainResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: S.optional(SensitiveString), DeviceKey: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ForgetDeviceRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientId: SensitiveString,
           SecretHash: S.optional(SensitiveString),
-          UserContextData: S.optional(__S(83, __c10, 3)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
           Username: SensitiveString,
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ForgotPasswordRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ CodeDeliveryDetails: S.optional(__S(1408, __c44, 0)) }).pipe(ns),
+      ).annotate({ identifier: "ForgotPasswordResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Destination: S.optional(S.String),
@@ -11052,24 +10324,20 @@ function __c23(j: number): any {
           AttributeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeDeliveryDetailsType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ CodeDeliveryDetails: S.optional(__S(189, __c23, 5)) }).pipe(ns),
-      ).annotate({ identifier: "ForgotPasswordResponse" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientId: SensitiveString,
           Secret: SensitiveString,
-          Scopes: S.optional(__S(23, __c2, 7)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          Scopes: S.optional(__S(4096, __c128, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetClientTokenRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessToken: S.optional(SensitiveString),
@@ -11079,36 +10347,52 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ClientAuthenticationResultType",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ClientAuthenticationResult: S.optional(__S(192, __c24, 0)) }).pipe(ns),
-      ).annotate({ identifier: "GetClientTokenResponse" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({ ClientAuthenticationResult: S.optional(__S(1441, __c45, 1)) }).pipe(ns),
+      ).annotate({ identifier: "GetClientTokenResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetCSVHeaderRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.optional(S.String),
-          CSVHeader: S.optional(__S(23, __c2, 7)),
+          CSVHeader: S.optional(__S(4096, __c128, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "GetCSVHeaderResponse" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DeviceKey: S.String, AccessToken: S.optional(SensitiveString) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GroupName: S.String, UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetGroupRequest" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, IdpIdentifier: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11116,7 +10400,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetIdentityProviderByIdentifierRequest",
       });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11126,7 +10414,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ LogGroupArn: S.optional(S.String) })).annotate({
@@ -11145,54 +10433,62 @@ function __c25(j: number): any {
         S.Struct({
           LogLevel: S.String,
           EventSource: S.String,
-          CloudWatchLogsConfiguration: S.optional(__S(200, __c25, 0)),
-          S3Configuration: S.optional(__S(201, __c25, 1)),
-          FirehoseConfiguration: S.optional(__S(202, __c25, 2)),
+          CloudWatchLogsConfiguration: S.optional(__S(1632, __c51, 0)),
+          S3Configuration: S.optional(__S(1633, __c51, 1)),
+          FirehoseConfiguration: S.optional(__S(1634, __c51, 2)),
         }),
       ).annotate({ identifier: "LogConfigurationType" });
     case 4:
-      return S.Array(__S(203, __c25, 3));
+      return S.Array(__S(1635, __c51, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, LogConfigurations: __S(204, __c25, 4) }),
+        S.Struct({ UserPoolId: S.String, LogConfigurations: __S(1636, __c51, 4) }),
       ).annotate({
         identifier: "LogDeliveryConfigurationType",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ LogDeliveryConfiguration: S.optional(__S(205, __c25, 5)) }).pipe(ns),
+        S.Struct({ LogDeliveryConfiguration: S.optional(__S(1637, __c51, 5)) }).pipe(ns),
       ).annotate({
         identifier: "GetLogDeliveryConfigurationResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ LimitClass: S.String, Attributes: __S(10, __c1, 2) }),
-      ).annotate({ identifier: "LimitDefinitionType" });
   }
 }
-function __c26(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ LimitDefinition: __S(207, __c25, 7) }).pipe(
+        S.Struct({ LimitDefinition: __S(1696, __c53, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "GetProvisionedLimitRequest",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LimitClass: S.String, Attributes: __S(3776, __c118, 0) }),
+      ).annotate({ identifier: "LimitDefinitionType" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LimitDefinition: __S(207, __c25, 7),
+          LimitDefinition: __S(1696, __c53, 0),
           ProvisionedLimitValue: S.Number,
           FreeLimitValue: S.Number,
         }),
       ).annotate({ identifier: "LimitType" });
     case 2:
-      return S.suspend(() => S.Struct({ Limit: __S(209, __c26, 1) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Limit: __S(1697, __c53, 1) }).pipe(ns)).annotate({
         identifier: "GetProvisionedLimitResponse",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11200,29 +10496,37 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetSigningCertificateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Certificate: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetSigningCertificateResponse",
       });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RefreshToken: SensitiveString,
           ClientId: SensitiveString,
           ClientSecret: S.optional(SensitiveString),
           DeviceKey: S.optional(S.String),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetTokensFromRefreshTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AuthenticationResult: S.optional(__S(43, __c5, 3)) }).pipe(ns),
+        S.Struct({ AuthenticationResult: S.optional(__S(4545, __c142, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetTokensFromRefreshTokenResponse",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, ClientId: S.optional(SensitiveString) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11232,7 +10536,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11247,42 +10551,58 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "UICustomizationType" });
     case 1:
-      return S.suspend(() => S.Struct({ UICustomization: __S(216, __c27, 0) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ UICustomization: __S(1824, __c57, 0) }).pipe(ns)).annotate({
         identifier: "GetUICustomizationResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetUserRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Username: SensitiveString,
-          UserAttributes: __S(13, __c1, 5),
-          MFAOptions: S.optional(__S(17, __c2, 1)),
+          UserAttributes: __S(3873, __c121, 1),
+          MFAOptions: S.optional(__S(3905, __c122, 1)),
           PreferredMfaSetting: S.optional(S.String),
-          UserMFASettingList: S.optional(__S(23, __c2, 7)),
+          UserMFASettingList: S.optional(__S(4096, __c128, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "GetUserResponse" });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessToken: SensitiveString,
           AttributeName: S.String,
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetUserAttributeVerificationCodeRequest",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ CodeDeliveryDetails: S.optional(__S(189, __c23, 5)) }).pipe(ns),
+        S.Struct({ CodeDeliveryDetails: S.optional(__S(1408, __c44, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetUserAttributeVerificationCodeResponse",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11290,7 +10610,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetUserAuthFactorsRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11300,13 +10624,13 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           SmsAuthenticationMessage: S.optional(S.String),
-          SmsConfiguration: S.optional(__S(119, __c14, 7)),
+          SmsConfiguration: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "SmsMfaConfigType" });
     case 1:
@@ -11330,46 +10654,54 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SmsMfaConfiguration: S.optional(__S(224, __c28, 0)),
-          SoftwareTokenMfaConfiguration: S.optional(__S(225, __c28, 1)),
-          EmailMfaConfiguration: S.optional(__S(226, __c28, 2)),
+          SmsMfaConfiguration: S.optional(__S(2016, __c63, 0)),
+          SoftwareTokenMfaConfiguration: S.optional(__S(2017, __c63, 1)),
+          EmailMfaConfiguration: S.optional(__S(2018, __c63, 2)),
           MfaConfiguration: S.optional(S.String),
-          WebAuthnConfiguration: S.optional(__S(227, __c28, 3)),
+          WebAuthnConfiguration: S.optional(__S(2019, __c63, 3)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetUserPoolMfaConfigResponse",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GlobalSignOutRequest" });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AuthFlow: S.String,
-          AuthParameters: S.optional(__S(10, __c1, 2)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          AuthParameters: S.optional(__S(3776, __c118, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
           ClientId: SensitiveString,
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          UserContextData: S.optional(__S(83, __c10, 3)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
           Session: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "InitiateAuthRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ChallengeName: S.optional(S.String),
           Session: S.optional(SensitiveString),
-          ChallengeParameters: S.optional(__S(10, __c1, 2)),
-          AuthenticationResult: S.optional(__S(43, __c5, 3)),
-          AvailableChallenges: S.optional(__S(14, __c1, 6)),
+          ChallengeParameters: S.optional(__S(3776, __c118, 0)),
+          AuthenticationResult: S.optional(__S(4545, __c142, 1)),
+          AvailableChallenges: S.optional(__S(3936, __c123, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "InitiateAuthResponse" });
   }
 }
-function __c29(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11379,7 +10711,11 @@ function __c29(j: number): any {
           PaginationToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDevicesRequest" });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11387,13 +10723,18 @@ function __c29(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(51, __c6, 3)), NextToken: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Groups: S.optional(__S(4768, __c149, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11403,7 +10744,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListIdentityProvidersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProviderName: S.optional(S.String),
@@ -11412,15 +10753,19 @@ function __c29(j: number): any {
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ProviderDescription" });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2177, __c68, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Providers: __S(237, __c29, 5), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Providers: __S(2178, __c68, 2), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListIdentityProvidersResponse",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11430,22 +10775,21 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListResourceServersRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(100, __c12, 4));
     case 1:
+      return S.Array(__S(5698, __c178, 2));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          ResourceServers: __S(240, __c30, 0),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
+        S.Struct({ ResourceServers: __S(2209, __c69, 1), NextToken: S.optional(S.String) }).pipe(
+          ns,
+        ),
       ).annotate({
         identifier: "ListResourceServersResponse",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11453,11 +10797,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(10, __c1, 2)) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(__S(3776, __c118, 0)) }).pipe(ns),
+      ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11465,7 +10815,7 @@ function __c30(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTermsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TermsId: S.String,
@@ -11475,15 +10825,15 @@ function __c30(j: number): any {
           LastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "TermsDescriptionType" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2273, __c71, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Terms: __S(246, __c30, 6), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Terms: __S(2274, __c71, 2), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListTermsResponse" });
   }
 }
-function __c31(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11496,17 +10846,21 @@ function __c31(j: number): any {
         identifier: "ListUserImportJobsRequest",
       });
     case 1:
-      return S.Array(__S(107, __c13, 3));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          UserImportJobs: S.optional(__S(249, __c31, 1)),
+          UserImportJobs: S.optional(__S(2305, __c72, 1)),
           PaginationToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListUserImportJobsResponse",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11516,7 +10870,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListUserPoolClientsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ClientId: S.optional(SensitiveString),
@@ -11526,18 +10880,22 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UserPoolClientDescription",
       });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2337, __c73, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          UserPoolClients: S.optional(__S(253, __c31, 5)),
+          UserPoolClients: S.optional(__S(2338, __c73, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListUserPoolClientsResponse",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11547,22 +10905,22 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListUserPoolClientSecretsRequest",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(3680, __c115, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ClientSecrets: S.optional(__S(256, __c32, 0)),
+          ClientSecrets: S.optional(__S(2369, __c74, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListUserPoolClientSecretsResponse",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11570,68 +10928,80 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListUserPoolReplicasRequest",
       });
-    case 3:
-      return S.Array(__S(147, __c18, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          UserPoolReplicas: S.optional(__S(259, __c32, 3)),
+          UserPoolReplicas: S.optional(__S(2401, __c75, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListUserPoolReplicasResponse",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.Number }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListUserPoolsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          LambdaConfig: S.optional(__S(113, __c14, 1)),
+          LambdaConfig: S.optional(__S(193, __c6, 1)),
           Status: S.optional(S.String),
           LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ReplicaRegions: S.optional(__S(23, __c2, 7)),
+          ReplicaRegions: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({ identifier: "UserPoolDescriptionType" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
+    case 2:
+      return S.Array(__S(2433, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          UserPools: S.optional(__S(2434, __c76, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "ListUserPoolsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          UserPools: S.optional(__S(263, __c32, 7)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "ListUserPoolsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           UserPoolId: S.String,
-          AttributesToGet: S.optional(__S(23, __c2, 7)),
+          AttributesToGet: S.optional(__S(4096, __c128, 0)),
           Limit: S.optional(S.Number),
           PaginationToken: S.optional(S.String),
           Filter: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 2:
-      return S.Array(__S(18, __c2, 2));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Users: S.optional(__S(266, __c33, 2)),
+          Users: S.optional(__S(2496, __c78, 0)),
           PaginationToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3840, __c120, 0));
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11640,13 +11010,17 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsersInGroupRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(266, __c33, 2)), NextToken: S.optional(S.String) }).pipe(
+        S.Struct({ Users: S.optional(__S(2496, __c78, 0)), NextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "ListUsersInGroupResponse" });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessToken: SensitiveString,
@@ -11656,62 +11030,70 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListWebAuthnCredentialsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CredentialId: S.String,
           FriendlyCredentialName: S.String,
           RelyingPartyId: S.String,
           AuthenticatorAttachment: S.optional(S.String),
-          AuthenticatorTransports: __S(23, __c2, 7),
+          AuthenticatorTransports: __S(4096, __c128, 0),
           CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({
         identifier: "WebAuthnCredentialDescription",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2561, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Credentials: __S(272, __c34, 0),
+          Credentials: __S(2562, __c80, 2),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListWebAuthnCredentialsResponse",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientId: SensitiveString,
           SecretHash: S.optional(SensitiveString),
-          UserContextData: S.optional(__S(83, __c10, 3)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
           Username: SensitiveString,
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResendConfirmationCodeRequest",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientId: SensitiveString,
           ChallengeName: S.String,
           Session: S.optional(SensitiveString),
-          ChallengeResponses: S.optional(__S(10, __c1, 2)),
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          UserContextData: S.optional(__S(83, __c10, 3)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          ChallengeResponses: S.optional(__S(3776, __c118, 0)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RespondToAuthChallengeRequest",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Token: SensitiveString,
@@ -11719,27 +11101,39 @@ function __c34(j: number): any {
           ClientSecret: S.optional(SensitiveString),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RevokeTokenRequest" });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ UserPoolId: S.String, LogConfigurations: __S(204, __c25, 4) }).pipe(
+        S.Struct({ UserPoolId: S.String, LogConfigurations: __S(1636, __c51, 4) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "SetLogDeliveryConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
           ClientId: S.optional(SensitiveString),
-          CompromisedCredentialsRiskConfiguration: S.optional(__S(169, __c21, 1)),
-          AccountTakeoverRiskConfiguration: S.optional(__S(174, __c21, 6)),
-          RiskExceptionConfiguration: S.optional(__S(175, __c21, 7)),
+          CompromisedCredentialsRiskConfiguration: S.optional(__S(1121, __c35, 1)),
+          AccountTakeoverRiskConfiguration: S.optional(__S(1126, __c35, 6)),
+          RiskExceptionConfiguration: S.optional(__S(1127, __c35, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetRiskConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11752,63 +11146,79 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SMSMfaSettings: S.optional(__S(65, __c8, 1)),
-          SoftwareTokenMfaSettings: S.optional(__S(66, __c8, 2)),
-          EmailMfaSettings: S.optional(__S(65, __c8, 1)),
-          WebAuthnMfaSettings: S.optional(__S(67, __c8, 3)),
+          SMSMfaSettings: S.optional(__S(4992, __c156, 0)),
+          SoftwareTokenMfaSettings: S.optional(__S(4993, __c156, 1)),
+          EmailMfaSettings: S.optional(__S(4992, __c156, 0)),
+          WebAuthnMfaSettings: S.optional(__S(4994, __c156, 2)),
           AccessToken: SensitiveString,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetUserMFAPreferenceRequest",
       });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
-          SmsMfaConfiguration: S.optional(__S(224, __c28, 0)),
-          SoftwareTokenMfaConfiguration: S.optional(__S(225, __c28, 1)),
-          EmailMfaConfiguration: S.optional(__S(226, __c28, 2)),
+          SmsMfaConfiguration: S.optional(__S(2016, __c63, 0)),
+          SoftwareTokenMfaConfiguration: S.optional(__S(2017, __c63, 1)),
+          EmailMfaConfiguration: S.optional(__S(2018, __c63, 2)),
           MfaConfiguration: S.optional(S.String),
-          WebAuthnConfiguration: S.optional(__S(227, __c28, 3)),
+          WebAuthnConfiguration: S.optional(__S(2019, __c63, 3)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetUserPoolMfaConfigRequest",
       });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ AccessToken: SensitiveString, MFAOptions: __S(17, __c2, 1) }).pipe(
+        S.Struct({ AccessToken: SensitiveString, MFAOptions: __S(3905, __c122, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SetUserSettingsRequest" });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientId: SensitiveString,
           SecretHash: S.optional(SensitiveString),
           Username: SensitiveString,
           Password: S.optional(SensitiveString),
-          UserAttributes: S.optional(__S(13, __c1, 5)),
-          ValidationData: S.optional(__S(13, __c1, 5)),
-          AnalyticsMetadata: S.optional(__S(37, __c4, 5)),
-          UserContextData: S.optional(__S(83, __c10, 3)),
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          UserAttributes: S.optional(__S(3873, __c121, 1)),
+          ValidationData: S.optional(__S(3873, __c121, 1)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SignUpRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UserConfirmed: S.Boolean,
-          CodeDeliveryDetails: S.optional(__S(189, __c23, 5)),
+          CodeDeliveryDetails: S.optional(__S(1408, __c44, 0)),
           UserSub: S.String,
           Session: S.optional(SensitiveString),
         }).pipe(ns),
       ).annotate({ identifier: "SignUpResponse" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ UserPoolId: S.String, JobId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11816,7 +11226,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "StartUserImportJobRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -11824,13 +11238,13 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "StartWebAuthnRegistrationRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ CredentialCreationOptions: S.Any }).pipe(ns)).annotate({
         identifier: "StartWebAuthnRegistrationResponse",
       });
   }
 }
-function __c36(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11838,19 +11252,31 @@ function __c36(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopUserImportJobRequest" });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(10, __c1, 2) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(3776, __c118, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(23, __c2, 7) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(4096, __c128, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11862,7 +11288,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateAuthEventFeedbackRequest",
       });
-    case 4:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessToken: SensitiveString,
@@ -11872,7 +11302,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateDeviceStatusRequest",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GroupName: S.String,
@@ -11882,55 +11316,71 @@ function __c36(j: number): any {
           Precedence: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateGroupRequest" });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
           ProviderName: S.String,
-          ProviderDetails: S.optional(__S(10, __c1, 2)),
-          AttributeMapping: S.optional(__S(10, __c1, 2)),
-          IdpIdentifiers: S.optional(__S(23, __c2, 7)),
-          AcrMapping: S.optional(__S(10, __c1, 2)),
+          ProviderDetails: S.optional(__S(3776, __c118, 0)),
+          AttributeMapping: S.optional(__S(3776, __c118, 0)),
+          IdpIdentifiers: S.optional(__S(4096, __c128, 0)),
+          AcrMapping: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateIdentityProviderRequest",
       });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.optional(S.String),
           ManagedLoginBrandingId: S.optional(S.String),
           UseCognitoProvidedValues: S.optional(S.Boolean),
           Settings: S.optional(S.Any),
-          Assets: S.optional(__S(93, __c11, 5)),
+          Assets: S.optional(__S(5633, __c176, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateManagedLoginBrandingRequest",
       });
   }
 }
-function __c37(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ LimitDefinition: __S(207, __c25, 7), RequestedLimitValue: S.Number }).pipe(
+        S.Struct({ LimitDefinition: __S(1696, __c53, 0), RequestedLimitValue: S.Number }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateProvisionedLimitRequest",
       });
-    case 1:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
           Identifier: S.String,
           Name: S.String,
-          Scopes: S.optional(__S(98, __c12, 2)),
+          Scopes: S.optional(__S(5697, __c178, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateResourceServerRequest",
       });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TermsId: S.String,
@@ -11938,57 +11388,69 @@ function __c37(j: number): any {
           TermsName: S.optional(S.String),
           TermsSource: S.optional(S.String),
           Enforcement: S.optional(S.String),
-          Links: S.optional(__S(102, __c12, 6)),
+          Links: S.optional(__S(5792, __c181, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTermsRequest" });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          UserAttributes: __S(13, __c1, 5),
+          UserAttributes: __S(3873, __c121, 1),
           AccessToken: SensitiveString,
-          ClientMetadata: S.optional(__S(10, __c1, 2)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateUserAttributesRequest",
       });
-    case 4:
-      return S.Array(__S(189, __c23, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ CodeDeliveryDetailsList: S.optional(__S(300, __c37, 4)) }).pipe(ns),
+        S.Struct({ CodeDeliveryDetailsList: S.optional(__S(3329, __c104, 1)) }).pipe(ns),
       ).annotate({
         identifier: "UpdateUserAttributesResponse",
       });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
-          Policies: S.optional(__S(111, __c13, 7)),
+          Policies: S.optional(__S(226, __c7, 2)),
           DeletionProtection: S.optional(S.String),
-          LambdaConfig: S.optional(__S(113, __c14, 1)),
-          AutoVerifiedAttributes: S.optional(__S(14, __c1, 6)),
+          LambdaConfig: S.optional(__S(193, __c6, 1)),
+          AutoVerifiedAttributes: S.optional(__S(3936, __c123, 0)),
           SmsVerificationMessage: S.optional(S.String),
           EmailVerificationMessage: S.optional(S.String),
           EmailVerificationSubject: S.optional(S.String),
-          VerificationMessageTemplate: S.optional(__S(114, __c14, 2)),
+          VerificationMessageTemplate: S.optional(__S(227, __c7, 3)),
           SmsAuthenticationMessage: S.optional(S.String),
-          UserAttributeUpdateSettings: S.optional(__S(115, __c14, 3)),
+          UserAttributeUpdateSettings: S.optional(__S(228, __c7, 4)),
           MfaConfiguration: S.optional(S.String),
-          DeviceConfiguration: S.optional(__S(116, __c14, 4)),
-          EmailConfiguration: S.optional(__S(117, __c14, 5)),
-          SmsConfiguration: S.optional(__S(119, __c14, 7)),
-          UserPoolTags: S.optional(__S(10, __c1, 2)),
-          AdminCreateUserConfig: S.optional(__S(121, __c15, 1)),
-          UserPoolAddOns: S.optional(__S(123, __c15, 3)),
-          AccountRecoverySetting: S.optional(__S(127, __c15, 7)),
+          DeviceConfiguration: S.optional(__S(229, __c7, 5)),
+          EmailConfiguration: S.optional(__S(230, __c7, 6)),
+          SmsConfiguration: S.optional(__S(161, __c5, 1)),
+          UserPoolTags: S.optional(__S(3776, __c118, 0)),
+          AdminCreateUserConfig: S.optional(__S(232, __c7, 8)),
+          UserPoolAddOns: S.optional(__S(234, __c7, 10)),
+          AccountRecoverySetting: S.optional(__S(237, __c7, 13)),
           PoolName: S.optional(S.String),
           UserPoolTier: S.optional(S.String),
-          KeyConfiguration: S.optional(__S(128, __c16, 0)),
-          IssuerConfiguration: S.optional(__S(129, __c16, 1)),
-          AcrConfiguration: S.optional(__S(131, __c16, 3)),
+          KeyConfiguration: S.optional(__S(238, __c7, 14)),
+          IssuerConfiguration: S.optional(__S(239, __c7, 15)),
+          AcrConfiguration: S.optional(__S(241, __c7, 17)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateUserPoolRequest" });
-    case 7:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserPoolId: S.String,
@@ -11997,30 +11459,30 @@ function __c37(j: number): any {
           RefreshTokenValidity: S.optional(S.Number),
           AccessTokenValidity: S.optional(S.Number),
           IdTokenValidity: S.optional(S.Number),
-          TokenValidityUnits: S.optional(__S(135, __c16, 7)),
-          ReadAttributes: S.optional(__S(23, __c2, 7)),
-          WriteAttributes: S.optional(__S(23, __c2, 7)),
-          ExplicitAuthFlows: S.optional(__S(14, __c1, 6)),
-          SupportedIdentityProviders: S.optional(__S(23, __c2, 7)),
-          CallbackURLs: S.optional(__S(23, __c2, 7)),
-          LogoutURLs: S.optional(__S(23, __c2, 7)),
+          TokenValidityUnits: S.optional(__S(288, __c9, 0)),
+          ReadAttributes: S.optional(__S(4096, __c128, 0)),
+          WriteAttributes: S.optional(__S(4096, __c128, 0)),
+          ExplicitAuthFlows: S.optional(__S(3936, __c123, 0)),
+          SupportedIdentityProviders: S.optional(__S(4096, __c128, 0)),
+          CallbackURLs: S.optional(__S(4096, __c128, 0)),
+          LogoutURLs: S.optional(__S(4096, __c128, 0)),
           DefaultRedirectURI: S.optional(S.String),
-          AllowedOAuthFlows: S.optional(__S(14, __c1, 6)),
-          AllowedOAuthScopes: S.optional(__S(23, __c2, 7)),
+          AllowedOAuthFlows: S.optional(__S(3936, __c123, 0)),
+          AllowedOAuthScopes: S.optional(__S(4096, __c128, 0)),
           AllowedOAuthFlowsUserPoolClient: S.optional(S.Boolean),
-          AnalyticsConfiguration: S.optional(__S(136, __c17, 0)),
+          AnalyticsConfiguration: S.optional(__S(289, __c9, 1)),
           PreventUserExistenceErrors: S.optional(S.String),
           EnableTokenRevocation: S.optional(S.Boolean),
           EnablePropagateAdditionalUserContextData: S.optional(S.Boolean),
           AuthSessionValidity: S.optional(S.Number),
-          RefreshTokenRotation: S.optional(__S(137, __c17, 1)),
+          RefreshTokenRotation: S.optional(__S(290, __c9, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateUserPoolClientRequest",
       });
   }
 }
-function __c38(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12028,23 +11490,29 @@ function __c38(j: number): any {
           Domain: S.String,
           UserPoolId: S.String,
           ManagedLoginVersion: S.optional(S.Number),
-          CustomDomainConfig: S.optional(__S(141, __c17, 5)),
-          Routing: S.optional(__S(143, __c17, 7)),
+          CustomDomainConfig: S.optional(__S(352, __c11, 0)),
+          Routing: S.optional(__S(354, __c11, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateUserPoolDomainRequest",
       });
-    case 1:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          UserPoolId: S.String,
-          RegionName: S.String,
-          Status: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ UserPoolId: S.String, RegionName: S.String, Status: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "UpdateUserPoolReplicaRequest",
       });
-    case 2:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessToken: S.optional(SensitiveString),
@@ -12055,7 +11523,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "VerifySoftwareTokenRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -12064,7 +11532,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "VerifySoftwareTokenResponse",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessToken: SensitiveString, AttributeName: S.String, Code: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12074,7 +11546,1106 @@ function __c38(j: number): any {
       });
   }
 }
-
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, CustomAttributes: __S(3587, __c112, 3) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AddCustomAttributesRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MinValue: S.optional(S.String), MaxValue: S.optional(S.String) }),
+      ).annotate({
+        identifier: "NumberAttributeConstraintsType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MinLength: S.optional(S.String), MaxLength: S.optional(S.String) }),
+      ).annotate({
+        identifier: "StringAttributeConstraintsType",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          AttributeDataType: S.optional(S.String),
+          DeveloperOnlyAttribute: S.optional(S.Boolean),
+          Mutable: S.optional(S.Boolean),
+          Required: S.optional(S.Boolean),
+          NumberAttributeConstraints: S.optional(__S(3584, __c112, 0)),
+          StringAttributeConstraints: S.optional(__S(3585, __c112, 1)),
+        }),
+      ).annotate({ identifier: "SchemaAttributeType" });
+    case 3:
+      return S.Array(__S(3586, __c112, 2));
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AddCustomAttributesResponse",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          ClientSecret: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AddUserPoolClientSecretRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ClientSecretDescriptor: S.optional(__S(3680, __c115, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "AddUserPoolClientSecretResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientSecretId: S.optional(S.String),
+          ClientSecretValue: S.optional(SensitiveString),
+          ClientSecretCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "ClientSecretDescriptorType",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString, GroupName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminAddUserToGroupRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminConfirmSignUpRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          UserAttributes: S.optional(__S(3873, __c121, 1)),
+          ValidationData: S.optional(__S(3873, __c121, 1)),
+          TemporaryPassword: S.optional(SensitiveString),
+          ForceAliasCreation: S.optional(S.Boolean),
+          MessageAction: S.optional(S.String),
+          DesiredDeliveryMediums: S.optional(__S(3936, __c123, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AdminCreateUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ User: S.optional(__S(3840, __c120, 0)) }).pipe(ns),
+      ).annotate({ identifier: "AdminCreateUserResponse" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Username: S.optional(SensitiveString),
+          Attributes: S.optional(__S(3873, __c121, 1)),
+          UserCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UserLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Enabled: S.optional(S.Boolean),
+          UserStatus: S.optional(S.String),
+          MFAOptions: S.optional(__S(3905, __c122, 1)),
+        }),
+      ).annotate({ identifier: "UserType" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Value: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "AttributeType" });
+    case 1:
+      return S.Array(__S(3872, __c121, 0));
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DeliveryMedium: S.optional(S.String), AttributeName: S.optional(S.String) }),
+      ).annotate({ identifier: "MFAOptionType" });
+    case 1:
+      return S.Array(__S(3904, __c122, 0));
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminDeleteSoftwareTokenRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminDeleteUserRequest" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AdminDeleteUserResponse",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          UserAttributeNames: __S(4096, __c128, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminDeleteUserAttributesRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, User: __S(4160, __c130, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminDisableProviderForUserRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ProviderName: S.optional(S.String),
+          ProviderAttributeName: S.optional(S.String),
+          ProviderAttributeValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProviderUserIdentifierType",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminDisableUserRequest" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminEnableUserRequest" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString, DeviceKey: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminForgetDeviceRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DeviceKey: S.String, UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminGetDeviceRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Device: __S(4352, __c136, 0) }).pipe(ns)).annotate({
+        identifier: "AdminGetDeviceResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DeviceKey: S.optional(S.String),
+          DeviceAttributes: S.optional(__S(3873, __c121, 1)),
+          DeviceCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DeviceLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DeviceLastAuthenticatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DeviceType" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AdminGetUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Username: SensitiveString,
+          UserAttributes: S.optional(__S(3873, __c121, 1)),
+          UserCreateDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UserLastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Enabled: S.optional(S.Boolean),
+          UserStatus: S.optional(S.String),
+          MFAOptions: S.optional(__S(3905, __c122, 1)),
+          PreferredMfaSetting: S.optional(S.String),
+          UserMFASettingList: S.optional(__S(4096, __c128, 0)),
+        }).pipe(ns),
+      ).annotate({ identifier: "AdminGetUserResponse" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminGetUserAuthFactorsRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Username: SensitiveString,
+          PreferredMfaSetting: S.optional(S.String),
+          UserMFASettingList: S.optional(__S(4096, __c128, 0)),
+          ConfiguredUserAuthFactors: S.optional(__S(3936, __c123, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AdminGetUserAuthFactorsResponse",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          AuthFlow: S.String,
+          AuthParameters: S.optional(__S(3776, __c118, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          ContextData: S.optional(__S(4514, __c141, 2)),
+          Session: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AdminInitiateAuthRequest" });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ headerName: S.optional(S.String), headerValue: S.optional(S.String) }),
+      ).annotate({ identifier: "HttpHeader" });
+    case 1:
+      return S.Array(__S(4512, __c141, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          IpAddress: S.String,
+          ServerName: S.String,
+          ServerPath: S.String,
+          HttpHeaders: __S(4513, __c141, 1),
+          EncodedData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContextDataType" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DeviceKey: S.optional(S.String), DeviceGroupKey: S.optional(S.String) }),
+      ).annotate({ identifier: "NewDeviceMetadataType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessToken: S.optional(SensitiveString),
+          ExpiresIn: S.optional(S.Number),
+          TokenType: S.optional(S.String),
+          RefreshToken: S.optional(SensitiveString),
+          IdToken: S.optional(SensitiveString),
+          NewDeviceMetadata: S.optional(__S(4544, __c142, 0)),
+        }),
+      ).annotate({ identifier: "AuthenticationResultType" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChallengeName: S.optional(S.String),
+          Session: S.optional(SensitiveString),
+          ChallengeParameters: S.optional(__S(3776, __c118, 0)),
+          AuthenticationResult: S.optional(__S(4545, __c142, 1)),
+          AvailableChallenges: S.optional(__S(3936, __c123, 0)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AdminInitiateAuthResponse",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AnalyticsEndpointId: S.optional(S.String) })).annotate({
+        identifier: "AnalyticsMetadataType",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          DestinationUser: __S(4160, __c130, 0),
+          SourceUser: __S(4160, __c130, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminLinkProviderForUserRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          Limit: S.optional(S.Number),
+          PaginationToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AdminListDevicesRequest" });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4352, __c136, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Devices: S.optional(__S(4704, __c147, 0)),
+          PaginationToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "AdminListDevicesResponse" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Username: SensitiveString,
+          UserPoolId: S.String,
+          Limit: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminListGroupsForUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Groups: S.optional(__S(4768, __c149, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AdminListGroupsForUserResponse",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4800, __c150, 0));
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GroupName: S.optional(S.String),
+          UserPoolId: S.optional(S.String),
+          Description: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          Precedence: S.optional(S.Number),
+          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "GroupType" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminListUserAuthEventsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RiskDecision: S.optional(S.String),
+          RiskLevel: S.optional(S.String),
+          CompromisedCredentialsDetected: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EventRiskType" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChallengeName: S.optional(S.String),
+          ChallengeResponse: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChallengeResponseType" });
+    case 3:
+      return S.Array(__S(4834, __c151, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          IpAddress: S.optional(S.String),
+          DeviceName: S.optional(S.String),
+          Timezone: S.optional(S.String),
+          City: S.optional(S.String),
+          Country: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventContextDataType" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FeedbackValue: S.String,
+          Provider: S.String,
+          FeedbackDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "EventFeedbackType" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EventId: S.optional(S.String),
+          EventType: S.optional(S.String),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EventResponse: S.optional(S.String),
+          EventRisk: S.optional(__S(4833, __c151, 1)),
+          ChallengeResponses: S.optional(__S(4835, __c151, 3)),
+          EventContextData: S.optional(__S(4836, __c151, 4)),
+          EventFeedback: S.optional(__S(4837, __c151, 5)),
+        }),
+      ).annotate({ identifier: "AuthEventType" });
+    case 7:
+      return S.Array(__S(4838, __c151, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          AuthEvents: S.optional(__S(4839, __c151, 7)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AdminListUserAuthEventsResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString, GroupName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminRemoveUserFromGroupRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminResetUserPasswordRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          ChallengeName: S.String,
+          ChallengeResponses: S.optional(__S(3776, __c118, 0)),
+          Session: S.optional(SensitiveString),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          ContextData: S.optional(__S(4514, __c141, 2)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminRespondToAuthChallengeRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SMSMfaSettings: S.optional(__S(4992, __c156, 0)),
+          SoftwareTokenMfaSettings: S.optional(__S(4993, __c156, 1)),
+          EmailMfaSettings: S.optional(__S(4992, __c156, 0)),
+          WebAuthnMfaSettings: S.optional(__S(4994, __c156, 2)),
+          Username: SensitiveString,
+          UserPoolId: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminSetUserMFAPreferenceRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Enabled: S.optional(S.Boolean), PreferredMfa: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "SMSMfaSettingsType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Enabled: S.optional(S.Boolean), PreferredMfa: S.optional(S.Boolean) }),
+      ).annotate({
+        identifier: "SoftwareTokenMfaSettingsType",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "WebAuthnMfaSettingsType",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          Password: SensitiveString,
+          Permanent: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminSetUserPasswordRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          MFAOptions: __S(3905, __c122, 1),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminSetUserSettingsRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          EventId: S.String,
+          FeedbackValue: S.String,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminUpdateAuthEventFeedbackRequest",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          DeviceKey: S.String,
+          DeviceRememberedStatus: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminUpdateDeviceStatusRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Username: SensitiveString,
+          UserAttributes: __S(3873, __c121, 1),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AdminUpdateUserAttributesRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UserPoolId: S.String, Username: SensitiveString }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AdminUserGlobalSignOutRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessToken: S.optional(SensitiveString),
+          Session: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AssociateSoftwareTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SecretCode: S.optional(SensitiveString),
+          Session: S.optional(SensitiveString),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "AssociateSoftwareTokenResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PreviousPassword: S.optional(SensitiveString),
+          ProposedPassword: SensitiveString,
+          AccessToken: SensitiveString,
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ChangePasswordRequest" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "ChangePasswordResponse",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccessToken: SensitiveString, Credential: S.Any }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CompleteWebAuthnRegistrationRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PasswordVerifier: S.optional(S.String), Salt: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DeviceSecretVerifierConfigType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessToken: SensitiveString,
+          DeviceKey: S.String,
+          DeviceSecretVerifierConfig: S.optional(__S(5344, __c167, 0)),
+          DeviceName: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ConfirmDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ UserConfirmationNecessary: S.optional(S.Boolean) }).pipe(ns),
+      ).annotate({ identifier: "ConfirmDeviceResponse" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientId: SensitiveString,
+          SecretHash: S.optional(SensitiveString),
+          Username: SensitiveString,
+          ConfirmationCode: S.String,
+          Password: SensitiveString,
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ConfirmForgotPasswordRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ IpAddress: S.optional(S.String), EncodedData: S.optional(S.String) }),
+      ).annotate({ identifier: "UserContextDataType" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientId: SensitiveString,
+          SecretHash: S.optional(SensitiveString),
+          Username: SensitiveString,
+          ConfirmationCode: S.String,
+          ForceAliasCreation: S.optional(S.Boolean),
+          AnalyticsMetadata: S.optional(__S(4608, __c144, 0)),
+          UserContextData: S.optional(__S(5408, __c169, 0)),
+          ClientMetadata: S.optional(__S(3776, __c118, 0)),
+          Session: S.optional(SensitiveString),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ConfirmSignUpRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Session: S.optional(SensitiveString) }).pipe(ns)).annotate({
+        identifier: "ConfirmSignUpResponse",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GroupName: S.String,
+          UserPoolId: S.String,
+          Description: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          Precedence: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateGroupRequest" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Group: S.optional(__S(4800, __c150, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateGroupResponse" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ProviderName: S.String,
+          ProviderType: S.String,
+          ProviderDetails: __S(3776, __c118, 0),
+          AttributeMapping: S.optional(__S(3776, __c118, 0)),
+          IdpIdentifiers: S.optional(__S(4096, __c128, 0)),
+          AcrMapping: S.optional(__S(3776, __c118, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateIdentityProviderRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.optional(S.String),
+          ProviderName: S.optional(S.String),
+          ProviderType: S.optional(S.String),
+          ProviderDetails: S.optional(__S(3776, __c118, 0)),
+          AttributeMapping: S.optional(__S(3776, __c118, 0)),
+          IdpIdentifiers: S.optional(__S(4096, __c128, 0)),
+          AcrMapping: S.optional(__S(3776, __c118, 0)),
+          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "IdentityProviderType" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ IdentityProvider: __S(5568, __c174, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateIdentityProviderResponse",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          UseCognitoProvidedValues: S.optional(S.Boolean),
+          Settings: S.optional(S.Any),
+          Assets: S.optional(__S(5633, __c176, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateManagedLoginBrandingRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Category: S.String,
+          ColorMode: S.String,
+          Extension: S.String,
+          Bytes: S.optional(T.Blob),
+          ResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetType" });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ManagedLoginBrandingId: S.optional(S.String),
+          UserPoolId: S.optional(S.String),
+          UseCognitoProvidedValues: S.optional(S.Boolean),
+          Settings: S.optional(S.Any),
+          Assets: S.optional(__S(5633, __c176, 1)),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModifiedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "ManagedLoginBrandingType" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ManagedLoginBranding: S.optional(__S(5634, __c176, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateManagedLoginBrandingResponse",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          Identifier: S.String,
+          Name: S.String,
+          Scopes: S.optional(__S(5697, __c178, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateResourceServerRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ScopeName: S.String, ScopeDescription: S.String }),
+      ).annotate({ identifier: "ResourceServerScopeType" });
+    case 1:
+      return S.Array(__S(5696, __c178, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.optional(S.String),
+          Identifier: S.optional(S.String),
+          Name: S.optional(S.String),
+          Scopes: S.optional(__S(5697, __c178, 1)),
+        }),
+      ).annotate({ identifier: "ResourceServerType" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ResourceServer: __S(5698, __c178, 2) }).pipe(ns)).annotate({
+        identifier: "CreateResourceServerResponse",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          TermsName: S.String,
+          TermsSource: S.String,
+          Enforcement: S.String,
+          Links: S.optional(__S(5792, __c181, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTermsRequest" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TermsId: S.String,
+          UserPoolId: S.String,
+          ClientId: SensitiveString,
+          TermsName: S.String,
+          TermsSource: S.String,
+          Enforcement: S.String,
+          Links: __S(5792, __c181, 0),
+          CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          LastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "TermsType" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Terms: S.optional(__S(5793, __c181, 1)) }).pipe(ns),
+      ).annotate({ identifier: "CreateTermsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -102,8 +102,8 @@ export const userInfo: API.OperationMethod<
   UserInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<UserInfoRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UserInfoResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<UserInfoRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<UserInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -143,11 +143,15 @@ function __c0(j: number): any {
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "ConnectTokenResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/openid.connect.userInfo", code: 200 })),
       ).annotate({ identifier: "UserInfoRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -226,7 +230,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "UserInfoResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

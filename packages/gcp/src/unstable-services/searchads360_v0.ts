@@ -3803,7 +3803,7 @@ export const getCustomersCustomColumns: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCustomersCustomColumnsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleAdsSearchads360V0Resources__CustomColumn>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleAdsSearchads360V0Resources__CustomColumn>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3817,8 +3817,8 @@ export const getSearchAds360Fields: API.OperationMethod<
   GetSearchAds360FieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetSearchAds360FieldsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleAdsSearchads360V0Resources__SearchAds360Field>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetSearchAds360FieldsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GoogleAdsSearchads360V0Resources__SearchAds360Field>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3832,11 +3832,11 @@ export const listAccessibleCustomersCustomers: API.OperationMethod<
   ListAccessibleCustomersCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListAccessibleCustomersCustomersRequest>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListAccessibleCustomersCustomersRequest>,
   output: __S(
-    6,
-    __c0,
-    6,
+    161,
+    __c5,
+    1,
   ) as any as S.Schema<GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3851,11 +3851,11 @@ export const listCustomersCustomColumns: API.OperationMethod<
   ListCustomersCustomColumnsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListCustomersCustomColumnsRequest>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListCustomersCustomColumnsRequest>,
   output: __S(
-    9,
-    __c1,
-    1,
+    194,
+    __c6,
+    2,
   ) as any as S.Schema<GoogleAdsSearchads360V0Services__ListCustomColumnsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3875,11 +3875,11 @@ export const searchCustomersSearchAds360: API.OperationMethod<
   SearchCustomersSearchAds360Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<SearchCustomersSearchAds360Request>,
+  input: __S(225, __c7, 1) as any as S.Schema<SearchCustomersSearchAds360Request>,
   output: __S(
-    162,
-    __c20,
-    2,
+    376,
+    __c11,
+    24,
   ) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360Response>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3899,11 +3899,11 @@ export const searchSearchAds360Fields: API.OperationMethod<
   SearchSearchAds360FieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<SearchSearchAds360FieldsRequest>,
+  input: __S(385, __c12, 1) as any as S.Schema<SearchSearchAds360FieldsRequest>,
   output: __S(
-    166,
-    __c20,
-    6,
+    387,
+    __c12,
+    3,
   ) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3927,9 +3927,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCustomersCustomColumnsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           referencesMetrics: S.optional(S.Boolean),
@@ -3940,13 +3948,17 @@ function __c0(j: number): any {
           referencesAttributes: S.optional(S.Boolean),
           renderType: S.optional(S.String),
           id: S.optional(S.String),
-          referencedSystemColumns: S.optional(__S(1, __c0, 1)),
+          referencedSystemColumns: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CustomColumn",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.String.pipe(T.Label()),
@@ -3960,28 +3972,36 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetSearchAds360FieldsRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           typeUrl: S.optional(S.String),
           name: S.optional(S.String),
           isRepeated: S.optional(S.Boolean),
-          attributeResources: S.optional(__S(1, __c0, 1)),
+          attributeResources: S.optional(__S(32, __c1, 0)),
           category: S.optional(S.String),
           sortable: S.optional(S.Boolean),
-          segments: S.optional(__S(1, __c0, 1)),
+          segments: S.optional(__S(32, __c1, 0)),
           resourceName: S.optional(S.String),
-          metrics: S.optional(__S(1, __c0, 1)),
+          metrics: S.optional(__S(32, __c1, 0)),
           dataType: S.optional(S.String),
-          selectableWith: S.optional(__S(1, __c0, 1)),
+          selectableWith: S.optional(__S(32, __c1, 0)),
           selectable: S.optional(S.Boolean),
-          enumValues: S.optional(__S(1, __c0, 1)),
+          enumValues: S.optional(__S(32, __c1, 0)),
           filterable: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__SearchAds360Field",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3993,15 +4013,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAccessibleCustomersCustomersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceNames: S.optional(__S(1, __c0, 1)),
+          resourceNames: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -4015,21 +4039,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListCustomersCustomColumnsRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2, __c0, 2));
     case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customColumns: S.optional(__S(8, __c1, 0)),
+          customColumns: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__ListCustomColumnsResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
@@ -4042,11 +4066,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360Request",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4057,7 +4081,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchCustomersSearchAds360Request",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           referencesMetrics: S.optional(S.Boolean),
@@ -4067,9 +4091,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__CustomColumnHeader",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4078,13 +4102,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(228, __c7, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           advertiserId: S.optional(S.String),
@@ -4094,7 +4114,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           enhancedConversionsForLeadsEnabled: S.optional(S.Boolean),
@@ -4108,7 +4128,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ConversionTrackingSetting",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           descriptiveName: S.optional(S.String),
@@ -4117,7 +4137,7 @@ function __c2(j: number): any {
           accountType: S.optional(S.String),
           timeZone: S.optional(S.String),
           accountStatus: S.optional(S.String),
-          doubleClickCampaignManagerSetting: S.optional(__S(16, __c2, 0)),
+          doubleClickCampaignManagerSetting: S.optional(__S(230, __c7, 6)),
           resourceName: S.optional(S.String),
           autoTaggingEnabled: S.optional(S.Boolean),
           creationTime: S.optional(S.String),
@@ -4129,7 +4149,7 @@ function __c2(j: number): any {
           currencyCode: S.optional(S.String),
           trackingUrlTemplate: S.optional(S.String),
           engineId: S.optional(S.String),
-          conversionTrackingSetting: S.optional(__S(17, __c2, 1)),
+          conversionTrackingSetting: S.optional(__S(231, __c7, 7)),
           subManagerDescriptiveName: S.optional(S.String),
           managerDescriptiveName: S.optional(S.String),
           id: S.optional(S.String),
@@ -4139,7 +4159,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Customer",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -4147,21 +4167,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__AdTextAsset",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 10:
+      return S.Array(__S(233, __c7, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           path1: S.optional(S.String),
           adTrackingId: S.optional(S.String),
-          descriptions: S.optional(__S(20, __c2, 4)),
-          headlines: S.optional(__S(20, __c2, 4)),
+          descriptions: S.optional(__S(234, __c7, 10)),
+          headlines: S.optional(__S(234, __c7, 10)),
           path2: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           description1: S.optional(S.String),
@@ -4174,7 +4194,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -4183,20 +4203,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SyntheticContentAttestation",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          systemAttestation: S.optional(__S(23, __c2, 7)),
-          advertiserAttestation: S.optional(__S(23, __c2, 7)),
+          systemAttestation: S.optional(__S(237, __c7, 13)),
+          advertiserAttestation: S.optional(__S(237, __c7, 13)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SyntheticContentInfo",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           description2: S.optional(S.String),
@@ -4206,7 +4222,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearchAdInfo",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           description2: S.optional(S.String),
@@ -4221,7 +4237,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -4230,56 +4246,52 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__FinalAppUrl",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          responsiveSearchAd: S.optional(__S(21, __c2, 5)),
-          textAd: S.optional(__S(22, __c2, 6)),
+          responsiveSearchAd: S.optional(__S(235, __c7, 11)),
+          textAd: S.optional(__S(236, __c7, 12)),
           name: S.optional(S.String),
-          syntheticContentInfo: S.optional(__S(24, __c3, 0)),
-          expandedDynamicSearchAd: S.optional(__S(25, __c3, 1)),
+          syntheticContentInfo: S.optional(__S(238, __c7, 14)),
+          expandedDynamicSearchAd: S.optional(__S(239, __c7, 15)),
           type: S.optional(S.String),
-          expandedTextAd: S.optional(__S(26, __c3, 2)),
+          expandedTextAd: S.optional(__S(240, __c7, 16)),
           finalUrlSuffix: S.optional(S.String),
-          finalUrls: S.optional(__S(1, __c0, 1)),
+          finalUrls: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
-          finalMobileUrls: S.optional(__S(1, __c0, 1)),
+          finalMobileUrls: S.optional(__S(32, __c1, 0)),
           resourceName: S.optional(S.String),
           trackingUrlTemplate: S.optional(S.String),
-          finalAppUrls: S.optional(__S(28, __c3, 4)),
+          finalAppUrls: S.optional(__S(242, __c7, 18)),
           displayUrl: S.optional(S.String),
-          productAd: S.optional(__S(29, __c3, 5)),
+          productAd: S.optional(__S(243, __c7, 19)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Ad",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           resourceName: S.optional(S.String),
           engineStatus: S.optional(S.String),
           creationTime: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
-          effectiveLabels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
+          effectiveLabels: S.optional(__S(32, __c1, 0)),
           lastModifiedTime: S.optional(S.String),
           engineId: S.optional(S.String),
-          ad: S.optional(__S(30, __c3, 6)),
+          ad: S.optional(__S(244, __c7, 20)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupAd",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -4290,7 +4302,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignLabel",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           ownerCustomerId: S.optional(S.String),
@@ -4301,7 +4313,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           backgroundColor: S.optional(S.String),
@@ -4310,19 +4322,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TextLabel",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           status: S.optional(S.String),
           name: S.optional(S.String),
           resourceName: S.optional(S.String),
-          textLabel: S.optional(__S(34, __c4, 2)),
+          textLabel: S.optional(__S(248, __c7, 24)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Label",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4331,7 +4343,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetSet",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -4341,7 +4353,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CustomerAsset",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -4349,13 +4361,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__WebpageView",
       });
-    case 7:
+    case 29:
       return S.Array(S.String);
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           stringValue: S.optional(S.String),
@@ -4367,13 +4375,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__Value",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 31:
+      return S.Array(__S(254, __c7, 30));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           costMicros: S.optional(S.String),
-          interactionEventTypes: S.optional(__S(39, __c4, 7)),
+          interactionEventTypes: S.optional(__S(253, __c7, 29)),
           clientAccountViewThroughConversions: S.optional(S.String),
           generalInvalidClickRate: S.optional(S.Number),
           leadUnitsSold: S.optional(S.Number),
@@ -4401,7 +4413,7 @@ function __c5(j: number): any {
           impressions: S.optional(S.String),
           valuePerConversion: S.optional(S.Number),
           allConversionsFromMenu: S.optional(S.Number),
-          conversionCustomMetrics: S.optional(__S(41, __c5, 1)),
+          conversionCustomMetrics: S.optional(__S(255, __c7, 31)),
           searchBudgetLostTopImpressionShare: S.optional(S.Number),
           searchClickShare: S.optional(S.Number),
           historicalQualityScore: S.optional(S.String),
@@ -4428,7 +4440,7 @@ function __c5(j: number): any {
           interactions: S.optional(S.String),
           historicalLandingPageQualityScore: S.optional(S.String),
           searchBudgetLostAbsoluteTopImpressionShare: S.optional(S.Number),
-          rawEventConversionMetrics: S.optional(__S(41, __c5, 1)),
+          rawEventConversionMetrics: S.optional(__S(255, __c7, 31)),
           leadCostOfGoodsSoldMicros: S.optional(S.String),
           clientAccountLeadGrossProfitMicros: S.optional(S.String),
           allConversions: S.optional(S.Number),
@@ -4476,7 +4488,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__Metrics",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
@@ -4487,7 +4499,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CustomerAssetSet",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           callToAction: S.optional(S.String),
@@ -4495,7 +4507,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__CallToActionAsset",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           dayOfWeek: S.optional(S.String),
@@ -4507,25 +4519,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__AdScheduleInfo",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(259, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           calloutText: S.optional(S.String),
           useSearcherTimeZone: S.optional(S.Boolean),
           endDate: S.optional(S.String),
-          adScheduleTargets: S.optional(__S(46, __c5, 6)),
+          adScheduleTargets: S.optional(__S(260, __c8, 4)),
           startDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UnifiedCalloutAsset",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -4534,9 +4542,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__CustomParameter",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           mobilePreferred: S.optional(S.Boolean),
@@ -4544,7 +4552,7 @@ function __c6(j: number): any {
           trackingId: S.optional(S.String),
           description2: S.optional(S.String),
           endDate: S.optional(S.String),
-          adScheduleTargets: S.optional(__S(46, __c5, 6)),
+          adScheduleTargets: S.optional(__S(260, __c8, 4)),
           useSearcherTimeZone: S.optional(S.Boolean),
           startDate: S.optional(S.String),
           description1: S.optional(S.String),
@@ -4552,38 +4560,38 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           listingId: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           storeCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__BusinessProfileLocation",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 10:
+      return S.Array(__S(265, __c8, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           placeId: S.optional(S.String),
-          businessProfileLocations: S.optional(__S(52, __c6, 4)),
+          businessProfileLocations: S.optional(__S(266, __c8, 10)),
           locationOwnershipType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UnifiedLocationAsset",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           pageUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           youtubeVideoId: S.optional(S.String),
@@ -4592,11 +4600,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__YoutubeVideoAsset",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           heightPixels: S.optional(S.String),
@@ -4606,17 +4610,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__ImageDimension",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          fullSize: S.optional(__S(56, __c7, 0)),
+          fullSize: S.optional(__S(270, __c8, 14)),
           fileSize: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__ImageAsset",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           callConversionReportingState: S.optional(S.String),
@@ -4626,14 +4630,14 @@ function __c7(j: number): any {
           phoneNumber: S.optional(S.String),
           callOnly: S.optional(S.Boolean),
           callConversionAction: S.optional(S.String),
-          adScheduleTargets: S.optional(__S(46, __c5, 6)),
+          adScheduleTargets: S.optional(__S(260, __c8, 4)),
           useSearcherTimeZone: S.optional(S.Boolean),
           endDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UnifiedCallAsset",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           appStore: S.optional(S.String),
@@ -4642,38 +4646,38 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__MobileAppAsset",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          finalMobileUrls: S.optional(__S(1, __c0, 1)),
+          finalMobileUrls: S.optional(__S(32, __c1, 0)),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          callToActionAsset: S.optional(__S(44, __c5, 4)),
+          callToActionAsset: S.optional(__S(258, __c8, 2)),
           trackingUrlTemplate: S.optional(S.String),
           id: S.optional(S.String),
-          calloutAsset: S.optional(__S(47, __c5, 7)),
-          urlCustomParameters: S.optional(__S(49, __c6, 1)),
-          sitelinkAsset: S.optional(__S(50, __c6, 2)),
-          textAsset: S.optional(__S(19, __c2, 3)),
+          calloutAsset: S.optional(__S(261, __c8, 5)),
+          urlCustomParameters: S.optional(__S(263, __c8, 7)),
+          sitelinkAsset: S.optional(__S(264, __c8, 8)),
+          textAsset: S.optional(__S(233, __c7, 9)),
           lastModifiedTime: S.optional(S.String),
           finalUrlSuffix: S.optional(S.String),
-          finalUrls: S.optional(__S(1, __c0, 1)),
+          finalUrls: S.optional(__S(32, __c1, 0)),
           creationTime: S.optional(S.String),
-          locationAsset: S.optional(__S(53, __c6, 5)),
+          locationAsset: S.optional(__S(267, __c8, 11)),
           engineStatus: S.optional(S.String),
-          syntheticContentInfo: S.optional(__S(24, __c3, 0)),
-          pageFeedAsset: S.optional(__S(54, __c6, 6)),
-          youtubeVideoAsset: S.optional(__S(55, __c6, 7)),
+          syntheticContentInfo: S.optional(__S(238, __c7, 14)),
+          pageFeedAsset: S.optional(__S(268, __c8, 12)),
+          youtubeVideoAsset: S.optional(__S(269, __c8, 13)),
           resourceName: S.optional(S.String),
-          imageAsset: S.optional(__S(57, __c7, 1)),
-          callAsset: S.optional(__S(58, __c7, 2)),
-          mobileAppAsset: S.optional(__S(59, __c7, 3)),
+          imageAsset: S.optional(__S(271, __c8, 15)),
+          callAsset: S.optional(__S(272, __c8, 16)),
+          mobileAppAsset: S.optional(__S(273, __c8, 17)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Asset",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4704,7 +4708,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Conversion",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -4716,7 +4720,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CustomerManagerLink",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           cpcBidFloorMicros: S.optional(S.String),
@@ -4726,11 +4730,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__MaximizeConversionValue",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           cpcBidCeilingMicros: S.optional(S.String),
@@ -4738,7 +4738,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetOutrankShare",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -4748,7 +4748,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetImpressionShare",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           targetSpendMicros: S.optional(S.String),
@@ -4757,7 +4757,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetSpend",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           cpcBidFloorMicros: S.optional(S.String),
@@ -4767,7 +4767,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetCpa",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           cpcBidCeilingMicros: S.optional(S.String),
@@ -4777,7 +4777,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__MaximizeConversions",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           cpcBidCeilingMicros: S.optional(S.String),
@@ -4787,31 +4787,31 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetRoas",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          maximizeConversionValue: S.optional(__S(63, __c7, 7)),
+          maximizeConversionValue: S.optional(__S(277, __c8, 21)),
           id: S.optional(S.String),
-          targetOutrankShare: S.optional(__S(64, __c8, 0)),
-          targetImpressionShare: S.optional(__S(65, __c8, 1)),
+          targetOutrankShare: S.optional(__S(278, __c8, 22)),
+          targetImpressionShare: S.optional(__S(279, __c8, 23)),
           nonRemovedCampaignCount: S.optional(S.String),
-          targetSpend: S.optional(__S(66, __c8, 2)),
+          targetSpend: S.optional(__S(280, __c8, 24)),
           currencyCode: S.optional(S.String),
           resourceName: S.optional(S.String),
-          targetCpa: S.optional(__S(67, __c8, 3)),
+          targetCpa: S.optional(__S(281, __c8, 25)),
           effectiveCurrencyCode: S.optional(S.String),
           status: S.optional(S.String),
-          enhancedCpc: S.optional(__S(29, __c3, 5)),
+          enhancedCpc: S.optional(__S(243, __c7, 19)),
           campaignCount: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          maximizeConversions: S.optional(__S(68, __c8, 4)),
-          targetRoas: S.optional(__S(69, __c8, 5)),
+          maximizeConversions: S.optional(__S(282, __c8, 26)),
+          targetRoas: S.optional(__S(283, __c8, 27)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__BiddingStrategy",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           asset: S.optional(S.String),
@@ -4822,11 +4822,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignAsset",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           adId: S.optional(S.String),
@@ -4847,7 +4843,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Visit",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           feedLabel: S.optional(S.String),
@@ -4860,9 +4856,13 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting",
       });
-    case 2:
-      return S.Array(__S(29, __c3, 5));
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(243, __c7, 19));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trackingUrl: S.optional(S.String),
@@ -4870,15 +4870,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          optimizationGoalTypes: S.optional(__S(39, __c4, 7)),
+          optimizationGoalTypes: S.optional(__S(253, __c7, 29)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           targetContentNetwork: S.optional(S.Boolean),
@@ -4889,7 +4889,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           optIn: S.optional(S.Boolean),
@@ -4897,7 +4897,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__RealTimeBiddingSetting",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           cpcBidCeilingMicros: S.optional(S.String),
@@ -4906,19 +4906,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__PercentCpc",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          conversionActions: S.optional(__S(1, __c0, 1)),
+          conversionActions: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
@@ -4928,7 +4924,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enhancedCpcEnabled: S.optional(S.Boolean),
@@ -4936,7 +4932,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__ManualCpc",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           positiveGeoTargetType: S.optional(S.String),
@@ -4945,16 +4941,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          shoppingSetting: S.optional(__S(73, __c9, 1)),
+          shoppingSetting: S.optional(__S(287, __c8, 31)),
           servingStatus: S.optional(S.String),
           finalUrlSuffix: S.optional(S.String),
           endDate: S.optional(S.String),
-          manualCpm: S.optional(__S(29, __c3, 5)),
+          manualCpm: S.optional(__S(243, __c7, 19)),
           trackingUrlTemplate: S.optional(S.String),
-          frequencyCaps: S.optional(__S(74, __c9, 2)),
+          frequencyCaps: S.optional(__S(288, __c9, 0)),
           advertisingChannelSubType: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -4962,44 +4958,44 @@ function __c10(j: number): any {
           biddingStrategySystemStatus: S.optional(S.String),
           startDate: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
-          trackingSetting: S.optional(__S(75, __c9, 3)),
-          feedTypes: S.optional(__S(39, __c4, 7)),
+          labels: S.optional(__S(32, __c1, 0)),
+          trackingSetting: S.optional(__S(289, __c9, 1)),
+          feedTypes: S.optional(__S(253, __c7, 29)),
           advertisingChannelType: S.optional(S.String),
           campaignBudget: S.optional(S.String),
-          optimizationGoalSetting: S.optional(__S(76, __c9, 4)),
+          optimizationGoalSetting: S.optional(__S(290, __c9, 2)),
           id: S.optional(S.String),
-          networkSettings: S.optional(__S(77, __c9, 5)),
+          networkSettings: S.optional(__S(291, __c9, 3)),
           resourceName: S.optional(S.String),
           creationTime: S.optional(S.String),
-          effectiveLabels: S.optional(__S(1, __c0, 1)),
-          realTimeBiddingSetting: S.optional(__S(78, __c9, 6)),
-          manualCpa: S.optional(__S(29, __c3, 5)),
-          percentCpc: S.optional(__S(79, __c9, 7)),
-          selectiveOptimization: S.optional(__S(80, __c10, 0)),
-          excludedParentAssetFieldTypes: S.optional(__S(39, __c4, 7)),
-          targetCpm: S.optional(__S(29, __c3, 5)),
+          effectiveLabels: S.optional(__S(32, __c1, 0)),
+          realTimeBiddingSetting: S.optional(__S(292, __c9, 4)),
+          manualCpa: S.optional(__S(243, __c7, 19)),
+          percentCpc: S.optional(__S(293, __c9, 5)),
+          selectiveOptimization: S.optional(__S(294, __c9, 6)),
+          excludedParentAssetFieldTypes: S.optional(__S(253, __c7, 29)),
+          targetCpm: S.optional(__S(243, __c7, 19)),
           biddingStrategy: S.optional(S.String),
           biddingStrategyType: S.optional(S.String),
-          targetSpend: S.optional(__S(66, __c8, 2)),
+          targetSpend: S.optional(__S(280, __c8, 24)),
           accessibleBiddingStrategy: S.optional(S.String),
           engineId: S.optional(S.String),
-          targetImpressionShare: S.optional(__S(65, __c8, 1)),
-          targetRoas: S.optional(__S(69, __c8, 5)),
+          targetImpressionShare: S.optional(__S(279, __c8, 23)),
+          targetRoas: S.optional(__S(283, __c8, 27)),
           adServingOptimizationStatus: S.optional(S.String),
-          dynamicSearchAdsSetting: S.optional(__S(81, __c10, 1)),
-          manualCpc: S.optional(__S(82, __c10, 2)),
-          urlCustomParameters: S.optional(__S(49, __c6, 1)),
-          maximizeConversions: S.optional(__S(68, __c8, 4)),
-          geoTargetTypeSetting: S.optional(__S(83, __c10, 3)),
+          dynamicSearchAdsSetting: S.optional(__S(295, __c9, 7)),
+          manualCpc: S.optional(__S(296, __c9, 8)),
+          urlCustomParameters: S.optional(__S(263, __c8, 7)),
+          maximizeConversions: S.optional(__S(282, __c8, 26)),
+          geoTargetTypeSetting: S.optional(__S(297, __c9, 9)),
           status: S.optional(S.String),
-          targetCpa: S.optional(__S(67, __c8, 3)),
-          maximizeConversionValue: S.optional(__S(63, __c7, 7)),
+          targetCpa: S.optional(__S(281, __c8, 25)),
+          maximizeConversionValue: S.optional(__S(277, __c8, 21)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Campaign",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -5010,7 +5006,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5021,7 +5017,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__UserList",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           argument: S.optional(S.String),
@@ -5031,23 +5027,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__WebpageConditionInfo",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(88, __c11, 0)),
+          conditions: S.optional(__S(302, __c9, 14)),
           coveragePercentage: S.optional(S.Number),
           criterionName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__WebpageInfo",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           userList: S.optional(S.String),
@@ -5055,7 +5047,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__UserListInfo",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           languageConstant: S.optional(S.String),
@@ -5063,7 +5055,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__LanguageInfo",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5071,7 +5063,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__GenderInfo",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
@@ -5080,7 +5072,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__KeywordInfo",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           geoTargetConstant: S.optional(S.String),
@@ -5088,46 +5080,42 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__LocationInfo",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          feedItemSets: S.optional(__S(1, __c0, 1)),
+          feedItemSets: S.optional(__S(32, __c1, 0)),
           radius: S.optional(S.String),
-          geoTargetConstants: S.optional(__S(1, __c0, 1)),
+          geoTargetConstants: S.optional(__S(32, __c1, 0)),
           radiusUnits: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__LocationGroupInfo",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           lastModifiedTime: S.optional(S.String),
-          webpage: S.optional(__S(89, __c11, 1)),
-          userList: S.optional(__S(90, __c11, 2)),
+          webpage: S.optional(__S(303, __c9, 15)),
+          userList: S.optional(__S(304, __c9, 16)),
           resourceName: S.optional(S.String),
           status: S.optional(S.String),
           negative: S.optional(S.Boolean),
-          language: S.optional(__S(91, __c11, 3)),
-          gender: S.optional(__S(92, __c11, 4)),
-          ageRange: S.optional(__S(92, __c11, 4)),
+          language: S.optional(__S(305, __c9, 17)),
+          gender: S.optional(__S(306, __c9, 18)),
+          ageRange: S.optional(__S(306, __c9, 18)),
           type: S.optional(S.String),
-          keyword: S.optional(__S(93, __c11, 5)),
-          device: S.optional(__S(92, __c11, 4)),
-          location: S.optional(__S(94, __c11, 6)),
+          keyword: S.optional(__S(307, __c9, 19)),
+          device: S.optional(__S(306, __c9, 18)),
+          location: S.optional(__S(308, __c9, 20)),
           displayName: S.optional(S.String),
           bidModifier: S.optional(S.Number),
           criterionId: S.optional(S.String),
-          locationGroup: S.optional(__S(95, __c11, 7)),
+          locationGroup: S.optional(__S(309, __c9, 21)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignCriterion",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -5138,7 +5126,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -5150,7 +5138,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__LanguageConstant",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5160,7 +5148,7 @@ function __c12(j: number): any {
           clientCustomer: S.optional(S.String),
           status: S.optional(S.String),
           descriptiveName: S.optional(S.String),
-          appliedLabels: S.optional(__S(1, __c0, 1)),
+          appliedLabels: S.optional(__S(32, __c1, 0)),
           timeZone: S.optional(S.String),
           testAccount: S.optional(S.Boolean),
           currencyCode: S.optional(S.String),
@@ -5169,7 +5157,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CustomerClient",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5179,16 +5167,16 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__UserLocationView",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(93, __c11, 5)),
+          info: S.optional(__S(307, __c9, 19)),
           adGroupCriterion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__Keyword",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           interactionOnThisAsset: S.optional(S.Boolean),
@@ -5197,7 +5185,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__AssetInteractionTarget",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           productSoldItemId: S.optional(S.String),
@@ -5232,7 +5220,7 @@ function __c12(j: number): any {
           geoTargetCity: S.optional(S.String),
           productSoldBiddingCategoryLevel3: S.optional(S.String),
           geoTargetMetro: S.optional(S.String),
-          keyword: S.optional(__S(101, __c12, 5)),
+          keyword: S.optional(__S(315, __c9, 27)),
           productChannelExclusivity: S.optional(S.String),
           hour: S.optional(S.Number),
           dayOfWeek: S.optional(S.String),
@@ -5254,8 +5242,8 @@ function __c12(j: number): any {
           productCustomAttribute0: S.optional(S.String),
           productTypeL2: S.optional(S.String),
           productCountry: S.optional(S.String),
-          conversionCustomDimensions: S.optional(__S(41, __c5, 1)),
-          assetInteractionTarget: S.optional(__S(102, __c12, 6)),
+          conversionCustomDimensions: S.optional(__S(255, __c7, 31)),
+          assetInteractionTarget: S.optional(__S(316, __c9, 28)),
           conversionActionName: S.optional(S.String),
           productItemId: S.optional(S.String),
           productSoldBiddingCategoryLevel1: S.optional(S.String),
@@ -5269,7 +5257,7 @@ function __c12(j: number): any {
           productBiddingCategoryLevel1: S.optional(S.String),
           date: S.optional(S.String),
           verticalAdsVertical: S.optional(S.String),
-          rawEventConversionDimensions: S.optional(__S(41, __c5, 1)),
+          rawEventConversionDimensions: S.optional(__S(255, __c7, 31)),
           geoTargetCountry: S.optional(S.String),
           geoTargetRegion: S.optional(S.String),
           productCustomAttribute2: S.optional(S.String),
@@ -5278,11 +5266,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__Segments",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5293,7 +5277,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__Audience",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           adGroupAd: S.optional(S.String),
@@ -5304,7 +5288,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupAdLabel",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servedAssetFieldType: S.optional(S.String),
@@ -5313,28 +5301,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__AssetUsage",
       });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          assetCombinationServedAssets: S.optional(__S(107, __c13, 3)),
+          assetCombinationServedAssets: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
-          assetGroupTopCombinations: S.optional(__S(109, __c13, 5)),
+          assetGroupTopCombinations: S.optional(__S(323, __c10, 3)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           adGroup: S.optional(S.String),
@@ -5345,11 +5333,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           amountMicros: S.optional(S.String),
@@ -5360,17 +5344,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignBudget",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           bidModifier: S.optional(S.Number),
           resourceName: S.optional(S.String),
-          device: S.optional(__S(92, __c11, 4)),
+          device: S.optional(__S(306, __c9, 18)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupBidModifier",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           countryCode: S.optional(S.String),
@@ -5385,7 +5369,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__GeoTargetConstant",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5397,7 +5381,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroupAsset",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5412,7 +5396,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -5423,7 +5407,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupLabel",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -5434,7 +5418,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5445,11 +5429,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupAssetSet",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           activityId: S.optional(S.String),
@@ -5459,7 +5439,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSettings",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           attributionModel: S.optional(S.String),
@@ -5468,7 +5448,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettings",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.Number),
@@ -5478,21 +5458,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           clickThroughLookbackWindowDays: S.optional(S.String),
           includeInClientAccountConversionsMetric: S.optional(S.Boolean),
-          floodlightSettings: S.optional(__S(120, __c15, 0)),
+          floodlightSettings: S.optional(__S(334, __c10, 14)),
           status: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           id: S.optional(S.String),
-          attributionModelSettings: S.optional(__S(121, __c15, 1)),
+          attributionModelSettings: S.optional(__S(335, __c10, 15)),
           appId: S.optional(S.String),
           primaryForGoal: S.optional(S.Boolean),
           resourceName: S.optional(S.String),
-          valueSettings: S.optional(__S(122, __c15, 2)),
+          valueSettings: S.optional(__S(336, __c10, 16)),
           category: S.optional(S.String),
           ownerCustomer: S.optional(S.String),
           includeInConversionsMetric: S.optional(S.Boolean),
@@ -5501,7 +5481,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ConversionAction",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5512,7 +5492,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupAsset",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           asset: S.optional(S.String),
@@ -5523,7 +5503,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetSetAsset",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           audience: S.optional(S.String),
@@ -5531,21 +5511,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__AudienceInfo",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           assetGroup: S.optional(S.String),
-          audience: S.optional(__S(126, __c15, 6)),
+          audience: S.optional(__S(340, __c10, 20)),
           resourceName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroupSignal",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           targetingDimension: S.optional(S.String),
@@ -5554,17 +5530,17 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetRestriction",
       });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(342, __c10, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          targetRestrictions: S.optional(__S(129, __c16, 1)),
+          targetRestrictions: S.optional(__S(343, __c10, 23)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Common__TargetingSetting",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           engineId: S.optional(S.String),
@@ -5572,25 +5548,25 @@ function __c16(j: number): any {
           lastModifiedTime: S.optional(S.String),
           cpcBidMicros: S.optional(S.String),
           languageCode: S.optional(S.String),
-          effectiveLabels: S.optional(__S(1, __c0, 1)),
+          effectiveLabels: S.optional(__S(32, __c1, 0)),
           resourceName: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          targetingSetting: S.optional(__S(130, __c16, 2)),
+          targetingSetting: S.optional(__S(344, __c10, 24)),
           creationTime: S.optional(S.String),
           adRotationMode: S.optional(S.String),
           engineStatus: S.optional(S.String),
           finalUrlSuffix: S.optional(S.String),
           status: S.optional(S.String),
           endDate: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
+          labels: S.optional(__S(32, __c1, 0)),
           trackingUrlTemplate: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroup",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5598,7 +5574,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ShoppingPerformanceView",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           targetCpaMicros: S.optional(S.String),
@@ -5606,7 +5582,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           targetRoas: S.optional(S.Number),
@@ -5614,7 +5590,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           cpcBidCeilingMicros: S.optional(S.String),
@@ -5625,11 +5601,7 @@ function __c16(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           targetSpendMicros: S.optional(S.String),
@@ -5638,7 +5610,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           targetRoas: S.optional(S.Number),
@@ -5647,7 +5619,11 @@ function __c17(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetCpaMicros: S.optional(S.String),
@@ -5657,26 +5633,26 @@ function __c17(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          targetCpa: S.optional(__S(133, __c16, 5)),
-          targetRoas: S.optional(__S(134, __c16, 6)),
+          targetCpa: S.optional(__S(347, __c10, 27)),
+          targetRoas: S.optional(__S(348, __c10, 28)),
           ownerDescriptiveName: S.optional(S.String),
           ownerCustomerId: S.optional(S.String),
-          targetImpressionShare: S.optional(__S(135, __c16, 7)),
-          targetSpend: S.optional(__S(136, __c17, 0)),
+          targetImpressionShare: S.optional(__S(349, __c10, 29)),
+          targetSpend: S.optional(__S(350, __c10, 30)),
           resourceName: S.optional(S.String),
-          maximizeConversionValue: S.optional(__S(137, __c17, 1)),
+          maximizeConversionValue: S.optional(__S(351, __c10, 31)),
           id: S.optional(S.String),
-          maximizeConversions: S.optional(__S(138, __c17, 2)),
+          maximizeConversions: S.optional(__S(352, __c11, 0)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           campaign: S.optional(S.String),
@@ -5685,15 +5661,15 @@ function __c17(j: number): any {
           resourceName: S.optional(S.String),
           name: S.optional(S.String),
           path1: S.optional(S.String),
-          finalMobileUrls: S.optional(__S(1, __c0, 1)),
-          finalUrls: S.optional(__S(1, __c0, 1)),
+          finalMobileUrls: S.optional(__S(32, __c1, 0)),
+          finalUrls: S.optional(__S(32, __c1, 0)),
           id: S.optional(S.String),
           adStrength: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroup",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           topOfPageCpcMicros: S.optional(S.String),
@@ -5701,7 +5677,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           qualityScore: S.optional(S.Number),
@@ -5709,47 +5685,43 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           adGroup: S.optional(S.String),
-          labels: S.optional(__S(1, __c0, 1)),
-          ageRange: S.optional(__S(92, __c11, 4)),
+          labels: S.optional(__S(32, __c1, 0)),
+          ageRange: S.optional(__S(306, __c9, 18)),
           bidModifier: S.optional(S.Number),
-          webpage: S.optional(__S(89, __c11, 1)),
+          webpage: S.optional(__S(303, __c9, 15)),
           engineStatus: S.optional(S.String),
-          userList: S.optional(__S(90, __c11, 2)),
+          userList: S.optional(__S(304, __c9, 16)),
           cpcBidMicros: S.optional(S.String),
           trackingUrlTemplate: S.optional(S.String),
-          positionEstimates: S.optional(__S(141, __c17, 5)),
-          keyword: S.optional(__S(93, __c11, 5)),
-          listingGroup: S.optional(__S(92, __c11, 4)),
+          positionEstimates: S.optional(__S(355, __c11, 3)),
+          keyword: S.optional(__S(307, __c9, 19)),
+          listingGroup: S.optional(__S(306, __c9, 18)),
           finalUrlSuffix: S.optional(S.String),
-          effectiveLabels: S.optional(__S(1, __c0, 1)),
-          gender: S.optional(__S(92, __c11, 4)),
-          finalUrls: S.optional(__S(1, __c0, 1)),
+          effectiveLabels: S.optional(__S(32, __c1, 0)),
+          gender: S.optional(__S(306, __c9, 18)),
+          finalUrls: S.optional(__S(32, __c1, 0)),
           status: S.optional(S.String),
-          location: S.optional(__S(94, __c11, 6)),
+          location: S.optional(__S(308, __c9, 20)),
           criterionId: S.optional(S.String),
           resourceName: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           effectiveCpcBidMicros: S.optional(S.String),
-          urlCustomParameters: S.optional(__S(49, __c6, 1)),
+          urlCustomParameters: S.optional(__S(263, __c8, 7)),
           creationTime: S.optional(S.String),
           type: S.optional(S.String),
-          finalMobileUrls: S.optional(__S(1, __c0, 1)),
+          finalMobileUrls: S.optional(__S(32, __c1, 0)),
           negative: S.optional(S.Boolean),
-          qualityInfo: S.optional(__S(142, __c17, 6)),
+          qualityInfo: S.optional(__S(356, __c11, 4)),
           engineId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AdGroupCriterion",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5760,7 +5732,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__CampaignAssetSet",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resourceName: S.optional(S.String),
@@ -5769,7 +5741,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView",
       });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           floodlightVariableDataType: S.optional(S.String),
@@ -5779,13 +5751,13 @@ function __c18(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           cardinality: S.optional(S.String),
-          customColumnIds: S.optional(__S(1, __c0, 1)),
+          customColumnIds: S.optional(__S(32, __c1, 0)),
           tag: S.optional(S.String),
-          floodlightConversionCustomVariableInfo: S.optional(__S(146, __c18, 2)),
+          floodlightConversionCustomVariableInfo: S.optional(__S(360, __c11, 8)),
           ownerCustomer: S.optional(S.String),
           resourceName: S.optional(S.String),
           family: S.optional(S.String),
@@ -5796,7 +5768,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ConversionCustomVariable",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -5805,7 +5777,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           channel: S.optional(S.String),
@@ -5813,7 +5785,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -5823,7 +5795,7 @@ function __c18(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -5831,11 +5803,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5845,7 +5813,7 @@ function __c19(j: number): any {
         identifier:
           "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
@@ -5853,118 +5821,114 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          productType: S.optional(__S(148, __c18, 4)),
-          productChannel: S.optional(__S(149, __c18, 5)),
-          productCustomAttribute: S.optional(__S(150, __c18, 6)),
-          productBrand: S.optional(__S(151, __c18, 7)),
-          productItemId: S.optional(__S(151, __c18, 7)),
-          productBiddingCategory: S.optional(__S(152, __c19, 0)),
-          productCondition: S.optional(__S(153, __c19, 1)),
+          productType: S.optional(__S(362, __c11, 10)),
+          productChannel: S.optional(__S(363, __c11, 11)),
+          productCustomAttribute: S.optional(__S(364, __c11, 12)),
+          productBrand: S.optional(__S(365, __c11, 13)),
+          productItemId: S.optional(__S(365, __c11, 13)),
+          productBiddingCategory: S.optional(__S(366, __c11, 14)),
+          productCondition: S.optional(__S(367, __c11, 15)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 17:
+      return S.Array(__S(368, __c11, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(155, __c19, 3)),
+          dimensions: S.optional(__S(369, __c11, 17)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          path: S.optional(__S(156, __c19, 4)),
+          path: S.optional(__S(370, __c11, 18)),
           parentListingGroupFilter: S.optional(S.String),
           id: S.optional(S.String),
           resourceName: S.optional(S.String),
           assetGroup: S.optional(S.String),
           vertical: S.optional(S.String),
-          caseValue: S.optional(__S(154, __c19, 2)),
+          caseValue: S.optional(__S(368, __c11, 16)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(__S(18, __c2, 2)),
-          adGroupAd: S.optional(__S(31, __c3, 7)),
-          campaignLabel: S.optional(__S(32, __c4, 0)),
-          adGroupCriterionLabel: S.optional(__S(33, __c4, 1)),
-          label: S.optional(__S(35, __c4, 3)),
-          assetSet: S.optional(__S(36, __c4, 4)),
-          customerAsset: S.optional(__S(37, __c4, 5)),
-          webpageView: S.optional(__S(38, __c4, 6)),
-          metrics: S.optional(__S(42, __c5, 2)),
-          customerAssetSet: S.optional(__S(43, __c5, 3)),
-          asset: S.optional(__S(60, __c7, 4)),
-          conversion: S.optional(__S(61, __c7, 5)),
-          locationView: S.optional(__S(38, __c4, 6)),
-          customerManagerLink: S.optional(__S(62, __c7, 6)),
-          biddingStrategy: S.optional(__S(70, __c8, 6)),
-          customColumns: S.optional(__S(41, __c5, 1)),
-          campaignAsset: S.optional(__S(71, __c8, 7)),
-          visit: S.optional(__S(72, __c9, 0)),
-          campaign: S.optional(__S(84, __c10, 4)),
-          adGroupCriterionEffectiveLabel: S.optional(__S(85, __c10, 5)),
-          userList: S.optional(__S(86, __c10, 6)),
-          campaignCriterion: S.optional(__S(96, __c12, 0)),
-          campaignEffectiveLabel: S.optional(__S(97, __c12, 1)),
-          genderView: S.optional(__S(38, __c4, 6)),
-          languageConstant: S.optional(__S(98, __c12, 2)),
-          customerClient: S.optional(__S(99, __c12, 3)),
-          userLocationView: S.optional(__S(100, __c12, 4)),
-          segments: S.optional(__S(103, __c12, 7)),
-          audience: S.optional(__S(104, __c13, 0)),
-          adGroupAudienceView: S.optional(__S(38, __c4, 6)),
-          adGroupAdLabel: S.optional(__S(105, __c13, 1)),
-          assetGroupTopCombinationView: S.optional(__S(110, __c13, 6)),
-          adGroupEffectiveLabel: S.optional(__S(111, __c13, 7)),
-          campaignBudget: S.optional(__S(112, __c14, 0)),
-          adGroupBidModifier: S.optional(__S(113, __c14, 1)),
-          geoTargetConstant: S.optional(__S(114, __c14, 2)),
-          assetGroupAsset: S.optional(__S(115, __c14, 3)),
-          productBiddingCategoryConstant: S.optional(__S(116, __c14, 4)),
-          adGroupLabel: S.optional(__S(117, __c14, 5)),
-          adGroupAdEffectiveLabel: S.optional(__S(118, __c14, 6)),
-          adGroupAssetSet: S.optional(__S(119, __c14, 7)),
-          productGroupView: S.optional(__S(38, __c4, 6)),
-          campaignAudienceView: S.optional(__S(38, __c4, 6)),
-          conversionAction: S.optional(__S(123, __c15, 3)),
-          adGroupAsset: S.optional(__S(124, __c15, 4)),
-          assetSetAsset: S.optional(__S(125, __c15, 5)),
-          ageRangeView: S.optional(__S(38, __c4, 6)),
-          assetGroupSignal: S.optional(__S(127, __c15, 7)),
-          adGroup: S.optional(__S(131, __c16, 3)),
-          shoppingPerformanceView: S.optional(__S(132, __c16, 4)),
-          accessibleBiddingStrategy: S.optional(__S(139, __c17, 3)),
-          assetGroup: S.optional(__S(140, __c17, 4)),
-          adGroupCriterion: S.optional(__S(143, __c17, 7)),
-          campaignAssetSet: S.optional(__S(144, __c18, 0)),
-          cartDataSalesView: S.optional(__S(38, __c4, 6)),
-          dynamicSearchAdsSearchTermView: S.optional(__S(145, __c18, 1)),
-          conversionCustomVariable: S.optional(__S(147, __c18, 3)),
-          keywordView: S.optional(__S(38, __c4, 6)),
-          assetGroupListingGroupFilter: S.optional(__S(157, __c19, 5)),
+          customer: S.optional(__S(232, __c7, 8)),
+          adGroupAd: S.optional(__S(245, __c7, 21)),
+          campaignLabel: S.optional(__S(246, __c7, 22)),
+          adGroupCriterionLabel: S.optional(__S(247, __c7, 23)),
+          label: S.optional(__S(249, __c7, 25)),
+          assetSet: S.optional(__S(250, __c7, 26)),
+          customerAsset: S.optional(__S(251, __c7, 27)),
+          webpageView: S.optional(__S(252, __c7, 28)),
+          metrics: S.optional(__S(256, __c8, 0)),
+          customerAssetSet: S.optional(__S(257, __c8, 1)),
+          asset: S.optional(__S(274, __c8, 18)),
+          conversion: S.optional(__S(275, __c8, 19)),
+          locationView: S.optional(__S(252, __c7, 28)),
+          customerManagerLink: S.optional(__S(276, __c8, 20)),
+          biddingStrategy: S.optional(__S(284, __c8, 28)),
+          customColumns: S.optional(__S(255, __c7, 31)),
+          campaignAsset: S.optional(__S(285, __c8, 29)),
+          visit: S.optional(__S(286, __c8, 30)),
+          campaign: S.optional(__S(298, __c9, 10)),
+          adGroupCriterionEffectiveLabel: S.optional(__S(299, __c9, 11)),
+          userList: S.optional(__S(300, __c9, 12)),
+          campaignCriterion: S.optional(__S(310, __c9, 22)),
+          campaignEffectiveLabel: S.optional(__S(311, __c9, 23)),
+          genderView: S.optional(__S(252, __c7, 28)),
+          languageConstant: S.optional(__S(312, __c9, 24)),
+          customerClient: S.optional(__S(313, __c9, 25)),
+          userLocationView: S.optional(__S(314, __c9, 26)),
+          segments: S.optional(__S(317, __c9, 29)),
+          audience: S.optional(__S(318, __c9, 30)),
+          adGroupAudienceView: S.optional(__S(252, __c7, 28)),
+          adGroupAdLabel: S.optional(__S(319, __c9, 31)),
+          assetGroupTopCombinationView: S.optional(__S(324, __c10, 4)),
+          adGroupEffectiveLabel: S.optional(__S(325, __c10, 5)),
+          campaignBudget: S.optional(__S(326, __c10, 6)),
+          adGroupBidModifier: S.optional(__S(327, __c10, 7)),
+          geoTargetConstant: S.optional(__S(328, __c10, 8)),
+          assetGroupAsset: S.optional(__S(329, __c10, 9)),
+          productBiddingCategoryConstant: S.optional(__S(330, __c10, 10)),
+          adGroupLabel: S.optional(__S(331, __c10, 11)),
+          adGroupAdEffectiveLabel: S.optional(__S(332, __c10, 12)),
+          adGroupAssetSet: S.optional(__S(333, __c10, 13)),
+          productGroupView: S.optional(__S(252, __c7, 28)),
+          campaignAudienceView: S.optional(__S(252, __c7, 28)),
+          conversionAction: S.optional(__S(337, __c10, 17)),
+          adGroupAsset: S.optional(__S(338, __c10, 18)),
+          assetSetAsset: S.optional(__S(339, __c10, 19)),
+          ageRangeView: S.optional(__S(252, __c7, 28)),
+          assetGroupSignal: S.optional(__S(341, __c10, 21)),
+          adGroup: S.optional(__S(345, __c10, 25)),
+          shoppingPerformanceView: S.optional(__S(346, __c10, 26)),
+          accessibleBiddingStrategy: S.optional(__S(353, __c11, 1)),
+          assetGroup: S.optional(__S(354, __c11, 2)),
+          adGroupCriterion: S.optional(__S(357, __c11, 5)),
+          campaignAssetSet: S.optional(__S(358, __c11, 6)),
+          cartDataSalesView: S.optional(__S(252, __c7, 28)),
+          dynamicSearchAdsSearchTermView: S.optional(__S(359, __c11, 7)),
+          conversionCustomVariable: S.optional(__S(361, __c11, 9)),
+          keywordView: S.optional(__S(252, __c7, 28)),
+          assetGroupListingGroupFilter: S.optional(__S(371, __c11, 19)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__SearchAds360Row",
       });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(372, __c11, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5973,26 +5937,30 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader",
       });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(374, __c11, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          customColumnHeaders: S.optional(__S(13, __c1, 5)),
-          conversionCustomDimensionHeaders: S.optional(__S(15, __c1, 7)),
-          results: S.optional(__S(159, __c19, 7)),
-          conversionCustomMetricHeaders: S.optional(__S(161, __c20, 1)),
+          customColumnHeaders: S.optional(__S(227, __c7, 3)),
+          conversionCustomDimensionHeaders: S.optional(__S(229, __c7, 5)),
+          results: S.optional(__S(373, __c11, 21)),
+          conversionCustomMetricHeaders: S.optional(__S(375, __c11, 23)),
           totalResultsCount: S.optional(S.String),
-          rawEventConversionDimensionHeaders: S.optional(__S(15, __c1, 7)),
-          rawEventConversionMetricHeaders: S.optional(__S(15, __c1, 7)),
+          rawEventConversionDimensionHeaders: S.optional(__S(229, __c7, 5)),
+          rawEventConversionMetricHeaders: S.optional(__S(229, __c7, 5)),
           fieldMask: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          summaryRow: S.optional(__S(158, __c19, 6)),
+          summaryRow: S.optional(__S(372, __c11, 20)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360Response",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
@@ -6002,10 +5970,10 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(163, __c20, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6016,21 +5984,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SearchSearchAds360FieldsRequest",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(128, __c4, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           totalResultsCount: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          results: S.optional(__S(165, __c20, 5)),
+          results: S.optional(__S(386, __c12, 2)),
         }),
       ).annotate({
         identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

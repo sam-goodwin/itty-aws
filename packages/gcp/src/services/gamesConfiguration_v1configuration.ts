@@ -280,8 +280,8 @@ export const deleteAchievementConfigurations: API.OperationMethod<
   DeleteAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteAchievementConfigurationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAchievementConfigurationsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteAchievementConfigurationsRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteAchievementConfigurationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -300,8 +300,8 @@ export const deleteLeaderboardConfigurations: API.OperationMethod<
   DeleteLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteLeaderboardConfigurationsRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteLeaderboardConfigurationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getAchievementConfigurations: API.OperationMethod<
   GetAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetAchievementConfigurationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AchievementConfiguration>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetAchievementConfigurationsRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<AchievementConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const getLeaderboardConfigurations: API.OperationMethod<
   GetLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetLeaderboardConfigurationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaderboardConfiguration>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetLeaderboardConfigurationsRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<LeaderboardConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -350,8 +350,8 @@ export const insertAchievementConfigurations: API.OperationMethod<
   InsertAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<InsertAchievementConfigurationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AchievementConfiguration>,
+  input: __S(48, __c12, 0) as any as S.Schema<InsertAchievementConfigurationsRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<AchievementConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -370,8 +370,8 @@ export const insertLeaderboardConfigurations: API.OperationMethod<
   InsertLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<InsertLeaderboardConfigurationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaderboardConfiguration>,
+  input: __S(52, __c13, 0) as any as S.Schema<InsertLeaderboardConfigurationsRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<LeaderboardConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -386,8 +386,8 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
   GcpOpContext,
   AchievementConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListAchievementConfigurationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AchievementConfigurationListResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListAchievementConfigurationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AchievementConfigurationListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
   GcpOpContext,
   LeaderboardConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListLeaderboardConfigurationsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<LeaderboardConfigurationListResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListLeaderboardConfigurationsRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<LeaderboardConfigurationListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const updateAchievementConfigurations: API.OperationMethod<
   UpdateAchievementConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateAchievementConfigurationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AchievementConfiguration>,
+  input: __S(8, __c2, 0) as any as S.Schema<UpdateAchievementConfigurationsRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<AchievementConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -444,8 +444,8 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
   UpdateLeaderboardConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<LeaderboardConfiguration>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateLeaderboardConfigurationsRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<LeaderboardConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -453,196 +453,6 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          achievementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "games/v1configuration/achievements/{achievementId}",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAchievementConfigurationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAchievementConfigurationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          leaderboardId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "games/v1configuration/leaderboards/{leaderboardId}",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLeaderboardConfigurationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          achievementId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1configuration/achievements/{achievementId}",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAchievementConfigurationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          value: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocalizedString" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          translations: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "LocalizedStringBundle" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(__S(6, __c0, 6)),
-          iconUrl: S.optional(S.String),
-          description: S.optional(__S(6, __c0, 6)),
-          pointValue: S.optional(S.Number),
-          sortRank: S.optional(S.Number),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AchievementConfigurationDetail",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          achievementType: S.optional(S.String),
-          token: S.optional(S.String),
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-          published: S.optional(__S(7, __c0, 7)),
-          stepsToUnlock: S.optional(S.Number),
-          initialState: S.optional(S.String),
-          draft: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "AchievementConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          leaderboardId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "games/v1configuration/leaderboards/{leaderboardId}",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetLeaderboardConfigurationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          other: S.optional(__S(6, __c0, 6)),
-          many: S.optional(__S(6, __c0, 6)),
-          one: S.optional(__S(6, __c0, 6)),
-          zero: S.optional(__S(6, __c0, 6)),
-          two: S.optional(__S(6, __c0, 6)),
-          few: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GamesNumberAffixConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          numberFormatType: S.optional(S.String),
-          numDecimalPlaces: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-          suffix: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "GamesNumberFormatConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sortRank: S.optional(S.Number),
-          kind: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          scoreFormat: S.optional(__S(11, __c1, 3)),
-          name: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "LeaderboardConfigurationDetail",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scoreMin: S.optional(S.String),
-          draft: S.optional(__S(12, __c1, 4)),
-          scoreOrder: S.optional(S.String),
-          published: S.optional(__S(12, __c1, 4)),
-          scoreMax: S.optional(S.String),
-          id: S.optional(S.String),
-          token: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LeaderboardConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1configuration/applications/{applicationId}/achievements",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertAchievementConfigurationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "games/v1configuration/applications/{applicationId}/leaderboards",
-            baseUrl: "https://gamesconfiguration.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertLeaderboardConfigurationsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -661,18 +471,22 @@ function __c2(j: number): any {
         identifier: "ListAchievementConfigurationsRequest",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(37, __c9, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(17, __c2, 1),
+          items: __S(1, __c0, 1),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AchievementConfigurationListResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -688,23 +502,27 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListLeaderboardConfigurationsRequest",
       });
-    case 4:
-      return S.Array(__S(13, __c1, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(47, __c11, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          items: __S(20, __c2, 4),
+          items: __S(5, __c1, 1),
         }),
       ).annotate({
         identifier: "LeaderboardConfigurationListResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           achievementId: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(37, __c9, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -715,11 +533,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateAchievementConfigurationsRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           leaderboardId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(47, __c11, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -732,7 +554,228 @@ function __c2(j: number): any {
       });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          achievementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "games/v1configuration/achievements/{achievementId}",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAchievementConfigurationsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAchievementConfigurationsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          leaderboardId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "games/v1configuration/leaderboards/{leaderboardId}",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLeaderboardConfigurationsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          achievementId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1configuration/achievements/{achievementId}",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAchievementConfigurationsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          value: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocalizedString" });
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          translations: S.optional(__S(33, __c8, 1)),
+        }),
+      ).annotate({ identifier: "LocalizedStringBundle" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(__S(34, __c8, 2)),
+          iconUrl: S.optional(S.String),
+          description: S.optional(__S(34, __c8, 2)),
+          pointValue: S.optional(S.Number),
+          sortRank: S.optional(S.Number),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AchievementConfigurationDetail",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          achievementType: S.optional(S.String),
+          token: S.optional(S.String),
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+          published: S.optional(__S(36, __c9, 0)),
+          stepsToUnlock: S.optional(S.Number),
+          initialState: S.optional(S.String),
+          draft: S.optional(__S(36, __c9, 0)),
+        }),
+      ).annotate({ identifier: "AchievementConfiguration" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          leaderboardId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "games/v1configuration/leaderboards/{leaderboardId}",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetLeaderboardConfigurationsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          other: S.optional(__S(34, __c8, 2)),
+          many: S.optional(__S(34, __c8, 2)),
+          one: S.optional(__S(34, __c8, 2)),
+          zero: S.optional(__S(34, __c8, 2)),
+          two: S.optional(__S(34, __c8, 2)),
+          few: S.optional(__S(34, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "GamesNumberAffixConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          numberFormatType: S.optional(S.String),
+          numDecimalPlaces: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+          suffix: S.optional(__S(44, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "GamesNumberFormatConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sortRank: S.optional(S.Number),
+          kind: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          scoreFormat: S.optional(__S(45, __c11, 1)),
+          name: S.optional(__S(34, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "LeaderboardConfigurationDetail",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scoreMin: S.optional(S.String),
+          draft: S.optional(__S(46, __c11, 2)),
+          scoreOrder: S.optional(S.String),
+          published: S.optional(__S(46, __c11, 2)),
+          scoreMax: S.optional(S.String),
+          id: S.optional(S.String),
+          token: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LeaderboardConfiguration" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.Label()),
+          body: S.optional(__S(37, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1configuration/applications/{applicationId}/achievements",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertAchievementConfigurationsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationId: S.String.pipe(T.Label()),
+          body: S.optional(__S(47, __c11, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "games/v1configuration/applications/{applicationId}/leaderboards",
+            baseUrl: "https://gamesconfiguration.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertLeaderboardConfigurationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

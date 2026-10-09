@@ -1384,8 +1384,8 @@ export const associatePhoneNumbersWithVoiceConnector: API.OperationMethod<
   AssociatePhoneNumbersWithVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1420,8 +1420,8 @@ export const associatePhoneNumbersWithVoiceConnectorGroup: API.OperationMethod<
   AssociatePhoneNumbersWithVoiceConnectorGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorGroupRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorGroupResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorGroupRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorGroupResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1459,8 +1459,8 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   BatchDeletePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BatchDeletePhoneNumberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BatchDeletePhoneNumberResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<BatchDeletePhoneNumberRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<BatchDeletePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1496,8 +1496,8 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   BatchUpdatePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchUpdatePhoneNumberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<BatchUpdatePhoneNumberResponse>,
+  input: __S(114, __c14, 2) as any as S.Schema<BatchUpdatePhoneNumberRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<BatchUpdatePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1531,8 +1531,8 @@ export const createPhoneNumberOrder: API.OperationMethod<
   CreatePhoneNumberOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreatePhoneNumberOrderRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreatePhoneNumberOrderResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreatePhoneNumberOrderRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<CreatePhoneNumberOrderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1569,8 +1569,8 @@ export const createProxySession: API.OperationMethod<
   CreateProxySessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateProxySessionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateProxySessionResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateProxySessionRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<CreateProxySessionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1606,8 +1606,8 @@ export const createSipMediaApplication: API.OperationMethod<
   CreateSipMediaApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateSipMediaApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateSipMediaApplicationResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateSipMediaApplicationRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<CreateSipMediaApplicationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1645,8 +1645,8 @@ export const createSipMediaApplicationCall: API.OperationMethod<
   CreateSipMediaApplicationCallError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateSipMediaApplicationCallRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateSipMediaApplicationCallResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateSipMediaApplicationCallRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<CreateSipMediaApplicationCallResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1683,8 +1683,8 @@ export const createSipRule: API.OperationMethod<
   CreateSipRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateSipRuleRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateSipRuleResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateSipRuleRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CreateSipRuleResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1723,8 +1723,8 @@ export const createVoiceConnector: API.OperationMethod<
   CreateVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateVoiceConnectorRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateVoiceConnectorResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateVoiceConnectorRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateVoiceConnectorResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1766,8 +1766,8 @@ export const createVoiceConnectorGroup: API.OperationMethod<
   CreateVoiceConnectorGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateVoiceConnectorGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateVoiceConnectorGroupResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateVoiceConnectorGroupRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<CreateVoiceConnectorGroupResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1812,8 +1812,8 @@ export const createVoiceProfile: API.OperationMethod<
   CreateVoiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateVoiceProfileRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateVoiceProfileResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CreateVoiceProfileRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<CreateVoiceProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1858,8 +1858,8 @@ export const createVoiceProfileDomain: API.OperationMethod<
   CreateVoiceProfileDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateVoiceProfileDomainRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateVoiceProfileDomainResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateVoiceProfileDomainRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<CreateVoiceProfileDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1901,8 +1901,8 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeletePhoneNumberRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeletePhoneNumberResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<DeletePhoneNumberRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DeletePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1938,8 +1938,8 @@ export const deleteProxySession: API.OperationMethod<
   DeleteProxySessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteProxySessionRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteProxySessionResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<DeleteProxySessionRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DeleteProxySessionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1973,8 +1973,8 @@ export const deleteSipMediaApplication: API.OperationMethod<
   DeleteSipMediaApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteSipMediaApplicationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteSipMediaApplicationResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<DeleteSipMediaApplicationRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteSipMediaApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2009,8 +2009,8 @@ export const deleteSipRule: API.OperationMethod<
   DeleteSipRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteSipRuleRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteSipRuleResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<DeleteSipRuleRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DeleteSipRuleResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2047,8 +2047,8 @@ export const deleteVoiceConnector: API.OperationMethod<
   DeleteVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteVoiceConnectorRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteVoiceConnectorResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<DeleteVoiceConnectorRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DeleteVoiceConnectorResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2084,14 +2084,14 @@ export const deleteVoiceConnectorEmergencyCallingConfiguration: API.OperationMet
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    392,
+    __c49,
+    0,
   ) as any as S.Schema<DeleteVoiceConnectorEmergencyCallingConfigurationRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    400,
+    __c50,
+    0,
   ) as any as S.Schema<DeleteVoiceConnectorEmergencyCallingConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -2126,14 +2126,14 @@ export const deleteVoiceConnectorExternalSystemsConfiguration: API.OperationMeth
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    408,
+    __c51,
+    0,
   ) as any as S.Schema<DeleteVoiceConnectorExternalSystemsConfigurationRequest>,
   output: __S(
-    62,
-    __c7,
-    6,
+    400,
+    __c50,
+    0,
   ) as any as S.Schema<DeleteVoiceConnectorExternalSystemsConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -2170,8 +2170,8 @@ export const deleteVoiceConnectorGroup: API.OperationMethod<
   DeleteVoiceConnectorGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteVoiceConnectorGroupRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorGroupResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeleteVoiceConnectorGroupRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2208,8 +2208,8 @@ export const deleteVoiceConnectorOrigination: API.OperationMethod<
   DeleteVoiceConnectorOriginationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteVoiceConnectorOriginationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorOriginationResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<DeleteVoiceConnectorOriginationRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorOriginationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2244,8 +2244,8 @@ export const deleteVoiceConnectorProxy: API.OperationMethod<
   DeleteVoiceConnectorProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteVoiceConnectorProxyRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorProxyResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<DeleteVoiceConnectorProxyRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorProxyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2278,8 +2278,8 @@ export const deleteVoiceConnectorStreamingConfiguration: API.OperationMethod<
   DeleteVoiceConnectorStreamingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorStreamingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2315,8 +2315,8 @@ export const deleteVoiceConnectorTermination: API.OperationMethod<
   DeleteVoiceConnectorTerminationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteVoiceConnectorTerminationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorTerminationResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<DeleteVoiceConnectorTerminationRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorTerminationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2350,8 +2350,8 @@ export const deleteVoiceConnectorTerminationCredentials: API.OperationMethod<
   DeleteVoiceConnectorTerminationCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceConnectorTerminationCredentialsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2386,8 +2386,8 @@ export const deleteVoiceProfile: API.OperationMethod<
   DeleteVoiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteVoiceProfileRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteVoiceProfileResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DeleteVoiceProfileRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<DeleteVoiceProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2424,8 +2424,8 @@ export const deleteVoiceProfileDomain: API.OperationMethod<
   DeleteVoiceProfileDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteVoiceProfileDomainRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteVoiceProfileDomainResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeleteVoiceProfileDomainRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<DeleteVoiceProfileDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2461,8 +2461,8 @@ export const disassociatePhoneNumbersFromVoiceConnector: API.OperationMethod<
   DisassociatePhoneNumbersFromVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2497,14 +2497,14 @@ export const disassociatePhoneNumbersFromVoiceConnectorGroup: API.OperationMetho
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    488,
+    __c61,
+    0,
   ) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorGroupRequest>,
   output: __S(
-    4,
-    __c0,
-    4,
+    74,
+    __c9,
+    2,
   ) as any as S.Schema<DisassociatePhoneNumbersFromVoiceConnectorGroupResponse>,
   errors: [
     BadRequestException,
@@ -2537,8 +2537,8 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetGlobalSettingsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetGlobalSettingsResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<GetGlobalSettingsRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<GetGlobalSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2571,8 +2571,8 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetPhoneNumberRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetPhoneNumberResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<GetPhoneNumberRequest>,
+  output: __S(513, __c64, 1) as any as S.Schema<GetPhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2607,8 +2607,8 @@ export const getPhoneNumberOrder: API.OperationMethod<
   GetPhoneNumberOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetPhoneNumberOrderRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetPhoneNumberOrderResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<GetPhoneNumberOrderRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetPhoneNumberOrderResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2641,8 +2641,8 @@ export const getPhoneNumberSettings: API.OperationMethod<
   GetPhoneNumberSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetPhoneNumberSettingsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetPhoneNumberSettingsResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<GetPhoneNumberSettingsRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<GetPhoneNumberSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2676,8 +2676,8 @@ export const getProxySession: API.OperationMethod<
   GetProxySessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetProxySessionRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetProxySessionResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<GetProxySessionRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<GetProxySessionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2711,8 +2711,8 @@ export const getSipMediaApplication: API.OperationMethod<
   GetSipMediaApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetSipMediaApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetSipMediaApplicationResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<GetSipMediaApplicationRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetSipMediaApplicationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2749,11 +2749,15 @@ export const getSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   GetSipMediaApplicationAlexaSkillConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetSipMediaApplicationAlexaSkillConfigurationRequest>,
+  input: __S(
+    560,
+    __c70,
+    0,
+  ) as any as S.Schema<GetSipMediaApplicationAlexaSkillConfigurationRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    569,
+    __c71,
+    1,
   ) as any as S.Schema<GetSipMediaApplicationAlexaSkillConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -2788,8 +2792,8 @@ export const getSipMediaApplicationLoggingConfiguration: API.OperationMethod<
   GetSipMediaApplicationLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetSipMediaApplicationLoggingConfigurationRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetSipMediaApplicationLoggingConfigurationResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<GetSipMediaApplicationLoggingConfigurationRequest>,
+  output: __S(585, __c73, 1) as any as S.Schema<GetSipMediaApplicationLoggingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2823,8 +2827,8 @@ export const getSipRule: API.OperationMethod<
   GetSipRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetSipRuleRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetSipRuleResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<GetSipRuleRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetSipRuleResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2859,8 +2863,8 @@ export const getSpeakerSearchTask: API.OperationMethod<
   GetSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetSpeakerSearchTaskRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetSpeakerSearchTaskResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<GetSpeakerSearchTaskRequest>,
+  output: __S(620, __c77, 4) as any as S.Schema<GetSpeakerSearchTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2896,8 +2900,8 @@ export const getVoiceConnector: API.OperationMethod<
   GetVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetVoiceConnectorRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetVoiceConnectorResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<GetVoiceConnectorRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<GetVoiceConnectorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2931,14 +2935,14 @@ export const getVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    104,
-    __c13,
+    632,
+    __c79,
     0,
   ) as any as S.Schema<GetVoiceConnectorEmergencyCallingConfigurationRequest>,
   output: __S(
-    108,
-    __c13,
-    4,
+    643,
+    __c80,
+    3,
   ) as any as S.Schema<GetVoiceConnectorEmergencyCallingConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -2974,14 +2978,14 @@ export const getVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    648,
+    __c81,
+    0,
   ) as any as S.Schema<GetVoiceConnectorExternalSystemsConfigurationRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    657,
+    __c82,
+    1,
   ) as any as S.Schema<GetVoiceConnectorExternalSystemsConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -3016,8 +3020,8 @@ export const getVoiceConnectorGroup: API.OperationMethod<
   GetVoiceConnectorGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetVoiceConnectorGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetVoiceConnectorGroupResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<GetVoiceConnectorGroupRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetVoiceConnectorGroupResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3051,8 +3055,8 @@ export const getVoiceConnectorLoggingConfiguration: API.OperationMethod<
   GetVoiceConnectorLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetVoiceConnectorLoggingConfigurationRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetVoiceConnectorLoggingConfigurationResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<GetVoiceConnectorLoggingConfigurationRequest>,
+  output: __S(681, __c85, 1) as any as S.Schema<GetVoiceConnectorLoggingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3085,8 +3089,8 @@ export const getVoiceConnectorOrigination: API.OperationMethod<
   GetVoiceConnectorOriginationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetVoiceConnectorOriginationRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetVoiceConnectorOriginationResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<GetVoiceConnectorOriginationRequest>,
+  output: __S(699, __c87, 3) as any as S.Schema<GetVoiceConnectorOriginationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3122,8 +3126,8 @@ export const getVoiceConnectorProxy: API.OperationMethod<
   GetVoiceConnectorProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetVoiceConnectorProxyRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<GetVoiceConnectorProxyResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<GetVoiceConnectorProxyRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<GetVoiceConnectorProxyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3158,8 +3162,8 @@ export const getVoiceConnectorStreamingConfiguration: API.OperationMethod<
   GetVoiceConnectorStreamingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetVoiceConnectorStreamingConfigurationRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetVoiceConnectorStreamingConfigurationResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<GetVoiceConnectorStreamingConfigurationRequest>,
+  output: __S(732, __c91, 4) as any as S.Schema<GetVoiceConnectorStreamingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3192,8 +3196,8 @@ export const getVoiceConnectorTermination: API.OperationMethod<
   GetVoiceConnectorTerminationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetVoiceConnectorTerminationRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetVoiceConnectorTerminationResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<GetVoiceConnectorTerminationRequest>,
+  output: __S(745, __c93, 1) as any as S.Schema<GetVoiceConnectorTerminationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3228,8 +3232,8 @@ export const getVoiceConnectorTerminationHealth: API.OperationMethod<
   GetVoiceConnectorTerminationHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetVoiceConnectorTerminationHealthRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetVoiceConnectorTerminationHealthResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<GetVoiceConnectorTerminationHealthRequest>,
+  output: __S(754, __c94, 2) as any as S.Schema<GetVoiceConnectorTerminationHealthResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3263,8 +3267,8 @@ export const getVoiceProfile: API.OperationMethod<
   GetVoiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetVoiceProfileRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetVoiceProfileResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<GetVoiceProfileRequest>,
+  output: __S(761, __c95, 1) as any as S.Schema<GetVoiceProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3299,8 +3303,8 @@ export const getVoiceProfileDomain: API.OperationMethod<
   GetVoiceProfileDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetVoiceProfileDomainRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetVoiceProfileDomainResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<GetVoiceProfileDomainRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<GetVoiceProfileDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3336,8 +3340,8 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   GetVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>,
+  input: __S(776, __c97, 0) as any as S.Schema<GetVoiceToneAnalysisTaskRequest>,
+  output: __S(785, __c98, 1) as any as S.Schema<GetVoiceToneAnalysisTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3371,8 +3375,8 @@ export const listAvailableVoiceConnectorRegions: API.OperationMethod<
   ListAvailableVoiceConnectorRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListAvailableVoiceConnectorRegionsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListAvailableVoiceConnectorRegionsResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<ListAvailableVoiceConnectorRegionsRequest>,
+  output: __S(793, __c99, 1) as any as S.Schema<ListAvailableVoiceConnectorRegionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3404,8 +3408,8 @@ export const listPhoneNumberOrders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListPhoneNumberOrdersRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<ListPhoneNumberOrdersResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<ListPhoneNumberOrdersRequest>,
+  output: __S(802, __c100, 2) as any as S.Schema<ListPhoneNumberOrdersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3445,8 +3449,8 @@ export const listPhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListPhoneNumbersRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListPhoneNumbersResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<ListPhoneNumbersRequest>,
+  output: __S(810, __c101, 2) as any as S.Schema<ListPhoneNumbersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3487,8 +3491,8 @@ export const listProxySessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListProxySessionsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<ListProxySessionsResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<ListProxySessionsRequest>,
+  output: __S(818, __c102, 2) as any as S.Schema<ListProxySessionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3526,8 +3530,8 @@ export const listSipMediaApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SipMediaApplication
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListSipMediaApplicationsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ListSipMediaApplicationsResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<ListSipMediaApplicationsRequest>,
+  output: __S(826, __c103, 2) as any as S.Schema<ListSipMediaApplicationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3566,8 +3570,8 @@ export const listSipRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SipRule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ListSipRulesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListSipRulesResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<ListSipRulesRequest>,
+  output: __S(834, __c104, 2) as any as S.Schema<ListSipRulesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3606,8 +3610,8 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   ListSupportedPhoneNumberCountriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListSupportedPhoneNumberCountriesResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>,
+  output: __S(843, __c105, 3) as any as S.Schema<ListSupportedPhoneNumberCountriesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3639,8 +3643,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(849, __c106, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3673,8 +3677,8 @@ export const listVoiceConnectorGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListVoiceConnectorGroupsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ListVoiceConnectorGroupsResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<ListVoiceConnectorGroupsRequest>,
+  output: __S(858, __c107, 2) as any as S.Schema<ListVoiceConnectorGroupsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3712,8 +3716,8 @@ export const listVoiceConnectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListVoiceConnectorsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListVoiceConnectorsResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<ListVoiceConnectorsRequest>,
+  output: __S(866, __c108, 2) as any as S.Schema<ListVoiceConnectorsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3750,8 +3754,8 @@ export const listVoiceConnectorTerminationCredentials: API.OperationMethod<
   ListVoiceConnectorTerminationCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListVoiceConnectorTerminationCredentialsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListVoiceConnectorTerminationCredentialsResponse>,
+  input: __S(872, __c109, 0) as any as S.Schema<ListVoiceConnectorTerminationCredentialsRequest>,
+  output: __S(873, __c109, 1) as any as S.Schema<ListVoiceConnectorTerminationCredentialsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3785,8 +3789,8 @@ export const listVoiceProfileDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListVoiceProfileDomainsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListVoiceProfileDomainsResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<ListVoiceProfileDomainsRequest>,
+  output: __S(883, __c110, 3) as any as S.Schema<ListVoiceProfileDomainsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3825,8 +3829,8 @@ export const listVoiceProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListVoiceProfilesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListVoiceProfilesResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<ListVoiceProfilesRequest>,
+  output: __S(890, __c111, 2) as any as S.Schema<ListVoiceProfilesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3869,14 +3873,14 @@ export const putSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    180,
-    __c22,
-    4,
+    896,
+    __c112,
+    0,
   ) as any as S.Schema<PutSipMediaApplicationAlexaSkillConfigurationRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    569,
+    __c71,
+    1,
   ) as any as S.Schema<PutSipMediaApplicationAlexaSkillConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -3911,8 +3915,8 @@ export const putSipMediaApplicationLoggingConfiguration: API.OperationMethod<
   PutSipMediaApplicationLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<PutSipMediaApplicationLoggingConfigurationRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<PutSipMediaApplicationLoggingConfigurationResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<PutSipMediaApplicationLoggingConfigurationRequest>,
+  output: __S(585, __c73, 1) as any as S.Schema<PutSipMediaApplicationLoggingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3946,14 +3950,14 @@ export const putVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    912,
+    __c114,
+    0,
   ) as any as S.Schema<PutVoiceConnectorEmergencyCallingConfigurationRequest>,
   output: __S(
-    108,
-    __c13,
-    4,
+    643,
+    __c80,
+    3,
   ) as any as S.Schema<PutVoiceConnectorEmergencyCallingConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -3989,14 +3993,14 @@ export const putVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    183,
-    __c22,
-    7,
+    920,
+    __c115,
+    0,
   ) as any as S.Schema<PutVoiceConnectorExternalSystemsConfigurationRequest>,
   output: __S(
-    111,
-    __c13,
-    7,
+    657,
+    __c82,
+    1,
   ) as any as S.Schema<PutVoiceConnectorExternalSystemsConfigurationResponse>,
   errors: [
     BadRequestException,
@@ -4031,8 +4035,8 @@ export const putVoiceConnectorLoggingConfiguration: API.OperationMethod<
   PutVoiceConnectorLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<PutVoiceConnectorLoggingConfigurationRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<PutVoiceConnectorLoggingConfigurationResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<PutVoiceConnectorLoggingConfigurationRequest>,
+  output: __S(681, __c85, 1) as any as S.Schema<PutVoiceConnectorLoggingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4066,8 +4070,8 @@ export const putVoiceConnectorOrigination: API.OperationMethod<
   PutVoiceConnectorOriginationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<PutVoiceConnectorOriginationRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<PutVoiceConnectorOriginationResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<PutVoiceConnectorOriginationRequest>,
+  output: __S(699, __c87, 3) as any as S.Schema<PutVoiceConnectorOriginationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4104,8 +4108,8 @@ export const putVoiceConnectorProxy: API.OperationMethod<
   PutVoiceConnectorProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<PutVoiceConnectorProxyRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<PutVoiceConnectorProxyResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<PutVoiceConnectorProxyRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<PutVoiceConnectorProxyResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4139,8 +4143,8 @@ export const putVoiceConnectorStreamingConfiguration: API.OperationMethod<
   PutVoiceConnectorStreamingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<PutVoiceConnectorStreamingConfigurationRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<PutVoiceConnectorStreamingConfigurationResponse>,
+  input: __S(952, __c119, 0) as any as S.Schema<PutVoiceConnectorStreamingConfigurationRequest>,
+  output: __S(732, __c91, 4) as any as S.Schema<PutVoiceConnectorStreamingConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4174,8 +4178,8 @@ export const putVoiceConnectorTermination: API.OperationMethod<
   PutVoiceConnectorTerminationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<PutVoiceConnectorTerminationRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<PutVoiceConnectorTerminationResponse>,
+  input: __S(960, __c120, 0) as any as S.Schema<PutVoiceConnectorTerminationRequest>,
+  output: __S(745, __c93, 1) as any as S.Schema<PutVoiceConnectorTerminationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4209,8 +4213,8 @@ export const putVoiceConnectorTerminationCredentials: API.OperationMethod<
   PutVoiceConnectorTerminationCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<PutVoiceConnectorTerminationCredentialsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<PutVoiceConnectorTerminationCredentialsResponse>,
+  input: __S(970, __c121, 2) as any as S.Schema<PutVoiceConnectorTerminationCredentialsRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<PutVoiceConnectorTerminationCredentialsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4244,8 +4248,8 @@ export const restorePhoneNumber: API.OperationMethod<
   RestorePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<RestorePhoneNumberRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<RestorePhoneNumberResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<RestorePhoneNumberRequest>,
+  output: __S(984, __c123, 0) as any as S.Schema<RestorePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4280,8 +4284,8 @@ export const searchAvailablePhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<SearchAvailablePhoneNumbersRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<SearchAvailablePhoneNumbersResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<SearchAvailablePhoneNumbersRequest>,
+  output: __S(993, __c124, 1) as any as S.Schema<SearchAvailablePhoneNumbersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4327,8 +4331,8 @@ export const startSpeakerSearchTask: API.OperationMethod<
   StartSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<StartSpeakerSearchTaskRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<StartSpeakerSearchTaskResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<StartSpeakerSearchTaskRequest>,
+  output: __S(620, __c77, 4) as any as S.Schema<StartSpeakerSearchTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4376,8 +4380,8 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   StartVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>,
+  input: __S(1008, __c126, 0) as any as S.Schema<StartVoiceToneAnalysisTaskRequest>,
+  output: __S(785, __c98, 1) as any as S.Schema<StartVoiceToneAnalysisTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4418,8 +4422,8 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   StopSpeakerSearchTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<StopSpeakerSearchTaskRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<StopSpeakerSearchTaskResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<StopSpeakerSearchTaskRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<StopSpeakerSearchTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4458,8 +4462,8 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
   StopVoiceToneAnalysisTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>,
+  input: __S(1024, __c128, 0) as any as S.Schema<StopVoiceToneAnalysisTaskRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<StopVoiceToneAnalysisTaskResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4495,8 +4499,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(1032, __c129, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4528,8 +4532,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1040, __c130, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4560,8 +4564,8 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateGlobalSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateGlobalSettingsResponse>,
+  input: __S(1048, __c131, 0) as any as S.Schema<UpdateGlobalSettingsRequest>,
+  output: __S(344, __c43, 0) as any as S.Schema<UpdateGlobalSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4603,8 +4607,8 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdatePhoneNumberRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<UpdatePhoneNumberResponse>,
+  input: __S(1056, __c132, 0) as any as S.Schema<UpdatePhoneNumberRequest>,
+  output: __S(984, __c123, 0) as any as S.Schema<UpdatePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4640,8 +4644,8 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   UpdatePhoneNumberSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdatePhoneNumberSettingsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdatePhoneNumberSettingsResponse>,
+  input: __S(1064, __c133, 0) as any as S.Schema<UpdatePhoneNumberSettingsRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<UpdatePhoneNumberSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4675,8 +4679,8 @@ export const updateProxySession: API.OperationMethod<
   UpdateProxySessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpdateProxySessionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateProxySessionResponse>,
+  input: __S(1072, __c134, 0) as any as S.Schema<UpdateProxySessionRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateProxySessionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4710,8 +4714,8 @@ export const updateSipMediaApplication: API.OperationMethod<
   UpdateSipMediaApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateSipMediaApplicationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateSipMediaApplicationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateSipMediaApplicationRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<UpdateSipMediaApplicationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4748,8 +4752,8 @@ export const updateSipMediaApplicationCall: API.OperationMethod<
   UpdateSipMediaApplicationCallError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateSipMediaApplicationCallRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateSipMediaApplicationCallResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateSipMediaApplicationCallRequest>,
+  output: __S(218, __c27, 2) as any as S.Schema<UpdateSipMediaApplicationCallResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4785,8 +4789,8 @@ export const updateSipRule: API.OperationMethod<
   UpdateSipRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateSipRuleRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateSipRuleResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateSipRuleRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdateSipRuleResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4821,8 +4825,8 @@ export const updateVoiceConnector: API.OperationMethod<
   UpdateVoiceConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateVoiceConnectorRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateVoiceConnectorResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateVoiceConnectorRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateVoiceConnectorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -4856,8 +4860,8 @@ export const updateVoiceConnectorGroup: API.OperationMethod<
   UpdateVoiceConnectorGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateVoiceConnectorGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateVoiceConnectorGroupResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateVoiceConnectorGroupRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<UpdateVoiceConnectorGroupResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4903,8 +4907,8 @@ export const updateVoiceProfile: API.OperationMethod<
   UpdateVoiceProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateVoiceProfileRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateVoiceProfileResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateVoiceProfileRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<UpdateVoiceProfileResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4941,8 +4945,8 @@ export const updateVoiceProfileDomain: API.OperationMethod<
   UpdateVoiceProfileDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateVoiceProfileDomainRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateVoiceProfileDomainResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateVoiceProfileDomainRequest>,
+  output: __S(330, __c41, 2) as any as S.Schema<UpdateVoiceProfileDomainResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4980,8 +4984,8 @@ export const validateE911Address: API.OperationMethod<
   ValidateE911AddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<ValidateE911AddressRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<ValidateE911AddressResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ValidateE911AddressRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ValidateE911AddressResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5001,12 +5005,244 @@ export const validateE911Address: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SensitiveString);
-    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
+          Name: S.optional(S.String),
+          Endpoints: S.optional(__S(201, __c25, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/sip-media-applications/{SipMediaApplicationId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSipMediaApplicationRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
+          TransactionId: S.String.pipe(T.HttpLabel("TransactionId")),
+          Arguments: __S(216, __c27, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/sip-media-applications/{SipMediaApplicationId}/calls/{TransactionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateSipMediaApplicationCallRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")),
+          Name: S.String,
+          Disabled: S.optional(S.Boolean),
+          TargetApplications: S.optional(__S(241, __c30, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/sip-rules/{SipRuleId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSipRuleRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          E164PhoneNumbers: __S(0, __c0, 0),
+          Name: S.String,
+          RequireEncryption: S.Boolean,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceConnectorRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
+          Name: S.String,
+          VoiceConnectorItems: __S(289, __c36, 1),
+          CallDistributionType: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/voice-connector-groups/{VoiceConnectorGroupId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceConnectorGroupRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
+          SpeakerSearchTaskId: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/voice-profiles/{VoiceProfileId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceProfileRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/voice-profile-domains/{VoiceProfileDomainId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceProfileDomainRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AwsAccountId: S.String,
+          StreetNumber: SensitiveString,
+          StreetInfo: SensitiveString,
+          City: SensitiveString,
+          State: SensitiveString,
+          Country: SensitiveString,
+          PostalCode: SensitiveString,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/emergency-calling/address" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ValidateE911AddressRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          streetName: S.optional(SensitiveString),
+          streetSuffix: S.optional(SensitiveString),
+          postDirectional: S.optional(SensitiveString),
+          preDirectional: S.optional(SensitiveString),
+          streetNumber: S.optional(SensitiveString),
+          city: S.optional(SensitiveString),
+          state: S.optional(SensitiveString),
+          postalCode: S.optional(SensitiveString),
+          postalCodePlus4: S.optional(SensitiveString),
+          country: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Address" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          streetInfo: S.optional(SensitiveString),
+          streetNumber: S.optional(SensitiveString),
+          city: S.optional(SensitiveString),
+          state: S.optional(SensitiveString),
+          postalCode: S.optional(SensitiveString),
+          postalCodePlus4: S.optional(SensitiveString),
+          country: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "CandidateAddress" });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ __S(58, __c7, 2).pipe(/*@__PURE__*/ T.XmlName("CandidateAddress")).annotate({
+          identifier: "CandidateAddress",
+        }),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ValidationResult: S.optional(S.Number),
+          AddressExternalId: S.optional(S.String),
+          Address: S.optional(__S(57, __c7, 1)),
+          CandidateAddressList: S.optional(__S(59, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "ValidateE911AddressResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
+          E164PhoneNumbers: __S(80, __c10, 0),
           ForceAssociate: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5024,7 +5260,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociatePhoneNumbersWithVoiceConnectorRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.optional(SensitiveString),
@@ -5032,19 +5272,29 @@ function __c0(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumberError" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ PhoneNumberErrors: S.optional(__S(3, __c0, 3)) })).annotate(
-        {
-          identifier: "AssociatePhoneNumbersWithVoiceConnectorResponse",
-        },
-      );
-    case 5:
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ PhoneNumberErrors: S.optional(__S(73, __c9, 1)) }),
+      ).annotate({
+        identifier: "AssociatePhoneNumbersWithVoiceConnectorResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
-          E164PhoneNumbers: __S(0, __c0, 0),
+          E164PhoneNumbers: __S(80, __c10, 0),
           ForceAssociate: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5062,11 +5312,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociatePhoneNumbersWithVoiceConnectorGroupRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ PhoneNumberIds: __S(6, __c0, 6) }).pipe(
+        S.Struct({ PhoneNumberIds: __S(104, __c13, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-delete" }),
             svc,
@@ -5081,7 +5333,13 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5095,10 +5353,10 @@ function __c1(j: number): any {
         identifier: "UpdatePhoneNumberRequestItem",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(112, __c14, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ UpdatePhoneNumberRequestItems: __S(9, __c1, 1) }).pipe(
+        S.Struct({ UpdatePhoneNumberRequestItems: __S(113, __c14, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-update" }),
             svc,
@@ -5111,11 +5369,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchUpdatePhoneNumberRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductType: S.String,
-          E164PhoneNumbers: __S(0, __c0, 0),
+          E164PhoneNumbers: __S(80, __c10, 0),
           Name: S.optional(SensitiveString),
         }).pipe(
           T.all(
@@ -5130,55 +5392,57 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreatePhoneNumberOrderRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PhoneNumberOrder: S.optional(__S(138, __c17, 2)) }),
+      ).annotate({
+        identifier: "CreatePhoneNumberOrderResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           E164PhoneNumber: S.optional(SensitiveString),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderedPhoneNumber" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(136, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberOrderId: S.optional(S.String),
           ProductType: S.optional(S.String),
           Status: S.optional(S.String),
           OrderType: S.optional(S.String),
-          OrderedPhoneNumbers: S.optional(__S(13, __c1, 5)),
+          OrderedPhoneNumbers: S.optional(__S(137, __c17, 1)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           FocDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumberOrder" });
-    case 7:
-      return S.suspend(() => S.Struct({ PhoneNumberOrder: S.optional(__S(14, __c1, 6)) })).annotate(
-        {
-          identifier: "CreatePhoneNumberOrderResponse",
-        },
-      );
   }
 }
-function __c2(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ Country: S.String, AreaCode: S.String })).annotate({
-        identifier: "GeoMatchParams",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          ParticipantPhoneNumbers: __S(0, __c0, 0),
+          ParticipantPhoneNumbers: __S(80, __c10, 0),
           Name: S.optional(SensitiveString),
           ExpiryMinutes: S.optional(S.Number),
-          Capabilities: __S(16, __c2, 0),
+          Capabilities: __S(152, __c19, 0),
           NumberSelectionBehavior: S.optional(S.String),
           GeoMatchLevel: S.optional(S.String),
-          GeoMatchParams: S.optional(__S(17, __c2, 1)),
+          GeoMatchParams: S.optional(__S(160, __c20, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/voice-connectors/{VoiceConnectorId}/proxy-sessions" }),
@@ -5192,16 +5456,30 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateProxySessionRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Country: S.String, AreaCode: S.String })).annotate({
+        identifier: "GeoMatchParams",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PhoneNumber: S.optional(SensitiveString),
           ProxyPhoneNumber: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Participant" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.optional(S.String),
@@ -5209,43 +5487,35 @@ function __c2(j: number): any {
           Name: S.optional(S.String),
           Status: S.optional(S.String),
           ExpiryMinutes: S.optional(S.Number),
-          Capabilities: S.optional(__S(16, __c2, 0)),
+          Capabilities: S.optional(__S(152, __c19, 0)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Participants: S.optional(__S(20, __c2, 4)),
+          Participants: S.optional(__S(162, __c20, 2)),
           NumberSelectionBehavior: S.optional(S.String),
           GeoMatchLevel: S.optional(S.String),
-          GeoMatchParams: S.optional(__S(17, __c2, 1)),
+          GeoMatchParams: S.optional(__S(160, __c20, 0)),
         }),
       ).annotate({ identifier: "ProxySession" });
-    case 6:
-      return S.suspend(() => S.Struct({ ProxySession: S.optional(__S(21, __c2, 5)) })).annotate({
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ProxySession: S.optional(__S(163, __c20, 3)) })).annotate({
         identifier: "CreateProxySessionResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ LambdaArn: S.optional(SensitiveString) })).annotate({
-        identifier: "SipMediaApplicationEndpoint",
       });
   }
 }
-function __c3(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           AwsRegion: S.String,
           Name: S.String,
-          Endpoints: __S(24, __c3, 0),
-          Tags: S.optional(__S(26, __c3, 2)),
+          Endpoints: __S(201, __c25, 1),
+          Tags: S.optional(__S(185, __c23, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/sip-media-applications" }),
@@ -5259,34 +5529,60 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSipMediaApplicationRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: SensitiveString, Value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ SipMediaApplication: S.optional(__S(202, __c25, 2)) }),
+      ).annotate({
+        identifier: "CreateSipMediaApplicationResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LambdaArn: S.optional(SensitiveString) })).annotate({
+        identifier: "SipMediaApplicationEndpoint",
+      });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.optional(S.String),
           AwsRegion: S.optional(S.String),
           Name: S.optional(S.String),
-          Endpoints: S.optional(__S(24, __c3, 0)),
+          Endpoints: S.optional(__S(201, __c25, 1)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SipMediaApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SipMediaApplication" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ SipMediaApplication: S.optional(__S(28, __c3, 4)) }),
-      ).annotate({
-        identifier: "CreateSipMediaApplicationResponse",
-      });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FromPhoneNumber: SensitiveString,
           ToPhoneNumber: SensitiveString,
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
-          SipHeaders: S.optional(__S(30, __c3, 6)),
-          ArgumentsMap: S.optional(__S(30, __c3, 6)),
+          SipHeaders: S.optional(__S(216, __c27, 0)),
+          ArgumentsMap: S.optional(__S(216, __c27, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -5305,19 +5601,47 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 1:
       return S.suspend(() => S.Struct({ TransactionId: S.optional(S.String) })).annotate({
         identifier: "SipMediaApplicationCall",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ SipMediaApplicationCall: S.optional(__S(32, __c4, 0)) }),
+        S.Struct({ SipMediaApplicationCall: S.optional(__S(217, __c27, 1)) }),
       ).annotate({
         identifier: "CreateSipMediaApplicationCallResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          TriggerType: S.String,
+          TriggerValue: S.String,
+          Disabled: S.optional(S.Boolean),
+          TargetApplications: __S(241, __c30, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/sip-rules" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateSipRuleRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SipRule: S.optional(__S(242, __c30, 2)) })).annotate({
+        identifier: "CreateSipRuleResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.optional(S.String),
@@ -5325,19 +5649,9 @@ function __c4(j: number): any {
           AwsRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "SipRuleTargetApplication" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          TriggerType: S.String,
-          TriggerValue: S.String,
-          Disabled: S.optional(S.Boolean),
-          TargetApplications: __S(35, __c4, 3),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/sip-rules" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateSipRuleRequest" });
-    case 5:
+    case 1:
+      return S.Array(__S(240, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           SipRuleId: S.optional(S.String),
@@ -5345,22 +5659,22 @@ function __c4(j: number): any {
           Disabled: S.optional(S.Boolean),
           TriggerType: S.optional(S.String),
           TriggerValue: S.optional(S.String),
-          TargetApplications: S.optional(__S(35, __c4, 3)),
+          TargetApplications: S.optional(__S(241, __c30, 1)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "SipRule" });
-    case 6:
-      return S.suspend(() => S.Struct({ SipRule: S.optional(__S(37, __c4, 5)) })).annotate({
-        identifier: "CreateSipRuleResponse",
-      });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           AwsRegion: S.optional(S.String),
           RequireEncryption: S.Boolean,
-          Tags: S.optional(__S(26, __c3, 2)),
+          Tags: S.optional(__S(185, __c23, 1)),
           IntegrationType: S.optional(S.String),
           NetworkType: S.optional(S.String),
         }).pipe(
@@ -5371,7 +5685,17 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ VoiceConnector: S.optional(__S(264, __c33, 0)) })).annotate(
+        {
+          identifier: "CreateVoiceConnectorResponse",
+        },
+      );
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5388,21 +5712,15 @@ function __c5(j: number): any {
           NetworkType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoiceConnector" });
-    case 1:
-      return S.suspend(() => S.Struct({ VoiceConnector: S.optional(__S(40, __c5, 0)) })).annotate({
-        identifier: "CreateVoiceConnectorResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ VoiceConnectorId: S.String, Priority: S.optional(S.Number) }),
-      ).annotate({ identifier: "VoiceConnectorItem" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          VoiceConnectorItems: S.optional(__S(43, __c5, 3)),
+          VoiceConnectorItems: S.optional(__S(289, __c36, 1)),
           CallDistributionType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5417,25 +5735,43 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateVoiceConnectorGroupRequest",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VoiceConnectorGroup: S.optional(__S(290, __c36, 2)) }),
+      ).annotate({
+        identifier: "CreateVoiceConnectorGroupResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VoiceConnectorId: S.String, Priority: S.optional(S.Number) }),
+      ).annotate({ identifier: "VoiceConnectorItem" });
+    case 1:
+      return S.Array(__S(288, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorGroupId: S.optional(S.String),
           Name: S.optional(S.String),
-          VoiceConnectorItems: S.optional(__S(43, __c5, 3)),
+          VoiceConnectorItems: S.optional(__S(289, __c36, 1)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           VoiceConnectorGroupArn: S.optional(S.String),
           CallDistributionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoiceConnectorGroup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ VoiceConnectorGroup: S.optional(__S(45, __c5, 5)) }),
-      ).annotate({
-        identifier: "CreateVoiceConnectorGroupResponse",
-      });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SpeakerSearchTaskId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/voice-profiles" }), svc, auth, proto, ver, rules),
@@ -5445,7 +5781,15 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ VoiceProfile: S.optional(__S(312, __c39, 0)) })).annotate({
+        identifier: "CreateVoiceProfileResponse",
+      });
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5458,22 +5802,18 @@ function __c6(j: number): any {
           ExpirationTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "VoiceProfile" });
-    case 1:
-      return S.suspend(() => S.Struct({ VoiceProfile: S.optional(__S(48, __c6, 0)) })).annotate({
-        identifier: "CreateVoiceProfileResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ KmsKeyArn: SensitiveString })).annotate({
-        identifier: "ServerSideEncryptionConfiguration",
-      });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          ServerSideEncryptionConfiguration: __S(50, __c6, 2),
+          ServerSideEncryptionConfiguration: __S(328, __c41, 0),
           ClientRequestToken: S.optional(S.String),
-          Tags: S.optional(__S(26, __c3, 2)),
+          Tags: S.optional(__S(185, __c23, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/voice-profile-domains" }),
@@ -5487,25 +5827,37 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateVoiceProfileDomainRequest",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ KmsKeyArn: SensitiveString })).annotate({
+        identifier: "ServerSideEncryptionConfiguration",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           VoiceProfileDomainId: S.optional(S.String),
           VoiceProfileDomainArn: S.optional(SensitiveString),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ServerSideEncryptionConfiguration: S.optional(__S(50, __c6, 2)),
+          ServerSideEncryptionConfiguration: S.optional(__S(328, __c41, 0)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "VoiceProfileDomain" });
-    case 5:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ VoiceProfileDomain: S.optional(__S(52, __c6, 4)) }),
+        S.Struct({ VoiceProfileDomain: S.optional(__S(329, __c41, 1)) }),
       ).annotate({
         identifier: "CreateVoiceProfileDomainResponse",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
           T.all(
@@ -5518,13 +5870,17 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePhoneNumberRequest" });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePhoneNumberResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5547,7 +5903,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProxySessionRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
@@ -5564,11 +5924,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteSipMediaApplicationRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSipMediaApplicationResponse",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")) }).pipe(
           T.all(
@@ -5581,7 +5949,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSipRuleRequest" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5596,7 +5968,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorRequest",
       });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5614,11 +5990,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorEmergencyCallingConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteVoiceConnectorEmergencyCallingConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5638,7 +6022,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5657,7 +6041,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorGroupRequest",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5672,7 +6060,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorOriginationRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5690,7 +6082,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorProxyRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5708,7 +6104,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorStreamingConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -5723,11 +6123,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorTerminationRequest",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          Usernames: __S(0, __c0, 0),
+          Usernames: __S(80, __c10, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5744,7 +6148,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceConnectorTerminationCredentialsRequest",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")) }).pipe(
           T.all(
@@ -5759,7 +6167,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceProfileRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")) }).pipe(
           T.all(
@@ -5776,13 +6188,13 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          E164PhoneNumbers: __S(0, __c0, 0),
+          E164PhoneNumbers: __S(80, __c10, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5799,11 +6211,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociatePhoneNumbersFromVoiceConnectorRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
-          E164PhoneNumbers: __S(0, __c0, 0),
+          E164PhoneNumbers: __S(80, __c10, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -5820,21 +6236,35 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociatePhoneNumbersFromVoiceConnectorGroupRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/settings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetGlobalSettingsRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() => S.Struct({ VoiceConnector: S.optional(__S(504, __c63, 0)) })).annotate(
+        {
+          identifier: "GetGlobalSettingsResponse",
+        },
+      );
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ CdrBucket: S.optional(S.String) })).annotate({
         identifier: "VoiceConnectorSettings",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ VoiceConnector: S.optional(__S(75, __c9, 3)) })).annotate({
-        identifier: "GetGlobalSettingsResponse",
-      });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
           T.all(
@@ -5847,7 +6277,15 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPhoneNumberRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(523, __c65, 3)) })).annotate({
+        identifier: "GetPhoneNumberResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InboundCall: S.optional(S.Boolean),
@@ -5858,7 +6296,7 @@ function __c9(j: number): any {
           OutboundMMS: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PhoneNumberCapabilities" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.String),
@@ -5866,13 +6304,9 @@ function __c9(j: number): any {
           AssociatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PhoneNumberAssociation" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(521, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.optional(SensitiveString),
@@ -5882,8 +6316,8 @@ function __c10(j: number): any {
           Type: S.optional(S.String),
           ProductType: S.optional(S.String),
           Status: S.optional(S.String),
-          Capabilities: S.optional(__S(78, __c9, 6)),
-          Associations: S.optional(__S(80, __c10, 0)),
+          Capabilities: S.optional(__S(520, __c65, 0)),
+          Associations: S.optional(__S(522, __c65, 2)),
           CallingName: S.optional(SensitiveString),
           CallingNameStatus: S.optional(S.String),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -5893,11 +6327,11 @@ function __c10(j: number): any {
           Name: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "PhoneNumber" });
-    case 2:
-      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(81, __c10, 1)) })).annotate({
-        identifier: "GetPhoneNumberResponse",
-      });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")) }).pipe(
           T.all(
@@ -5912,7 +6346,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPhoneNumberOrderRequest",
       });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -5927,7 +6365,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPhoneNumberSettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CallingName: S.optional(SensitiveString),
@@ -5938,7 +6376,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPhoneNumberSettingsResponse",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -5957,13 +6399,13 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetProxySessionRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ ProxySession: S.optional(__S(21, __c2, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ ProxySession: S.optional(__S(163, __c20, 3)) })).annotate({
         identifier: "GetProxySessionResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5982,7 +6424,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSipMediaApplicationRequest",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
@@ -6002,21 +6448,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSipMediaApplicationAlexaSkillConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ AlexaSkillStatus: S.String, AlexaSkillIds: __S(0, __c0, 0) }),
+        S.Struct({ AlexaSkillStatus: S.String, AlexaSkillIds: __S(80, __c10, 0) }),
       ).annotate({
         identifier: "SipMediaApplicationAlexaSkillConfiguration",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SipMediaApplicationAlexaSkillConfiguration: S.optional(__S(90, __c11, 2)),
+          SipMediaApplicationAlexaSkillConfiguration: S.optional(__S(568, __c71, 0)),
         }),
       ).annotate({
         identifier: "GetSipMediaApplicationAlexaSkillConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
@@ -6036,21 +6490,29 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSipMediaApplicationLoggingConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EnableSipMediaApplicationMessageLogs: S.optional(S.Boolean) }),
       ).annotate({
         identifier: "SipMediaApplicationLoggingConfiguration",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SipMediaApplicationLoggingConfiguration: S.optional(__S(93, __c11, 5)),
+          SipMediaApplicationLoggingConfiguration: S.optional(__S(584, __c73, 0)),
         }),
       ).annotate({
         identifier: "GetSipMediaApplicationLoggingConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")) }).pipe(
           T.all(
@@ -6065,7 +6527,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetSipRuleRequest" });
   }
 }
-function __c12(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6088,7 +6550,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetSpeakerSearchTaskRequest",
       });
-    case 1:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.optional(S.String),
@@ -6096,39 +6562,47 @@ function __c12(j: number): any {
           IsCaller: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CallDetails" });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConfidenceScore: S.optional(S.Number), VoiceProfileId: S.optional(S.String) }),
       ).annotate({ identifier: "SpeakerSearchResult" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(616, __c77, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Results: S.optional(__S(99, __c12, 3)),
+          Results: S.optional(__S(617, __c77, 1)),
           VoiceprintGenerationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpeakerSearchDetails" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SpeakerSearchTaskId: S.optional(S.String),
           SpeakerSearchTaskStatus: S.optional(S.String),
-          CallDetails: S.optional(__S(97, __c12, 1)),
-          SpeakerSearchDetails: S.optional(__S(100, __c12, 4)),
+          CallDetails: S.optional(__S(608, __c76, 0)),
+          SpeakerSearchDetails: S.optional(__S(618, __c77, 2)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StartedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpeakerSearchTask" });
-    case 6:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ SpeakerSearchTask: S.optional(__S(101, __c12, 5)) }),
+        S.Struct({ SpeakerSearchTask: S.optional(__S(619, __c77, 3)) }),
       ).annotate({
         identifier: "GetSpeakerSearchTaskResponse",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6143,7 +6617,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetVoiceConnectorRequest" });
   }
 }
-function __c13(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6163,7 +6637,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorEmergencyCallingConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EmergencyPhoneNumber: SensitiveString,
@@ -6173,19 +6651,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DNISEmergencyCallingConfiguration",
       });
+    case 1:
+      return S.Array(__S(640, __c80, 0));
     case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ DNIS: S.optional(__S(106, __c13, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ DNIS: S.optional(__S(641, __c80, 1)) })).annotate({
         identifier: "EmergencyCallingConfiguration",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ EmergencyCallingConfiguration: S.optional(__S(107, __c13, 3)) }),
+        S.Struct({ EmergencyCallingConfiguration: S.optional(__S(642, __c80, 2)) }),
       ).annotate({
         identifier: "GetVoiceConnectorEmergencyCallingConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6203,24 +6685,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorExternalSystemsConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SessionBorderControllerTypes: S.optional(__S(16, __c2, 0)),
-          ContactCenterSystemTypes: S.optional(__S(16, __c2, 0)),
+          SessionBorderControllerTypes: S.optional(__S(152, __c19, 0)),
+          ContactCenterSystemTypes: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({
         identifier: "ExternalSystemsConfiguration",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ExternalSystemsConfiguration: S.optional(__S(110, __c13, 6)) }),
+        S.Struct({ ExternalSystemsConfiguration: S.optional(__S(656, __c82, 0)) }),
       ).annotate({
         identifier: "GetVoiceConnectorExternalSystemsConfigurationResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6239,7 +6725,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorGroupRequest",
       });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6257,20 +6747,28 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorLoggingConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EnableSIPLogs: S.optional(S.Boolean),
           EnableMediaMetricLogs: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ LoggingConfiguration: S.optional(__S(114, __c14, 2)) }),
+        S.Struct({ LoggingConfiguration: S.optional(__S(680, __c85, 0)) }),
       ).annotate({
         identifier: "GetVoiceConnectorLoggingConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6285,7 +6783,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorOriginationRequest",
       });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Host: S.optional(S.String),
@@ -6295,21 +6797,21 @@ function __c14(j: number): any {
           Weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OriginationRoute" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(696, __c87, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Routes: S.optional(__S(118, __c14, 6)), Disabled: S.optional(S.Boolean) }),
+        S.Struct({ Routes: S.optional(__S(697, __c87, 1)), Disabled: S.optional(S.Boolean) }),
       ).annotate({ identifier: "Origination" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Origination: S.optional(__S(119, __c14, 7)) })).annotate({
+    case 3:
+      return S.suspend(() => S.Struct({ Origination: S.optional(__S(698, __c87, 2)) })).annotate({
         identifier: "GetVoiceConnectorOriginationResponse",
       });
-    case 1:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6327,20 +6829,28 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorProxyRequest",
       });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DefaultSessionExpiryMinutes: S.optional(S.Number),
           Disabled: S.optional(S.Boolean),
           FallBackPhoneNumber: S.optional(SensitiveString),
-          PhoneNumberCountries: S.optional(__S(6, __c0, 6)),
+          PhoneNumberCountries: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "Proxy" });
-    case 3:
-      return S.suspend(() => S.Struct({ Proxy: S.optional(__S(122, __c15, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Proxy: S.optional(__S(712, __c89, 0)) })).annotate({
         identifier: "GetVoiceConnectorProxyResponse",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6358,13 +6868,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorStreamingConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ NotificationTarget: S.optional(S.String) })).annotate({
         identifier: "StreamingNotificationTarget",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(728, __c91, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Disabled: S.optional(S.Boolean),
@@ -6373,26 +6887,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "MediaInsightsConfiguration",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DataRetentionInHours: S.Number,
           Disabled: S.Boolean,
-          StreamingNotificationTargets: S.optional(__S(126, __c15, 6)),
-          MediaInsightsConfiguration: S.optional(__S(127, __c15, 7)),
+          StreamingNotificationTargets: S.optional(__S(729, __c91, 1)),
+          MediaInsightsConfiguration: S.optional(__S(730, __c91, 2)),
         }),
       ).annotate({ identifier: "StreamingConfiguration" });
-    case 1:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ StreamingConfiguration: S.optional(__S(128, __c16, 0)) }),
+        S.Struct({ StreamingConfiguration: S.optional(__S(731, __c91, 3)) }),
       ).annotate({
         identifier: "GetVoiceConnectorStreamingConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6407,21 +6921,29 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorTerminationRequest",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CpsLimit: S.optional(S.Number),
           DefaultPhoneNumber: S.optional(SensitiveString),
-          CallingRegions: S.optional(__S(6, __c0, 6)),
-          CidrAllowedList: S.optional(__S(6, __c0, 6)),
+          CallingRegions: S.optional(__S(104, __c13, 0)),
+          CidrAllowedList: S.optional(__S(104, __c13, 0)),
           Disabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Termination" });
-    case 4:
-      return S.suspend(() => S.Struct({ Termination: S.optional(__S(131, __c16, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Termination: S.optional(__S(744, __c93, 0)) })).annotate({
         identifier: "GetVoiceConnectorTerminationResponse",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6439,22 +6961,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetVoiceConnectorTerminationHealthRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Source: S.optional(S.String),
         }),
       ).annotate({ identifier: "TerminationHealth" });
-    case 7:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ TerminationHealth: S.optional(__S(134, __c16, 6)) }),
+        S.Struct({ TerminationHealth: S.optional(__S(753, __c94, 1)) }),
       ).annotate({
         identifier: "GetVoiceConnectorTerminationHealthResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6470,10 +6992,14 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "GetVoiceProfileRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ VoiceProfile: S.optional(__S(48, __c6, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ VoiceProfile: S.optional(__S(312, __c39, 0)) })).annotate({
         identifier: "GetVoiceProfileResponse",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")) }).pipe(
           T.all(
@@ -6488,7 +7014,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetVoiceProfileDomainRequest",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -6510,25 +7040,33 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetVoiceToneAnalysisTaskRequest",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceToneAnalysisTaskId: S.optional(S.String),
           VoiceToneAnalysisTaskStatus: S.optional(S.String),
-          CallDetails: S.optional(__S(97, __c12, 1)),
+          CallDetails: S.optional(__S(608, __c76, 0)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StartedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoiceToneAnalysisTask" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ VoiceToneAnalysisTask: S.optional(__S(140, __c17, 4)) }),
+        S.Struct({ VoiceToneAnalysisTask: S.optional(__S(784, __c98, 0)) }),
       ).annotate({
         identifier: "GetVoiceToneAnalysisTaskResponse",
       });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -6543,15 +7081,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAvailableVoiceConnectorRegionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ VoiceConnectorRegions: S.optional(__S(16, __c2, 0)) }),
+        S.Struct({ VoiceConnectorRegions: S.optional(__S(152, __c19, 0)) }),
       ).annotate({
         identifier: "ListAvailableVoiceConnectorRegionsResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6572,17 +7110,21 @@ function __c18(j: number): any {
         identifier: "ListPhoneNumberOrdersRequest",
       });
     case 1:
-      return S.Array(__S(14, __c1, 6));
+      return S.Array(__S(138, __c17, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PhoneNumberOrders: S.optional(__S(145, __c18, 1)),
+          PhoneNumberOrders: S.optional(__S(801, __c100, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPhoneNumberOrdersResponse",
       });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String).pipe(T.HttpQuery("status")),
@@ -6595,13 +7137,20 @@ function __c18(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/phone-numbers" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPhoneNumbersRequest" });
-    case 4:
-      return S.Array(__S(81, __c10, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(523, __c65, 3));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ PhoneNumbers: S.optional(__S(148, __c18, 4)), NextToken: S.optional(S.String) }),
+        S.Struct({
+          PhoneNumbers: S.optional(__S(809, __c101, 1)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({ identifier: "ListPhoneNumbersResponse" });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -6619,22 +7168,22 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListProxySessionsRequest" });
-    case 7:
-      return S.Array(__S(21, __c2, 5));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(163, __c20, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ProxySessions: S.optional(__S(151, __c18, 7)),
+          ProxySessions: S.optional(__S(817, __c102, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProxySessionsResponse",
       });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
@@ -6652,18 +7201,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListSipMediaApplicationsRequest",
       });
+    case 1:
+      return S.Array(__S(202, __c25, 2));
     case 2:
-      return S.Array(__S(28, __c3, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          SipMediaApplications: S.optional(__S(154, __c19, 2)),
+          SipMediaApplications: S.optional(__S(825, __c103, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSipMediaApplicationsResponse",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.optional(S.String).pipe(T.HttpQuery("sip-media-application")),
@@ -6671,13 +7224,17 @@ function __c19(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/sip-rules" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSipRulesRequest" });
-    case 5:
-      return S.Array(__S(37, __c4, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(242, __c30, 2));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ SipRules: S.optional(__S(157, __c19, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ SipRules: S.optional(__S(833, __c104, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSipRulesResponse" });
-    case 7:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProductType: S.String.pipe(T.HttpQuery("product-type")) }).pipe(
           T.all(
@@ -6692,26 +7249,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListSupportedPhoneNumberCountriesRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CountryCode: S.optional(S.String),
-          SupportedPhoneNumberTypes: S.optional(__S(16, __c2, 0)),
+          SupportedPhoneNumberTypes: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "PhoneNumberCountry" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
     case 2:
+      return S.Array(__S(841, __c105, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ PhoneNumberCountries: S.optional(__S(161, __c20, 1)) }),
+        S.Struct({ PhoneNumberCountries: S.optional(__S(842, __c105, 2)) }),
       ).annotate({
         identifier: "ListSupportedPhoneNumberCountriesResponse",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: SensitiveString.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
@@ -6719,11 +7276,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(26, __c3, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(185, __c23, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
@@ -6741,12 +7302,12 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListVoiceConnectorGroupsRequest",
       });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(290, __c36, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          VoiceConnectorGroups: S.optional(__S(166, __c20, 6)),
+          VoiceConnectorGroups: S.optional(__S(857, __c107, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6754,7 +7315,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6768,17 +7329,21 @@ function __c21(j: number): any {
         identifier: "ListVoiceConnectorsRequest",
       });
     case 1:
-      return S.Array(__S(40, __c5, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          VoiceConnectors: S.optional(__S(169, __c21, 1)),
+          VoiceConnectors: S.optional(__S(865, __c108, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListVoiceConnectorsResponse",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")) }).pipe(
           T.all(
@@ -6796,11 +7361,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListVoiceConnectorTerminationCredentialsRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ Usernames: S.optional(__S(0, __c0, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Usernames: S.optional(__S(80, __c10, 0)) })).annotate({
         identifier: "ListVoiceConnectorTerminationCredentialsResponse",
       });
-    case 5:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
@@ -6818,7 +7387,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListVoiceProfileDomainsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           VoiceProfileDomainId: S.optional(S.String),
@@ -6831,22 +7400,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "VoiceProfileDomainSummary",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(881, __c110, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          VoiceProfileDomains: S.optional(__S(175, __c21, 7)),
+          VoiceProfileDomains: S.optional(__S(882, __c110, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListVoiceProfileDomainsResponse",
       });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceProfileDomainId: S.String.pipe(T.HttpQuery("voice-profile-domain-id")),
@@ -6856,22 +7425,26 @@ function __c22(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/voice-profiles" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListVoiceProfilesRequest" });
+    case 1:
+      return S.Array(__S(312, __c39, 0));
     case 2:
-      return S.Array(__S(48, __c6, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          VoiceProfiles: S.optional(__S(178, __c22, 2)),
+          VoiceProfiles: S.optional(__S(889, __c111, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListVoiceProfilesResponse",
       });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
-          SipMediaApplicationAlexaSkillConfiguration: S.optional(__S(90, __c11, 2)),
+          SipMediaApplicationAlexaSkillConfiguration: S.optional(__S(568, __c71, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6888,11 +7461,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PutSipMediaApplicationAlexaSkillConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
-          SipMediaApplicationLoggingConfiguration: S.optional(__S(93, __c11, 5)),
+          SipMediaApplicationLoggingConfiguration: S.optional(__S(584, __c73, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6909,11 +7486,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PutSipMediaApplicationLoggingConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          EmergencyCallingConfiguration: __S(107, __c13, 3),
+          EmergencyCallingConfiguration: __S(642, __c80, 2),
         }).pipe(
           T.all(
             T.Http({
@@ -6930,12 +7511,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorEmergencyCallingConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          SessionBorderControllerTypes: S.optional(__S(16, __c2, 0)),
-          ContactCenterSystemTypes: S.optional(__S(16, __c2, 0)),
+          SessionBorderControllerTypes: S.optional(__S(152, __c19, 0)),
+          ContactCenterSystemTypes: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6954,13 +7539,13 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          LoggingConfiguration: __S(114, __c14, 2),
+          LoggingConfiguration: __S(680, __c85, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -6977,11 +7562,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorLoggingConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          Origination: __S(119, __c14, 7),
+          Origination: __S(698, __c87, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}/origination" }),
@@ -6995,12 +7584,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorOriginationRequest",
       });
-    case 2:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
           DefaultSessionExpiryMinutes: S.Number,
-          PhoneNumberPoolCountries: __S(6, __c0, 6),
+          PhoneNumberPoolCountries: __S(104, __c13, 0),
           FallBackPhoneNumber: S.optional(SensitiveString),
           Disabled: S.optional(S.Boolean),
         }).pipe(
@@ -7019,11 +7612,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorProxyRequest",
       });
-    case 3:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          StreamingConfiguration: __S(128, __c16, 0),
+          StreamingConfiguration: __S(731, __c91, 3),
         }).pipe(
           T.all(
             T.Http({
@@ -7040,11 +7637,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorStreamingConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          Termination: __S(131, __c16, 3),
+          Termination: __S(744, __c93, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}/termination" }),
@@ -7058,17 +7659,21 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "PutVoiceConnectorTerminationRequest",
       });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Username: S.optional(SensitiveString), Password: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Credential" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(968, __c121, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          Credentials: S.optional(__S(190, __c23, 6)),
+          Credentials: S.optional(__S(969, __c121, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -7087,7 +7692,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7104,11 +7709,19 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RestorePhoneNumberRequest",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(81, __c10, 1)) })).annotate({
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(523, __c65, 3)) })).annotate({
         identifier: "RestorePhoneNumberResponse",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
@@ -7132,16 +7745,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SearchAvailablePhoneNumbersRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          E164PhoneNumbers: S.optional(__S(0, __c0, 0)),
+          E164PhoneNumbers: S.optional(__S(80, __c10, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchAvailablePhoneNumbersResponse",
       });
-    case 4:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -7165,7 +7782,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartSpeakerSearchTaskRequest",
       });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -7188,7 +7809,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartVoiceToneAnalysisTaskRequest",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -7209,7 +7834,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StopSpeakerSearchTaskRequest",
       });
-    case 7:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
@@ -7232,11 +7861,11 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: SensitiveString, Tags: __S(26, __c3, 2) }).pipe(
+        S.Struct({ ResourceARN: SensitiveString, Tags: __S(185, __c23, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
             svc,
@@ -7247,9 +7876,13 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: SensitiveString, TagKeys: __S(0, __c0, 0) }).pipe(
+        S.Struct({ ResourceARN: SensitiveString, TagKeys: __S(80, __c10, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
             svc,
@@ -7260,15 +7893,23 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ VoiceConnector: __S(75, __c9, 3) }).pipe(
+        S.Struct({ VoiceConnector: __S(504, __c63, 0) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/settings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateGlobalSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: SensitiveString.pipe(T.HttpLabel("PhoneNumberId")),
@@ -7286,7 +7927,11 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePhoneNumberRequest" });
-    case 4:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CallingName: SensitiveString }).pipe(
           T.all(
@@ -7301,12 +7946,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdatePhoneNumberSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
           ProxySessionId: S.String.pipe(T.HttpLabel("ProxySessionId")),
-          Capabilities: __S(16, __c2, 0),
+          Capabilities: __S(152, __c19, 0),
           ExpiryMinutes: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -7324,221 +7973,8 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateProxySessionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
-          Name: S.optional(S.String),
-          Endpoints: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/sip-media-applications/{SipMediaApplicationId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateSipMediaApplicationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          SipMediaApplicationId: S.String.pipe(T.HttpLabel("SipMediaApplicationId")),
-          TransactionId: S.String.pipe(T.HttpLabel("TransactionId")),
-          Arguments: __S(30, __c3, 6),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/sip-media-applications/{SipMediaApplicationId}/calls/{TransactionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateSipMediaApplicationCallRequest",
-      });
   }
 }
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          SipRuleId: S.String.pipe(T.HttpLabel("SipRuleId")),
-          Name: S.String,
-          Disabled: S.optional(S.Boolean),
-          TargetApplications: S.optional(__S(35, __c4, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/sip-rules/{SipRuleId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSipRuleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VoiceConnectorId: S.String.pipe(T.HttpLabel("VoiceConnectorId")),
-          Name: S.String,
-          RequireEncryption: S.Boolean,
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/voice-connectors/{VoiceConnectorId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceConnectorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          VoiceConnectorGroupId: S.String.pipe(T.HttpLabel("VoiceConnectorGroupId")),
-          Name: S.String,
-          VoiceConnectorItems: __S(43, __c5, 3),
-          CallDistributionType: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/voice-connector-groups/{VoiceConnectorGroupId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceConnectorGroupRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          VoiceProfileId: S.String.pipe(T.HttpLabel("VoiceProfileId")),
-          SpeakerSearchTaskId: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/voice-profiles/{VoiceProfileId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceProfileRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          VoiceProfileDomainId: S.String.pipe(T.HttpLabel("VoiceProfileDomainId")),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/voice-profile-domains/{VoiceProfileDomainId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceProfileDomainRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AwsAccountId: S.String,
-          StreetNumber: SensitiveString,
-          StreetInfo: SensitiveString,
-          City: SensitiveString,
-          State: SensitiveString,
-          Country: SensitiveString,
-          PostalCode: SensitiveString,
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/emergency-calling/address" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ValidateE911AddressRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          streetName: S.optional(SensitiveString),
-          streetSuffix: S.optional(SensitiveString),
-          postDirectional: S.optional(SensitiveString),
-          preDirectional: S.optional(SensitiveString),
-          streetNumber: S.optional(SensitiveString),
-          city: S.optional(SensitiveString),
-          state: S.optional(SensitiveString),
-          postalCode: S.optional(SensitiveString),
-          postalCodePlus4: S.optional(SensitiveString),
-          country: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Address" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          streetInfo: S.optional(SensitiveString),
-          streetNumber: S.optional(SensitiveString),
-          city: S.optional(SensitiveString),
-          state: S.optional(SensitiveString),
-          postalCode: S.optional(SensitiveString),
-          postalCodePlus4: S.optional(SensitiveString),
-          country: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "CandidateAddress" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(215, __c26, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("CandidateAddress"))
-          .annotate({
-            identifier: "CandidateAddress",
-          }),
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ValidationResult: S.optional(S.Number),
-          AddressExternalId: S.optional(S.String),
-          Address: S.optional(__S(214, __c26, 6)),
-          CandidateAddressList: S.optional(__S(216, __c27, 0)),
-        }),
-      ).annotate({
-        identifier: "ValidateE911AddressResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

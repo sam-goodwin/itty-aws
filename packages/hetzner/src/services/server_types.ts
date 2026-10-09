@@ -212,7 +212,7 @@ export const getServerType: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetServerTypeRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetServerTypeResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetServerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const listServerTypes: API.PaginatedOperationMethod<
   ListServerTypesResponseServerTypesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9, __c1, 1) as any as S.Schema<ListServerTypesRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<ListServerTypesResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListServerTypesRequest>,
+    output: __S(21, __c2, 5) as any as S.Schema<ListServerTypesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -256,27 +256,58 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.Number,
+          name: S.String,
+          description: S.String,
+          cores: S.Number,
+          memory: S.Number,
+          disk: S.Number,
+          deprecated: S.Boolean,
+          prices: __S(10, __c1, 2),
+          storage_type: S.String,
+          cpu_type: S.String,
+          category: S.optional(S.String),
+          architecture: S.String,
+          deprecation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          locations: __S(13, __c1, 5),
+        }),
+      ).annotate({
+        identifier: "GetServerTypeResponseServerType",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          server_type: __S(1, __c0, 1),
+        }),
+      ).annotate({ identifier: "GetServerTypeResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           net: S.String,
           gross: S.String,
         }),
       ).annotate({
         identifier: "GetServerTypeResponseServerTypePricesItemPriceHourly",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: __S(1, __c0, 1),
-          price_monthly: __S(1, __c0, 1),
+          price_hourly: __S(8, __c1, 0),
+          price_monthly: __S(8, __c1, 0),
           included_traffic: S.Number,
-          price_per_tb_traffic: __S(1, __c0, 1),
+          price_per_tb_traffic: __S(8, __c1, 0),
         }),
       ).annotate({
         identifier: "GetServerTypeResponseServerTypePricesItem",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           unavailable_after: S.String,
@@ -285,52 +316,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetServerTypeResponseServerTypeDeprecation",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          deprecation: S.NullOr(__S(4, __c0, 4)),
+          deprecation: S.NullOr(__S(11, __c1, 3)),
           recommended: S.Boolean,
           available: S.Boolean,
         }),
       ).annotate({
         identifier: "GetServerTypeResponseServerTypeLocationsItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          description: S.String,
-          cores: S.Number,
-          memory: S.Number,
-          disk: S.Number,
-          deprecated: S.Boolean,
-          prices: __S(3, __c0, 3),
-          storage_type: S.String,
-          cpu_type: S.String,
-          category: S.optional(S.String),
-          architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(4, __c0, 4))),
-          locations: __S(6, __c0, 6),
-        }),
-      ).annotate({
-        identifier: "GetServerTypeResponseServerType",
-      });
+    case 5:
+      return S.Array(__S(12, __c1, 4));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          server_type: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "GetServerTypeResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
@@ -338,7 +342,7 @@ function __c1(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/server_types", code: 200 })),
       ).annotate({ identifier: "ListServerTypesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -348,20 +352,20 @@ function __c1(j: number): any {
           memory: S.Number,
           disk: S.Number,
           deprecated: S.Boolean,
-          prices: __S(3, __c0, 3),
+          prices: __S(10, __c1, 2),
           storage_type: S.String,
           cpu_type: S.String,
           category: S.optional(S.String),
           architecture: S.String,
-          deprecation: S.optional(S.NullOr(__S(4, __c0, 4))),
-          locations: __S(6, __c0, 6),
+          deprecation: S.optional(S.NullOr(__S(11, __c1, 3))),
+          locations: __S(13, __c1, 5),
         }),
       ).annotate({
         identifier: "ListServerTypesResponseServerTypesItem",
       });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -374,24 +378,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListServerTypesResponseMetaPagination",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(12, __c1, 4),
+          pagination: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListServerTypesResponseMeta",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          server_types: __S(11, __c1, 3),
-          meta: __S(13, __c1, 5),
+          server_types: __S(18, __c2, 2),
+          meta: __S(20, __c2, 4),
         }),
       ).annotate({ identifier: "ListServerTypesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -261,7 +261,7 @@ export const getUserInfo: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetUserInfoRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetUserInfoResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetUserInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -275,8 +275,8 @@ export const initiateDeviceAuthorization: API.OperationMethod<
   InitiateDeviceAuthorizationError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<InitiateDeviceAuthorizationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<InitiateDeviceAuthorizationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<InitiateDeviceAuthorizationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<InitiateDeviceAuthorizationResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const postUserInfo: API.OperationMethod<
   PostUserInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<PostUserInfoRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<PostUserInfoResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<PostUserInfoRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<PostUserInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -305,8 +305,8 @@ export const registerOAuthApp: API.OperationMethod<
   RegisterOAuthAppError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<RegisterOAuthAppRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RegisterOAuthAppResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<RegisterOAuthAppRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<RegisterOAuthAppResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -320,11 +320,33 @@ function __c0(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/oauth/userinfo", code: 200 })),
       ).annotate({ identifier: "GetUserInfoRequest" });
     case 1:
-      return S.Array(S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: __S(1, __c0, 1),
+          sub: S.String,
+          name: S.optional(S.String),
+          preferred_username: S.optional(S.String),
+          profile: S.optional(S.String),
+          picture: S.optional(S.String),
+          website: S.optional(S.String),
+          email: S.optional(S.String),
+          email_verified: S.optional(S.Boolean),
+          hardwareItems: S.optional(__S(10, __c1, 2)),
+          isPro: S.Boolean,
+          canPay: S.optional(S.Boolean),
+          billingMode: S.optional(S.String),
+          orgs: __S(14, __c1, 6),
+        }),
+      ).annotate({ identifier: "GetUserInfoResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sku: __S(8, __c1, 0),
           mem: S.Number,
           num: S.Number,
           isPrimary: S.optional(S.Boolean),
@@ -332,11 +354,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetUserInfoResponseHardwareItemsItem",
       });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
@@ -346,9 +366,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetUserInfoResponseOrgsItemResourceGroupsItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(11, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
@@ -359,18 +379,52 @@ function __c0(j: number): any {
           canPay: S.optional(S.Boolean),
           billingMode: S.optional(S.String),
           roleInOrg: S.optional(S.String),
-          securityRestrictions: S.optional(__S(4, __c0, 4)),
-          resourceGroups: S.optional(__S(6, __c0, 6)),
+          securityRestrictions: S.optional(__S(16, __c2, 0)),
+          resourceGroups: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseOrgsItem",
       });
+    case 6:
+      return S.Array(__S(13, __c1, 5));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.String,
+          scope: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/oauth/device", code: 200 })),
+      ).annotate({
+        identifier: "InitiateDeviceAuthorizationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          device_code: S.String,
+          user_code: S.String,
+          verification_uri: S.String,
+          expires_in: S.Number,
+        }),
+      ).annotate({
+        identifier: "InitiateDeviceAuthorizationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/oauth/userinfo", code: 200 })),
+      ).annotate({ identifier: "PostUserInfoRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -382,89 +436,47 @@ function __c1(j: number): any {
           website: S.optional(S.String),
           email: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
-          hardwareItems: S.optional(__S(3, __c0, 3)),
+          hardwareItems: S.optional(__S(10, __c1, 2)),
           isPro: S.Boolean,
           canPay: S.optional(S.Boolean),
           billingMode: S.optional(S.String),
-          orgs: __S(8, __c1, 0),
-        }),
-      ).annotate({ identifier: "GetUserInfoResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.String,
-          scope: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/oauth/device", code: 200 })),
-      ).annotate({
-        identifier: "InitiateDeviceAuthorizationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          device_code: S.String,
-          user_code: S.String,
-          verification_uri: S.String,
-          expires_in: S.Number,
-        }),
-      ).annotate({
-        identifier: "InitiateDeviceAuthorizationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/oauth/userinfo", code: 200 })),
-      ).annotate({ identifier: "PostUserInfoRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sub: S.String,
-          name: S.optional(S.String),
-          preferred_username: S.optional(S.String),
-          profile: S.optional(S.String),
-          picture: S.optional(S.String),
-          website: S.optional(S.String),
-          email: S.optional(S.String),
-          email_verified: S.optional(S.Boolean),
-          hardwareItems: S.optional(__S(3, __c0, 3)),
-          isPro: S.Boolean,
-          canPay: S.optional(S.Boolean),
-          billingMode: S.optional(S.String),
-          orgs: __S(8, __c1, 0),
+          orgs: __S(14, __c1, 6),
         }),
       ).annotate({ identifier: "PostUserInfoResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          redirect_uris: S.optional(__S(14, __c1, 6)),
+          redirect_uris: S.optional(__S(40, __c5, 0)),
           client_name: S.optional(S.String),
           client_uri: S.optional(S.String),
           logo_uri: S.optional(S.String),
           scope: S.optional(S.String),
-          contacts: S.optional(__S(14, __c1, 6)),
+          contacts: S.optional(__S(40, __c5, 0)),
           token_endpoint_auth_method: S.optional(S.String),
           software_id: S.optional(S.String),
           software_version: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/oauth/register", code: 200 })),
       ).annotate({ identifier: "RegisterOAuthAppRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           client_id_issued_at: S.Number,
           client_secret_expires_at: S.Number,
-          redirect_uris: __S(14, __c1, 6),
+          redirect_uris: __S(40, __c5, 0),
           client_name: S.optional(S.String),
           client_uri: S.optional(S.String),
           logo_uri: S.optional(S.String),
           scope: S.String,
-          grant_types: __S(4, __c0, 4),
-          contacts: S.optional(__S(14, __c1, 6)),
+          grant_types: __S(16, __c2, 0),
+          contacts: S.optional(__S(40, __c5, 0)),
           token_endpoint_auth_method: S.optional(S.String),
           software_id: S.optional(S.String),
           software_version: S.optional(S.String),
@@ -472,7 +484,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "RegisterOAuthAppResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -562,8 +562,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(233, __c29, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const createProjectsLocationsApis: API.OperationMethod<
   CreateProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsLocationsApisRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateProjectsLocationsApisRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const createProjectsLocationsApisConfigs: API.OperationMethod<
   CreateProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateProjectsLocationsApisConfigsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(288, __c36, 0) as any as S.Schema<CreateProjectsLocationsApisConfigsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -622,8 +622,8 @@ export const createProjectsLocationsGateways: API.OperationMethod<
   CreateProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateProjectsLocationsGatewaysRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(304, __c38, 0) as any as S.Schema<CreateProjectsLocationsGatewaysRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -642,8 +642,8 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
   DeleteProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteProjectsLocationsApisRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteProjectsLocationsApisRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const deleteProjectsLocationsApisConfigs: API.OperationMethod<
   DeleteProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteProjectsLocationsApisConfigsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteProjectsLocationsApisConfigsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -682,8 +682,8 @@ export const deleteProjectsLocationsGateways: API.OperationMethod<
   DeleteProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteProjectsLocationsGatewaysRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsGatewaysRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -702,8 +702,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -717,8 +717,8 @@ export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -732,8 +732,8 @@ export const getIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetIamPolicyProjectsLocationsApisConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetIamPolicyProjectsLocationsApisConfigsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -747,8 +747,8 @@ export const getIamPolicyProjectsLocationsGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetIamPolicyProjectsLocationsGatewaysRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetIamPolicyProjectsLocationsGatewaysRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ApigatewayLocation>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ApigatewayLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -777,8 +777,8 @@ export const getProjectsLocationsApis: API.OperationMethod<
   GetProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetProjectsLocationsApisRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ApigatewayApi>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetProjectsLocationsApisRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<ApigatewayApi>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -792,8 +792,8 @@ export const getProjectsLocationsApisConfigs: API.OperationMethod<
   GetProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetProjectsLocationsApisConfigsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ApigatewayApiConfig>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetProjectsLocationsApisConfigsRequest>,
+  output: __S(302, __c37, 6) as any as S.Schema<ApigatewayApiConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -807,8 +807,8 @@ export const getProjectsLocationsGateways: API.OperationMethod<
   GetProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetProjectsLocationsGatewaysRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ApigatewayGateway>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetProjectsLocationsGatewaysRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<ApigatewayGateway>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -822,8 +822,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -838,8 +838,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ApigatewayListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ApigatewayListLocationsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ApigatewayListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -855,8 +855,8 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   GcpOpContext,
   ApigatewayListApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListProjectsLocationsApisRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ApigatewayListApisResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListProjectsLocationsApisRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<ApigatewayListApisResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -872,8 +872,8 @@ export const listProjectsLocationsApisConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ApigatewayListApiConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ApigatewayListApiConfigsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ApigatewayListApiConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -889,8 +889,8 @@ export const listProjectsLocationsGateways: API.PaginatedOperationMethod<
   GcpOpContext,
   ApigatewayListGatewaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListProjectsLocationsGatewaysRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ApigatewayListGatewaysResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListProjectsLocationsGatewaysRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<ApigatewayListGatewaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -906,8 +906,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ApigatewayListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ApigatewayListOperationsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ApigatewayListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +927,8 @@ export const patchProjectsLocationsApis: API.OperationMethod<
   PatchProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<PatchProjectsLocationsApisRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(144, __c18, 0) as any as S.Schema<PatchProjectsLocationsApisRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -947,8 +947,8 @@ export const patchProjectsLocationsApisConfigs: API.OperationMethod<
   PatchProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<PatchProjectsLocationsApisConfigsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(152, __c19, 0) as any as S.Schema<PatchProjectsLocationsApisConfigsRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -967,8 +967,8 @@ export const patchProjectsLocationsGateways: API.OperationMethod<
   PatchProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<PatchProjectsLocationsGatewaysRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ApigatewayOperation>,
+  input: __S(160, __c20, 0) as any as S.Schema<PatchProjectsLocationsGatewaysRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<ApigatewayOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -987,8 +987,8 @@ export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(168, __c21, 0) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1007,8 @@ export const setIamPolicyProjectsLocationsApisConfigs: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<SetIamPolicyProjectsLocationsApisConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(184, __c23, 0) as any as S.Schema<SetIamPolicyProjectsLocationsApisConfigsRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1027,8 +1027,8 @@ export const setIamPolicyProjectsLocationsGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<SetIamPolicyProjectsLocationsGatewaysRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ApigatewayPolicy>,
+  input: __S(192, __c24, 0) as any as S.Schema<SetIamPolicyProjectsLocationsGatewaysRequest>,
+  output: __S(39, __c4, 7) as any as S.Schema<ApigatewayPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +1047,8 @@ export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1067,12 @@ export const testIamPermissionsProjectsLocationsApisConfigs: API.OperationMethod
   TestIamPermissionsProjectsLocationsApisConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<TestIamPermissionsProjectsLocationsApisConfigsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
+  input: __S(
+    216,
+    __c27,
+    0,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsApisConfigsRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1087,8 +1091,8 @@ export const testIamPermissionsProjectsLocationsGateways: API.OperationMethod<
   TestIamPermissionsProjectsLocationsGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<TestIamPermissionsProjectsLocationsGatewaysRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsGatewaysRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<ApigatewayTestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1098,210 +1102,6 @@ export const testIamPermissionsProjectsLocationsGateways: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApigatewayCancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          managedService: S.optional(S.String),
-          state: S.optional(S.String),
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApigatewayApi" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          apiId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apis",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsApisRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(7, __c0, 7)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ApigatewayStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(8, __c1, 0)),
-          response: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApigatewayOperation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          contents: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApigatewayApiConfigFile" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fileDescriptorSet: S.optional(__S(10, __c1, 2)),
-          source: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "ApigatewayApiConfigGrpcServiceDefinition",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "ApigatewayApiConfigOpenApiDocument",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          serviceConfigId: S.optional(S.String),
-          managedServiceConfigs: S.optional(__S(11, __c1, 3)),
-          gatewayServiceAccount: S.optional(S.String),
-          grpcServices: S.optional(__S(13, __c1, 5)),
-          labels: S.optional(__S(3, __c0, 3)),
-          openapiDocuments: S.optional(__S(15, __c1, 7)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApigatewayApiConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/configs",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsApisConfigsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveStreamingMode: S.optional(S.String),
-          streamingMode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          defaultHostname: S.optional(S.String),
-          apiConfig: S.optional(S.String),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApigatewayGateway" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gatewayId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/gateways",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsGatewaysRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsApisRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://apigateway.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsApisConfigsRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1315,7 +1115,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsGatewaysRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1331,7 +1135,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1348,27 +1152,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsApisRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(25, __c3, 1)),
+          exemptedMembers: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "ApigatewayAuditLogConfig" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(27, __c3, 3)),
+          auditLogConfigs: S.optional(__S(33, __c4, 1)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApigatewayAuditConfig" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1377,30 +1189,30 @@ function __c3(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApigatewayExpr" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(25, __c3, 1)),
-          condition: S.optional(__S(30, __c3, 6)),
+          members: S.optional(__S(24, __c3, 0)),
+          condition: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "ApigatewayBinding" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(37, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(29, __c3, 5)),
-          bindings: S.optional(__S(32, __c4, 0)),
+          auditConfigs: S.optional(__S(35, __c4, 3)),
+          bindings: S.optional(__S(38, __c4, 6)),
         }),
       ).annotate({ identifier: "ApigatewayPolicy" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -1415,7 +1227,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsApisConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -1430,7 +1246,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsGatewaysRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1444,17 +1264,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          labels: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(272, __c34, 0)),
+          labels: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "ApigatewayLocation" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1468,7 +1296,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsApisRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1485,7 +1317,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1501,7 +1333,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsGatewaysRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1515,14 +1351,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(25, __c3, 1).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(24, __c3, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1533,18 +1373,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(37, __c4, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(43, __c5, 3)),
+          locations: S.optional(__S(105, __c13, 1)),
         }),
       ).annotate({
         identifier: "ApigatewayListLocationsResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1562,21 +1406,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsApisRequest",
       });
-    case 6:
-      return S.Array(__S(4, __c0, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachableLocations: S.optional(__S(25, __c3, 1)),
-          apis: S.optional(__S(46, __c5, 6)),
+          unreachableLocations: S.optional(__S(24, __c3, 0)),
+          apis: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({
         identifier: "ApigatewayListApisResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1597,18 +1441,22 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsApisConfigsRequest",
       });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(302, __c37, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apiConfigs: S.optional(__S(49, __c6, 1)),
-          unreachableLocations: S.optional(__S(25, __c3, 1)),
+          apiConfigs: S.optional(__S(121, __c15, 1)),
+          unreachableLocations: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "ApigatewayListApiConfigsResponse",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1626,19 +1474,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsGatewaysRequest",
       });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(312, __c39, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          gateways: S.optional(__S(52, __c6, 4)),
-          unreachableLocations: S.optional(__S(25, __c3, 1)),
+          gateways: S.optional(__S(129, __c16, 1)),
+          unreachableLocations: S.optional(__S(24, __c3, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ApigatewayListGatewaysResponse",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1656,28 +1508,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 7:
-      return S.Array(__S(9, __c1, 1));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(282, __c35, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(55, __c6, 7)),
+          operations: S.optional(__S(137, __c17, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(25, __c3, 1)),
+          unreachable: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "ApigatewayListOperationsResponse",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1688,12 +1540,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApisRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(302, __c37, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1704,12 +1560,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsApisConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1720,20 +1580,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsGatewaysRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(33, __c4, 1)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApigatewaySetIamPolicyRequest",
-      });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1744,11 +1599,28 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsApisRequest",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(39, __c4, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ApigatewaySetIamPolicyRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1759,11 +1631,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsApisConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1776,21 +1652,13 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "ApigatewayTestIamPermissionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1801,11 +1669,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsApisRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "ApigatewayTestIamPermissionsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1816,11 +1700,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsApisConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(208, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1833,7 +1721,254 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApigatewayCancelOperationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(232, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          apiId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(256, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apis",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsApisRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          labels: S.optional(__S(264, __c33, 0)),
+          managedService: S.optional(S.String),
+          state: S.optional(S.String),
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApigatewayApi" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c34, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(280, __c35, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ApigatewayStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(281, __c35, 1)),
+          response: S.optional(__S(272, __c34, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(272, __c34, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApigatewayOperation" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(302, __c37, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/configs",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsApisConfigsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          contents: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApigatewayApiConfigFile" });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fileDescriptorSet: S.optional(__S(296, __c37, 0)),
+          source: S.optional(__S(297, __c37, 1)),
+        }),
+      ).annotate({
+        identifier: "ApigatewayApiConfigGrpcServiceDefinition",
+      });
+    case 3:
+      return S.Array(__S(298, __c37, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(__S(296, __c37, 0)),
+        }),
+      ).annotate({
+        identifier: "ApigatewayApiConfigOpenApiDocument",
+      });
+    case 5:
+      return S.Array(__S(300, __c37, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          serviceConfigId: S.optional(S.String),
+          managedServiceConfigs: S.optional(__S(297, __c37, 1)),
+          gatewayServiceAccount: S.optional(S.String),
+          grpcServices: S.optional(__S(299, __c37, 3)),
+          labels: S.optional(__S(264, __c33, 0)),
+          openapiDocuments: S.optional(__S(301, __c37, 5)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApigatewayApiConfig" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gatewayId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(312, __c39, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/gateways",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsGatewaysRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveStreamingMode: S.optional(S.String),
+          streamingMode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(264, __c33, 0)),
+          name: S.optional(S.String),
+          defaultHostname: S.optional(S.String),
+          apiConfig: S.optional(S.String),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApigatewayGateway" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsApisRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://apigateway.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsApisConfigsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

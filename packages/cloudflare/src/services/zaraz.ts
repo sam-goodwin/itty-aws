@@ -750,8 +750,8 @@ export const createPublish: API.OperationMethod<
   CreatePublishError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreatePublishRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePublishResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreatePublishRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<CreatePublishResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetConfigRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetConfigResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetConfigRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<GetConfigResponse>,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -780,8 +780,8 @@ export const getDefault: API.OperationMethod<
   GetDefaultError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetDefaultRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetDefaultResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetDefaultRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<GetDefaultResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -795,8 +795,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetExportRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetExportResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetExportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -810,8 +810,8 @@ export const getHistoryConfig: API.OperationMethod<
   GetHistoryConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetHistoryConfigRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetHistoryConfigResponse>,
+  input: __S(145, __c9, 1) as any as S.Schema<GetHistoryConfigRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<GetHistoryConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -825,8 +825,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetWorkflowResponse>,
   errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const listHistories: API.PaginatedOperationMethod<
   HistoryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListHistoriesRequest>,
-    output: __S(36, __c4, 4) as any as S.Schema<ListHistoriesResponse>,
+    input: __S(192, __c12, 0) as any as S.Schema<ListHistoriesRequest>,
+    output: __S(195, __c12, 3) as any as S.Schema<ListHistoriesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -860,8 +860,8 @@ export const putConfig: API.OperationMethod<
   PutConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<PutConfigRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<PutConfigResponse>,
+  input: __S(213, __c13, 5) as any as S.Schema<PutConfigRequest>,
+  output: __S(215, __c13, 7) as any as S.Schema<PutConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -875,8 +875,8 @@ export const putHistory: API.OperationMethod<
   PutHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PutHistoryRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<PutHistoryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PutHistoryRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PutHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -890,8 +890,8 @@ export const putZaraz: API.OperationMethod<
   PutZarazError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<PutZarazRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PutZarazResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<PutZarazRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<PutZarazResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -899,6 +899,83 @@ export const putZaraz: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          body: S.Number.pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/history", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutHistoryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acceptAll: __S(84, __c5, 4).pipe(T.Body("accept_all")),
+          confirmMyChoices: __S(84, __c5, 4).pipe(T.Body("confirm_my_choices")),
+          rejectAll: __S(84, __c5, 4).pipe(T.Body("reject_all")),
+        }),
+      ).annotate({
+        identifier: "HistoryUpdateResponseConsentButtonTextTranslations",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          buttonTextTranslations: S.optional(S.NullOr(__S(1, __c0, 1))),
+          companyEmail: S.optional(S.NullOr(S.String)),
+          companyName: S.optional(S.NullOr(S.String)),
+          companyStreetAddress: S.optional(S.NullOr(S.String)),
+          consentModalIntroHTML: S.optional(S.NullOr(S.String)),
+          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(84, __c5, 4))),
+          cookieName: S.optional(S.NullOr(S.String)),
+          customCSS: S.optional(S.NullOr(S.String)),
+          customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+          defaultLanguage: S.optional(S.NullOr(S.String)),
+          hideModal: S.optional(S.NullOr(S.Boolean)),
+          purposes: S.optional(S.NullOr(__S(86, __c5, 6))),
+          purposesWithTranslations: S.optional(S.NullOr(__S(225, __c14, 1))),
+          tcfCompliant: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "HistoryUpdateResponseConsent",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataLayer: S.Boolean,
+          debugKey: S.String,
+          settings: __S(81, __c5, 1),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
+          zarazVersion: S.Number,
+          analytics: S.optional(S.NullOr(__S(83, __c5, 3))),
+          consent: S.optional(S.NullOr(__S(2, __c0, 2))),
+          historyChange: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutHistoryResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          workflow: S.String,
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/workflow", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutZarazRequest" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -915,7 +992,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePublishResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -923,7 +1004,62 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/settings/zaraz/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          buttonTextTranslations: S.optional(S.NullOr(__S(97, __c6, 1))),
+          companyEmail: S.optional(S.NullOr(S.String)),
+          companyName: S.optional(S.NullOr(S.String)),
+          companyStreetAddress: S.optional(S.NullOr(S.String)),
+          consentModalIntroHTML: S.optional(S.NullOr(S.String)),
+          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(84, __c5, 4))),
+          cookieName: S.optional(S.NullOr(S.String)),
+          customCSS: S.optional(S.NullOr(S.String)),
+          customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
+          defaultLanguage: S.optional(S.NullOr(S.String)),
+          hideModal: S.optional(S.NullOr(S.Boolean)),
+          purposes: S.optional(S.NullOr(__S(86, __c5, 6))),
+          purposesWithTranslations: S.optional(S.NullOr(__S(65, __c4, 1))),
+          tcfCompliant: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ConfigGetResponseConsent" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataLayer: S.Boolean,
+          debugKey: S.String,
+          settings: __S(81, __c5, 1),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
+          zarazVersion: S.Number,
+          analytics: S.optional(S.NullOr(__S(83, __c5, 3))),
+          consent: S.optional(S.NullOr(__S(49, __c3, 1))),
+          historyChange: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetConfigResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: __S(84, __c5, 4),
+          name: __S(96, __c6, 0),
+          order: S.Number,
+        }),
+      ).annotate({
+        identifier: "ConfigGetResponseConsentPurposesWithTranslationsValue",
+      });
+    case 1:
+      return S.Record(S.String, __S(64, __c4, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           escapedWorkerName: S.String,
@@ -932,11 +1068,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigGetResponseSettingsContextEnricher",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           autoInjectScript: S.Boolean,
-          contextEnricher: S.optional(S.NullOr(__S(3, __c0, 3))),
+          contextEnricher: S.optional(S.NullOr(__S(80, __c5, 0))),
           cookieDomain: S.optional(S.NullOr(S.String)),
           ecommerce: S.optional(S.NullOr(S.Boolean)),
           eventsApiPath: S.optional(S.NullOr(S.String)),
@@ -953,9 +1089,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigGetResponseSettings",
       });
-    case 5:
+    case 2:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           defaultPurpose: S.optional(S.NullOr(S.String)),
@@ -965,25 +1101,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfigGetResponseAnalytics",
       });
-    case 7:
+    case 4:
       return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acceptAll: __S(7, __c0, 7).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8, __c1, 0).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(7, __c0, 7).pipe(T.Body("reject_all")),
-        }),
-      ).annotate({
-        identifier: "ConfigGetResponseConsentButtonTextTranslations",
-      });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -992,58 +1112,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConfigGetResponseConsentPurposesValue",
       });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: __S(8, __c1, 0),
-          name: __S(7, __c0, 7),
-          order: S.Number,
-        }),
-      ).annotate({
-        identifier: "ConfigGetResponseConsentPurposesWithTranslationsValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(12, __c1, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9, __c1, 1))),
-          companyEmail: S.optional(S.NullOr(S.String)),
-          companyName: S.optional(S.NullOr(S.String)),
-          companyStreetAddress: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8, __c1, 0))),
-          cookieName: S.optional(S.NullOr(S.String)),
-          customCSS: S.optional(S.NullOr(S.String)),
-          customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-          defaultLanguage: S.optional(S.NullOr(S.String)),
-          hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(13, __c1, 5))),
-          tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "ConfigGetResponseConsent" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataLayer: S.Boolean,
-          debugKey: S.String,
-          settings: __S(4, __c0, 4),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
-          zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          consent: S.optional(S.NullOr(__S(14, __c1, 6))),
-          historyChange: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetConfigResponse" });
+      return S.Record(S.String, __S(85, __c5, 5));
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          acceptAll: __S(96, __c6, 0).pipe(T.Body("accept_all")),
+          confirmMyChoices: __S(84, __c5, 4).pipe(T.Body("confirm_my_choices")),
+          rejectAll: __S(96, __c6, 0).pipe(T.Body("reject_all")),
+        }),
+      ).annotate({
+        identifier: "ConfigGetResponseConsentButtonTextTranslations",
+      });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1059,19 +1148,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9, __c1, 1))),
+          buttonTextTranslations: S.optional(S.NullOr(__S(97, __c6, 1))),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8, __c1, 0))),
+          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(84, __c5, 4))),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(13, __c1, 5))),
+          purposes: S.optional(S.NullOr(__S(86, __c5, 6))),
+          purposesWithTranslations: S.optional(S.NullOr(__S(65, __c4, 1))),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1082,17 +1171,21 @@ function __c2(j: number): any {
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4, __c0, 4),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
+          settings: __S(81, __c5, 1),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          consent: S.optional(S.NullOr(__S(17, __c2, 1))),
+          analytics: S.optional(S.NullOr(__S(83, __c5, 3))),
+          consent: S.optional(S.NullOr(__S(113, __c7, 1))),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDefaultResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1100,17 +1193,21 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/settings/zaraz/export", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetExportRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "GetExportResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          ids: __S(21, __c2, 5).pipe(T.Query()),
+          ids: __S(144, __c9, 0).pipe(T.Query()),
         })
           .pipe(
             T.Http({
@@ -1121,76 +1218,72 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHistoryConfigRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          acceptAll: __S(8, __c1, 0).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8, __c1, 0).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(8, __c1, 0).pipe(T.Body("reject_all")),
+          acceptAll: __S(84, __c5, 4).pipe(T.Body("accept_all")),
+          confirmMyChoices: __S(84, __c5, 4).pipe(T.Body("confirm_my_choices")),
+          rejectAll: __S(84, __c5, 4).pipe(T.Body("reject_all")),
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfigConsentButtonTextTranslations",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8, __c1, 0),
-          name: __S(8, __c1, 0),
+          description: __S(84, __c5, 4),
+          name: __S(84, __c5, 4),
           order: S.Number,
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfigConsentPurposesWithTranslationsValue",
       });
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Record(S.String, __S(147, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(23, __c2, 7))),
+          buttonTextTranslations: S.optional(S.NullOr(__S(146, __c9, 2))),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8, __c1, 0))),
+          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(84, __c5, 4))),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(25, __c3, 1))),
+          purposes: S.optional(S.NullOr(__S(86, __c5, 6))),
+          purposesWithTranslations: S.optional(S.NullOr(__S(148, __c9, 4))),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfigConsent",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4, __c0, 4),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
+          settings: __S(81, __c5, 1),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          consent: S.optional(S.NullOr(__S(26, __c3, 2))),
+          analytics: S.optional(S.NullOr(__S(83, __c5, 3))),
+          consent: S.optional(S.NullOr(__S(149, __c9, 5))),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "HistoryConfigsGetResultValueConfig",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          config: __S(27, __c3, 3),
+          config: __S(150, __c9, 6),
           createdAt: S.String,
           updatedAt: S.String,
           userId: S.String,
@@ -1198,13 +1291,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "HistoryConfigsGetResultValue",
       });
-    case 5:
-      return S.Record(S.String, __S(28, __c3, 4));
-    case 6:
+    case 8:
+      return S.Record(S.String, __S(151, __c9, 7));
+    case 9:
       return S.suspend(() =>
-        __S(29, __c3, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(152, __c9, 8).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHistoryConfigResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1216,13 +1313,17 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetWorkflowRequest" });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWorkflowResponse" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1236,7 +1337,7 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoriesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1246,20 +1347,24 @@ function __c4(j: number): any {
           userId: S.String,
         }),
       ).annotate({ identifier: "HistoryListResultItem" });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(35, __c4, 3).pipe(T.EnvelopePayload()),
+          result: __S(194, __c12, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHistoriesResponse" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autoInjectScript: S.Boolean,
-          contextEnricher: S.optional(__S(3, __c0, 3)),
+          contextEnricher: S.optional(__S(80, __c5, 0)),
           cookieDomain: S.optional(S.String),
           ecommerce: S.optional(S.Boolean),
           eventsApiPath: S.optional(S.String),
@@ -1276,7 +1381,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ConfigUpdateRequestSettings",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           defaultPurpose: S.optional(S.String),
@@ -1286,187 +1391,113 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ConfigUpdateRequestAnalytics",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          description: __S(8, __c1, 0),
-          name: __S(8, __c1, 0),
+          description: __S(84, __c5, 4),
+          name: __S(84, __c5, 4),
           order: S.Number,
         }),
       ).annotate({
         identifier: "ConfigUpdateRequestConsentPurposesWithTranslationsValue",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(39, __c4, 7));
-    case 1:
+    case 3:
+      return S.Record(S.String, __S(210, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(__S(9, __c1, 1)),
+          buttonTextTranslations: S.optional(__S(97, __c6, 1)),
           companyEmail: S.optional(S.String),
           companyName: S.optional(S.String),
           companyStreetAddress: S.optional(S.String),
           consentModalIntroHTML: S.optional(S.String),
-          consentModalIntroHTMLWithTranslations: S.optional(__S(8, __c1, 0)),
+          consentModalIntroHTMLWithTranslations: S.optional(__S(84, __c5, 4)),
           cookieName: S.optional(S.String),
           customCSS: S.optional(S.String),
           customIntroDisclaimerDismissed: S.optional(S.Boolean),
           defaultLanguage: S.optional(S.String),
           hideModal: S.optional(S.Boolean),
-          purposes: S.optional(__S(11, __c1, 3)),
-          purposesWithTranslations: S.optional(__S(40, __c5, 0)),
+          purposes: S.optional(__S(86, __c5, 6)),
+          purposesWithTranslations: S.optional(__S(211, __c13, 3)),
           tcfCompliant: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ConfigUpdateRequestConsent",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(37, __c4, 5),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
+          settings: __S(208, __c13, 0),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
           zarazVersion: S.Number,
-          analytics: S.optional(__S(38, __c4, 6)),
-          consent: S.optional(__S(41, __c5, 1)),
+          analytics: S.optional(__S(209, __c13, 1)),
+          consent: S.optional(__S(212, __c13, 4)),
           historyChange: S.optional(S.Boolean),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/config", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutConfigRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: __S(8, __c1, 0),
-          name: __S(8, __c1, 0),
-          order: S.Number,
-        }),
-      ).annotate({
-        identifier: "ConfigUpdateResponseConsentPurposesWithTranslationsValue",
-      });
-    case 4:
-      return S.Record(S.String, __S(43, __c5, 3));
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(9, __c1, 1))),
+          buttonTextTranslations: S.optional(S.NullOr(__S(97, __c6, 1))),
           companyEmail: S.optional(S.NullOr(S.String)),
           companyName: S.optional(S.NullOr(S.String)),
           companyStreetAddress: S.optional(S.NullOr(S.String)),
           consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8, __c1, 0))),
+          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(84, __c5, 4))),
           cookieName: S.optional(S.NullOr(S.String)),
           customCSS: S.optional(S.NullOr(S.String)),
           customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
           defaultLanguage: S.optional(S.NullOr(S.String)),
           hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(44, __c5, 4))),
+          purposes: S.optional(S.NullOr(__S(86, __c5, 6))),
+          purposesWithTranslations: S.optional(S.NullOr(__S(225, __c14, 1))),
           tcfCompliant: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "ConfigUpdateResponseConsent",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           dataLayer: S.Boolean,
           debugKey: S.String,
-          settings: __S(4, __c0, 4),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
+          settings: __S(81, __c5, 1),
+          tools: __S(82, __c5, 2),
+          triggers: __S(82, __c5, 2),
+          variables: __S(82, __c5, 2),
           zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          consent: S.optional(S.NullOr(__S(45, __c5, 5))),
+          analytics: S.optional(S.NullOr(__S(83, __c5, 3))),
+          consent: S.optional(S.NullOr(__S(214, __c13, 6))),
           historyChange: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutConfigResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          body: S.Number.pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/history", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutHistoryRequest" });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          acceptAll: __S(8, __c1, 0).pipe(T.Body("accept_all")),
-          confirmMyChoices: __S(8, __c1, 0).pipe(T.Body("confirm_my_choices")),
-          rejectAll: __S(8, __c1, 0).pipe(T.Body("reject_all")),
+          description: __S(84, __c5, 4),
+          name: __S(84, __c5, 4),
+          order: S.Number,
         }),
       ).annotate({
-        identifier: "HistoryUpdateResponseConsentButtonTextTranslations",
+        identifier: "ConfigUpdateResponseConsentPurposesWithTranslationsValue",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          buttonTextTranslations: S.optional(S.NullOr(__S(48, __c6, 0))),
-          companyEmail: S.optional(S.NullOr(S.String)),
-          companyName: S.optional(S.NullOr(S.String)),
-          companyStreetAddress: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTML: S.optional(S.NullOr(S.String)),
-          consentModalIntroHTMLWithTranslations: S.optional(S.NullOr(__S(8, __c1, 0))),
-          cookieName: S.optional(S.NullOr(S.String)),
-          customCSS: S.optional(S.NullOr(S.String)),
-          customIntroDisclaimerDismissed: S.optional(S.NullOr(S.Boolean)),
-          defaultLanguage: S.optional(S.NullOr(S.String)),
-          hideModal: S.optional(S.NullOr(S.Boolean)),
-          purposes: S.optional(S.NullOr(__S(11, __c1, 3))),
-          purposesWithTranslations: S.optional(S.NullOr(__S(44, __c5, 4))),
-          tcfCompliant: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "HistoryUpdateResponseConsent",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataLayer: S.Boolean,
-          debugKey: S.String,
-          settings: __S(4, __c0, 4),
-          tools: __S(5, __c0, 5),
-          triggers: __S(5, __c0, 5),
-          variables: __S(5, __c0, 5),
-          zarazVersion: S.Number,
-          analytics: S.optional(S.NullOr(__S(6, __c0, 6))),
-          consent: S.optional(S.NullOr(__S(49, __c6, 1))),
-          historyChange: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutHistoryResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          workflow: S.String,
-        })
-          .pipe(
-            T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/workflow", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PutZarazRequest" });
+      return S.Record(S.String, __S(224, __c14, 0));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

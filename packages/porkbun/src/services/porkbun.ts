@@ -2424,8 +2424,8 @@ export const accountVerifyPhoneConfirm: API.OperationMethod<
   AccountVerifyPhoneConfirmError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AccountVerifyPhoneConfirmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AccountVerifyPhoneConfirmResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<AccountVerifyPhoneConfirmRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<AccountVerifyPhoneConfirmResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2439,8 +2439,8 @@ export const accountVerifyPhoneSend: API.OperationMethod<
   AccountVerifyPhoneSendError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccountVerifyPhoneSendRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccountVerifyPhoneSendResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<AccountVerifyPhoneSendRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<AccountVerifyPhoneSendResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2454,8 +2454,8 @@ export const apikeyRequest: API.OperationMethod<
   ApikeyRequestError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApikeyRequestRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApikeyRequestResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<ApikeyRequestRequest>,
+  output: __S(761, __c95, 1) as any as S.Schema<ApikeyRequestResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2469,8 +2469,8 @@ export const bulkDomainCheckDomain: API.OperationMethod<
   BulkDomainCheckDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BulkDomainCheckDomainRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BulkDomainCheckDomainResponse>,
+  input: __S(872, __c109, 0) as any as S.Schema<BulkDomainCheckDomainRequest>,
+  output: __S(874, __c109, 2) as any as S.Schema<BulkDomainCheckDomainResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2484,8 +2484,8 @@ export const closeoutBuy: API.OperationMethod<
   CloseoutBuyError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CloseoutBuyRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CloseoutBuyResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<CloseoutBuyRequest>,
+  output: __S(985, __c123, 1) as any as S.Schema<CloseoutBuyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2499,8 @@ export const cloudflareCreateRecord: API.OperationMethod<
   CloudflareCreateRecordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CloudflareCreateRecordRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareCreateRecordResponse>,
+  input: __S(1112, __c139, 0) as any as S.Schema<CloudflareCreateRecordRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareCreateRecordResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2514,8 +2514,8 @@ export const cloudflareDeleteRecord: API.OperationMethod<
   CloudflareDeleteRecordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CloudflareDeleteRecordRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareDeleteRecordResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CloudflareDeleteRecordRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareDeleteRecordResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2529,8 +2529,8 @@ export const cloudflareEditRecord: API.OperationMethod<
   CloudflareEditRecordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CloudflareEditRecordRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareEditRecordResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CloudflareEditRecordRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareEditRecordResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2544,8 +2544,8 @@ export const cloudflareGetConnection: API.OperationMethod<
   CloudflareGetConnectionError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CloudflareGetConnectionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareGetConnectionResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CloudflareGetConnectionRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareGetConnectionResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2559,8 +2559,8 @@ export const cloudflareGetQueue: API.OperationMethod<
   CloudflareGetQueueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CloudflareGetQueueRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareGetQueueResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CloudflareGetQueueRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareGetQueueResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2574,8 +2574,8 @@ export const cloudflareGetRecords: API.OperationMethod<
   CloudflareGetRecordsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CloudflareGetRecordsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareGetRecordsResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<CloudflareGetRecordsRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareGetRecordsResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2589,8 +2589,8 @@ export const cloudflareGetZone: API.OperationMethod<
   CloudflareGetZoneError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CloudflareGetZoneRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareGetZoneResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<CloudflareGetZoneRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareGetZoneResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2604,8 +2604,8 @@ export const cloudflareGetZoneSettings: API.OperationMethod<
   CloudflareGetZoneSettingsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CloudflareGetZoneSettingsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareGetZoneSettingsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<CloudflareGetZoneSettingsRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareGetZoneSettingsResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2619,8 +2619,8 @@ export const cloudflareInventory: API.OperationMethod<
   CloudflareInventoryError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CloudflareInventoryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareInventoryResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CloudflareInventoryRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareInventoryResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2634,8 +2634,8 @@ export const cloudflareRollback: API.OperationMethod<
   CloudflareRollbackError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CloudflareRollbackRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareRollbackResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CloudflareRollbackRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareRollbackResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2649,8 +2649,8 @@ export const cloudflareSetProxy: API.OperationMethod<
   CloudflareSetProxyError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CloudflareSetProxyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareSetProxyResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<CloudflareSetProxyRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareSetProxyResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2664,8 +2664,8 @@ export const cloudflareSetZoneSettings: API.OperationMethod<
   CloudflareSetZoneSettingsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CloudflareSetZoneSettingsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CloudflareSetZoneSettingsResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<CloudflareSetZoneSettingsRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CloudflareSetZoneSettingsResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2679,8 +2679,8 @@ export const connectCloudflare: API.OperationMethod<
   ConnectCloudflareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ConnectCloudflareRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ConnectCloudflareResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ConnectCloudflareRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<ConnectCloudflareResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2694,8 +2694,8 @@ export const createAccountInvite: API.OperationMethod<
   CreateAccountInviteError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateAccountInviteRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateAccountInviteResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateAccountInviteRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<CreateAccountInviteResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2709,8 +2709,8 @@ export const createDns: API.OperationMethod<
   CreateDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateDnsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateDnsResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateDnsRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<CreateDnsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2724,8 +2724,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateDomainRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateDomainResponse2>,
+  input: __S(376, __c47, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<CreateDomainResponse2>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2739,8 +2739,8 @@ export const createHosting: API.OperationMethod<
   CreateHostingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateHostingRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateHostingResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<CreateHostingRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<CreateHostingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2754,8 +2754,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<WebhookEndpointResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<WebhookEndpointResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2769,8 +2769,8 @@ export const deleteDns: API.OperationMethod<
   DeleteDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteDnsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeleteDnsRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2784,8 +2784,8 @@ export const deleteHosting: API.OperationMethod<
   DeleteHostingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteHostingRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<DeleteHostingRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2799,8 +2799,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2814,8 +2814,8 @@ export const deployHosting: API.OperationMethod<
   DeployHostingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeployHostingRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeployHostingResponse>,
+  input: __S(450, __c56, 2) as any as S.Schema<DeployHostingRequest>,
+  output: __S(453, __c56, 5) as any as S.Schema<DeployHostingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2829,8 +2829,8 @@ export const disconnectCloudflare: API.OperationMethod<
   DisconnectCloudflareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DisconnectCloudflareRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DisconnectCloudflareResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<DisconnectCloudflareRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<DisconnectCloudflareResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2844,8 +2844,8 @@ export const dnsCreateDnssecRecord: API.OperationMethod<
   DnsCreateDnssecRecordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DnsCreateDnssecRecordRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DnsCreateDnssecRecordResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DnsCreateDnssecRecordRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<DnsCreateDnssecRecordResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2859,8 +2859,8 @@ export const dnsDeleteByNameType: API.OperationMethod<
   DnsDeleteByNameTypeError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DnsDeleteByNameTypeRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DnsDeleteByNameTypeRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2874,8 +2874,8 @@ export const dnsDeleteDnssecRecord: API.OperationMethod<
   DnsDeleteDnssecRecordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DnsDeleteDnssecRecordRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DnsDeleteDnssecRecordRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2889,8 +2889,8 @@ export const dnsDiff: API.OperationMethod<
   DnsDiffError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DnsDiffRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<DnsDiffResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<DnsDiffRequest>,
+  output: __S(490, __c61, 2) as any as S.Schema<DnsDiffResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2904,8 +2904,8 @@ export const dnsEditByNameType: API.OperationMethod<
   DnsEditByNameTypeError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DnsEditByNameTypeRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<DnsEditByNameTypeRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2919,8 +2919,8 @@ export const dnsGetDnssecRecords: API.OperationMethod<
   DnsGetDnssecRecordsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DnsGetDnssecRecordsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<DnsGetDnssecRecordsResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<DnsGetDnssecRecordsRequest>,
+  output: __S(513, __c64, 1) as any as S.Schema<DnsGetDnssecRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2934,8 +2934,8 @@ export const dnsHistory: API.OperationMethod<
   DnsHistoryError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DnsHistoryRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DnsHistoryResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<DnsHistoryRequest>,
+  output: __S(531, __c66, 3) as any as S.Schema<DnsHistoryResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2949,8 +2949,8 @@ export const dnsPreflight: API.OperationMethod<
   DnsPreflightError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DnsPreflightRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DnsPreflightResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<DnsPreflightRequest>,
+  output: __S(539, __c67, 3) as any as S.Schema<DnsPreflightResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2964,8 +2964,8 @@ export const dnsRetrieveById: API.OperationMethod<
   DnsRetrieveByIdError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DnsRetrieveByIdRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<DnsRetrieveByIdRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2979,8 +2979,8 @@ export const dnsRetrieveByNameType: API.OperationMethod<
   DnsRetrieveByNameTypeError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DnsRetrieveByNameTypeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<DnsRetrieveByNameTypeRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -2994,8 +2994,8 @@ export const dnsScan: API.OperationMethod<
   DnsScanError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DnsScanRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<DnsScanResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<DnsScanRequest>,
+  output: __S(577, __c72, 1) as any as S.Schema<DnsScanResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3009,8 +3009,8 @@ export const domainAddUrlForward: API.OperationMethod<
   DomainAddUrlForwardError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DomainAddUrlForwardRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<DomainAddUrlForwardRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3024,8 +3024,8 @@ export const domainCancelTransfer: API.OperationMethod<
   DomainCancelTransferError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DomainCancelTransferRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<DomainCancelTransferResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<DomainCancelTransferRequest>,
+  output: __S(593, __c74, 1) as any as S.Schema<DomainCancelTransferResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3039,8 +3039,8 @@ export const domainCheckDomain: API.OperationMethod<
   DomainCheckDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DomainCheckDomainRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CheckDomainResponse>,
+  input: __S(601, __c75, 1) as any as S.Schema<DomainCheckDomainRequest>,
+  output: __S(605, __c75, 5) as any as S.Schema<CheckDomainResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3054,8 +3054,8 @@ export const domainCreateGlue: API.OperationMethod<
   DomainCreateGlueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DomainCreateGlueRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<DomainCreateGlueRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3069,8 +3069,8 @@ export const domainDeleteGlue: API.OperationMethod<
   DomainDeleteGlueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DomainDeleteGlueRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<DomainDeleteGlueRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3084,8 +3084,8 @@ export const domainDeleteUrlForward: API.OperationMethod<
   DomainDeleteUrlForwardError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DomainDeleteUrlForwardRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<DomainDeleteUrlForwardRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3099,8 +3099,8 @@ export const domainGetContacts: API.OperationMethod<
   DomainGetContactsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DomainGetContactsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DomainGetContactsResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<DomainGetContactsRequest>,
+  output: __S(633, __c79, 1) as any as S.Schema<DomainGetContactsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3114,8 +3114,8 @@ export const domainGetGlue: API.OperationMethod<
   DomainGetGlueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DomainGetGlueRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<DomainGetGlueResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<DomainGetGlueRequest>,
+  output: __S(665, __c83, 1) as any as S.Schema<DomainGetGlueResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3129,8 +3129,8 @@ export const domainGetNs: API.OperationMethod<
   DomainGetNsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DomainGetNsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DomainGetNsResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<DomainGetNsRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<DomainGetNsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3144,8 +3144,8 @@ export const domainGetRegistrationRequirements: API.OperationMethod<
   DomainGetRegistrationRequirementsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DomainGetRegistrationRequirementsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<DomainGetRegistrationRequirementsResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<DomainGetRegistrationRequirementsRequest>,
+  output: __S(689, __c86, 1) as any as S.Schema<DomainGetRegistrationRequirementsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3159,8 +3159,8 @@ export const domainGetTransferSetup: API.OperationMethod<
   DomainGetTransferSetupError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DomainGetTransferSetupRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<DomainGetTransferSetupResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<DomainGetTransferSetupRequest>,
+  output: __S(697, __c87, 1) as any as S.Schema<DomainGetTransferSetupResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3174,8 +3174,8 @@ export const domainGetUrlForwarding: API.OperationMethod<
   DomainGetUrlForwardingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DomainGetUrlForwardingRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetUrlForwardingResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<DomainGetUrlForwardingRequest>,
+  output: __S(714, __c89, 2) as any as S.Schema<GetUrlForwardingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3189,8 +3189,8 @@ export const domainStartTransfer: API.OperationMethod<
   DomainStartTransferError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DomainStartTransferRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<DomainStartTransferResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<DomainStartTransferRequest>,
+  output: __S(721, __c90, 1) as any as S.Schema<DomainStartTransferResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3204,8 +3204,8 @@ export const domainUpdateAutoRenew: API.OperationMethod<
   DomainUpdateAutoRenewError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DomainUpdateAutoRenewRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<DomainUpdateAutoRenewResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<DomainUpdateAutoRenewRequest>,
+  output: __S(731, __c91, 3) as any as S.Schema<DomainUpdateAutoRenewResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3219,8 +3219,8 @@ export const domainUpdateContacts: API.OperationMethod<
   DomainUpdateContactsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DomainUpdateContactsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DomainUpdateContactsResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<DomainUpdateContactsRequest>,
+  output: __S(737, __c92, 1) as any as S.Schema<DomainUpdateContactsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3234,8 +3234,8 @@ export const domainUpdateGlue: API.OperationMethod<
   DomainUpdateGlueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DomainUpdateGlueRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<DomainUpdateGlueRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3249,8 +3249,8 @@ export const domainUpdateNs: API.OperationMethod<
   DomainUpdateNsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DomainUpdateNsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<DomainUpdateNsRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3264,8 +3264,8 @@ export const domainUpdateTransferAuthCode: API.OperationMethod<
   DomainUpdateTransferAuthCodeError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DomainUpdateTransferAuthCodeRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<DomainUpdateTransferAuthCodeResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<DomainUpdateTransferAuthCodeRequest>,
+  output: __S(769, __c96, 1) as any as S.Schema<DomainUpdateTransferAuthCodeResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3279,8 +3279,8 @@ export const editDns: API.OperationMethod<
   EditDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<EditDnsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(776, __c97, 0) as any as S.Schema<EditDnsRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3294,8 +3294,8 @@ export const emailSetPassword: API.OperationMethod<
   EmailSetPasswordError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<EmailSetPasswordRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BasicResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<EmailSetPasswordRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<BasicResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3309,8 +3309,8 @@ export const getAccountInviteStatus: API.OperationMethod<
   GetAccountInviteStatusError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetAccountInviteStatusRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetAccountInviteStatusResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<GetAccountInviteStatusRequest>,
+  output: __S(793, __c99, 1) as any as S.Schema<GetAccountInviteStatusResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3324,8 +3324,8 @@ export const getApikey: API.OperationMethod<
   GetApikeyError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetApikeyRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetApikeyResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<GetApikeyRequest>,
+  output: __S(801, __c100, 1) as any as S.Schema<GetApikeyResponse>,
   errors: [BadRequest, Forbidden, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3339,8 +3339,8 @@ export const getApiSettings: API.OperationMethod<
   GetApiSettingsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetApiSettingsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<ApiSettingsResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<GetApiSettingsRequest>,
+  output: __S(812, __c101, 4) as any as S.Schema<ApiSettingsResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3354,8 +3354,8 @@ export const getAutoTopup: API.OperationMethod<
   GetAutoTopupError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetAutoTopupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<AutoTopupResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<GetAutoTopupRequest>,
+  output: __S(824, __c103, 0) as any as S.Schema<AutoTopupResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3369,8 +3369,8 @@ export const getBalance: API.OperationMethod<
   GetBalanceError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetBalanceRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<BalanceResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<GetBalanceRequest>,
+  output: __S(833, __c104, 1) as any as S.Schema<BalanceResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3384,8 +3384,8 @@ export const getCloseout: API.OperationMethod<
   GetCloseoutError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetCloseoutRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetCloseoutResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<GetCloseoutRequest>,
+  output: __S(841, __c105, 1) as any as S.Schema<GetCloseoutResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3399,8 +3399,8 @@ export const getCloudflare: API.OperationMethod<
   GetCloudflareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetCloudflareRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetCloudflareResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<GetCloudflareRequest>,
+  output: __S(864, __c108, 0) as any as S.Schema<GetCloudflareResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3414,8 +3414,8 @@ export const getDns: API.OperationMethod<
   GetDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetDnsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<GetDnsRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3429,8 +3429,8 @@ export const getDnsRecordById: API.OperationMethod<
   GetDnsRecordByIdError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetDnsRecordByIdRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<GetDnsRecordByIdRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3444,8 +3444,8 @@ export const getDnsRecords: API.OperationMethod<
   GetDnsRecordsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetDnsRecordsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<GetDnsRecordsRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3459,8 +3459,8 @@ export const getDnsRecordsByNameType: API.OperationMethod<
   GetDnsRecordsByNameTypeError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetDnsRecordsByNameTypeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DnsRecordsResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<GetDnsRecordsByNameTypeRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<DnsRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3474,8 +3474,8 @@ export const getDnssecRecords: API.OperationMethod<
   GetDnssecRecordsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetDnssecRecordsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetDnssecRecordsResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<GetDnssecRecordsRequest>,
+  output: __S(929, __c116, 1) as any as S.Schema<GetDnssecRecordsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3489,8 +3489,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetDomainRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetDomainResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(938, __c117, 2) as any as S.Schema<GetDomainResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3504,8 +3504,8 @@ export const getDomainGlue: API.OperationMethod<
   GetDomainGlueError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetDomainGlueRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetDomainGlueResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<GetDomainGlueRequest>,
+  output: __S(665, __c83, 1) as any as S.Schema<GetDomainGlueResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3519,8 +3519,8 @@ export const getDomainNs: API.OperationMethod<
   GetDomainNsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetDomainNsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetDomainNsResponse>,
+  input: __S(952, __c119, 0) as any as S.Schema<GetDomainNsRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<GetDomainNsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3534,8 +3534,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetDomainsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<DomainListAllResponse>,
+  input: __S(960, __c120, 0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(972, __c121, 4) as any as S.Schema<DomainListAllResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3549,8 +3549,8 @@ export const getDomainUrlForwarding: API.OperationMethod<
   GetDomainUrlForwardingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetDomainUrlForwardingRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetUrlForwardingResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<GetDomainUrlForwardingRequest>,
+  output: __S(714, __c89, 2) as any as S.Schema<GetUrlForwardingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3564,8 +3564,8 @@ export const getHosting: API.OperationMethod<
   GetHostingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetHostingRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetHostingResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<GetHostingRequest>,
+  output: __S(994, __c124, 2) as any as S.Schema<GetHostingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3579,8 +3579,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetInvoiceRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetInvoiceResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(1005, __c125, 5) as any as S.Schema<GetInvoiceResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3594,8 +3594,8 @@ export const getInvoicePdf: API.OperationMethod<
   GetInvoicePdfError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetInvoicePdfRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetInvoicePdfResponse>,
+  input: __S(1008, __c126, 0) as any as S.Schema<GetInvoicePdfRequest>,
+  output: __S(1009, __c126, 1) as any as S.Schema<GetInvoicePdfResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3605,8 +3605,8 @@ export type GetIpError = PorkbunOpError;
 /** Get caller IP address Returns the caller's public IP address. No credentials required. Use the `api-ipv4.porkbun.com` hostname if you need to force an IPv4 address. */
 export const getIp: API.OperationMethod<GetIpRequest, IpResponse, GetIpError, PorkbunOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(171, __c21, 3) as any as S.Schema<GetIpRequest>,
-    output: __S(172, __c21, 4) as any as S.Schema<IpResponse>,
+    input: __S(1016, __c127, 0) as any as S.Schema<GetIpRequest>,
+    output: __S(1024, __c128, 0) as any as S.Schema<IpResponse>,
     errors: [UnknownPorkbunError],
     protocol: PorkbunProtocol,
     retry: Retry.Retry,
@@ -3620,8 +3620,8 @@ export const getPing: API.OperationMethod<
   GetPingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetPingRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetPingResponse>,
+  input: __S(1032, __c129, 0) as any as S.Schema<GetPingRequest>,
+  output: __S(1040, __c130, 0) as any as S.Schema<GetPingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3635,8 +3635,8 @@ export const getPricing: API.OperationMethod<
   GetPricingError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetPricingRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<GetPricingResponse>,
+  input: __S(1048, __c131, 0) as any as S.Schema<GetPricingRequest>,
+  output: __S(1049, __c131, 1) as any as S.Schema<GetPricingResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3650,8 +3650,8 @@ export const getPricingGet: API.OperationMethod<
   GetPricingGetError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<GetPricingGetRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<GetPricingGetResponse>,
+  input: __S(1064, __c133, 0) as any as S.Schema<GetPricingGetRequest>,
+  output: __S(1065, __c133, 1) as any as S.Schema<GetPricingGetResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3665,8 +3665,8 @@ export const getSsl: API.OperationMethod<
   GetSslError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetSslRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetSslResponse>,
+  input: __S(1072, __c134, 0) as any as S.Schema<GetSslRequest>,
+  output: __S(1080, __c135, 0) as any as S.Schema<GetSslResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3680,8 +3680,8 @@ export const getSslRetrieve: API.OperationMethod<
   GetSslRetrieveError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetSslRetrieveRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetSslRetrieveResponse>,
+  input: __S(1088, __c136, 0) as any as S.Schema<GetSslRetrieveRequest>,
+  output: __S(1080, __c135, 0) as any as S.Schema<GetSslRetrieveResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3695,8 +3695,8 @@ export const getTransferGet: API.OperationMethod<
   GetTransferGetError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetTransferGetRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetTransferResponse>,
+  input: __S(1096, __c137, 0) as any as S.Schema<GetTransferGetRequest>,
+  output: __S(1097, __c137, 1) as any as S.Schema<GetTransferResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3710,8 +3710,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetWebhookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<WebhookEndpointResponse>,
+  input: __S(1128, __c141, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<WebhookEndpointResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3725,8 +3725,8 @@ export const hostingCreateWpCredentials: API.OperationMethod<
   HostingCreateWpCredentialsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<HostingCreateWpCredentialsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<HostingCreateWpCredentialsResponse>,
+  input: __S(1136, __c142, 0) as any as S.Schema<HostingCreateWpCredentialsRequest>,
+  output: __S(1138, __c142, 2) as any as S.Schema<HostingCreateWpCredentialsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3740,8 +3740,8 @@ export const hostingDeleteFile: API.OperationMethod<
   HostingDeleteFileError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<HostingDeleteFileRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<HostingDeleteFileResponse>,
+  input: __S(1144, __c143, 0) as any as S.Schema<HostingDeleteFileRequest>,
+  output: __S(1145, __c143, 1) as any as S.Schema<HostingDeleteFileResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3755,8 +3755,8 @@ export const hostingDeleteWpCredentials: API.OperationMethod<
   HostingDeleteWpCredentialsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<HostingDeleteWpCredentialsRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<HostingDeleteWpCredentialsResponse>,
+  input: __S(1152, __c144, 0) as any as S.Schema<HostingDeleteWpCredentialsRequest>,
+  output: __S(1153, __c144, 1) as any as S.Schema<HostingDeleteWpCredentialsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3770,8 +3770,8 @@ export const hostingFiles: API.OperationMethod<
   HostingFilesError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<HostingFilesRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<HostingFilesResponse>,
+  input: __S(1160, __c145, 0) as any as S.Schema<HostingFilesRequest>,
+  output: __S(1161, __c145, 1) as any as S.Schema<HostingFilesResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3785,8 +3785,8 @@ export const hostingGetWpCredentials: API.OperationMethod<
   HostingGetWpCredentialsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<HostingGetWpCredentialsRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<HostingGetWpCredentialsResponse>,
+  input: __S(1168, __c146, 0) as any as S.Schema<HostingGetWpCredentialsRequest>,
+  output: __S(1169, __c146, 1) as any as S.Schema<HostingGetWpCredentialsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3800,8 +3800,8 @@ export const hostingMakeDir: API.OperationMethod<
   HostingMakeDirError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<HostingMakeDirRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<HostingMakeDirResponse>,
+  input: __S(1176, __c147, 0) as any as S.Schema<HostingMakeDirRequest>,
+  output: __S(1177, __c147, 1) as any as S.Schema<HostingMakeDirResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3815,8 +3815,8 @@ export const hostingPlans: API.OperationMethod<
   HostingPlansError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<HostingPlansRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<HostingPlansResponse>,
+  input: __S(1184, __c148, 0) as any as S.Schema<HostingPlansRequest>,
+  output: __S(1187, __c148, 3) as any as S.Schema<HostingPlansResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3830,8 +3830,8 @@ export const importDns: API.OperationMethod<
   ImportDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ImportDnsRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ImportDnsResponse>,
+  input: __S(1192, __c149, 0) as any as S.Schema<ImportDnsRequest>,
+  output: __S(1193, __c149, 1) as any as S.Schema<ImportDnsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3845,8 +3845,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListDomainsRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<DomainListAllResponse>,
+  input: __S(1200, __c150, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(972, __c121, 4) as any as S.Schema<DomainListAllResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3860,8 +3860,8 @@ export const listInvoices: API.OperationMethod<
   ListInvoicesError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListInvoicesRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<ListInvoicesResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListInvoicesRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<ListInvoicesResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3875,8 +3875,8 @@ export const listMarketplaceListings: API.OperationMethod<
   ListMarketplaceListingsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<ListMarketplaceListingsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ListMarketplaceListingsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListMarketplaceListingsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListMarketplaceListingsResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3890,8 +3890,8 @@ export const listMarketplaceListingsGet: API.OperationMethod<
   ListMarketplaceListingsGetError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListMarketplaceListingsGetRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ListMarketplaceListingsGetResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListMarketplaceListingsGetRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListMarketplaceListingsGetResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3905,8 +3905,8 @@ export const listTransfersGet: API.OperationMethod<
   ListTransfersGetError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListTransfersGetRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListTransfersResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListTransfersGetRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListTransfersResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3920,8 +3920,8 @@ export const listWebhook: API.OperationMethod<
   ListWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListWebhookRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<WebhookListResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListWebhookRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<WebhookListResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3935,8 +3935,8 @@ export const mockDirectory: API.OperationMethod<
   MockDirectoryError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<MockDirectoryRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<MockDirectoryResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<MockDirectoryRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<MockDirectoryResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3950,8 +3950,8 @@ export const mockEndpoint: API.OperationMethod<
   MockEndpointError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<MockEndpointRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<MockEndpointResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<MockEndpointRequest>,
+  output: __S(864, __c108, 0) as any as S.Schema<MockEndpointResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3961,8 @@ export type PingError = BadRequest | PorkbunOpError;
 /** Test credentials and get caller IP Returns the caller's public IP address. Optionally validates API credentials. - **No credentials supplied** -- returns IP only. - **Valid credentials supplied** -- returns IP with `credentialsValid: true`. - **Invalid credentials supplied** -- returns an error. Useful for agents and clients to verify their API key is working before making other calls. */
 export const ping: API.OperationMethod<PingRequest, PingResponse, PingError, PorkbunOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(231, __c28, 7) as any as S.Schema<PingRequest>,
-    output: __S(174, __c21, 6) as any as S.Schema<PingResponse>,
+    input: __S(72, __c9, 0) as any as S.Schema<PingRequest>,
+    output: __S(1040, __c130, 0) as any as S.Schema<PingResponse>,
     errors: [BadRequest, UnknownPorkbunError],
     protocol: PorkbunProtocol,
     retry: Retry.Retry,
@@ -3972,8 +3972,8 @@ export type PostIpError = PorkbunOpError;
 /** Get caller IP address Returns the caller's public IP address. No credentials required. Use the `api-ipv4.porkbun.com` hostname if you need to force an IPv4 address. */
 export const postIp: API.OperationMethod<PostIpRequest, IpResponse, PostIpError, PorkbunOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(232, __c29, 0) as any as S.Schema<PostIpRequest>,
-    output: __S(172, __c21, 4) as any as S.Schema<IpResponse>,
+    input: __S(80, __c10, 0) as any as S.Schema<PostIpRequest>,
+    output: __S(1024, __c128, 0) as any as S.Schema<IpResponse>,
     errors: [UnknownPorkbunError],
     protocol: PorkbunProtocol,
     retry: Retry.Retry,
@@ -3987,8 +3987,8 @@ export const previewCloudflare: API.OperationMethod<
   PreviewCloudflareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<PreviewCloudflareRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<PreviewCloudflareResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<PreviewCloudflareRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<PreviewCloudflareResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4002,8 +4002,8 @@ export const renewDomain: API.OperationMethod<
   RenewDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<RenewDomainRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<RenewDomainResponse2>,
+  input: __S(104, __c13, 0) as any as S.Schema<RenewDomainRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<RenewDomainResponse2>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4017,8 +4017,8 @@ export const resendWebhook: API.OperationMethod<
   ResendWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ResendWebhookRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<WebhookResendResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ResendWebhookRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<WebhookResendResponse>,
   errors: [BadRequest, NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4032,8 +4032,8 @@ export const resetSandbox: API.OperationMethod<
   ResetSandboxError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ResetSandboxRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ResetSandboxResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ResetSandboxRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ResetSandboxResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4047,8 +4047,8 @@ export const restoreDns: API.OperationMethod<
   RestoreDnsError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<RestoreDnsRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<DnsRestoreResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<RestoreDnsRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<DnsRestoreResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4062,8 +4062,8 @@ export const retryCloudflare: API.OperationMethod<
   RetryCloudflareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<RetryCloudflareRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<RetryCloudflareResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<RetryCloudflareRequest>,
+  output: __S(864, __c108, 0) as any as S.Schema<RetryCloudflareResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4077,8 +4077,8 @@ export const sandboxTopup: API.OperationMethod<
   SandboxTopupError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<SandboxTopupRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<SandboxTopupResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<SandboxTopupRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<SandboxTopupResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4092,8 +4092,8 @@ export const sandboxTriggerWebhook: API.OperationMethod<
   SandboxTriggerWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<SandboxTriggerWebhookRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<SandboxTriggerWebhookResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<SandboxTriggerWebhookRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<SandboxTriggerWebhookResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4107,8 +4107,8 @@ export const searchCloseout: API.OperationMethod<
   SearchCloseoutError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<SearchCloseoutRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<SearchCloseoutResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<SearchCloseoutRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<SearchCloseoutResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4122,8 +4122,8 @@ export const setAutoTopup: API.OperationMethod<
   SetAutoTopupError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<SetAutoTopupRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<AutoTopupResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<SetAutoTopupRequest>,
+  output: __S(824, __c103, 0) as any as S.Schema<AutoTopupResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4137,8 +4137,8 @@ export const testWebhook: API.OperationMethod<
   TestWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<TestWebhookRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<WebhookTestResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<TestWebhookRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<WebhookTestResponse>,
   errors: [BadRequest, NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4152,8 +4152,8 @@ export const topupAccountCredit: API.OperationMethod<
   TopupAccountCreditError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<TopupAccountCreditRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<TopupAccountCreditResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<TopupAccountCreditRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<TopupAccountCreditResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4167,8 +4167,8 @@ export const topupCrypto: API.OperationMethod<
   TopupCryptoError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<TopupCryptoRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<TopupCryptoResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<TopupCryptoRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<TopupCryptoResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4182,8 +4182,8 @@ export const topupCryptoStatus: API.OperationMethod<
   TopupCryptoStatusError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<TopupCryptoStatusRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<TopupCryptoStatusResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<TopupCryptoStatusRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<TopupCryptoStatusResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4197,8 +4197,8 @@ export const topupMpp: API.OperationMethod<
   TopupMppError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<TopupMppRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<TopupMppResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<TopupMppRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<TopupMppResponse>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4212,8 @@ export const transferDomain: API.OperationMethod<
   TransferDomainError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<TransferDomainRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<TransferDomainResponse2>,
+  input: __S(232, __c29, 0) as any as S.Schema<TransferDomainRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<TransferDomainResponse2>,
   errors: [UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4227,8 +4227,8 @@ export const transferDomainPrepare: API.OperationMethod<
   TransferDomainPrepareError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<TransferDomainPrepareRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<TransferDomainPrepareResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<TransferDomainPrepareRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<TransferDomainPrepareResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4242,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<WebhookEndpointResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<WebhookEndpointResponse>,
   errors: [BadRequest, NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4257,8 @@ export const webhookDeliveries: API.OperationMethod<
   WebhookDeliveriesError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<WebhookDeliveriesRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<WebhookDeliveryListResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<WebhookDeliveriesRequest>,
+  output: __S(258, __c32, 2) as any as S.Schema<WebhookDeliveryListResponse>,
   errors: [BadRequest, NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4272,8 @@ export const webhookDelivery2: API.OperationMethod<
   WebhookDelivery2Error,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<WebhookDeliveryRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<WebhookDeliveryResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<WebhookDeliveryRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<WebhookDeliveryResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4287,8 +4287,8 @@ export const webhookEventTypes: API.OperationMethod<
   WebhookEventTypesError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<WebhookEventTypesRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<WebhookEventTypesResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<WebhookEventTypesRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<WebhookEventTypesResponse>,
   errors: [BadRequest, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4302,8 @@ export const webhookRotateSecret: API.OperationMethod<
   WebhookRotateSecretError,
   PorkbunOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<WebhookRotateSecretRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<WebhookEndpointResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<WebhookRotateSecretRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<WebhookEndpointResponse>,
   errors: [NotFound, UnknownPorkbunError],
   protocol: PorkbunProtocol,
   retry: Retry.Retry,
@@ -4313,147 +4313,6 @@ export const webhookRotateSecret: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/account/verifyPhone/confirm", code: 200 })),
-      ).annotate({
-        identifier: "AccountVerifyPhoneConfirmRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          verified: S.optional(S.Boolean),
-          alreadyVerified: S.optional(S.Boolean),
-          emailVerified: S.optional(S.Boolean),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountVerifyPhoneConfirmResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/account/verifyPhone/send", code: 200 })),
-      ).annotate({
-        identifier: "AccountVerifyPhoneSendRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          sent: S.optional(S.Boolean),
-          codeAlreadySent: S.optional(S.Boolean),
-          alreadyVerified: S.optional(S.Boolean),
-          channel: S.optional(S.String),
-          sentTo: S.optional(S.String),
-          expiresInMinutes: S.optional(S.Number),
-          retryAfterSeconds: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AccountVerifyPhoneSendResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          codeChallenge: S.optional(S.String),
-          codeChallengeMethod: S.optional(S.String),
-          sandbox: S.optional(S.Boolean),
-          returnUrl: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apikey/request", code: 200 })),
-      ).annotate({ identifier: "ApikeyRequestRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          requestToken: S.String,
-          authUrl: S.optional(S.String),
-          expiration: S.optional(S.String),
-          deliveryMode: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApikeyRequestResponse" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domains: __S(6, __c0, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/checkDomain", code: 200 })),
-      ).annotate({
-        identifier: "BulkDomainCheckDomainRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          checked: S.optional(S.Number),
-          domains: S.optional(__S(8, __c1, 0)),
-          unresolved: S.optional(__S(6, __c0, 6)),
-          invalid: S.optional(__S(9, __c1, 1)),
-          limits: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "BulkDomainCheckDomainResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          cost: S.Number,
-          payWith: S.optional(S.String),
-          usdcCheckoutId: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/closeout/buy/{domain}", code: 200 })),
-      ).annotate({ identifier: "CloseoutBuyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          domain: S.optional(S.String),
-          orderId: S.optional(S.Number),
-          closeoutId: S.optional(S.Number),
-          closeoutPrice: S.optional(S.Number),
-          renewalPrice: S.optional(S.Number),
-          totalPrice: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloseoutBuyResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          type: S.String,
-          name: S.optional(S.String),
-          content: S.optional(S.String),
-          ttl: S.optional(S.Number),
-          priority: S.optional(S.Number),
-          proxied: S.optional(S.Boolean),
-          comment: S.optional(S.String),
-          data: S.optional(S.Unknown),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/cloudflare/createRecord/{domain}", code: 200 })),
-      ).annotate({
-        identifier: "CloudflareCreateRecordRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CloudflareCreateRecordResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4471,7 +4330,217 @@ function __c1(j: number): any {
       });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number.pipe(T.Query())),
+          start: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/account/invoices", code: 200 })),
+      ).annotate({ identifier: "ListInvoicesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          date: S.optional(S.String),
+          state: S.optional(S.String),
+          total_cents: S.optional(S.Number),
+          total: S.optional(S.String),
+          itemCount: S.optional(S.Number),
+          domains: S.optional(__S(880, __c110, 0)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ListInvoicesResponseInvoicesItem",
+      });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          invoices: S.optional(__S(10, __c1, 2)),
+          total: S.optional(S.Number),
+          start: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          years: S.optional(__S(11, __c1, 3)),
+        }),
+      ).annotate({ identifier: "ListInvoicesResponse" });
+  }
+}
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          query: S.optional(S.String),
+          tlds: S.optional(__S(880, __c110, 0)),
+          sldLengthMin: S.optional(S.Number),
+          sldLengthMax: S.optional(S.Number),
+          sortName: S.optional(S.String),
+          sortDirection: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/marketplace/getAll", code: 200 })),
+      ).annotate({
+        identifier: "ListMarketplaceListingsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          create_date: S.optional(S.String),
+          domain: S.optional(S.String),
+          tld: S.optional(S.String),
+          sld_length: S.optional(S.Number),
+          price: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListMarketplaceListingsResponseDomainsItem",
+      });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          count: S.optional(S.Number),
+          filtered: S.optional(S.Boolean),
+          domains: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "ListMarketplaceListingsResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          tlds: S.optional(__S(880, __c110, 0).pipe(T.Query())),
+          sldLengthMin: S.optional(S.Number.pipe(T.Query())),
+          sldLengthMax: S.optional(S.Number.pipe(T.Query())),
+          sortName: S.optional(S.String.pipe(T.Query())),
+          sortDirection: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/marketplace/getAll", code: 200 })),
+      ).annotate({
+        identifier: "ListMarketplaceListingsGetRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/listTransfers", code: 200 })),
+      ).annotate({ identifier: "ListTransfersGetRequest" });
+    case 1:
+      return S.Array(__S(1104, __c138, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          transfers: S.optional(__S(41, __c5, 1)),
+        }),
+      ).annotate({ identifier: "ListTransfersResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/list", code: 200 })),
+      ).annotate({ identifier: "ListWebhookRequest" });
+    case 1:
+      return S.Array(__S(400, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          endpoints: S.optional(__S(49, __c6, 1)),
+        }),
+      ).annotate({ identifier: "WebhookListResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/mock", code: 200 })),
+      ).annotate({ identifier: "MockDirectoryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          path: S.optional(S.String),
+          summary: S.optional(S.String),
+          mockUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MockDirectoryResponseEndpointsItem",
+      });
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          mock: S.optional(S.Boolean),
+          count: S.optional(S.Number),
+          endpoints: S.optional(__S(58, __c7, 2)),
+        }),
+      ).annotate({ identifier: "MockDirectoryResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String.pipe(T.Label()),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/mock/{path}", code: 200 })),
+      ).annotate({ identifier: "MockEndpointRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ping", code: 200 })),
+      ).annotate({ identifier: "PingRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ip", code: 200 })),
+      ).annotate({ identifier: "PostIpRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/cloudflare/preview/{domain}", code: 200 })),
+      ).annotate({ identifier: "PreviewCloudflareRequest" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4493,19 +4562,503 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CloudflareEditRecordRequest",
       });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          cost: S.Number,
+          payWith: S.optional(S.String),
+          usdcCheckoutId: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/renew/{domain}", code: 200 })),
+      ).annotate({ identifier: "RenewDomainRequest" });
     case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "RenewDomainResponse2",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/webhook/resend", code: 200 })),
+      ).annotate({ identifier: "ResendWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          delivery: S.optional(__S(120, __c15, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebhookResendResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          endpointId: S.optional(S.Number),
+          eventType: S.optional(S.String),
+          eventId: S.optional(S.String),
+          status: S.optional(S.String),
+          attempts: S.optional(S.Number),
+          maxAttempts: S.optional(S.Number),
+          httpStatus: S.optional(S.NullOr(S.Number)),
+          lastError: S.optional(S.NullOr(S.String)),
+          nextAttemptAt: S.optional(S.String),
+          createDate: S.optional(S.String),
+          deliveredDate: S.optional(S.NullOr(S.String)),
+          payload: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "WebhookDelivery" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/sandbox/reset", code: 200 })),
+      ).annotate({ identifier: "ResetSandboxRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          message: S.optional(S.String),
+          domainsCleared: S.optional(S.Number),
+          balance: S.optional(S.Number),
+          sandbox: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ResetSandboxResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          snapshotId: S.Number,
+          prune: S.optional(S.Boolean),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/dns/restore/{domain}", code: 200 })),
+      ).annotate({ identifier: "RestoreDnsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DnsRestoreResponseFailedItem",
+      });
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          warnings: S.optional(__S(880, __c110, 0)),
+          status: S.optional(S.String),
+          domain: S.optional(S.String),
+          restoredFrom: S.optional(S.Number),
+          previousStateSavedAs: S.optional(S.NullOr(S.Number)),
+          restored: S.optional(S.Number),
+          removed: S.optional(S.Number),
+          failed: S.optional(__S(138, __c17, 2)),
+        }),
+      ).annotate({ identifier: "DnsRestoreResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/cloudflare/retry/{domain}", code: 200 })),
+      ).annotate({ identifier: "RetryCloudflareRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/sandbox/topup", code: 200 })),
+      ).annotate({ identifier: "SandboxTopupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          granted: S.optional(S.Number),
+          balance: S.optional(S.Number),
+          display: S.optional(S.String),
+          sandbox: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SandboxTopupResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventType: S.String,
+          domain: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/sandbox/triggerWebhook", code: 200 })),
+      ).annotate({
+        identifier: "SandboxTriggerWebhookRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          event: S.optional(S.String),
+          data: S.optional(S.Unknown),
+          endpointsRegistered: S.optional(S.Number),
+          message: S.optional(S.String),
+          sandbox: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "SandboxTriggerWebhookResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          tld: S.optional(S.String.pipe(T.Query())),
+          nameLength: S.optional(S.Number.pipe(T.Query())),
+          ageMin: S.optional(S.Number.pipe(T.Query())),
+          ageMax: S.optional(S.Number.pipe(T.Query())),
+          priceMin: S.optional(S.Number.pipe(T.Query())),
+          priceMax: S.optional(S.Number.pipe(T.Query())),
+          sortName: S.optional(S.String.pipe(T.Query())),
+          sortDirection: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/closeout/search", code: 200 })),
+      ).annotate({ identifier: "SearchCloseoutRequest" });
+    case 1:
+      return S.Array(__S(848, __c106, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          count: S.optional(S.Number),
+          totalAvailable: S.optional(S.Number),
+          start: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          closeouts: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({ identifier: "SearchCloseoutResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          threshold: S.optional(S.Number),
+          amount: S.optional(S.Number),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/account/autoTopup", code: 200 })),
+      ).annotate({ identifier: "SetAutoTopupRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/webhook/test", code: 200 })),
+      ).annotate({ identifier: "TestWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          eventId: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebhookTestResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/getConnection", code: 200 })),
       ).annotate({
         identifier: "CloudflareGetConnectionRequest",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/account/topup", code: 200 })),
+      ).annotate({
+        identifier: "TopupAccountCreditRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          charged: S.optional(S.Number),
+          chargedDisplay: S.optional(S.String),
+          balance: S.optional(S.Number),
+          balanceDisplay: S.optional(S.String),
+          orderId: S.optional(S.Number),
+          usedDefaultAmount: S.optional(S.Boolean),
+          chargesToday: S.optional(S.Number),
+          chargesThisMonth: S.optional(S.Number),
+          simulated: S.optional(S.Boolean),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TopupAccountCreditResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/account/topupCrypto", code: 200 })),
+      ).annotate({ identifier: "TopupCryptoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          checkoutId: S.optional(S.String),
+          amount_cents: S.optional(S.Number),
+          estimatedFee_cents: S.optional(S.Number),
+          estimatedCredit_cents: S.optional(S.Number),
+          currency: S.optional(S.String),
+          network: S.optional(S.String),
+          payUrl: S.optional(S.String),
+          x402Url: S.optional(S.NullOr(S.String)),
+          expiresAt: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopupCryptoResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          checkoutId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/account/topupCryptoStatus/{checkoutId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "TopupCryptoStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          checkoutId: S.optional(S.String),
+          state: S.optional(S.String),
+          credited: S.optional(S.Boolean),
+          balance_cents: S.optional(S.Number),
+          balance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TopupCryptoStatusResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/account/topupMpp", code: 200 })),
+      ).annotate({ identifier: "TopupMppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          amount_cents: S.optional(S.Number),
+          payUrl: S.optional(S.String),
+          expiresAt: S.optional(S.String),
+          protocol: S.optional(S.String),
+          methods: S.optional(__S(880, __c110, 0)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TopupMppResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          authCode: S.String,
+          cost: S.Number,
+          holdForDnsSetup: S.optional(S.Boolean),
+          payWith: S.optional(S.String),
+          usdcCheckoutId: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/transfer/{domain}", code: 200 })),
+      ).annotate({ identifier: "TransferDomainRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "TransferDomainResponse2",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/prepareTransfer/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "TransferDomainPrepareRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          domain: S.optional(S.String),
+          zoneReady: S.optional(S.Boolean),
+          recordCount: S.optional(S.Number),
+          message: S.optional(S.String),
+          porkbunNameservers: S.optional(__S(880, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "TransferDomainPrepareResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          url: S.optional(S.String),
+          events: S.optional(__S(880, __c110, 0)),
+          status: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/webhook/update", code: 200 })),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpointId: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/webhook/deliveries", code: 200 })),
+      ).annotate({ identifier: "WebhookDeliveriesRequest" });
+    case 1:
+      return S.Array(__S(120, __c15, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          deliveries: S.optional(__S(257, __c32, 1)),
+          total: S.optional(S.Number),
+          start: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WebhookDeliveryListResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/webhook/delivery/{id}", code: 200 })),
+      ).annotate({ identifier: "WebhookDeliveryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          delivery: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "WebhookDeliveryResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/eventTypes", code: 200 })),
+      ).annotate({ identifier: "WebhookEventTypesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          eventTypes: S.optional(__S(880, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "WebhookEventTypesResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/getQueue", code: 200 })),
       ).annotate({
         identifier: "CloudflareGetQueueRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/webhook/rotateSecret", code: 200 })),
+      ).annotate({
+        identifier: "WebhookRotateSecretRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4513,13 +5066,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CloudflareGetRecordsRequest",
       });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/cloudflare/getZone/{domain}", code: 200 })),
       ).annotate({ identifier: "CloudflareGetZoneRequest" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4527,13 +5088,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CloudflareGetZoneSettingsRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudflare/inventory", code: 200 })),
       ).annotate({
         identifier: "CloudflareInventoryRequest",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4543,20 +5112,24 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           enabled: S.Boolean,
-          records: S.optional(__S(6, __c0, 6)),
+          records: S.optional(__S(880, __c110, 0)),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/cloudflare/setProxy/{domain}", code: 200 })),
       ).annotate({
         identifier: "CloudflareSetProxyRequest",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4571,14 +5144,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CloudflareSetZoneSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(6, __c0, 6),
+          domains: __S(880, __c110, 0),
           dryRun: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/cloudflare/connect", code: 200 })),
       ).annotate({ identifier: "ConnectCloudflareRequest" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -4587,7 +5168,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAccountInviteRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -4598,7 +5179,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateAccountInviteResponse",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4611,15 +5196,19 @@ function __c3(j: number): any {
           dryRun: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/dns/create/{domain}", code: 200 })),
       ).annotate({ identifier: "CreateDnsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           id: S.optional(S.String),
-          warnings: S.optional(__S(6, __c0, 6)),
+          warnings: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({ identifier: "CreateDnsResponse" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4631,26 +5220,15 @@ function __c3(j: number): any {
           dryRun: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/domain/create/{domain}", code: 200 })),
       ).annotate({ identifier: "CreateDomainRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TTL: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          used: S.optional(S.Number),
-          naturalLanguage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateDomainResponseLimitsAttempts",
-      });
     case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDomainResponse2",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4663,7 +5241,7 @@ function __c4(j: number): any {
           dryRun: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/create/{domain}", code: 200 })),
       ).annotate({ identifier: "CreateHostingRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -4679,7 +5257,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateHostingResponseHosting",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.Number),
@@ -4689,31 +5267,39 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateHostingResponseCost",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           orderId: S.optional(S.Number),
-          hosting: S.optional(__S(35, __c4, 3)),
+          hosting: S.optional(__S(385, __c48, 1)),
           charged: S.optional(S.Number),
-          cost: S.optional(__S(36, __c4, 4)),
+          cost: S.optional(__S(386, __c48, 2)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateHostingResponse" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          events: S.optional(__S(6, __c0, 6)),
+          events: S.optional(__S(880, __c110, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/webhook/create", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           url: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          events: S.optional(__S(6, __c0, 6)),
+          events: S.optional(__S(880, __c110, 0)),
           status: S.optional(S.String),
           consecutiveFailures: S.optional(S.Number),
           lastSuccessDate: S.optional(S.NullOr(S.String)),
@@ -4724,51 +5310,71 @@ function __c4(j: number): any {
       ).annotate({ identifier: "WebhookEndpoint" });
   }
 }
-function __c5(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          endpoint: S.optional(__S(39, __c4, 7)),
+          endpoint: S.optional(__S(400, __c50, 0)),
         }),
       ).annotate({ identifier: "WebhookEndpointResponse" });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/dns/delete/{domain}/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteDnsRequest" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(__S(6, __c0, 6)),
+          warnings: S.optional(__S(880, __c110, 0)),
           status: S.String,
           message: S.optional(S.String),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "BasicResponse" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/delete/{domain}", code: 200 })),
       ).annotate({ identifier: "DeleteHostingRequest" });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/webhook/delete", code: 200 })),
       ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteWebhookResponse" });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -4777,20 +5383,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeployHostingRequestFilesItem",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(448, __c56, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          files: __S(47, __c5, 7),
+          files: __S(449, __c56, 1),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/deploy/{domain}", code: 200 })),
       ).annotate({ identifier: "DeployHostingRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -4799,23 +5401,31 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeployHostingResponseSkippedItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(451, __c56, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          deployed: S.optional(__S(6, __c0, 6)),
-          skipped: S.optional(__S(50, __c6, 2)),
+          deployed: S.optional(__S(880, __c110, 0)),
+          skipped: S.optional(__S(452, __c56, 4)),
         }),
       ).annotate({ identifier: "DeployHostingResponse" });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/cloudflare/disconnect", code: 200 })),
       ).annotate({
         identifier: "DisconnectCloudflareRequest",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4832,10 +5442,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DnsCreateDnssecRecordRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(__S(6, __c0, 6)),
+          warnings: S.optional(__S(880, __c110, 0)),
           status: S.String,
           message: S.optional(S.String),
           code: S.optional(S.String),
@@ -4843,7 +5453,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DnsCreateDnssecRecordResponse",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4861,7 +5475,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4874,14 +5488,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DnsDeleteDnssecRecordRequest",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           snapshotId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dns/diff/{domain}/{snapshotId}", code: 200 })),
       ).annotate({ identifier: "DnsDiffRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -4889,7 +5507,22 @@ function __c7(j: number): any {
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsDiffResponseSnapshot" });
-    case 3:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          domain: S.optional(S.String),
+          snapshot: S.optional(__S(489, __c61, 1)),
+          missing: S.optional(__S(497, __c62, 1)),
+          extra: S.optional(__S(497, __c62, 1)),
+          inSync: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DnsDiffResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4899,20 +5532,13 @@ function __c7(j: number): any {
           prio: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "DnsHistoryRecord" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          domain: S.optional(S.String),
-          snapshot: S.optional(__S(58, __c7, 2)),
-          missing: S.optional(__S(60, __c7, 4)),
-          extra: S.optional(__S(60, __c7, 4)),
-          inSync: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DnsDiffResponse" });
-    case 6:
+    case 1:
+      return S.Array(__S(496, __c62, 0));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4930,7 +5556,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DnsEditByNameTypeRequest" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4938,9 +5568,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DnsGetDnssecRecordsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          records: S.optional(__S(521, __c65, 1)),
+        }),
+      ).annotate({
+        identifier: "DnsGetDnssecRecordsResponse",
+      });
   }
 }
-function __c8(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4955,23 +5594,18 @@ function __c8(j: number): any {
         identifier: "DnsGetDnssecRecordsResponseRecordsValue",
       });
     case 1:
-      return S.Record(S.String, __S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          records: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "DnsGetDnssecRecordsResponse",
-      });
-    case 3:
+      return S.Record(S.String, __S(520, __c65, 0));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dns/history/{domain}", code: 200 })),
       ).annotate({ identifier: "DnsHistoryRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -4984,28 +5618,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DnsHistoryResponseRestorePointsItem",
       });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(529, __c66, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           domain: S.optional(S.String),
-          restorePoints: S.optional(__S(69, __c8, 5)),
+          restorePoints: S.optional(__S(530, __c66, 2)),
         }),
       ).annotate({ identifier: "DnsHistoryResponse" });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           intent: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dns/preflight/{domain}", code: 200 })),
       ).annotate({ identifier: "DnsPreflightRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5018,28 +5652,60 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DnsPreflightResponseChecksItem",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(537, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           domain: S.optional(S.String),
           intent: S.optional(S.String),
           safe: S.optional(S.Boolean),
-          blockers: S.optional(__S(6, __c0, 6)),
-          warnings: S.optional(__S(6, __c0, 6)),
-          checks: S.optional(__S(73, __c9, 1)),
+          blockers: S.optional(__S(880, __c110, 0)),
+          warnings: S.optional(__S(880, __c110, 0)),
+          checks: S.optional(__S(538, __c67, 2)),
         }),
       ).annotate({ identifier: "DnsPreflightResponse" });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/account/verifyPhone/confirm", code: 200 })),
+      ).annotate({
+        identifier: "AccountVerifyPhoneConfirmRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          verified: S.optional(S.Boolean),
+          alreadyVerified: S.optional(S.Boolean),
+          emailVerified: S.optional(S.Boolean),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountVerifyPhoneConfirmResponse",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/dns/retrieve/{domain}/{id}", code: 200 })),
       ).annotate({ identifier: "DnsRetrieveByIdRequest" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5053,17 +5719,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DnsRecordsResponseRecordsItem",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(560, __c70, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           cloudflare: S.optional(S.String),
-          records: __S(77, __c9, 5),
+          records: __S(561, __c70, 1),
         }),
       ).annotate({ identifier: "DnsRecordsResponse" });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5081,7 +5751,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5095,10 +5765,14 @@ function __c10(j: number): any {
           status: S.optional(S.String),
           domain: S.optional(S.String),
           recordCount: S.optional(S.Number),
-          records: S.optional(__S(60, __c7, 4)),
+          records: S.optional(__S(497, __c62, 1)),
         }),
       ).annotate({ identifier: "DnsScanResponse" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5112,7 +5786,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DomainAddUrlForwardRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5120,7 +5798,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DomainCancelTransferRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5139,13 +5817,28 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DomainCancelTransferResponse",
       });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TTL: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          used: S.optional(S.Number),
+          naturalLanguage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateDomainResponseLimitsAttempts",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/domain/checkDomain/{domain}", code: 200 })),
       ).annotate({ identifier: "DomainCheckDomainRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -5155,20 +5848,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CheckDomainResponseResponseAdditionalRenewal",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          renewal: S.optional(__S(86, __c10, 6)),
-          transfer: S.optional(__S(86, __c10, 6)),
+          renewal: S.optional(__S(602, __c75, 2)),
+          transfer: S.optional(__S(602, __c75, 2)),
         }),
       ).annotate({
         identifier: "CheckDomainResponseResponseAdditional",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           avail: S.optional(S.String),
@@ -5178,31 +5867,39 @@ function __c11(j: number): any {
           regularPrice: S.optional(S.String),
           premium: S.optional(S.String),
           minDuration: S.optional(S.Number),
-          additional: S.optional(__S(87, __c10, 7)),
+          additional: S.optional(__S(603, __c75, 3)),
         }),
       ).annotate({
         identifier: "CheckDomainResponseResponse",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          response: __S(88, __c11, 0),
-          limits: S.optional(__S(32, __c4, 0)),
+          response: __S(604, __c75, 4),
+          limits: S.optional(__S(600, __c75, 0)),
           ttlRemaining: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CheckDomainResponse" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           subdomain: S.String.pipe(T.Label()),
-          ips: __S(6, __c0, 6),
+          ips: __S(880, __c110, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/domain/createGlue/{domain}/{subdomain}", code: 200 }),
         ),
       ).annotate({ identifier: "DomainCreateGlueRequest" });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5211,7 +5908,11 @@ function __c11(j: number): any {
           T.Http({ method: "POST", uri: "/domain/deleteGlue/{domain}/{subdomain}", code: 200 }),
         ),
       ).annotate({ identifier: "DomainDeleteGlueRequest" });
-    case 4:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5222,13 +5923,30 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DomainDeleteUrlForwardRequest",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/getContacts/{domain}", code: 200 })),
       ).annotate({ identifier: "DomainGetContactsRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          contacts: S.optional(__S(641, __c80, 1)),
+        }),
+      ).annotate({
+        identifier: "DomainGetContactsResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firstName: S.optional(S.String),
@@ -5247,59 +5965,95 @@ function __c11(j: number): any {
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainContact" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          registrant: S.optional(__S(94, __c11, 6)),
-          admin: S.optional(__S(94, __c11, 6)),
-          tech: S.optional(__S(94, __c11, 6)),
-          billing: S.optional(__S(94, __c11, 6)),
+          registrant: S.optional(__S(640, __c80, 0)),
+          admin: S.optional(__S(640, __c80, 0)),
+          tech: S.optional(__S(640, __c80, 0)),
+          billing: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({
         identifier: "DomainGetContactsResponseContacts",
       });
   }
 }
-function __c12(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          contacts: S.optional(__S(95, __c11, 7)),
-        }),
+          channel: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/account/verifyPhone/send", code: 200 })),
       ).annotate({
-        identifier: "DomainGetContactsResponse",
+        identifier: "AccountVerifyPhoneSendRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          sent: S.optional(S.Boolean),
+          codeAlreadySent: S.optional(S.Boolean),
+          alreadyVerified: S.optional(S.Boolean),
+          channel: S.optional(S.String),
+          sentTo: S.optional(S.String),
+          expiresInMinutes: S.optional(S.Number),
+          retryAfterSeconds: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AccountVerifyPhoneSendResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/domain/getGlue/{domain}", code: 200 })),
       ).annotate({ identifier: "DomainGetGlueRequest" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(888, __c111, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          hosts: S.optional(__S(98, __c12, 2)),
+          hosts: S.optional(__S(664, __c83, 0)),
         }),
       ).annotate({ identifier: "DomainGetGlueResponse" });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/domain/getNs/{domain}", code: 200 })),
       ).annotate({ identifier: "DomainGetNsRequest" });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          ns: S.optional(__S(6, __c0, 6)),
+          ns: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({ identifier: "DomainGetNsResponse" });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.String.pipe(T.Label()),
@@ -5309,7 +6063,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DomainGetRegistrationRequirementsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5329,7 +6083,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5351,12 +6105,16 @@ function __c13(j: number): any {
           delegation: S.optional(S.Unknown),
           dnssec: S.optional(S.Number),
           nextStep: S.optional(S.Unknown),
-          porkbunNameservers: S.optional(__S(6, __c0, 6)),
+          porkbunNameservers: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({
         identifier: "DomainGetTransferSetupResponse",
       });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5364,7 +6122,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DomainGetUrlForwardingRequest",
       });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5378,16 +6140,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetUrlForwardingResponseForwardsItem",
       });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(712, __c89, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          forwards: __S(108, __c13, 4),
+          forwards: __S(713, __c89, 1),
         }),
       ).annotate({ identifier: "GetUrlForwardingResponse" });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5396,7 +6162,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DomainStartTransferRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5408,14 +6174,14 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           status: S.String,
-          domains: S.optional(__S(6, __c0, 6)),
+          domains: S.optional(__S(880, __c110, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/domain/updateAutoRenew/{domain}", code: 200 })),
       ).annotate({
         identifier: "DomainUpdateAutoRenewRequest",
@@ -5430,29 +6196,33 @@ function __c14(j: number): any {
         identifier: "DomainUpdateAutoRenewResponseResultsValue",
       });
     case 2:
-      return S.Record(S.String, __S(113, __c14, 1));
+      return S.Record(S.String, __S(729, __c91, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          results: S.optional(__S(114, __c14, 2)),
+          results: S.optional(__S(730, __c91, 2)),
         }),
       ).annotate({
         identifier: "DomainUpdateAutoRenewResponse",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          contacts: S.optional(__S(95, __c11, 7)),
-          contact: S.optional(__S(94, __c11, 6)),
+          contacts: S.optional(__S(641, __c80, 1)),
+          contact: S.optional(__S(640, __c80, 0)),
           dryRun: S.optional(S.Boolean),
           addressValidationChoice: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/domain/updateContacts/{domain}", code: 200 })),
       ).annotate({
         identifier: "DomainUpdateContactsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5462,26 +6232,59 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DomainUpdateContactsResponse",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           subdomain: S.String.pipe(T.Label()),
-          ips: __S(6, __c0, 6),
+          ips: __S(880, __c110, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/domain/updateGlue/{domain}/{subdomain}", code: 200 }),
         ),
       ).annotate({ identifier: "DomainUpdateGlueRequest" });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          ns: __S(6, __c0, 6),
+          ns: __S(880, __c110, 0),
         }).pipe(T.Http({ method: "POST", uri: "/domain/updateNs/{domain}", code: 200 })),
       ).annotate({ identifier: "DomainUpdateNsRequest" });
   }
 }
-function __c15(j: number): any {
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          codeChallenge: S.optional(S.String),
+          codeChallengeMethod: S.optional(S.String),
+          sandbox: S.optional(S.Boolean),
+          returnUrl: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apikey/request", code: 200 })),
+      ).annotate({ identifier: "ApikeyRequestRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          requestToken: S.String,
+          authUrl: S.optional(S.String),
+          expiration: S.optional(S.String),
+          deliveryMode: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApikeyRequestResponse" });
+  }
+}
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5507,7 +6310,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DomainUpdateTransferAuthCodeResponse",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5520,14 +6327,22 @@ function __c15(j: number): any {
           notes: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/dns/edit/{domain}/{id}", code: 200 })),
       ).annotate({ identifier: "EditDnsRequest" });
-    case 3:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.String,
           password: S.String.pipe(T.SensitiveValue({})),
         }).pipe(T.Http({ method: "POST", uri: "/email/setPassword", code: 200 })),
       ).annotate({ identifier: "EmailSetPasswordRequest" });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Query()),
@@ -5535,7 +6350,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetAccountInviteStatusRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -5545,14 +6360,18 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetAccountInviteStatusResponse",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestToken: S.String,
           codeVerifier: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apikey/retrieve", code: 200 })),
       ).annotate({ identifier: "GetApikeyRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5564,7 +6383,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetApikeyResponse" });
   }
 }
-function __c16(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5607,17 +6426,25 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          settings: S.optional(__S(129, __c16, 1)),
+          settings: S.optional(__S(809, __c101, 1)),
           monthlySpend: S.optional(S.Number),
-          spendLimit: S.optional(__S(130, __c16, 2)),
-          topupLimit: S.optional(__S(131, __c16, 3)),
+          spendLimit: S.optional(__S(810, __c101, 2)),
+          topupLimit: S.optional(__S(811, __c101, 3)),
         }),
       ).annotate({ identifier: "ApiSettingsResponse" });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account/autoTopup", code: 200 })),
       ).annotate({ identifier: "GetAutoTopupRequest" });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5632,18 +6459,18 @@ function __c16(j: number): any {
           chargesThisMonth: S.optional(S.Number),
           maxChargesPerDay: S.optional(S.Number),
           maxChargesPerMonth: S.optional(S.Number),
-          warnings: S.optional(__S(6, __c0, 6)),
+          warnings: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({ identifier: "AutoTopupResponse" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account/balance", code: 200 })),
       ).annotate({ identifier: "GetBalanceRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5651,13 +6478,29 @@ function __c17(j: number): any {
           display: S.optional(S.String),
         }),
       ).annotate({ identifier: "BalanceResponse" });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/closeout/get/{domain}", code: 200 })),
       ).annotate({ identifier: "GetCloseoutRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          available: S.optional(S.Boolean),
+          closeout: S.optional(__S(848, __c106, 0)),
+        }),
+      ).annotate({ identifier: "GetCloseoutResponse" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           closeoutId: S.optional(S.Number),
@@ -5680,31 +6523,78 @@ function __c17(j: number): any {
           otherTldCount: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "CloseoutItem" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          available: S.optional(S.Boolean),
-          closeout: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "GetCloseoutResponse" });
-    case 4:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/cloudflare/get/{domain}", code: 200 })),
       ).annotate({ identifier: "GetCloudflareRequest" });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCloudflareResponse",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domains: __S(880, __c110, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/domain/checkDomain", code: 200 })),
+      ).annotate({
+        identifier: "BulkDomainCheckDomainRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          checked: S.optional(S.Number),
+          domains: S.optional(__S(873, __c109, 1)),
+          unresolved: S.optional(__S(880, __c110, 0)),
+          invalid: S.optional(__S(888, __c111, 0)),
+          limits: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "BulkDomainCheckDomainResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/dns/retrieve/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDnsRequest" });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5713,7 +6603,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetDnsRecordByIdRequest" });
   }
 }
-function __c18(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5721,7 +6611,11 @@ function __c18(j: number): any {
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dns/retrieve/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDnsRecordsRequest" });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5737,27 +6631,35 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetDnsRecordsByNameTypeRequest",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dns/getDnssecRecords/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDnssecRecordsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          records: S.optional(__S(65, __c8, 1)),
+          records: S.optional(__S(521, __c65, 1)),
         }),
       ).annotate({ identifier: "GetDnssecRecordsResponse" });
-    case 4:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           includeLabels: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/domain/get/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDomainRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -5772,14 +6674,18 @@ function __c18(j: number): any {
           notLocal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetDomainResponseDomain" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          domain: S.optional(__S(149, __c18, 5)),
+          domain: S.optional(__S(937, __c117, 1)),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
-    case 7:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5787,7 +6693,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetDomainGlueRequest" });
   }
 }
-function __c19(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5795,7 +6701,11 @@ function __c19(j: number): any {
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/getNs/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDomainNsRequest" });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.Number.pipe(T.Query())),
@@ -5803,14 +6713,18 @@ function __c19(j: number): any {
           domain: S.optional(S.String.pipe(T.Query())),
           nameContains: S.optional(S.String.pipe(T.Query())),
           expiringWithinDays: S.optional(S.Number.pipe(T.Query())),
-          tlds: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          tlds: S.optional(__S(880, __c110, 0).pipe(T.Query())),
           autoRenew: S.optional(S.String.pipe(T.Query())),
           apiAccess: S.optional(S.String.pipe(T.Query())),
           sortName: S.optional(S.String.pipe(T.Query())),
           sortDirection: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/domain/listAll", code: 200 })),
       ).annotate({ identifier: "GetDomainsRequest" });
-    case 2:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5820,9 +6734,9 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DomainListAllResponseDomainsItemLabelsItem",
       });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(968, __c121, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -5835,22 +6749,26 @@ function __c19(j: number): any {
           autoRenew: S.optional(S.Number),
           apiAccess: S.optional(S.Number),
           notLocal: S.optional(S.Number),
-          labels: S.optional(__S(155, __c19, 3)),
+          labels: S.optional(__S(969, __c121, 1)),
         }),
       ).annotate({
         identifier: "DomainListAllResponseDomainsItem",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(970, __c121, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           count: S.optional(S.Number),
-          domains: __S(157, __c19, 5),
+          domains: __S(971, __c121, 3),
         }),
       ).annotate({ identifier: "DomainListAllResponse" });
-    case 7:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -5860,7 +6778,34 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          cost: S.Number,
+          payWith: S.optional(S.String),
+          usdcCheckoutId: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/closeout/buy/{domain}", code: 200 })),
+      ).annotate({ identifier: "CloseoutBuyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          domain: S.optional(S.String),
+          orderId: S.optional(S.Number),
+          closeoutId: S.optional(S.Number),
+          closeoutPrice: S.optional(S.Number),
+          renewalPrice: S.optional(S.Number),
+          totalPrice: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloseoutBuyResponse" });
+  }
+}
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5889,16 +6834,20 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          hosting: S.optional(S.NullOr(__S(161, __c20, 1))),
+          hosting: S.optional(S.NullOr(__S(993, __c124, 1))),
         }),
       ).annotate({ identifier: "GetHostingResponse" });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/account/invoice/{orderId}", code: 200 })),
       ).annotate({ identifier: "GetInvoiceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           company: S.optional(S.NullOr(S.String)),
@@ -5909,7 +6858,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetInvoiceResponseInvoiceBillTo",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -5920,22 +6869,22 @@ function __c20(j: number): any {
           status: S.optional(S.String),
           price_cents: S.optional(S.Number),
           discount_cents: S.optional(S.Number),
-          tags: S.optional(__S(6, __c0, 6)),
+          tags: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({
         identifier: "GetInvoiceResponseInvoiceItemsItem",
       });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1002, __c125, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           date: S.optional(S.String),
           state: S.optional(S.String),
-          billTo: S.optional(__S(164, __c20, 4)),
-          paymentMethods: S.optional(__S(6, __c0, 6)),
-          items: S.optional(__S(166, __c20, 6)),
+          billTo: S.optional(__S(1001, __c125, 1)),
+          paymentMethods: S.optional(__S(880, __c110, 0)),
+          items: S.optional(__S(1003, __c125, 3)),
           gross_cents: S.optional(S.Number),
           refunded_cents: S.optional(S.Number),
           total_cents: S.optional(S.Number),
@@ -5949,24 +6898,24 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetInvoiceResponseInvoice",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          invoice: S.optional(__S(167, __c20, 7)),
+          invoice: S.optional(__S(1004, __c125, 4)),
         }),
       ).annotate({ identifier: "GetInvoiceResponse" });
-    case 1:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/account/invoicePdf/{orderId}", code: 200 })),
       ).annotate({ identifier: "GetInvoicePdfRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5978,11 +6927,19 @@ function __c21(j: number): any {
           downloadExpires: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetInvoicePdfResponse" });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/ip", code: 200 })),
       ).annotate({ identifier: "GetIpRequest" });
-    case 4:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -5990,11 +6947,19 @@ function __c21(j: number): any {
           xForwardedFor: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpResponse" });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/ping", code: 200 })),
       ).annotate({ identifier: "GetPingRequest" });
-    case 6:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -6003,16 +6968,28 @@ function __c21(j: number): any {
           credentialsValid: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetPingResponse" });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.optional(S.String),
           tlds: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/pricing/get", code: 200 })),
       ).annotate({ identifier: "GetPricingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          unsupported: S.optional(__S(880, __c110, 0)),
+          pricing: S.optional(__S(1059, __c132, 3)),
+        }),
+      ).annotate({ identifier: "GetPricingResponse" });
   }
 }
-function __c22(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6027,7 +7004,7 @@ function __c22(j: number): any {
         identifier: "GetPricingResponsePricingValueCouponsValue",
       });
     case 1:
-      return S.Record(S.String, __S(176, __c22, 0));
+      return S.Record(S.String, __S(1056, __c132, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6035,37 +7012,37 @@ function __c22(j: number): any {
           renewal: S.optional(S.String),
           transfer: S.optional(S.String),
           specialType: S.optional(S.String),
-          coupons: S.optional(__S(177, __c22, 1)),
+          coupons: S.optional(__S(1057, __c132, 1)),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingValue",
       });
     case 3:
-      return S.Record(S.String, __S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          unsupported: S.optional(__S(6, __c0, 6)),
-          pricing: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({ identifier: "GetPricingResponse" });
-    case 5:
+      return S.Record(S.String, __S(1058, __c132, 2));
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.optional(S.String.pipe(T.Query())),
           tlds: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/pricing/get", code: 200 })),
       ).annotate({ identifier: "GetPricingGetRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          unsupported: S.optional(__S(6, __c0, 6)),
-          pricing: S.optional(__S(179, __c22, 3)),
+          unsupported: S.optional(__S(880, __c110, 0)),
+          pricing: S.optional(__S(1059, __c132, 3)),
         }),
       ).annotate({ identifier: "GetPricingGetResponse" });
-    case 7:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -6073,7 +7050,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetSslRequest" });
   }
 }
-function __c23(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6084,19 +7061,38 @@ function __c23(j: number): any {
           publickey: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSslResponse" });
-    case 1:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/ssl/retrieve/{domain}", code: 200 })),
       ).annotate({ identifier: "GetSslRetrieveRequest" });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/domain/getTransfer/{domain}", code: 200 })),
       ).annotate({ identifier: "GetTransferGetRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          transfer: S.optional(__S(1104, __c138, 0)),
+        }),
+      ).annotate({ identifier: "GetTransferResponse" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -6108,20 +7104,50 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetTransferResponseTransfer",
       });
-    case 4:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(S.String),
-          transfer: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({ identifier: "GetTransferResponse" });
-    case 5:
+          domain: S.String.pipe(T.Label()),
+          type: S.String,
+          name: S.optional(S.String),
+          content: S.optional(S.String),
+          ttl: S.optional(S.Number),
+          priority: S.optional(S.Number),
+          proxied: S.optional(S.Boolean),
+          comment: S.optional(S.String),
+          data: S.optional(S.Unknown),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/cloudflare/createRecord/{domain}", code: 200 })),
+      ).annotate({
+        identifier: "CloudflareCreateRecordRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CloudflareCreateRecordResponse",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/webhook/get/{id}", code: 200 })),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 6:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -6135,7 +7161,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "HostingCreateWpCredentialsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
@@ -6148,21 +7174,21 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "HostingCreateWpCredentialsResponseCredentials",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          credentials: S.optional(__S(191, __c23, 7)),
+          credentials: S.optional(__S(1137, __c142, 1)),
           message: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingCreateWpCredentialsResponse",
       });
-    case 1:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -6170,7 +7196,7 @@ function __c24(j: number): any {
           recursive: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/deleteFile/{domain}", code: 200 })),
       ).annotate({ identifier: "HostingDeleteFileRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -6179,7 +7205,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "HostingDeleteFileResponse",
       });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -6193,7 +7223,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "HostingDeleteWpCredentialsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -6203,21 +7233,29 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "HostingDeleteWpCredentialsResponse",
       });
-    case 5:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/files/{domain}", code: 200 })),
       ).annotate({ identifier: "HostingFilesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           path: S.optional(S.String),
-          files: S.optional(__S(6, __c0, 6)),
+          files: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({ identifier: "HostingFilesResponse" });
-    case 7:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -6226,39 +7264,43 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "HostingGetWpCredentialsRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           wpUser: S.optional(S.String),
-          credentials: S.optional(__S(9, __c1, 1)),
+          credentials: S.optional(__S(888, __c111, 0)),
         }),
       ).annotate({
         identifier: "HostingGetWpCredentialsResponse",
       });
-    case 1:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           path: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/hosting/makeDir/{domain}", code: 200 })),
       ).annotate({ identifier: "HostingMakeDirRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           created: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingMakeDirResponse" });
-    case 3:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/hosting/plans", code: 200 })),
       ).annotate({ identifier: "HostingPlansRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           product: S.optional(S.String),
@@ -6274,27 +7316,27 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "HostingPlansResponsePlansItem",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1185, __c148, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          plans: S.optional(__S(205, __c25, 5)),
+          plans: S.optional(__S(1186, __c148, 2)),
         }),
       ).annotate({ identifier: "HostingPlansResponse" });
-    case 7:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
-          records: S.optional(__S(60, __c7, 4)),
+          records: S.optional(__S(497, __c62, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/dns/import/{domain}", code: 200 })),
       ).annotate({ identifier: "ImportDnsRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -6302,11 +7344,15 @@ function __c26(j: number): any {
           created: S.optional(S.Number),
           skipped: S.optional(S.Number),
           failed: S.optional(S.Number),
-          failures: S.optional(__S(9, __c1, 1)),
-          warnings: S.optional(__S(6, __c0, 6)),
+          failures: S.optional(__S(888, __c111, 0)),
+          warnings: S.optional(__S(880, __c110, 0)),
         }),
       ).annotate({ identifier: "ImportDnsResponse" });
-    case 1:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.Number),
@@ -6314,598 +7360,15 @@ function __c26(j: number): any {
           domain: S.optional(S.String),
           nameContains: S.optional(S.String),
           expiringWithinDays: S.optional(S.Number),
-          tlds: S.optional(__S(6, __c0, 6)),
+          tlds: S.optional(__S(880, __c110, 0)),
           autoRenew: S.optional(S.String),
           apiAccess: S.optional(S.String),
           sortName: S.optional(S.String),
           sortDirection: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/domain/listAll", code: 200 })),
       ).annotate({ identifier: "ListDomainsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number.pipe(T.Query())),
-          start: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/account/invoices", code: 200 })),
-      ).annotate({ identifier: "ListInvoicesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          date: S.optional(S.String),
-          state: S.optional(S.String),
-          total_cents: S.optional(S.Number),
-          total: S.optional(S.String),
-          itemCount: S.optional(S.Number),
-          domains: S.optional(__S(6, __c0, 6)),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ListInvoicesResponseInvoicesItem",
-      });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          invoices: S.optional(__S(212, __c26, 4)),
-          total: S.optional(S.Number),
-          start: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          years: S.optional(__S(213, __c26, 5)),
-        }),
-      ).annotate({ identifier: "ListInvoicesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          query: S.optional(S.String),
-          tlds: S.optional(__S(6, __c0, 6)),
-          sldLengthMin: S.optional(S.Number),
-          sldLengthMax: S.optional(S.Number),
-          sortName: S.optional(S.String),
-          sortDirection: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/marketplace/getAll", code: 200 })),
-      ).annotate({
-        identifier: "ListMarketplaceListingsRequest",
-      });
   }
 }
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          create_date: S.optional(S.String),
-          domain: S.optional(S.String),
-          tld: S.optional(S.String),
-          sld_length: S.optional(S.Number),
-          price: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListMarketplaceListingsResponseDomainsItem",
-      });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          count: S.optional(S.Number),
-          filtered: S.optional(S.Boolean),
-          domains: S.optional(__S(217, __c27, 1)),
-        }),
-      ).annotate({
-        identifier: "ListMarketplaceListingsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          tlds: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          sldLengthMin: S.optional(S.Number.pipe(T.Query())),
-          sldLengthMax: S.optional(S.Number.pipe(T.Query())),
-          sortName: S.optional(S.String.pipe(T.Query())),
-          sortDirection: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/marketplace/getAll", code: 200 })),
-      ).annotate({
-        identifier: "ListMarketplaceListingsGetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/listTransfers", code: 200 })),
-      ).annotate({ identifier: "ListTransfersGetRequest" });
-    case 5:
-      return S.Array(__S(187, __c23, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          transfers: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({ identifier: "ListTransfersResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/list", code: 200 })),
-      ).annotate({ identifier: "ListWebhookRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          endpoints: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({ identifier: "WebhookListResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/mock", code: 200 })),
-      ).annotate({ identifier: "MockDirectoryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          path: S.optional(S.String),
-          summary: S.optional(S.String),
-          mockUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MockDirectoryResponseEndpointsItem",
-      });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          mock: S.optional(S.Boolean),
-          count: S.optional(S.Number),
-          endpoints: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({ identifier: "MockDirectoryResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/mock/{path}", code: 200 })),
-      ).annotate({ identifier: "MockEndpointRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ping", code: 200 })),
-      ).annotate({ identifier: "PingRequest" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/ip", code: 200 })),
-      ).annotate({ identifier: "PostIpRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/cloudflare/preview/{domain}", code: 200 })),
-      ).annotate({ identifier: "PreviewCloudflareRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          cost: S.Number,
-          payWith: S.optional(S.String),
-          usdcCheckoutId: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/renew/{domain}", code: 200 })),
-      ).annotate({ identifier: "RenewDomainRequest" });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "RenewDomainResponse2",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/webhook/resend", code: 200 })),
-      ).annotate({ identifier: "ResendWebhookRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          endpointId: S.optional(S.Number),
-          eventType: S.optional(S.String),
-          eventId: S.optional(S.String),
-          status: S.optional(S.String),
-          attempts: S.optional(S.Number),
-          maxAttempts: S.optional(S.Number),
-          httpStatus: S.optional(S.NullOr(S.Number)),
-          lastError: S.optional(S.NullOr(S.String)),
-          nextAttemptAt: S.optional(S.String),
-          createDate: S.optional(S.String),
-          deliveredDate: S.optional(S.NullOr(S.String)),
-          payload: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "WebhookDelivery" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          delivery: S.optional(__S(237, __c29, 5)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebhookResendResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/sandbox/reset", code: 200 })),
-      ).annotate({ identifier: "ResetSandboxRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          message: S.optional(S.String),
-          domainsCleared: S.optional(S.Number),
-          balance: S.optional(S.Number),
-          sandbox: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ResetSandboxResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          snapshotId: S.Number,
-          prune: S.optional(S.Boolean),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/dns/restore/{domain}", code: 200 })),
-      ).annotate({ identifier: "RestoreDnsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DnsRestoreResponseFailedItem",
-      });
-    case 3:
-      return S.Array(__S(242, __c30, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          warnings: S.optional(__S(6, __c0, 6)),
-          status: S.optional(S.String),
-          domain: S.optional(S.String),
-          restoredFrom: S.optional(S.Number),
-          previousStateSavedAs: S.optional(S.NullOr(S.Number)),
-          restored: S.optional(S.Number),
-          removed: S.optional(S.Number),
-          failed: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({ identifier: "DnsRestoreResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/cloudflare/retry/{domain}", code: 200 })),
-      ).annotate({ identifier: "RetryCloudflareRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/sandbox/topup", code: 200 })),
-      ).annotate({ identifier: "SandboxTopupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          granted: S.optional(S.Number),
-          balance: S.optional(S.Number),
-          display: S.optional(S.String),
-          sandbox: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SandboxTopupResponse" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          eventType: S.String,
-          domain: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/sandbox/triggerWebhook", code: 200 })),
-      ).annotate({
-        identifier: "SandboxTriggerWebhookRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          event: S.optional(S.String),
-          data: S.optional(S.Unknown),
-          endpointsRegistered: S.optional(S.Number),
-          message: S.optional(S.String),
-          sandbox: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "SandboxTriggerWebhookResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          tld: S.optional(S.String.pipe(T.Query())),
-          nameLength: S.optional(S.Number.pipe(T.Query())),
-          ageMin: S.optional(S.Number.pipe(T.Query())),
-          ageMax: S.optional(S.Number.pipe(T.Query())),
-          priceMin: S.optional(S.Number.pipe(T.Query())),
-          priceMax: S.optional(S.Number.pipe(T.Query())),
-          sortName: S.optional(S.String.pipe(T.Query())),
-          sortDirection: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/closeout/search", code: 200 })),
-      ).annotate({ identifier: "SearchCloseoutRequest" });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          count: S.optional(S.Number),
-          totalAvailable: S.optional(S.Number),
-          start: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          closeouts: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({ identifier: "SearchCloseoutResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          threshold: S.optional(S.Number),
-          amount: S.optional(S.Number),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/account/autoTopup", code: 200 })),
-      ).annotate({ identifier: "SetAutoTopupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/webhook/test", code: 200 })),
-      ).annotate({ identifier: "TestWebhookRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          eventId: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebhookTestResponse" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/account/topup", code: 200 })),
-      ).annotate({
-        identifier: "TopupAccountCreditRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          charged: S.optional(S.Number),
-          chargedDisplay: S.optional(S.String),
-          balance: S.optional(S.Number),
-          balanceDisplay: S.optional(S.String),
-          orderId: S.optional(S.Number),
-          usedDefaultAmount: S.optional(S.Boolean),
-          chargesToday: S.optional(S.Number),
-          chargesThisMonth: S.optional(S.Number),
-          simulated: S.optional(S.Boolean),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TopupAccountCreditResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/account/topupCrypto", code: 200 })),
-      ).annotate({ identifier: "TopupCryptoRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          checkoutId: S.optional(S.String),
-          amount_cents: S.optional(S.Number),
-          estimatedFee_cents: S.optional(S.Number),
-          estimatedCredit_cents: S.optional(S.Number),
-          currency: S.optional(S.String),
-          network: S.optional(S.String),
-          payUrl: S.optional(S.String),
-          x402Url: S.optional(S.NullOr(S.String)),
-          expiresAt: S.optional(S.NullOr(S.String)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopupCryptoResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          checkoutId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/account/topupCryptoStatus/{checkoutId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "TopupCryptoStatusRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          checkoutId: S.optional(S.String),
-          state: S.optional(S.String),
-          credited: S.optional(S.Boolean),
-          balance_cents: S.optional(S.Number),
-          balance: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TopupCryptoStatusResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/account/topupMpp", code: 200 })),
-      ).annotate({ identifier: "TopupMppRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          amount_cents: S.optional(S.Number),
-          payUrl: S.optional(S.String),
-          expiresAt: S.optional(S.String),
-          protocol: S.optional(S.String),
-          methods: S.optional(__S(6, __c0, 6)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TopupMppResponse" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          authCode: S.String,
-          cost: S.Number,
-          holdForDnsSetup: S.optional(S.Boolean),
-          payWith: S.optional(S.String),
-          usdcCheckoutId: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/transfer/{domain}", code: 200 })),
-      ).annotate({ identifier: "TransferDomainRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "TransferDomainResponse2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/domain/prepareTransfer/{domain}", code: 200 })),
-      ).annotate({
-        identifier: "TransferDomainPrepareRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          domain: S.optional(S.String),
-          zoneReady: S.optional(S.Boolean),
-          recordCount: S.optional(S.Number),
-          message: S.optional(S.String),
-          porkbunNameservers: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "TransferDomainPrepareResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          url: S.optional(S.String),
-          events: S.optional(__S(6, __c0, 6)),
-          status: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/webhook/update", code: 200 })),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpointId: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/webhook/deliveries", code: 200 })),
-      ).annotate({ identifier: "WebhookDeliveriesRequest" });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          deliveries: S.optional(__S(270, __c33, 6)),
-          total: S.optional(S.Number),
-          start: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WebhookDeliveryListResponse",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/webhook/delivery/{id}", code: 200 })),
-      ).annotate({ identifier: "WebhookDeliveryRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          delivery: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({ identifier: "WebhookDeliveryResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhook/eventTypes", code: 200 })),
-      ).annotate({ identifier: "WebhookEventTypesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          eventTypes: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "WebhookEventTypesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/webhook/rotateSecret", code: 200 })),
-      ).annotate({
-        identifier: "WebhookRotateSecretRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

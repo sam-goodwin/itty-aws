@@ -568,8 +568,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -588,8 +588,8 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateProjectsLocationsClustersRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateProjectsLocationsClustersRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteProjectsLocationsClustersRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteProjectsLocationsClustersRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +628,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +643,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Location>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsClustersRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Cluster>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetProjectsLocationsClustersRequest>,
+  output: __S(423, __c13, 7) as any as S.Schema<Cluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -689,8 +689,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -706,8 +706,8 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListProjectsLocationsClustersRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListClustersResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListProjectsLocationsClustersRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<PatchProjectsLocationsClustersRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Operation>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchProjectsLocationsClustersRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,445 +755,6 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sizeGb: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BootDisk" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          instance: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComputeInstance" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          localMount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageConfig" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          machineType: S.optional(S.String),
-          count: S.optional(S.String),
-          enablePublicIps: S.optional(S.Boolean),
-          enableOsLogin: S.optional(S.Boolean),
-          bootDisk: S.optional(__S(3, __c0, 3)),
-          instances: S.optional(__S(5, __c0, 5)),
-          zone: S.optional(S.String),
-          startupScript: S.optional(S.String),
-          storageConfigs: S.optional(__S(7, __c0, 7)),
-          labels: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "SlurmLoginNodes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(8, __c1, 0)),
-          startupScript: S.optional(S.String),
-          bootDisk: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "ComputeInstanceSlurmNodeSet",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          computeInstance: S.optional(__S(10, __c1, 2)),
-          maxDynamicNodeCount: S.optional(S.String),
-          staticNodeCount: S.optional(S.String),
-          computeId: S.optional(S.String),
-          storageConfigs: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "SlurmNodeSet" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nodeSetIds: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SlurmPartition" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          epilogBashScripts: S.optional(__S(2, __c0, 2)),
-          loginNodes: S.optional(__S(9, __c1, 1)),
-          nodeSets: S.optional(__S(12, __c1, 4)),
-          partitions: S.optional(__S(14, __c1, 6)),
-          defaultPartition: S.optional(S.String),
-          prologBashScripts: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "SlurmOrchestrator" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slurm: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "Orchestrator" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          machineType: S.optional(S.String),
-          maxDuration: S.optional(S.String),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NewFlexStartInstancesConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zone: S.optional(S.String),
-          machineType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NewOnDemandInstancesConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          machineType: S.optional(S.String),
-          zone: S.optional(S.String),
-          terminationAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewSpotInstancesConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reservation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NewReservedInstancesConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          newFlexStartInstances: S.optional(__S(17, __c2, 1)),
-          newOnDemandInstances: S.optional(__S(18, __c2, 2)),
-          newSpotInstances: S.optional(__S(19, __c2, 3)),
-          newReservedInstances: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ComputeResourceConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ComputeResource" });
-    case 7:
-      return S.Record(S.String, __S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.optional(S.String),
-          subnetwork: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkReference" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subnetwork: S.optional(S.String),
-          network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExistingNetworkConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewNetworkConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          existingNetwork: S.optional(__S(25, __c3, 1)),
-          newNetwork: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "NetworkResourceConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.optional(__S(24, __c3, 0)),
-          config: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "NetworkResource" });
-    case 5:
-      return S.Record(S.String, __S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lustre: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExistingLustreConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filestore: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExistingFilestoreConfig" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          capacityGb: S.optional(S.String),
-          fileShare: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileShareConfig" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.optional(S.String),
-          filestore: S.optional(S.String),
-          fileShares: S.optional(__S(33, __c4, 1)),
-          tier: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewFilestoreConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GcsHierarchicalNamespaceConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          terminalStorageClass: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GcsAutoclassConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hierarchicalNamespace: S.optional(__S(35, __c4, 3)),
-          autoclass: S.optional(__S(36, __c4, 4)),
-          storageClass: S.optional(S.String),
-          bucket: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewBucketConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          capacityGb: S.optional(S.String),
-          filesystem: S.optional(S.String),
-          perUnitStorageThroughput: S.optional(S.String),
-          lustre: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NewLustreConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExistingBucketConfig" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          existingLustre: S.optional(__S(30, __c3, 6)),
-          existingFilestore: S.optional(__S(31, __c3, 7)),
-          newFilestore: S.optional(__S(34, __c4, 2)),
-          newBucket: S.optional(__S(37, __c4, 5)),
-          newLustre: S.optional(__S(38, __c4, 6)),
-          existingBucket: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "StorageResourceConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(40, __c5, 0)),
-          bucket: S.optional(__S(39, __c4, 7)),
-          filestore: S.optional(__S(31, __c3, 7)),
-          lustre: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "StorageResource" });
-    case 2:
-      return S.Record(S.String, __S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-          orchestrator: S.optional(__S(16, __c2, 0)),
-          description: S.optional(S.String),
-          computeResources: S.optional(__S(23, __c2, 7)),
-          networkResources: S.optional(__S(29, __c3, 5)),
-          updateTime: S.optional(S.String),
-          storageResources: S.optional(__S(42, __c5, 2)),
-          reconciling: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          labels: S.optional(__S(8, __c1, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Cluster" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          clusterId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clusters",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsClustersRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(46, __c5, 6)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(45, __c5, 5)),
-          name: S.optional(S.String),
-          error: S.optional(__S(47, __c5, 7)),
-          response: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsClustersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(8, __c1, 0)),
-          locationId: S.optional(S.String),
-          metadata: S.optional(__S(45, __c5, 5)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://hypercomputecluster.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsClustersRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1207,11 +768,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(352, __c11, 0).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1225,20 +790,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(52, __c6, 4));
     case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(56, __c7, 0)),
+          locations: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1256,17 +821,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsClustersRequest",
       });
-    case 3:
-      return S.Array(__S(43, __c5, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(423, __c13, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
-          clusters: S.optional(__S(59, __c7, 3)),
+          unreachable: S.optional(__S(352, __c11, 0)),
+          clusters: S.optional(__S(65, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1284,19 +853,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 6:
-      return S.Array(__S(48, __c6, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(258, __c8, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(2, __c0, 2)),
+          unreachable: S.optional(__S(352, __c11, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(62, __c7, 6)),
+          operations: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1304,7 +873,7 @@ function __c8(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(423, __c13, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1317,7 +886,477 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          clusterId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(423, __c13, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clusters",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsClustersRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(288, __c9, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(256, __c8, 0)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(288, __c9, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(257, __c8, 1)),
+          response: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sizeGb: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BootDisk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          instance: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComputeInstance" });
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          localMount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageConfig" });
+    case 4:
+      return S.Array(__S(387, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          machineType: S.optional(S.String),
+          count: S.optional(S.String),
+          enablePublicIps: S.optional(S.Boolean),
+          enableOsLogin: S.optional(S.Boolean),
+          bootDisk: S.optional(__S(384, __c12, 0)),
+          instances: S.optional(__S(386, __c12, 2)),
+          zone: S.optional(S.String),
+          startupScript: S.optional(S.String),
+          storageConfigs: S.optional(__S(388, __c12, 4)),
+          labels: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({ identifier: "SlurmLoginNodes" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(320, __c10, 0)),
+          startupScript: S.optional(S.String),
+          bootDisk: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "ComputeInstanceSlurmNodeSet",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          computeInstance: S.optional(__S(390, __c12, 6)),
+          maxDynamicNodeCount: S.optional(S.String),
+          staticNodeCount: S.optional(S.String),
+          computeId: S.optional(S.String),
+          storageConfigs: S.optional(__S(388, __c12, 4)),
+        }),
+      ).annotate({ identifier: "SlurmNodeSet" });
+    case 8:
+      return S.Array(__S(391, __c12, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          nodeSetIds: S.optional(__S(352, __c11, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SlurmPartition" });
+    case 10:
+      return S.Array(__S(393, __c12, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          epilogBashScripts: S.optional(__S(352, __c11, 0)),
+          loginNodes: S.optional(__S(389, __c12, 5)),
+          nodeSets: S.optional(__S(392, __c12, 8)),
+          partitions: S.optional(__S(394, __c12, 10)),
+          defaultPartition: S.optional(S.String),
+          prologBashScripts: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "SlurmOrchestrator" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          slurm: S.optional(__S(395, __c12, 11)),
+        }),
+      ).annotate({ identifier: "Orchestrator" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          machineType: S.optional(S.String),
+          maxDuration: S.optional(S.String),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NewFlexStartInstancesConfig",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          zone: S.optional(S.String),
+          machineType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NewOnDemandInstancesConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          machineType: S.optional(S.String),
+          zone: S.optional(S.String),
+          terminationAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewSpotInstancesConfig" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          reservation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NewReservedInstancesConfig",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          newFlexStartInstances: S.optional(__S(397, __c12, 13)),
+          newOnDemandInstances: S.optional(__S(398, __c12, 14)),
+          newSpotInstances: S.optional(__S(399, __c12, 15)),
+          newReservedInstances: S.optional(__S(400, __c12, 16)),
+        }),
+      ).annotate({ identifier: "ComputeResourceConfig" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(401, __c12, 17)),
+        }),
+      ).annotate({ identifier: "ComputeResource" });
+    case 19:
+      return S.Record(S.String, __S(402, __c12, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(S.String),
+          subnetwork: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkReference" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          subnetwork: S.optional(S.String),
+          network: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExistingNetworkConfig" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          network: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewNetworkConfig" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          existingNetwork: S.optional(__S(405, __c12, 21)),
+          newNetwork: S.optional(__S(406, __c12, 22)),
+        }),
+      ).annotate({ identifier: "NetworkResourceConfig" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(__S(404, __c12, 20)),
+          config: S.optional(__S(407, __c12, 23)),
+        }),
+      ).annotate({ identifier: "NetworkResource" });
+    case 25:
+      return S.Record(S.String, __S(408, __c12, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          lustre: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExistingLustreConfig" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          filestore: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExistingFilestoreConfig" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          capacityGb: S.optional(S.String),
+          fileShare: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileShareConfig" });
+    case 29:
+      return S.Array(__S(412, __c12, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          filestore: S.optional(S.String),
+          fileShares: S.optional(__S(413, __c12, 29)),
+          tier: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewFilestoreConfig" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GcsHierarchicalNamespaceConfig",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          terminalStorageClass: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GcsAutoclassConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hierarchicalNamespace: S.optional(__S(415, __c12, 31)),
+          autoclass: S.optional(__S(416, __c13, 0)),
+          storageClass: S.optional(S.String),
+          bucket: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewBucketConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          capacityGb: S.optional(S.String),
+          filesystem: S.optional(S.String),
+          perUnitStorageThroughput: S.optional(S.String),
+          lustre: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NewLustreConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExistingBucketConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          existingLustre: S.optional(__S(410, __c12, 26)),
+          existingFilestore: S.optional(__S(411, __c12, 27)),
+          newFilestore: S.optional(__S(414, __c12, 30)),
+          newBucket: S.optional(__S(417, __c13, 1)),
+          newLustre: S.optional(__S(418, __c13, 2)),
+          existingBucket: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({ identifier: "StorageResourceConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(420, __c13, 4)),
+          bucket: S.optional(__S(419, __c13, 3)),
+          filestore: S.optional(__S(411, __c12, 27)),
+          lustre: S.optional(__S(410, __c12, 26)),
+        }),
+      ).annotate({ identifier: "StorageResource" });
+    case 6:
+      return S.Record(S.String, __S(421, __c13, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+          orchestrator: S.optional(__S(396, __c12, 12)),
+          description: S.optional(S.String),
+          computeResources: S.optional(__S(403, __c12, 19)),
+          networkResources: S.optional(__S(409, __c12, 25)),
+          updateTime: S.optional(S.String),
+          storageResources: S.optional(__S(422, __c13, 6)),
+          reconciling: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          labels: S.optional(__S(320, __c10, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cluster" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsClustersRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(320, __c10, 0)),
+          locationId: S.optional(S.String),
+          metadata: S.optional(__S(288, __c9, 0)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://hypercomputecluster.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsClustersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -967,8 +967,8 @@ export const batchRunPivotReportsProperties: API.OperationMethod<
   BatchRunPivotReportsPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<BatchRunPivotReportsPropertiesRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<BatchRunPivotReportsResponse>,
+  input: __S(162, __c5, 2) as any as S.Schema<BatchRunPivotReportsPropertiesRequest>,
+  output: __S(164, __c5, 4) as any as S.Schema<BatchRunPivotReportsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -987,8 +987,8 @@ export const batchRunReportsProperties: API.OperationMethod<
   BatchRunReportsPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<BatchRunReportsPropertiesRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<BatchRunReportsResponse>,
+  input: __S(450, __c14, 2) as any as S.Schema<BatchRunReportsPropertiesRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<BatchRunReportsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1007,8 @@ export const checkCompatibilityProperties: API.OperationMethod<
   CheckCompatibilityPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CheckCompatibilityPropertiesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<CheckCompatibilityResponse>,
+  input: __S(513, __c16, 1) as any as S.Schema<CheckCompatibilityPropertiesRequest>,
+  output: __S(518, __c16, 6) as any as S.Schema<CheckCompatibilityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1027,8 +1027,8 @@ export const createPropertiesAudienceExports: API.OperationMethod<
   CreatePropertiesAudienceExportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreatePropertiesAudienceExportsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<Operation>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreatePropertiesAudienceExportsRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1042,8 @@ export const getMetadataProperties: API.OperationMethod<
   GetMetadataPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetMetadataPropertiesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<Metadata>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetMetadataPropertiesRequest>,
+  output: __S(645, __c20, 5) as any as S.Schema<Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1057,8 +1057,8 @@ export const getPropertiesAudienceExports: API.OperationMethod<
   GetPropertiesAudienceExportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetPropertiesAudienceExportsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<AudienceExport>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetPropertiesAudienceExportsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AudienceExport>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1073,8 +1073,8 @@ export const listPropertiesAudienceExports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAudienceExportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListPropertiesAudienceExportsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListAudienceExportsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListPropertiesAudienceExportsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListAudienceExportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1094,8 +1094,8 @@ export const queryPropertiesAudienceExports: API.OperationMethod<
   QueryPropertiesAudienceExportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<QueryPropertiesAudienceExportsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<QueryAudienceExportResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<QueryPropertiesAudienceExportsRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<QueryAudienceExportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1114,8 +1114,8 @@ export const runPivotReportProperties: API.OperationMethod<
   RunPivotReportPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<RunPivotReportPropertiesRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RunPivotReportResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<RunPivotReportPropertiesRequest>,
+  output: __S(229, __c7, 5) as any as S.Schema<RunPivotReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1134,8 +1134,8 @@ export const runRealtimeReportProperties: API.OperationMethod<
   RunRealtimeReportPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<RunRealtimeReportPropertiesRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<RunRealtimeReportResponse>,
+  input: __S(99, __c3, 3) as any as S.Schema<RunRealtimeReportPropertiesRequest>,
+  output: __S(100, __c3, 4) as any as S.Schema<RunRealtimeReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1149,8 +1149,8 @@ export const runReportProperties: API.OperationMethod<
   RunReportPropertiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<RunReportPropertiesRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<RunReportResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<RunReportPropertiesRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<RunReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1160,715 +1160,6 @@ export const runReportProperties: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          int64Value: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NumericValue" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(0, __c0, 0)),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NumericFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          matchType: S.optional(S.String),
-          caseSensitive: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StringFilter" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          caseSensitive: S.optional(S.Boolean),
-          values: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "InListFilter" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EmptyFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          toValue: S.optional(__S(0, __c0, 0)),
-          fromValue: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BetweenFilter" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fieldName: S.optional(S.String),
-          numericFilter: S.optional(__S(1, __c0, 1)),
-          stringFilter: S.optional(__S(2, __c0, 2)),
-          inListFilter: S.optional(__S(4, __c0, 4)),
-          emptyFilter: S.optional(__S(5, __c0, 5)),
-          betweenFilter: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Filter" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(10, __c1, 2)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expressions: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "FilterExpressionList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          notExpression: S.optional(__S(10, __c1, 2)),
-          filter: S.optional(__S(7, __c0, 7)),
-          orGroup: S.optional(__S(9, __c1, 1)),
-          andGroup: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "FilterExpression" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endOffset: S.optional(S.Number),
-          granularity: S.optional(S.String),
-          startOffset: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CohortsRange" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          endDate: S.optional(S.String),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DateRange" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          dimension: S.optional(S.String),
-          dateRange: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Cohort" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accumulate: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CohortReportSettings" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cohortsRange: S.optional(__S(11, __c1, 3)),
-          cohorts: S.optional(__S(14, __c1, 6)),
-          cohortReportSettings: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CohortSpec" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionNames: S.optional(__S(3, __c0, 3)),
-          delimiter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConcatenateExpression" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CaseExpression" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          concatenate: S.optional(__S(17, __c2, 1)),
-          upperCase: S.optional(__S(18, __c2, 2)),
-          lowerCase: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "DimensionExpression" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          dimensionExpression: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Dimension" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.Array(__S(12, __c1, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          name: S.optional(S.String),
-          invisible: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Metric" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionName: S.optional(S.String),
-          orderType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionOrderBy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricOrderBy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionValue: S.optional(S.String),
-          dimensionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PivotSelection" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-          pivotSelections: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "PivotOrderBy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimension: S.optional(__S(26, __c3, 2)),
-          metric: S.optional(__S(27, __c3, 3)),
-          pivot: S.optional(__S(30, __c3, 6)),
-          desc: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OrderBy" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fieldNames: S.optional(__S(3, __c0, 3)),
-          metricAggregations: S.optional(__S(25, __c3, 1)),
-          offset: S.optional(S.String),
-          limit: S.optional(S.String),
-          orderBys: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Pivot" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          comparison: S.optional(S.String),
-          dimensionFilter: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "Comparison" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          returnPropertyQuota: S.optional(S.Boolean),
-          metricFilter: S.optional(__S(10, __c1, 2)),
-          cohortSpec: S.optional(__S(16, __c2, 0)),
-          currencyCode: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
-          dateRanges: S.optional(__S(22, __c2, 6)),
-          keepEmptyRows: S.optional(S.Boolean),
-          metrics: S.optional(__S(24, __c3, 0)),
-          property: S.optional(S.String),
-          pivots: S.optional(__S(34, __c4, 2)),
-          comparisons: S.optional(__S(36, __c4, 4)),
-          dimensionFilter: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "RunPivotReportRequest" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchRunPivotReportsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+property}:batchRunPivotReports",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchRunPivotReportsPropertiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          consumed: S.optional(S.Number),
-          remaining: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          concurrentRequests: S.optional(__S(41, __c5, 1)),
-          tokensPerProjectPerHour: S.optional(__S(41, __c5, 1)),
-          potentiallyThresholdedRequestsPerHour: S.optional(__S(41, __c5, 1)),
-          serverErrorsPerProjectPerHour: S.optional(__S(41, __c5, 1)),
-          tokensPerDay: S.optional(__S(41, __c5, 1)),
-          tokensPerHour: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "PropertyQuota" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricHeader" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionValue" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionValues: S.optional(__S(46, __c5, 6)),
-          metricValues: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "Row" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionHeader" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          samplingSpaceSize: S.optional(S.String),
-          samplesReadCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SamplingMetadata" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.String),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataTruncationDateRange" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataTruncationType: S.optional(S.String),
-          dataTruncationDate: S.optional(S.String),
-          dataTruncationDateRanges: S.optional(__S(54, __c6, 6)),
-          dataTruncationMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataTruncationReason" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metricName: S.optional(S.String),
-          restrictedMetricTypes: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "ActiveMetricRestriction" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activeMetricRestrictions: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "SchemaRestrictionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subjectToThresholding: S.optional(S.Boolean),
-          timeZone: S.optional(S.String),
-          dataLossFromOtherRow: S.optional(S.Boolean),
-          samplingMetadatas: S.optional(__S(52, __c6, 4)),
-          emptyReason: S.optional(S.String),
-          dataTruncationReasons: S.optional(__S(56, __c7, 0)),
-          schemaRestrictionResponse: S.optional(__S(59, __c7, 3)),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResponseMetaData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionValues: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "PivotDimensionHeader" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rowCount: S.optional(S.Number),
-          pivotDimensionHeaders: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "PivotHeader" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          propertyQuota: S.optional(__S(42, __c5, 2)),
-          metricHeaders: S.optional(__S(44, __c5, 4)),
-          aggregates: S.optional(__S(48, __c6, 0)),
-          dimensionHeaders: S.optional(__S(50, __c6, 2)),
-          rows: S.optional(__S(48, __c6, 0)),
-          metadata: S.optional(__S(60, __c7, 4)),
-          kind: S.optional(S.String),
-          pivotHeaders: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "RunPivotReportResponse" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pivotReports: S.optional(__S(66, __c8, 2)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchRunPivotReportsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          returnPropertyQuota: S.optional(S.Boolean),
-          property: S.optional(S.String),
-          orderBys: S.optional(__S(32, __c4, 0)),
-          dimensionFilter: S.optional(__S(10, __c1, 2)),
-          offset: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          cohortSpec: S.optional(__S(16, __c2, 0)),
-          metricAggregations: S.optional(__S(25, __c3, 1)),
-          keepEmptyRows: S.optional(S.Boolean),
-          metricFilter: S.optional(__S(10, __c1, 2)),
-          dimensions: S.optional(__S(21, __c2, 5)),
-          dateRanges: S.optional(__S(22, __c2, 6)),
-          metrics: S.optional(__S(24, __c3, 0)),
-          limit: S.optional(S.String),
-          comparisons: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "RunReportRequest" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "BatchRunReportsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+property}:batchRunReports",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchRunReportsPropertiesRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          totals: S.optional(__S(48, __c6, 0)),
-          rowCount: S.optional(S.Number),
-          metadata: S.optional(__S(60, __c7, 4)),
-          minimums: S.optional(__S(48, __c6, 0)),
-          metricHeaders: S.optional(__S(44, __c5, 4)),
-          propertyQuota: S.optional(__S(42, __c5, 2)),
-          rows: S.optional(__S(48, __c6, 0)),
-          kind: S.optional(S.String),
-          dimensionHeaders: S.optional(__S(50, __c6, 2)),
-          maximums: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "RunReportResponse" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          reports: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "BatchRunReportsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionFilter: S.optional(__S(10, __c1, 2)),
-          metrics: S.optional(__S(24, __c3, 0)),
-          metricFilter: S.optional(__S(10, __c1, 2)),
-          compatibilityFilter: S.optional(S.String),
-          dimensions: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "CheckCompatibilityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          property: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+property}:checkCompatibility",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckCompatibilityPropertiesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-          type: S.optional(S.String),
-          blockedReasons: S.optional(__S(25, __c3, 1)),
-          uiName: S.optional(S.String),
-          apiName: S.optional(S.String),
-          category: S.optional(S.String),
-          deprecatedApiNames: S.optional(__S(3, __c0, 3)),
-          customDefinition: S.optional(S.Boolean),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metricMetadata: S.optional(__S(77, __c9, 5)),
-          compatibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricCompatibility" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          uiName: S.optional(S.String),
-          customDefinition: S.optional(S.Boolean),
-          deprecatedApiNames: S.optional(__S(3, __c0, 3)),
-          category: S.optional(S.String),
-          apiName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionMetadata: S.optional(__S(80, __c10, 0)),
-          compatibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionCompatibility" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metricCompatibilities: S.optional(__S(79, __c9, 7)),
-          dimensionCompatibilities: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "CheckCompatibilityResponse",
-      });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          audienceDisplayName: S.optional(S.String),
-          percentageCompleted: S.optional(S.Number),
-          creationQuotaTokensCharged: S.optional(S.Number),
-          state: S.optional(S.String),
-          beginCreatingTime: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          rowCount: S.optional(S.Number),
-          name: S.optional(S.String),
-          audience: S.optional(S.String),
-          dimensions: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "AudienceExport" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(85, __c10, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/audienceExports",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePropertiesAudienceExportsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(88, __c11, 0)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(87, __c10, 7)),
-          error: S.optional(__S(89, __c11, 1)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(87, __c10, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMetadataPropertiesRequest",
-      });
-    case 4:
-      return S.Array(__S(80, __c10, 0));
-    case 5:
-      return S.Array(__S(77, __c9, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          apiName: S.optional(S.String),
-          uiName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComparisonMetadata" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(92, __c11, 4)),
-          name: S.optional(S.String),
-          metrics: S.optional(__S(93, __c11, 5)),
-          comparisons: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://analyticsdata.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPropertiesAudienceExportsRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1884,18 +1175,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPropertiesAudienceExportsRequest",
       });
-    case 3:
-      return S.Array(__S(85, __c10, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(609, __c19, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          audienceExports: S.optional(__S(99, __c12, 3)),
+          audienceExports: S.optional(__S(1, __c0, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAudienceExportsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.String),
@@ -1904,11 +1199,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "QueryAudienceExportRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1919,25 +1214,25 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "QueryPropertiesAudienceExportsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          audienceExport: S.optional(__S(85, __c10, 5)),
+          audienceExport: S.optional(__S(609, __c19, 1)),
           rowCount: S.optional(S.Number),
-          audienceRows: S.optional(__S(62, __c7, 6)),
+          audienceRows: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({
         identifier: "QueryAudienceExportResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           property: S.String.pipe(T.Label()),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(226, __c7, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1948,7 +1243,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RunPivotReportPropertiesRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endMinutesAgo: S.optional(S.Number),
@@ -1956,27 +1255,27 @@ function __c13(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "MinuteRange" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.suspend(() =>
+        S.Struct({
+          metricFilter: S.optional(__S(361, __c11, 9)),
+          returnPropertyQuota: S.optional(S.Boolean),
+          dimensions: S.optional(__S(365, __c11, 13)),
+          orderBys: S.optional(__S(294, __c9, 6)),
+          metricAggregations: S.optional(__S(417, __c13, 1)),
+          limit: S.optional(S.String),
+          dimensionFilter: S.optional(__S(361, __c11, 9)),
+          metrics: S.optional(__S(367, __c11, 15)),
+          minuteRanges: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({ identifier: "RunRealtimeReportRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metricFilter: S.optional(__S(10, __c1, 2)),
-          returnPropertyQuota: S.optional(S.Boolean),
-          dimensions: S.optional(__S(21, __c2, 5)),
-          orderBys: S.optional(__S(32, __c4, 0)),
-          metricAggregations: S.optional(__S(25, __c3, 1)),
-          limit: S.optional(S.String),
-          dimensionFilter: S.optional(__S(10, __c1, 2)),
-          metrics: S.optional(__S(24, __c3, 0)),
-          minuteRanges: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "RunRealtimeReportRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           property: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(98, __c3, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1987,27 +1286,31 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "RunRealtimeReportPropertiesRequest",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          minimums: S.optional(__S(48, __c6, 0)),
-          rows: S.optional(__S(48, __c6, 0)),
+          minimums: S.optional(__S(300, __c9, 12)),
+          rows: S.optional(__S(300, __c9, 12)),
           kind: S.optional(S.String),
           rowCount: S.optional(S.Number),
-          totals: S.optional(__S(48, __c6, 0)),
-          propertyQuota: S.optional(__S(42, __c5, 2)),
-          metricHeaders: S.optional(__S(44, __c5, 4)),
-          dimensionHeaders: S.optional(__S(50, __c6, 2)),
-          maximums: S.optional(__S(48, __c6, 0)),
+          totals: S.optional(__S(300, __c9, 12)),
+          propertyQuota: S.optional(__S(296, __c9, 8)),
+          metricHeaders: S.optional(__S(298, __c9, 10)),
+          dimensionHeaders: S.optional(__S(302, __c9, 14)),
+          maximums: S.optional(__S(300, __c9, 12)),
         }),
       ).annotate({
         identifier: "RunRealtimeReportResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           property: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2020,7 +1323,735 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(226, __c7, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchRunPivotReportsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.String.pipe(T.Label()),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+property}:batchRunPivotReports",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchRunPivotReportsPropertiesRequest",
+      });
+    case 3:
+      return S.Array(__S(229, __c7, 5));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pivotReports: S.optional(__S(163, __c5, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchRunPivotReportsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionValues: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "PivotDimensionHeader" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fieldNames: S.optional(__S(416, __c13, 0)),
+          metricAggregations: S.optional(__S(417, __c13, 1)),
+          offset: S.optional(S.String),
+          limit: S.optional(S.String),
+          orderBys: S.optional(__S(294, __c9, 6)),
+        }),
+      ).annotate({ identifier: "Pivot" });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          returnPropertyQuota: S.optional(S.Boolean),
+          metricFilter: S.optional(__S(361, __c11, 9)),
+          cohortSpec: S.optional(__S(325, __c10, 5)),
+          currencyCode: S.optional(S.String),
+          dimensions: S.optional(__S(365, __c11, 13)),
+          dateRanges: S.optional(__S(326, __c10, 6)),
+          keepEmptyRows: S.optional(S.Boolean),
+          metrics: S.optional(__S(367, __c11, 15)),
+          property: S.optional(S.String),
+          pivots: S.optional(__S(225, __c7, 1)),
+          comparisons: S.optional(__S(328, __c10, 8)),
+          dimensionFilter: S.optional(__S(361, __c11, 9)),
+        }),
+      ).annotate({ identifier: "RunPivotReportRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rowCount: S.optional(S.Number),
+          pivotDimensionHeaders: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "PivotHeader" });
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          propertyQuota: S.optional(__S(296, __c9, 8)),
+          metricHeaders: S.optional(__S(298, __c9, 10)),
+          aggregates: S.optional(__S(300, __c9, 12)),
+          dimensionHeaders: S.optional(__S(302, __c9, 14)),
+          rows: S.optional(__S(300, __c9, 12)),
+          metadata: S.optional(__S(338, __c10, 18)),
+          kind: S.optional(S.String),
+          pivotHeaders: S.optional(__S(228, __c7, 4)),
+        }),
+      ).annotate({ identifier: "RunPivotReportResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionValue" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionName: S.optional(S.String),
+          orderType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionOrderBy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricOrderBy" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionValue: S.optional(S.String),
+          dimensionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PivotSelection" });
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+          pivotSelections: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "PivotOrderBy" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dimension: S.optional(__S(288, __c9, 0)),
+          metric: S.optional(__S(289, __c9, 1)),
+          pivot: S.optional(__S(292, __c9, 4)),
+          desc: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OrderBy" });
+    case 6:
+      return S.Array(__S(293, __c9, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          consumed: S.optional(S.Number),
+          remaining: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaStatus" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          concurrentRequests: S.optional(__S(295, __c9, 7)),
+          tokensPerProjectPerHour: S.optional(__S(295, __c9, 7)),
+          potentiallyThresholdedRequestsPerHour: S.optional(__S(295, __c9, 7)),
+          serverErrorsPerProjectPerHour: S.optional(__S(295, __c9, 7)),
+          tokensPerDay: S.optional(__S(295, __c9, 7)),
+          tokensPerHour: S.optional(__S(295, __c9, 7)),
+        }),
+      ).annotate({ identifier: "PropertyQuota" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricHeader" });
+    case 10:
+      return S.Array(__S(297, __c9, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionValues: S.optional(__S(257, __c8, 1)),
+          metricValues: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionHeader" });
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endOffset: S.optional(S.Number),
+          granularity: S.optional(S.String),
+          startOffset: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CohortsRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          endDate: S.optional(S.String),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DateRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          dimension: S.optional(S.String),
+          dateRange: S.optional(__S(321, __c10, 1)),
+        }),
+      ).annotate({ identifier: "Cohort" });
+    case 3:
+      return S.Array(__S(322, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accumulate: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CohortReportSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cohortsRange: S.optional(__S(320, __c10, 0)),
+          cohorts: S.optional(__S(323, __c10, 3)),
+          cohortReportSettings: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({ identifier: "CohortSpec" });
+    case 6:
+      return S.Array(__S(321, __c10, 1));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          comparison: S.optional(S.String),
+          dimensionFilter: S.optional(__S(361, __c11, 9)),
+        }),
+      ).annotate({ identifier: "Comparison" });
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          samplingSpaceSize: S.optional(S.String),
+          samplesReadCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SamplingMetadata" });
+    case 10:
+      return S.Array(__S(329, __c10, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.String),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataTruncationDateRange" });
+    case 12:
+      return S.Array(__S(331, __c10, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          dataTruncationType: S.optional(S.String),
+          dataTruncationDate: S.optional(S.String),
+          dataTruncationDateRanges: S.optional(__S(332, __c10, 12)),
+          dataTruncationMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataTruncationReason" });
+    case 14:
+      return S.Array(__S(333, __c10, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          metricName: S.optional(S.String),
+          restrictedMetricTypes: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({ identifier: "ActiveMetricRestriction" });
+    case 16:
+      return S.Array(__S(335, __c10, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          activeMetricRestrictions: S.optional(__S(336, __c10, 16)),
+        }),
+      ).annotate({
+        identifier: "SchemaRestrictionResponse",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          subjectToThresholding: S.optional(S.Boolean),
+          timeZone: S.optional(S.String),
+          dataLossFromOtherRow: S.optional(S.Boolean),
+          samplingMetadatas: S.optional(__S(330, __c10, 10)),
+          emptyReason: S.optional(S.String),
+          dataTruncationReasons: S.optional(__S(334, __c10, 14)),
+          schemaRestrictionResponse: S.optional(__S(337, __c10, 17)),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResponseMetaData" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          int64Value: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NumericValue" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(352, __c11, 0)),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NumericFilter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          matchType: S.optional(S.String),
+          caseSensitive: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StringFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          caseSensitive: S.optional(S.Boolean),
+          values: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({ identifier: "InListFilter" });
+    case 4:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "EmptyFilter",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          toValue: S.optional(__S(352, __c11, 0)),
+          fromValue: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "BetweenFilter" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.optional(S.String),
+          numericFilter: S.optional(__S(353, __c11, 1)),
+          stringFilter: S.optional(__S(354, __c11, 2)),
+          inListFilter: S.optional(__S(355, __c11, 3)),
+          emptyFilter: S.optional(__S(356, __c11, 4)),
+          betweenFilter: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 7:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(361, __c11, 9)));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          expressions: S.optional(__S(359, __c11, 7)),
+        }),
+      ).annotate({ identifier: "FilterExpressionList" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          notExpression: S.optional(__S(361, __c11, 9)),
+          filter: S.optional(__S(358, __c11, 6)),
+          orGroup: S.optional(__S(360, __c11, 8)),
+          andGroup: S.optional(__S(360, __c11, 8)),
+        }),
+      ).annotate({ identifier: "FilterExpression" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionNames: S.optional(__S(416, __c13, 0)),
+          delimiter: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConcatenateExpression" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          concatenate: S.optional(__S(362, __c11, 10)),
+          upperCase: S.optional(__S(384, __c12, 0)),
+          lowerCase: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DimensionExpression" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          dimensionExpression: S.optional(__S(363, __c11, 11)),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 13:
+      return S.Array(__S(364, __c11, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          name: S.optional(S.String),
+          invisible: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Metric" });
+    case 15:
+      return S.Array(__S(366, __c11, 14));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CaseExpression" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(480, __c15, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "BatchRunReportsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.String.pipe(T.Label()),
+          body: S.optional(__S(449, __c14, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+property}:batchRunReports",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchRunReportsPropertiesRequest",
+      });
+    case 3:
+      return S.Array(__S(481, __c15, 1));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          reports: S.optional(__S(451, __c14, 3)),
+        }),
+      ).annotate({ identifier: "BatchRunReportsResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          returnPropertyQuota: S.optional(S.Boolean),
+          property: S.optional(S.String),
+          orderBys: S.optional(__S(294, __c9, 6)),
+          dimensionFilter: S.optional(__S(361, __c11, 9)),
+          offset: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          cohortSpec: S.optional(__S(325, __c10, 5)),
+          metricAggregations: S.optional(__S(417, __c13, 1)),
+          keepEmptyRows: S.optional(S.Boolean),
+          metricFilter: S.optional(__S(361, __c11, 9)),
+          dimensions: S.optional(__S(365, __c11, 13)),
+          dateRanges: S.optional(__S(326, __c10, 6)),
+          metrics: S.optional(__S(367, __c11, 15)),
+          limit: S.optional(S.String),
+          comparisons: S.optional(__S(328, __c10, 8)),
+        }),
+      ).annotate({ identifier: "RunReportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          totals: S.optional(__S(300, __c9, 12)),
+          rowCount: S.optional(S.Number),
+          metadata: S.optional(__S(338, __c10, 18)),
+          minimums: S.optional(__S(300, __c9, 12)),
+          metricHeaders: S.optional(__S(298, __c9, 10)),
+          propertyQuota: S.optional(__S(296, __c9, 8)),
+          rows: S.optional(__S(300, __c9, 12)),
+          kind: S.optional(S.String),
+          dimensionHeaders: S.optional(__S(302, __c9, 14)),
+          maximums: S.optional(__S(300, __c9, 12)),
+        }),
+      ).annotate({ identifier: "RunReportResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionFilter: S.optional(__S(361, __c11, 9)),
+          metrics: S.optional(__S(367, __c11, 15)),
+          metricFilter: S.optional(__S(361, __c11, 9)),
+          compatibilityFilter: S.optional(S.String),
+          dimensions: S.optional(__S(365, __c11, 13)),
+        }),
+      ).annotate({
+        identifier: "CheckCompatibilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          property: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+property}:checkCompatibility",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckCompatibilityPropertiesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metricMetadata: S.optional(__S(544, __c17, 0)),
+          compatibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricCompatibility" });
+    case 3:
+      return S.Array(__S(514, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionMetadata: S.optional(__S(545, __c17, 1)),
+          compatibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionCompatibility" });
+    case 5:
+      return S.Array(__S(516, __c16, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          metricCompatibilities: S.optional(__S(515, __c16, 3)),
+          dimensionCompatibilities: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "CheckCompatibilityResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+          type: S.optional(S.String),
+          blockedReasons: S.optional(__S(417, __c13, 1)),
+          uiName: S.optional(S.String),
+          apiName: S.optional(S.String),
+          category: S.optional(S.String),
+          deprecatedApiNames: S.optional(__S(416, __c13, 0)),
+          customDefinition: S.optional(S.Boolean),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          uiName: S.optional(S.String),
+          customDefinition: S.optional(S.Boolean),
+          deprecatedApiNames: S.optional(__S(416, __c13, 0)),
+          category: S.optional(S.String),
+          apiName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionMetadata" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(609, __c19, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/audienceExports",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePropertiesAudienceExportsRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.Array(__S(577, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(578, __c18, 2)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(577, __c18, 1)),
+          error: S.optional(__S(579, __c18, 3)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(577, __c18, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c12, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          audienceDisplayName: S.optional(S.String),
+          percentageCompleted: S.optional(S.Number),
+          creationQuotaTokensCharged: S.optional(S.Number),
+          state: S.optional(S.String),
+          beginCreatingTime: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          rowCount: S.optional(S.Number),
+          name: S.optional(S.String),
+          audience: S.optional(S.String),
+          dimensions: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({ identifier: "AudienceExport" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMetadataPropertiesRequest",
+      });
+    case 1:
+      return S.Array(__S(545, __c17, 1));
+    case 2:
+      return S.Array(__S(544, __c17, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          apiName: S.optional(S.String),
+          uiName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComparisonMetadata" });
+    case 4:
+      return S.Array(__S(643, __c20, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(641, __c20, 1)),
+          name: S.optional(S.String),
+          metrics: S.optional(__S(642, __c20, 2)),
+          comparisons: S.optional(__S(644, __c20, 4)),
+        }),
+      ).annotate({ identifier: "Metadata" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://analyticsdata.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPropertiesAudienceExportsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

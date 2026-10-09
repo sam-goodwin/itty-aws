@@ -144,7 +144,7 @@ export const getWebAnalyticsContentAutopilotOpportunity: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetWebAnalyticsContentAutopilotOpportunityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ContentAutopilotOpportunity>,
+  output: __S(14, __c1, 6) as any as S.Schema<ContentAutopilotOpportunity>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const listWebAnalyticsContentAutopilotOpportunities: API.OperationMethod<
   ListWebAnalyticsContentAutopilotOpportunitiesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotOpportunitiesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PaginatedContentAutopilotOpportunityList>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotOpportunitiesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<PaginatedContentAutopilotOpportunityList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -182,7 +182,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWebAnalyticsContentAutopilotOpportunityRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           opportunity_kind: S.String,
@@ -191,11 +195,11 @@ function __c0(j: number): any {
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentAutopilotEvidence" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.Array(S.String);
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           engine: S.String,
@@ -205,28 +209,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContentAutopilotEngineAnswer",
       });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           checks: S.Number,
           cited_checks: S.Number,
           mentioned_checks: S.optional(S.Number),
           citation_rate: S.Number,
-          engines: __S(3, __c0, 3),
-          engines_not_citing: __S(3, __c0, 3),
-          competitor_urls: __S(3, __c0, 3),
-          competitor_domains: __S(3, __c0, 3),
-          engine_search_queries: __S(3, __c0, 3),
-          our_cited_urls: __S(3, __c0, 3),
-          latest_answers: __S(5, __c0, 5),
+          engines: __S(10, __c1, 2),
+          engines_not_citing: __S(10, __c1, 2),
+          competitor_urls: __S(10, __c1, 2),
+          competitor_domains: __S(10, __c1, 2),
+          engine_search_queries: __S(10, __c1, 2),
+          our_cited_urls: __S(10, __c1, 2),
+          latest_answers: __S(12, __c1, 4),
           last_checked_at: S.String,
         }),
       ).annotate({
         identifier: "ContentAutopilotCitationGap",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -238,8 +242,8 @@ function __c0(j: number): any {
           score: S.Number,
           recommended_type: S.String,
           target_url: S.String,
-          evidence: __S(2, __c0, 2),
-          gap: __S(6, __c0, 6),
+          evidence: __S(9, __c1, 1),
+          gap: __S(13, __c1, 5),
           status: S.String,
           last_refreshed_at: S.String,
           created_at: S.String,
@@ -250,7 +254,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -270,21 +274,20 @@ function __c1(j: number): any {
         identifier: "ListWebAnalyticsContentAutopilotOpportunitiesRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(14, __c1, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(9, __c1, 1),
+          results: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotOpportunityList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

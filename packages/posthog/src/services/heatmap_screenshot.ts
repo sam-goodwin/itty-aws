@@ -40,7 +40,7 @@ export const getHeatmapScreenshotSettings: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetHeatmapScreenshotSettingsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<HeatmapScreenshotSettings>,
+  output: __S(3, __c1, 1) as any as S.Schema<HeatmapScreenshotSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -53,8 +53,8 @@ export const updateHeatmapScreenshotSettings: API.OperationMethod<
   UpdateHeatmapScreenshotSettingsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<UpdateHeatmapScreenshotSettingsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<HeatmapScreenshotSettings>,
+  input: __S(4, __c2, 0) as any as S.Schema<UpdateHeatmapScreenshotSettingsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<HeatmapScreenshotSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -77,23 +77,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetHeatmapScreenshotSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          allowed_hostnames: __S(1, __c0, 1),
+          allowed_hostnames: __S(2, __c1, 0),
           cookie_delivery_enabled: S.Boolean,
           has_secret: S.Boolean,
         }),
       ).annotate({
         identifier: "HeatmapScreenshotSettings",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          allowed_hostnames: S.optional(__S(1, __c0, 1)),
+          allowed_hostnames: S.optional(__S(2, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -106,7 +114,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

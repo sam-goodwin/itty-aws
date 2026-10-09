@@ -680,8 +680,8 @@ export const applyConfigurationCustomersDevices: API.OperationMethod<
   ApplyConfigurationCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ApplyConfigurationCustomersDevicesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Empty>,
+  input: __S(105, __c26, 1) as any as S.Schema<ApplyConfigurationCustomersDevicesRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const claimAsyncPartnersDevices: API.OperationMethod<
   ClaimAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ClaimAsyncPartnersDevicesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(123, __c30, 3) as any as S.Schema<ClaimAsyncPartnersDevicesRequest>,
+  output: __S(127, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const claimPartnersDevices: API.OperationMethod<
   ClaimPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ClaimPartnersDevicesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ClaimDeviceResponse>,
+  input: __S(133, __c33, 1) as any as S.Schema<ClaimPartnersDevicesRequest>,
+  output: __S(134, __c33, 2) as any as S.Schema<ClaimDeviceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const createCustomersConfigurations: API.OperationMethod<
   CreateCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateCustomersConfigurationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Configuration>,
+  input: __S(136, __c34, 0) as any as S.Schema<CreateCustomersConfigurationsRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<Configuration>,
   errors: [
     NotFound,
     Forbidden,
@@ -763,8 +763,8 @@ export const createPartnersCustomers: API.OperationMethod<
   CreatePartnersCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreatePartnersCustomersRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Company>,
+  input: __S(145, __c36, 1) as any as S.Schema<CreatePartnersCustomersRequest>,
+  output: __S(153, __c38, 1) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -784,8 +784,8 @@ export const deleteCustomersConfigurations: API.OperationMethod<
   DeleteCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteCustomersConfigurationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteCustomersConfigurationsRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -811,8 +811,8 @@ export const findByIdentifierPartnersDevices: API.OperationMethod<
   FindByIdentifierPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<FindByIdentifierPartnersDevicesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<FindDevicesByDeviceIdentifierResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<FindByIdentifierPartnersDevicesRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<FindDevicesByDeviceIdentifierResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const findByOwnerPartnersDevices: API.OperationMethod<
   FindByOwnerPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<FindByOwnerPartnersDevicesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<FindDevicesByOwnerResponse>,
+  input: __S(17, __c4, 1) as any as S.Schema<FindByOwnerPartnersDevicesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<FindDevicesByOwnerResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const getCustomersConfigurations: API.OperationMethod<
   GetCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetCustomersConfigurationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Configuration>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetCustomersConfigurationsRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<Configuration>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -865,8 +865,8 @@ export const getCustomersDevices: API.OperationMethod<
   GetCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetCustomersDevicesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Device>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetCustomersDevicesRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +880,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetOperationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(127, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +895,8 @@ export const getPartnersDevices: API.OperationMethod<
   GetPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetPartnersDevicesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Device>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetPartnersDevicesRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const getSimLockStatePartnersDevices: API.OperationMethod<
   GetSimLockStatePartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetSimLockStatePartnersDevicesRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetDeviceSimLockStateResponse>,
+  input: __S(37, __c9, 1) as any as S.Schema<GetSimLockStatePartnersDevicesRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<GetDeviceSimLockStateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +935,8 @@ export const listCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   CustomerListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListCustomersRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<CustomerListCustomersResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListCustomersRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<CustomerListCustomersResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -955,8 +955,8 @@ export const listCustomersConfigurations: API.OperationMethod<
   ListCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListCustomersConfigurationsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CustomerListConfigurationsResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<ListCustomersConfigurationsRequest>,
+  output: __S(50, __c12, 2) as any as S.Schema<CustomerListConfigurationsResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -971,8 +971,8 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   CustomerListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListCustomersDevicesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<CustomerListDevicesResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<ListCustomersDevicesRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<CustomerListDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const listCustomersDpcs: API.OperationMethod<
   ListCustomersDpcsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListCustomersDpcsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CustomerListDpcsResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListCustomersDpcsRequest>,
+  output: __S(59, __c14, 3) as any as S.Schema<CustomerListDpcsResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1007,8 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListPartnersCustomersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListCustomersResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ListPartnersCustomersRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<ListCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1024,8 +1024,8 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVendorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListPartnersVendorsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListVendorsResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListPartnersVendorsRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<ListVendorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1041,8 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVendorCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListPartnersVendorsCustomersRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListVendorCustomersResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<ListPartnersVendorsCustomersRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<ListVendorCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1062,8 @@ export const metadataPartnersDevices: API.OperationMethod<
   MetadataPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<MetadataPartnersDevicesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeviceMetadata>,
+  input: __S(73, __c18, 1) as any as S.Schema<MetadataPartnersDevicesRequest>,
+  output: __S(129, __c32, 1) as any as S.Schema<DeviceMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const patchCustomersConfigurations: API.OperationMethod<
   PatchCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<PatchCustomersConfigurationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Configuration>,
+  input: __S(76, __c19, 0) as any as S.Schema<PatchCustomersConfigurationsRequest>,
+  output: __S(140, __c35, 0) as any as S.Schema<Configuration>,
   errors: [
     NotFound,
     Forbidden,
@@ -1110,8 +1110,8 @@ export const removeConfigurationCustomersDevices: API.OperationMethod<
   RemoveConfigurationCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<RemoveConfigurationCustomersDevicesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Empty>,
+  input: __S(80, __c20, 0) as any as S.Schema<RemoveConfigurationCustomersDevicesRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1130,8 +1130,8 @@ export const unclaimAsyncPartnersDevices: API.OperationMethod<
   UnclaimAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UnclaimAsyncPartnersDevicesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(91, __c22, 3) as any as S.Schema<UnclaimAsyncPartnersDevicesRequest>,
+  output: __S(127, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1150,8 @@ export const unclaimCustomersDevices: API.OperationMethod<
   UnclaimCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UnclaimCustomersDevicesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Empty>,
+  input: __S(92, __c23, 0) as any as S.Schema<UnclaimCustomersDevicesRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1165,8 @@ export const unclaimPartnersDevices: API.OperationMethod<
   UnclaimPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UnclaimPartnersDevicesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Empty>,
+  input: __S(97, __c24, 1) as any as S.Schema<UnclaimPartnersDevicesRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1185,8 @@ export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
   UpdateMetadataAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UpdateMetadataAsyncPartnersDevicesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(103, __c25, 3) as any as S.Schema<UpdateMetadataAsyncPartnersDevicesRequest>,
+  output: __S(127, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1196,243 +1196,6 @@ export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          manufacturer: S.optional(S.String),
-          chromeOsAttestedDeviceId: S.optional(S.String),
-          meid2: S.optional(S.String),
-          imei2: S.optional(S.String),
-          imei: S.optional(S.String),
-          meid: S.optional(S.String),
-          deviceType: S.optional(S.String),
-          model: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceIdentifier" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deviceId: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DeviceReference" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          device: S.optional(__S(1, __c0, 1)),
-          configuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerApplyConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/devices:applyConfiguration",
-            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyConfigurationCustomersDevicesRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "DeviceMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          preProvisioningToken: S.optional(S.String),
-          customerId: S.optional(S.String),
-          sectionType: S.optional(S.String),
-          configurationId: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
-          deviceMetadata: S.optional(__S(6, __c0, 6)),
-          simlockProfileId: S.optional(S.String),
-          googleWorkspaceCustomerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerClaim" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          claims: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ClaimDevicesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/partners/{+partnerId}/devices:claimAsync",
-            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimAsyncPartnersDevicesRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(12, __c1, 4)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(11, __c1, 3)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(11, __c1, 3)),
-          error: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          googleWorkspaceCustomerId: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
-          configurationId: S.optional(S.String),
-          simlockProfileId: S.optional(S.String),
-          preProvisioningToken: S.optional(S.String),
-          deviceMetadata: S.optional(__S(6, __c0, 6)),
-          customerId: S.optional(S.String),
-          sectionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClaimDeviceRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/partners/{+partnerId}/devices:claim",
-            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimPartnersDevicesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deviceName: S.optional(S.String),
-          deviceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClaimDeviceResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configurationName: S.optional(S.String),
-          name: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          customMessage: S.optional(S.String),
-          dpcExtras: S.optional(S.String),
-          contactPhone: S.optional(S.String),
-          dpcResourcePath: S.optional(S.String),
-          companyName: S.optional(S.String),
-          configurationId: S.optional(S.String),
-          forcedResetTime: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Configuration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/configurations",
-            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomersConfigurationsRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          preProvisioningTokens: S.optional(__S(20, __c2, 4)),
-          customerId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleWorkspaceAccount" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          skipWelcomeEmail: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          googleWorkspaceAccount: S.optional(__S(21, __c2, 5)),
-          companyId: S.optional(S.String),
-          adminEmails: S.optional(__S(20, __c2, 4)),
-          languageCode: S.optional(S.String),
-          companyName: S.optional(S.String),
-          ownerEmails: S.optional(__S(20, __c2, 4)),
-          termsStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Company" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "CreateCustomerRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/customers",
-            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePartnersCustomersRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1446,21 +1209,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteCustomersConfigurationsRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.String),
           pageToken: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
         }),
       ).annotate({
         identifier: "FindDevicesByDeviceIdentifierRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(26, __c3, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1471,7 +1238,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "FindByIdentifierPartnersDevicesRequest",
       });
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          totalSize: S.optional(S.Number),
+          devices: S.optional(__S(12, __c3, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FindDevicesByDeviceIdentifierResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resellerId: S.optional(S.String),
@@ -1483,21 +1264,25 @@ function __c3(j: number): any {
           vacationModeExpireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceClaim" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           configuration: S.optional(S.String),
           deviceId: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
-          deviceMetadata: S.optional(__S(6, __c0, 6)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
+          deviceMetadata: S.optional(__S(129, __c32, 1)),
           name: S.optional(S.String),
-          claims: S.optional(__S(29, __c3, 5)),
+          claims: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "Device" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10, __c2, 2));
   }
 }
 function __c4(j: number): any {
@@ -1505,30 +1290,20 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          totalSize: S.optional(S.Number),
-          devices: S.optional(__S(31, __c3, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FindDevicesByDeviceIdentifierResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(__S(20, __c2, 4)),
+          customerId: S.optional(__S(148, __c37, 0)),
           pageToken: S.optional(S.String),
-          googleWorkspaceCustomerId: S.optional(__S(20, __c2, 4)),
+          googleWorkspaceCustomerId: S.optional(__S(148, __c37, 0)),
           sectionType: S.optional(S.String),
           limit: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FindDevicesByOwnerRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1539,17 +1314,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FindByOwnerPartnersDevicesRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          devices: S.optional(__S(31, __c3, 7)),
+          devices: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({
         identifier: "FindDevicesByOwnerResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1563,7 +1342,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCustomersConfigurationsRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1577,7 +1360,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCustomersDevicesRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1589,7 +1376,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1605,12 +1396,12 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
         }),
       ).annotate({
         identifier: "GetDeviceSimLockStateRequest",
@@ -1619,7 +1410,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1638,7 +1429,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetDeviceSimLockStateResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1651,18 +1446,26 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCustomersRequest" });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customers: S.optional(__S(44, __c5, 4)),
+          customers: S.optional(__S(44, __c11, 0)),
         }),
       ).annotate({
         identifier: "CustomerListCustomersResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(153, __c38, 1));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1676,21 +1479,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCustomersConfigurationsRequest",
       });
-    case 7:
-      return S.Array(__S(18, __c2, 2));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(140, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(47, __c5, 7)),
+          configurations: S.optional(__S(49, __c12, 1)),
         }),
       ).annotate({
         identifier: "CustomerListConfigurationsResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1706,16 +1509,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListCustomersDevicesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          devices: S.optional(__S(31, __c3, 7)),
+          devices: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({
         identifier: "CustomerListDevicesResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1727,7 +1534,7 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCustomersDpcsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
@@ -1735,15 +1542,19 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dpc" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(57, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dpcs: S.optional(__S(53, __c6, 5)),
+          dpcs: S.optional(__S(58, __c14, 2)),
         }),
       ).annotate({ identifier: "CustomerListDpcsResponse" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1759,19 +1570,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListPartnersCustomersRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(__S(44, __c5, 4)),
+          customers: S.optional(__S(44, __c11, 0)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListCustomersResponse" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1787,15 +1598,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPartnersVendorsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          vendors: S.optional(__S(44, __c5, 4)),
+          vendors: S.optional(__S(44, __c11, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVendorsResponse" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1811,30 +1626,34 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPartnersVendorsCustomersRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(__S(44, __c5, 4)),
+          customers: S.optional(__S(44, __c11, 0)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListVendorCustomersResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(__S(6, __c0, 6)),
+          deviceMetadata: S.optional(__S(129, __c32, 1)),
         }),
       ).annotate({
         identifier: "UpdateDeviceMetadataRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metadataOwnerId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(72, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1845,12 +1664,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "MetadataPartnersDevicesRequest",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(140, __c35, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1863,21 +1686,13 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CustomerRemoveConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(84, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1888,29 +1703,45 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RemoveConfigurationCustomersDevicesRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          device: S.optional(__S(112, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "CustomerRemoveConfigurationRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vacationModeDays: S.optional(S.Number),
           sectionType: S.optional(S.String),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
           deviceId: S.optional(S.String),
           vacationModeExpireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerUnclaim" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(88, __c22, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unclaims: S.optional(__S(67, __c8, 3)),
+          unclaims: S.optional(__S(89, __c22, 1)),
         }),
       ).annotate({ identifier: "UnclaimDevicesRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(90, __c22, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1921,11 +1752,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UnclaimAsyncPartnersDevicesRequest",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(84, __c21, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1936,25 +1771,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UnclaimCustomersDevicesRequest",
       });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
           vacationModeDays: S.optional(S.Number),
           vacationModeExpireTime: S.optional(S.String),
           deviceId: S.optional(S.String),
           sectionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnclaimDeviceRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1965,29 +1800,33 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UnclaimPartnersDevicesRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(__S(6, __c0, 6)),
-          deviceIdentifier: S.optional(__S(0, __c0, 0)),
+          deviceMetadata: S.optional(__S(129, __c32, 1)),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
           deviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateMetadataArguments" });
+    case 1:
+      return S.Array(__S(100, __c25, 0));
     case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          updates: S.optional(__S(74, __c9, 2)),
+          updates: S.optional(__S(101, __c25, 1)),
         }),
       ).annotate({
         identifier: "UpdateDeviceMetadataInBatchRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(75, __c9, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(102, __c25, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2000,7 +1839,283 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          device: S.optional(__S(112, __c28, 0)),
+          configuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerApplyConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(104, __c26, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/devices:applyConfiguration",
+            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyConfigurationCustomersDevicesRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deviceId: S.optional(S.String),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
+        }),
+      ).annotate({ identifier: "DeviceReference" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          manufacturer: S.optional(S.String),
+          chromeOsAttestedDeviceId: S.optional(S.String),
+          meid2: S.optional(S.String),
+          imei2: S.optional(S.String),
+          imei: S.optional(S.String),
+          meid: S.optional(S.String),
+          deviceType: S.optional(S.String),
+          model: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceIdentifier" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preProvisioningToken: S.optional(S.String),
+          customerId: S.optional(S.String),
+          sectionType: S.optional(S.String),
+          configurationId: S.optional(S.String),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
+          deviceMetadata: S.optional(__S(129, __c32, 1)),
+          simlockProfileId: S.optional(S.String),
+          googleWorkspaceCustomerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerClaim" });
+    case 1:
+      return S.Array(__S(120, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          claims: S.optional(__S(121, __c30, 1)),
+        }),
+      ).annotate({ identifier: "ClaimDevicesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(122, __c30, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/partners/{+partnerId}/devices:claimAsync",
+            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimAsyncPartnersDevicesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(124, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(125, __c31, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(124, __c31, 0)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(124, __c31, 0)),
+          error: S.optional(__S(126, __c31, 2)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(128, __c32, 0)),
+        }),
+      ).annotate({ identifier: "DeviceMetadata" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          googleWorkspaceCustomerId: S.optional(S.String),
+          deviceIdentifier: S.optional(__S(116, __c29, 0)),
+          configurationId: S.optional(S.String),
+          simlockProfileId: S.optional(S.String),
+          preProvisioningToken: S.optional(S.String),
+          deviceMetadata: S.optional(__S(129, __c32, 1)),
+          customerId: S.optional(S.String),
+          sectionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClaimDeviceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          partnerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(132, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/partners/{+partnerId}/devices:claim",
+            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimPartnersDevicesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deviceName: S.optional(S.String),
+          deviceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClaimDeviceResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(140, __c35, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/configurations",
+            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomersConfigurationsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationName: S.optional(S.String),
+          name: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          customMessage: S.optional(S.String),
+          dpcExtras: S.optional(S.String),
+          contactPhone: S.optional(S.String),
+          dpcResourcePath: S.optional(S.String),
+          companyName: S.optional(S.String),
+          configurationId: S.optional(S.String),
+          forcedResetTime: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Configuration" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(__S(153, __c38, 1)),
+        }),
+      ).annotate({ identifier: "CreateCustomerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/customers",
+            baseUrl: "https://androiddeviceprovisioning.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePartnersCustomersRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          preProvisioningTokens: S.optional(__S(148, __c37, 0)),
+          customerId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleWorkspaceAccount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          skipWelcomeEmail: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          googleWorkspaceAccount: S.optional(__S(152, __c38, 0)),
+          companyId: S.optional(S.String),
+          adminEmails: S.optional(__S(148, __c37, 0)),
+          languageCode: S.optional(S.String),
+          companyName: S.optional(S.String),
+          ownerEmails: S.optional(__S(148, __c37, 0)),
+          termsStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Company" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

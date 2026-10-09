@@ -705,8 +705,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddTagsInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddTagsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddTagsInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<AddTagsOutput>,
   errors: [AccessPointNotFoundException, DuplicateTagKeysException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -730,8 +730,8 @@ export const applySecurityGroupsToLoadBalancer: API.OperationMethod<
   ApplySecurityGroupsToLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ApplySecurityGroupsToLoadBalancerInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<ApplySecurityGroupsToLoadBalancerOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<ApplySecurityGroupsToLoadBalancerInput>,
+  output: __S(49, __c3, 1) as any as S.Schema<ApplySecurityGroupsToLoadBalancerOutput>,
   errors: [
     AccessPointNotFoundException,
     InvalidConfigurationRequestException,
@@ -761,8 +761,8 @@ export const attachLoadBalancerToSubnets: API.OperationMethod<
   AttachLoadBalancerToSubnetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AttachLoadBalancerToSubnetsInput>,
-  output: __S(10, __c1, 2) as any as S.Schema<AttachLoadBalancerToSubnetsOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<AttachLoadBalancerToSubnetsInput>,
+  output: __S(81, __c5, 1) as any as S.Schema<AttachLoadBalancerToSubnetsOutput>,
   errors: [
     AccessPointNotFoundException,
     InvalidConfigurationRequestException,
@@ -787,8 +787,8 @@ export const configureHealthCheck: API.OperationMethod<
   ConfigureHealthCheckError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ConfigureHealthCheckInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<ConfigureHealthCheckOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<ConfigureHealthCheckInput>,
+  output: __S(113, __c7, 1) as any as S.Schema<ConfigureHealthCheckOutput>,
   errors: [AccessPointNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -821,8 +821,8 @@ export const createAppCookieStickinessPolicy: API.OperationMethod<
   CreateAppCookieStickinessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateAppCookieStickinessPolicyInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateAppCookieStickinessPolicyOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateAppCookieStickinessPolicyInput>,
+  output: __S(145, __c9, 1) as any as S.Schema<CreateAppCookieStickinessPolicyOutput>,
   errors: [
     AccessPointNotFoundException,
     DuplicatePolicyNameException,
@@ -857,8 +857,8 @@ export const createLBCookieStickinessPolicy: API.OperationMethod<
   CreateLBCookieStickinessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateLBCookieStickinessPolicyInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateLBCookieStickinessPolicyOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateLBCookieStickinessPolicyInput>,
+  output: __S(161, __c10, 1) as any as S.Schema<CreateLBCookieStickinessPolicyOutput>,
   errors: [
     AccessPointNotFoundException,
     DuplicatePolicyNameException,
@@ -907,8 +907,8 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateAccessPointInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateAccessPointOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateAccessPointInput>,
+  output: __S(177, __c11, 1) as any as S.Schema<CreateAccessPointOutput>,
   errors: [
     CertificateNotFoundException,
     DuplicateAccessPointNameException,
@@ -947,8 +947,8 @@ export const createLoadBalancerListeners: API.OperationMethod<
   CreateLoadBalancerListenersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateLoadBalancerListenerInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateLoadBalancerListenerOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateLoadBalancerListenerInput>,
+  output: __S(241, __c15, 1) as any as S.Schema<CreateLoadBalancerListenerOutput>,
   errors: [
     AccessPointNotFoundException,
     CertificateNotFoundException,
@@ -979,8 +979,8 @@ export const createLoadBalancerPolicy: API.OperationMethod<
   CreateLoadBalancerPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateLoadBalancerPolicyInput>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateLoadBalancerPolicyOutput>,
+  input: __S(258, __c16, 2) as any as S.Schema<CreateLoadBalancerPolicyInput>,
+  output: __S(259, __c16, 3) as any as S.Schema<CreateLoadBalancerPolicyOutput>,
   errors: [
     AccessPointNotFoundException,
     DuplicatePolicyNameException,
@@ -1008,8 +1008,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteAccessPointInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteAccessPointOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteAccessPointInput>,
+  output: __S(273, __c17, 1) as any as S.Schema<DeleteAccessPointOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1026,8 +1026,8 @@ export const deleteLoadBalancerListeners: API.OperationMethod<
   DeleteLoadBalancerListenersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteLoadBalancerListenerInput>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteLoadBalancerListenerOutput>,
+  input: __S(289, __c18, 1) as any as S.Schema<DeleteLoadBalancerListenerInput>,
+  output: __S(290, __c18, 2) as any as S.Schema<DeleteLoadBalancerListenerOutput>,
   errors: [AccessPointNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1047,8 +1047,8 @@ export const deleteLoadBalancerPolicy: API.OperationMethod<
   DeleteLoadBalancerPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteLoadBalancerPolicyInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<DeleteLoadBalancerPolicyOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteLoadBalancerPolicyInput>,
+  output: __S(305, __c19, 1) as any as S.Schema<DeleteLoadBalancerPolicyOutput>,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1073,8 +1073,8 @@ export const deregisterInstancesFromLoadBalancer: API.OperationMethod<
   DeregisterInstancesFromLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeregisterEndPointsInput>,
-  output: __S(39, __c4, 7) as any as S.Schema<DeregisterEndPointsOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeregisterEndPointsInput>,
+  output: __S(321, __c20, 1) as any as S.Schema<DeregisterEndPointsOutput>,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1094,8 +1094,8 @@ export const describeAccountLimits: API.OperationMethod<
   DescribeAccountLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DescribeAccountLimitsInput>,
-  output: __S(43, __c5, 3) as any as S.Schema<DescribeAccountLimitsOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<DescribeAccountLimitsInput>,
+  output: __S(355, __c22, 3) as any as S.Schema<DescribeAccountLimitsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1115,8 +1115,8 @@ export const describeInstanceHealth: API.OperationMethod<
   DescribeInstanceHealthError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DescribeEndPointStateInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<DescribeEndPointStateOutput>,
+  input: __S(368, __c23, 0) as any as S.Schema<DescribeEndPointStateInput>,
+  output: __S(371, __c23, 3) as any as S.Schema<DescribeEndPointStateOutput>,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1136,8 +1136,8 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   DescribeLoadBalancerAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DescribeLoadBalancerAttributesInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<DescribeLoadBalancerAttributesOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<DescribeLoadBalancerAttributesInput>,
+  output: __S(385, __c24, 1) as any as S.Schema<DescribeLoadBalancerAttributesOutput>,
   errors: [AccessPointNotFoundException, LoadBalancerAttributeNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1162,8 +1162,8 @@ export const describeLoadBalancerPolicies: API.OperationMethod<
   DescribeLoadBalancerPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DescribeLoadBalancerPoliciesInput>,
-  output: __S(63, __c7, 7) as any as S.Schema<DescribeLoadBalancerPoliciesOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<DescribeLoadBalancerPoliciesInput>,
+  output: __S(421, __c26, 5) as any as S.Schema<DescribeLoadBalancerPoliciesOutput>,
   errors: [AccessPointNotFoundException, PolicyNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1189,8 +1189,8 @@ export const describeLoadBalancerPolicyTypes: API.OperationMethod<
   DescribeLoadBalancerPolicyTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DescribeLoadBalancerPolicyTypesInput>,
-  output: __S(70, __c8, 6) as any as S.Schema<DescribeLoadBalancerPolicyTypesOutput>,
+  input: __S(449, __c28, 1) as any as S.Schema<DescribeLoadBalancerPolicyTypesInput>,
+  output: __S(454, __c28, 6) as any as S.Schema<DescribeLoadBalancerPolicyTypesOutput>,
   errors: [PolicyTypeNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1211,8 +1211,8 @@ export const describeLoadBalancers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LoadBalancerDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DescribeAccessPointsInput>,
-  output: __S(84, __c10, 4) as any as S.Schema<DescribeAccessPointsOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<DescribeAccessPointsInput>,
+  output: __S(477, __c29, 13) as any as S.Schema<DescribeAccessPointsOutput>,
   errors: [AccessPointNotFoundException, DependencyThrottleException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1234,8 +1234,8 @@ export const describeTags: API.OperationMethod<
   DescribeTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DescribeTagsInput>,
-  output: __S(89, __c11, 1) as any as S.Schema<DescribeTagsOutput>,
+  input: __S(481, __c30, 1) as any as S.Schema<DescribeTagsInput>,
+  output: __S(484, __c30, 4) as any as S.Schema<DescribeTagsOutput>,
   errors: [AccessPointNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1259,8 +1259,8 @@ export const detachLoadBalancerFromSubnets: API.OperationMethod<
   DetachLoadBalancerFromSubnetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DetachLoadBalancerFromSubnetsInput>,
-  output: __S(91, __c11, 3) as any as S.Schema<DetachLoadBalancerFromSubnetsOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<DetachLoadBalancerFromSubnetsInput>,
+  output: __S(497, __c31, 1) as any as S.Schema<DetachLoadBalancerFromSubnetsOutput>,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1291,8 +1291,8 @@ export const disableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   DisableAvailabilityZonesForLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<RemoveAvailabilityZonesInput>,
-  output: __S(93, __c11, 5) as any as S.Schema<RemoveAvailabilityZonesOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<RemoveAvailabilityZonesInput>,
+  output: __S(513, __c32, 1) as any as S.Schema<RemoveAvailabilityZonesOutput>,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1318,8 +1318,8 @@ export const enableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   EnableAvailabilityZonesForLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<AddAvailabilityZonesInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<AddAvailabilityZonesOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<AddAvailabilityZonesInput>,
+  output: __S(529, __c33, 1) as any as S.Schema<AddAvailabilityZonesOutput>,
   errors: [AccessPointNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1354,8 +1354,8 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   ModifyLoadBalancerAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ModifyLoadBalancerAttributesInput>,
-  output: __S(97, __c12, 1) as any as S.Schema<ModifyLoadBalancerAttributesOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<ModifyLoadBalancerAttributesInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<ModifyLoadBalancerAttributesOutput>,
   errors: [
     AccessPointNotFoundException,
     InvalidConfigurationRequestException,
@@ -1397,8 +1397,8 @@ export const registerInstancesWithLoadBalancer: API.OperationMethod<
   RegisterInstancesWithLoadBalancerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<RegisterEndPointsInput>,
-  output: __S(99, __c12, 3) as any as S.Schema<RegisterEndPointsOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<RegisterEndPointsInput>,
+  output: __S(561, __c35, 1) as any as S.Schema<RegisterEndPointsOutput>,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1415,8 +1415,8 @@ export const removeTags: API.OperationMethod<
   RemoveTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<RemoveTagsInput>,
-  output: __S(103, __c12, 7) as any as S.Schema<RemoveTagsOutput>,
+  input: __S(578, __c36, 2) as any as S.Schema<RemoveTagsInput>,
+  output: __S(579, __c36, 3) as any as S.Schema<RemoveTagsOutput>,
   errors: [AccessPointNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1443,8 +1443,8 @@ export const setLoadBalancerListenerSSLCertificate: API.OperationMethod<
   SetLoadBalancerListenerSSLCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<SetLoadBalancerListenerSSLCertificateInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<SetLoadBalancerListenerSSLCertificateOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<SetLoadBalancerListenerSSLCertificateInput>,
+  output: __S(593, __c37, 1) as any as S.Schema<SetLoadBalancerListenerSSLCertificateOutput>,
   errors: [
     AccessPointNotFoundException,
     CertificateNotFoundException,
@@ -1483,8 +1483,8 @@ export const setLoadBalancerPoliciesForBackendServer: API.OperationMethod<
   SetLoadBalancerPoliciesForBackendServerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<SetLoadBalancerPoliciesForBackendServerInput>,
-  output: __S(107, __c13, 3) as any as S.Schema<SetLoadBalancerPoliciesForBackendServerOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<SetLoadBalancerPoliciesForBackendServerInput>,
+  output: __S(609, __c38, 1) as any as S.Schema<SetLoadBalancerPoliciesForBackendServerOutput>,
   errors: [
     AccessPointNotFoundException,
     InvalidConfigurationRequestException,
@@ -1518,8 +1518,8 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
   SetLoadBalancerPoliciesOfListenerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<SetLoadBalancerPoliciesOfListenerInput>,
-  output: __S(109, __c13, 5) as any as S.Schema<SetLoadBalancerPoliciesOfListenerOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<SetLoadBalancerPoliciesOfListenerInput>,
+  output: __S(625, __c39, 1) as any as S.Schema<SetLoadBalancerPoliciesOfListenerOutput>,
   errors: [
     AccessPointNotFoundException,
     InvalidConfigurationRequestException,
@@ -1535,58 +1535,102 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerNames: __S(0, __c0, 0), Tags: __S(2, __c0, 2) }).pipe(
+        S.Struct({ LoadBalancerNames: __S(32, __c2, 0), Tags: __S(17, __c1, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AddTagsInput" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddTagsOutput",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, SecurityGroups: __S(5, __c0, 5) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToLoadBalancerInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ SecurityGroups: S.optional(__S(5, __c0, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "ApplySecurityGroupsToLoadBalancerOutput",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.optional(S.String) })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancerName: S.String, SecurityGroups: __S(64, __c4, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ApplySecurityGroupsToLoadBalancerInput",
+      });
     case 1:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Subnets: __S(8, __c1, 0) }).pipe(
+        S.Struct({ SecurityGroups: S.optional(__S(64, __c4, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "ApplySecurityGroupsToLoadBalancerOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancerName: S.String, Subnets: __S(96, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AttachLoadBalancerToSubnetsInput",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ Subnets: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
-        identifier: "AttachLoadBalancerToSubnetsOutput",
+    case 1:
+      return S.suspend(() => S.Struct({ Subnets: S.optional(__S(96, __c6, 0)) }).pipe(ns)).annotate(
+        {
+          identifier: "AttachLoadBalancerToSubnetsOutput",
+        },
+      );
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancerName: S.String, HealthCheck: __S(128, __c8, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ConfigureHealthCheckInput",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ HealthCheck: S.optional(__S(128, __c8, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "ConfigureHealthCheckOutput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Target: S.String,
@@ -1596,21 +1640,11 @@ function __c1(j: number): any {
           HealthyThreshold: S.Number,
         }),
       ).annotate({ identifier: "HealthCheck" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, HealthCheck: __S(11, __c1, 3) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ConfigureHealthCheckInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ HealthCheck: S.optional(__S(11, __c1, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "ConfigureHealthCheckOutput",
-      });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LoadBalancerName: S.String, PolicyName: S.String, CookieName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1618,13 +1652,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAppCookieStickinessPolicyInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateAppCookieStickinessPolicyOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1640,7 +1674,37 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLBCookieStickinessPolicyOutput",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LoadBalancerName: S.String,
+          Listeners: __S(192, __c12, 0),
+          AvailabilityZones: S.optional(__S(224, __c14, 0)),
+          Subnets: S.optional(__S(96, __c6, 0)),
+          SecurityGroups: S.optional(__S(64, __c4, 0)),
+          Scheme: S.optional(S.String),
+          Tags: S.optional(__S(17, __c1, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAccessPointInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ DNSName: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateAccessPointOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(208, __c13, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Protocol: S.String,
@@ -1650,92 +1714,90 @@ function __c2(j: number): any {
           SSLCertificateId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Listener" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          LoadBalancerName: S.String,
-          Listeners: __S(19, __c2, 3),
-          AvailabilityZones: S.optional(__S(20, __c2, 4)),
-          Subnets: S.optional(__S(8, __c1, 0)),
-          SecurityGroups: S.optional(__S(5, __c0, 5)),
-          Scheme: S.optional(S.String),
-          Tags: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAccessPointInput" });
-    case 6:
-      return S.suspend(() => S.Struct({ DNSName: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "CreateAccessPointOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Listeners: __S(19, __c2, 3) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, Listeners: __S(192, __c12, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "CreateLoadBalancerListenerInput",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLoadBalancerListenerOutput",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AttributeName: S.optional(S.String), AttributeValue: S.optional(S.String) }),
       ).annotate({ identifier: "PolicyAttribute" });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
     case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.String,
           PolicyName: S.String,
           PolicyTypeName: S.String,
-          PolicyAttributes: S.optional(__S(26, __c3, 2)),
+          PolicyAttributes: S.optional(__S(257, __c16, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateLoadBalancerPolicyInput",
       });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "CreateLoadBalancerPolicyOutput",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LoadBalancerName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAccessPointInput" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAccessPointOutput",
       });
-    case 7:
-      return S.Array(S.Number);
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.Number);
+    case 1:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, LoadBalancerPorts: __S(31, __c3, 7) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, LoadBalancerPorts: __S(288, __c18, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DeleteLoadBalancerListenerInput",
       });
-    case 1:
+    case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoadBalancerListenerOutput",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LoadBalancerName: S.String, PolicyName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1743,31 +1805,39 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteLoadBalancerPolicyInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoadBalancerPolicyOutput",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
-        identifier: "Instance",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Instances: __S(37, __c4, 5) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, Instances: __S(337, __c21, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeregisterEndPointsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Instances: S.optional(__S(37, __c4, 5)) }).pipe(ns),
+        S.Struct({ Instances: S.optional(__S(337, __c21, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DeregisterEndPointsOutput",
       });
   }
 }
-function __c5(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ InstanceId: S.optional(S.String) })).annotate({
+        identifier: "Instance",
+      });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1782,24 +1852,28 @@ function __c5(j: number): any {
         S.Struct({ Name: S.optional(S.String), Max: S.optional(S.String) }),
       ).annotate({ identifier: "Limit" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(353, __c22, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Limits: S.optional(__S(42, __c5, 2)), NextMarker: S.optional(S.String) }).pipe(
+        S.Struct({ Limits: S.optional(__S(354, __c22, 2)), NextMarker: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
         identifier: "DescribeAccountLimitsOutput",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Instances: S.optional(__S(37, __c4, 5)) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, Instances: S.optional(__S(337, __c21, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DescribeEndPointStateInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           InstanceId: S.optional(S.String),
@@ -1808,17 +1882,17 @@ function __c5(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceState" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ InstanceStates: S.optional(__S(46, __c5, 6)) }).pipe(ns),
+        S.Struct({ InstanceStates: S.optional(__S(370, __c23, 2)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeEndPointStateOutput",
       });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1829,10 +1903,20 @@ function __c6(j: number): any {
         identifier: "DescribeLoadBalancerAttributesInput",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancerAttributes: S.optional(__S(406, __c25, 6)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeLoadBalancerAttributesOutput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Enabled: S.Boolean })).annotate({
         identifier: "CrossZoneLoadBalancing",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
@@ -1841,84 +1925,82 @@ function __c6(j: number): any {
           S3BucketPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessLog" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Enabled: S.Boolean, Timeout: S.optional(S.Number) }),
       ).annotate({ identifier: "ConnectionDraining" });
-    case 4:
+    case 3:
       return S.suspend(() => S.Struct({ IdleTimeout: S.Number })).annotate({
         identifier: "ConnectionSettings",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "AdditionalAttribute" });
+    case 5:
+      return S.Array(__S(404, __c25, 4));
     case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          CrossZoneLoadBalancing: S.optional(__S(49, __c6, 1)),
-          AccessLog: S.optional(__S(50, __c6, 2)),
-          ConnectionDraining: S.optional(__S(51, __c6, 3)),
-          ConnectionSettings: S.optional(__S(52, __c6, 4)),
-          AdditionalAttributes: S.optional(__S(54, __c6, 6)),
+          CrossZoneLoadBalancing: S.optional(__S(400, __c25, 0)),
+          AccessLog: S.optional(__S(401, __c25, 1)),
+          ConnectionDraining: S.optional(__S(402, __c25, 2)),
+          ConnectionSettings: S.optional(__S(403, __c25, 3)),
+          AdditionalAttributes: S.optional(__S(405, __c25, 5)),
         }),
       ).annotate({ identifier: "LoadBalancerAttributes" });
   }
 }
-function __c7(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerAttributes: S.optional(__S(55, __c6, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeLoadBalancerAttributesOutput",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.optional(S.String),
-          PolicyNames: S.optional(__S(57, __c7, 1)),
+          PolicyNames: S.optional(__S(432, __c27, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeLoadBalancerPoliciesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ AttributeName: S.optional(S.String), AttributeValue: S.optional(S.String) }),
       ).annotate({
         identifier: "PolicyAttributeDescription",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           PolicyName: S.optional(S.String),
           PolicyTypeName: S.optional(S.String),
-          PolicyAttributeDescriptions: S.optional(__S(60, __c7, 4)),
+          PolicyAttributeDescriptions: S.optional(__S(418, __c26, 2)),
         }),
       ).annotate({ identifier: "PolicyDescription" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ PolicyDescriptions: S.optional(__S(62, __c7, 6)) }).pipe(ns),
+        S.Struct({ PolicyDescriptions: S.optional(__S(420, __c26, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeLoadBalancerPoliciesOutput",
       });
   }
 }
-function __c8(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ PolicyTypeNames: S.optional(__S(64, __c8, 0)) }).pipe(
+        S.Struct({ PolicyTypeNames: S.optional(__S(448, __c28, 0)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1937,189 +2019,201 @@ function __c8(j: number): any {
         identifier: "PolicyAttributeTypeDescription",
       });
     case 3:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(450, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           PolicyTypeName: S.optional(S.String),
           Description: S.optional(S.String),
-          PolicyAttributeTypeDescriptions: S.optional(__S(67, __c8, 3)),
+          PolicyAttributeTypeDescriptions: S.optional(__S(451, __c28, 3)),
         }),
       ).annotate({ identifier: "PolicyTypeDescription" });
     case 5:
-      return S.Array(__S(68, __c8, 4));
+      return S.Array(__S(452, __c28, 4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ PolicyTypeDescriptions: S.optional(__S(69, __c8, 5)) }).pipe(ns),
+        S.Struct({ PolicyTypeDescriptions: S.optional(__S(453, __c28, 5)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeLoadBalancerPolicyTypesOutput",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          LoadBalancerNames: S.optional(__S(0, __c0, 0)),
+          LoadBalancerNames: S.optional(__S(32, __c2, 0)),
           Marker: S.optional(S.String),
           PageSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeAccessPointsInput",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Listener: S.optional(__S(18, __c2, 2)),
-          PolicyNames: S.optional(__S(57, __c7, 1)),
+          Listener: S.optional(__S(208, __c13, 0)),
+          PolicyNames: S.optional(__S(432, __c27, 0)),
         }),
       ).annotate({ identifier: "ListenerDescription" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(465, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ PolicyName: S.optional(S.String), CookieName: S.optional(S.String) }),
       ).annotate({
         identifier: "AppCookieStickinessPolicy",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
     case 4:
+      return S.Array(__S(467, __c29, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           PolicyName: S.optional(S.String),
           CookieExpirationPeriod: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LBCookieStickinessPolicy" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AppCookieStickinessPolicies: S.optional(__S(75, __c9, 3)),
-          LBCookieStickinessPolicies: S.optional(__S(77, __c9, 5)),
-          OtherPolicies: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "Policies" });
+      return S.Array(__S(469, __c29, 5));
     case 7:
       return S.suspend(() =>
-        S.Struct({ InstancePort: S.optional(S.Number), PolicyNames: S.optional(__S(57, __c7, 1)) }),
+        S.Struct({
+          AppCookieStickinessPolicies: S.optional(__S(468, __c29, 4)),
+          LBCookieStickinessPolicies: S.optional(__S(470, __c29, 6)),
+          OtherPolicies: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({ identifier: "Policies" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          InstancePort: S.optional(S.Number),
+          PolicyNames: S.optional(__S(432, __c27, 0)),
+        }),
       ).annotate({ identifier: "BackendServerDescription" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(472, __c29, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({ OwnerAlias: S.optional(S.String), GroupName: S.optional(S.String) }),
       ).annotate({ identifier: "SourceSecurityGroup" });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.optional(S.String),
           DNSName: S.optional(S.String),
           CanonicalHostedZoneName: S.optional(S.String),
           CanonicalHostedZoneNameID: S.optional(S.String),
-          ListenerDescriptions: S.optional(__S(73, __c9, 1)),
-          Policies: S.optional(__S(78, __c9, 6)),
-          BackendServerDescriptions: S.optional(__S(80, __c10, 0)),
-          AvailabilityZones: S.optional(__S(20, __c2, 4)),
-          Subnets: S.optional(__S(8, __c1, 0)),
+          ListenerDescriptions: S.optional(__S(466, __c29, 2)),
+          Policies: S.optional(__S(471, __c29, 7)),
+          BackendServerDescriptions: S.optional(__S(473, __c29, 9)),
+          AvailabilityZones: S.optional(__S(224, __c14, 0)),
+          Subnets: S.optional(__S(96, __c6, 0)),
           VPCId: S.optional(S.String),
-          Instances: S.optional(__S(37, __c4, 5)),
-          HealthCheck: S.optional(__S(11, __c1, 3)),
-          SourceSecurityGroup: S.optional(__S(81, __c10, 1)),
-          SecurityGroups: S.optional(__S(5, __c0, 5)),
+          Instances: S.optional(__S(337, __c21, 1)),
+          HealthCheck: S.optional(__S(128, __c8, 0)),
+          SourceSecurityGroup: S.optional(__S(474, __c29, 10)),
+          SecurityGroups: S.optional(__S(64, __c4, 0)),
           CreatedTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Scheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancerDescription" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(475, __c29, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          LoadBalancerDescriptions: S.optional(__S(83, __c10, 3)),
+          LoadBalancerDescriptions: S.optional(__S(476, __c29, 12)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeAccessPointsOutput",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerNames: __S(85, __c10, 5) }).pipe(
+        S.Struct({ LoadBalancerNames: __S(480, __c30, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeTagsInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.optional(S.String), Tags: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "TagDescription" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ TagDescriptions: S.optional(__S(88, __c11, 0)) }).pipe(ns),
-      ).annotate({ identifier: "DescribeTagsOutput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Subnets: __S(8, __c1, 0) }).pipe(
+        S.Struct({ LoadBalancerName: S.optional(S.String), Tags: S.optional(__S(17, __c1, 1)) }),
+      ).annotate({ identifier: "TagDescription" });
+    case 3:
+      return S.Array(__S(482, __c30, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ TagDescriptions: S.optional(__S(483, __c30, 3)) }).pipe(ns),
+      ).annotate({ identifier: "DescribeTagsOutput" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ LoadBalancerName: S.String, Subnets: __S(96, __c6, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DetachLoadBalancerFromSubnetsInput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Subnets: S.optional(__S(8, __c1, 0)) }).pipe(ns)).annotate({
-        identifier: "DetachLoadBalancerFromSubnetsOutput",
-      });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ Subnets: S.optional(__S(96, __c6, 0)) }).pipe(ns)).annotate(
+        {
+          identifier: "DetachLoadBalancerFromSubnetsOutput",
+        },
+      );
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(20, __c2, 4) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "RemoveAvailabilityZonesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AvailabilityZones: S.optional(__S(20, __c2, 4)) }).pipe(ns),
+        S.Struct({ AvailabilityZones: S.optional(__S(224, __c14, 0)) }).pipe(ns),
       ).annotate({
         identifier: "RemoveAvailabilityZonesOutput",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(20, __c2, 4) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, AvailabilityZones: __S(224, __c14, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AddAvailabilityZonesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AvailabilityZones: S.optional(__S(20, __c2, 4)) }).pipe(ns),
+        S.Struct({ AvailabilityZones: S.optional(__S(224, __c14, 0)) }).pipe(ns),
       ).annotate({
         identifier: "AddAvailabilityZonesOutput",
       });
   }
 }
-function __c12(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          LoadBalancerName: S.String,
-          LoadBalancerAttributes: __S(55, __c6, 7),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ LoadBalancerName: S.String, LoadBalancerAttributes: __S(406, __c25, 6) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "ModifyLoadBalancerAttributesInput",
       });
@@ -2127,42 +2221,48 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.optional(S.String),
-          LoadBalancerAttributes: S.optional(__S(55, __c6, 7)),
+          LoadBalancerAttributes: S.optional(__S(406, __c25, 6)),
         }).pipe(ns),
       ).annotate({
         identifier: "ModifyLoadBalancerAttributesOutput",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerName: S.String, Instances: __S(37, __c4, 5) }).pipe(
+        S.Struct({ LoadBalancerName: S.String, Instances: __S(337, __c21, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RegisterEndPointsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Instances: S.optional(__S(37, __c4, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "RegisterEndPointsOutput",
-      });
-    case 4:
+        S.Struct({ Instances: S.optional(__S(337, __c21, 1)) }).pipe(ns),
+      ).annotate({ identifier: "RegisterEndPointsOutput" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Key: S.optional(S.String) })).annotate({
         identifier: "TagKeyOnly",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ LoadBalancerNames: __S(0, __c0, 0), Tags: __S(101, __c12, 5) }).pipe(
+        S.Struct({ LoadBalancerNames: __S(32, __c2, 0), Tags: __S(577, __c36, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RemoveTagsInput" });
-    case 7:
+    case 3:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveTagsOutput",
       });
   }
 }
-function __c13(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2178,37 +2278,44 @@ function __c13(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerListenerSSLCertificateOutput",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.String,
           InstancePort: S.Number,
-          PolicyNames: __S(57, __c7, 1),
+          PolicyNames: __S(432, __c27, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetLoadBalancerPoliciesForBackendServerInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerPoliciesForBackendServerOutput",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LoadBalancerName: S.String,
           LoadBalancerPort: S.Number,
-          PolicyNames: __S(57, __c7, 1),
+          PolicyNames: __S(432, __c27, 0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "SetLoadBalancerPoliciesOfListenerInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "SetLoadBalancerPoliciesOfListenerOutput",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));
