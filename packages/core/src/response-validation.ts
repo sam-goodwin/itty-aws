@@ -55,15 +55,35 @@ export const StrictDecoder = /*@__PURE__*/ Context.Reference<
   ((ast: AST.AST) => Decode) | undefined
 >("@distilled.cloud/core/ResponseValidation/StrictDecoder", { defaultValue: () => undefined });
 
-export const strict: Layer.Layer<never> = /*@__PURE__*/ Layer.mergeAll(
-  /*@__PURE__*/ Layer.succeed(ResponseValidation, "strict"),
-  /*@__PURE__*/ Layer.succeed(StrictDecoder, decoderFor),
+/**
+ * A layer that is also the `Context` it provides. `Effect.provide` treats a
+ * `Context` as a plain `provideContext`, so `Effect.provide(strict)` around
+ * a single call costs a context merge instead of a layer build (scope, memo
+ * map and a few fibers steps per call); every other use sees an ordinary
+ * `Layer`. The context state is read through the prototype.
+ */
+const layerOfContext = (context: Context.Context<never>): Layer.Layer<never> => {
+  const layer = Layer.succeedContext(context);
+  const both = Object.create(context);
+  const layerProto = Object.getPrototypeOf(layer);
+  for (const key of Reflect.ownKeys(layerProto)) {
+    if (key !== "pipe") both[key] = layerProto[key];
+  }
+  both.build = (layer as unknown as { build: unknown }).build;
+  return both;
+};
+
+export const strict: Layer.Layer<never> = /*@__PURE__*/ layerOfContext(
+  /*@__PURE__*/ Context.add(
+    /*@__PURE__*/ Context.make(ResponseValidation, "strict"),
+    StrictDecoder,
+    decoderFor,
+  ),
 );
 
 /** Return 2xx responses as read, without checking them against the schema. */
-export const lenient: Layer.Layer<never> = /*@__PURE__*/ Layer.succeed(
-  ResponseValidation,
-  "lenient",
+export const lenient: Layer.Layer<never> = /*@__PURE__*/ layerOfContext(
+  /*@__PURE__*/ Context.make(ResponseValidation, "lenient"),
 );
 
 /** Whether the calling fiber is in strict mode. */
@@ -82,19 +102,30 @@ export const failIfStrict = <A, E>(error: E, asRead: A): Effect.Effect<A, E> =>
     mode === "strict" ? Effect.fail(error) : Effect.succeed(asRead),
   );
 
+/**
+ * The schema error for `value` against `outputAst` in strict mode, `undefined`
+ * when it matches or the mode is lenient. Synchronous, for protocols that
+ * already hold the calling fiber's context.
+ */
+export const checkResponse = (
+  context: Context.Context<any>,
+  outputAst: AST.AST,
+  value: unknown,
+): Schema.SchemaError | undefined => {
+  if (Context.get(context, ResponseValidation) === "lenient") return undefined;
+  const decoderOf = Context.get(context, StrictDecoder);
+  if (!decoderOf) {
+    throw new Error("strict response validation needs the ResponseValidation.strict layer");
+  }
+  return decoderOf(outputAst)(value);
+};
+
 export const validateResponse = <E>(
   outputAst: AST.AST,
   value: unknown,
   onError: (cause: Schema.SchemaError) => E,
 ): Effect.Effect<unknown, E> =>
-  Effect.flatMap(ResponseValidation, (mode) =>
-    mode === "lenient"
-      ? Effect.succeed(value)
-      : Effect.flatMap(StrictDecoder, (decoderOf) =>
-          decoderOf
-            ? decoderOf(outputAst)(value).pipe(Effect.mapError(onError), Effect.as(value))
-            : Effect.die(
-                new Error("strict response validation needs the ResponseValidation.strict layer"),
-              ),
-        ),
-  );
+  Effect.withFiber((fiber) => {
+    const error = checkResponse(fiber.context as Context.Context<any>, outputAst, value);
+    return error === undefined ? Effect.succeed(value) : Effect.fail(onError(error));
+  });

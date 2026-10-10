@@ -45,6 +45,16 @@ export interface CryptoImpl {
   readonly sha256: (data: Bytes) => Effect.Effect<Uint8Array, CryptoError>;
   readonly importHmacKey: (key: Bytes) => Effect.Effect<HmacKey, CryptoError>;
   readonly hmacSha256: (key: HmacKey, data: Bytes) => Effect.Effect<Uint8Array, CryptoError>;
+  /**
+   * The same operations as plain functions, for implementations that are
+   * synchronous (node:crypto). They throw on failure. Signers use them to
+   * skip the per-operation effects when present.
+   */
+  readonly sync?: {
+    readonly sha256: (data: Bytes) => Uint8Array;
+    readonly importHmacKey: (key: Bytes) => HmacKey;
+    readonly hmacSha256: (key: HmacKey, data: Bytes) => Uint8Array;
+  };
 }
 
 //#region node:crypto
@@ -75,6 +85,15 @@ export const makeNodeCrypto = (): CryptoImpl | undefined => {
   if (!c) return undefined;
   return {
     name: "node:crypto",
+    sync: {
+      sha256: (data) => c.createHash("sha256").update(data).digest(),
+      importHmacKey: (key) => c.createSecretKey(toBytes(key)) as unknown as HmacKey,
+      hmacSha256: (key, data) =>
+        c
+          .createHmac("sha256", key as unknown as object)
+          .update(data)
+          .digest(),
+    },
     sha256: (data) =>
       Effect.try({
         try: () => c.createHash("sha256").update(data).digest(),
