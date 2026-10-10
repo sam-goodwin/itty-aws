@@ -14,7 +14,7 @@
  */
 
 import * as Effect from "effect/Effect";
-import * as AST from "effect/SchemaAST";
+import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import type { Request } from "../client/request.ts";
 import {

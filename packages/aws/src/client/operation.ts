@@ -1,4 +1,4 @@
-import * as S from "effect/Schema";
+import type * as S from "effect/Schema";
 import type { PaginatedTrait } from "../traits.ts";
 
 export declare namespace Operation {
