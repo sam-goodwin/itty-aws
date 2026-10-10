@@ -26,7 +26,7 @@ catalog:
   mitata: "^1.0.34"
   oxfmt: "^0.71.0"
   oxlint: "^1.86.0"
-  rolldown: "1.2.5"
+  rolldown: "1.2.8"
   typescript: "^7.0.2"
   vitest: "^4.1.8"
   yaml: "^2.9.0"
@@ -85,7 +85,3 @@ overrides:
   "@aws-sdk/signature-v4-multi-region": "3.996.47"
   "@aws-sdk/token-providers": "3.1147.0"
 
-# Upstream candidate: lets bundlers drop HttpClientErrorSchema (and Effect
-# Schema behind it) when unused. Remove once Effect ships it.
-patchedDependencies:
-  effect@4.0.0: patches/effect@4.0.0.patch
