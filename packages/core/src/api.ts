@@ -82,8 +82,33 @@ export class Protocol
         /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
         readonly config: ProtocolOperationConfig;
       }) => Effect.Effect<unknown>;
+      /**
+       * Optional whole-call implementation. When present, `API.make` runs a
+       * call as `call(operation, input)` instead of encode -> HttpClient ->
+       * decode, so a protocol can read the context once, build the request
+       * synchronously and decode the response without intermediate effects.
+       * It must read the `HttpClient` from the calling fiber's context and
+       * produce the same request, result and errors as encode/decode.
+       */
+      readonly call?: (operation: PreparedOperation, input: unknown) => Effect.Effect<unknown>;
     }
   >()("Protocol") {}
+
+/** The service a protocol layer provides. */
+export type ProtocolShape = (typeof Protocol)["Service"];
+
+/**
+ * One operation as a protocol's {@link Protocol.call} sees it. Built once per
+ * operation on its first call; the same object is passed on every call.
+ */
+export interface PreparedOperation {
+  readonly config: ProtocolOperationConfig;
+  readonly inputAst: AST.AST;
+  readonly outputAst: AST.AST;
+  readonly errors: ReadonlyArray<ApiErrorClass>;
+  /** Per-operation slot owned by the operation's protocol (compiled codecs). */
+  compiled?: unknown;
+}
 
 //#endregion
 
@@ -306,10 +331,10 @@ interface OperationState {
   readonly strategy?: Pagination.PaginationStrategy;
 }
 
-interface Prepared {
+interface Prepared extends PreparedOperation {
   readonly cfg: OperationConfig<any, any, any, any, any>;
-  readonly inputAst: AST.AST;
-  readonly outputAst: AST.AST;
+  /** The built protocol service, once its layer has been built. */
+  service?: ProtocolShape;
 }
 
 const stateKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/OperationState");
@@ -323,28 +348,49 @@ const stateKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/OperationSt
 const prepare = (state: OperationState): Prepared => {
   if (state.prepared) return state.prepared;
   const cfg = state.configFn();
-  return (state.prepared = { cfg, inputAst: cfg.input!.ast, outputAst: cfg.output!.ast });
+  return (state.prepared = {
+    cfg,
+    config: cfg,
+    inputAst: cfg.input!.ast,
+    outputAst: cfg.output!.ast,
+    errors: cfg.errors ?? [],
+    compiled: undefined,
+    service: undefined,
+  });
 };
 
 const stateOf = (op: unknown): OperationState => (op as Record<symbol, OperationState>)[stateKey]!;
 
-const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> =>
-  Effect.suspend(() => {
-    const { cfg, inputAst, outputAst } = prepare(state);
-    // A plain flatMap chain: no generator, and the protocol is read from its
-    // cached context instead of being provided around the call.
-    const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) => {
-      const protocol = Context.get(protocolCtx, Protocol);
-      return Effect.flatMap(HttpClient.HttpClient, (client) =>
-        Effect.flatMap(protocol.encode({ input, inputAst, config: cfg }), (request) =>
-          Effect.flatMap(client.execute(request), (response) =>
-            protocol.decode({ response, outputAst, errors: cfg.errors ?? [], config: cfg }),
-          ),
-        ),
-      );
+const runWith = (
+  p: Prepared,
+  protocol: ProtocolShape,
+  input: unknown,
+): Effect.Effect<any, any, any> => {
+  if (protocol.call !== undefined) return protocol.call(p, input);
+  const { cfg, inputAst, outputAst, errors } = p;
+  return Effect.flatMap(HttpClient.HttpClient, (client) =>
+    Effect.flatMap(protocol.encode({ input, inputAst, config: cfg }), (request) =>
+      Effect.flatMap(client.execute(request), (response) =>
+        protocol.decode({ response, outputAst, errors, config: cfg }),
+      ),
+    ),
+  );
+};
+
+const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> => {
+  // Warm path: the operation is prepared and its protocol built, so the call
+  // is whatever the protocol returns, with no wrapper effects around it.
+  const p = state.prepared;
+  if (p?.service !== undefined) return applyRetry(runWith(p, p.service, input), p.cfg.retry);
+  return Effect.suspend(() => {
+    const prepared = prepare(state);
+    const call = Effect.flatMap(protocolContext(prepared.cfg.protocol), (protocolCtx) => {
+      const service = (prepared.service = Context.get(protocolCtx, Protocol));
+      return runWith(prepared, service, input);
     });
-    return applyRetry(call, cfg.retry);
+    return applyRetry(call, prepared.cfg.retry);
   });
+};
 
 /**
  * `const fn = yield* operation`: a requirement-free call function over the

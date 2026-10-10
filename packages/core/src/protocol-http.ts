@@ -1,3 +1,4 @@
+import * as Headers from "effect/http/Headers";
 import * as HttpBody from "effect/http/HttpBody";
 import * as HttpClientRequest from "effect/http/HttpClientRequest";
 /**
@@ -146,6 +147,60 @@ export const mapKeysByDictionary = (
  */
 const stringEncode = (value: unknown): unknown =>
   value === null ? null : Array.isArray(value) ? value.map(stringEncode) : String(value);
+
+/**
+ * Whether {@link mapKeys} returns every value of `root` unchanged (as a deep
+ * copy) in `direction` with no fallback dictionary: no member is renamed,
+ * string-encoded (encode) or picked by `T.UnionCases` (decode), and no
+ * `T.KeyDictionary` is in scope anywhere below `root`. Protocols use it to
+ * skip the walk. Computed once per schema node and direction.
+ */
+export const mapsVerbatim = (root: AST.AST, direction: "encode" | "decode"): boolean => {
+  const cache = direction === "encode" ? verbatimEncode : verbatimDecode;
+  let result = cache.get(root);
+  if (result !== undefined) return result;
+  result = true;
+  const seen = new Set<AST.AST>();
+  const stack: AST.AST[] = [root];
+  walk: while (stack.length > 0) {
+    const ast = stack.pop()!;
+    if (seen.has(ast)) continue;
+    seen.add(ast);
+    if (getAnn(ast, keyDictionarySymbol) !== undefined) {
+      result = false;
+      break;
+    }
+    if (direction === "decode" && getAnn(ast, unionCasesSymbol) !== undefined) {
+      result = false;
+      break;
+    }
+    const node = resolveNode(ast);
+    if (node._tag === "Union") {
+      for (const t of (node as AST.Union).types) stack.push(resolveNode(t));
+    } else if (node._tag === "Arrays") {
+      const elem = (node as any).rest?.[0] as AST.AST | undefined;
+      if (elem) stack.push(elem);
+    } else if (node._tag === "Objects") {
+      for (const p of (node as any).propertySignatures as readonly AST.PropertySignature[]) {
+        if (
+          nameOf(p, bodySymbol) !== String(p.name) ||
+          (direction === "encode" && hasPropAnn(p, stringEncodedSymbol))
+        ) {
+          result = false;
+          break walk;
+        }
+        stack.push(p.type);
+      }
+      for (const s of ((node as any).indexSignatures ?? []) as readonly { type: AST.AST }[]) {
+        stack.push(s.type);
+      }
+    }
+  }
+  cache.set(root, result);
+  return result;
+};
+const verbatimEncode = /*@__PURE__*/ new WeakMap<AST.AST, boolean>();
+const verbatimDecode = /*@__PURE__*/ new WeakMap<AST.AST, boolean>();
 
 export const mapKeys = (
   ast: AST.AST,
@@ -354,18 +409,6 @@ export interface BuildRequestOptions {
 }
 
 /**
- * Build an HTTP request from an operation input and its schema, driven by
- * the trait annotations: `Http()` supplies method + URI template, `Label()`
- * members fill URI placeholders, `Header()`/`Query()` members bind to
- * headers/query params, `DeepQuery()` struct members expand into dotted
- * query params, `HttpBody()` sends the member as the whole body,
- * `FormDataFile()` members become multipart file parts, and everything else
- * is a JSON body field (wire-named via `Body()` / `KeyDictionary`).
- *
- * Throws when the input schema is missing the `Http()` trait -- a codegen
- * bug, surfaced as a defect by the calling protocol's Effect context.
- */
-/**
  * Encode a greedy `{name+}` label: the value may span several path
  * segments (e.g. an Azure scope `/subscriptions/{id}/resourceGroups/{rg}`),
  * so each segment is encoded on its own and the `/` separators are kept.
@@ -403,6 +446,110 @@ const flattenToFormPairs = (obj: Record<string, unknown>, prefix = ""): Array<[s
   return pairs;
 };
 
+/** How an input member binds to the request. */
+type Bind = "label" | "header" | "query" | "deepQuery" | "file" | "httpBody" | "body";
+
+/** One input member, with its binding read from the schema once. */
+interface MemberPlan {
+  readonly key: string;
+  readonly bind: Bind;
+  /** Label token, lower-cased header name, query name or body wire name. */
+  readonly name: string;
+  readonly type: AST.AST;
+  /** `LabelEncoding` characters kept unescaped. */
+  readonly preserve: string | undefined;
+  /** `{name+}` placeholder. */
+  readonly greedy: boolean;
+  readonly stringEncoded: boolean;
+  /** `mapKeys(type, value, "encode", rootDict)` returns the value unchanged. */
+  readonly verbatim: boolean;
+}
+
+/** What `buildRequest` reads from an input schema, computed once per schema. */
+interface RequestPlan {
+  readonly http: HttpTrait;
+  readonly rootDict: KeyDictionaryEntries | undefined;
+  readonly members: ReadonlyArray<MemberPlan>;
+  readonly known: ReadonlySet<string>;
+  /** The schema declares a member that is sent in the body. */
+  readonly hasBodyMembers: boolean;
+}
+
+const plans = /*@__PURE__*/ new WeakMap<AST.AST, RequestPlan>();
+
+const planFor = (inputAst: AST.AST): RequestPlan => {
+  let plan = plans.get(inputAst);
+  if (plan !== undefined) return plan;
+  const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
+  if (!http) {
+    throw new Error("operation input is missing the Http() trait");
+  }
+  const rootDict = getAnn(inputAst, keyDictionarySymbol) as KeyDictionaryEntries | undefined;
+  const members: MemberPlan[] = [];
+  const known = new Set<string>();
+  let hasBodyMembers = false;
+  for (const prop of getProps(inputAst)) {
+    const key = String(prop.name);
+    known.add(key);
+    let bind: Bind;
+    let name: string;
+    let greedy = false;
+    if (hasPropAnn(prop, labelSymbol)) {
+      bind = "label";
+      name = nameOf(prop, labelSymbol);
+      greedy = http.uri.includes(`{${name}+}`);
+    } else if (hasPropAnn(prop, headerSymbol)) {
+      bind = "header";
+      name = nameOf(prop, headerSymbol).toLowerCase();
+    } else if (hasPropAnn(prop, querySymbol)) {
+      bind = "query";
+      name = nameOf(prop, querySymbol);
+    } else if (hasPropAnn(prop, deepQuerySymbol)) {
+      bind = "deepQuery";
+      name = nameOf(prop, deepQuerySymbol);
+    } else {
+      hasBodyMembers = true;
+      bind = hasPropAnn(prop, formDataFileSymbol)
+        ? "file"
+        : hasPropAnn(prop, httpBodySymbol)
+          ? "httpBody"
+          : "body";
+      name = nameOf(prop, bodySymbol);
+    }
+    const preserve = getPropAnn(prop, labelEncodingSymbol);
+    members.push({
+      key,
+      bind,
+      name,
+      type: prop.type,
+      preserve: typeof preserve === "string" ? preserve : undefined,
+      greedy,
+      stringEncoded: hasPropAnn(prop, stringEncodedSymbol),
+      verbatim: rootDict === undefined && mapsVerbatim(prop.type, "encode"),
+    });
+  }
+  plan = { http, rootDict, members, known, hasBodyMembers };
+  plans.set(inputAst, plan);
+  return plan;
+};
+
+const emptyRequest = /*@__PURE__*/ HttpClientRequest.get("");
+
+/**
+ * Build an HTTP request from an operation input and its schema, driven by
+ * the trait annotations: `Http()` supplies method + URI template, `Label()`
+ * members fill URI placeholders, `Header()`/`Query()` members bind to
+ * headers/query params, `DeepQuery()` struct members expand into dotted
+ * query params, `HttpBody()` sends the member as the whole body,
+ * `FormDataFile()` members become multipart file parts, and everything else
+ * is a JSON body field (wire-named via `Body()` / `KeyDictionary`).
+ *
+ * The schema is read once per input schema (see `planFor`); later calls only
+ * walk the input value.
+ *
+ * Throws when the input schema is missing the `Http()` trait -- a codegen
+ * bug, surfaced as a defect by the calling protocol's Effect context.
+ */
 export const buildRequest = ({
   input,
   inputAst,
@@ -412,87 +559,85 @@ export const buildRequest = ({
   unknownKeyToWire,
 }: BuildRequestOptions): HttpClientRequest.HttpClientRequest => {
   const inputObj = (input ?? {}) as Record<string, unknown>;
-  const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
-  if (!http) {
-    throw new Error("operation input is missing the Http() trait");
-  }
-  // Root key dictionary: fallback wire mapping for opaque/unknown content
-  // the schema doesn't model.
-  const rootDict = getAnn(inputAst, keyDictionarySymbol) as KeyDictionaryEntries | undefined;
+  const plan = planFor(inputAst);
+  const { http, rootDict, members, known } = plan;
+  let hasBodyMembers = plan.hasBodyMembers;
 
   const headers: Record<string, string> = { ...baseHeaders };
   const body: Record<string, unknown> = {};
+  let bodyKeys = 0;
   let rawBody: unknown; // whole-body member (T.HttpBody) -- sent as-is
-  const files: Array<Blob | File> = [];
-  const query = new URLSearchParams();
+  let files: Array<Blob | File> | undefined;
+  let query: URLSearchParams | undefined;
   let uri = http.uri;
-  const consumed = new Set<string>();
-  let hasBodyMembers = false;
   // Value of a modeled `Content-Type` header member, e.g. R2 putObject's
   // `contentType`. A raw body is sent under it (see below).
   let memberContentType: string | undefined;
 
-  for (const prop of getProps(inputAst)) {
-    const key = String(prop.name);
-    consumed.add(key);
-    const value = inputObj[key];
-    const isBodyMember =
-      !hasPropAnn(prop, labelSymbol) &&
-      !hasPropAnn(prop, headerSymbol) &&
-      !hasPropAnn(prop, querySymbol) &&
-      !hasPropAnn(prop, deepQuerySymbol);
-    if (isBodyMember) hasBodyMembers = true;
+  for (let i = 0; i < members.length; i++) {
+    const m = members[i]!;
+    const value = inputObj[m.key];
     if (value === undefined) continue;
-
-    if (hasPropAnn(prop, labelSymbol)) {
-      const token = nameOf(prop, labelSymbol);
-      const preserve = getPropAnn(prop, labelEncodingSymbol);
-      const encoded = encodeURIComponent(String(value));
-      const label =
-        typeof preserve === "string"
-          ? encoded.replace(/%[0-9A-F]{2}/g, (escape) => {
-              const character = String.fromCharCode(Number.parseInt(escape.slice(1), 16));
-              return preserve.includes(character) ? character : escape;
-            })
-          : encoded;
-      uri = uri.includes(`{${token}+}`)
-        ? uri.replace(`{${token}+}`, () => encodeGreedyLabel(String(value)))
-        : uri.replace(`{${token}}`, () => label);
-    } else if (hasPropAnn(prop, headerSymbol)) {
-      const hName = nameOf(prop, headerSymbol).toLowerCase();
-      const hVal = String(value);
-      headers[hName] = mapMemberHeader ? mapMemberHeader(hName, hVal) : hVal;
-      if (hName === "content-type") memberContentType = headers[hName];
-    } else if (hasPropAnn(prop, querySymbol)) {
-      appendQuery(query, nameOf(prop, querySymbol), value);
-    } else if (hasPropAnn(prop, deepQuerySymbol)) {
-      // Deep-object query member (T.DeepQuery): a nested struct expands into
-      // dotted query keys (`account.id=...`) under the member's wire name.
-      // Wire-name the nested content via the schema first, skip null/
-      // undefined entries; deeper nesting recurses through appendQuery.
-      const base = nameOf(prop, deepQuerySymbol);
-      const mapped = mapKeys(prop.type, value, "encode", rootDict);
-      if (mapped !== null && typeof mapped === "object") {
-        for (const [k, v] of Object.entries(mapped as Record<string, unknown>)) {
-          if (v !== undefined && v !== null) {
-            appendQuery(query, `${base}.${k}`, v);
+    switch (m.bind) {
+      case "label": {
+        const encoded = encodeURIComponent(String(value));
+        const preserve = m.preserve;
+        const label =
+          preserve !== undefined
+            ? encoded.replace(/%[0-9A-F]{2}/g, (escape) => {
+                const character = String.fromCharCode(Number.parseInt(escape.slice(1), 16));
+                return preserve.includes(character) ? character : escape;
+              })
+            : encoded;
+        uri = m.greedy
+          ? uri.replace(`{${m.name}+}`, () => encodeGreedyLabel(String(value)))
+          : uri.replace(`{${m.name}}`, () => label);
+        break;
+      }
+      case "header": {
+        const hVal = String(value);
+        headers[m.name] = mapMemberHeader ? mapMemberHeader(m.name, hVal) : hVal;
+        if (m.name === "content-type") memberContentType = headers[m.name];
+        break;
+      }
+      case "query":
+        appendQuery((query ??= new URLSearchParams()), m.name, value);
+        break;
+      case "deepQuery": {
+        // Deep-object query member (T.DeepQuery): a nested struct expands into
+        // dotted query keys (`account.id=...`) under the member's wire name.
+        // Wire-name the nested content via the schema first, skip null/
+        // undefined entries; deeper nesting recurses through appendQuery.
+        const mapped = m.verbatim ? value : mapKeys(m.type, value, "encode", rootDict);
+        if (mapped !== null && typeof mapped === "object") {
+          for (const [k, v] of Object.entries(mapped as Record<string, unknown>)) {
+            if (v !== undefined && v !== null) {
+              appendQuery((query ??= new URLSearchParams()), `${m.name}.${k}`, v);
+            }
           }
         }
+        break;
       }
-    } else if (hasPropAnn(prop, formDataFileSymbol)) {
-      for (const f of Array.isArray(value) ? value : [value]) {
-        files.push(f as Blob | File);
-      }
-    } else if (hasPropAnn(prop, httpBodySymbol)) {
-      rawBody = mapKeys(prop.type, value, "encode", rootDict);
-    } else {
-      // T.StringEncoded(): the API takes this member's value only as its
-      // string spelling (`true` -> `"true"`), while the TS surface keeps the
-      // natural type. Explicit here so a JSON body carries the string too,
-      // rather than relying on the multipart encoder's own `String()`.
-      body[nameOf(prop, bodySymbol)] = hasPropAnn(prop, stringEncodedSymbol)
-        ? stringEncode(value)
-        : mapKeys(prop.type, value, "encode", rootDict);
+      case "file":
+        files ??= [];
+        for (const f of Array.isArray(value) ? value : [value]) {
+          files.push(f as Blob | File);
+        }
+        break;
+      case "httpBody":
+        rawBody = m.verbatim ? value : mapKeys(m.type, value, "encode", rootDict);
+        break;
+      default:
+        // T.StringEncoded(): the API takes this member's value only as its
+        // string spelling (`true` -> `"true"`), while the TS surface keeps the
+        // natural type. Explicit here so a JSON body carries the string too,
+        // rather than relying on the multipart encoder's own `String()`.
+        body[m.name] = m.stringEncoded
+          ? stringEncode(value)
+          : m.verbatim
+            ? value
+            : mapKeys(m.type, value, "encode", rootDict);
+        bodyKeys++;
     }
   }
 
@@ -500,24 +645,33 @@ export const buildRequest = ({
   // generated schemas can lag the real API, and silently dropping them
   // would break working callers. The key dictionary maps them when it knows
   // the key, otherwise `unknownKeyToWire` decides the wire name.
-  for (const [key, value] of Object.entries(inputObj)) {
-    if (consumed.has(key) || value === undefined) continue;
+  for (const key in inputObj) {
+    if (known.has(key) || !Object.hasOwn(inputObj, key)) continue;
+    const value = inputObj[key];
+    if (value === undefined) continue;
     const wire = rootDict?.[key] ?? (unknownKeyToWire ? unknownKeyToWire(key) : key);
     body[typeof wire === "string" ? wire : wire[0]] = rootDict
       ? mapKeysByDictionary(rootDict, value, "encode")
       : value;
+    bodyKeys++;
     hasBodyMembers = true;
   }
 
-  const qs = query.toString();
-  const url = `${baseUrl}${uri}${qs ? `?${qs}` : ""}`;
+  const qs = query === undefined ? "" : query.toString();
+  const url = qs ? `${baseUrl}${uri}?${qs}` : `${baseUrl}${uri}`;
   if (debugHttp()) {
     console.error(`[distilled] -> ${http.method} ${http.uri}`);
   }
 
-  let request = HttpClientRequest.make(http.method)(url).pipe(
-    HttpClientRequest.setHeaders(headers),
+  const request = HttpClientRequest.makeWith(
+    http.method,
+    url,
+    emptyRequest.urlParams,
+    emptyRequest.hash,
+    Headers.fromInput(headers),
+    HttpBody.empty,
   );
+  const bodied = !BODYLESS.has(http.method);
   if (http.contentType === "multipart") {
     // Multipart upload: each body member is a form part (objects
     // JSON-encoded under their wire name), each file appends under its own
@@ -553,12 +707,13 @@ export const buildRequest = ({
         form.append(key, String(value));
       }
     }
-    for (const f of files) {
+    for (const f of files ?? []) {
       const filename = (f as File).name ?? "file";
       form.append(filename, f, filename);
     }
-    request = request.pipe(HttpClientRequest.bodyFormData(form));
-  } else if (http.contentType === "form-urlencoded" && !BODYLESS.has(http.method)) {
+    return HttpClientRequest.setBody(request, HttpBody.formData(form));
+  }
+  if (http.contentType === "form-urlencoded" && bodied) {
     // application/x-www-form-urlencoded with Stripe-style deepObject bracket
     // notation: { shipping: { address: { city } } } -> shipping[address][city],
     // arrays indexed ({ expand: ["a"] } -> expand[0]=a).
@@ -568,12 +723,12 @@ export const buildRequest = ({
         : body;
     const params = new URLSearchParams();
     for (const [k, v] of flattenToFormPairs(source)) params.append(k, v);
-    request = request.pipe(
-      HttpClientRequest.setBody(
-        HttpBody.text(params.toString(), "application/x-www-form-urlencoded"),
-      ),
+    return HttpClientRequest.setBody(
+      request,
+      HttpBody.text(params.toString(), "application/x-www-form-urlencoded"),
     );
-  } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
+  }
+  if (rawBody !== undefined && bodied) {
     // Whole-body member (raw arrays/scalars) -- sent as the body itself.
     // Binary payloads (Blob / ArrayBuffer / Uint8Array) send verbatim
     // (raw object uploads). With a bodyMediaType, the member is a
@@ -587,23 +742,22 @@ export const buildRequest = ({
     const mediaType = memberContentType ?? http.bodyMediaType;
     if (rawBody instanceof Blob || rawBody instanceof ArrayBuffer) {
       // With no media type at all, fetch falls back to the Blob's own type.
-      request = request.pipe(
-        HttpClientRequest.setBody(HttpBody.raw(rawBody, { contentType: mediaType })),
-      );
-    } else if (rawBody instanceof Uint8Array) {
-      request = request.pipe(HttpClientRequest.setBody(HttpBody.uint8Array(rawBody, mediaType)));
-    } else if (http.bodyMediaType) {
-      request = request.pipe(
-        HttpClientRequest.setBody(
-          typeof rawBody === "string"
-            ? HttpBody.text(rawBody, mediaType)
-            : HttpBody.uint8Array(rawBody as Uint8Array, mediaType),
-        ),
-      );
-    } else {
-      request = request.pipe(HttpClientRequest.bodyJsonUnsafe(rawBody));
+      return HttpClientRequest.setBody(request, HttpBody.raw(rawBody, { contentType: mediaType }));
     }
-  } else if (
+    if (rawBody instanceof Uint8Array) {
+      return HttpClientRequest.setBody(request, HttpBody.uint8Array(rawBody, mediaType));
+    }
+    if (http.bodyMediaType) {
+      return HttpClientRequest.setBody(
+        request,
+        typeof rawBody === "string"
+          ? HttpBody.text(rawBody, mediaType)
+          : HttpBody.uint8Array(rawBody as Uint8Array, mediaType),
+      );
+    }
+    return HttpClientRequest.setBody(request, HttpBody.jsonUnsafe(rawBody));
+  }
+  if (
     // A GET/HEAD sends a body only when body members actually carry values.
     // Some APIs really do document GET-with-body: MongoDB Atlas's
     // `.../lineItems:search` declares a `requestBody` on `get`, and AWS EFS's
@@ -613,12 +767,12 @@ export const buildRequest = ({
     //
     // The `{}`-when-empty rule below stays limited to methods that expect a
     // body, so a bodyless method with nothing set still sends nothing.
-    Object.keys(body).length > 0 ||
-    (hasBodyMembers && !BODYLESS.has(http.method) && http.method !== "DELETE")
+    bodyKeys > 0 ||
+    (hasBodyMembers && bodied && http.method !== "DELETE")
   ) {
     // Send `{}` rather than no body when the schema declares body members --
     // some endpoints reject a missing JSON body outright.
-    request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
+    return HttpClientRequest.setBody(request, HttpBody.jsonUnsafe(body));
   }
   return request;
 };
