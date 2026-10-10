@@ -439,7 +439,7 @@ export const toEffect = (S: EffectSchemaApi, ast: Node): unknown => {
         break;
       }
       case "Declaration":
-        out = n.check ? S.declare(n.check) : S.Unknown;
+        out = n.check ? S.declare(n.check as (u: unknown) => u is unknown) : S.Unknown;
         break;
       case "Unknown":
         out = S.Unknown;

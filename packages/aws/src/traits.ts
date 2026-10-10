@@ -212,7 +212,7 @@ export const Ec2QueryName = (name: string) => makeAnnotation(ec2QueryNameSymbol,
  * DateFromString - String <-> Date transformation via ISO 8601.
  * Use this instead of bare S.Date when the wire format is a string.
  */
-export const DateFromString: S.Schema<Date> = /*@__PURE__*/ timestamp("date-string");
+export const DateFromString: S.Schema<Date> = /*@__PURE__*/ timestamp("date-string") as any;
 
 /** smithy.api#timestampFormat - Timestamp serialization format */
 export const timestampFormatSymbol = "distilled-aws/timestamp-format" as const;

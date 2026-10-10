@@ -40,7 +40,7 @@ const response = (
 });
 
 const op = (input: S.Top, output: S.Top = S.Struct({}), operationName?: string): Operation => ({
-  input: input as S.Any,
+  input: input as any,
   output,
   errors: [],
   ...(operationName ? { operationName } : {}),
